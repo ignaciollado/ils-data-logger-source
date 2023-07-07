@@ -1,0 +1,34 @@
+<h3>All comsumptions list:</h3>
+<div class="container">
+  <div *ngFor="let consumption of consumptions" class="card">
+    <div class="container">
+      <div>
+        <span
+        *ngif="consumption.fuelId"
+        class="badge"      >
+        {{ consumption.nameES }}
+        </span>
+      </div>
+    </div>
+    <h4>Fuel: <b>{{ consumption.nameES }}</b></h4>
+    <p>Quantity: {{ consumption.quantity }} </p>
+    <p>From date: {{ consumption.fromDate| formatDate: 3 }}</p>
+    <p>To date: {{ consumption.toDate| formatDate: 3 }}</p>
+    <div *ngIf="showButtons">
+      <p>CompanyId: {{ consumption.companyId }}</p>
+    </div>
+    
+    <p>Published when: {{ consumption.createAt }}</p>
+
+    <div *ngIf="showButtons">
+      <button mat-icon-button color="accent" matTooltip="Update this consumption"
+      aria-label="Button that displays a tooltip and updates this consumption" (click)="updatePost(consumption.consumptionId)">
+        <mat-icon>edit</mat-icon>
+      </button>
+      <button mat-icon-button color="warn" matTooltip="Permanently delete this consumption"
+      aria-label="Button that displays a tooltip and permanently deletes this consumption" (click)="deletePost(consumption.consumptionId)">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </div>
+  </div>
+</div>

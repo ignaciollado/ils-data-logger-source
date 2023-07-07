@@ -1,0 +1,66 @@
+<div style="margin-left: auto; margin-right: auto">
+  <p id="categoryFeedback"></p>
+</div>
+<div class="container-form" [@fadeInOut] >  
+  <h1>Fuel details</h1>
+  <form
+    *ngIf="energyForm" 
+    [formGroup]="energyForm"
+    (ngSubmit)="saveCategory()">
+
+    <mat-card [class.mat-elevation-z8]="isElevated">
+      <section>
+          <mat-form-field>
+            <mat-label>name ES</mat-label>
+            <input matInput type="text" [formControl]="nameES" />
+            <mat-error *ngIf="nameES.hasError('minlength')" >nameES must be at least 5 characters long</mat-error>
+            <mat-error *ngIf="nameES.hasError('maxlength')" >nameES can be max 25 characters long</mat-error>
+            <mat-error *ngIf="nameES.hasError('required')">nameES <strong>is required</strong></mat-error>
+          </mat-form-field>
+      </section>
+
+      <section>
+        <mat-form-field>
+          <mat-label>name CA</mat-label>
+          <input matInput type="text" [formControl]="nameCA" />
+          <mat-error *ngIf="nameCA.hasError('minlength')" >name CA must be at least 5 characters long</mat-error>
+          <mat-error *ngIf="nameCA.hasError('maxlength')" >name CA can be max 25 characters long</mat-error>
+          <mat-error *ngIf="nameCA.hasError('required')">name CA <strong>is required</strong></mat-error>
+        </mat-form-field>
+      </section>
+
+      <section>
+        <mat-form-field>
+          <mat-label>Aspectos ambientales</mat-label>
+          <mat-select>
+            <mat-option *ngFor="let enviromentalAspect of enviromentalAspects" [value]="enviromentalAspect.value">
+              {{enviromentalAspect.viewValue}}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="aspectId.hasError('required')">enviromental Aspect <strong>is required</strong></mat-error>
+        </mat-form-field>
+      </section>
+
+      <section>
+        <mat-form-field>
+          <mat-label>unit</mat-label>
+          <input matInput type="text" [formControl]="unit" />
+          <mat-error *ngIf="unit.hasError('minlength')" >unit must be at least 5 characters long</mat-error>
+          <mat-error *ngIf="unit.hasError('maxlength')" >unit can be max 25 characters long</mat-error>
+          <mat-error *ngIf="unit.hasError('required')">unit <strong>is required</strong></mat-error>
+        </mat-form-field>
+      </section>
+
+      <section>
+        <mat-form-field>
+          <mat-label>pci</mat-label>
+          <input matInput type="number" [formControl]="pci" />
+          <mat-error *ngIf="pci.hasError('required')">pci <strong>is required</strong></mat-error>
+        </mat-form-field>
+      </section>
+    
+      <button mat-raised-button color="primary" type="submit" [disabled]="!energyForm.valid">SAVE</button>  
+    </mat-card>
+
+  </form>
+</div>

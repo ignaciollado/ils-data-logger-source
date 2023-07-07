@@ -1,0 +1,8 @@
+<div *ngIf="posts">
+  <p>Num likes: {{ numLikes }}</p>
+  <p>Num dislikes: {{ numDislikes }}</p>
+</div>
+
+<div class="chart-container">
+  <canvas  id="graphDashboard" aria-label="bar graph total likes and dislikes">{{ chart }}</canvas>
+</div>

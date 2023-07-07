@@ -28,13 +28,18 @@ import { SharedService } from 'src/app/Services/shared.service';
 import { deleteResponse } from 'src/app/Services/category.service';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { DelegationService } from 'src/app/Services/delegation.service';
+import { min } from 'moment';
+import { ResidueService } from 'src/app/Services/residue.service';
+import { ResidueDTO } from 'src/app/Models/residue.dto';
+
+
 
 @Component({
-  selector: 'app-post-form',
-  templateUrl: './post-form.component.html',
-  styleUrls: ['./post-form.component.scss'],
+  selector: 'app-residue-form',
+  templateUrl: './residue-form.component.html',
+  styleUrls: ['./residue-form.component.scss'],
   animations: [
-    trigger( 'fadeInOut',[
+    trigger( 'fadeInOutResidue',[
       state(
         'void',
         style({
@@ -61,16 +66,22 @@ import { DelegationService } from 'src/app/Services/delegation.service';
   ],
 })
 
-export class PostFormComponent implements OnInit {
 
+export class ResidueFormComponent {
   consumption: ConsumptionDTO
   delegation: UntypedFormControl
-  fromDate: UntypedFormControl
-  toDate: UntypedFormControl
-  energy: UntypedFormControl
   quantity: UntypedFormControl
   companyId: UntypedFormControl
-  energyForm: UntypedFormGroup
+  residue: UntypedFormControl
+  reuse: UntypedFormControl
+  recycling: UntypedFormControl
+  incineration: UntypedFormControl
+  dump: UntypedFormControl
+  compost: UntypedFormControl
+  fromDateResidue: UntypedFormControl
+  toDateResidue: UntypedFormControl
+  quantityResidue: UntypedFormControl
+  residueForm: UntypedFormGroup
 
   isValidForm: boolean | null
   isElevated = true
@@ -81,22 +92,22 @@ export class PostFormComponent implements OnInit {
   private consumptionId: string | null;
   private userId: string | null;
 
-  energies!: EnergyDTO[];
   delegations!: DelegationDTO[];
+  residues!: ResidueDTO[];
   consumptions!: ConsumptionDTO[];
 
   isGridView: boolean = false
-  columnsDisplayed = ['aspect', 'delegation', 'energy', 'quantity', 'fromDate', 'toDate', 'ACTIONS'];
+  columnsDisplayed = ['delegation', 'residue', 'quantity', 'reuse', 'recycling', 'incineration',  'dump', 'compost', 'fromDate', 'toDate', 'ACTIONS'];
 
   constructor(
     private activatedRoute: ActivatedRoute,
     private consumptionService: ConsumptionService,
     private delegationService: DelegationService,
+    private residueService: ResidueService,
     private formBuilder: UntypedFormBuilder,
     private router: Router,
     private sharedService: SharedService,
     private localStorageService: LocalStorageService,
-    private energyService: EnergyService,
     private _adapter: DateAdapter<any>,
     @Inject(MAT_DATE_LOCALE) private _locale: string,
   ) {
@@ -111,77 +122,37 @@ export class PostFormComponent implements OnInit {
     this.consumption = new ConsumptionDTO(0, '', this._adapter.today(), this._adapter.today(), '', '', 0, '', '', 0);
     this.isUpdateMode = false;
     this.validRequest = false;
-    this.delegation = new UntypedFormControl( [ Validators.required ]);
-    this.fromDate = new UntypedFormControl(  [ Validators.required ]);
-    this.toDate = new UntypedFormControl(  [ Validators.required ]);
-    this.energy = new UntypedFormControl(this.consumption.nameES, [ Validators.required ]);
+    this.delegation = new UntypedFormControl([ Validators.required ]);
+    this.residue = new UntypedFormControl([ Validators.required ]);
+    this.reuse = new UntypedFormControl([ Validators.required, Validators.min(0), Validators.max(100) ]);
+    this.recycling = new UntypedFormControl([ Validators.required, Validators.min(0), Validators.max(100) ]);
+    this.incineration = new UntypedFormControl([ Validators.required, Validators.min(0), Validators.max(100) ]);
+    this.dump = new UntypedFormControl([ Validators.required, Validators.min(0), Validators.max(100) ]);
+    this.compost = new UntypedFormControl([ Validators.required, Validators.min(0), Validators.max(100) ]);
+    this.quantity = new UntypedFormControl([ Validators.required ]);
     this.companyId = new UntypedFormControl(this.userId, [ Validators.required ]);
-    this.quantity = new UntypedFormControl( [ Validators.required, Validators.min(1) ]);
 
-    this.loadEnergies();
+    this.fromDateResidue = new UntypedFormControl(  [ Validators.required ]);
+    this.toDateResidue = new UntypedFormControl(  [ Validators.required ]);
+    this.quantityResidue = new UntypedFormControl( [ Validators.required, Validators.min(1)]);
+
     this.loadDelegations();
+    this.loadResidues();
 
-    this.energyForm = this.formBuilder.group({
+    this.residueForm = this.formBuilder.group({
       delegation: this.delegation,
-      fromDate: this.fromDate,
-      toDate: this.toDate,
-      energy: this.energy,
-      quantity: this.quantity,
-      companyId: this.companyId
-    });
-
+      residue: this.residue,
+      reuse: this.reuse,
+      recycling: this.recycling,
+      incineration: this.incineration,
+      dump: this.dump,
+      compost: this.compost,
+      fromDateResidue: this.fromDateResidue,
+      toDateResidue: this.toDateResidue,
+      quantityResidue: this.quantityResidue
+    })
 
     this.loadConsumption();
-
-  }
-
-  ngOnInit(): void {
-    let errorResponse: any;
-    // update
-    if (this.consumptionId) {
-      this.isUpdateMode = true;
-
-      this.consumptionService.getConsumptionsById(this.consumptionId).subscribe(
-        (consumption: ConsumptionDTO) => {
-
-          this.consumption = consumption;
-          this.consumptionFields = Object.entries(consumption).map( item => item[1])
-
-          this.fromDate.setValue(formatDate(this.consumptionFields[4], 'yyyy-MM-dd', 'en'))
-          this.toDate.setValue(formatDate(this.consumptionFields[5], 'yyyy-MM-dd', 'en'))
-          this.energy.setValue(this.consumptionFields[3])
-          this.quantity.setValue(this.consumptionFields[2])
-          this.companyId.setValue(this.consumptionFields[1])
-
-          this.energyForm = this.formBuilder.group({
-            fromDate: this.fromDate,
-            toDate: this.toDate,
-            energy: this.energy,
-            quantity: this.quantity,
-            companyId: this.companyId
-          });
-        },
-        (error: HttpErrorResponse) => {
-          errorResponse = error.error;
-          this.sharedService.errorLog(errorResponse);
-        }
-      );
-    }
-  }
-
-  private loadEnergies(): void {
-    let errorResponse: any;
-    if (this.userId) {
-      this.energyService.getAllFuelsFromMySQL().subscribe(
-        (energies: EnergyDTO[]) => {
-          this.energies = energies;
-        },
-        (error: HttpErrorResponse) => {
-          errorResponse = error.error;
-          this.sharedService.errorLog(errorResponse);
-        }
-      );
-    }
   }
 
   private loadDelegations(): void {
@@ -199,12 +170,27 @@ export class PostFormComponent implements OnInit {
     }
   }
 
+  private loadResidues(): void {
+    let errorResponse: any;
+    if (this.userId) {
+      this.residueService.getAllResidues().subscribe(
+        (residues: ResidueDTO[]) => {
+          this.residues = residues;
+        },
+        (error: HttpErrorResponse) => {
+          errorResponse = error.error;
+          this.sharedService.errorLog(errorResponse);
+        }
+      );
+    }
+  }
+
   private loadConsumption(): void {
     let errorResponse: any;
     const userId = this.localStorageService.get('user_id');
     if (userId) {
 
-        this.consumptionService.getAllConsumptionsByUserIdFromMySQL(userId, 1).subscribe(
+        this.consumptionService.getAllConsumptionsByUserIdFromMySQL(userId, 3).subscribe(
         (consumptions: ConsumptionDTO[]) => {
           this.consumptions = consumptions
         },
@@ -216,49 +202,15 @@ export class PostFormComponent implements OnInit {
 
     }
   }
-  private editPost(): void {
-    let errorResponse: any;
-    let responseOK: boolean = false;
-    if (this.consumptionId) {
-      const userId = this.localStorageService.get('user_id');
-      if (userId) {
-        this.consumption.companyId = userId;
-        this.consumptionService.updateConsumptions(this.consumptionId, this.consumption)
-          .pipe(
-            finalize(async () => {
-              await this.sharedService.managementToast(
-                'postFeedback',
-                responseOK,
-                errorResponse
-              );
 
-              if (responseOK) {
-                this.router.navigateByUrl('posts');
-              }
-            })
-          )
-          .subscribe(
-            () => {
-              responseOK = true;
-            },
-            (error: HttpErrorResponse) => {
-              errorResponse = error.error;
-              this.sharedService.errorLog(errorResponse);
-            }
-          );
-      }
-    }
-  }
-
-  /* ASPECT ENERGY */
-  private createEnergyConsumption(): void {
+  private createResidueConsumption(): void {
     let errorResponse: any;
     let responseOK: boolean = false;
     const userId = this.localStorageService.get('user_id');
     if (userId) {
       this.consumption.companyId = userId;
-      this.consumption.aspectId = 1; /* Energy aspect id : 1 */
-      this.consumptionService.createEnergyConsumption(this.consumption)
+      this.consumption.aspectId = 2; /* Water aspect id : 2 */
+      this.consumptionService.createResidueConsumption(this.consumption)
         .pipe(
           finalize(async () => {
             await this.sharedService.managementToast(
@@ -276,10 +228,9 @@ export class PostFormComponent implements OnInit {
           () => {
             responseOK = true;
             this.delegation.reset()
-            this.energy.reset()
-            this.fromDate.reset()
-            this.toDate.reset()
-            this.quantity.reset()
+            this.fromDateResidue.reset()
+            this.toDateResidue.reset()
+            this.quantityResidue.reset()
             this.loadConsumption();
           },
           (error: HttpErrorResponse) => {
@@ -290,7 +241,11 @@ export class PostFormComponent implements OnInit {
     }
   }
 
-  deleteEnergyConsumption(consumptionId: string): void {
+  private editPost(): void {
+
+  }
+
+  deleteResidueConsumption(consumptionId: string): void {
 
     let errorResponse: any;
 
@@ -311,23 +266,24 @@ export class PostFormComponent implements OnInit {
     }
   }
 
-  saveForm(): void {
-
+  saveResidueForm(): void {
     this.isValidForm = false;
-    if (this.energyForm.invalid) {
+    if (this.residueForm.invalid) {
       return;
     }
 
+    console.log(this.residueForm.pristine)
+
     this.isValidForm = true;
-    this.consumption = this.energyForm.value;
+    this.consumption = this.residueForm.value;
+    console.log (this.consumption)
 
     if (this.isUpdateMode) {
       this.editPost();
     } else {
-      this.createEnergyConsumption();
+      this.createResidueConsumption();
     }
 
   }
-
 
 }

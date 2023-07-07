@@ -1,0 +1,162 @@
+<div class="container-form" [@fadeInOutResidue] >
+      <h1>Residue consumption</h1>
+      <form
+        *ngIf="residueForm"
+        [formGroup]="residueForm"
+        (ngSubmit)="saveResidueForm()">
+
+        <mat-card [class.mat-elevation-z8]="isElevated">
+
+        <section>
+          <mat-form-field [style.width.px]=327>
+            <mat-label>Delegation</mat-label>
+            <mat-select [formControl]="delegation">
+              <mat-option *ngFor="let delegation of delegations" [value]="delegation.companyDelegationId">
+                {{delegation.name}}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="delegation.hasError('required')">Delegation <strong>is required</strong></mat-error>
+          </mat-form-field>
+        </section>
+
+        <section>
+          <mat-form-field [style.width.px]=327>
+            <mat-label>Date range</mat-label>
+            <mat-date-range-input [rangePicker]="picker">
+              <input matStartDate [formControl]="fromDateResidue" placeholder="Start date">
+              <input matEndDate [formControl]="toDateResidue" placeholder="End date">
+            </mat-date-range-input>
+            <mat-hint>dd/mm/yyyy – dd/mm/yyyy</mat-hint>
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-date-range-picker #picker></mat-date-range-picker>
+          </mat-form-field>
+        </section>
+
+          <section>
+            <mat-form-field [style.width.px]=327>
+              <mat-label>Residue type</mat-label>
+              <mat-select [formControl]="residue">
+                <mat-option *ngFor="let residue of residues" [value]="residue.residueId">
+                  {{residue.nameES}}
+                </mat-option>
+              </mat-select>
+              <mat-error *ngIf="residue.hasError('required')">Residue <strong>is required</strong></mat-error>
+            </mat-form-field>
+          </section>
+
+          <section>
+            <mat-form-field [style.width.px]=327>
+              <mat-label>Quantity</mat-label>
+              <input matInput type="number" [formControl]="quantityResidue" />
+              <mat-error *ngIf="quantityResidue.hasError('required')">quantityResidue <strong>is required</strong></mat-error>
+            </mat-form-field>
+          </section>
+          <mat-label>Residue destination</mat-label>
+          <section>
+            <mat-form-field [style.width.px]=327>
+              <mat-label>Reuse (%)</mat-label>
+              <input matInput type="number" [formControl]="reuse" />
+              <mat-error *ngIf="reuse.hasError('required')">reuse <strong>is required</strong></mat-error>
+            </mat-form-field>
+          </section>
+
+          <section>
+            <mat-form-field [style.width.px]=327>
+              <mat-label>Recycling (%)</mat-label>
+              <input matInput type="number" [formControl]="recycling" />
+              <mat-error *ngIf="recycling.hasError('required')">recycling <strong>is required</strong></mat-error>
+            </mat-form-field>
+          </section>
+
+          <section>
+            <mat-form-field [style.width.px]=327>
+              <mat-label>Incineration (%)</mat-label>
+              <input matInput type="number" [formControl]="incineration" />
+              <mat-error *ngIf="incineration.hasError('required')">incineration <strong>is required</strong></mat-error>
+            </mat-form-field>
+          </section>
+
+          <section>
+            <mat-form-field [style.width.px]=327>
+              <mat-label>Dump (%)</mat-label>
+              <input matInput type="number" [formControl]="dump" />
+              <mat-error *ngIf="dump.hasError('required')">dump <strong>is required</strong></mat-error>
+            </mat-form-field>
+          </section>
+
+          <section>
+            <mat-form-field [style.width.px]=327>
+              <mat-label>Compost (%)</mat-label>
+              <input matInput type="number" [formControl]="compost" />
+              <mat-error *ngIf="compost.hasError('required')">compost <strong>is required</strong></mat-error>
+            </mat-form-field>
+          </section>
+          <button mat-raised-button color="primary" type="submit" [disabled]="!residueForm.valid">SAVE</button>
+        </mat-card>
+
+      </form>
+</div>
+
+<h2>Residue consumption list</h2>
+<table *ngIf="!isGridView" mat-table [dataSource]="consumptions" class="mat-elevation-z8">
+
+  <ng-container matColumnDef="delegation">
+    <th mat-header-cell *matHeaderCellDef>Delegation</th>
+    <td mat-cell *matCellDef="let consumption">{{consumption.name}}</td>
+  </ng-container>
+  <ng-container matColumnDef="residue">
+    <th mat-header-cell *matHeaderCellDef>Residue type</th>
+    <td mat-cell *matCellDef="let consumption">{{consumption.residue}}</td>
+  </ng-container>
+  <ng-container matColumnDef="quantity">
+    <th mat-header-cell *matHeaderCellDef>Quantity</th>
+    <td mat-cell *matCellDef="let consumption">{{consumption.quantity}}</td>
+  </ng-container>'', '', '',  '', ''
+  <ng-container matColumnDef="reuse">
+    <th mat-header-cell *matHeaderCellDef>Reuse</th>
+    <td mat-cell *matCellDef="let consumption">{{consumption.reuse}}</td>
+  </ng-container>
+  <ng-container matColumnDef="recycling">
+    <th mat-header-cell *matHeaderCellDef>Recycling</th>
+    <td mat-cell *matCellDef="let consumption">{{consumption.recycling}}</td>
+  </ng-container>
+  <ng-container matColumnDef="incineration">
+    <th mat-header-cell *matHeaderCellDef>Incineration</th>
+    <td mat-cell *matCellDef="let consumption">{{consumption.incineration}}</td>
+  </ng-container>
+  <ng-container matColumnDef="dump">
+    <th mat-header-cell *matHeaderCellDef>Dump</th>
+    <td mat-cell *matCellDef="let consumption">{{consumption.dump}}</td>
+  </ng-container>
+  <ng-container matColumnDef="compost">
+    <th mat-header-cell *matHeaderCellDef>Compost</th>
+    <td mat-cell *matCellDef="let consumption">{{consumption.compost}}</td>
+  </ng-container>
+  <ng-container matColumnDef="fromDate">
+    <th mat-header-cell *matHeaderCellDef>FROM</th>
+    <td mat-cell *matCellDef="let consumption" matTooltip={{consumption.fromDate}}>{{ consumption.fromDate | formatDate: 3 }}</td>
+  </ng-container>
+  <ng-container matColumnDef="toDate">
+    <th mat-header-cell *matHeaderCellDef>TO</th>
+    <td mat-cell *matCellDef="let consumption" matTooltip={{consumption.toDate}}>{{consumption.toDate | formatDate: 3}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="ACTIONS">
+    <th mat-header-cell *matHeaderCellDef> ACTIONS</th>
+    <td mat-cell *matCellDef="let consumption">
+   <!--    <button mat-icon-button color="accent" matTooltip="Update this indicator"
+      aria-label="Button that displays a tooltip and updates this indicator" (click)="updatePost(consumption.consumptionId)">
+        <mat-icon>edit</mat-icon>
+      </button> -->
+      <button mat-icon-button color="warn" matTooltip="Permanently delete this indicator"
+      aria-label="Button that displays a tooltip and permanently deletes this indicator" (click)="deleteResidueConsumption(consumption.consumptionId)">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="columnsDisplayed"></tr>
+  <tr mat-row *matRowDef="let item; columns: columnsDisplayed;" class="animate__animated animate__fadeInLeft"></tr>
+</table>
+
+<div class="loader" *ngIf="!consumptions">No records found yet...</div>

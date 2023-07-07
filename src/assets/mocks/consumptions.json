@@ -1,0 +1,276 @@
+[
+    {
+        "consumptionId": 13,
+        "userId": 12,
+        "quantity": 50,
+        "fuel": "Gas natural",
+        "fromDate": "2020-10-20",
+        "toDate": "2020-10-20",
+        "createAt": "2020-10-20",
+        "updatedAt": "2020-10-20"
+    },
+    {
+        "consumptionId": 14,
+        "userId": 12,
+        "quantity": 50,
+        "fuel": "Gasóleo/Diesel",
+        "fromDate": "2020-10-20",
+        "toDate": "2020-10-20",
+        "createAt": "2020-10-20",
+        "updatedAt": "2020-10-20"
+    },
+    {
+        "consumptionId": 15,
+        "userId": 12,
+        "quantity": 50,
+        "fuel": "Gasolina",
+        "fromDate": "2020-10-20",
+        "toDate": "2020-10-20",
+        "createAt": "2020-10-20",
+        "updatedAt": "2020-10-20"
+    },    
+    {
+        "consumptionId": 16,
+        "userId": 12,
+        "quantity": 50,
+        "fuel": "GLP",
+        "fromDate": "2020-10-20",
+        "toDate": "2020-10-20",
+        "createAt": "2020-10-20",
+        "updatedAt": "2020-10-20"
+    }, 
+    {
+        "consumptionId": 17,
+        "userId": 12,
+        "quantity": 50,
+        "fuel": "Petroleo Bruto",
+        "fromDate": "2020-10-20",
+        "toDate": "2020-10-20",
+        "createAt": "2020-10-20",
+        "updatedAt": "2020-10-20"
+    }, 
+    {
+        "consumptionId": 18,
+        "userId": 12,
+        "quantity": 50,
+        "fuel": "Poso de café",
+        "fromDate": "2020-10-20",
+        "toDate": "2020-10-20",
+        "createAt": "2020-10-20",
+        "updatedAt": "2020-10-20"
+    },
+    {
+        "consumptionId": 19,
+        "userId": 12,
+        "quantity": 50,
+        "fuel": "Propano",
+        "fromDate": "2020-10-20",
+        "toDate": "2020-10-20",
+        "createAt": "2020-10-20",
+        "updatedAt": "2020-10-20"
+    },
+    {
+        "consumptionId": 20,
+        "userId": 12,
+        "quantity": 10,
+        "fuel": "Residuos de poda",
+        "fromDate": "2020-10-20",
+        "toDate": "2020-10-20",
+        "createAt": "2020-10-20",
+        "updatedAt": "2020-10-20"
+    },
+    {
+        "consumptionId": 21,
+        "userId": 12,
+        "quantity": 30,
+        "fuel": "Sarmientos de vid",
+        "fromDate": "2020-10-20",
+        "toDate": "2020-10-20",
+        "createAt": "2020-10-20",
+        "updatedAt": "2020-10-20"
+    },
+    {
+        "consumptionId": 22,
+        "userId": 12,
+        "quantity": 50,
+        "fuel": "Serrines y virutas",
+        "fromDate": "2020-10-20",
+        "toDate": "2020-10-20",
+        "createAt": "2020-10-20",
+        "updatedAt": "2020-10-20"
+    },
+    {
+        "consumptionId": 23,
+        "userId": 12,
+        "quantity": 50,
+        "fuel": "Zuro de maiz (Humedad <25%)",
+        "fromDate": "2020-10-20",
+        "toDate": "2020-10-20",
+        "createAt": "2020-10-20",
+        "updatedAt": "2020-10-20"
+    },
+    {
+        "consumptionId": 24,
+        "userId": 12,
+        "quantity": 50,
+        "fuel": 5,
+        "fromDate": "2020-10-20",
+        "toDate": "2020-10-20",
+        "createAt": "2020-10-20",
+        "updatedAt": "2020-10-20"
+    },
+    {
+        "consumptionId": 25,
+        "userId": 12,
+        "quantity": 50,
+        "fuel": 5,
+        "fromDate": "2020-10-20",
+        "toDate": "2020-10-20",
+        "createAt": "2020-10-20",
+        "updatedAt": "2020-10-20"
+    },
+    {
+        "consumptionId": 26,
+        "nameES": "Biomasa de la indiustria forestal",
+        "nameCA": "Biomasa de la indiustria forestal",
+        "pci": 4.067,
+        "unit": "kg",
+        "createAt": "2020-10-20",
+        "updatedAt": "2020-10-20"
+    },
+    {
+        "consumptionId": 27,
+        "nameES": "Biomasa en general",
+        "nameCA": "Biomasa en general",
+        "pci": 3.933,
+        "unit": "kg",
+        "createAt": "2020-10-20",
+        "updatedAt": "2020-10-20"
+    },
+    {
+        "consumptionId": 28,
+        "nameES": "Butano",
+        "nameCA": "Butano",
+        "pci": 13.139,
+        "unit": "kg",
+        "createAt": "2020-10-20",
+        "updatedAt": "2020-10-20"
+    },
+    {
+        "consumptionId": 29,
+        "nameES": "Carbón subbituminoso",
+        "nameCA": "Carbón subbituminoso",
+        "pci": 3.725,
+        "unit": "kg",
+        "createAt": "2020-10-20",
+        "updatedAt": "2020-10-20"
+    },
+    {
+        "consumptionId": 30,
+        "nameES": "Carbón vegetal",
+        "nameCA": "Carbón vegetal",
+        "pci": 8.891,
+        "unit": "kg",
+        "createAt": "2020-10-20",
+        "updatedAt": "2020-10-20"
+    },
+    {
+        "consumptionId": 31,
+        "nameES": "Cáscara de almendra (Humedad <20%)",
+        "nameCA": "Cáscara de almendra (Humedad <20%)",
+        "pci": 4.429,
+        "unit": "kg",
+        "createAt": "2020-10-20",
+        "updatedAt": "2020-10-20"
+    },
+    {
+        "consumptionId": 32,
+        "nameES": "Cáscara de cereales",
+        "nameCA": "Cáscara de cereales",
+        "pci": 3.663,
+        "unit": "kg",
+        "createAt": "2020-10-20",
+        "updatedAt": "2020-10-20"
+    },
+    {
+        "consumptionId": 33,
+        "nameES": "Cáscara de frutos secos",
+        "nameCA": "Cáscara de frutos secos",
+        "pci": 4.315,
+        "unit": "kg",
+        "createAt": "2020-10-20",
+        "updatedAt": "2020-10-20"
+    },
+    {
+        "consumptionId": 34,
+        "nameES": "Coque de coquería",
+        "nameCA": "Coque de coquería",
+        "pci": 7.595,
+        "unit": "kg",
+        "createAt": "2020-10-20",
+        "updatedAt": "2020-10-20"
+    },
+    {
+        "consumptionId": 35,
+        "nameES": "Coque de petróleo",
+        "nameCA": "Coque de petróleo",
+        "pci": 9.028,
+        "unit": "kg",
+        "createAt": "2020-10-20",
+        "updatedAt": "2020-10-20"
+    },
+    {
+        "consumptionId": 36,
+        "nameES": "Cortezas",
+        "nameCA": "Cortezas",
+        "pci": 4.245,
+        "unit": "kg",
+        "createAt": "2020-10-20",
+        "updatedAt": "2020-10-20"
+    },
+    {
+        "consumptionId": 37,
+        "nameES": "Etano",
+        "nameCA": "Etano",
+        "pci": 12.889,
+        "unit": "kg",
+        "createAt": "2020-10-20",
+        "updatedAt": "2020-10-20"
+    },
+    {
+        "consumptionId": 38,
+        "nameES": "Fuelóleo",
+        "nameCA": "Fuelóleo",
+        "pci": 11.222,
+        "unit": "kg",
+        "createAt": "2020-10-20",
+        "updatedAt": "2020-10-20"
+    },
+    {
+        "consumptionId": 39,
+        "nameES": "Gas de alto horno",
+        "nameCA": "Gas de alto horno",
+        "pci": 0.686,
+        "unit": "kg",
+        "createAt": "2020-10-20",
+        "updatedAt": "2020-10-20"
+    },
+    {
+        "consumptionId": 40,
+        "nameES": "Gas de coquería",
+        "nameCA": "Gas de coquería",
+        "pci": 10.75,
+        "unit": "kg",
+        "createAt": "2020-10-20",
+        "updatedAt": "2020-10-20"
+    },
+    {
+        "consumptionId": 41,
+        "nameES": "Gas de refinería",
+        "nameCA": "Gas de refinería",
+        "pci": 13.75,
+        "unit": "kg",
+        "createAt": "2020-10-20",
+        "updatedAt": "2020-10-20"
+    }
+]

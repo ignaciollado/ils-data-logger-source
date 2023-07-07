@@ -1,0 +1,123 @@
+[
+    {
+        "fuelId": 13,
+        "aspect": "Energy",
+        "nameES": "Consumo de electricidad (kWh)",
+        "nameCA": "Consumo de electricidad (kWh)",
+        "pci": 1,
+        "unit": "kWh",
+        "createAt": "2020-10-20",
+        "updatedAt": "2020-10-20"
+    },
+    {
+        "fuelId": 14,
+        "aspect": "Energy",
+        "nameES": "Gasóleo C (litros)",
+        "nameCA": "Gasóleo C (litros)",
+        "pci": 11.944,
+        "unit": "L",
+        "createAt": "2020-10-20",
+        "updatedAt": "2020-10-20"
+    },
+    {
+        "fuelId": 15,
+        "aspect": "Energy",
+        "nameES": "Gasóleo B (litros)",
+        "nameCA": "Gasóleo B (litros)",
+        "pci": 11.944,
+        "unit": "L",
+        "createAt": "2020-10-20",
+        "updatedAt": "2020-10-20"
+    },    
+    {
+        "fuelId": 16,
+        "aspect": "Energy",
+        "nameES": "Gasóleo A (litros)",
+        "nameCA": "Gasóleo A (litros)",
+        "pci": 11.944,
+        "unit": "L",
+        "createAt": "2020-10-20",
+        "updatedAt": "2020-10-20"
+    },    
+    {
+        "fuelId": 17,
+        "aspect": "Energy",
+        "nameES": "Gasolina (litros)",
+        "nameCA": "Gasolina (litros)",
+        "pci": 12.306,
+        "unit": "L",
+        "createAt": "2020-10-20",
+        "updatedAt": "2020-10-20"
+    }, 
+    {
+        "fuelId": 18,
+        "aspect": "Energy",
+        "nameES": "Gas Natural (kWh)",
+        "nameCA": "Gas Natural (kWh)",
+        "pci": 1.0,
+        "unit": "kWh",
+        "createAt": "2020-10-20",
+        "updatedAt": "2020-10-20"
+    },
+    {
+        "fuelId": 19,
+        "aspect": "Energy",
+        "nameES": "Gas Natural liquado (kWh)",
+        "nameCA": "Gas Natural liquado (kWh)",
+        "pci": 1.0,
+        "unit": "kWh",
+        "createAt": "2020-10-20",
+        "updatedAt": "2020-10-20"
+    },
+    {
+        "fuelId": 20,
+        "aspect": "Energy",
+        "nameES": "GLP genérico (litros)",
+        "nameCA": "GLP genérico (litros)",
+        "pci": 13.139,
+        "unit": "L",
+        "createAt": "2020-10-20",
+        "updatedAt": "2020-10-20"
+    },
+    {
+        "fuelId": 21,
+        "aspect": "Energy",
+        "nameES": "Gas propano (kg)",
+        "nameCA": "Gas propano (kg)",
+        "pci": 13.139,
+        "unit": "kg",
+        "createAt": "2020-10-20",
+        "updatedAt": "2020-10-20"
+    },
+    {
+        "fuelId": 22,
+        "aspect": "Energy",
+        "nameES": "Gas butano (kg)",
+        "nameCA": "Gas butano (kg)",
+        "pci": 13.139,
+        "unit": "kg",
+        "createAt": "2020-10-20",
+        "updatedAt": "2020-10-20"
+    },
+    {
+        "fuelId": 23,
+        "aspect": "Energy",
+        "nameES": "Fuel (kg)",
+        "nameCA": "Fuel (kg)",
+        "pci": 11.222,
+        "unit": "kg",
+        "createAt": "2020-10-20",
+        "updatedAt": "2020-10-20"
+    },
+    {
+        "fuelId": 24,
+        "aspect": "Energy",
+        "nameES": "Biomasa (kg)",
+        "nameCA": "Biomasa (kg)",
+        "pci": 3.933,
+        "unit": "kg",
+        "createAt": "2020-10-20",
+        "updatedAt": "2020-10-20"
+    }
+
+]

@@ -10,6 +10,13 @@ export class ConsumptionDTO {
   toDate: Date
   createAt!: Date
   updatedAt!: Date
+  energy!: number
+  residue!: number
+  reuse!:number
+  recycling!:number
+  incineration!:number
+  dump!:number
+  compost!:number
   nameES: string
   nameCA!: string
   unit: string
@@ -24,11 +31,9 @@ constructor(
   nameCA: string,
   quantity: number,
   companyId: string,
-
   unit: string,
   pci: number
 ) {
-
   this.companyId = companyId,
   this.delegation = delegation,
   this.aspectId = aspectId,

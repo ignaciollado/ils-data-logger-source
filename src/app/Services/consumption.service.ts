@@ -22,29 +22,41 @@ export class ConsumptionService {
   private urlAPiMySql:  string;
 
   constructor(private http: HttpClient,
-    private sharedService: SharedService) {  
+    private sharedService: SharedService) {
     this.urlApi = '../../assets/mocks/consumptions.json'
     this.urlAPiMySql = '../../assets/phpAPI/'
   }
 
   getAllConsumptions(): Observable<ConsumptionDTO[]> {
     return this.http
-      .get<ConsumptionDTO[]>(`${this.urlAPiMySql}energyConsumptionGetAll.php`)  
+      .get<ConsumptionDTO[]>(`${this.urlAPiMySql}consumptionGetAll.php`)
   }
 
-  getAllConsumptionsByUserIdFromMySQL($companyId:any): Observable<ConsumptionDTO[]> {
+  getAllConsumptionsByUserIdFromMySQL(companyId:any, aspectId?: number): Observable<ConsumptionDTO[]> {
     return this.http
-      .get<ConsumptionDTO[]>(`${this.urlAPiMySql}energyConsumptionGetByCompanyId.php?companyId=${$companyId}`)
+      .get<ConsumptionDTO[]>(`${this.urlAPiMySql}consumptionGetByCompanyId.php?companyId=${companyId}&aspectId=${aspectId}`)
   }
 
   getConsumptionsById(consumptionId: string): Observable<ConsumptionDTO> {
     return this.http
-    .get<ConsumptionDTO>(`${this.urlAPiMySql}energyConsumptionGetByConsumptionId.php?consumptionId=${consumptionId}`) 
+    .get<ConsumptionDTO>(`${this.urlAPiMySql}energyConsumptionGetByConsumptionId.php?consumptionId=${consumptionId}`)
   }
 
   createEnergyConsumption(energyConsumption: ConsumptionDTO): Observable<ConsumptionDTO> {
     return this.http
       .post<ConsumptionDTO>(`${this.urlAPiMySql}energyConsumptionCreate.php`, energyConsumption)
+      .pipe(catchError(this.sharedService.handleError));
+  }
+
+  createWaterConsumption(waterConsumption: ConsumptionDTO): Observable<ConsumptionDTO> {
+    return this.http
+      .post<ConsumptionDTO>(`${this.urlAPiMySql}waterConsumptionCreate.php`, waterConsumption)
+      .pipe(catchError(this.sharedService.handleError));
+  }
+
+  createResidueConsumption(residueConsumption: ConsumptionDTO): Observable<ConsumptionDTO> {
+    return this.http
+      .post<ConsumptionDTO>(`${this.urlAPiMySql}residueConsumptionCreate.php`, residueConsumption)
       .pipe(catchError(this.sharedService.handleError));
   }
 

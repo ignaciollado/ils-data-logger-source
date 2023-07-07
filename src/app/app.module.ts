@@ -38,6 +38,8 @@ import {MatTabsModule} from '@angular/material/tabs';
 import {MatMenuModule} from '@angular/material/menu';
 import { DelegationListComponent } from './Components/profile/delegation-list/delegation-list.component';
 import { DelegationFormComponent } from './Components/profile/delegation-form/delegation-form.component';
+import { WaterFormComponent } from './Components/posts/water-form/water-form.component';
+import { ResidueFormComponent } from './Components/posts/residue-form/residue-form.component';
 
 @NgModule({
   declarations: [
@@ -56,6 +58,8 @@ import { DelegationFormComponent } from './Components/profile/delegation-form/de
     DashboardComponent,
     DelegationListComponent,
     DelegationFormComponent,
+    WaterFormComponent,
+    ResidueFormComponent,
   ],
   imports: [
     BrowserModule,

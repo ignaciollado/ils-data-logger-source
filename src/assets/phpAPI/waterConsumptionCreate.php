@@ -14,10 +14,10 @@ $request = json_decode($postedData, TRUE);
 $sql = "INSERT INTO ils_consumption(companyId, companyDelegationId, aspectId, energyId, quantity, fromDate, toDate) VALUES ("
 .$request['companyId'].","
 .$request['delegation'].","
-.$request['aspectId'].","
-.$request['energy'].","
-.$request['quantity'].","
-."STR_TO_DATE('".$request['fromDate']."', '%Y-%m-%d'), STR_TO_DATE('".$request['toDate']."', '%Y-%m-%d'))";
+.$request['aspectId'].",
+0,"
+.$request['quantityWater'].","
+."STR_TO_DATE('".$request['fromDateWater']."', '%Y-%m-%d'), STR_TO_DATE('".$request['toDateWater']."', '%Y-%m-%d'))";
 
 $result = mysqli_query($conn, $sql);
 

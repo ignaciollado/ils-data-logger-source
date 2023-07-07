@@ -5,14 +5,13 @@ header('Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Ac
 require_once 'conectar_a_bbdd_pindust.php';
 
 mysqli_query($conn, "SET NAMES 'utf8'");
-$sql = "SELECT * FROM consumption Order by consumptionId";
 
-$sql = "SELECT consumption.consumptionId, consumption.companyId,
-consumption.quantity, consumption.fromDate, consumption.toDate, consumption.createAt,
-consumption.updatedAt, 
-fuel.nameES, fuel.nameCA, fuel.aspectId, fuel.unit, fuel.pci
-FROM consumption
-LEFT JOIN fuel ON consumption.fuelId=fuel.fuelId Order by consumptionId";
+$sql = "SELECT ils_consumption.consumptionId, ils_consumption.companyId,
+ils_consumption.quantity, ils_consumption.fromDate, ils_consumption.toDate, ils_consumption.createAt,
+ils_consumption.updatedAt, 
+ils_energy.nameES, ils_energy.nameCA, ils_energy.aspectId, ils_energy.unit, ils_energy.pci
+FROM ils_consumption
+LEFT JOIN ils_energy ON ils_consumption.energyId=ils_energy.energyId Order by consumptionId";
 
 $result = mysqli_query($conn, $sql);
 

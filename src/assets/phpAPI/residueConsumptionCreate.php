@@ -11,13 +11,23 @@ mysqli_query($conn, "SET NAMES 'utf8'");
 $postedData = file_get_contents("php://input");
 $request = json_decode($postedData, TRUE);
 
-$sql = "INSERT INTO ils_consumption(companyId, companyDelegationId, aspectId, energyId, quantity, fromDate, toDate) VALUES ("
+$sql = "INSERT INTO ils_consumption(companyId, companyDelegationId, aspectId, residueId,
+reuse,
+recycling,
+incineration,
+dump,
+compost, quantity, fromDate, toDate) VALUES ("
 .$request['companyId'].","
 .$request['delegation'].","
 .$request['aspectId'].","
-.$request['energy'].","
-.$request['quantity'].","
-."STR_TO_DATE('".$request['fromDate']."', '%Y-%m-%d'), STR_TO_DATE('".$request['toDate']."', '%Y-%m-%d'))";
+.$request['residue'].","
+.$request['reuse'].","
+.$request['recycling'].","
+.$request['incineration'].","
+.$request['dump'].","
+.$request['compost'].","
+.$request['quantityResidue'].","
+."STR_TO_DATE('".$request['fromDateResidue']."', '%Y-%m-%d'), STR_TO_DATE('".$request['toDateResidue']."', '%Y-%m-%d'))";
 
 $result = mysqli_query($conn, $sql);
 

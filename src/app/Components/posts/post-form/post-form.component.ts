@@ -86,7 +86,7 @@ export class PostFormComponent implements OnInit {
   consumptions!: ConsumptionDTO[];
 
   isGridView: boolean = false
-  columnsDisplayed = ['aspect', 'delegation', 'energy', 'quantity', 'fromDate', 'toDate', 'ACTIONS'];
+  columnsDisplayed = ['delegation', 'energy', 'quantity', 'fromDate', 'toDate', 'ACTIONS'];
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -108,13 +108,13 @@ export class PostFormComponent implements OnInit {
     this.consumptionId = this.activatedRoute.snapshot.paramMap.get('id');
     this.userId = this.localStorageService.get('user_id');
 
-    this.consumption = new ConsumptionDTO(0, '', this._adapter.today(), this._adapter.today(), '', '', 0, '', '', 0);
+    this.consumption = new ConsumptionDTO(0, 0, this._adapter.today(), this._adapter.today(), '', '', '','','','', 0, '', '', 0);
     this.isUpdateMode = false;
     this.validRequest = false;
     this.delegation = new UntypedFormControl( [ Validators.required ]);
     this.fromDate = new UntypedFormControl(  [ Validators.required ]);
     this.toDate = new UntypedFormControl(  [ Validators.required ]);
-    this.energy = new UntypedFormControl(this.consumption.nameES, [ Validators.required ]);
+    this.energy = new UntypedFormControl(this.consumption.energyES, [ Validators.required ]);
     this.companyId = new UntypedFormControl(this.userId, [ Validators.required ]);
     this.quantity = new UntypedFormControl( [ Validators.required, Validators.min(1) ]);
 

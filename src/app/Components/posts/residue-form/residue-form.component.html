@@ -1,4 +1,4 @@
-<div class="container-form" [@fadeInOutResidue] >
+<div class="container-form">
       <h1>Residue consumption</h1>
       <form
         *ngIf="residueForm"
@@ -91,7 +91,7 @@
               <mat-error *ngIf="compost.hasError('required')">compost <strong>is required</strong></mat-error>
             </mat-form-field>
           </section>
-          <button mat-raised-button color="primary" type="submit" [disabled]="!residueForm.valid">SAVE</button>
+          <button mat-raised-button color="primary" type="submit" [disabled]="!residueForm.valid">ADD</button>
         </mat-card>
 
       </form>

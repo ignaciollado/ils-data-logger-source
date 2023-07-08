@@ -1,8 +1,5 @@
-<div style="margin-left: auto; margin-right: auto">
-  <p id="postFeedback"></p>
-</div>
- <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="start">
-  <mat-tab label="Energy">
+  <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="start">
+    <mat-tab label="Energy">
     <div class="container-form" [@fadeInOut] >
       <h1>Energy consumption</h1>
       <form
@@ -66,17 +63,13 @@
     <h2>Energy consumption list</h2>
     <table *ngIf="!isGridView" mat-table [dataSource]="consumptions" class="mat-elevation-z8">
 
-      <ng-container matColumnDef="aspect">
-        <th mat-header-cell *matHeaderCellDef>Aspect</th>
-        <td mat-cell *matCellDef="let consumption">{{consumption.aspectId}}</td>
-      </ng-container>
       <ng-container matColumnDef="delegation">
         <th mat-header-cell *matHeaderCellDef>Delegation</th>
         <td mat-cell *matCellDef="let consumption">{{consumption.name}}</td>
       </ng-container>
       <ng-container matColumnDef="energy">
         <th mat-header-cell *matHeaderCellDef>Energy type</th>
-        <td mat-cell *matCellDef="let consumption">{{consumption.nameES}}</td>
+        <td mat-cell *matCellDef="let consumption">{{consumption.energyES}}</td>
       </ng-container>
       <ng-container matColumnDef="quantity">
         <th mat-header-cell *matHeaderCellDef>Quantity</th>
@@ -110,6 +103,11 @@
     </table>
 
     <div class="loader" *ngIf="!consumptions">No records found yet...</div>
+
+    <div style="margin-left: auto; margin-right: auto">
+      <p id="postFeedback"></p>
+    </div>
+
   </mat-tab>
 
   <mat-tab label="Water">
@@ -120,60 +118,8 @@
     <app-residue-form></app-residue-form>
   </mat-tab>
 
-  <!-- <mat-tab label="Emissions">
-    <div class="container-form" [@fadeInOut] >
-      <h1>CO2 e emission</h1>
-      <form
-        *ngIf="postFormTab4"
-        [formGroup]="postFormTab4"
-        (ngSubmit)="savePostTab4()">
-
-        <mat-card [class.mat-elevation-z8]="isElevated">
-
-          <section>
-            <mat-form-field [style.width.px]=327>
-              <mat-label>Year</mat-label>
-              <mat-select>
-                <mat-option value="2020">2020</mat-option>
-                <mat-option value="2021">2021</mat-option>
-                <mat-option value="2022">2022</mat-option>
-                <mat-option value="2023">2023</mat-option>
-                <mat-option value="2024">2024</mat-option>
-                <mat-option value="2025">2025</mat-option>
-              </mat-select>
-            </mat-form-field>
-          </section>
-
-          <section>
-            <mat-form-field [style.width.px]=327>
-              <mat-label>Quantity (T)</mat-label>
-              <input matInput type="number" [formControl]="quantity" />
-              <mat-error *ngIf="quantity.hasError('required')">quantity <strong>is required</strong></mat-error>
-            </mat-form-field>
-          </section>
-
-          <mat-label>Scope</mat-label>
-          <section>
-            <mat-form-field [style.width.px]=327>
-              <mat-label>One</mat-label>
-              <input matInput type="number" [formControl]="quantity" />
-              <mat-error *ngIf="quantity.hasError('required')">quantity <strong>is required</strong></mat-error>
-            </mat-form-field>
-          </section>
-
-          <section>
-            <mat-form-field [style.width.px]=327>
-              <mat-label>Two</mat-label>
-              <input matInput type="number" [formControl]="quantity" />
-              <mat-error *ngIf="quantity.hasError('required')">quantity <strong>is required</strong></mat-error>
-            </mat-form-field>
-          </section>
-
-          <button mat-raised-button color="primary" type="submit" [disabled]="!postFormTab4.valid">SAVE</button>
-        </mat-card>
-
-      </form>
-    </div>
-  </mat-tab> -->
+  <mat-tab label="Emissions">
+    <app-emission-form></app-emission-form>
+  </mat-tab>
 
 </mat-tab-group>

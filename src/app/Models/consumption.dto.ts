@@ -1,9 +1,10 @@
+import { UntypedFormBuilder } from "@angular/forms";
 import { EnergyDTO } from "./energy.dto";
 
 export class ConsumptionDTO {
   consumptionId!: string
   companyId: string
-  delegation: string
+  delegation: number
   aspectId: number
   quantity: number
   fromDate: Date
@@ -17,18 +18,26 @@ export class ConsumptionDTO {
   incineration!:number
   dump!:number
   compost!:number
-  nameES: string
-  nameCA!: string
+  energyES!: string
+  energyCA!: string
+  residueES!: string
+  residueCA!: string
+  aspectES!: string
+  aspectCA!: string
   unit: string
   pci: number
 
 constructor(
   aspectId: number,
-  delegation: string,
+  delegation: number,
   fromDate: Date,
   toDate: Date,
-  nameES: string,
-  nameCA: string,
+  energyES: string,
+  energyCA: string,
+  residueES: string,
+  residueCA: string,
+  aspectES: string,
+  aspectCA: string,
   quantity: number,
   companyId: string,
   unit: string,
@@ -37,8 +46,12 @@ constructor(
   this.companyId = companyId,
   this.delegation = delegation,
   this.aspectId = aspectId,
-  this.nameES = nameES,
-  this.nameCA = nameCA,
+  this.energyES = energyES,
+  this.energyCA = energyCA,
+  this.residueES = residueES,
+  this.residueCA = residueCA,
+  this.aspectES = aspectES,
+  this.aspectCA = aspectCA,
   this.unit = unit,
   this.pci = pci,
   this.quantity = quantity

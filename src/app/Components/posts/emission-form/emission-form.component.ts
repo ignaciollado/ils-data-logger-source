@@ -19,9 +19,7 @@ import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE} from '@angular/material/
 import { ActivatedRoute, Router } from '@angular/router';
 import { finalize } from 'rxjs/operators';
 import { ConsumptionDTO } from 'src/app/Models/consumption.dto';
-import { EnergyDTO } from 'src/app/Models/energy.dto';
 import { DelegationDTO } from 'src/app/Models/delegation.dto';
-import { EnergyService } from 'src/app/Services/energy.service';
 import { LocalStorageService } from 'src/app/Services/local-storage.service';
 import { ConsumptionService } from 'src/app/Services/consumption.service';
 import { SharedService } from 'src/app/Services/shared.service';
@@ -29,10 +27,12 @@ import { deleteResponse } from 'src/app/Services/category.service';
 import { DelegationService } from 'src/app/Services/delegation.service';
 import { min } from 'moment';
 
+
 @Component({
-  selector: 'app-water-form',
-  templateUrl: './water-form.component.html',
-  styleUrls: ['./water-form.component.scss'],
+  selector: 'app-emission-form',
+  templateUrl: './emission-form.component.html',
+  styleUrls: ['./emission-form.component.scss'],
+
   providers: [
     // The locale would typically be provided on the root module of your application. We do it at
     // the component level here, due to limitations of our example generation script.
@@ -49,17 +49,15 @@ import { min } from 'moment';
     {provide: MAT_DATE_FORMATS, useValue: MAT_MOMENT_DATE_FORMATS},
   ],
 })
-
-export class WaterFormComponent {
+export class EmissionFormComponent {
   consumption: ConsumptionDTO
   delegation: UntypedFormControl
-  energy: UntypedFormControl
+  quantityEmission: UntypedFormControl
+  scopeone: UntypedFormControl
+  scopetwo: UntypedFormControl
   companyId: UntypedFormControl
-
-  fromDateWater: UntypedFormControl
-  toDateWater: UntypedFormControl
-  quantityWater: UntypedFormControl
-  waterForm: UntypedFormGroup
+  yearEmission: UntypedFormControl
+  emissionForm: UntypedFormGroup
 
   isValidForm: boolean | null
   isElevated = true
@@ -74,7 +72,7 @@ export class WaterFormComponent {
   consumptions!: ConsumptionDTO[];
 
   isGridView: boolean = false
-  columnsDisplayed = ['delegation', 'quantity', 'fromDate', 'toDate', 'ACTIONS'];
+  columnsDisplayed = ['delegation', 'quantity', 'scopeone', 'scopetwo', 'fromDate', 'toDate', 'ACTIONS'];
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -98,26 +96,24 @@ export class WaterFormComponent {
     this.consumption = new ConsumptionDTO(0, 0, this._adapter.today(), this._adapter.today(), '', '', '','','','', 0, '', '', 0);
     this.isUpdateMode = false;
     this.validRequest = false;
-    this.delegation = new UntypedFormControl( [ Validators.required ]);
+    this.delegation = new UntypedFormControl([ Validators.required ]);
+    this.scopeone = new UntypedFormControl([ Validators.required ]);
+    this.scopetwo = new UntypedFormControl([ Validators.required ]);
     this.companyId = new UntypedFormControl(this.userId, [ Validators.required ]);
-
-    this.fromDateWater = new UntypedFormControl(  [ Validators.required ]);
-    this.toDateWater = new UntypedFormControl(  [ Validators.required ]);
-    this.quantityWater = new UntypedFormControl( [ Validators.required, Validators.min(1)]);
+    this.yearEmission = new UntypedFormControl(  [ Validators.required ]);
+    this.quantityEmission = new UntypedFormControl( [ Validators.required, Validators.min(1)]);
 
     this.loadDelegations();
 
-
-    this.energy = new UntypedFormControl(0);
-    this.waterForm = this.formBuilder.group({
+    this.emissionForm = this.formBuilder.group({
       delegation: this.delegation,
-      fromDateWater: this.fromDateWater,
-      toDateWater: this.toDateWater,
-      quantityWater: this.quantityWater
+      scopeone: this.scopeone,
+      scopetwo: this.scopetwo,
+      yearEmission: this.yearEmission,
+      quantityEmission: this.quantityEmission
     })
 
     this.loadConsumption();
-
   }
 
   private loadDelegations(): void {
@@ -140,7 +136,7 @@ export class WaterFormComponent {
     const userId = this.localStorageService.get('user_id');
     if (userId) {
 
-        this.consumptionService.getAllConsumptionsByUserIdFromMySQL(userId, 2).subscribe(
+        this.consumptionService.getAllConsumptionsByUserIdFromMySQL(userId, 5).subscribe(
         (consumptions: ConsumptionDTO[]) => {
           this.consumptions = consumptions
         },
@@ -153,15 +149,14 @@ export class WaterFormComponent {
     }
   }
 
-  /* ASPECT WATER */
-  private createWaterConsumption(): void {
+  private createEmissionConsumption(): void {
     let errorResponse: any;
     let responseOK: boolean = false;
     const userId = this.localStorageService.get('user_id');
     if (userId) {
       this.consumption.companyId = userId;
-      this.consumption.aspectId = 2; /* Water aspect id : 2 */
-      this.consumptionService.createWaterConsumption(this.consumption)
+      this.consumption.aspectId = 5; /* Emission aspect id : 5 */
+      this.consumptionService.createEmissionConsumption(this.consumption)
         .pipe(
           finalize(async () => {
             await this.sharedService.managementToast(
@@ -178,10 +173,9 @@ export class WaterFormComponent {
         .subscribe(
           () => {
             responseOK = true;
-            this.delegation.reset()
-            this.fromDateWater.reset()
-            this.toDateWater.reset()
-            this.quantityWater.reset()
+            this.quantityEmission.reset()
+            this.scopeone.reset()
+            this.scopetwo.reset()
             this.loadConsumption();
           },
           (error: HttpErrorResponse) => {
@@ -195,7 +189,8 @@ export class WaterFormComponent {
   private editPost(): void {
 
   }
-  deleteWaterConsumption(consumptionId: string): void {
+
+  deleteEmissionConsumption(consumptionId: string): void {
 
     let errorResponse: any;
 
@@ -216,20 +211,20 @@ export class WaterFormComponent {
     }
   }
 
-  saveWaterForm(): void {
+  saveEmissionForm(): void {
     this.isValidForm = false;
-    if (this.waterForm.invalid) {
+    if (this.emissionForm.invalid) {
       return;
     }
 
     this.isValidForm = true;
-    this.consumption = this.waterForm.value;
+    this.consumption = this.emissionForm.value;
     console.log (this.consumption)
 
     if (this.isUpdateMode) {
       this.editPost();
     } else {
-      this.createWaterConsumption();
+      this.createEmissionConsumption();
     }
 
   }

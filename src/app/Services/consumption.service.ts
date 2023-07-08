@@ -37,6 +37,11 @@ export class ConsumptionService {
       .get<ConsumptionDTO[]>(`${this.urlAPiMySql}consumptionGetByCompanyId.php?companyId=${companyId}&aspectId=${aspectId}`)
   }
 
+  getAllConsumptionsOnlyByUserIdFromMySQL(companyId:any): Observable<ConsumptionDTO[]> {
+    return this.http
+      .get<ConsumptionDTO[]>(`${this.urlAPiMySql}consumptionGetOnlyByCompanyId.php?companyId=${companyId}`)
+  }
+
   getConsumptionsById(consumptionId: string): Observable<ConsumptionDTO> {
     return this.http
     .get<ConsumptionDTO>(`${this.urlAPiMySql}energyConsumptionGetByConsumptionId.php?consumptionId=${consumptionId}`)
@@ -57,6 +62,12 @@ export class ConsumptionService {
   createResidueConsumption(residueConsumption: ConsumptionDTO): Observable<ConsumptionDTO> {
     return this.http
       .post<ConsumptionDTO>(`${this.urlAPiMySql}residueConsumptionCreate.php`, residueConsumption)
+      .pipe(catchError(this.sharedService.handleError));
+  }
+
+  createEmissionConsumption(residueConsumption: ConsumptionDTO): Observable<ConsumptionDTO> {
+    return this.http
+      .post<ConsumptionDTO>(`${this.urlAPiMySql}emissionConsumptionCreate.php`, residueConsumption)
       .pipe(catchError(this.sharedService.handleError));
   }
 

@@ -1,24 +1,28 @@
-<h3>All comsumptions list:</h3>
+<h3>All indicators list:</h3>
 <div class="container">
   <div *ngFor="let consumption of consumptions" class="card">
-    <div class="container">
-      <div>
-        <span
-        *ngif="consumption.fuelId"
-        class="badge"      >
-        {{ consumption.nameES }}
-        </span>
-      </div>
-    </div>
-    <h4>Fuel: <b>{{ consumption.nameES }}</b></h4>
+    <!-- <h3>AspectoId: <b>{{ consumption.aspectId }}</b></h3> -->
+    <h3>Aspect: <strong>{{ consumption.aspectES }}</strong></h3>
+    <h4 *ngIf="consumption.aspectId == 1">Energy type: <strong>{{ consumption.energyES }}</strong></h4>
+    <h4 *ngIf="consumption.aspectId == 3">Residue type: <strong>{{ consumption.residueES }}</strong></h4>
+
+    <h4 *ngIf="consumption.aspectId == 5">CO2e</h4>
+
     <p>Quantity: {{ consumption.quantity }} </p>
+    <p *ngIf="consumption.aspectId == 3">Reuse: <strong>{{ consumption.reuse }}</strong> %</p>
+    <p *ngIf="consumption.aspectId == 3">Recycling: <strong>{{ consumption.recycling }}</strong> %</p>
+    <p *ngIf="consumption.aspectId == 3">Incineration: <strong>{{ consumption.incineration }}</strong> %</p>
+    <p *ngIf="consumption.aspectId == 3">Dump: <strong>{{ consumption.dump }}</strong> %</p>
+    <p *ngIf="consumption.aspectId == 3">Compost: <strong>{{ consumption.compost }}</strong> %</p>
+
+
     <p>From date: {{ consumption.fromDate| formatDate: 3 }}</p>
     <p>To date: {{ consumption.toDate| formatDate: 3 }}</p>
     <div *ngIf="showButtons">
       <p>CompanyId: {{ consumption.companyId }}</p>
     </div>
-    
-    <p>Published when: {{ consumption.createAt }}</p>
+
+    <p>Added when: {{ consumption.createAt }}</p>
 
     <div *ngIf="showButtons">
       <button mat-icon-button color="accent" matTooltip="Update this consumption"

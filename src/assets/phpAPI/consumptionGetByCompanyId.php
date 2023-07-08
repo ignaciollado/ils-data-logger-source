@@ -9,8 +9,10 @@ $companyId = $_GET['companyId'];
 $aspectId = $_GET['aspectId'];
 
 $sql = "SELECT ils_consumption.consumptionId, ils_consumption.companyId, ils_consumption.aspectId,
-ils_consumption.quantity, ils_consumption.fromDate, ils_consumption.toDate, ils_consumption.createAt,
-ils_consumption.updatedAt,
+ils_consumption.quantity, ils_consumption.fromDate, ils_consumption.toDate, ils_consumption.residueId,
+ils_consumption.reuse, ils_consumption.recycling, ils_consumption.incineration,  ils_consumption.dump, ils_consumption.compost,
+ils_consumption.scopeOne, ils_consumption.scopeTwo,
+ils_consumption.createAt, ils_consumption.updatedAt,
 ils_energy.nameES, ils_energy.nameCA,
 ils_company_delegation.name, ils_company_delegation.address
 

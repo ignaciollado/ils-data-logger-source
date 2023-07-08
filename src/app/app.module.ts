@@ -40,6 +40,7 @@ import { DelegationListComponent } from './Components/profile/delegation-list/de
 import { DelegationFormComponent } from './Components/profile/delegation-form/delegation-form.component';
 import { WaterFormComponent } from './Components/posts/water-form/water-form.component';
 import { ResidueFormComponent } from './Components/posts/residue-form/residue-form.component';
+import { EmissionFormComponent } from './Components/posts/emission-form/emission-form.component';
 
 @NgModule({
   declarations: [
@@ -60,6 +61,7 @@ import { ResidueFormComponent } from './Components/posts/residue-form/residue-fo
     DelegationFormComponent,
     WaterFormComponent,
     ResidueFormComponent,
+    EmissionFormComponent,
   ],
   imports: [
     BrowserModule,

@@ -60,7 +60,16 @@ export class HomeComponent {
     this.userId = this.localStorageService.get('user_id');
     if (this.userId) {
       this.showButtons = true;
-    }
+      this.consumptionService.getAllConsumptionsOnlyByUserIdFromMySQL(this.userId).subscribe(
+        (consumptions: ConsumptionDTO[]) => {
+          this.consumptions = consumptions;
+        },
+        (error: HttpErrorResponse) => {
+          errorResponse = error.error;
+          this.sharedService.errorLog(errorResponse);
+        }
+      );
+    } else {
     this.consumptionService.getAllConsumptions().subscribe(
       (consumptions: ConsumptionDTO[]) => {
         this.consumptions = consumptions;
@@ -70,6 +79,7 @@ export class HomeComponent {
         this.sharedService.errorLog(errorResponse);
       }
     );
+    }
   }
 
   private loadEnergies(): void {

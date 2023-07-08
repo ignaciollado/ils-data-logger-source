@@ -41,7 +41,7 @@ export class PostsListComponent {
   consumptions!: ConsumptionDTO[];
 
   isGridView: boolean = false
-  columnsDisplayed = ['aspect', 'fuel', 'quantity', 'fromDate', 'toDate', 'ACTIONS'];
+  columnsDisplayed = ['delegation', 'aspect', 'energy', 'residue', 'quantity', 'fromDate', 'toDate', 'ACTIONS'];
 
   constructor(
     private postService: PostService,
@@ -64,9 +64,7 @@ export class PostsListComponent {
     const userId = this.localStorageService.get('user_id');
     if (userId) {
 
-      /* this.postService.getPostsByUserId(userId).subscribe( */
-        /* this.consumptionService.getAllConsumptions().subscribe( */
-        this.consumptionService.getAllConsumptionsByUserIdFromMySQL(userId).subscribe(
+        this.consumptionService.getAllConsumptionsOnlyByUserIdFromMySQL(userId).subscribe(
         (consumptions: ConsumptionDTO[]) => {
           console.log ( consumptions )
           this.consumptions = consumptions

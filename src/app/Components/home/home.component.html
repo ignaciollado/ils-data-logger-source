@@ -6,8 +6,6 @@
     <h4 *ngIf="consumption.aspectId == 1">Energy type: <strong>{{ consumption.energyES }}</strong></h4>
     <h4 *ngIf="consumption.aspectId == 3">Residue type: <strong>{{ consumption.residueES }}</strong></h4>
 
-    <h4 *ngIf="consumption.aspectId == 5">CO2e</h4>
-
     <p>Quantity: {{ consumption.quantity }} </p>
     <p *ngIf="consumption.aspectId == 3">Reuse: <strong>{{ consumption.reuse }}</strong> %</p>
     <p *ngIf="consumption.aspectId == 3">Recycling: <strong>{{ consumption.recycling }}</strong> %</p>

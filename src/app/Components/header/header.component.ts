@@ -61,8 +61,16 @@ export class HeaderComponent implements OnInit {
     this.router.navigateByUrl('consumptions');
   }
 
-  adminFuels(): void {
-    this.router.navigateByUrl('fuels');
+  adminAspects(): void {
+    this.router.navigateByUrl('aspects');
+  }
+
+  adminEnergies(): void {
+    this.router.navigateByUrl('energies');
+  }
+
+  adminResidues(): void {
+    this.router.navigateByUrl('residues');
   }
 
   profile(): void {

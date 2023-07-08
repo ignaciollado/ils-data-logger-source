@@ -66,7 +66,7 @@ const routes: Routes = [
     canActivate: [AuthGuard],
   },
   {
-    path: 'fuels',
+    path: 'energies',
     component: CategoriesListComponent,
     canActivate: [AuthGuard],
   },

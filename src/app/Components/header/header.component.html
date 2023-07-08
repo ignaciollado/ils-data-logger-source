@@ -1,4 +1,4 @@
-<h2 [ngClass]="'has-to-be-shown'">ILS-indicadores del comportamiento ambiental de la empresa</h2>
+<h2 [ngClass]="'has-to-be-shown'">ILS<br>indicators of the company's environmental performance</h2>
 
 <!-- NO AUTH REQUIRED -->
 <div *ngIf="showNoAuthSection">
@@ -9,7 +9,7 @@
     <button mat-menu-item (click)="login()"><mat-icon>login</mat-icon><span>Login</span></button>
   </mat-menu>
 
-  <mat-toolbar color="primary" class="toolbar">  
+  <mat-toolbar color="primary" class="toolbar">
     <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="menu ils data logger" [ngClass]="'not-has-to-be-shown'">
       <mat-icon>menu</mat-icon>
     </button>
@@ -26,26 +26,29 @@
   <mat-menu #menu="matMenu">
     <button mat-menu-item (click)="dashboard()"><mat-icon>dashboard</mat-icon><span>ILS dashboard</span></button>
     <button mat-menu-item (click)="home()"><mat-icon>home</mat-icon><span>Home</span></button>
-    <button mat-menu-item (click)="adminConsumptions()">Admin company indicators</button>
-    <button mat-menu-item (click)="adminFuels()">Admin aspects</button>
-    <button mat-menu-item (click)="adminFuels()">Admin energies</button>
-    <button mat-menu-item (click)="adminFuels()">Admin residues</button>
+    <button mat-menu-item (click)="adminConsumptions()">Admin indicators</button>
+    <button mat-menu-item (click)="adminAspects()">Admin aspects</button>
+    <button mat-menu-item (click)="adminEnergies()">Admin energies</button>
+    <button mat-menu-item (click)="adminResidues()">Admin residues</button>
     <button mat-menu-item (click)="profile()"><mat-icon>profile</mat-icon><span>Profile</span></button>
-    <button mat-menu-item (click)="register()"><mat-icon>register</mat-icon><span>Register</span></button>
+    <button mat-menu-item (click)="register()"><mat-icon>register</mat-icon><span>Add company</span></button>
     <button mat-menu-item (click)="logout()"><mat-icon>logout</mat-icon><span>Logout</span></button>
   </mat-menu>
 
-  <mat-toolbar color="primary" class="toolbar">  
+  <mat-toolbar color="primary" class="toolbar">
     <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="menu ils data logger" [ngClass]="'not-has-to-be-shown'">
       <mat-icon>menu</mat-icon>
     </button>
     <span [ngClass]="'not-has-to-be-shown'">ILS-data logger</span>
     <button mat-button (click)="dashboard()" [ngClass]="'has-to-be-shown'">ILS Dashboard</button>
     <button mat-button (click)="home()" [ngClass]="'has-to-be-shown'">Home</button>
-    <button mat-button (click)="adminConsumptions()" [ngClass]="'has-to-be-shown'">Admin company indicators</button>
-    <button mat-button (click)="adminFuels()" [ngClass]="'has-to-be-shown'">Admin fuels</button>
+    <button mat-button (click)="adminConsumptions()" [ngClass]="'has-to-be-shown'">Admin indicators</button>
+    <button mat-button (click)="adminAspects()" [ngClass]="'has-to-be-shown'">Admin aspects</button>
+    <button mat-button (click)="adminEnergies()" [ngClass]="'has-to-be-shown'">Admin energies</button>
+    <button mat-button (click)="adminResidues()" [ngClass]="'has-to-be-shown'">Admin residues</button>
+
     <button mat-button (click)="profile()" [ngClass]="'has-to-be-shown'">Profile</button>
-    <button mat-button (click)="register()" [ngClass]="'has-to-be-shown'">Register</button>
+    <button mat-button (click)="register()" [ngClass]="'has-to-be-shown'">Add user</button>
     <button mat-button (click)="logout()" [ngClass]="'has-to-be-shown'">Logout</button>
   </mat-toolbar>
 </div>

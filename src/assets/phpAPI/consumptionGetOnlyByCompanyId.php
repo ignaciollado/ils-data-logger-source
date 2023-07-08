@@ -13,11 +13,15 @@ ils_consumption.quantity, ils_consumption.fromDate, ils_consumption.toDate, ils_
 ils_consumption.reuse, ils_consumption.recycling, ils_consumption.incineration,  ils_consumption.dump, ils_consumption.compost,
 ils_consumption.scopeOne, ils_consumption.scopeTwo,
 ils_consumption.createAt, ils_consumption.updatedAt,
-ils_energy.nameES, ils_energy.nameCA,
-ils_company_delegation.name, ils_company_delegation.address
+ils_energy.nameES as energyES, ils_energy.nameCA,
+ils_company_delegation.name, ils_company_delegation.address,
+ils_aspect.nameES as aspectES, ils_aspect.nameCA,
+ils_residue.nameES as residueES, ils_residue.nameCA
 
 FROM ils_consumption
 LEFT JOIN ils_energy ON ils_consumption.energyId=ils_energy.energyId
+LEFT JOIN ils_residue ON ils_consumption.residueId=ils_residue.residueId
+LEFT JOIN ils_aspect ON ils_consumption.aspectId=ils_aspect.aspectId
 LEFT JOIN ils_company_delegation ON ils_consumption.companyDelegationId=ils_company_delegation.companyDelegationId
 
 WHERE ils_consumption.companyId =".$companyId;

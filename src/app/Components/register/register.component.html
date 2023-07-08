@@ -2,7 +2,7 @@
   <p id="registerFeedback"></p>
 </div>
 <div class="container-form" [@fadeInOut] >
-  <h1>Register</h1>
+  <h1>Add company</h1>
   <form [formGroup]="registerForm" (ngSubmit)="register()">
     <mat-card [class.mat-elevation-z8]="isElevated">
     <section>
@@ -33,7 +33,7 @@
         <mat-error *ngIf="password.hasError('required')">Password <strong>is required</strong></mat-error>
       </mat-form-field>
     </section>
-    <button mat-raised-button color="primary" type="submit" [disabled]="!registerForm.valid">Register</button>
+    <button mat-raised-button color="primary" type="submit" [disabled]="!registerForm.valid">ADD</button>
   </mat-card>
   </form>
 </div>

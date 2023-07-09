@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams, HttpErrorResponse } from '@angular/common/http';
-import { EnergyDTO } from '../Models/energy.dto';
+import { AspectDTO } from '../Models/aspect.dto';
 import { Observable } from 'rxjs';
 import { NONE_TYPE } from '@angular/compiler';
 
@@ -23,39 +23,37 @@ interface deleteResponse {
   providedIn: 'root'
 })
 
-export class EnergyService {
-  private urlApi: string;
+export class AspectService {
   private urlAPiMySql:  string;
 
   constructor(private http: HttpClient) {
-    this.urlApi = '../../assets/mocks/fuels.json';
     this.urlAPiMySql = '../../assets/phpAPI/'}
 
-  getAllEnergies(): Observable<EnergyDTO[]> {
+  getAllAspects(): Observable<AspectDTO[]> {
     return this.http
-      .get<EnergyDTO[]>(`${this.urlAPiMySql}energyGetAll.php`)
+      .get<AspectDTO[]>(`${this.urlAPiMySql}aspectGetAll.php`)
   }
 
 
-  getEnergyById(energyId: number): Observable<EnergyDTO> {
+  getAspectById(aspectId: string): Observable<AspectDTO> {
     return this.http
-      .get<EnergyDTO>(`${this.urlAPiMySql}energyGetById.php?energyId=${energyId}`)
+      .get<AspectDTO>(`${this.urlAPiMySql}aspectGetById.php?aspectId=${aspectId}` )
   }
 
-  createEnergy(energy: EnergyDTO): Observable<EnergyDTO> {
+  createAspect(aspect: AspectDTO): Observable<AspectDTO> {
     return this.http
-      .post<EnergyDTO>(this.urlAPiMySql, energy );
+      .post<AspectDTO>(`${this.urlAPiMySql}aspectCreate.php`, aspect );
   }
 
-  updateEnergy(energyId: number, Energy: EnergyDTO): Observable<EnergyDTO> {
+  updateAspect(aspectId: string, aspect: AspectDTO): Observable<AspectDTO> {
     return this.http
-      .put<EnergyDTO>(this.urlAPiMySql + '/' + energyId, Energy)
+      .put<AspectDTO>(`${this.urlAPiMySql}aspectUpdate.php?aspectId=${aspectId}`, aspect)
       ;
   }
 
-  deleteEnergy(msgId: string): Observable<deleteResponse> {
+  deleteAspect(aspectId: number): Observable<deleteResponse> {
     return this.http
-      .delete<deleteResponse>(this.urlAPiMySql + '/' + msgId)
+      .delete<deleteResponse>(`${this.urlAPiMySql}aspectDelete.php?aspectId=${aspectId}`)
       ;
   }
 

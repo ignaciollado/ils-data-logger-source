@@ -49,7 +49,7 @@ export class CategoryFormComponent implements OnInit {
   energyForm: UntypedFormGroup;
   isValidForm: boolean | null;
   isElevated = true;
-  
+
   private isUpdateMode: boolean;
   private categoryId: string | null;
 
@@ -94,7 +94,7 @@ export class CategoryFormComponent implements OnInit {
     this.pci = new UntypedFormControl(this.energy.pci, [
       Validators.required,
     ]);
-    
+
     this.createAt = new UntypedFormControl(
       formatDate(this.energy.createAt, 'yyyy-MM-dd', 'en'),
       [Validators.required]
@@ -114,7 +114,7 @@ export class CategoryFormComponent implements OnInit {
       pci: this.pci,
       createAt: this.createAt,
       updateAt: this.updatedAt
-     
+
     });
   }
 
@@ -125,7 +125,7 @@ export class CategoryFormComponent implements OnInit {
     if (this.categoryId) {
       this.isUpdateMode = true;
 
-      this.energyService.getFuelById(this.categoryId).subscribe(
+      this.energyService.getEnergyById(+this.categoryId).subscribe(
         (energy: EnergyDTO) => {
           this.energy = energy;
 
@@ -166,7 +166,7 @@ export class CategoryFormComponent implements OnInit {
     let responseOK: boolean = false;
     if (this.categoryId) {
         this.energyService
-          .updateFuel(this.categoryId, this.energy)
+          .updateEnergy(+this.categoryId, this.energy)
           .pipe(
             finalize(async () => {
               await this.sharedService.managementToast(
@@ -196,7 +196,7 @@ export class CategoryFormComponent implements OnInit {
     let errorResponse: any;
     let responseOK: boolean = false;
       this.energyService
-        .createFuel(this.energy)
+        .createEnergy(this.energy)
         .pipe(
           finalize(async () => {
             await this.sharedService.managementToast(

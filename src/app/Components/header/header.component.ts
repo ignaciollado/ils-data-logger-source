@@ -87,7 +87,6 @@ export class HeaderComponent implements OnInit {
     };
 
     this.headerMenusService.headerManagement.next(headerInfo);
-
     this.router.navigateByUrl('');
   }
 }

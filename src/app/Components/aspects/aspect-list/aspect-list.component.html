@@ -1,0 +1,35 @@
+<p>aspect-list works!</p>
+
+<table *ngIf="!isGridView" mat-table [dataSource]="aspects" class="mat-elevation-z8">
+  <ng-container matColumnDef="nameES">
+    <th mat-header-cell *matHeaderCellDef>Denominación</th>
+    <td mat-cell *matCellDef="let aspect">{{aspect.nameES}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="nameCA">
+    <th mat-header-cell *matHeaderCellDef>Denominació</th>
+    <td mat-cell *matCellDef="let aspect">{{aspect.nameCA}}</td>
+  </ng-container>
+
+
+  <ng-container matColumnDef="ACTIONS">
+    <th mat-header-cell *matHeaderCellDef> ACTIONS <button mat-mini-fab color="primary" matTooltip="Add an aspect" aria-label="Add aspect" (click)="createAspect()">
+      <mat-icon>add</mat-icon>
+    </button></th>
+    <td mat-cell *matCellDef="let aspect">
+      <button mat-icon-button color="accent" matTooltip="Update this aspect"
+      aria-label="Button that displays a tooltip and updates this aspect" (click)="updateAspect(aspect.aspectId)">
+        <mat-icon>edit</mat-icon>
+      </button>
+      <button mat-icon-button color="warn" matTooltip="Permanently delete this aspect"
+      aria-label="Button that displays a tooltip and permanently deletes this aspect" (click)="deleteAspect(aspect.aspectId)">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="columnsDisplayed"></tr>
+  <tr mat-row *matRowDef="let item; columns: columnsDisplayed;" class="animate__animated animate__fadeInLeft"></tr>
+</table>
+
+<div class="loader" *ngIf="!aspects">No records found yet...</div>

@@ -13,6 +13,9 @@ import { AuthGuard } from './Guards/auth.guard';
 
 
 import { DelegationFormComponent } from './Components/profile/delegation-form/delegation-form.component';
+import { AspectListComponent } from './Components/aspects/aspect-list/aspect-list.component';
+import { EnergyListComponent } from './Components/energies/energy-list/energy-list.component';
+import { ResidueListComponent } from './Components/residues/residue-list/residue-list.component';
 
 const routes: Routes = [
   {
@@ -67,7 +70,17 @@ const routes: Routes = [
   },
   {
     path: 'energies',
-    component: CategoriesListComponent,
+    component: EnergyListComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'aspects',
+    component: AspectListComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'residues',
+    component: ResidueListComponent,
     canActivate: [AuthGuard],
   },
   {

@@ -84,7 +84,7 @@ export class HomeComponent {
 
   private loadEnergies(): void {
     let errorResponse: any;
-    this.energyService.getAllFuelsFromMySQL().subscribe(
+    this.energyService.getAllEnergies().subscribe(
       (energies:EnergyDTO[]) => {
         this.energies = energies
       }

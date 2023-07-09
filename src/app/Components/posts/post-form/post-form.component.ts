@@ -172,7 +172,7 @@ export class PostFormComponent implements OnInit {
   private loadEnergies(): void {
     let errorResponse: any;
     if (this.userId) {
-      this.energyService.getAllFuelsFromMySQL().subscribe(
+      this.energyService.getAllEnergies().subscribe(
         (energies: EnergyDTO[]) => {
           this.energies = energies;
         },

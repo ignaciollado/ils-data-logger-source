@@ -39,7 +39,7 @@ export class CategoriesListComponent {
     const userId = this.localStorageService.get('user_id');
     if (userId) {
       /* this.categoryService.getCategoriesByUserId(userId).subscribe( */
-      this.energyService.getAllFuelsFromMySQL().subscribe(
+      this.energyService.getAllEnergies().subscribe(
         (fuels: EnergyDTO[]) => {
           console.log (fuels)
           this.energies = fuels;
@@ -68,7 +68,7 @@ export class CategoriesListComponent {
       'Confirm delete category with id: ' + categoryId + ' .'
     );
     if (result) {
-      this.energyService.deleteFuel(categoryId).subscribe(
+      this.energyService.deleteEnergy(categoryId).subscribe(
         (rowsAffected: deleteResponse) => {
           if (rowsAffected.affected > 0) {
             this.loadCategories();

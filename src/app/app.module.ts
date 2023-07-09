@@ -41,6 +41,11 @@ import { DelegationFormComponent } from './Components/profile/delegation-form/de
 import { WaterFormComponent } from './Components/posts/water-form/water-form.component';
 import { ResidueFormComponent } from './Components/posts/residue-form/residue-form.component';
 import { EmissionFormComponent } from './Components/posts/emission-form/emission-form.component';
+import { AspectFormComponent } from './Components/aspects/aspect-form/aspect-form.component';
+import { AspectListComponent } from './Components/aspects/aspect-list/aspect-list.component';
+import { EnergyFormComponent } from './Components/energies/energy-form/energy-form.component';
+import { EnergyListComponent } from './Components/energies/energy-list/energy-list.component';
+import { ResidueListComponent } from './Components/residues/residue-list/residue-list.component';
 
 @NgModule({
   declarations: [
@@ -62,6 +67,11 @@ import { EmissionFormComponent } from './Components/posts/emission-form/emission
     WaterFormComponent,
     ResidueFormComponent,
     EmissionFormComponent,
+    AspectFormComponent,
+    AspectListComponent,
+    EnergyFormComponent,
+    EnergyListComponent,
+    ResidueListComponent,
   ],
   imports: [
     BrowserModule,

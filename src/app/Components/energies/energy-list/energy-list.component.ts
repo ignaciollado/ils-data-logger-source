@@ -1,13 +1,11 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { HeaderMenus } from 'src/app/Models/header-menus.dto';
 import { EnergyDTO } from 'src/app/Models/energy.dto';
 import { HeaderMenusService } from 'src/app/Services/header-menus.service';
 import { LocalStorageService } from 'src/app/Services/local-storage.service';
 
 import { SharedService } from 'src/app/Services/shared.service';
-import { deleteResponse } from 'src/app/Services/category.service';
 import { EnergyService } from 'src/app/Services/energy.service';
 
 @Component({

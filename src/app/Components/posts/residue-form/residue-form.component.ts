@@ -8,11 +8,11 @@ import {
   Validators,
 } from '@angular/forms';
 
-import {
+/* import {
   MAT_MOMENT_DATE_FORMATS,
   MomentDateAdapter,
   MAT_MOMENT_DATE_ADAPTER_OPTIONS,
-} from '@angular/material-moment-adapter';
+} from '@angular/material-moment-adapter'; */
 import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE} from '@angular/material/core';
 /* import 'moment/locale/es'; */
 
@@ -36,7 +36,7 @@ import { ResidueDTO } from 'src/app/Models/residue.dto';
   templateUrl: './residue-form.component.html',
   styleUrls: ['./residue-form.component.scss'],
 
-  providers: [
+  /* providers: [
     // The locale would typically be provided on the root module of your application. We do it at
     // the component level here, due to limitations of our example generation script.
     {provide: MAT_DATE_LOCALE, useValue: 'es-ES'},
@@ -50,7 +50,7 @@ import { ResidueDTO } from 'src/app/Models/residue.dto';
       deps: [MAT_DATE_LOCALE, MAT_MOMENT_DATE_ADAPTER_OPTIONS],
     },
     {provide: MAT_DATE_FORMATS, useValue: MAT_MOMENT_DATE_FORMATS},
-  ],
+  ], */
 })
 
 export class ResidueFormComponent {

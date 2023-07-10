@@ -1,8 +1,11 @@
-<div *ngIf="posts">
-  <p>Num likes: {{ numLikes }}</p>
-  <p>Num dislikes: {{ numDislikes }}</p>
+<div *ngIf="consumptions">
+  <p>Energy quantity: {{ quantityEnergy }}</p>
+  <p>Water quantity: {{ quantityWater }}</p>
+  <p>Residue quantity: {{ quantityResidues }}</p>
+  <p>Material quantity: {{ quantityMaterials }}</p>
+  <p>CO2e Emission quantity: {{ quantityEmissions }}</p>
 </div>
 
 <div class="chart-container">
-  <canvas  id="graphDashboard" aria-label="bar graph total likes and dislikes">{{ chart }}</canvas>
+  <canvas  id="graphDashboard" aria-label="bar graph total Energy, Water, Residue, Material and CO2">{{ chart }}</canvas>
 </div>

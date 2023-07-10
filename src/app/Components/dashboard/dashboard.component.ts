@@ -1,7 +1,7 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { PostDTO } from 'src/app/Models/post.dto';
-import { PostService } from 'src/app/Services/post.service';
+import { ConsumptionDTO } from 'src/app/Models/consumption.dto';
+import { ConsumptionService } from 'src/app/Services/consumption.service';
 import { SharedService } from 'src/app/Services/shared.service';
 import Chart from 'chart.js/auto';
 
@@ -11,33 +11,56 @@ import Chart from 'chart.js/auto';
   styleUrls: ['./dashboard.component.scss'],
 })
 export class DashboardComponent implements OnInit {
-  posts!: PostDTO[];
+  consumptions!: ConsumptionDTO[];
 
   numLikes: number = 0;
   numDislikes: number = 0;
 
+  quantityEnergy: number = 0;
+  quantityWater: number = 0;
+  quantityResidues: number = 0;
+  quantityMaterials: number = 0;
+  quantityEmissions: number = 0;
+
+
   chart: any;
 
   constructor(
-    private postService: PostService,
+    private consumptionService: ConsumptionService,
     private sharedService: SharedService
   ) {}
 
   ngOnInit(): void {
-    this.loadPosts();
-    this.createChart();
+    this.loadconsumptions();
   }
 
-  private loadPosts(): void {
+  private loadconsumptions(): void {
     let errorResponse: any;
 
-    this.postService.getPosts().subscribe(
-      (posts: PostDTO[]) => {
-        this.posts = posts;
-        this.posts.forEach((post) => {
-          this.numLikes = this.numLikes + post.num_likes;
-          this.numDislikes = this.numDislikes + post.num_dislikes;
-        });
+    this.consumptionService.getAllConsumptions()
+    .subscribe(
+      (consumptions: ConsumptionDTO[]) => {
+        this.consumptions = consumptions;
+
+        this.consumptions.forEach((consumption) => {
+          if ( consumption.aspectId == 1 ) {
+              this.quantityEnergy = this.quantityEnergy + +consumption.quantity
+          }
+          if ( consumption.aspectId == 2 ) {
+              this.quantityWater = this.quantityWater + +consumption.quantity
+          }
+          if ( consumption.aspectId == 3 ) {
+              this.quantityResidues = this.quantityResidues + +consumption.quantity
+          }
+          if ( consumption.aspectId == 4 ) {
+              this.quantityMaterials = this.quantityMaterials + +consumption.quantity
+          }
+          if ( consumption.aspectId == 5 ) {
+              this.quantityEmissions = this.quantityEmissions + +consumption.quantity
+          }
+        }
+        )
+        this.createChart();
       },
       (error: HttpErrorResponse) => {
         errorResponse = error.error;
@@ -50,17 +73,32 @@ export class DashboardComponent implements OnInit {
     this.chart = new Chart("graphDashboard", {
       type: 'bar',
       data: {
-        labels: ['# of likes and dislikes'],
+        labels: ['Totals of Energy, Water, Residue, Materials, CO2e Emissions'],
          datasets: [
           {
-            label: "Likes",
-            data: [this.numLikes],
+            label: "Energy",
+            data: [this.quantityEnergy],
             backgroundColor: '#68ecab'
           },
           {
-            label: "Dislikes",
-            data: [this.numDislikes],
+            label: "Water",
+            data: [this.quantityWater],
             backgroundColor: '#dd4237'
+          },
+          {
+            label: "Residue",
+            data: [+this.quantityResidues],
+            backgroundColor: '#00acee'
+          },
+          {
+            label: "Material",
+            data: [this.quantityMaterials],
+            backgroundColor: '#aa8837'
+          },
+          {
+            label: "Emission CO2e",
+            data: [this.quantityEmissions],
+            backgroundColor: '#68acab'
           }
         ]
       },

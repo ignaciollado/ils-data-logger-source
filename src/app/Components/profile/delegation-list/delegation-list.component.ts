@@ -5,7 +5,6 @@ import { DelegationDTO } from 'src/app/Models/delegation.dto';
 import { deleteResponse } from 'src/app/Services/category.service';
 import { LocalStorageService } from 'src/app/Services/local-storage.service';
 import { DelegationService } from 'src/app/Services/delegation.service';
-import { ConsumptionService } from 'src/app/Services/consumption.service';
 import { SharedService } from 'src/app/Services/shared.service';
 
 @Component({

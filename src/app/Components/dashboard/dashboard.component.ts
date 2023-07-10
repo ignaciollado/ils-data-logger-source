@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { PostDTO } from 'src/app/Models/post.dto';
 import { PostService } from 'src/app/Services/post.service';
 import { SharedService } from 'src/app/Services/shared.service';
-/* import Chart from 'chart.js/auto'; */
+import Chart from 'chart.js/auto';
 
 @Component({
   selector: 'app-dashboard',
@@ -25,6 +25,7 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadPosts();
+    this.createChart();
   }
 
   private loadPosts(): void {
@@ -43,5 +44,30 @@ export class DashboardComponent implements OnInit {
         this.sharedService.errorLog(errorResponse);
       }
     );
+  }
+
+  private  createChart(){
+    this.chart = new Chart("graphDashboard", {
+      type: 'bar',
+      data: {
+        labels: ['# of likes and dislikes'],
+         datasets: [
+          {
+            label: "Likes",
+            data: [this.numLikes],
+            backgroundColor: '#68ecab'
+          },
+          {
+            label: "Dislikes",
+            data: [this.numDislikes],
+            backgroundColor: '#dd4237'
+          }
+        ]
+      },
+      options: {
+        aspectRatio:2.5
+      }
+
+    });
   }
 }

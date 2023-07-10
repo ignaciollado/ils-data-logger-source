@@ -8,14 +8,7 @@ import {
   Validators,
 } from '@angular/forms';
 
-/* import {
-  MAT_MOMENT_DATE_FORMATS,
-  MomentDateAdapter,
-  MAT_MOMENT_DATE_ADAPTER_OPTIONS,
-} from '@angular/material-moment-adapter'; */
 import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE} from '@angular/material/core';
-/* import 'moment/locale/es'; */
-
 import { ActivatedRoute, Router } from '@angular/router';
 import { finalize } from 'rxjs/operators';
 import { ConsumptionDTO } from 'src/app/Models/consumption.dto';
@@ -32,22 +25,6 @@ import { min } from 'moment';
   selector: 'app-emission-form',
   templateUrl: './emission-form.component.html',
   styleUrls: ['./emission-form.component.scss'],
-
-/*   providers: [
-    // The locale would typically be provided on the root module of your application. We do it at
-    // the component level here, due to limitations of our example generation script.
-    {provide: MAT_DATE_LOCALE, useValue: 'es-ES'},
-
-    // `MomentDateAdapter` and `MAT_MOMENT_DATE_FORMATS` can be automatically provided by importing
-    // `MatMomentDateModule` in your applications root module. We provide it at the component level
-    // here, due to limitations of our example generation script.
-    {
-      provide: DateAdapter,
-      useClass: MomentDateAdapter,
-      deps: [MAT_DATE_LOCALE, MAT_MOMENT_DATE_ADAPTER_OPTIONS],
-    },
-    {provide: MAT_DATE_FORMATS, useValue: MAT_MOMENT_DATE_FORMATS},
-  ], */
 })
 export class EmissionFormComponent {
   consumption: ConsumptionDTO
@@ -96,13 +73,13 @@ export class EmissionFormComponent {
     this.consumption = new ConsumptionDTO(0, 0, this._adapter.today(), this._adapter.today(), '', '', '','','','', 0, '', '', 0);
     this.isUpdateMode = false;
     this.validRequest = false;
-    this.delegation = new UntypedFormControl([ Validators.required ]);
-    this.scopeone = new UntypedFormControl([ Validators.required ]);
-    this.scopetwo = new UntypedFormControl([ Validators.required ]);
+    this.delegation = new UntypedFormControl('', [ Validators.required ]);
     this.companyId = new UntypedFormControl(this.userId, [ Validators.required ]);
-    this.yearEmission = new UntypedFormControl(  [ Validators.required ]);
-    this.quantityEmission = new UntypedFormControl( [ Validators.required, Validators.min(1)]);
-
+    this.yearEmission = new UntypedFormControl('', [ Validators.required ]);
+    this.quantityEmission = new UntypedFormControl('', [ Validators.required, Validators.min(1)]);
+    this.scopeone = new UntypedFormControl('', [ Validators.required ]);
+    this.scopetwo = new UntypedFormControl('', [ Validators.required ]);
+    
     this.loadDelegations();
 
     this.emissionForm = this.formBuilder.group({

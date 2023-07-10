@@ -21,6 +21,8 @@ ils_residue.nameES as residueES, ils_residue.nameCA
 FROM ils_consumption
 LEFT JOIN ils_energy ON ils_consumption.energyId=ils_energy.energyId
 LEFT JOIN ils_company_delegation ON ils_consumption.companyDelegationId=ils_company_delegation.companyDelegationId
+LEFT JOIN ils_aspect ON ils_consumption.aspectId = ils_aspect.aspectId
+LEFT JOIN ils_residue ON ils_consumption.residueId = ils_residue.residueId
 
 WHERE ils_consumption.companyId =".$companyId;
 

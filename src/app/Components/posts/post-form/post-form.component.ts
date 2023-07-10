@@ -8,13 +8,7 @@ import {
   Validators,
 } from '@angular/forms';
 
-/* import {
-  MAT_MOMENT_DATE_FORMATS,
-  MomentDateAdapter,
-  MAT_MOMENT_DATE_ADAPTER_OPTIONS,
-} from '@angular/material-moment-adapter'; */
 import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE} from '@angular/material/core';
-/* import 'moment/locale/es'; */
 
 import { ActivatedRoute, Router } from '@angular/router';
 import { finalize } from 'rxjs/operators';
@@ -44,21 +38,6 @@ import { DelegationService } from 'src/app/Services/delegation.service';
       transition('void <-> *', animate(1500))
     ])
   ],
-  /* providers: [
-    // The locale would typically be provided on the root module of your application. We do it at
-    // the component level here, due to limitations of our example generation script.
-    {provide: MAT_DATE_LOCALE, useValue: 'es-ES'},
-
-    // `MomentDateAdapter` and `MAT_MOMENT_DATE_FORMATS` can be automatically provided by importing
-    // `MatMomentDateModule` in your applications root module. We provide it at the component level
-    // here, due to limitations of our example generation script.
-    {
-      provide: DateAdapter,
-      useClass: MomentDateAdapter,
-      deps: [MAT_DATE_LOCALE, MAT_MOMENT_DATE_ADAPTER_OPTIONS],
-    },
-    {provide: MAT_DATE_FORMATS, useValue: MAT_MOMENT_DATE_FORMATS},
-  ], */
 })
 
 export class PostFormComponent implements OnInit {
@@ -111,12 +90,12 @@ export class PostFormComponent implements OnInit {
     this.consumption = new ConsumptionDTO(0, 0, this._adapter.today(), this._adapter.today(), '', '', '','','','', 0, '', '', 0);
     this.isUpdateMode = false;
     this.validRequest = false;
-    this.delegation = new UntypedFormControl( [ Validators.required ]);
-    this.fromDate = new UntypedFormControl(  [ Validators.required ]);
-    this.toDate = new UntypedFormControl(  [ Validators.required ]);
-    this.energy = new UntypedFormControl(this.consumption.energyES, [ Validators.required ]);
+    this.delegation = new UntypedFormControl('', [ Validators.required ]);
+    this.fromDate = new UntypedFormControl('', [ Validators.required ]);
+    this.toDate = new UntypedFormControl('', [ Validators.required ]);
+    this.energy = new UntypedFormControl('', [ Validators.required ]);
     this.companyId = new UntypedFormControl(this.userId, [ Validators.required ]);
-    this.quantity = new UntypedFormControl( [ Validators.required, Validators.min(1) ]);
+    this.quantity = new UntypedFormControl('', [ Validators.required, Validators.min(1) ]);
 
     this.loadEnergies();
     this.loadDelegations();
@@ -207,6 +186,7 @@ export class PostFormComponent implements OnInit {
         this.consumptionService.getAllConsumptionsByUserIdFromMySQL(userId, 1).subscribe(
         (consumptions: ConsumptionDTO[]) => {
           this.consumptions = consumptions
+          console.log (this.consumption)
         },
         (error: HttpErrorResponse) => {
           errorResponse = error.error;

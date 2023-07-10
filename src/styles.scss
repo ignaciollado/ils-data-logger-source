@@ -3,7 +3,6 @@
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
-
 .container-form {
 
     display: flex;
@@ -18,4 +17,9 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   display:grid;
   grid-template-columns: 50% 50%;
   gap: 2rem;
+}
+
+.mat-toolbar.mat-primary {
+  background: #365446;
+  color: #fff;
 }

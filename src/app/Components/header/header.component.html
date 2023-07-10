@@ -1,7 +1,9 @@
-<h2 [ngClass]="'has-to-be-shown'">ILS<br>indicators of the company's environmental performance</h2>
+
+<!-- <img class="logo" src="../../../assets/images/logo_ils.svg" alt="ILS data logger"> -->
+
 <!-- NO AUTH REQUIRED -->
 <div *ngIf="showNoAuthSection">
-
+  
   <mat-menu #menu="matMenu">
     <button mat-menu-item (click)="dashboard()"><mat-icon>dashboard</mat-icon><span>ILS dashboard</span></button>
     <button mat-menu-item (click)="home()"><mat-icon>home</mat-icon><span>Home</span></button>
@@ -51,3 +53,4 @@
     <button mat-button (click)="logout()" [ngClass]="'has-to-be-shown'">Logout</button>
   </mat-toolbar>
 </div>
+<main flex layout="column"></main>

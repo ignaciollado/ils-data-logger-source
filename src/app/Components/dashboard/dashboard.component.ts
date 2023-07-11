@@ -13,17 +13,15 @@ import Chart from 'chart.js/auto';
 export class DashboardComponent implements OnInit {
   consumptions!: ConsumptionDTO[];
 
-  numLikes: number = 0;
-  numDislikes: number = 0;
-
   quantityEnergy: number = 0;
   quantityWater: number = 0;
   quantityResidues: number = 0;
   quantityMaterials: number = 0;
   quantityEmissions: number = 0;
 
-
   chart: any;
+  chartPie: any;
+
 
   constructor(
     private consumptionService: ConsumptionService,
@@ -61,6 +59,7 @@ export class DashboardComponent implements OnInit {
         }
         )
         this.createChart();
+        this.createChartPie();
       },
       (error: HttpErrorResponse) => {
         errorResponse = error.error;
@@ -73,37 +72,99 @@ export class DashboardComponent implements OnInit {
     this.chart = new Chart("graphDashboard", {
       type: 'bar',
       data: {
-        labels: ['Totals of Energy, Water, Residue, Materials, CO2e Emissions'],
-         datasets: [
+        labels: ['Total quantity reported'],
+        datasets: [
           {
             label: "Energy",
             data: [this.quantityEnergy],
-            backgroundColor: '#68ecab'
+            borderColor: "#68ecab",
+            borderWidth: 2,
+            borderSkipped: false,            
           },
           {
             label: "Water",
             data: [this.quantityWater],
-            backgroundColor: '#dd4237'
+            borderColor: "red",
+            borderWidth: 2,
+            borderSkipped: false,
           },
           {
-            label: "Residue",
+            label: "Residues",
             data: [+this.quantityResidues],
-            backgroundColor: '#00acee'
+            borderColor: "#00acee",
+            borderWidth: 2,
+            borderSkipped: false,
           },
           {
-            label: "Material",
+            label: "Materials",
             data: [this.quantityMaterials],
-            backgroundColor: '#aa8837'
+            borderColor: "#aa8837",
+            borderWidth: 2,
+            borderSkipped: false,
           },
           {
-            label: "Emission CO2e",
+            label: "Emissions CO2e",
             data: [this.quantityEmissions],
-            backgroundColor: '#68acab'
+            borderColor: "#68acab",
+            borderWidth: 2,
+            borderSkipped: false,
           }
         ]
       },
       options: {
-        aspectRatio:2.5
+        responsive: true,
+        aspectRatio:2.5,
+        plugins: {
+          legend: {
+            position: 'bottom',
+          },
+          title: {
+            display: true,
+            text: 'Bar Chart'
+          }
+        }
+      }
+
+    });
+  }
+
+  private  createChartPie(){
+    this.chartPie = new Chart("graphDashboardPie", {
+      type: 'pie',
+      data: {
+        labels: [
+          'Energy',
+          'Water',
+          'Residues',
+          'Materials',
+          'Emissions'
+        ],
+        datasets: [
+          {
+            label: "Total quantity reported",
+            data: [this.quantityEnergy, this.quantityWater, this.quantityResidues, this.quantityMaterials, this.quantityEmissions],
+            backgroundColor: [
+              '#68ecab',
+              'red',
+              '#00acee',
+              '#aa8837',
+              '#68acab'
+            ],
+            hoverOffset: 4
+          }]
+      },
+      options: {
+        responsive: true,
+        aspectRatio:2.5,
+        plugins: {
+          legend: {
+            position: 'bottom',
+          },
+          title: {
+            display: true,
+            text: 'Pie Chart'
+          }
+        }
       }
 
     });

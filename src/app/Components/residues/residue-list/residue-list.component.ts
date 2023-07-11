@@ -66,7 +66,7 @@ export class ResidueListComponent {
   }
 
   createResidue(): void {
-
+    this.router.navigateByUrl('createResidue');
   }
 
   updateResidue(residueId:number): void {

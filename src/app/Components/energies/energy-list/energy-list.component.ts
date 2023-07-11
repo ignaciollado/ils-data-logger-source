@@ -66,7 +66,7 @@ export class EnergyListComponent {
   }
 
   createEnergy(): void {
-
+    this.router.navigateByUrl('createEnergy');
   }
 
   updateEnergy(energyId:number): void {

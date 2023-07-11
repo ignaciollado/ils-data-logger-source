@@ -15,6 +15,7 @@ import { AspectService } from 'src/app/Services/aspect.service';
   templateUrl: './aspect-list.component.html',
   styleUrls: ['./aspect-list.component.scss']
 })
+
 export class AspectListComponent {
 
   aspects!: AspectDTO[];
@@ -69,7 +70,7 @@ export class AspectListComponent {
   }
 
   createAspect(): void {
-
+    this.router.navigateByUrl('createAspect');
   }
 
   updateAspect(aspectId:number): void {

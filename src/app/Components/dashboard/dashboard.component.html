@@ -1,11 +1,26 @@
-<div *ngIf="consumptions">
+<!-- <div *ngIf="consumptions">
   <p>Energy quantity: {{ quantityEnergy }}</p>
   <p>Water quantity: {{ quantityWater }}</p>
   <p>Residue quantity: {{ quantityResidues }}</p>
   <p>Material quantity: {{ quantityMaterials }}</p>
   <p>CO2e Emission quantity: {{ quantityEmissions }}</p>
-</div>
+</div> -->
 
-<div class="chart-container">
-  <canvas  id="graphDashboard" aria-label="bar graph total Energy, Water, Residue, Material and CO2">{{ chart }}</canvas>
+<h2>Total data reported:</h2>
+
+<div class="graphContainer">
+  <div class="chart-container">
+    <canvas  id="graphDashboard" aria-label="bar graph total Energy, Water, Residue, Material and CO2">{{ chart }}</canvas>
+  </div>
+  <div class="chart-container">
+    <canvas  id="graphDashboardPie" aria-label="bar graph total Energy, Water, Residue, Material and CO2">{{ chart }}</canvas>
+  </div>
 </div>
+<!-- <div class="container-chart" *ngIf="consumptions">
+  <apx-chart
+    [series]="series"
+    [chart]="chart"
+    [yaxis]="yaxis"
+    [xaxis]="xaxis"
+  ></apx-chart>
+</div> -->

@@ -94,7 +94,7 @@ import { ResidueListComponent } from './Components/residues/residue-list/residue
     MatNativeDateModule,
     MatDatepickerModule,
     MatTabsModule,
-    MatMenuModule
+    MatMenuModule,
   ],
   providers: [
     {

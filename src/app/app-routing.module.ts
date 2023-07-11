@@ -16,11 +16,14 @@ import { DelegationFormComponent } from './Components/profile/delegation-form/de
 import { AspectListComponent } from './Components/aspects/aspect-list/aspect-list.component';
 import { EnergyListComponent } from './Components/energies/energy-list/energy-list.component';
 import { ResidueListComponent } from './Components/residues/residue-list/residue-list.component';
+import { AspectFormComponent } from './Components/aspects/aspect-form/aspect-form.component';
+import { EnergyFormComponent } from './Components/energies/energy-form/energy-form.component';
+import { ResidueFormComponent } from './Components/posts/residue-form/residue-form.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: HomeComponent,
+    component: DashboardComponent,
   },
   {
     path: 'login',
@@ -74,13 +77,28 @@ const routes: Routes = [
     canActivate: [AuthGuard],
   },
   {
+    path: 'createEnergy',
+    component: EnergyFormComponent,
+    canActivate: [AuthGuard],
+  },
+  {
     path: 'aspects',
     component: AspectListComponent,
     canActivate: [AuthGuard],
   },
   {
+    path: 'createAspect',
+    component: AspectFormComponent,
+    canActivate: [AuthGuard],
+  },
+  {
     path: 'residues',
     component: ResidueListComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'createResidue',
+    component: ResidueFormComponent,
     canActivate: [AuthGuard],
   },
   {

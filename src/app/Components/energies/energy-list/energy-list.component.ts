@@ -21,7 +21,7 @@ export class EnergyListComponent {
   userId: string | null;
 
   isGridView: boolean = false
-  columnsDisplayed = ['nameES', 'nameCA', 'ACTIONS'];
+  columnsDisplayed = ['nameES', 'nameCA', 'unit', 'pci', 'ACTIONS'];
 
   constructor(
     private energyService: EnergyService,
@@ -34,11 +34,8 @@ export class EnergyListComponent {
     this.showButtons = false;
     this.access_token = this.localStorageService.get('access_token')
 
-    /* if(this.access_token) { */
-      this.loadEnergies();
-   /*  } else {
-      this.router.navigateByUrl('/login');
-    } */
+    this.loadEnergies();
+
   }
 
   private loadEnergies(): void {

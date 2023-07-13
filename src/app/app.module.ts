@@ -36,6 +36,9 @@ import {MAT_DATE_LOCALE, MatNativeDateModule} from '@angular/material/core';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatMenuModule} from '@angular/material/menu';
+import {MatPaginator, MatPaginatorModule} from '@angular/material/paginator';
+import {MatSort, Sort, MatSortModule} from '@angular/material/sort';
+
 import { DelegationListComponent } from './Components/profile/delegation-list/delegation-list.component';
 import { DelegationFormComponent } from './Components/profile/delegation-form/delegation-form.component';
 import { WaterFormComponent } from './Components/posts/water-form/water-form.component';
@@ -46,6 +49,7 @@ import { AspectListComponent } from './Components/aspects/aspect-list/aspect-lis
 import { EnergyFormComponent } from './Components/energies/energy-form/energy-form.component';
 import { EnergyListComponent } from './Components/energies/energy-list/energy-list.component';
 import { ResidueListComponent } from './Components/residues/residue-list/residue-list.component';
+import { ResidueAdminFormComponent } from './Components/residues/residue-admin-form/residue-admin-form.component';
 
 @NgModule({
   declarations: [
@@ -72,6 +76,7 @@ import { ResidueListComponent } from './Components/residues/residue-list/residue
     EnergyFormComponent,
     EnergyListComponent,
     ResidueListComponent,
+    ResidueAdminFormComponent,
   ],
   imports: [
     BrowserModule,
@@ -95,6 +100,8 @@ import { ResidueListComponent } from './Components/residues/residue-list/residue
     MatDatepickerModule,
     MatTabsModule,
     MatMenuModule,
+    MatSortModule,
+    MatPaginatorModule
   ],
   providers: [
     {

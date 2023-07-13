@@ -50,7 +50,6 @@ export class DelegationFormComponent implements OnInit {
   private validRequest: boolean;
   private companyId: string | null;
 
-
   constructor(
     private activatedRoute: ActivatedRoute,
     private delegationService: DelegationService,

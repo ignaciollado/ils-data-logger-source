@@ -36,7 +36,6 @@ export class EnergyService {
       .get<EnergyDTO[]>(`${this.urlAPiMySql}energyGetAll.php`)
   }
 
-
   getEnergyById(energyId: number): Observable<EnergyDTO> {
     return this.http
       .get<EnergyDTO>(`${this.urlAPiMySql}energyGetById.php?energyId=${energyId}`)
@@ -44,7 +43,7 @@ export class EnergyService {
 
   createEnergy(energy: EnergyDTO): Observable<EnergyDTO> {
     return this.http
-      .post<EnergyDTO>(this.urlAPiMySql, energy );
+      .post<EnergyDTO>(`${this.urlAPiMySql}energyCreate.php`, energy );
   }
 
   updateEnergy(energyId: number, Energy: EnergyDTO): Observable<EnergyDTO> {

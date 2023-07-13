@@ -1,12 +1,4 @@
-<!-- <div class="content-header">
-  <mat-button-toggle-group name="toggleView" aria-label="Toggles card/table" value="list">
-    <mat-button-toggle value="list" (click)="gridViewType(false)" matTooltip="Table view style"><span class="material-icons">list</span></mat-button-toggle>
-    <mat-button-toggle value="grid_view" (click)="gridViewType(true)" matTooltip="Grid view style"><span class="material-icons">grid_view</span></mat-button-toggle>
-  </mat-button-toggle-group>
-</div> -->
-
 <h2>Your Company indicators List</h2>
-
 <div *ngIf="isGridView" class="grid-view">
   <mat-grid-list cols="1" rowHeight="2:1" *ngFor="let post of consumptions">
     <mat-card>
@@ -27,45 +19,41 @@
   </mat-grid-list>
 </div>
 
-<table *ngIf="!isGridView" mat-table [dataSource]="consumptions" class="mat-elevation-z8">
+<div  class="mat-elevation-z8">
+<mat-table *ngIf="!isGridView"  [dataSource]="consumptions">
   <ng-container matColumnDef="delegation">
-    <th mat-header-cell *matHeaderCellDef>Delegation</th>
-    <td mat-cell *matCellDef="let consumption">{{consumption.name}}</td>
+    <mat-header-cell *matHeaderCellDef>Delegation</mat-header-cell>
+    <mat-cell class="delegation" *matCellDef="let consumption">{{consumption.name}}</mat-cell>
   </ng-container>
-
   <ng-container matColumnDef="aspect">
-    <th mat-header-cell *matHeaderCellDef>Aspect</th>
-    <td mat-cell *matCellDef="let consumption">{{consumption.aspectES}}</td>
+    <mat-header-cell *matHeaderCellDef>Aspect</mat-header-cell>
+    <mat-cell class="aspect" *matCellDef="let consumption">{{consumption.aspectES}}</mat-cell>
   </ng-container>
-
   <ng-container matColumnDef="energy">
-    <th mat-header-cell *matHeaderCellDef>Energy</th>
-    <td mat-cell *matCellDef="let consumption">{{consumption.energyES}}</td>
+    <mat-header-cell *matHeaderCellDef>Energy</mat-header-cell>
+    <mat-cell class="energy" *matCellDef="let consumption">{{consumption.energyES}}</mat-cell>
   </ng-container>
-
   <ng-container matColumnDef="residue">
-    <th mat-header-cell *matHeaderCellDef>Residue</th>
-    <td mat-cell *matCellDef="let consumption">{{consumption.residueES}}</td>
+    <mat-header-cell *matHeaderCellDef>Residue</mat-header-cell>
+    <mat-cell class="residue" *matCellDef="let consumption">{{consumption.residueES}}</mat-cell>
   </ng-container>
-
   <ng-container matColumnDef="quantity">
-    <th mat-header-cell *matHeaderCellDef>Quantity</th>
-    <td mat-cell *matCellDef="let consumption">{{consumption.quantity}}</td>
+    <mat-header-cell *matHeaderCellDef>Quantity</mat-header-cell>
+    <mat-cell class="quantity" *matCellDef="let consumption">{{consumption.quantity}}</mat-cell>
   </ng-container>
   <ng-container matColumnDef="fromDate">
-    <th mat-header-cell *matHeaderCellDef>from Date</th>
-    <td mat-cell *matCellDef="let consumption" matTooltip={{consumption.fromDate}}>{{consumption.fromDate}}</td>
+    <mat-header-cell *matHeaderCellDef>from Date</mat-header-cell>
+    <mat-cell class="fromDate" *matCellDef="let consumption" matTooltip={{consumption.fromDate}}>{{consumption.fromDate}}</mat-cell>
   </ng-container>
   <ng-container matColumnDef="toDate">
-    <th mat-header-cell *matHeaderCellDef>to Date</th>
-    <td mat-cell *matCellDef="let consumption" matTooltip={{consumption.toDate}}>{{consumption.toDate}}</td>
+    <mat-header-cell *matHeaderCellDef>to Date</mat-header-cell>
+    <mat-cell class="toDate" *matCellDef="let consumption" matTooltip={{consumption.toDate}}>{{consumption.toDate}}</mat-cell>
   </ng-container>
-
   <ng-container matColumnDef="ACTIONS">
-    <th mat-header-cell *matHeaderCellDef> ACTIONS <button mat-mini-fab color="primary" matTooltip="Add an indicator" aria-label="Add indicator" (click)="createPost()">
+    <mat-header-cell *matHeaderCellDef> ACTIONS <button mat-mini-fab color="primary" matTooltip="Add an indicator" aria-label="Add indicator" (click)="createPost()">
       <mat-icon>add</mat-icon>
-    </button></th>
-    <td mat-cell *matCellDef="let consumption">
+    </button></mat-header-cell>
+    <mat-cell *matCellDef="let consumption">
       <button mat-icon-button color="accent" matTooltip="Update this indicator"
       aria-label="Button that displays a tooltip and updates this indicator" (click)="updatePost(consumption.consumptionId)">
         <mat-icon>edit</mat-icon>
@@ -74,11 +62,17 @@
       aria-label="Button that displays a tooltip and permanently deletes this indicator" (click)="deletePost(consumption.consumptionId)">
         <mat-icon>delete</mat-icon>
       </button>
-    </td>
+    </mat-cell>
   </ng-container>
 
-  <tr mat-header-row *matHeaderRowDef="columnsDisplayed"></tr>
-  <tr mat-row *matRowDef="let item; columns: columnsDisplayed;" class="animate__animated animate__fadeInLeft"></tr>
-</table>
+  <mat-header-row *matHeaderRowDef="columnsDisplayed"></mat-header-row>
+  <mat-row *matRowDef="let item; columns: columnsDisplayed;" class="animate__animated animate__fadeInLeft"></mat-row>
+</mat-table>
+
+<mat-paginator [pageSizeOptions]="[5, 10, 20]"
+  showFirstLastButtons
+  aria-label="Select page of indicators elements">
+</mat-paginator>
+</div>
 
 <div class="loader" *ngIf="!consumptions">No records found yet...</div>

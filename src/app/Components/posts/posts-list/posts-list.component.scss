@@ -1,0 +1,37 @@
+@use '../../../../base';
+
+@media only screen and (max-width: base.$app-break-point) {
+    
+    .delegation::before, .aspect::before, .energy::before, .residue::before, .quantity::before, .fromDate::before, .toDate::before {
+        font-weight: bolder;
+        padding-right: .5rem;
+    }
+
+    .delegation::before {
+        content: "Delegation:";
+    } 
+
+    .aspect::before {
+        content: "Aspect:";   
+    }
+
+    .energy::before {
+        content: "Energy:"; 
+    }
+
+    .residue::before {
+        content: "Residue:"; 
+    }
+
+    .quantity::before {
+        content: "Quantity:"; 
+    }
+
+    .fromDate::before {
+        content: "From date:"; 
+    }
+
+    .toDate::before {
+        content: "To date:"; 
+    }
+}

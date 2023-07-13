@@ -47,14 +47,12 @@ export class AspectService {
 
   updateAspect(aspectId: string, aspect: AspectDTO): Observable<AspectDTO> {
     return this.http
-      .put<AspectDTO>(`${this.urlAPiMySql}aspectUpdate.php?aspectId=${aspectId}`, aspect)
-      ;
+      .put<AspectDTO>(`${this.urlAPiMySql}aspectUpdate.php?aspectId=${aspectId}`, aspect);
   }
 
   deleteAspect(aspectId: number): Observable<deleteResponse> {
     return this.http
-      .delete<deleteResponse>(`${this.urlAPiMySql}aspectDelete.php?aspectId=${aspectId}`)
-      ;
+      .delete<deleteResponse>(`${this.urlAPiMySql}aspectDelete.php?aspectId=${aspectId}`);
   }
 
   errorLog(error: HttpErrorResponse): void {

@@ -3,11 +3,11 @@
 </div>
 
 <div class="container-form" [@fadeInOut] >  
-    <h2>Add energy</h2>
+    <h2>Add residue</h2>
     <form
-      *ngIf="energyForm"
-      [formGroup]="energyForm"
-      (ngSubmit)="saveEnergy()">
+      *ngIf="residueForm"
+      [formGroup]="residueForm"
+      (ngSubmit)="saveResidue()">
   
       <mat-card [class.mat-elevation-z8]="isElevated">
 
@@ -31,27 +31,7 @@
               </mat-form-field>
         </section>
 
-        <section>
-            <mat-form-field [style.width.px]=327>
-                <mat-label>Unit</mat-label>
-                <input matInput type="text" [formControl]="unit" />
-                <mat-error *ngIf="unit.hasError('required')">unit <strong>is required</strong></mat-error>
-                <mat-error *ngIf="unit.hasError('minlength')">unit must be greater than 1 characters</mat-error>
-                <mat-error *ngIf="unit.hasError('maxlength')">unit must be less than 25 characters</mat-error>
-              </mat-form-field>
-        </section>
-
-        <section>
-            <mat-form-field [style.width.px]=327>
-                <mat-label>PCI</mat-label>
-                <input matInput type="text" [formControl]="pci" />
-                <mat-error *ngIf="pci.hasError('required')">pci <strong>is required</strong></mat-error>
-                <mat-error *ngIf="pci.hasError('minlength')">pci must be greater than 1 characters</mat-error>
-                <mat-error *ngIf="pci.hasError('maxlength')">pci must be less than 25 characters</mat-error>
-              </mat-form-field>
-        </section>
-
-        <button mat-raised-button color="primary" type="submit" [disabled]="!energyForm.valid">ADD</button>  
+        <button mat-raised-button color="primary" type="submit" [disabled]="!residueForm.valid">ADD</button>  
       </mat-card>
     </form>
   </div>

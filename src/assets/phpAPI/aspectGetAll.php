@@ -6,12 +6,12 @@ require_once 'conectar_a_bbdd_pindust.php';
 
 mysqli_query($conn, "SET NAMES 'utf8'");
 $companyId = $_GET['companyId'];
-$sql = "SELECT * FROM ils_aspect Order by name";
+$sql = "SELECT * FROM ils_aspect Order by nameES";
 
 $result = mysqli_query($conn, $sql);
 
-while($consumptions = mysqli_fetch_array($result, MYSQLI_ASSOC)){
-    $vec[] = $consumptions;
+while($aspects = mysqli_fetch_array($result, MYSQLI_ASSOC)){
+    $vec[] = $aspects;
 }
 
 $cad = json_encode($vec);

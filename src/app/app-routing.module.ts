@@ -19,6 +19,7 @@ import { ResidueListComponent } from './Components/residues/residue-list/residue
 import { AspectFormComponent } from './Components/aspects/aspect-form/aspect-form.component';
 import { EnergyFormComponent } from './Components/energies/energy-form/energy-form.component';
 import { ResidueFormComponent } from './Components/posts/residue-form/residue-form.component';
+import { ResidueAdminFormComponent } from './Components/residues/residue-admin-form/residue-admin-form.component';
 
 const routes: Routes = [
   {
@@ -98,7 +99,7 @@ const routes: Routes = [
   },
   {
     path: 'createResidue',
-    component: ResidueFormComponent,
+    component: ResidueAdminFormComponent,
     canActivate: [AuthGuard],
   },
   {

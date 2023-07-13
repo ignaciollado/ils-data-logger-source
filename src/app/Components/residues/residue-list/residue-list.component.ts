@@ -1,12 +1,11 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { AfterViewInit, Component, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { ResidueDTO } from 'src/app/Models/residue.dto';
 import { HeaderMenusService } from 'src/app/Services/header-menus.service';
 import { LocalStorageService } from 'src/app/Services/local-storage.service';
 
 import { ResidueService } from 'src/app/Services/residue.service';
-import { EnergyService } from 'src/app/Services/energy.service';
 import { SharedService } from 'src/app/Services/shared.service';
 
 @Component({
@@ -34,11 +33,7 @@ export class ResidueListComponent {
     this.showButtons = false;
     this.access_token = this.localStorageService.get('access_token')
 
-    /* if(this.access_token) { */
-      this.loadResidues();
-   /*  } else {
-      this.router.navigateByUrl('/login');
-    } */
+    this.loadResidues();
   }
 
   private loadResidues(): void {

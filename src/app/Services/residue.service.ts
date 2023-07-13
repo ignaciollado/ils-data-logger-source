@@ -44,7 +44,7 @@ export class ResidueService {
 
   createResidue(residue: ResidueDTO): Observable<ResidueDTO> {
     return this.http
-      .post<ResidueDTO>(this.urlAPiMySql, residue );
+      .post<ResidueDTO>(`${this.urlAPiMySql}residueCreate.php`, residue );
   }
 
   updateResidue(residueId: string, residue: ResidueDTO): Observable<ResidueDTO> {

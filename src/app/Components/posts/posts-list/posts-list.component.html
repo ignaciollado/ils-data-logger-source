@@ -1,31 +1,6 @@
-<h2>Your Company indicators List</h2>
-<div *ngIf="isGridView" class="grid-view">
-  <mat-grid-list cols="1" rowHeight="2:1" *ngFor="let post of consumptions">
-    <mat-card>
-      <mat-card-header>
-        <img mat-card-image src={{post.consumptionId}} matTooltip={{post.consumptionId}} alt={{post.consumptionId}} class="thumbnail">
-      </mat-card-header>
-      <mat-card-content>
-        <mat-card-title>{{post.energyES}}</mat-card-title>
-        <mat-card-actions>
-          <a [routerLink]="['/item',post.consumptionId]" matTooltip="Get more info" class="list-group-item">
-
-            +INFO
-
-          </a>
-        </mat-card-actions>
-      </mat-card-content>
-    </mat-card>
-  </mat-grid-list>
-</div>
+<h2>Your Company activity data:</h2>
 
 <div  class="mat-elevation-z8">
-  <button mat-raised-button (click)="addColumn()"> Add column </button>
-  <button mat-raised-button (click)="removeColumn()"> Remove column </button>
-  <mat-form-field>
-    <mat-label>Filter aspect:</mat-label>
-    <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Agua" #input>
-  </mat-form-field>
 <mat-table *ngIf="!isGridView" [dataSource]="consumptions">
   <ng-container matColumnDef="delegation">
     <mat-header-cell *matHeaderCellDef>Delegation</mat-header-cell>
@@ -74,6 +49,44 @@
   <mat-header-row *matHeaderRowDef="columnsDisplayed"></mat-header-row>
   <mat-row *matRowDef="let item; columns: columnsDisplayed;" class="animate__animated animate__fadeInLeft"></mat-row>
 </mat-table>
+
+<div *ngIf="isGridView" >
+  <button mat-mini-fab color="primary" matTooltip="Add an residue" aria-label="Add residue" (click)="createPost()">
+    <mat-icon>add</mat-icon>
+  </button>
+  <div *ngFor="let consumption of consumptions" class="card">
+    <h3>Aspect: <strong>{{ consumption.aspectES }}</strong></h3>
+    <h4 *ngIf="consumption.aspectId == 1">Energy type: <strong>{{ consumption.energyES }}</strong></h4>
+    <h4 *ngIf="consumption.aspectId == 3">Residue type: <strong>{{ consumption.residueES }}</strong></h4>
+
+    <p>Quantity: {{ consumption.quantity }} </p>
+    <p *ngIf="consumption.aspectId == 3">Reuse: <strong>{{ consumption.reuse }}</strong> %</p>
+    <p *ngIf="consumption.aspectId == 3">Recycling: <strong>{{ consumption.recycling }}</strong> %</p>
+    <p *ngIf="consumption.aspectId == 3">Incineration: <strong>{{ consumption.incineration }}</strong> %</p>
+    <p *ngIf="consumption.aspectId == 3">Dump: <strong>{{ consumption.dump }}</strong> %</p>
+    <p *ngIf="consumption.aspectId == 3">Compost: <strong>{{ consumption.compost }}</strong> %</p>
+
+
+    <p>From date: {{ consumption.fromDate| formatDate: 3 }}</p>
+    <p>To date: {{ consumption.toDate| formatDate: 3 }}</p>
+    <div *ngIf="showButtons">
+      <p>CompanyId: {{ consumption.companyId }}</p>
+    </div>
+
+    <p>Added when: {{ consumption.createAt }}</p>
+    <div *ngIf="showButtons">
+<!--         <button mat-icon-button color="accent" matTooltip="Update this residue"
+      aria-label="Button that displays a tooltip and updates this residue" (click)="updateResidue(+residue.residueId)">
+        <mat-icon>edit</mat-icon>
+      </button> -->
+      <button mat-icon-button color="warn" matTooltip="Permanently delete this activity"
+      aria-label="Permanently deletes this residue" (click)="deletePost(consumption.consumptionId)">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </div>
+  </div>
+<!-- </div> -->
+</div>
 
 
 

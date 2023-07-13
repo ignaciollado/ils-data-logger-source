@@ -27,7 +27,7 @@
   <mat-menu #menu="matMenu">
     <button mat-menu-item (click)="dashboard()"><mat-icon>dashboard</mat-icon><span>ILS Graphboard</span></button>
     <button mat-menu-item (click)="home()"><mat-icon>home</mat-icon><span>Home</span></button>
-    <button mat-menu-item (click)="adminConsumptions()">Indicators</button>
+    <button mat-menu-item (click)="adminConsumptions()">Activity data</button>
     <button mat-menu-item (click)="adminAspects()">Aspects</button>
     <button mat-menu-item (click)="adminEnergies()">Energies</button>
     <button mat-menu-item (click)="adminResidues()">Residues</button>
@@ -43,7 +43,7 @@
     <span [ngClass]="'not-has-to-be-shown'">ILS-data logger</span>
     <button mat-button (click)="dashboard()" [ngClass]="'has-to-be-shown'">ILS Graphboard</button>
     <button mat-button (click)="home()" [ngClass]="'has-to-be-shown'">Home</button>
-    <button mat-button (click)="adminConsumptions()" [ngClass]="'has-to-be-shown'">Indicators</button>
+    <button mat-button (click)="adminConsumptions()" [ngClass]="'has-to-be-shown'">Activity data</button>
     <button mat-button (click)="adminAspects()" [ngClass]="'has-to-be-shown'">Aspects</button>
     <button mat-button (click)="adminEnergies()" [ngClass]="'has-to-be-shown'">Energies</button>
     <button mat-button (click)="adminResidues()" [ngClass]="'has-to-be-shown'">Residues</button>

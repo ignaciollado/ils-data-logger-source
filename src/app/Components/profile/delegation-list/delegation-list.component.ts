@@ -35,7 +35,6 @@ export class DelegationListComponent {
 
         this.delegationService.getAllDelegationsByCompanyIdFromMySQL(companyId).subscribe(
         (delegations: DelegationDTO[]) => {
-          console.log ( delegations )
           this.delegations = delegations
         },
         (error: HttpErrorResponse) => {

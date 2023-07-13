@@ -196,7 +196,6 @@ export class EmissionFormComponent {
 
     this.isValidForm = true;
     this.consumption = this.emissionForm.value;
-    console.log (this.consumption)
 
     if (this.isUpdateMode) {
       this.editPost();

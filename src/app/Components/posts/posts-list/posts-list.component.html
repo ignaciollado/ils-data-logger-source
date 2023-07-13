@@ -20,34 +20,40 @@
 </div>
 
 <div  class="mat-elevation-z8">
-<mat-table *ngIf="!isGridView"  [dataSource]="consumptions">
+  <button mat-raised-button (click)="addColumn()"> Add column </button>
+  <button mat-raised-button (click)="removeColumn()"> Remove column </button>
+  <mat-form-field>
+    <mat-label>Filter aspect:</mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Agua" #input>
+  </mat-form-field>
+<mat-table *ngIf="!isGridView" [dataSource]="consumptions">
   <ng-container matColumnDef="delegation">
     <mat-header-cell *matHeaderCellDef>Delegation</mat-header-cell>
-    <mat-cell class="delegation" *matCellDef="let consumption">{{consumption.name}}</mat-cell>
+    <mat-cell *matCellDef="let consumption">{{consumption.name}}</mat-cell>
   </ng-container>
   <ng-container matColumnDef="aspect">
     <mat-header-cell *matHeaderCellDef>Aspect</mat-header-cell>
-    <mat-cell class="aspect" *matCellDef="let consumption">{{consumption.aspectES}}</mat-cell>
+    <mat-cell *matCellDef="let consumption">{{consumption.aspectES}}</mat-cell>
   </ng-container>
   <ng-container matColumnDef="energy">
     <mat-header-cell *matHeaderCellDef>Energy</mat-header-cell>
-    <mat-cell class="energy" *matCellDef="let consumption">{{consumption.energyES}}</mat-cell>
+    <mat-cell *matCellDef="let consumption">{{consumption.energyES}}</mat-cell>
   </ng-container>
   <ng-container matColumnDef="residue">
     <mat-header-cell *matHeaderCellDef>Residue</mat-header-cell>
-    <mat-cell class="residue" *matCellDef="let consumption">{{consumption.residueES}}</mat-cell>
+    <mat-cell *matCellDef="let consumption">{{consumption.residueES}}</mat-cell>
   </ng-container>
   <ng-container matColumnDef="quantity">
     <mat-header-cell *matHeaderCellDef>Quantity</mat-header-cell>
-    <mat-cell class="quantity" *matCellDef="let consumption">{{consumption.quantity}}</mat-cell>
+    <mat-cell *matCellDef="let consumption">{{consumption.quantity}}</mat-cell>
   </ng-container>
   <ng-container matColumnDef="fromDate">
     <mat-header-cell *matHeaderCellDef>from Date</mat-header-cell>
-    <mat-cell class="fromDate" *matCellDef="let consumption" matTooltip={{consumption.fromDate}}>{{consumption.fromDate}}</mat-cell>
+    <mat-cell *matCellDef="let consumption" matTooltip={{consumption.fromDate}}>{{consumption.fromDate}}</mat-cell>
   </ng-container>
   <ng-container matColumnDef="toDate">
     <mat-header-cell *matHeaderCellDef>to Date</mat-header-cell>
-    <mat-cell class="toDate" *matCellDef="let consumption" matTooltip={{consumption.toDate}}>{{consumption.toDate}}</mat-cell>
+    <mat-cell *matCellDef="let consumption" matTooltip={{consumption.toDate}}>{{consumption.toDate}}</mat-cell>
   </ng-container>
   <ng-container matColumnDef="ACTIONS">
     <mat-header-cell *matHeaderCellDef> ACTIONS <button mat-mini-fab color="primary" matTooltip="Add an indicator" aria-label="Add indicator" (click)="createPost()">
@@ -55,11 +61,11 @@
     </button></mat-header-cell>
     <mat-cell *matCellDef="let consumption">
       <button mat-icon-button color="accent" matTooltip="Update this indicator"
-      aria-label="Button that displays a tooltip and updates this indicator" (click)="updatePost(consumption.consumptionId)">
+      aria-label="Updates this indicator" (click)="updatePost(consumption.consumptionId)">
         <mat-icon>edit</mat-icon>
       </button>
       <button mat-icon-button color="warn" matTooltip="Permanently delete this indicator"
-      aria-label="Button that displays a tooltip and permanently deletes this indicator" (click)="deletePost(consumption.consumptionId)">
+      aria-label="Permanently deletes this indicator" (click)="deletePost(consumption.consumptionId)">
         <mat-icon>delete</mat-icon>
       </button>
     </mat-cell>
@@ -69,7 +75,9 @@
   <mat-row *matRowDef="let item; columns: columnsDisplayed;" class="animate__animated animate__fadeInLeft"></mat-row>
 </mat-table>
 
-<mat-paginator [pageSizeOptions]="[5, 10, 20]"
+
+
+<mat-paginator #paginator [pageSizeOptions]="[5, 10, 20]"
   showFirstLastButtons
   aria-label="Select page of indicators elements">
 </mat-paginator>

@@ -1,14 +1,14 @@
 <h2>Residue list:</h2>
-<div class="mat-elevation-z8">
+<div class="mat-elevation-z8" >
   <mat-table *ngIf="!isGridView" [dataSource]="residues" class="mat-elevation-z8">
     <ng-container matColumnDef="nameES">
-      <mat-header-cell class="a" *matHeaderCellDef>Denominación</mat-header-cell>
-      <mat-cell *matCellDef="let residue">{{residue.nameES}}</mat-cell>
+      <mat-header-cell *matHeaderCellDef>Denominación</mat-header-cell>
+      <mat-cell class="denominacion" *matCellDef="let residue">{{residue.nameES}}</mat-cell>
     </ng-container>
   
     <ng-container matColumnDef="nameCA">
-      <mat-header-cell class="b" *matHeaderCellDef>Denominació</mat-header-cell>
-      <mat-cell *matCellDef="let residue">{{residue.nameCA}}</mat-cell>
+      <mat-header-cell *matHeaderCellDef>Denominació</mat-header-cell>
+      <mat-cell class="denominacio" *matCellDef="let residue">{{residue.nameCA}}</mat-cell>
     </ng-container>
   
     <ng-container matColumnDef="ACTIONS">
@@ -28,9 +28,34 @@
     <mat-header-row *matHeaderRowDef="columnsDisplayed"></mat-header-row>
     <mat-row *matRowDef="let item; columns: columnsDisplayed;" class="animate__animated animate__fadeInLeft"></mat-row>
   </mat-table>
+
+<div *ngIf="isGridView" >
+    <button mat-mini-fab color="primary" matTooltip="Add an residue" aria-label="Add residue" (click)="createResidue()">
+      <mat-icon>add</mat-icon>
+    </button>
+    <div *ngFor="let residue of residues" class="card">
+      <h3>Denominación: <strong>{{ residue.nameES }}</strong></h3>
+      <h3>Denominació: <strong>{{ residue.nameCA }}</strong></h3>
+
+      <div *ngIf="showButtons">
+<!--         <button mat-icon-button color="accent" matTooltip="Update this residue"
+        aria-label="Button that displays a tooltip and updates this residue" (click)="updateResidue(+residue.residueId)">
+          <mat-icon>edit</mat-icon>
+        </button> -->
+        <button mat-icon-button color="warn" matTooltip="Permanently delete this residue"
+        aria-label="Permanently deletes this residue" (click)="deleteResidue(+residue.residueId)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </div>
+    </div>
+  <!-- </div> -->
+</div>
+  
   <mat-paginator [pageSizeOptions]="[5, 10, 20]"
                  showFirstLastButtons
-                 aria-label="Select page of periodic elements">
+                 aria-label="Select page of residue items">
   </mat-paginator>
+
 </div>  
-  <div class="loader" *ngIf="!residues">No records found yet...</div>
+
+<div class="loader" *ngIf="!residues">No records found yet...</div>

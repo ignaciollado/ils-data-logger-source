@@ -1,3 +1,22 @@
+@use '../../../../base';
+
+@media only screen and (max-width: base.$app-break-point) {
+    
+    .denominacion::before, .denominacio::before {
+        font-weight: bolder;
+        padding-right: .5rem;
+    }
+
+    .denominacion::before {
+        content: "Denominación:";
+    } 
+
+    .denominacio::before {
+        content: "Denominació:";   
+    }
+
+}
+
 .oneline-container mat-form-field + mat-form-field {
     margin-left: 8px;
   }

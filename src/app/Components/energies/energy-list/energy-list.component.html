@@ -1,44 +1,73 @@
 <h2>Energies list:</h2>
+
+<div class="mat-elevation-z8">
 <mat-table *ngIf="!isGridView" [dataSource]="energies" class="mat-elevation-z8">
   <ng-container matColumnDef="nameES">
-    <th mat-header-cell *matHeaderCellDef>Denominación</th>
-    <td mat-cell *matCellDef="let energy">{{energy.nameES}}</td>
+    <mat-header-cell *matHeaderCellDef>Denominación</mat-header-cell>
+    <mat-cell class="denominacion" *matCellDef="let energy">{{energy.nameES}}</mat-cell>
   </ng-container>
 
   <ng-container matColumnDef="nameCA">
-    <th mat-header-cell *matHeaderCellDef>Denominació</th>
-    <td mat-cell *matCellDef="let energy">{{energy.nameCA}}</td>
+    <mat-header-cell *matHeaderCellDef>Denominació</mat-header-cell>
+    <mat-cell class="denominacio" *matCellDef="let energy">{{energy.nameCA}}</mat-cell>
   </ng-container>
 
   <ng-container matColumnDef="unit">
-    <th mat-header-cell *matHeaderCellDef>Unit</th>
-    <td mat-cell *matCellDef="let energy">{{energy.unit}}</td>
+    <mat-header-cell *matHeaderCellDef>Unit</mat-header-cell>
+    <mat-cell class="unit" *matCellDef="let energy">{{energy.unit}}</mat-cell>
   </ng-container>
 
   <ng-container matColumnDef="pci">
-    <th mat-header-cell *matHeaderCellDef>PCI</th>
-    <td mat-cell *matCellDef="let energy">{{energy.pci}}</td>
+    <mat-header-cell *matHeaderCellDef>PCI</mat-header-cell>
+    <mat-cell class="pci" *matCellDef="let energy">{{energy.pci}}</mat-cell>
   </ng-container>
 
 
   <ng-container matColumnDef="ACTIONS">
-    <th mat-header-cell *matHeaderCellDef> ACTIONS <button mat-mini-fab color="primary" matTooltip="Add an energy" aria-label="Add energy" (click)="createEnergy()">
+    <mat-header-cell *matHeaderCellDef> ACTIONS <button mat-mini-fab color="primary" matTooltip="Add an energy" aria-label="Add energy" (click)="createEnergy()">
       <mat-icon>add</mat-icon>
-    </button></th>
-    <td mat-cell *matCellDef="let energy">
+    </button></mat-header-cell>
+    <mat-cell *matCellDef="let energy">
       <button mat-icon-button color="accent" matTooltip="Update this energy"
-      aria-label="Button that displays a tooltip and updates this energy" (click)="updateEnergy(energy.energyId)">
+      aria-label="Update this energy" (click)="updateEnergy(energy.energyId)">
         <mat-icon>edit</mat-icon>
       </button>
       <button mat-icon-button color="warn" matTooltip="Permanently delete this energy"
-      aria-label="Button that displays a tooltip and permanently deletes this energy" (click)="deleteEnergy(energy.energyId)">
+      aria-label="Permanently deletes this energy" (click)="deleteEnergy(energy.energyId)">
         <mat-icon>delete</mat-icon>
       </button>
-    </td>
+    </mat-cell>
   </ng-container>
 
-  <tr mat-header-row *matHeaderRowDef="columnsDisplayed"></tr>
-  <tr mat-row *matRowDef="let item; columns: columnsDisplayed;" class="animate__animated animate__fadeInLeft"></tr>
+  <mat-header-row *matHeaderRowDef="columnsDisplayed"></mat-header-row>
+  <mat-row *matRowDef="let item; columns: columnsDisplayed;" class="animate__animated animate__fadeInLeft"></mat-row>
 </mat-table>
+
+<div *ngIf="isGridView" >
+  <button mat-mini-fab color="primary" matTooltip="Add new energy" aria-label="Add new energy" (click)="createEnergy()">
+    <mat-icon>add</mat-icon>
+  </button>
+  <div *ngFor="let energy of energies" class="card">
+    <h3>Denominación: <strong>{{ energy.nameES }}</strong></h3>
+    <h3>Denominació: <strong>{{ energy.nameCA }}</strong></h3>
+    <h3>Unit: <strong>{{ energy.unit }}</strong></h3>
+    <h3>PCI: <strong>{{ energy.pci }}</strong></h3>
+    <div *ngIf="showButtons">
+<!--         <button mat-icon-button color="accent" matTooltip="Update this residue"
+      aria-label="Button that displays a tooltip and updates this residue" (click)="updateResidue(+residue.residueId)">
+        <mat-icon>edit</mat-icon>
+      </button> -->
+      <button mat-icon-button color="warn" matTooltip="Permanently delete this residue"
+      aria-label="Permanently deletes this residue" (click)="deleteEnergy(+energy.energyId)">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </div>
+  </div>
+<!-- </div> -->
+</div>
+
+<mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons aria-label="Select page of energy items">
+</mat-paginator>
+</div>
 
 <div class="loader" *ngIf="!energies">No records found yet...</div>

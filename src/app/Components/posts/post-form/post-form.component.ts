@@ -186,7 +186,6 @@ export class PostFormComponent implements OnInit {
         this.consumptionService.getAllConsumptionsByUserIdFromMySQL(userId, 1).subscribe(
         (consumptions: ConsumptionDTO[]) => {
           this.consumptions = consumptions
-          console.log (this.consumption)
         },
         (error: HttpErrorResponse) => {
           errorResponse = error.error;

@@ -41,7 +41,6 @@ export class CategoriesListComponent {
       /* this.categoryService.getCategoriesByUserId(userId).subscribe( */
       this.energyService.getAllEnergies().subscribe(
         (fuels: EnergyDTO[]) => {
-          console.log (fuels)
           this.energies = fuels;
         },
         (error: HttpErrorResponse) => {

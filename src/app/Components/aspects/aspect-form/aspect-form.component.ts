@@ -99,8 +99,6 @@ export class AspectFormComponent implements OnInit {
 
     this.isValidForm = true;
     this.aspect = this.aspectForm.value;
-
-console.log (this.aspect)
     this.aspectService
     .createAspect(this.aspect)
       .pipe(

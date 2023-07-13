@@ -201,7 +201,6 @@ export class WaterFormComponent {
 
     this.isValidForm = true;
     this.consumption = this.waterForm.value;
-    console.log (this.consumption)
 
     if (this.isUpdateMode) {
       this.editPost();

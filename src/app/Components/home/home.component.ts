@@ -96,7 +96,6 @@ export class HomeComponent {
   }
 
   deletePost(postId: string): void {
-    alert (postId)
     let errorResponse: any;
 
     // show confirmation popup

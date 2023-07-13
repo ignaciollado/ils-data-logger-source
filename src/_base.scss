@@ -19,33 +19,17 @@ $app-break-point: 768px;
     border-color: currentColor;
   }
 
- @media only screen and (max-width: $app-break-point) {
-    mat-header-cell{
-        display: none;
-    }
-
-    mat-table {
-        display: flex;
-        flex-direction: column;
-        border: #365446 1px solid;
-    }
-
-    mat-row {
-        display: grid;
-        border: 1px solid rgb(58, 150, 226);
-        gap: 1rem;
-    }
-
-    mat-cell:first-of-type, mat-header-cell:first-of-type, mat-footer-cell:first-of-type {
-        padding-left: 17px;
-      }
-
-    .mat-mdc-row .mat-mdc-cell {
-        border-bottom: 1px none transparent;
-        border-top: 1px none transparent;
-      }
-      
-    .mat-mdc-row:hover .mat-mdc-cell {
-        border-color: currentColor;
-      }  
-}
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+    border-radius: 10px;
+    padding: 1rem;
+  }
+  
+.card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+  }  

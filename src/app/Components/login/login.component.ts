@@ -130,7 +130,7 @@ export class LoginComponent implements OnInit {
     try {
 
       const authToken = await this.authService.loginp(this.loginUser);
-      console.log ("Welcome to the ILS datalogger.industrialocalsostenible.com!!")
+      console.log ("Welcome to the ILS datalogger.industrialocalsostenible.com created by IDI!!")
       responseOK = true;
       this.loginUser.user_id = authToken.user_id;
       this.loginUser.access_token = authToken.access_token;

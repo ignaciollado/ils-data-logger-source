@@ -104,7 +104,6 @@ export class DelegationFormComponent implements OnInit {
     this.isValidForm = true;
     this.delegation = this.delegationForm.value;
     this.delegation.companyId = this.companyId;
-console.log (this.delegation)
     this.delegationService
     .createDelegation(this.delegation)
       .pipe(

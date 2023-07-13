@@ -1,33 +1,60 @@
 <h2>Aspects list:</h2>
-<table *ngIf="!isGridView" mat-table [dataSource]="aspects" class="mat-elevation-z8">
-  <ng-container matColumnDef="nameES">
-    <th mat-header-cell *matHeaderCellDef>Denominación</th>
-    <td mat-cell *matCellDef="let aspect">{{aspect.nameES}}</td>
-  </ng-container>
 
-  <ng-container matColumnDef="nameCA">
-    <th mat-header-cell *matHeaderCellDef>Denominació</th>
-    <td mat-cell *matCellDef="let aspect">{{aspect.nameCA}}</td>
-  </ng-container>
+<div class="mat-elevation-z8">
+  <mat-table *ngIf="!isGridView" [dataSource]="aspects" class="mat-elevation-z8">
+    <ng-container matColumnDef="nameES">
+      <mat-header-cell  *matHeaderCellDef>Denominación</mat-header-cell>
+      <mat-cell class="denominacion" *matCellDef="let aspect">{{aspect.nameES}}</mat-cell>
+    </ng-container>
 
-  <ng-container matColumnDef="ACTIONS">
-    <th mat-header-cell *matHeaderCellDef> ACTIONS <button mat-mini-fab color="primary" matTooltip="Add an aspect" aria-label="Add aspect" (click)="createAspect()">
-      <mat-icon>add</mat-icon>
-    </button></th>
-    <td mat-cell *matCellDef="let aspect">
-      <button mat-icon-button color="accent" matTooltip="Update this aspect"
-      aria-label="Button that displays a tooltip and updates this aspect" (click)="updateAspect(aspect.aspectId)">
-        <mat-icon>edit</mat-icon>
+    <ng-container matColumnDef="nameCA">
+      <mat-header-cell *matHeaderCellDef>Denominació</mat-header-cell>
+      <mat-cell mat-cell class="denominacio" *matCellDef="let aspect">{{aspect.nameCA}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="ACTIONS">
+      <mat-header-cell *matHeaderCellDef> ACTIONS <button mat-mini-fab color="primary" matTooltip="Add an aspect" aria-label="Add aspect" (click)="createAspect()">
+        <mat-icon>add</mat-icon>
+      </button></mat-header-cell>
+      <mat-cell mat-cell *matCellDef="let aspect">
+        <button mat-icon-button color="accent" matTooltip="Update this aspect"
+        aria-label="Updates this aspect" (click)="updateAspect(aspect.aspectId)">
+          <mat-icon>edit</mat-icon>
       </button>
       <button mat-icon-button color="warn" matTooltip="Permanently delete this aspect"
-      aria-label="Button that displays a tooltip and permanently deletes this aspect" (click)="deleteAspect(aspect.aspectId)">
+      aria-label="Permanently deletes this aspect" (click)="deleteAspect(aspect.aspectId)">
         <mat-icon>delete</mat-icon>
       </button>
-    </td>
-  </ng-container>
+      </mat-cell>
+    </ng-container>
 
-  <tr mat-header-row *matHeaderRowDef="columnsDisplayed"></tr>
-  <tr mat-row *matRowDef="let item; columns: columnsDisplayed;" class="animate__animated animate__fadeInLeft"></tr>
-</table>
+    <mat-header-row *matHeaderRowDef="columnsDisplayed"></mat-header-row>
+    <mat-row *matRowDef="let item; columns: columnsDisplayed;" class="animate__animated animate__fadeInLeft"></mat-row>
+  </mat-table>
+
+<div *ngIf="isGridView" >
+  <button mat-mini-fab color="primary" matTooltip="Add new aspect" aria-label="Add new aspect" (click)="createAspect()">
+    <mat-icon>add</mat-icon>
+  </button>
+  <div *ngFor="let aspect of aspects" class="card">
+    <h3>Denominación: <strong>{{ aspect.nameES }}</strong></h3>
+    <h3>Denominació: <strong>{{ aspect.nameCA }}</strong></h3>
+
+    <div *ngIf="showButtons">
+<!--         <button mat-icon-button color="accent" matTooltip="Update this residue"
+      aria-label="Button that displays a tooltip and updates this residue" (click)="updateResidue(+residue.residueId)">
+        <mat-icon>edit</mat-icon>
+      </button> -->
+      <button mat-icon-button color="warn" matTooltip="Permanently delete this aspect"
+      aria-label="Permanently deletes this aspect" (click)="deleteAspect(+aspect.aspectId)">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </div>
+  </div>
+</div>
+
+  <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons aria-label="Select page of aspect items">
+  </mat-paginator>
+</div>
 
 <div class="loader" *ngIf="!aspects">No records found yet...</div>

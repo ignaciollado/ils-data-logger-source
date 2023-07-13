@@ -241,7 +241,6 @@ export class ResidueFormComponent {
 
     this.isValidForm = true;
     this.consumption = this.residueForm.value;
-    console.log (this.consumption)
 
     if (this.isUpdateMode) {
       this.editPost();

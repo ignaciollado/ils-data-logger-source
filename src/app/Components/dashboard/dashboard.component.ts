@@ -25,12 +25,19 @@ export class DashboardComponent implements OnInit {
   chartPolar: any;
   chartScatter: any;
 
+  allBackgroundColors!: string[]
+  allBorderColors!: string[]
+
 
   constructor(
     private consumptionService: ConsumptionService,
     private localStorageService: LocalStorageService,
     private sharedService: SharedService
-  ) {}
+  ) {
+
+    this.allBackgroundColors = [ 'rgba(255, 99, 132, 0.2)', 'rgba(255, 159, 64, 0.2)', 'rgba(0, 205, 86, 0.2)', 'rgba(75, 192, 192, 0.2)', 'rgba(54, 162, 235, 0.2)' ]
+    this.allBorderColors = [ 'rgb(255, 99, 132)', 'rgb(255, 159, 64)', 'rgb(255, 205, 86)', 'rgb(75, 192, 192)', 'rgb(54, 162, 235)' ]
+  }
 
   ngOnInit(): void {
     this.loadconsumptions();
@@ -115,36 +122,44 @@ export class DashboardComponent implements OnInit {
     this.chart = new Chart("graphDashboard", {
       type: 'bar',
       data: {
-
-        labels: [
-          'Energy',
-          'Water',
-          'Residues',
-          'Materials',
-          'Emissions'
-        ],
+        labels: [ 'Total quantity' ],
         datasets: [
           {
-            label: "Total quantity reported",
-            data: [this.quantityEnergy, this.quantityWater, this.quantityResidues, this.quantityMaterials, this.quantityEmissions],
-            backgroundColor: [
-              'rgba(255, 99, 132, 0.2)',
-              'rgba(255, 159, 64, 0.2)',
-              'rgba(255, 205, 86, 0.2)',
-              'rgba(75, 192, 192, 0.2)',
-              'rgba(54, 162, 235, 0.2)',
-            ],
-            borderColor: [
-              'rgb(255, 99, 132)',
-              'rgb(255, 159, 64)',
-              'rgb(255, 205, 86)',
-              'rgb(75, 192, 192)',
-              'rgb(54, 162, 235)'
-            ],
+            label: "Energy",
+            data: [this.quantityEnergy],
+            backgroundColor: this.allBackgroundColors[0],
+            borderColor: this.allBorderColors[0],
             borderWidth: 1
-          }]
-
-
+          },
+          {
+            label: "Water",
+            data: [this.quantityWater],
+            backgroundColor: this.allBackgroundColors[1],
+            borderColor: this.allBorderColors[1],
+            borderWidth: 1
+          },
+          {
+            label: "Residues",
+            data: [this.quantityResidues],
+            backgroundColor: this.allBackgroundColors[2],
+            borderColor: this.allBorderColors[2],
+            borderWidth: 1
+          },
+          {
+            label: "Materials",
+            data: [ this.quantityMaterials],
+            backgroundColor: this.allBackgroundColors[3],
+            borderColor: this.allBorderColors[3],
+            borderWidth: 1
+          },
+          {
+            label: "Emissions",
+            data: [this.quantityEmissions],
+            backgroundColor: this.allBackgroundColors[4],
+            borderColor: this.allBorderColors[4],
+            borderWidth: 1
+          }          
+        ]
       },
       options: {
         responsive: true,
@@ -159,7 +174,6 @@ export class DashboardComponent implements OnInit {
           }
         }
       }
-
     });
   }
 
@@ -167,25 +181,15 @@ export class DashboardComponent implements OnInit {
     this.chartPie = new Chart("graphDashboardPie", {
       type: 'pie',
       data: {
-        labels: [
-          'Energy',
-          'Water',
-          'Residues',
-          'Materials',
-          'Emissions'
-        ],
+        labels: [ 'Energy', 'Water', 'Residues', 'Materials', 'Emissions' ],
         datasets: [
           {
             label: "Total quantity reported",
             data: [this.quantityEnergy, this.quantityWater, this.quantityResidues, this.quantityMaterials, this.quantityEmissions],
-            backgroundColor: [
-              '#68ecab',
-              'red',
-              '#00acee',
-              '#aa8837',
-              '#68acab'
-            ],
-            hoverOffset: 4
+            backgroundColor: this.allBackgroundColors,
+            borderColor: this.allBorderColors,
+            borderWidth: 1,
+            hoverOffset: 10
           }]
       },
       options: {
@@ -201,7 +205,6 @@ export class DashboardComponent implements OnInit {
           }
         }
       }
-
     });
   }
 
@@ -209,24 +212,13 @@ export class DashboardComponent implements OnInit {
     this.chartPolar = new Chart("graphDashboardPolar", {
       type: 'polarArea',
       data: {
-        labels: [
-          'Energy',
-          'Water',
-          'Residues',
-          'Materials',
-          'Emissions'
-        ],
+        labels: [ 'Energy', 'Water', 'Residues', 'Materials', 'Emissions' ],
         datasets: [
           {
             label: "Total quantity reported",
             data: [this.quantityEnergy, this.quantityWater, this.quantityResidues, this.quantityMaterials, this.quantityEmissions],
-            backgroundColor: [
-              '#68ecab',
-              'red',
-              '#00acee',
-              '#aa8837',
-              '#68acab'
-            ],
+            backgroundColor: this.allBackgroundColors,
+            borderColor: this.allBorderColors,
             hoverOffset: 4
           }]
       },
@@ -251,22 +243,18 @@ export class DashboardComponent implements OnInit {
     this.chartPolar = new Chart("graphDashboardScatter", {
       type: 'scatter',
       data: {
-        labels: [
-          'Energy',
-          'Water',
-          'Residues',
-          'Emissions'
-        ],
+        labels: [ 'Energy', 'Water', 'Residues', 'Materials', 'Emissions' ],
         datasets: [{
             type: 'bar',
             label: "Total quantity reported",
             data: [this.quantityEnergy, this.quantityWater, this.quantityResidues, this.quantityEmissions],
-            borderColor: 'rgb(255, 99, 132)',
-            backgroundColor: 'rgba(255, 99, 132, 0.2)'
+            backgroundColor: this.allBackgroundColors,
+            borderColor: this.allBorderColors,
+            borderWidth: 1
           }, {
             type: 'line',
             label: 'Line Dataset',
-            data: [50, 50, 50, 50],
+            data: [120000, 5000, 2000, 3000],
             fill: false,
             borderColor: 'rgb(54, 162, 235)'
           }]

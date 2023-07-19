@@ -6,17 +6,37 @@
       <section>
           <mat-form-field [style.width.px]=327>
             <mat-label>Company name</mat-label>
-            <input matInput type="text" [formControl]="name" />
+            <input matInput type="text" readonly [formControl]="name" />
             <mat-error *ngIf="name.hasError('minlength')" >Name must be at least 5 characters long</mat-error>
             <mat-error *ngIf="name.hasError('maxlength')" >Name can be max 25 characters long</mat-error>
             <mat-error *ngIf="name.hasError('required')">name <strong>is required</strong></mat-error>
           </mat-form-field>
       </section>
+
+      <section>
+        <mat-form-field [style.width.px]=327>
+          <mat-label>NIF</mat-label>
+          <input matInput type="text" readonly [formControl]="nif" />
+          <mat-error *ngIf="nif.hasError('minlength')" >nif must be at least 5 characters long</mat-error>
+          <mat-error *ngIf="nif.hasError('maxlength')" >nif can be max 8 characters long</mat-error>
+          <mat-error *ngIf="nif.hasError('required')">nif <strong>is required</strong></mat-error>
+        </mat-form-field>
+    </section>
+
+      <section>
+        <mat-form-field [style.width.px]=327>
+          <mat-label>Company address</mat-label>
+          <input matInput type="text" readonly [formControl]="domicilio" />
+          <mat-error *ngIf="domicilio.hasError('minlength')" >domicilio must be at least 5 characters long</mat-error>
+          <mat-error *ngIf="domicilio.hasError('maxlength')" >domicilio can be max 25 characters long</mat-error>
+          <mat-error *ngIf="domicilio.hasError('required')">domicilio <strong>is required</strong></mat-error>
+        </mat-form-field>
+    </section>
   
       <section>
           <mat-form-field [style.width.px]=327>
             <mat-label>Email</mat-label>
-            <input matInput type="email" [formControl]="email" required />
+            <input matInput type="email" readonly [formControl]="email" required />
             <mat-error *ngIf="email.hasError('pattern')" >Email not a valid format</mat-error>
             <mat-error *ngIf="email.hasError('required')">Email <strong>is required</strong></mat-error>
           </mat-form-field>
@@ -24,14 +44,14 @@
   
       <section>
         <mat-form-field [style.width.px]=327>
-          <mat-label>password</mat-label>
-          <input matInput type="text" [formControl]="password" />
-          <mat-error *ngIf="password.hasError('minlength')" >Password must be at least 8 characters long</mat-error>
-          <mat-error *ngIf="password.hasError('maxlength')" >Password can be max 25 characters long</mat-error>
-          <mat-error *ngIf="password.hasError('required')">Password <strong>is required</strong></mat-error>
+          <mat-label>Localidad</mat-label>
+          <input matInput type="text" readonly [formControl]="localidad" />
+          <mat-error *ngIf="localidad.hasError('minlength')" >localidad must be at least 8 characters long</mat-error>
+          <mat-error *ngIf="localidad.hasError('maxlength')" >localidad can be max 25 characters long</mat-error>
+          <mat-error *ngIf="localidad.hasError('required')">localidad <strong>is required</strong></mat-error>
         </mat-form-field>
       </section>  
-      <button mat-raised-button color="primary" type="submit" [disabled]="!profileForm.valid">Update Company</button>
+      <button mat-raised-button color="primary" type="submit" [disabled]="profileForm.valid">Update Company</button>
     </mat-card>
   </form>
   <div style="margin-left: auto; margin-right: auto">

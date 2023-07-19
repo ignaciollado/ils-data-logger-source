@@ -1,4 +1,3 @@
-import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import {
   UntypedFormBuilder,
@@ -7,7 +6,6 @@ import {
   Validators,
 } from '@angular/forms';
 import { Router } from '@angular/router';
-import { finalize } from 'rxjs/operators';
 import { AuthDTO } from 'src/app/Models/auth.dto';
 import { HeaderMenus } from 'src/app/Models/header-menus.dto';
 import { AuthService, AuthToken } from 'src/app/Services/auth.service';
@@ -15,6 +13,8 @@ import { HeaderMenusService } from 'src/app/Services/header-menus.service';
 import { LocalStorageService } from 'src/app/Services/local-storage.service';
 import { SharedService } from 'src/app/Services/shared.service';
 import { animate, state, style, transition, trigger } from '@angular/animations'
+import { DelegationService } from 'src/app/Services/delegation.service';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-login',
@@ -32,6 +32,7 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
     ])
   ]
 })
+
 export class LoginComponent implements OnInit {
   loginUser: AuthDTO;
   email: UntypedFormControl;
@@ -40,11 +41,16 @@ export class LoginComponent implements OnInit {
   value = 'Clear me';
   isElevated = true;
   hide = true;
+  isLoggedIn: boolean = false;
+  isLoginFailed: boolean = false;
+  errorMessage: string = '';
+  roles: string[] = [];
   
   constructor(
     private formBuilder: UntypedFormBuilder,
     private authService: AuthService,
     private sharedService: SharedService,
+    private delegationService: DelegationService,
     private headerMenusService: HeaderMenusService,
     private localStorageService: LocalStorageService,
     private router: Router
@@ -68,7 +74,13 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    console.log( this.localStorageService.isLoggedIn())
+    if (this.localStorageService.isLoggedIn()) {
+      this.isLoggedIn = true;
+      this.roles = this.localStorageService.getUser().roles;
+    }
+  }
 
   /* login(): void {
     let responseOK: boolean = false;
@@ -121,9 +133,25 @@ export class LoginComponent implements OnInit {
       );
   } */
 
-  async login(): Promise<void> {
+  loginObservable() {
+    /* const val = this.loginForm.value; */
+    this.loginUser.email = this.email.value;
+    this.loginUser.password = this.password.value;
+    if ( this.loginUser ) {
+        this.authService.login( this.loginUser )
+            .subscribe(
+                () => {
+                    console.log("User is logged in");
+                    this.router.navigateByUrl('/');
+                }
+            );
+    }
+}
+
+ async login(): Promise<void> {
     let responseOK: boolean = false;
     let errorResponse: any;
+    let totalDelegations: number; 
 
     this.loginUser.email = this.email.value;
     this.loginUser.password = this.password.value;
@@ -134,7 +162,6 @@ export class LoginComponent implements OnInit {
       responseOK = true;
       this.loginUser.user_id = authToken.user_id;
       this.loginUser.access_token = authToken.access_token;
-      // save token to localstorage for next requests
       this.localStorageService.set('user_id', this.loginUser.user_id);
       this.localStorageService.set('access_token', this.loginUser.access_token);
 
@@ -151,11 +178,7 @@ export class LoginComponent implements OnInit {
       
     }
 
-    await this.sharedService.managementToast(
-      'loginFeedback',
-      responseOK,
-      errorResponse
-    );
+    await this.sharedService.managementToast( 'loginFeedback', responseOK, errorResponse );
 
     if (responseOK) {
       const headerInfo: HeaderMenus = {
@@ -163,8 +186,80 @@ export class LoginComponent implements OnInit {
         showNoAuthSection: false,
       };
       // update options menu
+      
       this.headerMenusService.headerManagement.next(headerInfo);
-      this.router.navigateByUrl('user/consumption');
+      this.delegationService.getTotalDelegationsByCompany(this.loginUser.user_id)
+      .subscribe( item => {
+        totalDelegations = item.totalDelegations
+
+        if (totalDelegations == 0) {
+          this.router.navigateByUrl('profile');
+        } else {
+          this.router.navigateByUrl('user/consumption');
+        }
+      } )
+
     }
-  }
+  } 
+
+ /*  onSubmit(): void {
+    let responseOK: boolean = false;
+    let errorResponse: any;
+    let totalDelegations: number; 
+
+    this.loginUser.email = this.email.value;
+    this.loginUser.password = this.password.value;
+
+    this.authService.login(this.loginUser)
+    .subscribe(
+       data => {
+        this.storageService.saveUser(data);
+
+        this.isLoginFailed = false;
+        this.isLoggedIn = true;
+        this.roles = this.storageService.getUser().roles;
+        console.log ("Welcome to the ILS datalogger.industrialocalsostenible.com created by IDI!!")
+        responseOK = true;
+
+        this.sharedService.managementToast( 'loginFeedback', responseOK, errorResponse );
+
+        if (responseOK) {
+          const headerInfo: HeaderMenus = {
+            showAuthSection: true,
+            showNoAuthSection: false,
+          };
+          // update options menu
+          
+          this.headerMenusService.headerManagement.next(headerInfo);
+          this.delegationService.getTotalDelegationsByCompany(this.loginUser.user_id)
+          .subscribe( item => {
+            totalDelegations = item.totalDelegations
+    
+            if (totalDelegations == 0) {
+              this.router.navigateByUrl('profile');
+            } else {
+              this.router.navigateByUrl('user/consumption');
+            }
+          } )
+    
+        }
+
+       this.reloadPage(); 
+      },
+      (err: HttpErrorResponse) => {
+        this.errorMessage = err.error.message;
+        this.isLoginFailed = true;
+
+        responseOK = false;
+        errorResponse = err.error;
+        const headerInfo: HeaderMenus = {
+        showAuthSection: false,
+        showNoAuthSection: true,
+      };
+      this.headerMenusService.headerManagement.next(headerInfo);
+      this.sharedService.errorLog(err.error);
+
+      }
+    );
+  } */
 }

@@ -23,6 +23,7 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
     this.headerMenusService.headerManagement.subscribe(
       (headerInfo: HeaderMenus) => {
         if (headerInfo) {
@@ -31,6 +32,7 @@ export class HeaderComponent implements OnInit {
         }
       }
     );
+ 
   }
 
   dashboard(): void {
@@ -42,6 +44,8 @@ export class HeaderComponent implements OnInit {
   }
 
   login(): void {
+    const headerInfo: HeaderMenus = { showAuthSection: true, showNoAuthSection: false, };
+    this.headerMenusService.headerManagement.next(headerInfo);
     this.router.navigateByUrl('login');
   }
 
@@ -81,10 +85,7 @@ export class HeaderComponent implements OnInit {
     this.localStorageService.remove('user_id');
     this.localStorageService.remove('access_token');
 
-    const headerInfo: HeaderMenus = {
-      showAuthSection: false,
-      showNoAuthSection: true,
-    };
+    const headerInfo: HeaderMenus = { showAuthSection: false, showNoAuthSection: true, };
 
     this.headerMenusService.headerManagement.next(headerInfo);
     this.router.navigateByUrl('');

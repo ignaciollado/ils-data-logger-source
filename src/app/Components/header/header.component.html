@@ -25,14 +25,14 @@
 
 <div *ngIf="showAuthSection">
   <mat-menu #menu="matMenu">
-    <button mat-menu-item (click)="dashboard()"><mat-icon>dashboard</mat-icon><span>ILS Graphboard</span></button>
+    <button mat-menu-item (click)="dashboard()"><mat-icon>chart</mat-icon><span>ILS Graphboard</span></button>
     <button mat-menu-item (click)="home()"><mat-icon>home</mat-icon><span>Home</span></button>
-    <button mat-menu-item (click)="adminConsumptions()">Activity data</button>
+    <button mat-menu-item (click)="adminConsumptions()"><mat-icon>input</mat-icon><span>Activity data</span></button>
     <button mat-menu-item (click)="adminAspects()">Aspects</button>
     <button mat-menu-item (click)="adminEnergies()">Energies</button>
     <button mat-menu-item (click)="adminResidues()">Residues</button>
-    <button mat-menu-item (click)="profile()"><mat-icon>profile</mat-icon><span>Profile</span></button>
-    <button mat-menu-item (click)="register()"><mat-icon>register</mat-icon><span>Add company</span></button>
+    <button mat-menu-item (click)="profile()"><mat-icon>person</mat-icon><span>Profile</span></button>
+   <!--  <button mat-menu-item (click)="register()"><mat-icon>register</mat-icon><span>Add company</span></button> -->
     <button mat-menu-item (click)="logout()"><mat-icon>logout</mat-icon><span>Logout</span></button>
   </mat-menu>
 
@@ -48,8 +48,8 @@
     <button mat-button (click)="adminEnergies()" [ngClass]="'has-to-be-shown'">Energies</button>
     <button mat-button (click)="adminResidues()" [ngClass]="'has-to-be-shown'">Residues</button>
 
-    <button mat-button (click)="profile()" [ngClass]="'has-to-be-shown'">Profile</button>
-    <button mat-button (click)="register()" [ngClass]="'has-to-be-shown'">Add company</button>
+    <button mat-button (click)="profile()" [ngClass]="'has-to-be-shown'">My profile</button>
+    <!-- <button mat-button (click)="register()" [ngClass]="'has-to-be-shown'">Add company</button> -->
     <button mat-button (click)="logout()" [ngClass]="'has-to-be-shown'">Logout</button>
   </mat-toolbar>
 </div>

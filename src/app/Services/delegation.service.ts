@@ -32,9 +32,14 @@ export class DelegationService {
     this.urlAPiMySql = '../../assets/phpAPI/'
   }
 
-  getAllDelegationsByCompanyIdFromMySQL(companyId: string): Observable<DelegationDTO[]> {
+  getAllDelegationsByCompanyIdFromMySQL (companyId: string): Observable<DelegationDTO[]> {
     return this.http
       .get<DelegationDTO[]>(`${this.urlAPiMySql}delegationGetByCompany.php?companyId=${companyId}`)
+  }
+
+  getTotalDelegationsByCompany (companyId: string): Observable<any> {
+    return this.http
+      .get<any>(`${this.urlAPiMySql}delegationCountByCompany.php?companyId=${companyId}`)
   }
 
   createDelegation(delegation: DelegationDTO): Observable<DelegationDTO> {

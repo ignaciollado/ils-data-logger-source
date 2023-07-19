@@ -18,11 +18,8 @@ export interface ResponseError {
 export class SharedService {
   constructor() {}
 
-  async managementToast(
-    element: string,
-    validRequest: boolean,
-    error?: ResponseError
-  ): Promise<void> {
+  async managementToast( element: string, validRequest: boolean, error?: ResponseError ): Promise<void> {
+    
     const toastMsg = document.getElementById(element);
     if (toastMsg) {
       if (validRequest) {

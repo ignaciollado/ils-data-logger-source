@@ -10,8 +10,8 @@ $sql = "SELECT * FROM ils_company_delegation WHERE (deleted = 0 AND companyId = 
 
 $result = mysqli_query($conn, $sql);
 
-while($consumptions = mysqli_fetch_array($result, MYSQLI_ASSOC)){
-    $vec[] = $consumptions;
+while($delegations = mysqli_fetch_array($result, MYSQLI_ASSOC)){
+    $vec[] = $delegations;
 }
 
 $cad = json_encode($vec);

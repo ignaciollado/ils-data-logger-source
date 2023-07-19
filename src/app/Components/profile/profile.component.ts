@@ -22,7 +22,9 @@ export class ProfileComponent implements OnInit {
 
   name: UntypedFormControl;
   email: UntypedFormControl;
-  password: UntypedFormControl;
+  nif: UntypedFormControl;
+  domicilio: UntypedFormControl;
+  localidad: UntypedFormControl;
 
   profileForm: UntypedFormGroup;
   isValidForm: boolean | null;
@@ -35,11 +37,23 @@ export class ProfileComponent implements OnInit {
     private sharedService: SharedService,
     private localStorageService: LocalStorageService
   ) {
-    this.profileUser = new UserDTO('', '', '');
+    this.profileUser = new UserDTO('', '', '', '', '');
 
     this.isValidForm = null;
 
     this.name = new UntypedFormControl(this.profileUser.name, [
+      Validators.required,
+      Validators.minLength(5),
+      Validators.maxLength(25),
+    ]);
+
+    this.domicilio = new UntypedFormControl(this.profileUser.domicilio, [
+      Validators.required,
+      Validators.minLength(5),
+      Validators.maxLength(25),
+    ]);
+
+    this.localidad = new UntypedFormControl(this.profileUser.localidad, [
       Validators.required,
       Validators.minLength(5),
       Validators.maxLength(25),
@@ -50,7 +64,7 @@ export class ProfileComponent implements OnInit {
       Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,4}$'),
     ]);
 
-    this.password = new UntypedFormControl(this.profileUser.password, [
+    this.nif = new UntypedFormControl(this.profileUser.nif, [
       Validators.required,
       Validators.minLength(8),
     ]);
@@ -58,7 +72,9 @@ export class ProfileComponent implements OnInit {
     this.profileForm = this.formBuilder.group({
       name: this.name,
       email: this.email,
-      password: this.password,
+      nif: this.nif,
+      domicilio: this.domicilio,
+      localidad: this.localidad
     });
   }
 
@@ -71,13 +87,17 @@ export class ProfileComponent implements OnInit {
         (userData: UserDTO) => {
           this.userFields = Object.entries(userData).map( item => item[1])
           this.name.setValue(this.userFields[1]);
-          this.email.setValue(this.userFields[4]);
-          this.password.setValue(this.userFields[2]);
+          this.email.setValue(this.userFields[8]);
+          this.nif.setValue(this.userFields[2]);
+          this.domicilio.setValue(this.userFields[3]);
+          this.localidad.setValue(this.userFields[4]);
 
           this.profileForm = this.formBuilder.group({
             name: this.name,
             email: this.email,
-            password: this.password,
+            nif: this.nif,
+            domicilio: this.domicilio,
+            localidad: this.localidad
           });
         },
         (error: HttpErrorResponse) => {

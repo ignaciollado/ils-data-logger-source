@@ -151,7 +151,6 @@ export class LoginComponent implements OnInit {
                     this.localStorageService.set('user_id', this.loginUser.user_id);
                     this.localStorageService.set('access_token', this.loginUser.access_token);
 
-
                     this.sharedService.managementToast( 'loginFeedback', responseOK, errorResponse );
 
                     if (responseOK) {
@@ -159,13 +158,12 @@ export class LoginComponent implements OnInit {
                         showAuthSection: true,
                         showNoAuthSection: false,
                       };
-                      // update options menu
 
                       this.headerMenusService.headerManagement.next(headerInfo);
                       this.delegationService.getTotalDelegationsByCompany(this.loginUser.user_id)
                       .subscribe( item => {
                         totalDelegations = item.totalDelegations
-
+console.log(totalDelegations)
                         if (totalDelegations == 0) {
                           this.router.navigateByUrl('profile');
                         } else {
@@ -174,11 +172,19 @@ export class LoginComponent implements OnInit {
                       } )
 
                     }
-
-
-
-                    this.router.navigateByUrl('/');
                 }
+                ,
+      (error: any) => {
+        responseOK = false;
+        errorResponse = error.error;
+        const headerInfo: HeaderMenus = {
+          showAuthSection: false,
+          showNoAuthSection: true,
+        };
+        this.headerMenusService.headerManagement.next(headerInfo);
+        this.sharedService.errorLog(error.error);
+      },
+      () => console.log("Processing Complete.")
             )
 
             ;

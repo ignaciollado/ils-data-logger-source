@@ -14,7 +14,6 @@ export interface AuthToken {
 
 const URL_API = '../../assets/phpAPI/'
 const URL_API_SRV = "https://jwt.idi.es/public/index.php" /* https://jwt.idi.es/public/index.php/api/login-users */
-const URL_API_SRV_test = "https://pre.tramits.idi.es/public/index.php/expediente/getall"
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -34,9 +33,8 @@ export class AuthService {
       return this.http
         /* .post<AuthToken>(`${URL_API}userAuth.php`, auth) */
         .post<AuthToken>( `${URL_API_SRV}/api/login-users/`, auth, httpOptions )
-        /* .get<AuthToken>(`${URL_API_SRV}/api/read-users`) */
         .pipe(catchError(this.sharedService.handleError))
-    } 
+    }
 
     loginp(auth: AuthDTO): Promise<AuthToken> {
         return this.http.post<AuthToken>( `${URL_API}userAuth.php`, auth ).toPromise();
@@ -65,6 +63,6 @@ export class AuthService {
       const expiration: string | null = localStorage.getItem("expires_at");
       const expiresAt: string | null  = "" /* JSON.parse(expiration) */;
       return moment(expiresAt);
-    }    
+    }
 
 }

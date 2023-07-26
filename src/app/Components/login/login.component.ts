@@ -45,7 +45,7 @@ export class LoginComponent implements OnInit {
   isLoginFailed: boolean = false;
   errorMessage: string = '';
   roles: string[] = [];
-  
+
   constructor(
     private formBuilder: UntypedFormBuilder,
     private authService: AuthService,
@@ -134,24 +134,61 @@ export class LoginComponent implements OnInit {
   } */
 
   loginObservable() {
-    /* const val = this.loginForm.value; */
+    let responseOK: boolean = false;
+    let errorResponse: any;
+    let totalDelegations: number;
     this.loginUser.email = this.email.value;
     this.loginUser.password = this.password.value;
+
     if ( this.loginUser ) {
         this.authService.login( this.loginUser )
             .subscribe(
-                () => {
-                    console.log("User is logged in");
+                (item:AuthToken ) => {
+                    console.log ("Welcome to the ILS datalogger.industrialocalsostenible.com created by IDI!!")
+                    responseOK = true;
+                    this.loginUser.user_id = item.user_id;
+                    this.loginUser.access_token = item.access_token;
+                    this.localStorageService.set('user_id', this.loginUser.user_id);
+                    this.localStorageService.set('access_token', this.loginUser.access_token);
+
+
+                    this.sharedService.managementToast( 'loginFeedback', responseOK, errorResponse );
+
+                    if (responseOK) {
+                      const headerInfo: HeaderMenus = {
+                        showAuthSection: true,
+                        showNoAuthSection: false,
+                      };
+                      // update options menu
+
+                      this.headerMenusService.headerManagement.next(headerInfo);
+                      this.delegationService.getTotalDelegationsByCompany(this.loginUser.user_id)
+                      .subscribe( item => {
+                        totalDelegations = item.totalDelegations
+
+                        if (totalDelegations == 0) {
+                          this.router.navigateByUrl('profile');
+                        } else {
+                          this.router.navigateByUrl('user/consumption');
+                        }
+                      } )
+
+                    }
+
+
+
                     this.router.navigateByUrl('/');
                 }
-            );
+            )
+
+            ;
     }
 }
 
  async login(): Promise<void> {
     let responseOK: boolean = false;
     let errorResponse: any;
-    let totalDelegations: number; 
+    let totalDelegations: number;
 
     this.loginUser.email = this.email.value;
     this.loginUser.password = this.password.value;
@@ -175,7 +212,7 @@ export class LoginComponent implements OnInit {
       };
       this.headerMenusService.headerManagement.next(headerInfo);
       this.sharedService.errorLog(error.error);
-      
+
     }
 
     await this.sharedService.managementToast( 'loginFeedback', responseOK, errorResponse );
@@ -186,7 +223,7 @@ export class LoginComponent implements OnInit {
         showNoAuthSection: false,
       };
       // update options menu
-      
+
       this.headerMenusService.headerManagement.next(headerInfo);
       this.delegationService.getTotalDelegationsByCompany(this.loginUser.user_id)
       .subscribe( item => {
@@ -200,12 +237,12 @@ export class LoginComponent implements OnInit {
       } )
 
     }
-  } 
+  }
 
  /*  onSubmit(): void {
     let responseOK: boolean = false;
     let errorResponse: any;
-    let totalDelegations: number; 
+    let totalDelegations: number;
 
     this.loginUser.email = this.email.value;
     this.loginUser.password = this.password.value;
@@ -229,22 +266,22 @@ export class LoginComponent implements OnInit {
             showNoAuthSection: false,
           };
           // update options menu
-          
+
           this.headerMenusService.headerManagement.next(headerInfo);
           this.delegationService.getTotalDelegationsByCompany(this.loginUser.user_id)
           .subscribe( item => {
             totalDelegations = item.totalDelegations
-    
+
             if (totalDelegations == 0) {
               this.router.navigateByUrl('profile');
             } else {
               this.router.navigateByUrl('user/consumption');
             }
           } )
-    
+
         }
 
-       this.reloadPage(); 
+       this.reloadPage();
       },
       (err: HttpErrorResponse) => {
         this.errorMessage = err.error.message;

@@ -13,14 +13,13 @@ export interface AuthToken {
 }
 
 const URL_API = '../../assets/phpAPI/'
-const URL_API_SRV = "https://jwt.idi.es/public/index.php/api"
+const URL_API_SRV = "https://jwt.idi.es/public/index.php" /* https://jwt.idi.es/public/index.php/api/login-users */
+const URL_API_SRV_test = "https://pre.tramits.idi.es/public/index.php/expediente/getall"
 
 const httpOptions = {
-  headers: new HttpHeaders({ 
-  'Content-Type': 'application/json; charset=UTF-8',
-  'Access-Control-Allow-Headers': 'origin, content-type, accept, authorization',
-  'Access-Control-Allow-Methods': 'POST, GET, PUT',
-  'Access-Control-Allow-Origin': '*' })
+  headers: new HttpHeaders({
+    'Content-Type':  'text/plain'
+  })
 };
 
 @Injectable({
@@ -34,16 +33,17 @@ export class AuthService {
     login(auth: AuthDTO): Observable<AuthToken> {
       return this.http
         /* .post<AuthToken>(`${URL_API}userAuth.php`, auth) */
-        .post<AuthToken>(`${URL_API_SRV}/login-users`, auth, httpOptions)
+        .post<AuthToken>( `${URL_API_SRV}/api/login-users/`, auth, httpOptions )
+        /* .get<AuthToken>(`${URL_API_SRV}/api/read-users`) */
         .pipe(catchError(this.sharedService.handleError))
     } 
 
     loginp(auth: AuthDTO): Promise<AuthToken> {
-        return this.http.post<AuthToken>( `${URL_API}userAuth.php`, auth, httpOptions ).toPromise();
+        return this.http.post<AuthToken>( `${URL_API}userAuth.php`, auth ).toPromise();
     }
 
     logout(): Observable<any> {
-      return this.http.post( URL_API + 'signout', { }, httpOptions );
+      return this.http.post( URL_API + 'signout', { } );
     }
 
     private setSession(authResult:any) {
@@ -65,6 +65,6 @@ export class AuthService {
       const expiration: string | null = localStorage.getItem("expires_at");
       const expiresAt: string | null  = "" /* JSON.parse(expiration) */;
       return moment(expiresAt);
-  }    
+    }    
 
 }

@@ -57,7 +57,7 @@ export class LoginComponent implements OnInit {
   ) {
     this.loginUser = new AuthDTO('', '', '', '');
 
-    this.email = new UntypedFormControl('nachollv@hotmail.com', [
+    this.email = new UntypedFormControl('nacho@gmail.com', [
       Validators.required,
       Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,4}$'),
     ]);

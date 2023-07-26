@@ -26,7 +26,7 @@ export class AuthInterceptorService implements HttpInterceptor {
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
 
-    req = req.clone({ withCredentials: true}) /* se usa para adjuntar la cookie con las credenciales a las llamadas a la API */
+   /*  req = req.clone({ withCredentials: true}) */ /* se usa para adjuntar la cookie con las credenciales a las llamadas a la API */
    
     if (this.access_token) {
       req = req.clone({

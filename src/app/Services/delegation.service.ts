@@ -6,12 +6,14 @@ import { catchError } from 'rxjs/operators';
 import { NONE_TYPE } from '@angular/compiler';
 import { SharedService } from './shared.service';
 
-const httpsOptions = {
+const URL_API = '../../assets/phpAPI/'
+const URL_API_SRV = "https://jwt.idi.es/public/index.php" /* https://jwt.idi.es/public/index.php/api/login-users */
+
+const httpOptions = {
   headers: new HttpHeaders({
-    'Content-type': 'application/json',
-    Authorization: 'json_token'
+    'Content-Type':  'text/plain'
   })
-}
+};
 
 interface updateResponse {
   affected: number;
@@ -50,7 +52,8 @@ export class DelegationService {
 
   deleteDelegation(companyDelegationId: string): Observable<deleteResponse> {
     return this.http
-      .delete<deleteResponse>(`${this.urlAPiMySql}delegationDeleteByCompany.php?companyId=${companyDelegationId}`)
+      /* .delete<deleteResponse>(`${this.urlAPiMySql}delegationDeleteByCompany.php?companyId=${companyDelegationId}`) */
+      .delete<deleteResponse>(`${URL_API_SRV}/api/delete-company-delegation/${companyDelegationId}`)
       .pipe(catchError(this.sharedService.handleError));
   }
 }

@@ -52,8 +52,6 @@ export class DelegationListComponent {
 
   deleteDelegation(companyDelegationId: string): void {
     let errorResponse: any;
-
-    // show confirmation popup
     let result = confirm('Confirm delete this delegation with id: ' + companyDelegationId + ' .');
     if (result) {
       this.delegationService.deleteDelegation(companyDelegationId).subscribe(

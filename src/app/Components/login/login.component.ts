@@ -158,12 +158,12 @@ export class LoginComponent implements OnInit {
                         showAuthSection: true,
                         showNoAuthSection: false,
                       };
-
+                      this.router.navigateByUrl('profile');
                       this.headerMenusService.headerManagement.next(headerInfo);
                       this.delegationService.getTotalDelegationsByCompany(this.loginUser.user_id)
                       .subscribe( item => {
                         totalDelegations = item.totalDelegations
-console.log(totalDelegations)
+console.log(`--${totalDelegations}--`)
                         if (totalDelegations == 0) {
                           this.router.navigateByUrl('profile');
                         } else {

@@ -10,7 +10,7 @@ $sql = "SELECT ils_consumption.consumptionId, ils_consumption.companyId, ils_con
 ils_consumption.quantity, ils_consumption.fromDate, ils_consumption.toDate, ils_consumption.residueId,
 ils_consumption.reuse, ils_consumption.recycling, ils_consumption.incineration,  ils_consumption.dump, ils_consumption.compost,
 ils_consumption.scopeOne, ils_consumption.scopeTwo,
-ils_consumption.createAt, ils_consumption.updatedAt,
+ils_consumption.created_at, ils_consumption.updated_at,
 ils_energy.nameES as energyES, ils_energy.nameCA,
 ils_company_delegation.name, ils_company_delegation.address,
 ils_aspect.nameES as aspectES, ils_aspect.nameCA,

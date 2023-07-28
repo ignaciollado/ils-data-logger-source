@@ -6,7 +6,7 @@ require_once 'conectar_a_bbdd_pindust.php';
 
 mysqli_query($conn, "SET NAMES 'utf8'");
 $companyId = $_GET['companyId'];
-$sql = "SELECT * FROM ils_company_delegation WHERE (deleted = 0 AND companyId = " .$companyId. ") Order by name";
+$sql = "SELECT * FROM ils_company_delegation WHERE companyId = " .$companyId. " Order by name";
 
 $result = mysqli_query($conn, $sql);
 

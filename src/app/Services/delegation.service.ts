@@ -7,11 +7,10 @@ import { NONE_TYPE } from '@angular/compiler';
 import { SharedService } from './shared.service';
 
 const URL_API = '../../assets/phpAPI/'
-const URL_API_SRV = "https://jwt.idi.es/public/index.php" /* https://jwt.idi.es/public/index.php/api/login-users */
-
+const URL_API_SRV = "https://jwt.idi.es/public/index.php"
 const httpOptions = {
   headers: new HttpHeaders({
-    'Content-Type':  'text/plain'
+    'Content-Type':  'text/plain' /* la única forma de evitar errores de CORS ha sido añadiendo esta cabecera */
   })
 };
 
@@ -30,7 +29,7 @@ export class DelegationService {
   private urlAPiMySql:  string;
 
     constructor(private http: HttpClient,
-      private sharedService: SharedService) {  
+      private sharedService: SharedService) {
     this.urlAPiMySql = '../../assets/phpAPI/'
   }
 
@@ -53,7 +52,7 @@ export class DelegationService {
   deleteDelegation(companyDelegationId: string): Observable<deleteResponse> {
     return this.http
       /* .delete<deleteResponse>(`${this.urlAPiMySql}delegationDeleteByCompany.php?companyId=${companyDelegationId}`) */
-      .delete<deleteResponse>(`${URL_API_SRV}/api/delete-company-delegation/${companyDelegationId}`)
+      .delete<deleteResponse>(`${URL_API_SRV}/api/delete-company-delegation/${companyDelegationId}`, httpOptions)
       .pipe(catchError(this.sharedService.handleError));
   }
 }

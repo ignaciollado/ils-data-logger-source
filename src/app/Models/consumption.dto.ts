@@ -9,7 +9,7 @@ export class ConsumptionDTO {
   quantity: number
   fromDate: Date
   toDate: Date
-  createAt!: Date
+  created_at!: Date
   updatedAt!: Date
   energy!: number
   residue!: number

@@ -60,7 +60,7 @@ export class HomeComponent {
     this.userId = this.localStorageService.get('user_id');
     if (this.userId) {
       this.showButtons = true;
-      this.consumptionService.getAllConsumptionsOnlyByUserIdFromMySQL(this.userId).subscribe(
+      this.consumptionService.getAllConsumptionsByCompany(this.userId).subscribe(
         (consumptions: ConsumptionDTO[]) => {
           this.consumptions = consumptions;
         },

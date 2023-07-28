@@ -49,7 +49,7 @@ export class PostsListComponent implements OnInit{
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
-    this.consumptions.filter( item => item.aspectES === filterValue.trim().toLowerCase() ) 
+    this.consumptions.filter( item => item.aspectES === filterValue.trim().toLowerCase() )
   }
 
   constructor(
@@ -70,9 +70,9 @@ export class PostsListComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    
+
     this.responsive.observe([
-          Breakpoints.TabletPortrait /*  (min-width: 600px) and (max-width: 839.98px) and (orientation: portrait) */, 
+          Breakpoints.TabletPortrait /*  (min-width: 600px) and (max-width: 839.98px) and (orientation: portrait) */,
           Breakpoints.HandsetPortrait /* (max-width: 599.98px) and (orientation: portrait) */,
           Breakpoints.TabletLandscape /* (min-width: 960px) and (max-width: 1279.98px) and (orientation: landscape) */,
           Breakpoints.HandsetLandscape /* (max-width: 959.98px) and (orientation: landscape) */
@@ -92,17 +92,17 @@ export class PostsListComponent implements OnInit{
         if (breakpoints[Breakpoints.HandsetPortrait]) {
           console.log("screens matches HandsetPortrait");
           this.isGridView = true
-        } 
+        }
         if (breakpoints[Breakpoints.TabletLandscape]) {
           console.log("screens matches TabletLandscape");
           this.isGridView = false
-        } 
+        }
         if (breakpoints[Breakpoints.HandsetLandscape]) {
           console.log("screens matches HandsetLandscape");
           this.isGridView = false
         }
   });
-  
+
   }
 
   private loadPosts(): void {
@@ -110,9 +110,10 @@ export class PostsListComponent implements OnInit{
     const userId = this.localStorageService.get('user_id');
     if (userId) {
         this.showButtons = true
-        this.consumptionService.getAllConsumptionsOnlyByUserIdFromMySQL(userId).subscribe(
+        this.consumptionService.getAllConsumptionsByCompany(userId).subscribe(
         (consumptions: ConsumptionDTO[]) => {
           this.consumptions = consumptions
+          console.log (this.consumptions)
         },
         (error: HttpErrorResponse) => {
           errorResponse = error.error;

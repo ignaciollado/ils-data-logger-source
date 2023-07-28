@@ -1,10 +1,19 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { ConsumptionDTO } from '../Models/consumption.dto';
 import { NONE_TYPE } from '@angular/compiler';
 import { SharedService } from './shared.service';
 import { catchError } from 'rxjs/operators';
+
+const URL_API = '../../assets/phpAPI/'
+const URL_API_SRV = "https://jwt.idi.es/public/index.php"
+
+const httpOptions = {
+  headers: new HttpHeaders({
+    'Content-Type': 'text/plain' /* la única forma de evitar errores de CORS ha sido añadiendo esta cabecera */
+  })
+};
 
 interface updateResponse {
   affected: number;
@@ -29,7 +38,9 @@ export class ConsumptionService {
 
   getAllConsumptions(): Observable<ConsumptionDTO[]> {
     return this.http
-      .get<ConsumptionDTO[]>(`${this.urlAPiMySql}consumptionGetAll.php`)
+     /*  .get<ConsumptionDTO[]>(`${this.urlAPiMySql}consumptionGetAll.php`) */
+      .get<ConsumptionDTO[]>(`${URL_API_SRV}/api/get-all-consumptions`, httpOptions)
+
   }
 
   getAllConsumptionsByUserIdFromMySQL(companyId:any, aspectId?: number): Observable<ConsumptionDTO[]> {
@@ -37,9 +48,10 @@ export class ConsumptionService {
       .get<ConsumptionDTO[]>(`${this.urlAPiMySql}consumptionGetByCompanyId.php?companyId=${companyId}&aspectId=${aspectId}`)
   }
 
-  getAllConsumptionsOnlyByUserIdFromMySQL(companyId:any): Observable<ConsumptionDTO[]> {
+  getAllConsumptionsByCompany(companyId:string): Observable<ConsumptionDTO[]> {
     return this.http
-      .get<ConsumptionDTO[]>(`${this.urlAPiMySql}consumptionGetOnlyByCompanyId.php?companyId=${companyId}`)
+      /* .get<ConsumptionDTO[]>(`${this.urlAPiMySql}consumptionGetOnlyByCompanyId.php?companyId=${companyId}`) */
+      .get<ConsumptionDTO[]>(`${URL_API_SRV}/api/get-all-company-consumptions/${companyId}`, httpOptions)
   }
 
   getConsumptionsById(consumptionId: string): Observable<ConsumptionDTO> {

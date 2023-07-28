@@ -4,7 +4,7 @@
 <mat-table *ngIf="!isGridView" [dataSource]="consumptions">
   <ng-container matColumnDef="delegation">
     <mat-header-cell *matHeaderCellDef>Delegation</mat-header-cell>
-    <mat-cell *matCellDef="let consumption">{{consumption.name}}</mat-cell>
+    <mat-cell *matCellDef="let consumption">{{consumption.delegation}}</mat-cell>
   </ng-container>
   <ng-container matColumnDef="aspect">
     <mat-header-cell *matHeaderCellDef>Aspect</mat-header-cell>
@@ -70,10 +70,10 @@
     <p>From date: {{ consumption.fromDate| formatDate: 3 }}</p>
     <p>To date: {{ consumption.toDate| formatDate: 3 }}</p>
     <div *ngIf="showButtons">
-      <p>CompanyId: {{ consumption.companyId }}</p>
+      <p>Delegation: {{ consumption.delegation }}</p>
     </div>
 
-    <p>Added when: {{ consumption.createAt }}</p>
+    <p>Added when: {{ consumption.created_at }}</p>
     <div *ngIf="showButtons">
 <!--         <button mat-icon-button color="accent" matTooltip="Update this residue"
       aria-label="Button that displays a tooltip and updates this residue" (click)="updateResidue(+residue.residueId)">

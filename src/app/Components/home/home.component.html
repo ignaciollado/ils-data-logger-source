@@ -17,10 +17,10 @@
     <p>From date: {{ consumption.fromDate| formatDate: 3 }}</p>
     <p>To date: {{ consumption.toDate| formatDate: 3 }}</p>
     <div *ngIf="showButtons">
-      <p>CompanyId: {{ consumption.companyId }}</p>
+      <p>Delegation: {{ consumption.delegation }}</p>
     </div>
 
-    <p>Added when: {{ consumption.createAt }}</p>
+    <p>Added when: {{ consumption.created_at }}</p>
 
     <div *ngIf="showButtons">
       <button mat-icon-button color="accent" matTooltip="Update this consumption"

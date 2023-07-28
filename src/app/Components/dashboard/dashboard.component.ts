@@ -47,7 +47,7 @@ export class DashboardComponent implements OnInit {
     let errorResponse: any;
     const userId = this.localStorageService.get('user_id');
     if (userId) {
-    this.consumptionService.getAllConsumptionsOnlyByUserIdFromMySQL(userId)
+    this.consumptionService.getAllConsumptionsByCompany(userId)
     .subscribe(
       (consumptions: ConsumptionDTO[]) => {
         this.consumptions = consumptions;
@@ -81,12 +81,12 @@ export class DashboardComponent implements OnInit {
       }
     )
     }
-    else 
+    else
     {
       this.consumptionService.getAllConsumptions().subscribe(
         (consumptions: ConsumptionDTO[]) => {
           this.consumptions = consumptions;
-  
+
           this.consumptions.forEach((consumption) => {
             if ( consumption.aspectId == 1 ) {
                 this.quantityEnergy = this.quantityEnergy + +consumption.quantity
@@ -158,7 +158,7 @@ export class DashboardComponent implements OnInit {
             backgroundColor: this.allBackgroundColors[4],
             borderColor: this.allBorderColors[4],
             borderWidth: 1
-          }          
+          }
         ]
       },
       options: {

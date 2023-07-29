@@ -117,7 +117,7 @@ export class WaterFormComponent {
     const userId = this.localStorageService.get('user_id');
     if (userId) {
 
-        this.consumptionService.getAllConsumptionsByUserIdFromMySQL(userId, 2).subscribe(
+        this.consumptionService.getAllConsumptionsByCompanyAndAspect(userId, 2).subscribe(
         (consumptions: ConsumptionDTO[]) => {
           this.consumptions = consumptions
         },

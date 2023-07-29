@@ -4,12 +4,21 @@ import { EnergyDTO } from '../Models/energy.dto';
 import { Observable } from 'rxjs';
 import { NONE_TYPE } from '@angular/compiler';
 
+const URL_API = '../../assets/phpAPI/'
+const URL_API_SRV = "https://jwt.idi.es/public/index.php"
+
 const httpsOptions = {
+  headers: new HttpHeaders({
+    'Content-Type': 'text/plain'
+  })
+};
+
+/* const httpsOptions = {
   headers: new HttpHeaders({
     'Content-type': 'application/json',
     Authorization: 'json_token'
   })
-}
+} */
 
 interface updateResponse {
   affected: number;
@@ -33,7 +42,8 @@ export class EnergyService {
 
   getAllEnergies(): Observable<EnergyDTO[]> {
     return this.http
-      .get<EnergyDTO[]>(`${this.urlAPiMySql}energyGetAll.php`)
+      /* .get<EnergyDTO[]>(`${this.urlAPiMySql}energyGetAll.php`, httpsOptions) */
+      .get<EnergyDTO[]>(`${URL_API_SRV}/api/get-all-energies`, httpsOptions)
   }
 
   getEnergyById(energyId: number): Observable<EnergyDTO> {

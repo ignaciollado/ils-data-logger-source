@@ -17,7 +17,7 @@
             </mat-select>
             <mat-error *ngIf="delegation.hasError('required')">Delegation <strong>is required</strong></mat-error>
           </mat-form-field>
-       
+
           <mat-form-field [style.width.px]=327>
             <mat-label>Date range</mat-label>
             <mat-date-range-input [rangePicker]="picker">
@@ -40,9 +40,9 @@
               </mat-select>
               <mat-error *ngIf="residue.hasError('required')">Residue <strong>is required</strong></mat-error>
             </mat-form-field>
-         
+
             <mat-form-field [style.width.px]=327>
-              <mat-label>Quantity</mat-label>
+              <mat-label>Quantity (Kg)</mat-label>
               <input matInput type="number" [formControl]="quantityResidue" />
               <mat-error *ngIf="quantityResidue.hasError('required')">quantityResidue <strong>is required</strong></mat-error>
             </mat-form-field>
@@ -69,7 +69,7 @@
               <input matInput type="number" [formControl]="incineration" />
               <mat-error *ngIf="incineration.hasError('required')">incineration <strong>is required</strong></mat-error>
             </mat-form-field>
-          
+
             <mat-form-field [style.width.px]=327>
               <mat-label>Dump (%)</mat-label>
               <input matInput type="number" [formControl]="dump" />
@@ -95,14 +95,14 @@
 
   <ng-container matColumnDef="delegation">
     <th mat-header-cell *matHeaderCellDef>Delegation</th>
-    <td mat-cell *matCellDef="let consumption">{{consumption.name}}</td>
+    <td mat-cell *matCellDef="let consumption">{{consumption.delegation}}</td>
   </ng-container>
   <ng-container matColumnDef="residue">
     <th mat-header-cell *matHeaderCellDef>Residue type</th>
-    <td mat-cell *matCellDef="let consumption">{{consumption.residue}}</td>
+    <td mat-cell *matCellDef="let consumption">{{consumption.residueES}}</td>
   </ng-container>
   <ng-container matColumnDef="quantity">
-    <th mat-header-cell *matHeaderCellDef>Quantity</th>
+    <th mat-header-cell *matHeaderCellDef>Quantity (Kg)</th>
     <td mat-cell *matCellDef="let consumption">{{consumption.quantity}}</td>
   </ng-container>'', '', '',  '', ''
   <ng-container matColumnDef="reuse">

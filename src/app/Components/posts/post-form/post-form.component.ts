@@ -183,7 +183,7 @@ export class PostFormComponent implements OnInit {
     const userId = this.localStorageService.get('user_id');
     if (userId) {
 
-        this.consumptionService.getAllConsumptionsByUserIdFromMySQL(userId, 1).subscribe(
+        this.consumptionService.getAllConsumptionsByCompanyAndAspect(userId, 1).subscribe(
         (consumptions: ConsumptionDTO[]) => {
           this.consumptions = consumptions
         },

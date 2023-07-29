@@ -68,10 +68,10 @@
 
   <ng-container matColumnDef="delegation">
     <th mat-header-cell *matHeaderCellDef>Delegation</th>
-    <td mat-cell *matCellDef="let consumption">{{consumption.name}}</td>
+    <td mat-cell *matCellDef="let consumption">{{consumption.delegation}}</td>
   </ng-container>
   <ng-container matColumnDef="quantity">
-    <th mat-header-cell *matHeaderCellDef>Quantity</th>
+    <th mat-header-cell *matHeaderCellDef>Quantity (T)</th>
     <td mat-cell *matCellDef="let consumption">{{consumption.quantity}}</td>
   </ng-container>
   <ng-container matColumnDef="scopeone">

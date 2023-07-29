@@ -43,9 +43,10 @@ export class ConsumptionService {
 
   }
 
-  getAllConsumptionsByUserIdFromMySQL(companyId:any, aspectId?: number): Observable<ConsumptionDTO[]> {
+  getAllConsumptionsByCompanyAndAspect(companyId:any, aspectId?: number): Observable<ConsumptionDTO[]> {
     return this.http
-      .get<ConsumptionDTO[]>(`${this.urlAPiMySql}consumptionGetByCompanyId.php?companyId=${companyId}&aspectId=${aspectId}`)
+     /*  .get<ConsumptionDTO[]>(`${this.urlAPiMySql}consumptionGetByCompanyId.php?companyId=${companyId}&aspectId=${aspectId}`) */
+     .get<ConsumptionDTO[]>(`${URL_API_SRV}/api/get-all-company-aspect-consumptions/${companyId}/${aspectId}`, httpOptions)
   }
 
   getAllConsumptionsByCompany(companyId:string): Observable<ConsumptionDTO[]> {

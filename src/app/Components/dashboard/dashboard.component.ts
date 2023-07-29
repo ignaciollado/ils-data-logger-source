@@ -54,7 +54,7 @@ export class DashboardComponent implements OnInit {
 
         this.consumptions.forEach((consumption) => {
           if ( consumption.aspectId == 1 ) {
-              this.quantityEnergy = this.quantityEnergy + +consumption.quantity
+              this.quantityEnergy = this.quantityEnergy + (+consumption.quantity*consumption.pci)
           }
           if ( consumption.aspectId == 2 ) {
               this.quantityWater = this.quantityWater + +consumption.quantity
@@ -89,7 +89,8 @@ export class DashboardComponent implements OnInit {
 
           this.consumptions.forEach((consumption) => {
             if ( consumption.aspectId == 1 ) {
-                this.quantityEnergy = this.quantityEnergy + +consumption.quantity
+
+                this.quantityEnergy = this.quantityEnergy + (+consumption.quantity*consumption.pci)
             }
             if ( consumption.aspectId == 2 ) {
                 this.quantityWater = this.quantityWater + +consumption.quantity
@@ -122,38 +123,38 @@ export class DashboardComponent implements OnInit {
     this.chart = new Chart("graphDashboard", {
       type: 'bar',
       data: {
-        labels: [ 'Total quantity' ],
+        labels: [ 'Total activity reported' ],
         datasets: [
           {
-            label: "Energy",
+            label: "Energy (kWh)",
             data: [this.quantityEnergy],
             backgroundColor: this.allBackgroundColors[0],
             borderColor: this.allBorderColors[0],
             borderWidth: 1
           },
           {
-            label: "Water",
+            label: "Water (Litres)",
             data: [this.quantityWater],
             backgroundColor: this.allBackgroundColors[1],
             borderColor: this.allBorderColors[1],
             borderWidth: 1
           },
           {
-            label: "Residues",
+            label: "Residues (Kg)",
             data: [this.quantityResidues],
             backgroundColor: this.allBackgroundColors[2],
             borderColor: this.allBorderColors[2],
             borderWidth: 1
           },
           {
-            label: "Materials",
+            label: "Materials (xxx)",
             data: [ this.quantityMaterials],
             backgroundColor: this.allBackgroundColors[3],
             borderColor: this.allBorderColors[3],
             borderWidth: 1
           },
           {
-            label: "Emissions",
+            label: "Emissions (Co2e Tones)",
             data: [this.quantityEmissions],
             backgroundColor: this.allBackgroundColors[4],
             borderColor: this.allBorderColors[4],
@@ -170,7 +171,7 @@ export class DashboardComponent implements OnInit {
           },
           title: {
             display: true,
-            text: 'Bar Chart'
+            text: 'Bar Chart Aspects'
           }
         }
       }
@@ -181,7 +182,7 @@ export class DashboardComponent implements OnInit {
     this.chartPie = new Chart("graphDashboardPie", {
       type: 'pie',
       data: {
-        labels: [ 'Energy', 'Water', 'Residues', 'Materials', 'Emissions' ],
+        labels: [ 'Energy (kWh)', 'Water (Litres)', 'Residues (Kg)', 'Materials (xxx)', 'Emissions (Co2e Tones)' ],
         datasets: [
           {
             label: "Total quantity reported",
@@ -201,7 +202,7 @@ export class DashboardComponent implements OnInit {
           },
           title: {
             display: true,
-            text: 'Pie Chart'
+            text: 'Pie Chart aspects'
           }
         }
       }
@@ -212,7 +213,7 @@ export class DashboardComponent implements OnInit {
     this.chartPolar = new Chart("graphDashboardPolar", {
       type: 'polarArea',
       data: {
-        labels: [ 'Energy', 'Water', 'Residues', 'Materials', 'Emissions' ],
+        labels: [ 'Energy (kWh)', 'Water (Litres)', 'Residues (Kg)', 'Materials (xxx)', 'Emissions (Co2e Tones)' ],
         datasets: [
           {
             label: "Total quantity reported",
@@ -243,7 +244,7 @@ export class DashboardComponent implements OnInit {
     this.chartPolar = new Chart("graphDashboardScatter", {
       type: 'scatter',
       data: {
-        labels: [ 'Energy', 'Water', 'Residues', 'Materials', 'Emissions' ],
+        labels: [ 'Energy (kWh)', 'Water (Litres)', 'Residues (Kg)', 'Materials (xxx)', 'Emissions (Co2e Tones)' ],
         datasets: [{
             type: 'bar',
             label: "Total quantity reported",

@@ -79,7 +79,7 @@ export class EmissionFormComponent {
     this.quantityEmission = new UntypedFormControl('', [ Validators.required, Validators.min(1)]);
     this.scopeone = new UntypedFormControl('', [ Validators.required ]);
     this.scopetwo = new UntypedFormControl('', [ Validators.required ]);
-    
+
     this.loadDelegations();
 
     this.emissionForm = this.formBuilder.group({
@@ -113,7 +113,7 @@ export class EmissionFormComponent {
     const userId = this.localStorageService.get('user_id');
     if (userId) {
 
-        this.consumptionService.getAllConsumptionsByUserIdFromMySQL(userId, 5).subscribe(
+        this.consumptionService.getAllConsumptionsByCompanyAndAspect(userId, 5).subscribe(
         (consumptions: ConsumptionDTO[]) => {
           this.consumptions = consumptions
         },

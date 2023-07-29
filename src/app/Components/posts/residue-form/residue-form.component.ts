@@ -150,7 +150,7 @@ export class ResidueFormComponent {
     const userId = this.localStorageService.get('user_id');
     if (userId) {
 
-        this.consumptionService.getAllConsumptionsByUserIdFromMySQL(userId, 3).subscribe(
+        this.consumptionService.getAllConsumptionsByCompanyAndAspect(userId, 3).subscribe(
         (consumptions: ConsumptionDTO[]) => {
           this.consumptions = consumptions
         },

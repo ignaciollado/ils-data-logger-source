@@ -5,6 +5,7 @@ import { ConsumptionService } from 'src/app/Services/consumption.service';
 import { SharedService } from 'src/app/Services/shared.service';
 import Chart from 'chart.js/auto';
 import { LocalStorageService } from 'src/app/Services/local-storage.service';
+import { months } from 'moment';
 
 @Component({
   selector: 'app-dashboard',
@@ -13,8 +14,22 @@ import { LocalStorageService } from 'src/app/Services/local-storage.service';
 })
 export class DashboardComponent implements OnInit {
   consumptions!: ConsumptionDTO[];
+  aspectConsumptions!: ConsumptionDTO[];
 
-  quantityEnergy: number = 0;
+
+  quantityGasJanuary : number = 0;
+  quantityGasFebruary : number = 0;
+  quantityGasMarch : number = 0;
+  quantityGasApril : number = 0;
+  quantityGasMay : number = 0;
+  quantityGasJune : number = 0;
+  quantityGasJuly : number = 0;
+  quantityGasAugust : number = 0;
+  quantityGasSeptember : number = 0;
+  quantityGasOctober : number = 0;
+  quantityGasNovember : number = 0;
+  quantityGasDecember : number = 0;
+
   quantityWater: number = 0;
   quantityResidues: number = 0;
   quantityMaterials: number = 0;
@@ -45,16 +60,15 @@ export class DashboardComponent implements OnInit {
 
   private loadconsumptions(): void {
     let errorResponse: any;
-    const userId = this.localStorageService.get('user_id');
-    if (userId) {
-    this.consumptionService.getAllConsumptionsByCompany(userId)
+    const companyId = this.localStorageService.get('user_id');
+    if (companyId) { /* if logged in */
+    this.consumptionService.getAllConsumptionsByCompany(companyId)
     .subscribe(
       (consumptions: ConsumptionDTO[]) => {
         this.consumptions = consumptions;
-
         this.consumptions.forEach((consumption) => {
           if ( consumption.aspectId == 1 ) {
-              this.quantityEnergy = this.quantityEnergy + (+consumption.quantity*consumption.pci)
+              this.quantityGasJanuary = this.quantityGasJanuary + (+consumption.quantity*consumption.pci)
           }
           if ( consumption.aspectId == 2 ) {
               this.quantityWater = this.quantityWater + +consumption.quantity
@@ -81,17 +95,56 @@ export class DashboardComponent implements OnInit {
       }
     )
     }
-    else
-    {
+    else {
       this.consumptionService.getAllConsumptions().subscribe(
         (consumptions: ConsumptionDTO[]) => {
           this.consumptions = consumptions;
 
           this.consumptions.forEach((consumption) => {
-            if ( consumption.aspectId == 1 ) {
+            let dateFromDate = new Date(consumption.fromDate);
+            let dateToDate = new Date(consumption.toDate);
+            let mmFrom: number;
+            let mmTo: number;
+            mmFrom = dateFromDate.getMonth()+1
+            mmTo = dateToDate.getMonth()+1
 
-                this.quantityEnergy = this.quantityEnergy + (+consumption.quantity*consumption.pci)
+            if ( consumption.energy == 18 && mmFrom == 1 && mmTo == 1) {/* Gas natural liquado en enero */
+              this.quantityGasJanuary = this.quantityGasJanuary + (+consumption.quantity*consumption.pci)
             }
+            if ( consumption.energy == 18 && mmFrom == 2 && mmTo == 2) {/* Gas natural liquado en febrero */
+            this.quantityGasFebruary = this.quantityGasFebruary + (+consumption.quantity*consumption.pci)
+            }
+            if ( consumption.energy == 18 && mmFrom == 3 && mmTo == 3) {/* Gas natural liquado en marzo */
+            this.quantityGasMarch = this.quantityGasMarch + (+consumption.quantity*consumption.pci)
+            }
+            if ( consumption.energy == 18 && mmFrom == 4 && mmTo == 4) {/* Gas natural liquado en abril */
+            this.quantityGasApril = this.quantityGasApril + (+consumption.quantity*consumption.pci)
+            }
+            if ( consumption.energy == 18 && mmFrom == 5 && mmTo == 5) {/* Gas natural liquado en mayo */
+            this.quantityGasMay = this.quantityGasMay + (+consumption.quantity*consumption.pci)
+            }
+            if ( consumption.energy == 18 && mmFrom == 6 && mmTo == 6) {/* Gas natural liquado en junio */
+            this.quantityGasJune = this.quantityGasJune + (+consumption.quantity*consumption.pci)
+            }
+            if ( consumption.energy == 18 && mmFrom == 7 && mmTo == 7) {/* Gas natural liquado en julio */
+            this.quantityGasJuly = this.quantityGasJuly + (+consumption.quantity*consumption.pci)
+            }
+            if ( consumption.energy == 18 && mmFrom == 8 && mmTo == 8) {/* Gas natural liquado en agosto */
+            this.quantityGasAugust = this.quantityGasAugust + (+consumption.quantity*consumption.pci)
+            }
+            if ( consumption.energy == 18 && mmFrom == 9 && mmTo == 9) {/* Gas natural liquado en setiembre */
+            this.quantityGasSeptember = this.quantityGasSeptember + (+consumption.quantity*consumption.pci)
+            }
+            if ( consumption.energy == 18 && mmFrom == 10 && mmTo == 10) {/* Gas natural liquado en octubre */
+            this.quantityGasOctober = this.quantityGasOctober + (+consumption.quantity*consumption.pci)
+            }
+            if ( consumption.energy == 18 && mmFrom == 11 && mmTo == 11) {/* Gas natural liquado en noviembre */
+            this.quantityGasNovember = this.quantityGasNovember + (+consumption.quantity*consumption.pci)
+            }
+            if ( consumption.energy == 18 && mmFrom == 12 && mmTo == 12) {/* Gas natural liquado en diciembre */
+            this.quantityGasDecember = this.quantityGasDecember + (+consumption.quantity*consumption.pci)
+            }
+
             if ( consumption.aspectId == 2 ) {
                 this.quantityWater = this.quantityWater + +consumption.quantity
             }
@@ -123,38 +176,41 @@ export class DashboardComponent implements OnInit {
     this.chart = new Chart("graphDashboard", {
       type: 'bar',
       data: {
-        labels: [ 'Total activity reported' ],
+        labels:  [ 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December' ],
         datasets: [
           {
-            label: "Energy (kWh)",
-            data: [this.quantityEnergy],
+            label: "Gas Natural Liquado",
+            data: [this.quantityGasJanuary, this.quantityGasFebruary,this.quantityGasMarch,this.quantityGasApril,
+              this.quantityGasMay, this.quantityGasJune,this.quantityGasJuly,this.quantityGasAugust,
+              this.quantityGasSeptember, this.quantityGasOctober,this.quantityGasNovember,this.quantityGasDecember,
+            ],
             backgroundColor: this.allBackgroundColors[0],
             borderColor: this.allBorderColors[0],
             borderWidth: 1
           },
           {
-            label: "Water (Litres)",
+            label: "Gasóleo A",
             data: [this.quantityWater],
             backgroundColor: this.allBackgroundColors[1],
             borderColor: this.allBorderColors[1],
             borderWidth: 1
           },
           {
-            label: "Residues (Kg)",
+            label: "Gasóleo B",
             data: [this.quantityResidues],
             backgroundColor: this.allBackgroundColors[2],
             borderColor: this.allBorderColors[2],
             borderWidth: 1
           },
           {
-            label: "Materials (xxx)",
+            label: "Gasóleo C",
             data: [ this.quantityMaterials],
             backgroundColor: this.allBackgroundColors[3],
             borderColor: this.allBorderColors[3],
             borderWidth: 1
           },
           {
-            label: "Emissions (Co2e Tones)",
+            label: "Gasolina",
             data: [this.quantityEmissions],
             backgroundColor: this.allBackgroundColors[4],
             borderColor: this.allBorderColors[4],
@@ -164,14 +220,22 @@ export class DashboardComponent implements OnInit {
       },
       options: {
         responsive: true,
-        aspectRatio:2.5,
+        aspectRatio:1,
         plugins: {
           legend: {
             position: 'bottom',
           },
           title: {
             display: true,
-            text: 'Bar Chart Aspects'
+            text: 'Bar Chart Energy (kWh)'
+          }
+        },
+        scales: {
+          x: {
+            stacked: true,
+          },
+          y: {
+            stacked: true
           }
         }
       }
@@ -186,7 +250,7 @@ export class DashboardComponent implements OnInit {
         datasets: [
           {
             label: "Total quantity reported",
-            data: [this.quantityEnergy, this.quantityWater, this.quantityResidues, this.quantityMaterials, this.quantityEmissions],
+            data: [this.quantityGasJanuary, this.quantityWater, this.quantityResidues, this.quantityMaterials, this.quantityEmissions],
             backgroundColor: this.allBackgroundColors,
             borderColor: this.allBorderColors,
             borderWidth: 1,
@@ -217,7 +281,7 @@ export class DashboardComponent implements OnInit {
         datasets: [
           {
             label: "Total quantity reported",
-            data: [this.quantityEnergy, this.quantityWater, this.quantityResidues, this.quantityMaterials, this.quantityEmissions],
+            data: [this.quantityGasJanuary, this.quantityWater, this.quantityResidues, this.quantityMaterials, this.quantityEmissions],
             backgroundColor: this.allBackgroundColors,
             borderColor: this.allBorderColors,
             hoverOffset: 4
@@ -248,7 +312,7 @@ export class DashboardComponent implements OnInit {
         datasets: [{
             type: 'bar',
             label: "Total quantity reported",
-            data: [this.quantityEnergy, this.quantityWater, this.quantityResidues, this.quantityEmissions],
+            data: [this.quantityGasJanuary, this.quantityWater, this.quantityResidues, this.quantityEmissions],
             backgroundColor: this.allBackgroundColors,
             borderColor: this.allBorderColors,
             borderWidth: 1

@@ -1,11 +1,16 @@
 
 <h2>Total data reported:</h2>
 
+
+<li *ngFor="let item of aspectConsumptions; index as i; first as isFirst">
+  {{i}}/{{aspectConsumptions.length}}. {{item.quantity}} {{item.pci}} {{item.fromDate}} {{item.toDate}} {{item.quantity*item.pci}}<span *ngIf="isFirst">default</span>
+</li>
+
 <div class="graphContainer">
   <div class="chart-container">
     <canvas  id="graphDashboard" aria-label="bar graph total Energy, Water, Residue, Material and CO2">{{ chart }}</canvas>
   </div>
-  <div class="chart-container">
+  <!-- <div class="chart-container">
     <canvas  id="graphDashboardPie" aria-label="pie graph total Energy, Water, Residue, Material and CO2">{{ chart }}</canvas>
   </div>
   <div class="chart-container">
@@ -13,7 +18,7 @@
   </div>
   <div class="chart-container">
     <canvas  id="graphDashboardScatter" aria-label="scatter graph total Energy, Water, Residue, Material and CO2">{{ chart }}</canvas>
-  </div>
+  </div> -->
 </div>
 
 <div class="loader" *ngIf="!consumptions">No records found yet...</div>

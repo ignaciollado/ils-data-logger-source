@@ -1,27 +1,32 @@
+<div class="container-chart">
 
-<h2>Total activity data reported:</h2>
+  <h2>Total activity data reported:</h2>
 
 
-<li *ngFor="let item of aspectConsumptions; index as i; first as isFirst">
-  {{i}}/{{aspectConsumptions.length}}. {{item.quantity}} {{item.pci}} {{item.fromDate}} {{item.toDate}} {{item.quantity*item.pci}}<span *ngIf="isFirst">default</span>
-</li>
+  <li *ngFor="let item of aspectConsumptions; index as i; first as isFirst">
+    {{i}}/{{aspectConsumptions.length}}. {{item.quantity}} {{item.pci}} {{item.fromDate}} {{item.toDate}} {{item.quantity*item.pci}}<span *ngIf="isFirst">default</span>
+  </li>
+  
+  <div class="graphContainer">
+    <div class="chart-container">
+      <canvas  id="graphDashboard" aria-label="bar graph total Energy, Water, Residue, Material and CO2">{{ chart }}</canvas>
+    </div>
+    <div class="chart-container">
+      <canvas  id="graphDashboardWater" aria-label="Water">{{ chart }}</canvas>
+    </div>
+    <div class="chart-container">
+      <canvas  id="graphDashboardResidue" aria-label="Residue">{{ chart }}</canvas>
+    </div>
+    <div class="chart-container">
+      <canvas  id="graphDashboardEmissions" aria-label= "COe2 Emissions">{{ chart }}</canvas>
+    </div>
+    <div class="chart-container">
+      <canvas  id="graphDashboardTesting" aria-label= "Testing">{{ chart }}</canvas>
+    </div>
+  </div>
+  
+  <div class="loader" *ngIf="!consumptions">No records found yet...</div>
 
-<div class="graphContainer">
-  <div class="chart-container">
-    <canvas  id="graphDashboard" aria-label="bar graph total Energy, Water, Residue, Material and CO2">{{ chart }}</canvas>
-  </div>
-  <div class="chart-container">
-    <canvas  id="graphDashboardWater" aria-label="Water">{{ chart }}</canvas>
-  </div>
-  <div class="chart-container">
-    <canvas  id="graphDashboardResidue" aria-label="Residue">{{ chart }}</canvas>
-  </div>
-  <div class="chart-container">
-    <canvas  id="graphDashboardEmissions" aria-label= "COe2 Emissions">{{ chart }}</canvas>
-  </div>
-  <div class="chart-container">
-    <canvas  id="graphDashboardTesting" aria-label= "Testing">{{ chart }}</canvas>
-  </div>
 </div>
 
-<div class="loader" *ngIf="!consumptions">No records found yet...</div>
+

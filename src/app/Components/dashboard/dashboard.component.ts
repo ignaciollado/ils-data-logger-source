@@ -122,10 +122,15 @@ export class DashboardComponent implements OnInit {
 
   quantityResidues: number = 0;
   quantityMaterials: number = 0;
-  quantityEmissions2021: number = 0;
-  quantityEmissions2022: number = 0;
-  quantityEmissions2023: number = 0;
-  quantityEmissions2024: number = 0;
+  quantityEmissions2021ScopeOne: number = 0;
+  quantityEmissions2022ScopeOne: number = 0;
+  quantityEmissions2023ScopeOne: number = 0;
+  quantityEmissions2024ScopeOne: number = 0;
+
+  quantityEmissions2021ScopeTwo: number = 0;
+  quantityEmissions2022ScopeTwo: number = 0;
+  quantityEmissions2023ScopeTwo: number = 0;
+  quantityEmissions2024ScopeTwo: number = 0;
 
   chart: any;
 
@@ -161,13 +166,11 @@ export class DashboardComponent implements OnInit {
     this.consumptionService.getAllConsumptionsByCompany(companyId)
     .subscribe(
       (consumptions: ConsumptionDTO[]) => {
-        this.consumptions = consumptions;
+        this.consumptions = consumptions
         this.consumptions.forEach((consumption) => {
-          dateFromDate = new Date(consumption.fromDate);
-          dateToDate = new Date(consumption.toDate);
-          console.log (consumption.created_at)
+          dateFromDate = new Date(consumption.fromDate)
+          dateToDate = new Date(consumption.toDate)
           dateYearInsert = new Date(consumption.created_at)
-          
           mmFrom = dateFromDate.getMonth()+1
           mmTo = dateToDate.getMonth()+1
           yyFrom = dateFromDate.getFullYear()
@@ -210,7 +213,7 @@ export class DashboardComponent implements OnInit {
               if ( consumption.energy == 16 && mmFrom == 12 && mmTo == 12) {/* Gasóleo A en diciembre */
               this.quantityGasoleoADecember = this.quantityGasoleoADecember + (+consumption.quantity*consumption.pci)
               }
-
+              console.log("--"+this.quantityGasoleoAFebruary, this.quantityGasoleoAMarch+"--")
               if ( consumption.energy == 15 && mmFrom == 1 && mmTo == 1) {/* Gasóleo B en enero */
               this.quantityGasoleoBJanuary = this.quantityGasoleoBJanuary + (+consumption.quantity*consumption.pci)
               }
@@ -424,19 +427,22 @@ export class DashboardComponent implements OnInit {
                 this.quantityMaterials = this.quantityMaterials + +consumption.quantity
             }
             if ( consumption.aspectId == 5 ) { /* EMISIONES CO2e */
-              console.log(consumption, consumption.quantity)
               if (yyFrom == 2021 && yyTo == 2021) {
-                this.quantityEmissions2021 = this.quantityEmissions2021 + (+consumption.quantity)
+                this.quantityEmissions2021ScopeOne = this.quantityEmissions2021ScopeOne + (+consumption.quantity)
+                this.quantityEmissions2021ScopeTwo = this.quantityEmissions2021ScopeTwo + (+consumption.quantity)
               }
               if (yyFrom == 2022 && yyTo == 2022) {
-                this.quantityEmissions2022 = this.quantityEmissions2022 + (+consumption.quantity)
+                this.quantityEmissions2022ScopeOne = this.quantityEmissions2022ScopeOne + (+consumption.quantity)
+                this.quantityEmissions2022ScopeTwo = this.quantityEmissions2022ScopeTwo + (+consumption.quantity)
               }
               if (yyFrom == 2023 && yyTo == 2023) {
-                this.quantityEmissions2023 = this.quantityEmissions2023 + (+consumption.quantity)
+                this.quantityEmissions2023ScopeOne = this.quantityEmissions2023ScopeOne + (+consumption.quantity)
+                this.quantityEmissions2023ScopeTwo = this.quantityEmissions2023ScopeTwo + (+consumption.quantity)
               }
               if (yyFrom == 2024 && yyTo == 2024) {
-                this.quantityEmissions2024 = this.quantityEmissions2024 + (+consumption.quantity)
-              }              
+                this.quantityEmissions2024ScopeOne = this.quantityEmissions2024ScopeOne + (+consumption.quantity)
+                this.quantityEmissions2024ScopeTwo = this.quantityEmissions2024ScopeTwo + (+consumption.quantity)
+              }               
             }
         }
         )
@@ -454,17 +460,14 @@ export class DashboardComponent implements OnInit {
     else {
       this.consumptionService.getAllConsumptions().subscribe(
         (consumptions: ConsumptionDTO[]) => {
-          this.consumptions = consumptions;
-
+          this.consumptions = consumptions
           this.consumptions.forEach((consumption) => {
-          dateFromDate = new Date(consumption.fromDate);
-          dateToDate = new Date(consumption.toDate);
+          dateFromDate = new Date(consumption.fromDate)
+          dateToDate = new Date(consumption.toDate)
           mmFrom = dateFromDate.getMonth()+1
           mmTo = dateToDate.getMonth()+1
           yyFrom = dateFromDate.getFullYear()
           yyTo = dateToDate.getFullYear()
-
-
             if ( consumption.aspectId == 1 ) { /* ENERGÍA */
               if ( consumption.energy == 16 && mmFrom == 1 && mmTo == 1) {/* Gasóleo A en enero */
               this.quantityGasoleoAJanuary = this.quantityGasoleoAJanuary + (+consumption.quantity*consumption.pci)
@@ -716,18 +719,22 @@ export class DashboardComponent implements OnInit {
                 this.quantityMaterials = this.quantityMaterials + +consumption.quantity
             }
             if ( consumption.aspectId == 5 ) { /* EMISIONES CO2e */
-              if (yyFrom == 2021 && yyTo == 2021) {
-                this.quantityEmissions2021 = this.quantityEmissions2021 + (+consumption.quantity)
-              }
-              if (yyFrom == 2022 && yyTo == 2022) {
-                this.quantityEmissions2022 = this.quantityEmissions2022 + (+consumption.quantity)
-              }
-              if (yyFrom == 2023 && yyTo == 2023) {
-                this.quantityEmissions2023 = this.quantityEmissions2023 + (+consumption.quantity)
-              }
-              if (yyFrom == 2024 && yyTo == 2024) {
-                this.quantityEmissions2024 = this.quantityEmissions2024 + (+consumption.quantity)
-              }              
+            if (yyFrom == 2021 && yyTo == 2021) {
+              this.quantityEmissions2021ScopeOne = this.quantityEmissions2021ScopeOne + (+consumption.scopeOne)
+              this.quantityEmissions2021ScopeTwo = this.quantityEmissions2021ScopeTwo + (+consumption.scopeTwo)
+            }
+            if (yyFrom == 2022 && yyTo == 2022) {
+              this.quantityEmissions2022ScopeOne = this.quantityEmissions2022ScopeOne + (+consumption.scopeOne)
+              this.quantityEmissions2022ScopeTwo = this.quantityEmissions2022ScopeTwo + (+consumption.scopeTwo)
+            }
+            if (yyFrom == 2023 && yyTo == 2023) {
+              this.quantityEmissions2023ScopeOne = this.quantityEmissions2023ScopeOne + (+consumption.scopeOne)
+              this.quantityEmissions2023ScopeTwo = this.quantityEmissions2023ScopeTwo + (+consumption.scopeTwo)
+            }
+            if (yyFrom == 2024 && yyTo == 2024) {
+              this.quantityEmissions2024ScopeOne = this.quantityEmissions2024ScopeOne + (+consumption.scopeOne)
+              this.quantityEmissions2024ScopeTwo = this.quantityEmissions2024ScopeTwo + (+consumption.scopeTwo)
+            }                 
             }
           }
           )
@@ -864,15 +871,14 @@ export class DashboardComponent implements OnInit {
             label: "Vidrio",
             data: [this.quantityResidueVidrioJanuary, this.quantityResidueVidrioFebruary,this.quantityResidueVidrioMarch,this.quantityResidueVidrioApril,
               this.quantityResidueVidrioMay, this.quantityResidueVidrioJune,this.quantityResidueVidrioJuly,this.quantityResidueVidrioAugust,
-              this.quantityResidueVidrioSeptember, this.quantityResidueVidrioOctober,this.quantityResidueVidrioNovember,this.quantityResidueVidrioDecember
-            ],
+              this.quantityResidueVidrioSeptember, this.quantityResidueVidrioOctober,this.quantityResidueVidrioNovember,this.quantityResidueVidrioDecember],
             backgroundColor: this.allBackgroundColors[0],
             borderColor: this.allBorderColors[0],
             borderWidth: 1
           },
-            {
+          {
             label: "Metálicos",
-            data: [ this.quantityGasoleoAJanuary, this.quantityGasoleoAFebruary,this.quantityGasoleoAMarch,this.quantityGasoleoAApril,
+            data: [this.quantityGasoleoAJanuary, this.quantityGasoleoAFebruary,this.quantityGasoleoAMarch,this.quantityGasoleoAApril,
               this.quantityGasoleoAMay, this.quantityGasoleoAJune,this.quantityGasoleoAJuly,this.quantityGasoleoAAugust,
               this.quantityGasoleoASeptember, this.quantityGasoleoAOctober,this.quantityGasoleoANovember,this.quantityGasoleoADecember],
             backgroundColor: this.allBackgroundColors[1],
@@ -938,27 +944,44 @@ export class DashboardComponent implements OnInit {
       data: {
         labels:  [ '2021', '2022', '2023', '2024' ],
         datasets: [
+          
           {
-            label: "COe2 Emissions (T)",
-            data: [ this.quantityEmissions2021, this.quantityEmissions2022, this.quantityEmissions2023, this.quantityEmissions2024 ],
-            backgroundColor: this.allBackgroundColors,
-            borderColor: this.allBorderColors,
+            label: "COe2 Emissions SCOPE one (T)",
+            data: [ this.quantityEmissions2021ScopeOne, this.quantityEmissions2022ScopeOne, this.quantityEmissions2023ScopeOne, this.quantityEmissions2024ScopeOne ],
+            backgroundColor: ['rgba(54, 162, 235, 0.2)'],
+            borderColor: ['rgba(54, 162, 235, 1.0)'],
             borderWidth: 1
-          }]
+          },
+          {
+            label: "COe2 Emissions SCOPE two (T)",
+            data: [ this.quantityEmissions2021ScopeTwo, this.quantityEmissions2022ScopeTwo, this.quantityEmissions2023ScopeTwo, this.quantityEmissions2024ScopeTwo ],
+            backgroundColor: ['rgba(75, 192, 192, 0.2)'],
+            borderColor: ['rgba(75, 192, 192, 1.0)'],
+            borderWidth: 1
+          }
+        ]
       },
       options: {
-        responsive: true,
-        aspectRatio:1.61,
-        plugins: {
-          legend: {
-            position: 'bottom',
+          responsive: true,
+          aspectRatio:1.61,
+          plugins: {
+            legend: {
+              position: 'bottom',
+            },
+            title: {
+              display: true,
+              text: 'Aspect Emissions (CO2e in T)'
+            }
           },
-          title: {
-            display: true,
-            text: 'Aspect Emissions (CO2e in T)'
+          scales: {
+            x: {
+              stacked: true,
+            },
+            y: {
+              stacked: true
+            }
           }
         }
-      }
     });
   }
 

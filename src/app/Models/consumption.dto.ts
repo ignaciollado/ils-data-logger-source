@@ -13,6 +13,8 @@ export class ConsumptionDTO {
   updatedAt!: Date
   energy!: number
   residueId!: number
+  scopeOne!: number
+  scopeTwo!: number
   reuse!:number
   recycling!:number
   incineration!:number

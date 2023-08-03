@@ -46,6 +46,9 @@ export class LoginComponent implements OnInit {
   errorMessage: string = '';
   roles: string[] = [];
 
+  responseOK: boolean = false;
+  errorResponse: any;
+
   constructor(
     private formBuilder: UntypedFormBuilder,
     private authService: AuthService,
@@ -75,12 +78,32 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log( this.localStorageService.isLoggedIn())
-    if (this.localStorageService.isLoggedIn()) {
-      this.isLoggedIn = true;
-      this.roles = this.localStorageService.getUser().roles;
+
+    const access_token: string | null = sessionStorage.getItem("access_token")
+    if (access_token === null) {
+      const headerInfo: HeaderMenus = {
+        showAuthSection: false,
+        showNoAuthSection: true,
+      };
+      this.headerMenusService.headerManagement.next(headerInfo);
+    } else {
+    this.authService.getExpiration(access_token).subscribe(
+      (item:AuthToken ) => {
+
+        const headerInfo: HeaderMenus = {
+          showAuthSection: true,
+          showNoAuthSection: false,
+        };
+        this.headerMenusService.headerManagement.next(headerInfo);
+      }
+    ),
+    (error: any) => console.log (error)
+      
     }
+      
   }
+  
+  
 
   /* login(): void {
     let responseOK: boolean = false;
@@ -191,7 +214,7 @@ console.log(`--${totalDelegations}--`)
     }
 }
 
- async login(): Promise<void> {
+/*  async login(): Promise<void> {
     let responseOK: boolean = false;
     let errorResponse: any;
     let totalDelegations: number;
@@ -243,7 +266,7 @@ console.log(`--${totalDelegations}--`)
       } )
 
     }
-  }
+  } */
 
  /*  onSubmit(): void {
     let responseOK: boolean = false;

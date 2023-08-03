@@ -38,20 +38,17 @@ export class ConsumptionService {
 
   getAllConsumptions(): Observable<ConsumptionDTO[]> {
     return this.http
-     /*  .get<ConsumptionDTO[]>(`${this.urlAPiMySql}consumptionGetAll.php`) */
       .get<ConsumptionDTO[]>(`${URL_API_SRV}/api/get-all-consumptions`, httpOptions)
 
   }
 
   getAllConsumptionsByCompanyAndAspect(companyId:any, aspectId?: number): Observable<ConsumptionDTO[]> {
     return this.http
-     /*  .get<ConsumptionDTO[]>(`${this.urlAPiMySql}consumptionGetByCompanyId.php?companyId=${companyId}&aspectId=${aspectId}`) */
      .get<ConsumptionDTO[]>(`${URL_API_SRV}/api/get-all-company-aspect-consumptions/${companyId}/${aspectId}`, httpOptions)
   }
 
   getAllConsumptionsByCompany(companyId:string): Observable<ConsumptionDTO[]> {
     return this.http
-      /* .get<ConsumptionDTO[]>(`${this.urlAPiMySql}consumptionGetOnlyByCompanyId.php?companyId=${companyId}`) */
       .get<ConsumptionDTO[]>(`${URL_API_SRV}/api/get-all-company-consumptions/${companyId}`, httpOptions)
   }
 

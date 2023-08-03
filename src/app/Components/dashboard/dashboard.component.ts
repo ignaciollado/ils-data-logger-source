@@ -177,6 +177,7 @@ export class DashboardComponent implements OnInit {
           yyTo = dateToDate.getFullYear()
 
             if ( consumption.aspectId == 1 ) { /* ENERGÍA */
+           
               if ( consumption.energy == 16 && mmFrom == 1 && mmTo == 1) {/* Gasóleo A en enero */
               this.quantityGasoleoAJanuary = this.quantityGasoleoAJanuary + (+consumption.quantity*consumption.pci)
               }
@@ -213,7 +214,6 @@ export class DashboardComponent implements OnInit {
               if ( consumption.energy == 16 && mmFrom == 12 && mmTo == 12) {/* Gasóleo A en diciembre */
               this.quantityGasoleoADecember = this.quantityGasoleoADecember + (+consumption.quantity*consumption.pci)
               }
-              console.log("--"+this.quantityGasoleoAFebruary, this.quantityGasoleoAMarch+"--")
               if ( consumption.energy == 15 && mmFrom == 1 && mmTo == 1) {/* Gasóleo B en enero */
               this.quantityGasoleoBJanuary = this.quantityGasoleoBJanuary + (+consumption.quantity*consumption.pci)
               }
@@ -324,7 +324,6 @@ export class DashboardComponent implements OnInit {
               if ( consumption.energy == 2 && mmFrom == 12 && mmTo == 12) {/* Gasóleo C en diciembre */
               this.quantityGasoleoCDecember = this.quantityGasoleoCDecember + (+consumption.quantity*consumption.pci)
               }
-
               if ( consumption.energy == 18 && mmFrom == 1 && mmTo == 1) {/* Gas natural liquado en enero */
               this.quantityGasJanuary = this.quantityGasJanuary + (+consumption.quantity*consumption.pci)
               }
@@ -427,22 +426,22 @@ export class DashboardComponent implements OnInit {
                 this.quantityMaterials = this.quantityMaterials + +consumption.quantity
             }
             if ( consumption.aspectId == 5 ) { /* EMISIONES CO2e */
-              if (yyFrom == 2021 && yyTo == 2021) {
-                this.quantityEmissions2021ScopeOne = this.quantityEmissions2021ScopeOne + (+consumption.quantity)
-                this.quantityEmissions2021ScopeTwo = this.quantityEmissions2021ScopeTwo + (+consumption.quantity)
+            if (yyFrom == 2021 && yyTo == 2021) {
+              this.quantityEmissions2021ScopeOne = this.quantityEmissions2021ScopeOne + (+consumption.scopeOne)
+              this.quantityEmissions2021ScopeTwo = this.quantityEmissions2021ScopeTwo + (+consumption.scopeTwo)
               }
-              if (yyFrom == 2022 && yyTo == 2022) {
-                this.quantityEmissions2022ScopeOne = this.quantityEmissions2022ScopeOne + (+consumption.quantity)
-                this.quantityEmissions2022ScopeTwo = this.quantityEmissions2022ScopeTwo + (+consumption.quantity)
+            if (yyFrom == 2022 && yyTo == 2022) {
+              this.quantityEmissions2022ScopeOne = this.quantityEmissions2022ScopeOne + (+consumption.scopeOne)
+              this.quantityEmissions2022ScopeTwo = this.quantityEmissions2022ScopeTwo + (+consumption.scopeTwo)
               }
-              if (yyFrom == 2023 && yyTo == 2023) {
-                this.quantityEmissions2023ScopeOne = this.quantityEmissions2023ScopeOne + (+consumption.quantity)
-                this.quantityEmissions2023ScopeTwo = this.quantityEmissions2023ScopeTwo + (+consumption.quantity)
+            if (yyFrom == 2023 && yyTo == 2023) {
+              this.quantityEmissions2023ScopeOne = this.quantityEmissions2023ScopeOne + (+consumption.scopeOne)
+              this.quantityEmissions2023ScopeTwo = this.quantityEmissions2023ScopeTwo + (+consumption.scopeTwo)
               }
-              if (yyFrom == 2024 && yyTo == 2024) {
-                this.quantityEmissions2024ScopeOne = this.quantityEmissions2024ScopeOne + (+consumption.quantity)
-                this.quantityEmissions2024ScopeTwo = this.quantityEmissions2024ScopeTwo + (+consumption.quantity)
-              }               
+            if (yyFrom == 2024 && yyTo == 2024) {
+              this.quantityEmissions2024ScopeOne = this.quantityEmissions2024ScopeOne + (+consumption.scopeOne)
+              this.quantityEmissions2024ScopeTwo = this.quantityEmissions2024ScopeTwo + (+consumption.scopeTwo)
+              }              
             }
         }
         )
@@ -946,14 +945,14 @@ export class DashboardComponent implements OnInit {
         datasets: [
           
           {
-            label: "COe2 Emissions SCOPE one (T)",
+            label: "CO2e Emissions SCOPE one (T)",
             data: [ this.quantityEmissions2021ScopeOne, this.quantityEmissions2022ScopeOne, this.quantityEmissions2023ScopeOne, this.quantityEmissions2024ScopeOne ],
             backgroundColor: ['rgba(54, 162, 235, 0.2)'],
             borderColor: ['rgba(54, 162, 235, 1.0)'],
             borderWidth: 1
           },
           {
-            label: "COe2 Emissions SCOPE two (T)",
+            label: "CO2e Emissions SCOPE two (T)",
             data: [ this.quantityEmissions2021ScopeTwo, this.quantityEmissions2022ScopeTwo, this.quantityEmissions2023ScopeTwo, this.quantityEmissions2024ScopeTwo ],
             backgroundColor: ['rgba(75, 192, 192, 0.2)'],
             borderColor: ['rgba(75, 192, 192, 1.0)'],

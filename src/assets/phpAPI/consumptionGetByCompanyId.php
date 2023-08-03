@@ -1,6 +1,5 @@
 <?php
 header('Access-Control-Allow-Origin: *');
-header("Access-Control-Allow-Methods: PUT, GET, POST, DELETE");
 header('Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept');
 
 require_once 'conectar_a_bbdd_pindust.php';
@@ -9,13 +8,14 @@ mysqli_query($conn, "SET NAMES 'utf8'");
 $companyId = $_GET['companyId'];
 $aspectId = $_GET['aspectId'];
 
-$sql = "SELECT ils_consumption.consumptionId, ils_consumption.companyId, ils_consumption.aspectId,
-ils_consumption.quantity, ils_consumption.fromDate, ils_consumption.toDate, ils_consumption.residueId,
-ils_consumption.reuse, ils_consumption.recycling, ils_consumption.incineration,  ils_consumption.dump, ils_consumption.compost,
+$sql = "SELECT ils_consumption.consumptionId, ils_consumption.companyId, 
+ils_consumption.aspectId, ils_consumption.energyId as energy, ils_consumption.quantity, ils_consumption.fromDate, ils_consumption.toDate, 
+ils_consumption.residueId, ils_consumption.reuse, ils_consumption.recycling, ils_consumption.incineration, 
+ils_consumption.dump, ils_consumption.compost,
 ils_consumption.scopeOne, ils_consumption.scopeTwo,
-ils_consumption.createAt, ils_consumption.updatedAt,
-ils_energy.nameES as energyES, ils_energy.nameCA,
-ils_company_delegation.name, ils_company_delegation.address,
+ils_consumption.created_at, ils_consumption.updated_at,
+ils_energy.nameES as energyES, ils_energy.nameCA, ils_energy.pci as pci,
+ils_company_delegation.name as delegation, ils_company_delegation.address,
 ils_aspect.nameES as aspectES, ils_aspect.nameCA,
 ils_residue.nameES as residueES, ils_residue.nameCA
 
@@ -31,7 +31,7 @@ if (isset($aspectId)) {
   $sql .= " AND ils_consumption.aspectId=".$aspectId;
 }
 
-$sql .= " Order by consumptionId";
+$sql .= " ORDER BY consumptionId";
 
 $result = mysqli_query($conn, $sql);
 

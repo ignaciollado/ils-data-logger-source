@@ -1,12 +1,13 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import {  Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { HeaderMenus } from 'src/app/Models/header-menus.dto';
 import { ResidueDTO } from 'src/app/Models/residue.dto';
 import { HeaderMenusService } from 'src/app/Services/header-menus.service';
-import { LocalStorageService } from 'src/app/Services/local-storage.service';
-import {BreakpointObserver, Breakpoints} from '@angular/cdk/layout';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { ResidueService } from 'src/app/Services/residue.service';
 import { SharedService } from 'src/app/Services/shared.service';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Component({
   selector: 'app-residue-list',
@@ -25,17 +26,32 @@ export class ResidueListComponent implements OnInit {
 
   constructor(
     private residueService: ResidueService,
-    private localStorageService: LocalStorageService,
     private sharedService: SharedService,
     private router: Router,
     private headerMenusService: HeaderMenusService,
+    private jwtHelper: JwtHelperService,
     private responsive: BreakpointObserver
   ) {
     this.userId = '0';
     this.showButtons = false;
-    this.access_token = this.localStorageService.get('access_token')
+    this.access_token = sessionStorage.getItem("access_token")
 
     this.loadResidues();
+    if (this.access_token === null) {
+      const headerInfo: HeaderMenus = {
+        showAuthSection: false,
+        showNoAuthSection: true,
+      };
+      this.headerMenusService.headerManagement.next(headerInfo)
+    } else {
+      if (!this.jwtHelper.isTokenExpired (this.access_token)) {
+        const headerInfo: HeaderMenus = {
+          showAuthSection: true,
+          showNoAuthSection: false,
+        };
+        this.headerMenusService.headerManagement.next(headerInfo)
+      }
+    }
   }
 
   ngOnInit(): void {
@@ -77,7 +93,7 @@ export class ResidueListComponent implements OnInit {
 
   private loadResidues(): void {
     let errorResponse: any;
-    const userId = this.localStorageService.get('user_id');
+    const userId = sessionStorage.getItem('user_id');
     if (userId) {
         this.showButtons = true;
         this.residueService.getAllResidues().subscribe(

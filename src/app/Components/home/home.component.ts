@@ -11,6 +11,7 @@ import { EnergyService } from 'src/app/Services/energy.service';
 
 import { SharedService } from 'src/app/Services/shared.service';
 import { deleteResponse } from 'src/app/Services/category.service';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Component({
   selector: 'app-home',
@@ -30,18 +31,31 @@ export class HomeComponent {
     private localStorageService: LocalStorageService,
     private sharedService: SharedService,
     private router: Router,
-    private headerMenusService: HeaderMenusService
+    private headerMenusService: HeaderMenusService,
+    private jwtHelper: JwtHelperService
   ) {
-    this.userId = '0';
-    this.showButtons = false;
-    this.access_token = this.localStorageService.get('access_token')
+    this.userId = '0'
+    this.showButtons = false
+    this.access_token = sessionStorage.getItem("access_token")
 
-    /* if(this.access_token) { */
-      this.loadConsumptions();
-      this.loadEnergies();
-   /*  } else {
-      this.router.navigateByUrl('/login');
-    } */
+    this.loadConsumptions()
+    this.loadEnergies()
+    
+    if (this.access_token === null) {
+      const headerInfo: HeaderMenus = {
+        showAuthSection: false,
+        showNoAuthSection: true,
+      };
+      this.headerMenusService.headerManagement.next(headerInfo)
+    } else {
+      if (!this.jwtHelper.isTokenExpired (this.access_token)) {
+        const headerInfo: HeaderMenus = {
+          showAuthSection: true,
+          showNoAuthSection: false,
+        };
+        this.headerMenusService.headerManagement.next(headerInfo)
+      }
+    }
 
   }
 

@@ -1,3 +1,4 @@
+import { JwtModule } from "@auth0/angular-jwt";
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -51,6 +52,11 @@ import { EnergyListComponent } from './Components/energies/energy-list/energy-li
 import { ResidueListComponent } from './Components/residues/residue-list/residue-list.component';
 import { ResidueAdminFormComponent } from './Components/residues/residue-admin-form/residue-admin-form.component';
 
+export function tokenGetter() {
+  return sessionStorage.getItem("access_token");
+}
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -83,6 +89,13 @@ import { ResidueAdminFormComponent } from './Components/residues/residue-admin-f
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: tokenGetter,
+        allowedDomains: ["datalogger.industrialocalsostenible.com", "jwt.idi.es"],
+        disallowedRoutes: ["http://example.com/examplebadroute/"],
+      },
+    }),
     BrowserAnimationsModule,
     MatTableModule,
     MatButtonToggleModule,

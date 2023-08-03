@@ -4,11 +4,9 @@ import { Router } from '@angular/router';
 /* import { CategoryDTO } from 'src/app/Models/category.dto'; */
 import { EnergyDTO } from 'src/app/Models/energy.dto';
 import {
-  CategoryService,
   deleteResponse,
 } from 'src/app/Services/category.service';
 import { EnergyService } from 'src/app/Services/energy.service';
-import { LocalStorageService } from 'src/app/Services/local-storage.service';
 import { SharedService } from 'src/app/Services/shared.service';
 
 @Component({
@@ -24,11 +22,8 @@ export class CategoriesListComponent {
   columnsDisplayed = ['energyId', 'aspect', 'nameES', 'nameCA', 'unit', 'pci', 'ACTIONS'];
 
   constructor(
-   /*  private categoryService: CategoryService, */
     private energyService: EnergyService,
-
     private router: Router,
-    private localStorageService: LocalStorageService,
     private sharedService: SharedService
   ) {
     this.loadCategories();
@@ -36,9 +31,8 @@ export class CategoriesListComponent {
 
   private loadCategories(): void {
     let errorResponse: any;
-    const userId = this.localStorageService.get('user_id');
+    const userId = sessionStorage.getItem('user_id');
     if (userId) {
-      /* this.categoryService.getCategoriesByUserId(userId).subscribe( */
       this.energyService.getAllEnergies().subscribe(
         (fuels: EnergyDTO[]) => {
           this.energies = fuels;

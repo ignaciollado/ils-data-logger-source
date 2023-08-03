@@ -6,11 +6,14 @@ import {
   UntypedFormGroup,
   Validators,
 } from '@angular/forms';
+import { JwtHelperService } from '@auth0/angular-jwt';
+import { HeaderMenus } from 'src/app/Models/header-menus.dto';
+import { HeaderMenusService } from 'src/app/Services/header-menus.service';
 import { finalize } from 'rxjs/operators';
 import { UserDTO } from 'src/app/Models/user.dto';
-import { LocalStorageService } from 'src/app/Services/local-storage.service';
 import { SharedService } from 'src/app/Services/shared.service';
 import { UserService } from 'src/app/Services/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-profile',
@@ -29,13 +32,16 @@ export class ProfileComponent implements OnInit {
   profileForm: UntypedFormGroup;
   isValidForm: boolean | null;
   isElevated = true;
-  userFields: string[] = []
+  userFields: string[] = [];
+  access_token: string | null;
 
   constructor(
     private formBuilder: UntypedFormBuilder,
     private userService: UserService,
     private sharedService: SharedService,
-    private localStorageService: LocalStorageService
+    private router: Router,
+    private headerMenusService: HeaderMenusService,
+    private jwtHelper: JwtHelperService,
   ) {
     this.profileUser = new UserDTO('', '', '', '', '');
 
@@ -76,12 +82,29 @@ export class ProfileComponent implements OnInit {
       domicilio: this.domicilio,
       localidad: this.localidad
     });
+
+    this.access_token = sessionStorage.getItem("access_token")
+    if (this.access_token === null) {
+      const headerInfo: HeaderMenus = {
+        showAuthSection: false,
+        showNoAuthSection: true,
+      };
+      this.headerMenusService.headerManagement.next(headerInfo)
+    } else {
+      if (!this.jwtHelper.isTokenExpired (this.access_token)) {
+        const headerInfo: HeaderMenus = {
+          showAuthSection: true,
+          showNoAuthSection: false,
+        };
+        this.headerMenusService.headerManagement.next(headerInfo)
+      }
+    }
   }
 
   ngOnInit(): void {
     let errorResponse: any;
     // load user data
-    const userId = this.localStorageService.get('user_id');
+    const userId = sessionStorage.getItem("user_id");
     if (userId) {
       this.userService.getUSerByIdMySQL(userId).subscribe(
         (userData: UserDTO) => {
@@ -120,7 +143,7 @@ export class ProfileComponent implements OnInit {
     this.isValidForm = true;
     this.profileUser = this.profileForm.value;
  
-    const userId = this.localStorageService.get('user_id');
+    const userId = sessionStorage.getItem('user_id');
 
     if (userId) {
       this.userService

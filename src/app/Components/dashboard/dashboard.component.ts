@@ -4,8 +4,10 @@ import { ConsumptionDTO } from 'src/app/Models/consumption.dto';
 import { ConsumptionService } from 'src/app/Services/consumption.service';
 import { SharedService } from 'src/app/Services/shared.service';
 import Chart from 'chart.js/auto';
-import { LocalStorageService } from 'src/app/Services/local-storage.service';
-import { months } from 'moment';
+import { JwtHelperService } from '@auth0/angular-jwt';
+import { HeaderMenusService } from 'src/app/Services/header-menus.service';
+import { HeaderMenus } from 'src/app/Models/header-menus.dto';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -137,18 +139,38 @@ export class DashboardComponent implements OnInit {
   allBackgroundColors!: string[]
   allBorderColors!: string[]
 
-
   constructor(
     private consumptionService: ConsumptionService,
-    private localStorageService: LocalStorageService,
-    private sharedService: SharedService
+    private sharedService: SharedService,
+    private headerMenusService: HeaderMenusService,
+    private router: Router,
+    private jwtHelper: JwtHelperService
   ) {
     this.allBackgroundColors = [ 'rgba(255, 99, 132, 0.2)', 'rgba(255, 159, 64, 0.2)', 'rgba(0, 205, 86, 0.2)', 'rgba(75, 192, 192, 0.2)', 'rgba(54, 162, 235, 0.2)' ]
     this.allBorderColors = [ 'rgb(255, 99, 132)', 'rgb(255, 159, 64)', 'rgb(255, 205, 86)', 'rgb(75, 192, 192)', 'rgb(54, 162, 235)' ]
   }
 
   ngOnInit(): void {
-    this.loadconsumptions();
+    
+    const access_token: string | null = sessionStorage.getItem("access_token")
+    this.loadconsumptions()
+    
+    if (access_token === null) {
+      const headerInfo: HeaderMenus = {
+        showAuthSection: false,
+        showNoAuthSection: true,
+      };
+      this.headerMenusService.headerManagement.next(headerInfo)
+    } else {
+      if (!this.jwtHelper.isTokenExpired (access_token)) {
+        const headerInfo: HeaderMenus = {
+          showAuthSection: true,
+          showNoAuthSection: false,
+        };
+        this.headerMenusService.headerManagement.next(headerInfo)
+      }
+    }
+
   }
 
   private loadconsumptions(): void {
@@ -161,7 +183,7 @@ export class DashboardComponent implements OnInit {
     let yyTo: number;
 
     let errorResponse: any;
-    const companyId = this.localStorageService.get('user_id');
+    const companyId = sessionStorage.getItem('user_id');
     if (companyId) { /* if logged in */
     this.consumptionService.getAllConsumptionsByCompany(companyId)
     .subscribe(

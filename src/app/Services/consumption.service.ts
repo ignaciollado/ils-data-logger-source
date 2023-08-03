@@ -48,8 +48,10 @@ export class ConsumptionService {
   }
 
   getAllConsumptionsByCompany(companyId:string): Observable<ConsumptionDTO[]> {
+    console.log (companyId)
     return this.http
-      .get<ConsumptionDTO[]>(`${URL_API_SRV}/api/get-all-company-consumptions/${companyId}`, httpOptions)
+    .get<ConsumptionDTO[]>(`${this.urlAPiMySql}consumptionGetByCompanyId.php?companyId=${companyId}`)
+   /*  .get<ConsumptionDTO[]>(`${URL_API_SRV}/api/get-all-company-consumptions/${companyId}`, httpOptions) */
   }
 
   getConsumptionsById(consumptionId: string): Observable<ConsumptionDTO> {

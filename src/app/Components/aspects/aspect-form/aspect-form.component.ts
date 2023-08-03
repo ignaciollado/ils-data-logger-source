@@ -11,7 +11,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { finalize } from 'rxjs/operators';
 import { AspectDTO } from 'src/app/Models/aspect.dto';
 import { AspectService } from 'src/app/Services/aspect.service';
-import { LocalStorageService } from 'src/app/Services/local-storage.service';
 import { HeaderMenus } from 'src/app/Models/header-menus.dto';
 import { SharedService } from 'src/app/Services/shared.service';
 import { animate, state, style, transition, trigger } from '@angular/animations';
@@ -54,13 +53,12 @@ export class AspectFormComponent implements OnInit {
     private formBuilder: UntypedFormBuilder,
     private router: Router,
     private sharedService: SharedService,
-    private localStorageService: LocalStorageService,
     private headerMenusService: HeaderMenusService,
 
   ) {
 
     this.isValidForm = null;
-    this.aspectId = this.localStorageService.get('user_id');
+    this.aspectId = sessionStorage.getItem('user_id');
 
     this.aspect = new AspectDTO ('', '');
     this.isUpdateMode = false;

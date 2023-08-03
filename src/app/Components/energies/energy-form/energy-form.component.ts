@@ -11,13 +11,11 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { finalize } from 'rxjs/operators';
 import { EnergyDTO } from 'src/app/Models/energy.dto';
 import { EnergyService } from 'src/app/Services/energy.service';
-import { LocalStorageService } from 'src/app/Services/local-storage.service';
 import { HeaderMenus } from 'src/app/Models/header-menus.dto';
 import { SharedService } from 'src/app/Services/shared.service';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { HeaderMenusService } from 'src/app/Services/header-menus.service';
 import { AspectService } from 'src/app/Services/aspect.service';
-import { AspectDTO } from 'src/app/Models/aspect.dto';
 
 @Component({
   selector: 'app-energy-form',
@@ -53,19 +51,16 @@ export class EnergyFormComponent implements OnInit {
   private energyId: string | null;
 
   constructor(
-    private activatedRoute: ActivatedRoute,
-    private aspectService: AspectService,
     private energyService: EnergyService,
     private formBuilder: UntypedFormBuilder,
     private router: Router,
     private sharedService: SharedService,
-    private localStorageService: LocalStorageService,
     private headerMenusService: HeaderMenusService,
 
   ) {
 
     this.isValidForm = null;
-    this.energyId = this.localStorageService.get('user_id');
+    this.energyId = sessionStorage.getItem('user_id');
 
     this.energy = new EnergyDTO ('', '', 0, '', 0, new Date(), new Date());
     this.isUpdateMode = false;

@@ -4,6 +4,7 @@ import { AfterViewInit, ViewChild } from '@angular/core';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { Router } from '@angular/router';
+import { HeaderMenus } from 'src/app/Models/header-menus.dto';
 import { PostDTO } from 'src/app/Models/post.dto';
 import { ConsumptionDTO } from 'src/app/Models/consumption.dto';
 import { deleteResponse } from 'src/app/Services/category.service';
@@ -14,6 +15,8 @@ import { ConsumptionService } from 'src/app/Services/consumption.service';
 import { SharedService } from 'src/app/Services/shared.service';
 
 import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE} from '@angular/material/core';
+import { HeaderMenusService } from 'src/app/Services/header-menus.service';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Component({
   selector: 'app-posts-list',
@@ -29,6 +32,7 @@ export class PostsListComponent implements OnInit{
   isGridView: boolean = false
   columnsDisplayed: string[] = ['delegation', 'aspect', 'energy', 'residue', 'quantity', 'fromDate', 'toDate', 'ACTIONS'];
   columnsToDisplay: string[] = this.columnsDisplayed.slice();
+  access_token: string | null = "";
 
   @ViewChild('paginator') paginator!: MatPaginator;
 
@@ -59,13 +63,14 @@ export class PostsListComponent implements OnInit{
     private localStorageService: LocalStorageService,
     private responsive: BreakpointObserver,
     private sharedService: SharedService,
+    private headerMenusService: HeaderMenusService,
+    private jwtHelper: JwtHelperService,
     private _adapter: DateAdapter<any>,
     @Inject(MAT_DATE_LOCALE) private _locale: string,
   ) {
-
     this._locale = 'es-ES';
     this._adapter.setLocale(this._locale);
-
+    this.access_token = sessionStorage.getItem("access_token")
     this.loadPosts();
   }
 
@@ -101,13 +106,30 @@ export class PostsListComponent implements OnInit{
           console.log("screens matches HandsetLandscape");
           this.isGridView = false
         }
-  });
+      });
+
+      if (this.access_token === null) {
+        const headerInfo: HeaderMenus = {
+          showAuthSection: false,
+          showNoAuthSection: true,
+        };
+        this.headerMenusService.headerManagement.next(headerInfo)
+      } else {
+        if (!this.jwtHelper.isTokenExpired (this.access_token)) {
+          const headerInfo: HeaderMenus = {
+            showAuthSection: true,
+            showNoAuthSection: false,
+          };
+          this.headerMenusService.headerManagement.next(headerInfo)
+        }
+      }
+
 
   }
 
   private loadPosts(): void {
     let errorResponse: any;
-    const userId = this.localStorageService.get('user_id');
+    const userId = sessionStorage.getItem('user_id');
     if (userId) {
         this.showButtons = true
         this.consumptionService.getAllConsumptionsByCompany(userId).subscribe(

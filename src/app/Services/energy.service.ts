@@ -42,8 +42,8 @@ export class EnergyService {
 
   getAllEnergies(): Observable<EnergyDTO[]> {
     return this.http
-      /* .get<EnergyDTO[]>(`${this.urlAPiMySql}energyGetAll.php`, httpsOptions) */
-      .get<EnergyDTO[]>(`${URL_API_SRV}/api/get-all-energies`, httpsOptions)
+       .get<EnergyDTO[]>(`${this.urlAPiMySql}energyGetAll.php`) 
+     /*  .get<EnergyDTO[]>(`${URL_API_SRV}/api/get-all-energies`, httpsOptions) */
   }
 
   getEnergyById(energyId: number): Observable<EnergyDTO> {

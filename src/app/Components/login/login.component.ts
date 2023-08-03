@@ -15,6 +15,7 @@ import { SharedService } from 'src/app/Services/shared.service';
 import { animate, state, style, transition, trigger } from '@angular/animations'
 import { DelegationService } from 'src/app/Services/delegation.service';
 import { HttpErrorResponse } from '@angular/common/http';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Component({
   selector: 'app-login',
@@ -56,7 +57,8 @@ export class LoginComponent implements OnInit {
     private delegationService: DelegationService,
     private headerMenusService: HeaderMenusService,
     private localStorageService: LocalStorageService,
-    private router: Router
+    private router: Router,
+    private jwtHelper: JwtHelperService
   ) {
     this.loginUser = new AuthDTO('', '', '', '');
 
@@ -85,83 +87,30 @@ export class LoginComponent implements OnInit {
         showAuthSection: false,
         showNoAuthSection: true,
       };
-      this.headerMenusService.headerManagement.next(headerInfo);
+      this.headerMenusService.headerManagement.next(headerInfo)
     } else {
-    this.authService.getExpiration(access_token).subscribe(
-      (item:AuthToken ) => {
-
+      if (!this.jwtHelper.isTokenExpired (access_token)) {
         const headerInfo: HeaderMenus = {
           showAuthSection: true,
           showNoAuthSection: false,
         };
-        this.headerMenusService.headerManagement.next(headerInfo);
+        this.headerMenusService.headerManagement.next(headerInfo)
+        this.router.navigateByUrl('user/consumption')
       }
-    ),
-    (error: any) => console.log (error)
-      
+      /* console.log (this.jwtHelper.isTokenExpired (access_token))
+      console.log (this.jwtHelper.decodeToken (access_token).user_id)
+      console.log (this.jwtHelper.decodeToken (access_token).id_ils)
+      console.log (this.jwtHelper.getTokenExpirationDate(access_token)) */
     }
       
   }
-  
-  
-
-  /* login(): void {
-    let responseOK: boolean = false;
-    let errorResponse: any;
-
-    this.loginUser.email = this.email.value;
-    this.loginUser.password = this.password.value;
-
-    this.authService
-      .login(this.loginUser)
-      .pipe(
-        finalize(async () => {
-          await this.sharedService.managementToast(
-            'loginFeedback',
-            responseOK,
-            errorResponse
-          );
-
-          if (responseOK) {
-            const headerInfo: HeaderMenus = {
-              showAuthSection: true,
-              showNoAuthSection: false,
-            };
-            this.headerMenusService.headerManagement.next(headerInfo);
-            this.router.navigateByUrl('home');
-          }
-        })
-      )
-      .subscribe(
-        (resp: AuthToken) => {
-          responseOK = true;
-          console.log (`----${resp}----`)
-          this.loginUser.user_id = resp.user_id;
-          this.loginUser.access_token = resp.access_token;
-
-          this.localStorageService.set('user_id', this.loginUser.user_id);
-          this.localStorageService.set('access_token', this.loginUser.access_token);
-        },
-        (error: HttpErrorResponse) => {
-          responseOK = false;
-          errorResponse = error.error;
-          const headerInfo: HeaderMenus = {
-            showAuthSection: false,
-            showNoAuthSection: true,
-          };
-          this.headerMenusService.headerManagement.next(headerInfo);
-
-          this.sharedService.errorLog(error.error);
-        }
-      );
-  } */
 
   loginObservable() {
-    let responseOK: boolean = false;
-    let errorResponse: any;
-    let totalDelegations: number;
-    this.loginUser.email = this.email.value;
-    this.loginUser.password = this.password.value;
+    let responseOK: boolean = false
+    let errorResponse: any
+    let totalDelegations: number
+    this.loginUser.email = this.email.value
+    this.loginUser.password = this.password.value
 
     if ( this.loginUser ) {
         this.authService.login( this.loginUser )
@@ -169,12 +118,12 @@ export class LoginComponent implements OnInit {
                 (item:AuthToken ) => {
                     console.log ("Welcome to the ILS datalogger.industrialocalsostenible.com created by IDI!!")
                     responseOK = true;
-                    this.loginUser.user_id = item.user_id;
-                    this.loginUser.access_token = item.access_token;
-                    this.localStorageService.set('user_id', this.loginUser.user_id);
-                    this.localStorageService.set('access_token', this.loginUser.access_token);
+                    this.loginUser.user_id = item.user_id
+                    this.loginUser.access_token = item.access_token
+                    this.localStorageService.set('user_id', this.loginUser.user_id)
+                    this.localStorageService.set('access_token', this.loginUser.access_token)
 
-                    this.sharedService.managementToast( 'loginFeedback', responseOK, errorResponse );
+                    this.sharedService.managementToast( 'loginFeedback', responseOK, errorResponse )
 
                     if (responseOK) {
                       const headerInfo: HeaderMenus = {
@@ -186,11 +135,10 @@ export class LoginComponent implements OnInit {
                       this.delegationService.getTotalDelegationsByCompany(this.loginUser.user_id)
                       .subscribe( item => {
                         totalDelegations = item.totalDelegations
-console.log(`--${totalDelegations}--`)
                         if (totalDelegations == 0) {
-                          this.router.navigateByUrl('profile');
+                          this.router.navigateByUrl('profile')
                         } else {
-                          this.router.navigateByUrl('user/consumption');
+                          this.router.navigateByUrl('user/consumption')
                         }
                       } )
 
@@ -213,119 +161,4 @@ console.log(`--${totalDelegations}--`)
             ;
     }
 }
-
-/*  async login(): Promise<void> {
-    let responseOK: boolean = false;
-    let errorResponse: any;
-    let totalDelegations: number;
-
-    this.loginUser.email = this.email.value;
-    this.loginUser.password = this.password.value;
-    try {
-
-      const authToken = await this.authService.loginp(this.loginUser);
-      console.log ("Welcome to the ILS datalogger.industrialocalsostenible.com created by IDI!!")
-      responseOK = true;
-      this.loginUser.user_id = authToken.user_id;
-      this.loginUser.access_token = authToken.access_token;
-      this.localStorageService.set('user_id', this.loginUser.user_id);
-      this.localStorageService.set('access_token', this.loginUser.access_token);
-
-    } catch (error: any) {
-
-      responseOK = false;
-      errorResponse = error.error;
-      const headerInfo: HeaderMenus = {
-        showAuthSection: false,
-        showNoAuthSection: true,
-      };
-      this.headerMenusService.headerManagement.next(headerInfo);
-      this.sharedService.errorLog(error.error);
-
-    }
-
-    await this.sharedService.managementToast( 'loginFeedback', responseOK, errorResponse );
-
-    if (responseOK) {
-      const headerInfo: HeaderMenus = {
-        showAuthSection: true,
-        showNoAuthSection: false,
-      };
-      // update options menu
-
-      this.headerMenusService.headerManagement.next(headerInfo);
-      this.delegationService.getTotalDelegationsByCompany(this.loginUser.user_id)
-      .subscribe( item => {
-        totalDelegations = item.totalDelegations
-
-        if (totalDelegations == 0) {
-          this.router.navigateByUrl('profile');
-        } else {
-          this.router.navigateByUrl('user/consumption');
-        }
-      } )
-
-    }
-  } */
-
- /*  onSubmit(): void {
-    let responseOK: boolean = false;
-    let errorResponse: any;
-    let totalDelegations: number;
-
-    this.loginUser.email = this.email.value;
-    this.loginUser.password = this.password.value;
-
-    this.authService.login(this.loginUser)
-    .subscribe(
-       data => {
-        this.storageService.saveUser(data);
-
-        this.isLoginFailed = false;
-        this.isLoggedIn = true;
-        this.roles = this.storageService.getUser().roles;
-        console.log ("Welcome to the ILS datalogger.industrialocalsostenible.com created by IDI!!")
-        responseOK = true;
-
-        this.sharedService.managementToast( 'loginFeedback', responseOK, errorResponse );
-
-        if (responseOK) {
-          const headerInfo: HeaderMenus = {
-            showAuthSection: true,
-            showNoAuthSection: false,
-          };
-          // update options menu
-
-          this.headerMenusService.headerManagement.next(headerInfo);
-          this.delegationService.getTotalDelegationsByCompany(this.loginUser.user_id)
-          .subscribe( item => {
-            totalDelegations = item.totalDelegations
-
-            if (totalDelegations == 0) {
-              this.router.navigateByUrl('profile');
-            } else {
-              this.router.navigateByUrl('user/consumption');
-            }
-          } )
-
-        }
-
-       this.reloadPage();
-      },
-      (err: HttpErrorResponse) => {
-        this.errorMessage = err.error.message;
-        this.isLoginFailed = true;
-
-        responseOK = false;
-        errorResponse = err.error;
-        const headerInfo: HeaderMenus = {
-        showAuthSection: false,
-        showNoAuthSection: true,
-      };
-      this.headerMenusService.headerManagement.next(headerInfo);
-      this.sharedService.errorLog(err.error);
-
-      }
-    );
-  } */
 }

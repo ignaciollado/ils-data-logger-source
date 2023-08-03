@@ -4,11 +4,11 @@ import { Router } from '@angular/router';
 import { HeaderMenus } from 'src/app/Models/header-menus.dto';
 import { AspectDTO } from 'src/app/Models/aspect.dto';
 import { HeaderMenusService } from 'src/app/Services/header-menus.service';
-import { LocalStorageService } from 'src/app/Services/local-storage.service';
 import {BreakpointObserver, Breakpoints} from '@angular/cdk/layout';
 import { SharedService } from 'src/app/Services/shared.service';
 import { deleteResponse } from 'src/app/Services/category.service';
 import { AspectService } from 'src/app/Services/aspect.service';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Component({
   selector: 'app-aspect-list',
@@ -28,22 +28,32 @@ export class AspectListComponent implements OnInit{
 
   constructor(
     private aspectService: AspectService,
-    private localStorageService: LocalStorageService,
     private sharedService: SharedService,
     private router: Router,
     private headerMenusService: HeaderMenusService,
+    private jwtHelper: JwtHelperService,
     private responsive: BreakpointObserver
   ) {
-    this.userId = '0';
-    this.showButtons = false;
-    this.access_token = this.localStorageService.get('access_token')
+    this.userId = '0'
+    this.showButtons = false
+    this.access_token = sessionStorage.getItem("access_token")
 
-    /* if(this.access_token) { */
-      this.loadAspects();
-   /*  } else {
-      this.router.navigateByUrl('/login');
-    } */
-
+    this.loadAspects()
+    if (this.access_token === null) {
+      const headerInfo: HeaderMenus = {
+        showAuthSection: false,
+        showNoAuthSection: true,
+      };
+      this.headerMenusService.headerManagement.next(headerInfo)
+    } else {
+      if (!this.jwtHelper.isTokenExpired (this.access_token)) {
+        const headerInfo: HeaderMenus = {
+          showAuthSection: true,
+          showNoAuthSection: false,
+        };
+        this.headerMenusService.headerManagement.next(headerInfo)
+      }
+    }
   }
 
   ngOnInit(): void {
@@ -84,7 +94,7 @@ export class AspectListComponent implements OnInit{
 
   private loadAspects(): void {
     let errorResponse: any;
-    const userId = this.localStorageService.get('user_id');
+    const userId = sessionStorage.getItem('user_id');
     if (userId) {
         this.showButtons = true
         this.aspectService.getAllAspects().subscribe(

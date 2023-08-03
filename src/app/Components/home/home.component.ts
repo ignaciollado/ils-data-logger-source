@@ -40,7 +40,7 @@ export class HomeComponent {
 
     this.loadConsumptions()
     this.loadEnergies()
-    
+
     if (this.access_token === null) {
       const headerInfo: HeaderMenus = {
         showAuthSection: false,
@@ -71,7 +71,7 @@ export class HomeComponent {
 
   private loadConsumptions(): void {
     let errorResponse: any;
-    this.userId = this.localStorageService.get('user_id');
+    this.userId = sessionStorage.getItem('user_id');
     if (this.userId) {
       this.showButtons = true;
       this.consumptionService.getAllConsumptionsByCompany(this.userId).subscribe(

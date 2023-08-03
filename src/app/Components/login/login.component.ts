@@ -83,26 +83,26 @@ export class LoginComponent implements OnInit {
 
     const access_token: string | null = sessionStorage.getItem("access_token")
     if (access_token === null) {
-      const headerInfo: HeaderMenus = {
-        showAuthSection: false,
-        showNoAuthSection: true,
-      };
+      const headerInfo: HeaderMenus = { showAuthSection: false, showNoAuthSection: true, };
       this.headerMenusService.headerManagement.next(headerInfo)
     } else {
       if (!this.jwtHelper.isTokenExpired (access_token)) {
-        const headerInfo: HeaderMenus = {
-          showAuthSection: true,
-          showNoAuthSection: false,
-        };
+        const headerInfo: HeaderMenus = { showAuthSection: true, showNoAuthSection: false, };
         this.headerMenusService.headerManagement.next(headerInfo)
         this.router.navigateByUrl('user/consumption')
+      } else {
+        const headerInfo: HeaderMenus = { showAuthSection: false, showNoAuthSection: true, };
+        sessionStorage.removeItem('user_id') //this.localStorageService.remove('user_id');
+        sessionStorage.removeItem('access_token') //this.localStorageService.remove('access_token');
+        this.headerMenusService.headerManagement.next(headerInfo);
+        this.router.navigateByUrl('login');
       }
       /* console.log (this.jwtHelper.isTokenExpired (access_token))
       console.log (this.jwtHelper.decodeToken (access_token).user_id)
       console.log (this.jwtHelper.decodeToken (access_token).id_ils)
       console.log (this.jwtHelper.getTokenExpirationDate(access_token)) */
     }
-      
+
   }
 
   loginObservable() {
@@ -120,16 +120,16 @@ export class LoginComponent implements OnInit {
                     responseOK = true;
                     this.loginUser.user_id = item.user_id
                     this.loginUser.access_token = item.access_token
-                    this.localStorageService.set('user_id', this.loginUser.user_id)
-                    this.localStorageService.set('access_token', this.loginUser.access_token)
+                    sessionStorage.setItem('user_id', this.loginUser.user_id)
+                    sessionStorage.setItem('access_token', this.loginUser.access_token)
+
+                    /* this.localStorageService.set('user_id', this.loginUser.user_id)
+                    this.localStorageService.set('access_token', this.loginUser.access_token) */
 
                     this.sharedService.managementToast( 'loginFeedback', responseOK, errorResponse )
 
                     if (responseOK) {
-                      const headerInfo: HeaderMenus = {
-                        showAuthSection: true,
-                        showNoAuthSection: false,
-                      };
+                      const headerInfo: HeaderMenus = { showAuthSection: true, showNoAuthSection: false, };
                       this.router.navigateByUrl('profile');
                       this.headerMenusService.headerManagement.next(headerInfo);
                       this.delegationService.getTotalDelegationsByCompany(this.loginUser.user_id)
@@ -148,10 +148,7 @@ export class LoginComponent implements OnInit {
       (error: any) => {
         responseOK = false;
         errorResponse = error.error;
-        const headerInfo: HeaderMenus = {
-          showAuthSection: false,
-          showNoAuthSection: true,
-        };
+        const headerInfo: HeaderMenus = { showAuthSection: false, showNoAuthSection: true, };
         this.headerMenusService.headerManagement.next(headerInfo);
         this.sharedService.errorLog(error.error);
       },

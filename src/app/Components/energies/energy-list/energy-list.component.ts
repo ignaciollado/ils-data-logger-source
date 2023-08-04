@@ -32,24 +32,24 @@ export class EnergyListComponent implements OnInit {
     private jwtHelper: JwtHelperService,
     private responsive: BreakpointObserver
   ) {
-    this.userId = '0';
+    this.userId = '';
     this.showButtons = false;
     this.access_token = sessionStorage.getItem("access_token")
 
-    this.loadEnergies();
     if (this.access_token === null) {
-      const headerInfo: HeaderMenus = {
-        showAuthSection: false,
-        showNoAuthSection: true,
-      };
+      const headerInfo: HeaderMenus = { showAuthSection: false, showNoAuthSection: true, };
       this.headerMenusService.headerManagement.next(headerInfo)
     } else {
       if (!this.jwtHelper.isTokenExpired (this.access_token)) {
-        const headerInfo: HeaderMenus = {
-          showAuthSection: true,
-          showNoAuthSection: false,
-        };
+        const headerInfo: HeaderMenus = { showAuthSection: true, showNoAuthSection: false, };
         this.headerMenusService.headerManagement.next(headerInfo)
+        this.loadEnergies();
+      } else {
+        const headerInfo: HeaderMenus = { showAuthSection: false, showNoAuthSection: true, };
+        sessionStorage.removeItem('user_id')
+        sessionStorage.removeItem('access_token')
+        this.headerMenusService.headerManagement.next(headerInfo)
+        this.router.navigateByUrl('login')
       }
     }
   }
@@ -110,7 +110,6 @@ export class EnergyListComponent implements OnInit {
   }
 
   deleteEnergy(energyId:number): void {
-
     this.loadEnergies()
   }
 

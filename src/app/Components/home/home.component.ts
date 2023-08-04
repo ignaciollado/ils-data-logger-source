@@ -5,7 +5,6 @@ import { HeaderMenus } from 'src/app/Models/header-menus.dto';
 import { EnergyDTO } from 'src/app/Models/energy.dto';
 import { ConsumptionDTO } from 'src/app/Models/consumption.dto';
 import { HeaderMenusService } from 'src/app/Services/header-menus.service';
-import { LocalStorageService } from 'src/app/Services/local-storage.service';
 import { ConsumptionService } from 'src/app/Services/consumption.service';
 import { EnergyService } from 'src/app/Services/energy.service';
 
@@ -28,7 +27,6 @@ export class HomeComponent {
   constructor(
     private consumptionService: ConsumptionService,
     private energyService: EnergyService,
-    private localStorageService: LocalStorageService,
     private sharedService: SharedService,
     private router: Router,
     private headerMenusService: HeaderMenusService,
@@ -38,22 +36,21 @@ export class HomeComponent {
     this.showButtons = false
     this.access_token = sessionStorage.getItem("access_token")
 
-    this.loadConsumptions()
-    this.loadEnergies()
-
     if (this.access_token === null) {
-      const headerInfo: HeaderMenus = {
-        showAuthSection: false,
-        showNoAuthSection: true,
-      };
+      const headerInfo: HeaderMenus = { showAuthSection: false, showNoAuthSection: true, };
       this.headerMenusService.headerManagement.next(headerInfo)
     } else {
       if (!this.jwtHelper.isTokenExpired (this.access_token)) {
-        const headerInfo: HeaderMenus = {
-          showAuthSection: true,
-          showNoAuthSection: false,
-        };
+        const headerInfo: HeaderMenus = {  showAuthSection: true, showNoAuthSection: false, };
         this.headerMenusService.headerManagement.next(headerInfo)
+        this.loadConsumptions()
+        this.loadEnergies()
+      } else {
+        const headerInfo: HeaderMenus = { showAuthSection: false, showNoAuthSection: true, };
+        sessionStorage.removeItem('user_id')
+        sessionStorage.removeItem('access_token')
+        this.headerMenusService.headerManagement.next(headerInfo)
+        this.router.navigateByUrl('login')
       }
     }
 

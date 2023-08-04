@@ -16,6 +16,7 @@ import { SharedService } from 'src/app/Services/shared.service';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { HeaderMenusService } from 'src/app/Services/header-menus.service';
 import { AspectService } from 'src/app/Services/aspect.service';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Component({
   selector: 'app-energy-form',
@@ -45,6 +46,10 @@ export class EnergyFormComponent implements OnInit {
   isValidForm: boolean | null
   isElevated = true
   delegationFields: string[] = []
+  showButtons: boolean;
+  showAuthSection: boolean;
+  showNoAuthSection: boolean;
+  access_token: string | null;
 
   private isUpdateMode: boolean;
   private validRequest: boolean;
@@ -56,11 +61,32 @@ export class EnergyFormComponent implements OnInit {
     private router: Router,
     private sharedService: SharedService,
     private headerMenusService: HeaderMenusService,
+    private jwtHelper: JwtHelperService,
 
   ) {
-
     this.isValidForm = null;
-    this.energyId = sessionStorage.getItem('user_id');
+    this.access_token = sessionStorage.getItem("access_token")
+    this.energyId = ""
+    this.showButtons = false
+    this.showAuthSection = false;
+    this.showNoAuthSection = true;
+
+    if (this.access_token === null) {
+      const headerInfo: HeaderMenus = { showAuthSection: false, showNoAuthSection: true, };
+      this.headerMenusService.headerManagement.next(headerInfo)
+    } else {
+      if (!this.jwtHelper.isTokenExpired (this.access_token)) {
+
+        const headerInfo: HeaderMenus = { showAuthSection: true, showNoAuthSection: false, };
+        this.headerMenusService.headerManagement.next(headerInfo)
+      } else {
+        const headerInfo: HeaderMenus = { showAuthSection: false, showNoAuthSection: true, };
+        sessionStorage.removeItem('user_id')
+        sessionStorage.removeItem('access_token')
+        this.headerMenusService.headerManagement.next(headerInfo)
+        this.router.navigateByUrl('login')
+      }
+    }
 
     this.energy = new EnergyDTO ('', '', 0, '', 0, new Date(), new Date());
     this.isUpdateMode = false;

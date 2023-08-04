@@ -8,7 +8,6 @@ import { HeaderMenus } from 'src/app/Models/header-menus.dto';
 import { PostDTO } from 'src/app/Models/post.dto';
 import { ConsumptionDTO } from 'src/app/Models/consumption.dto';
 import { deleteResponse } from 'src/app/Services/category.service';
-import { LocalStorageService } from 'src/app/Services/local-storage.service';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { PostService } from 'src/app/Services/post.service';
 import { ConsumptionService } from 'src/app/Services/consumption.service';
@@ -60,7 +59,6 @@ export class PostsListComponent implements OnInit{
     private postService: PostService,
     private consumptionService: ConsumptionService,
     private router: Router,
-    private localStorageService: LocalStorageService,
     private responsive: BreakpointObserver,
     private sharedService: SharedService,
     private headerMenusService: HeaderMenusService,
@@ -71,7 +69,22 @@ export class PostsListComponent implements OnInit{
     this._locale = 'es-ES';
     this._adapter.setLocale(this._locale);
     this.access_token = sessionStorage.getItem("access_token")
-    this.loadPosts();
+    if (this.access_token === null) {
+      const headerInfo: HeaderMenus = { showAuthSection: false, showNoAuthSection: true, };
+      this.headerMenusService.headerManagement.next(headerInfo)
+    } else {
+      if (!this.jwtHelper.isTokenExpired (this.access_token)) {
+        const headerInfo: HeaderMenus = {  showAuthSection: true, showNoAuthSection: false, };
+        this.headerMenusService.headerManagement.next(headerInfo)
+        this.loadPosts();
+      } else {
+        const headerInfo: HeaderMenus = { showAuthSection: false, showNoAuthSection: true, };
+        sessionStorage.removeItem('user_id')
+        sessionStorage.removeItem('access_token')
+        this.headerMenusService.headerManagement.next(headerInfo)
+        this.router.navigateByUrl('login')
+      }
+    }
   }
 
   ngOnInit(): void {
@@ -107,24 +120,6 @@ export class PostsListComponent implements OnInit{
           this.isGridView = false
         }
       });
-
-      if (this.access_token === null) {
-        const headerInfo: HeaderMenus = {
-          showAuthSection: false,
-          showNoAuthSection: true,
-        };
-        this.headerMenusService.headerManagement.next(headerInfo)
-      } else {
-        if (!this.jwtHelper.isTokenExpired (this.access_token)) {
-          const headerInfo: HeaderMenus = {
-            showAuthSection: true,
-            showNoAuthSection: false,
-          };
-          this.headerMenusService.headerManagement.next(headerInfo)
-        }
-      }
-
-
   }
 
   private loadPosts(): void {

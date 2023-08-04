@@ -20,6 +20,8 @@ export class AspectListComponent implements OnInit{
 
   aspects!: AspectDTO[];
   showButtons: boolean;
+  showAuthSection: boolean;
+  showNoAuthSection: boolean;
   access_token: string | null;
   userId: string | null;
 
@@ -37,27 +39,36 @@ export class AspectListComponent implements OnInit{
     this.userId = '0'
     this.showButtons = false
     this.access_token = sessionStorage.getItem("access_token")
+    this.showAuthSection = false;
+    this.showNoAuthSection = true;
 
-    this.loadAspects()
     if (this.access_token === null) {
-      const headerInfo: HeaderMenus = {
-        showAuthSection: false,
-        showNoAuthSection: true,
-      };
+      const headerInfo: HeaderMenus = { showAuthSection: false, showNoAuthSection: true, };
       this.headerMenusService.headerManagement.next(headerInfo)
     } else {
       if (!this.jwtHelper.isTokenExpired (this.access_token)) {
-        const headerInfo: HeaderMenus = {
-          showAuthSection: true,
-          showNoAuthSection: false,
-        };
+        const headerInfo: HeaderMenus = { showAuthSection: true, showNoAuthSection: false, };
         this.headerMenusService.headerManagement.next(headerInfo)
+        this.loadAspects()
+      } else {
+        const headerInfo: HeaderMenus = { showAuthSection: false, showNoAuthSection: true, };
+        sessionStorage.removeItem('user_id')
+        sessionStorage.removeItem('access_token')
+        this.headerMenusService.headerManagement.next(headerInfo)
+        this.router.navigateByUrl('login')
       }
     }
   }
 
   ngOnInit(): void {
-    
+    this.headerMenusService.headerManagement.subscribe(
+      (headerInfo: HeaderMenus) => {
+        if (headerInfo) {
+          this.showAuthSection = headerInfo.showAuthSection;
+          this.showNoAuthSection = headerInfo.showNoAuthSection;
+        }
+      }
+    );
     this.responsive.observe([
           Breakpoints.TabletPortrait /*  (min-width: 600px) and (max-width: 839.98px) and (orientation: portrait) */, 
           Breakpoints.HandsetPortrait /* (max-width: 599.98px) and (orientation: portrait) */,

@@ -153,15 +153,14 @@ export class DashboardComponent implements OnInit {
   ngOnInit(): void {
     
     const access_token: string | null = sessionStorage.getItem("access_token")
-    this.loadconsumptions()
     
-    if (access_token === null) {
+/*     if (access_token === null) {
       const headerInfo: HeaderMenus = {
         showAuthSection: false,
         showNoAuthSection: true,
       };
       this.headerMenusService.headerManagement.next(headerInfo)
-    } else {
+    } else { */
       if (!this.jwtHelper.isTokenExpired (access_token)) {
         const headerInfo: HeaderMenus = {
           showAuthSection: true,
@@ -169,8 +168,8 @@ export class DashboardComponent implements OnInit {
         };
         this.headerMenusService.headerManagement.next(headerInfo)
       }
-    }
-
+   /*  } */
+    this.loadconsumptions()
   }
 
   private loadconsumptions(): void {

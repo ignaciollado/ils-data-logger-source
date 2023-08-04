@@ -10,7 +10,6 @@ import { AuthDTO } from 'src/app/Models/auth.dto';
 import { HeaderMenus } from 'src/app/Models/header-menus.dto';
 import { AuthService, AuthToken } from 'src/app/Services/auth.service';
 import { HeaderMenusService } from 'src/app/Services/header-menus.service';
-import { LocalStorageService } from 'src/app/Services/local-storage.service';
 import { SharedService } from 'src/app/Services/shared.service';
 import { animate, state, style, transition, trigger } from '@angular/animations'
 import { DelegationService } from 'src/app/Services/delegation.service';
@@ -56,7 +55,6 @@ export class LoginComponent implements OnInit {
     private sharedService: SharedService,
     private delegationService: DelegationService,
     private headerMenusService: HeaderMenusService,
-    private localStorageService: LocalStorageService,
     private router: Router,
     private jwtHelper: JwtHelperService
   ) {

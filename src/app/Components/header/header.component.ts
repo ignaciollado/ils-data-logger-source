@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { JwtHelperService } from '@auth0/angular-jwt';
 import { HeaderMenus } from 'src/app/Models/header-menus.dto';
 import { HeaderMenusService } from 'src/app/Services/header-menus.service';
-/* import { LocalStorageService } from 'src/app/Services/local-storage.service'; */
 
 @Component({
   selector: 'app-header',
@@ -12,14 +12,32 @@ import { HeaderMenusService } from 'src/app/Services/header-menus.service';
 export class HeaderComponent implements OnInit {
   showAuthSection: boolean;
   showNoAuthSection: boolean;
+  access_token: string | null;
 
   constructor(
     private router: Router,
     private headerMenusService: HeaderMenusService,
-   /*  private localStorageService: LocalStorageService */
+    private jwtHelper: JwtHelperService
   ) {
+    this.access_token = sessionStorage.getItem("access_token")
     this.showAuthSection = false;
     this.showNoAuthSection = true;
+
+    if (this.access_token === null) {
+      const headerInfo: HeaderMenus = { showAuthSection: false, showNoAuthSection: true, };
+      this.headerMenusService.headerManagement.next(headerInfo)
+    } else {
+      if (!this.jwtHelper.isTokenExpired (this.access_token)) {
+        const headerInfo: HeaderMenus = {  showAuthSection: true, showNoAuthSection: false, };
+        this.headerMenusService.headerManagement.next(headerInfo)
+      } else {
+        const headerInfo: HeaderMenus = { showAuthSection: false, showNoAuthSection: true, };
+        sessionStorage.removeItem('user_id')
+        sessionStorage.removeItem('access_token')
+        this.headerMenusService.headerManagement.next(headerInfo)
+        this.router.navigateByUrl('login')
+      }
+    }
   }
 
   ngOnInit(): void {
@@ -88,6 +106,6 @@ export class HeaderComponent implements OnInit {
     const headerInfo: HeaderMenus = { showAuthSection: false, showNoAuthSection: true, };
 
     this.headerMenusService.headerManagement.next(headerInfo);
-    this.router.navigateByUrl('');
+    this.router.navigateByUrl('login');
   }
 }

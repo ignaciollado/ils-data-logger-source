@@ -16,9 +16,8 @@ export class AuthInterceptorService implements HttpInterceptor {
   
   access_token: string | null;
 
-  constructor(private localStorageService: LocalStorageService) {
-
-    this.access_token = this.localStorageService.get('access_token');
+  constructor() {
+    this.access_token = sessionStorage.getItem('access_token');
   }
 
   intercept(
@@ -31,9 +30,9 @@ export class AuthInterceptorService implements HttpInterceptor {
     if (this.access_token) {
       req = req.clone({
         setHeaders: {
-          'Content-Type': 'application/json; charset=utf-8',
-          Accept: 'application/json',
-          Authorization: `Bearer ${this.access_token}`, /* Se añade el JWT en todas las peticiones */
+         'Content-Type': 'application/json; charset=utf-8',
+         Accept: 'application/json',
+         Authorization: `Bearer ${this.access_token}`, /* Se añade el JWT en todas las peticiones */
         },
       });
     }

@@ -3,6 +3,8 @@ import { HttpClient, HttpHeaders, HttpParams, HttpErrorResponse } from '@angular
 import { EnergyDTO } from '../Models/energy.dto';
 import { Observable } from 'rxjs';
 import { NONE_TYPE } from '@angular/compiler';
+import { catchError } from 'rxjs/operators';
+import { SharedService } from './shared.service';
 
 const URL_API = '../../assets/phpAPI/'
 const URL_API_SRV = "https://jwt.idi.es/public/index.php"
@@ -20,11 +22,11 @@ const httpsOptions = {
   })
 } */
 
-interface updateResponse {
+export interface updateResponse {
   affected: number;
 }
 
-interface deleteResponse {
+export interface deleteResponse {
   affected: number;
 }
 
@@ -36,7 +38,8 @@ export class EnergyService {
   private urlApi: string;
   private urlAPiMySql:  string;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient,
+    private sharedService: SharedService) {
     this.urlApi = '../../assets/mocks/fuels.json';
     this.urlAPiMySql = '../../assets/phpAPI/'}
 
@@ -62,10 +65,10 @@ export class EnergyService {
       ;
   }
 
-  deleteEnergy(msgId: string): Observable<deleteResponse> {
+  deleteEnergy(energyId: string): Observable<deleteResponse> {
     return this.http
-      .delete<deleteResponse>(this.urlAPiMySql + '/' + msgId)
-      ;
+    .delete<deleteResponse>(`${this.urlAPiMySql}energyDelete.php?energyId=${energyId}`)
+    .pipe(catchError(this.sharedService.handleError));
   }
 
   errorLog(error: HttpErrorResponse): void {

@@ -9,7 +9,7 @@ import { ConsumptionService } from 'src/app/Services/consumption.service';
 import { EnergyService } from 'src/app/Services/energy.service';
 
 import { SharedService } from 'src/app/Services/shared.service';
-import { deleteResponse } from 'src/app/Services/category.service';
+import { deleteResponse } from 'src/app/Services/consumption.service';
 import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Component({
@@ -106,13 +106,13 @@ export class HomeComponent {
     this.router.navigateByUrl('/user/consumption/' + postId);
   }
 
-  deletePost(postId: string): void {
+  deletePost(consumptionId: string): void {
     let errorResponse: any;
 
     // show confirmation popup
-    let result = confirm('Confirm delete post with id: ' + postId + ' .');
+    let result = confirm('Confirm delete post with id: ' + consumptionId)
     if (result) {
-      this.consumptionService.deleteConsumptions(postId).subscribe(
+      this.consumptionService.deleteConsumption(consumptionId).subscribe(
         (rowsAffected: deleteResponse) => {
           if (rowsAffected.affected > 0) {
             this.loadConsumptions();

@@ -15,17 +15,18 @@ const httpOptions = {
   })
 };
 
-interface updateResponse {
+export interface updateResponse {
   affected: number;
 }
 
-interface deleteResponse {
+export interface deleteResponse {
   affected: number;
 }
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class ConsumptionService {
   private urlApi: string;
   private urlAPiMySql:  string;
@@ -44,7 +45,8 @@ export class ConsumptionService {
 
   getAllConsumptionsByCompanyAndAspect(companyId:any, aspectId?: number): Observable<ConsumptionDTO[]> {
     return this.http
-     .get<ConsumptionDTO[]>(`${URL_API_SRV}/api/get-all-company-aspect-consumptions/${companyId}/${aspectId}`, httpOptions)
+     /* .get<ConsumptionDTO[]>(`${URL_API_SRV}/api/get-all-company-aspect-consumptions/${companyId}/${aspectId}`, httpOptions) */
+     .get<ConsumptionDTO[]>(`${this.urlAPiMySql}consumptionGetByCompanyId.php?companyId=${companyId}&aspectId=${aspectId}`, httpOptions)
   }
 
   getAllConsumptionsByCompany(companyId:string): Observable<ConsumptionDTO[]> {
@@ -89,10 +91,10 @@ export class ConsumptionService {
       ;
   }
 
-  deleteConsumptions(msgId: string): Observable<deleteResponse> {
+  deleteConsumption(consumptionId: string): Observable<deleteResponse> {
     return this.http
-      .delete<deleteResponse>(this.urlApi + '/' + msgId)
-      ;
+    .delete<deleteResponse>(`${this.urlAPiMySql}consumptionDelete.php?consumptionId=${consumptionId}`)
+    .pipe(catchError(this.sharedService.handleError));
   }
 
 }

@@ -39,10 +39,7 @@ export class CategoryService {
       .pipe(catchError(this.sharedService.handleError));
   }
 
-  updateCategory(
-    categoryId: string,
-    category: CategoryDTO
-  ): Observable<CategoryDTO> {
+  updateCategory( categoryId: string, category: CategoryDTO ): Observable<CategoryDTO> {
     return this.http
       .put<CategoryDTO>(this.urlBlogUocApi + '/' + categoryId, category)
       .pipe(catchError(this.sharedService.handleError));

@@ -11,6 +11,7 @@ import { HeaderMenus } from 'src/app/Models/header-menus.dto';
 import { HeaderMenusService } from 'src/app/Services/header-menus.service';
 import { finalize } from 'rxjs/operators';
 import { UserDTO } from 'src/app/Models/user.dto';
+import { animate, state, style, transition, trigger } from '@angular/animations';
 import { SharedService } from 'src/app/Services/shared.service';
 import { UserService } from 'src/app/Services/user.service';
 import { Router } from '@angular/router';
@@ -19,6 +20,17 @@ import { Router } from '@angular/router';
   selector: 'app-profile',
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.scss'],
+  animations: [
+    trigger( 'fadeInOut',[
+      state(
+        'void',
+        style({
+          opacity: 0.2
+        })
+      ),
+      transition('void <-> *', animate(1500))
+    ])
+  ],
 })
 export class ProfileComponent implements OnInit {
   profileUser: UserDTO;

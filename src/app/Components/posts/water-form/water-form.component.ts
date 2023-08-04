@@ -179,7 +179,7 @@ export class WaterFormComponent {
     // show confirmation popup
     let result = confirm('Confirm delete this consumption with id: ' + consumptionId + ' .');
     if (result) {
-      this.consumptionService.deleteConsumptions(consumptionId).subscribe(
+      this.consumptionService.deleteConsumption(consumptionId).subscribe(
         (rowsAffected: deleteResponse) => {
           if (rowsAffected.affected > 0) {
             this.loadConsumption();

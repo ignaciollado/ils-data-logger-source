@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
 import { HeaderMenus } from 'src/app/Models/header-menus.dto';
 import { PostDTO } from 'src/app/Models/post.dto';
 import { ConsumptionDTO } from 'src/app/Models/consumption.dto';
-import { deleteResponse } from 'src/app/Services/category.service';
+import { deleteResponse } from 'src/app/Services/post.service';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { PostService } from 'src/app/Services/post.service';
 import { ConsumptionService } from 'src/app/Services/consumption.service';
@@ -130,7 +130,6 @@ export class PostsListComponent implements OnInit{
         this.consumptionService.getAllConsumptionsByCompany(userId).subscribe(
         (consumptions: ConsumptionDTO[]) => {
           this.consumptions = consumptions
-          console.log (this.consumptions)
         },
         (error: HttpErrorResponse) => {
           errorResponse = error.error;
@@ -149,7 +148,7 @@ export class PostsListComponent implements OnInit{
   }
 
   deletePost(postId: string): void {
-    alert (postId)
+   
     let errorResponse: any;
 
     // show confirmation popup

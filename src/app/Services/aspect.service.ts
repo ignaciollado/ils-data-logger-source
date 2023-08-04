@@ -11,11 +11,11 @@ const httpsOptions = {
   })
 }
 
-interface updateResponse {
+export interface updateResponse {
   affected: number;
 }
 
-interface deleteResponse {
+export interface deleteResponse {
   affected: number;
 }
 
@@ -33,7 +33,6 @@ export class AspectService {
     return this.http
       .get<AspectDTO[]>(`${this.urlAPiMySql}aspectGetAll.php`)
   }
-
 
   getAspectById(aspectId: string): Observable<AspectDTO> {
     return this.http

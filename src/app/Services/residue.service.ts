@@ -3,19 +3,21 @@ import { HttpClient, HttpHeaders, HttpParams, HttpErrorResponse } from '@angular
 import { ResidueDTO } from '../Models/residue.dto';
 import { Observable } from 'rxjs';
 import { NONE_TYPE } from '@angular/compiler';
+import { SharedService } from './shared.service';
+import { catchError } from 'rxjs/operators';
 
 const httpsOptions = {
   headers: new HttpHeaders({
     'Content-type': 'application/json',
-    Authorization: 'json_token'
+   
   })
 }
 
-interface updateResponse {
+export interface updateResponse {
   affected: number;
 }
 
-interface deleteResponse {
+export interface deleteResponse {
   affected: number;
 }
 
@@ -26,7 +28,7 @@ export class ResidueService {
   private urlApi: string;
   private urlAPiMySql:  string;
 
-  constructor(private http: HttpClient) {  
+  constructor(private http: HttpClient, private sharedService: SharedService) {  
     this.urlApi = '../../assets/mocks/fuels.json';
     this.urlAPiMySql = '../../assets/phpAPI/'}
 
@@ -34,7 +36,6 @@ export class ResidueService {
     return this.http
       .get<ResidueDTO[]>(`${this.urlAPiMySql}residueGetAll.php`)
   }
-
 
   getResidueById(residueId: string): Observable<ResidueDTO> {
     return this.http
@@ -53,10 +54,10 @@ export class ResidueService {
       ;
   }
 
-  deleteResidue(msgId: string): Observable<deleteResponse> {
+  deleteResidue(residueId: number): Observable<deleteResponse> {
     return this.http
-      .delete<deleteResponse>(this.urlAPiMySql + '/' + msgId)
-      ;
+      .delete<deleteResponse>(`${this.urlAPiMySql}residueDelete.php?residueId=${residueId}`)
+      .pipe(catchError(this.sharedService.handleError));
   }
 
   errorLog(error: HttpErrorResponse): void {

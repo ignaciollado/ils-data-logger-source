@@ -12,16 +12,18 @@ import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE} from '@angular/material/
 
 import { ActivatedRoute, Router } from '@angular/router';
 import { finalize } from 'rxjs/operators';
+import { HeaderMenus } from 'src/app/Models/header-menus.dto';
 import { ConsumptionDTO } from 'src/app/Models/consumption.dto';
 import { EnergyDTO } from 'src/app/Models/energy.dto';
 import { DelegationDTO } from 'src/app/Models/delegation.dto';
 import { EnergyService } from 'src/app/Services/energy.service';
-import { LocalStorageService } from 'src/app/Services/local-storage.service';
 import { ConsumptionService } from 'src/app/Services/consumption.service';
 import { SharedService } from 'src/app/Services/shared.service';
-import { deleteResponse } from 'src/app/Services/category.service';
+import { deleteResponse } from 'src/app/Services/consumption.service';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { DelegationService } from 'src/app/Services/delegation.service';
+import { JwtHelperService } from '@auth0/angular-jwt';
+import { HeaderMenusService } from 'src/app/Services/header-menus.service';
 
 @Component({
   selector: 'app-post-form',
@@ -55,6 +57,11 @@ export class PostFormComponent implements OnInit {
   isElevated = true
   consumptionFields: string[] = []
 
+  showButtons: boolean;
+  showAuthSection: boolean;
+  showNoAuthSection: boolean;
+  access_token: string | null;
+
   private isUpdateMode: boolean;
   private validRequest: boolean;
   private consumptionId: string | null;
@@ -74,18 +81,43 @@ export class PostFormComponent implements OnInit {
     private formBuilder: UntypedFormBuilder,
     private router: Router,
     private sharedService: SharedService,
-    private localStorageService: LocalStorageService,
+    private headerMenusService: HeaderMenusService,
+    /* private localStorageService: LocalStorageService, */
     private energyService: EnergyService,
+    private jwtHelper: JwtHelperService,
     private _adapter: DateAdapter<any>,
     @Inject(MAT_DATE_LOCALE) private _locale: string,
   ) {
+
+    this.showButtons = false
+    this.access_token = sessionStorage.getItem("access_token")
+    this.showAuthSection = false;
+    this.showNoAuthSection = true;
+
+    if (this.access_token === null) {
+      const headerInfo: HeaderMenus = { showAuthSection: false, showNoAuthSection: true, };
+      this.headerMenusService.headerManagement.next(headerInfo)
+    } else {
+      if (!this.jwtHelper.isTokenExpired (this.access_token)) {
+        const headerInfo: HeaderMenus = { showAuthSection: true, showNoAuthSection: false, };
+        this.headerMenusService.headerManagement.next(headerInfo)
+        this.loadEnergies();
+        this.loadDelegations();
+      } else {
+        const headerInfo: HeaderMenus = { showAuthSection: false, showNoAuthSection: true, };
+        sessionStorage.removeItem('user_id')
+        sessionStorage.removeItem('access_token')
+        this.headerMenusService.headerManagement.next(headerInfo)
+        this.router.navigateByUrl('login')
+      }
+    }
 
     this._locale = 'es-ES';
     this._adapter.setLocale(this._locale);
 
     this.isValidForm = null;
     this.consumptionId = this.activatedRoute.snapshot.paramMap.get('id');
-    this.userId = this.localStorageService.get('user_id');
+    this.userId = this.jwtHelper.decodeToken().id_ils
 
     this.consumption = new ConsumptionDTO(0, 0, this._adapter.today(), this._adapter.today(), '', '', '','','','', 0, '', '', 0);
     this.isUpdateMode = false;
@@ -96,9 +128,6 @@ export class PostFormComponent implements OnInit {
     this.energy = new UntypedFormControl('', [ Validators.required ]);
     this.companyId = new UntypedFormControl(this.userId, [ Validators.required ]);
     this.quantity = new UntypedFormControl('', [ Validators.required, Validators.min(1) ]);
-
-    this.loadEnergies();
-    this.loadDelegations();
 
     this.energyForm = this.formBuilder.group({
       delegation: this.delegation,
@@ -180,10 +209,10 @@ export class PostFormComponent implements OnInit {
 
   private loadConsumption(): void {
     let errorResponse: any;
-    const userId = this.localStorageService.get('user_id');
-    if (userId) {
-
-        this.consumptionService.getAllConsumptionsByCompanyAndAspect(userId, 1).subscribe(
+    
+    if (this.userId) {
+      
+        this.consumptionService.getAllConsumptionsByCompanyAndAspect(this.userId, 1).subscribe(
         (consumptions: ConsumptionDTO[]) => {
           this.consumptions = consumptions
         },
@@ -199,9 +228,8 @@ export class PostFormComponent implements OnInit {
     let errorResponse: any;
     let responseOK: boolean = false;
     if (this.consumptionId) {
-      const userId = this.localStorageService.get('user_id');
-      if (userId) {
-        this.consumption.companyId = userId;
+      if (this.userId) {
+        this.consumption.companyId = this.userId;
         this.consumptionService.updateConsumptions(this.consumptionId, this.consumption)
           .pipe(
             finalize(async () => {
@@ -233,9 +261,9 @@ export class PostFormComponent implements OnInit {
   private createEnergyConsumption(): void {
     let errorResponse: any;
     let responseOK: boolean = false;
-    const userId = this.localStorageService.get('user_id');
-    if (userId) {
-      this.consumption.companyId = userId;
+    
+    if (this.userId) {
+      this.consumption.companyId = this.userId;
       this.consumption.aspectId = 1; /* Energy aspect id : 1 */
       this.consumptionService.createEnergyConsumption(this.consumption)
         .pipe(
@@ -245,10 +273,6 @@ export class PostFormComponent implements OnInit {
               responseOK,
               errorResponse
             );
-
-            /* if (responseOK) {
-              this.router.navigateByUrl('posts');
-            } */
           })
         )
         .subscribe(
@@ -274,9 +298,9 @@ export class PostFormComponent implements OnInit {
     let errorResponse: any;
 
     // show confirmation popup
-    let result = confirm('Confirm delete this consumption with id: ' + consumptionId + ' .');
+    let result = confirm('Confirm delete this activity with id: ' + consumptionId + ' .');
     if (result) {
-      this.consumptionService.deleteConsumptions(consumptionId).subscribe(
+      this.consumptionService.deleteConsumption(consumptionId).subscribe(
         (rowsAffected: deleteResponse) => {
           if (rowsAffected.affected > 0) {
             this.loadConsumption();
@@ -307,6 +331,5 @@ export class PostFormComponent implements OnInit {
     }
 
   }
-
 
 }

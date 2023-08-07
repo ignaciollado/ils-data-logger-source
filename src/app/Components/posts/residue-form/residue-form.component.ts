@@ -212,7 +212,7 @@ export class ResidueFormComponent {
 
   }
 
-  deleteResidueConsumption(consumptionId: string): void {
+  deleteResidueConsumption(consumptionId: number): void {
 
     let errorResponse: any;
 

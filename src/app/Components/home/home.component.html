@@ -23,12 +23,12 @@
     <p>Added when: {{ consumption.created_at }}</p>
 
     <div *ngIf="showButtons">
-      <button mat-icon-button color="accent" matTooltip="Update this consumption"
+     <!--  <button mat-icon-button color="accent" matTooltip="Update this consumption"
       aria-label="Button that displays a tooltip and updates this consumption" (click)="updatePost(consumption.consumptionId)">
         <mat-icon>edit</mat-icon>
-      </button>
+      </button> -->
       <button mat-icon-button color="warn" matTooltip="Permanently delete this consumption"
-      aria-label="Button that displays a tooltip and permanently deletes this consumption" (click)="deletePost(consumption.consumptionId)">
+      aria-label="Button that displays a tooltip and permanently deletes this consumption" (click)="deletePost(+consumption.consumptionId)">
         <mat-icon>delete</mat-icon>
       </button>
     </div>

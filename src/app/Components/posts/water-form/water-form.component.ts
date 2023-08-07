@@ -172,7 +172,7 @@ export class WaterFormComponent {
   private editPost(): void {
 
   }
-  deleteWaterConsumption(consumptionId: string): void {
+  deleteWaterConsumption(consumptionId: number): void {
 
     let errorResponse: any;
 

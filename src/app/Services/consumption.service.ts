@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { ConsumptionDTO } from '../Models/consumption.dto';
-import { NONE_TYPE } from '@angular/compiler';
 import { SharedService } from './shared.service';
 import { catchError } from 'rxjs/operators';
 
@@ -97,5 +96,11 @@ export class ConsumptionService {
       .delete<deleteResponse>(`${URL_API}consumptionDelete.php?consumptionId=${consumptionId}`)
       .pipe(catchError(this.sharedService.handleError));
   }
+
+  errorLog(error: HttpErrorResponse): void {
+    console.error('An error occurred:', error.error.msg);
+    console.error('Backend returned code:', error.status);
+    console.error('Complete message was::', error.message);
+  }  
 
 }

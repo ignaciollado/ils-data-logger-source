@@ -1,8 +1,11 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpParams, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { AspectDTO } from '../Models/aspect.dto';
 import { Observable } from 'rxjs';
-import { NONE_TYPE } from '@angular/compiler';
+
+const URL_API = '../../assets/phpAPI/'
+const URL_API_SRV = "https://jwt.idi.es/public/index.php"
+const URL_MOCKS = '../../assets/mocks/consumptions.json'
 
 const httpsOptions = {
   headers: new HttpHeaders({
@@ -24,34 +27,34 @@ export interface deleteResponse {
 })
 
 export class AspectService {
-  private urlAPiMySql:  string;
+  /* private urlAPiMySql:  string; */
 
   constructor(private http: HttpClient) {
-    this.urlAPiMySql = '../../assets/phpAPI/'}
+    /* this.urlAPiMySql = '../../assets/phpAPI/' */} 
 
   getAllAspects(): Observable<AspectDTO[]> {
     return this.http
-      .get<AspectDTO[]>(`${this.urlAPiMySql}aspectGetAll.php`)
+      .get<AspectDTO[]>(`${URL_API}aspectGetAll.php`)
   }
 
   getAspectById(aspectId: string): Observable<AspectDTO> {
     return this.http
-      .get<AspectDTO>(`${this.urlAPiMySql}aspectGetById.php?aspectId=${aspectId}` )
+      .get<AspectDTO>(`${URL_API}aspectGetById.php?aspectId=${aspectId}` )
   }
 
   createAspect(aspect: AspectDTO): Observable<AspectDTO> {
     return this.http
-      .post<AspectDTO>(`${this.urlAPiMySql}aspectCreate.php`, aspect );
+      .post<AspectDTO>(`${URL_API}aspectCreate.php`, aspect );
   }
 
   updateAspect(aspectId: string, aspect: AspectDTO): Observable<AspectDTO> {
     return this.http
-      .put<AspectDTO>(`${this.urlAPiMySql}aspectUpdate.php?aspectId=${aspectId}`, aspect);
+      .put<AspectDTO>(`${URL_API}aspectUpdate.php?aspectId=${aspectId}`, aspect);
   }
 
   deleteAspect(aspectId: number): Observable<deleteResponse> {
     return this.http
-      .delete<deleteResponse>(`${this.urlAPiMySql}aspectDelete.php?aspectId=${aspectId}`);
+      .delete<deleteResponse>(`${URL_API}aspectDelete.php?aspectId=${aspectId}`);
   }
 
   errorLog(error: HttpErrorResponse): void {

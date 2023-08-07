@@ -126,7 +126,6 @@ export class EnergyListComponent implements OnInit {
         }
       );
       this.loadEnergies();
-
     }
   }
 

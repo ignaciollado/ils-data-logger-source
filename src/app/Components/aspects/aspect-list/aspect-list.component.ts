@@ -84,19 +84,15 @@ export class AspectListComponent implements OnInit{
         const breakpoints = result.breakpoints;
 
         if (breakpoints[Breakpoints.TabletPortrait]) {
-          console.log("screens matches TabletPortrait");
           this.isGridView = true
         }
         if (breakpoints[Breakpoints.HandsetPortrait]) {
-          console.log("screens matches HandsetPortrait");
           this.isGridView = true
         } 
         if (breakpoints[Breakpoints.TabletLandscape]) {
-          console.log("screens matches TabletLandscape");
           this.isGridView = false
         } 
         if (breakpoints[Breakpoints.HandsetLandscape]) {
-          console.log("screens matches HandsetLandscape");
           this.isGridView = false
         }
   });
@@ -122,8 +118,22 @@ export class AspectListComponent implements OnInit{
   }
 
   deleteAspect(aspectId:number): void {
+    let errorResponse: any;
+    let result = confirm('Confirm delete the aspect with id: ' + aspectId + ' .');
+    if (result) {
 
-    this.loadAspects()
+      this.aspectService.deleteAspect(aspectId).subscribe(
+        (rowsAffected: deleteResponse ) => {
+          if (rowsAffected.affected > 0) {
+          }
+        },
+        (error: HttpErrorResponse) => { 
+          errorResponse = error.error;
+          this.sharedService.errorLog(errorResponse);
+        }
+      );
+      this.loadAspects();
+    }
   }
 
   createAspect(): void {

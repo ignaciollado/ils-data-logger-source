@@ -31,14 +31,14 @@
     <mat-cell *matCellDef="let consumption" matTooltip={{consumption.toDate}}>{{consumption.toDate}}</mat-cell>
   </ng-container>
   <ng-container matColumnDef="ACTIONS">
-    <mat-header-cell *matHeaderCellDef> ACTIONS <button mat-mini-fab color="primary" matTooltip="Add an indicator" aria-label="Add indicator" (click)="createPost()">
+    <mat-header-cell *matHeaderCellDef> ACTIONS <button mat-mini-fab color="primary" matTooltip="Add activity data" aria-label="Add activity data" (click)="createPost()">
       <mat-icon>add</mat-icon>
     </button></mat-header-cell>
     <mat-cell *matCellDef="let consumption">
-      <button mat-icon-button color="accent" matTooltip="Update this indicator"
+      <!-- <button mat-icon-button color="accent" matTooltip="Update this indicator"
       aria-label="Updates this indicator" (click)="updatePost(consumption.consumptionId)">
         <mat-icon>edit</mat-icon>
-      </button>
+      </button> -->
       <button mat-icon-button color="warn" matTooltip="Permanently delete this indicator"
       aria-label="Permanently deletes this indicator" (click)="deletePost(consumption.consumptionId)">
         <mat-icon>delete</mat-icon>
@@ -80,7 +80,7 @@
         <mat-icon>edit</mat-icon>
       </button> -->
       <button mat-icon-button color="warn" matTooltip="Permanently delete this activity"
-      aria-label="Permanently deletes this residue" (click)="deletePost(consumption.consumptionId)">
+      aria-label="Permanently deletes this residue" (click)="deletePost(+consumption.consumptionId)">
         <mat-icon>delete</mat-icon>
       </button>
     </div>

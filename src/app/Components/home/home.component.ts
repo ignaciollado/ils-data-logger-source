@@ -106,10 +106,8 @@ export class HomeComponent {
     this.router.navigateByUrl('/user/consumption/' + postId);
   }
 
-  deletePost(consumptionId: string): void {
+  deletePost(consumptionId: number): void {
     let errorResponse: any;
-
-    // show confirmation popup
     let result = confirm('Confirm delete post with id: ' + consumptionId)
     if (result) {
       this.consumptionService.deleteConsumption(consumptionId).subscribe(

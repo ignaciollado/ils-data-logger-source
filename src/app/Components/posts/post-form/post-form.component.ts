@@ -293,7 +293,7 @@ export class PostFormComponent implements OnInit {
     }
   }
 
-  deleteEnergyConsumption(consumptionId: string): void {
+  deleteEnergyConsumption(consumptionId: number): void {
 
     let errorResponse: any;
 

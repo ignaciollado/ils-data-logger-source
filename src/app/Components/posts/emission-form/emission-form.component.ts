@@ -167,7 +167,7 @@ export class EmissionFormComponent {
 
   }
 
-  deleteEmissionConsumption(consumptionId: string): void {
+  deleteEmissionConsumption(consumptionId: number): void {
 
     let errorResponse: any;
 

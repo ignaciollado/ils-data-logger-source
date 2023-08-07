@@ -2,9 +2,11 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams, HttpErrorResponse } from '@angular/common/http';
 import { ResidueDTO } from '../Models/residue.dto';
 import { Observable } from 'rxjs';
-import { NONE_TYPE } from '@angular/compiler';
 import { SharedService } from './shared.service';
 import { catchError } from 'rxjs/operators';
+
+const URL_API = '../../assets/phpAPI/'
+const URL_API_SRV = "https://jwt.idi.es/public/index.php"
 
 const httpsOptions = {
   headers: new HttpHeaders({
@@ -34,29 +36,29 @@ export class ResidueService {
 
   getAllResidues(): Observable<ResidueDTO[]> {
     return this.http
-      .get<ResidueDTO[]>(`${this.urlAPiMySql}residueGetAll.php`)
+      .get<ResidueDTO[]>(`${URL_API}residueGetAll.php`)
   }
 
   getResidueById(residueId: string): Observable<ResidueDTO> {
     return this.http
-      .get<ResidueDTO>(this.urlAPiMySql )
+      .get<ResidueDTO>(URL_API )
     /*   .get<ResidueDTO>(this.urlAPiMySql + '/' + fuelId) */
   }
 
   createResidue(residue: ResidueDTO): Observable<ResidueDTO> {
     return this.http
-      .post<ResidueDTO>(`${this.urlAPiMySql}residueCreate.php`, residue );
+      .post<ResidueDTO>(`${URL_API}residueCreate.php`, residue );
   }
 
   updateResidue(residueId: string, residue: ResidueDTO): Observable<ResidueDTO> {
     return this.http
-      .put<ResidueDTO>(this.urlAPiMySql + '/' + residueId, residue)
+      .put<ResidueDTO>(URL_API + '/' + residueId, residue)
       ;
   }
 
   deleteResidue(residueId: number): Observable<deleteResponse> {
     return this.http
-      .delete<deleteResponse>(`${this.urlAPiMySql}residueDelete.php?residueId=${residueId}`)
+      .delete<deleteResponse>(`${URL_API}residueDelete.php?residueId=${residueId}`)
       .pipe(catchError(this.sharedService.handleError));
   }
 

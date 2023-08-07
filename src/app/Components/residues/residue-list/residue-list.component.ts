@@ -6,7 +6,7 @@ import { ResidueDTO } from 'src/app/Models/residue.dto';
 import { HeaderMenusService } from 'src/app/Services/header-menus.service';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { ResidueService } from 'src/app/Services/residue.service';
-import { deleteResponse } from 'src/app/Services/residue.service'
+import { deleteResponse } from 'src/app/Services/residue.service';
 import { SharedService } from 'src/app/Services/shared.service';
 import { JwtHelperService } from '@auth0/angular-jwt';
 
@@ -113,8 +113,6 @@ export class ResidueListComponent implements OnInit {
   deleteResidue(residueId:number): void {
 
     let errorResponse: any;
-
-    // show confirmation popup
     let result = confirm('Confirm delete the residue with id: ' + residueId + ' .');
     if (result) {
       this.residueService.deleteResidue(residueId).subscribe(

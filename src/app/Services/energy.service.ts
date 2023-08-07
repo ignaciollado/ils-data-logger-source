@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams, HttpErrorResponse } from '@angular/common/http';
 import { EnergyDTO } from '../Models/energy.dto';
 import { Observable } from 'rxjs';
-import { NONE_TYPE } from '@angular/compiler';
 import { catchError } from 'rxjs/operators';
 import { SharedService } from './shared.service';
 
@@ -45,30 +44,30 @@ export class EnergyService {
 
   getAllEnergies(): Observable<EnergyDTO[]> {
     return this.http
-       .get<EnergyDTO[]>(`${this.urlAPiMySql}energyGetAll.php`) 
+       .get<EnergyDTO[]>(`${URL_API}energyGetAll.php`) 
      /*  .get<EnergyDTO[]>(`${URL_API_SRV}/api/get-all-energies`, httpsOptions) */
   }
 
   getEnergyById(energyId: number): Observable<EnergyDTO> {
     return this.http
-      .get<EnergyDTO>(`${this.urlAPiMySql}energyGetById.php?energyId=${energyId}`)
+      .get<EnergyDTO>(`${URL_API}energyGetById.php?energyId=${energyId}`)
   }
 
   createEnergy(energy: EnergyDTO): Observable<EnergyDTO> {
     return this.http
-      .post<EnergyDTO>(`${this.urlAPiMySql}energyCreate.php`, energy );
+      .post<EnergyDTO>(`${URL_API}energyCreate.php`, energy );
   }
 
   updateEnergy(energyId: number, Energy: EnergyDTO): Observable<EnergyDTO> {
     return this.http
-      .put<EnergyDTO>(this.urlAPiMySql + '/' + energyId, Energy)
+      .put<EnergyDTO>(URL_API + '/' + energyId, Energy)
       ;
   }
 
-  deleteEnergy(energyId: string): Observable<deleteResponse> {
+  deleteEnergy(energyId: number): Observable<deleteResponse> {
     return this.http
-    .delete<deleteResponse>(`${this.urlAPiMySql}energyDelete.php?energyId=${energyId}`)
-    .pipe(catchError(this.sharedService.handleError));
+      .delete<deleteResponse>(`${URL_API}energyDelete.php?energyId=${energyId}`)
+      .pipe(catchError(this.sharedService.handleError));
   }
 
   errorLog(error: HttpErrorResponse): void {

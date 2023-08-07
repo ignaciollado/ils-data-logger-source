@@ -6,6 +6,10 @@ import { catchError } from 'rxjs/operators';
 import { PostDTO } from '../Models/post.dto';
 import { SharedService } from './shared.service';
 
+const URL_API = '../../assets/phpAPI/'
+const URL_API_SRV = "https://jwt.idi.es/public/index.php"
+const URL_MOCKS = '../../assets/mocks/consumptions.json'
+
 export interface updateResponse {
   affected: number;
 }
@@ -18,19 +22,15 @@ export interface deleteResponse {
   providedIn: 'root',
 })
 export class PostService {
-  private urlBlogUocApi: string;
-  private urlAPiMySql:  string;
   private controller: string;
 
   constructor(private http: HttpClient, private sharedService: SharedService) {
     this.controller = 'posts';
-    this.urlBlogUocApi = 'http://localhost:3000/' + this.controller;
-    this.urlAPiMySql = '../../assets/phpAPI/';
   }
 
   getPosts(): Observable<PostDTO[]> {
     return this.http
-      .get<PostDTO[]>(this.urlBlogUocApi)
+      .get<PostDTO[]>(`${URL_API}`)
       .pipe(catchError(this.sharedService.handleError));
   }
 
@@ -42,37 +42,37 @@ export class PostService {
 
   createPost(post: PostDTO): Observable<PostDTO> {
     return this.http
-      .post<PostDTO>(`${this.urlAPiMySql}delegationCreate.php`, post)
+      .post<PostDTO>(`${URL_API}delegationCreate.php`, post)
       .pipe(catchError(this.sharedService.handleError));
   }
 
   getPostById(postId: string): Observable<PostDTO> {
     return this.http
-      .get<PostDTO>(this.urlBlogUocApi + '/' + postId)
+      .get<PostDTO>(`${URL_API}` + '/' + postId)
       .pipe(catchError(this.sharedService.handleError));
   }
 
   updatePost(postId: string, post: PostDTO): Observable<PostDTO> {
     return this.http
-      .put<PostDTO>(this.urlBlogUocApi + '/' + postId, post)
+      .put<PostDTO>(`${URL_API}` + '/' + postId, post)
       .pipe(catchError(this.sharedService.handleError));
   }
 
   likePost(postId: string): Observable<updateResponse> {
     return this.http
-      .put<updateResponse>(this.urlBlogUocApi + '/like/' + postId, NONE_TYPE)
+      .put<updateResponse>(`${URL_API}` + '/like/' + postId, NONE_TYPE)
       .pipe(catchError(this.sharedService.handleError));
   }
 
   dislikePost(postId: string): Observable<updateResponse> {
     return this.http
-      .put<updateResponse>(this.urlBlogUocApi + '/dislike/' + postId, NONE_TYPE)
+      .put<updateResponse>(`${URL_API}` + '/dislike/' + postId, NONE_TYPE)
       .pipe(catchError(this.sharedService.handleError));
   }
 
   deletePost(postId: string): Observable<deleteResponse> {
     return this.http
-      .delete<deleteResponse>(this.urlBlogUocApi + '/' + postId)
+      .delete<deleteResponse>(`${URL_API}` + '/' + postId)
       .pipe(catchError(this.sharedService.handleError));
   }
 }

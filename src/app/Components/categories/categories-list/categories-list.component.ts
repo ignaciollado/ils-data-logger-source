@@ -53,7 +53,7 @@ export class CategoriesListComponent {
     this.router.navigateByUrl('/user/category/' + categoryId);
   }
 
-  deleteCategory(categoryId: string): void {
+  deleteCategory(categoryId: number): void {
     let errorResponse: any;
 
     // show confirmation popup

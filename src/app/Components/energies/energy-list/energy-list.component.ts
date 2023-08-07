@@ -7,6 +7,7 @@ import { HeaderMenusService } from 'src/app/Services/header-menus.service';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { SharedService } from 'src/app/Services/shared.service';
 import { EnergyService } from 'src/app/Services/energy.service';
+import { deleteResponse } from 'src/app/Services/residue.service';
 import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Component({
@@ -110,7 +111,23 @@ export class EnergyListComponent implements OnInit {
   }
 
   deleteEnergy(energyId:number): void {
-    this.loadEnergies()
+    let errorResponse: any;
+    let result = confirm('Confirm delete the energy type with id: ' + energyId + ' .');
+    if (result) {
+
+      this.energyService.deleteEnergy(energyId).subscribe(
+        (rowsAffected: deleteResponse ) => {
+          if (rowsAffected.affected > 0) {
+          }
+        },
+        (error: HttpErrorResponse) => { 
+          errorResponse = error.error;
+          this.sharedService.errorLog(errorResponse);
+        }
+      );
+      this.loadEnergies();
+
+    }
   }
 
   createEnergy(): void {

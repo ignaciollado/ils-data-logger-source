@@ -9,7 +9,7 @@ import { PostDTO } from 'src/app/Models/post.dto';
 import { ConsumptionDTO } from 'src/app/Models/consumption.dto';
 import { deleteResponse } from 'src/app/Services/post.service';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
-import { PostService } from 'src/app/Services/post.service';
+
 import { ConsumptionService } from 'src/app/Services/consumption.service';
 import { SharedService } from 'src/app/Services/shared.service';
 
@@ -56,7 +56,6 @@ export class PostsListComponent implements OnInit{
   }
 
   constructor(
-    private postService: PostService,
     private consumptionService: ConsumptionService,
     private router: Router,
     private responsive: BreakpointObserver,
@@ -102,21 +101,16 @@ export class PostsListComponent implements OnInit{
       .subscribe(result => {
 
         const breakpoints = result.breakpoints;
-
         if (breakpoints[Breakpoints.TabletPortrait]) {
-          console.log("screens matches TabletPortrait");
           this.isGridView = true
         }
         if (breakpoints[Breakpoints.HandsetPortrait]) {
-          console.log("screens matches HandsetPortrait");
           this.isGridView = true
         }
         if (breakpoints[Breakpoints.TabletLandscape]) {
-          console.log("screens matches TabletLandscape");
           this.isGridView = false
         }
         if (breakpoints[Breakpoints.HandsetLandscape]) {
-          console.log("screens matches HandsetLandscape");
           this.isGridView = false
         }
       });
@@ -143,18 +137,17 @@ export class PostsListComponent implements OnInit{
     this.router.navigateByUrl('/user/consumption/');
   }
 
-  updatePost(postId: string): void {
-    this.router.navigateByUrl('/user/consumption/' + postId);
+  updatePost(consumptionId: string): void {
+    this.router.navigateByUrl('/user/consumption/' + consumptionId);
   }
 
-  deletePost(postId: string): void {
-   
+  deletePost(consumptionId: string): void {
     let errorResponse: any;
 
     // show confirmation popup
-    let result = confirm('Confirm delete post with id: ' + postId + ' .');
+    let result = confirm('Confirm delete post with id: ' + consumptionId + ' .');
     if (result) {
-      this.postService.deletePost(postId).subscribe(
+      this.consumptionService.deleteConsumption(consumptionId).subscribe(
         (rowsAffected: deleteResponse) => {
           if (rowsAffected.affected > 0) {
             this.loadPosts();

@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { AspectDTO } from '../Models/aspect.dto';
 import { Observable } from 'rxjs';
+import { catchError } from 'rxjs/operators';
+import { SharedService } from './shared.service';
 
 const URL_API = '../../assets/phpAPI/'
 const URL_API_SRV = "https://jwt.idi.es/public/index.php"
@@ -27,10 +29,9 @@ export interface deleteResponse {
 })
 
 export class AspectService {
-  /* private urlAPiMySql:  string; */
 
-  constructor(private http: HttpClient) {
-    /* this.urlAPiMySql = '../../assets/phpAPI/' */} 
+  constructor(private http: HttpClient,
+    private sharedService: SharedService) {} 
 
   getAllAspects(): Observable<AspectDTO[]> {
     return this.http
@@ -54,7 +55,8 @@ export class AspectService {
 
   deleteAspect(aspectId: number): Observable<deleteResponse> {
     return this.http
-      .delete<deleteResponse>(`${URL_API}aspectDelete.php?aspectId=${aspectId}`);
+      .delete<deleteResponse>(`${URL_API}aspectDelete.php?aspectId=${aspectId}`)
+      .pipe(catchError(this.sharedService.handleError));
   }
 
   errorLog(error: HttpErrorResponse): void {

@@ -93,7 +93,9 @@ export class ConsumptionService {
 
   deleteConsumption(consumptionId: number): Observable<deleteResponse> {
     return this.http
-      .delete<deleteResponse>(`${URL_API}consumptionDelete.php?consumptionId=${consumptionId}`)
+/*       .delete<deleteResponse>(`${URL_API}consumptionDelete.php?consumptionId=${consumptionId}`)
+      .pipe(catchError(this.sharedService.handleError)); */
+      .delete<deleteResponse>(`${URL_API}aspectDelete.php?aspectId=${consumptionId}`)
       .pipe(catchError(this.sharedService.handleError));
   }
 

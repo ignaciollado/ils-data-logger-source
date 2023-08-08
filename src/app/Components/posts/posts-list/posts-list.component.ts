@@ -147,6 +147,7 @@ export class PostsListComponent implements OnInit{
     if (result) {
       this.consumptionService.deleteConsumption(consumptionId).subscribe(
         (rowsAffected: deleteResponse) => {
+          
           if (rowsAffected.affected > 0) {
             this.loadPosts();
           }

@@ -117,7 +117,9 @@ export class ResidueListComponent implements OnInit {
     if (result) {
       this.residueService.deleteResidue(residueId).subscribe(
         (rowsAffected: deleteResponse ) => {
+          console.log (rowsAffected)
           if (rowsAffected.affected > 0) {
+            this.loadResidues();
           }
         },
         (error: HttpErrorResponse) => {
@@ -125,7 +127,6 @@ export class ResidueListComponent implements OnInit {
           this.sharedService.errorLog(errorResponse);
         }
       );
-      this.loadResidues();
     }
 
   }

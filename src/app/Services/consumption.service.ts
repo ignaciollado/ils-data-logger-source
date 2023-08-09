@@ -69,6 +69,7 @@ export class ConsumptionService {
   }
 
   createWaterConsumption(waterConsumption: ConsumptionDTO): Observable<ConsumptionDTO> {
+    console.log(waterConsumption)
     return this.http
       .post<ConsumptionDTO>(`${URL_API}waterConsumptionCreate.php`, waterConsumption)
       .pipe(catchError(this.sharedService.handleError));

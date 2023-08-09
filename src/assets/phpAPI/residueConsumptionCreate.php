@@ -27,7 +27,9 @@ compost, quantity, fromDate, toDate) VALUES ("
 .$request['dump'].","
 .$request['compost'].","
 .$request['quantityResidue'].","
-."STR_TO_DATE('".$request['fromDateResidue']."', '%Y-%m-%d'), STR_TO_DATE('".$request['toDateResidue']."', '%Y-%m-%d'))";
+."DATE_ADD(STR_TO_DATE('".$request['fromDateResidue']."', '%Y-%m-%d'), INTERVAL 1 DAY)," 
+."DATE_ADD(STR_TO_DATE('".$request['toDateResidue']."', '%Y-%m-%d'), INTERVAL 1 DAY))";
+/* ."STR_TO_DATE('".$request['fromDateResidue']."', '%Y-%m-%d'), STR_TO_DATE('".$request['toDateResidue']."', '%Y-%m-%d'))"; */
 
 $result = mysqli_query($conn, $sql);
 

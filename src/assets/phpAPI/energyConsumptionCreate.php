@@ -17,7 +17,9 @@ $sql = "INSERT INTO ils_consumption(companyId, companyDelegationId, aspectId, en
 .$request['aspectId'].","
 .$request['energy'].","
 .$request['quantity'].","
-."STR_TO_DATE('".$request['fromDate']."', '%Y-%m-%d'), STR_TO_DATE('".$request['toDate']."', '%Y-%m-%d'))";
+."DATE_ADD(STR_TO_DATE('".$request['fromDate']."', '%Y-%m-%d'), INTERVAL 1 DAY)," 
+."DATE_ADD(STR_TO_DATE('".$request['toDate']."', '%Y-%m-%d'), INTERVAL 1 DAY))";
+/* ."STR_TO_DATE('".$request['fromDate']."', '%Y-%m-%d'), STR_TO_DATE('".$request['toDate']."', '%Y-%m-%d'))"; */
 
 $result = mysqli_query($conn, $sql);
 

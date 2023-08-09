@@ -10,7 +10,7 @@ export class ConsumptionDTO {
   fromDate: Date
   toDate: Date
   created_at!: Date
-  updatedAt!: Date
+  updated_at!: Date
   energy!: number
   residueId!: number
   scopeOne!: number

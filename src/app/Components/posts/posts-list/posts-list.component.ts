@@ -1,8 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, Inject, OnInit } from '@angular/core';
 import { AfterViewInit, ViewChild } from '@angular/core';
-import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
-import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { HeaderMenus } from 'src/app/Models/header-menus.dto';
 import { PostDTO } from 'src/app/Models/post.dto';
@@ -16,6 +14,9 @@ import { SharedService } from 'src/app/Services/shared.service';
 import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE} from '@angular/material/core';
 import { HeaderMenusService } from 'src/app/Services/header-menus.service';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
+import { MatTableDataSource, MatTableModule } from '@angular/material/table';
+import { MatSort, MatSortModule } from '@angular/material/sort';
 
 @Component({
   selector: 'app-posts-list',
@@ -26,18 +27,20 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 export class PostsListComponent implements OnInit{
   posts!: PostDTO[];
   consumptions!: ConsumptionDTO[];
-  dataSource = new MatTableDataSource<ConsumptionDTO>(this.consumptions)
+  dataSource = new MatTableDataSource<ConsumptionDTO>()
   showButtons: boolean = false;
   isGridView: boolean = false
   columnsDisplayed: string[] = ['delegation', 'aspect', 'energy', 'residue', 'quantity', 'fromDate', 'toDate', 'ACTIONS'];
   columnsToDisplay: string[] = this.columnsDisplayed.slice();
   access_token: string | null = "";
 
-  @ViewChild('paginator') paginator!: MatPaginator;
+  @ViewChild(MatPaginator) paginator: MatPaginator;
 
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
   }
+
+  @ViewChild(MatSort) sort: MatSort;
 
   addColumn() {
     const randomColumn = Math.floor(Math.random() * this.columnsDisplayed.length);
@@ -124,6 +127,8 @@ export class PostsListComponent implements OnInit{
         this.consumptionService.getAllConsumptionsByCompany(userId).subscribe(
         (consumptions: ConsumptionDTO[]) => {
           this.consumptions = consumptions
+          this.dataSource = new MatTableDataSource<ConsumptionDTO>(this.consumptions)
+          this.dataSource.sort = this.sort
         },
         (error: HttpErrorResponse) => {
           errorResponse = error.error;
@@ -145,18 +150,18 @@ export class PostsListComponent implements OnInit{
     let errorResponse: any;
     let result = confirm('Confirm delete post with id: ' + consumptionId + ' .');
     if (result) {
-      this.consumptionService.deleteConsumption(consumptionId).subscribe(
+      this.consumptionService.deleteConsumption(consumptionId).subscribe (
         (rowsAffected: deleteResponse) => {
-          
           if (rowsAffected.affected > 0) {
-            this.loadPosts();
+
           }
         },
         (error: HttpErrorResponse) => {
           errorResponse = error.error;
           this.sharedService.errorLog(errorResponse);
         }
-      );
+      )
+      this.loadPosts();
     }
   }
 

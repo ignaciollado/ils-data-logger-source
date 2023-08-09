@@ -1,5 +1,5 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { HeaderMenus } from 'src/app/Models/header-menus.dto';
 import { EnergyDTO } from 'src/app/Models/energy.dto';
@@ -9,6 +9,9 @@ import { SharedService } from 'src/app/Services/shared.service';
 import { EnergyService } from 'src/app/Services/energy.service';
 import { deleteResponse } from 'src/app/Services/residue.service';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatSort, MatSortModule } from '@angular/material/sort';
 
 @Component({
   selector: 'app-energy-list',
@@ -23,7 +26,16 @@ export class EnergyListComponent implements OnInit {
   userId: string | null;
 
   isGridView: boolean = false
-  columnsDisplayed = ['nameES', 'nameCA', 'unit', 'pci', 'ACTIONS'];
+  columnsDisplayed: string[] = ['nameES', 'nameCA', 'unit', 'pci', 'ACTIONS']
+
+  dataSource = new MatTableDataSource<EnergyDTO>();
+
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
+  }
+
+  @ViewChild(MatSort) sort: MatSort;
 
   constructor(
     private energyService: EnergyService,
@@ -72,19 +84,15 @@ export class EnergyListComponent implements OnInit {
         const breakpoints = result.breakpoints;
 
         if (breakpoints[Breakpoints.TabletPortrait]) {
-          console.log("screens matches TabletPortrait");
           this.isGridView = true
         }
         if (breakpoints[Breakpoints.HandsetPortrait]) {
-          console.log("screens matches HandsetPortrait");
           this.isGridView = true
         } 
         if (breakpoints[Breakpoints.TabletLandscape]) {
-          console.log("screens matches TabletLandscape");
           this.isGridView = false
         } 
         if (breakpoints[Breakpoints.HandsetLandscape]) {
-          console.log("screens matches HandsetLandscape");
           this.isGridView = false
         } 
    
@@ -100,6 +108,8 @@ export class EnergyListComponent implements OnInit {
         this.energyService.getAllEnergies().subscribe(
         (energies: EnergyDTO[]) => {
           this.energies = energies
+          this.dataSource = new MatTableDataSource<EnergyDTO>(this.energies)
+          this.dataSource.sort = this.sort
         },
         (error: HttpErrorResponse) => {
           errorResponse = error.error;

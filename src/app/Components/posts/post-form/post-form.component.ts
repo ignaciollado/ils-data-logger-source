@@ -8,7 +8,7 @@ import {
   Validators,
 } from '@angular/forms';
 
-import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE} from '@angular/material/core';
+import {DateAdapter, MAT_DATE_LOCALE} from '@angular/material/core';
 
 import { ActivatedRoute, Router } from '@angular/router';
 import { finalize } from 'rxjs/operators';
@@ -82,7 +82,6 @@ export class PostFormComponent implements OnInit {
     private router: Router,
     private sharedService: SharedService,
     private headerMenusService: HeaderMenusService,
-    /* private localStorageService: LocalStorageService, */
     private energyService: EnergyService,
     private jwtHelper: JwtHelperService,
     private _adapter: DateAdapter<any>,
@@ -101,8 +100,6 @@ export class PostFormComponent implements OnInit {
       if (!this.jwtHelper.isTokenExpired (this.access_token)) {
         const headerInfo: HeaderMenus = { showAuthSection: true, showNoAuthSection: false, };
         this.headerMenusService.headerManagement.next(headerInfo)
-        this.loadEnergies();
-        this.loadDelegations();
       } else {
         const headerInfo: HeaderMenus = { showAuthSection: false, showNoAuthSection: true, };
         sessionStorage.removeItem('user_id')
@@ -138,7 +135,8 @@ export class PostFormComponent implements OnInit {
       companyId: this.companyId
     });
 
-
+    this.loadEnergies();
+    this.loadDelegations();
     this.loadConsumption();
 
   }
@@ -256,7 +254,6 @@ export class PostFormComponent implements OnInit {
       }
     }
   }
-
   /* ASPECT ENERGY */
   private createEnergyConsumption(): void {
     let errorResponse: any;
@@ -292,25 +289,23 @@ export class PostFormComponent implements OnInit {
         );
     }
   }
-
   deleteEnergyConsumption(consumptionId: number): void {
-
     let errorResponse: any;
 
-    // show confirmation popup
     let result = confirm('Confirm delete this activity with id: ' + consumptionId + ' .');
     if (result) {
-      this.consumptionService.deleteConsumption(consumptionId).subscribe(
+      this.consumptionService.deleteConsumption(consumptionId).subscribe (
         (rowsAffected: deleteResponse) => {
           if (rowsAffected.affected > 0) {
-            this.loadConsumption();
+           
           }
         },
         (error: HttpErrorResponse) => {
           errorResponse = error.error;
           this.sharedService.errorLog(errorResponse);
         }
-      );
+      )
+      this.loadConsumption()
     }
   }
 

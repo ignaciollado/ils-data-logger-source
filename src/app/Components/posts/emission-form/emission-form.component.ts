@@ -177,14 +177,15 @@ export class EmissionFormComponent {
       this.consumptionService.deleteConsumption(consumptionId).subscribe(
         (rowsAffected: deleteResponse) => {
           if (rowsAffected.affected > 0) {
-            this.loadConsumption();
+   
           }
         },
         (error: HttpErrorResponse) => {
           errorResponse = error.error;
           this.sharedService.errorLog(errorResponse);
         }
-      );
+      )
+      this.loadConsumption()
     }
   }
 

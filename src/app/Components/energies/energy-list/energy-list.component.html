@@ -1,24 +1,24 @@
 <h2>Energies list:</h2>
 
 <div class="mat-elevation-z8">
-<mat-table *ngIf="!isGridView" [dataSource]="energies" class="mat-elevation-z8">
+<mat-table *ngIf="!isGridView" [dataSource]="dataSource" matSort class="mat-elevation-z8">
   <ng-container matColumnDef="nameES">
-    <mat-header-cell *matHeaderCellDef>Denominación</mat-header-cell>
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Denominación</mat-header-cell>
     <mat-cell class="denominacion" *matCellDef="let energy">{{energy.nameES}}</mat-cell>
   </ng-container>
 
   <ng-container matColumnDef="nameCA">
-    <mat-header-cell *matHeaderCellDef>Denominació</mat-header-cell>
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Denominació</mat-header-cell>
     <mat-cell class="denominacio" *matCellDef="let energy">{{energy.nameCA}}</mat-cell>
   </ng-container>
 
   <ng-container matColumnDef="unit">
-    <mat-header-cell *matHeaderCellDef>Unit</mat-header-cell>
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Unit</mat-header-cell>
     <mat-cell class="unit" *matCellDef="let energy">{{energy.unit}}</mat-cell>
   </ng-container>
 
   <ng-container matColumnDef="pci">
-    <mat-header-cell *matHeaderCellDef>PCI</mat-header-cell>
+    <mat-header-cell *matHeaderCellDef mat-sort-header>PCI</mat-header-cell>
     <mat-cell class="pci" *matCellDef="let energy">{{energy.pci}}</mat-cell>
   </ng-container>
 
@@ -28,10 +28,10 @@
       <mat-icon>add</mat-icon>
     </button></mat-header-cell>
     <mat-cell *matCellDef="let energy">
-      <button mat-icon-button color="accent" matTooltip="Update this energy"
+<!--       <button mat-icon-button color="accent" matTooltip="Update this energy"
       aria-label="Update this energy" (click)="updateEnergy(energy.energyId)">
         <mat-icon>edit</mat-icon>
-      </button>
+      </button> -->
       <button mat-icon-button color="warn" matTooltip="Permanently delete this energy"
       aria-label="Permanently deletes this energy" (click)="deleteEnergy(energy.energyId)">
         <mat-icon>delete</mat-icon>

@@ -215,21 +215,20 @@ export class ResidueFormComponent {
   deleteResidueConsumption(consumptionId: number): void {
 
     let errorResponse: any;
-
-    // show confirmation popup
     let result = confirm('Confirm delete this consumption with id: ' + consumptionId + ' .');
     if (result) {
       this.consumptionService.deleteConsumption(consumptionId).subscribe(
         (rowsAffected: deleteResponse) => {
           if (rowsAffected.affected > 0) {
-            this.loadConsumption();
+            
           }
         },
         (error: HttpErrorResponse) => {
           errorResponse = error.error;
           this.sharedService.errorLog(errorResponse);
         }
-      );
+      )
+      this.loadConsumption()
     }
   }
 

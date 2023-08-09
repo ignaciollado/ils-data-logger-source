@@ -125,8 +125,7 @@ export class LoginComponent implements OnInit {
                       this.headerMenusService.headerManagement.next(headerInfo);
                       this.delegationService.getTotalDelegationsByCompany(this.loginUser.user_id)
                       .subscribe( item => {
-                        totalDelegations = item.totalDelegations
-                        if (totalDelegations == 0) {
+                        if (item.totalDelegations == 0) {
                           this.router.navigateByUrl('profile')
                         } else {
                           this.router.navigateByUrl('user/consumption')
@@ -134,19 +133,16 @@ export class LoginComponent implements OnInit {
                       } )
 
                     }
-                }
-                ,
-      (error: any) => {
-        responseOK = false;
-        errorResponse = error.error;
-        const headerInfo: HeaderMenus = { showAuthSection: false, showNoAuthSection: true, };
-        this.headerMenusService.headerManagement.next(headerInfo);
-        this.sharedService.errorLog(error.error);
-      },
-      () => console.log("Processing Complete.")
-            )
-
-            ;
+                },
+                (error: any) => {
+                  responseOK = false;
+                  errorResponse = error.error;
+                  const headerInfo: HeaderMenus = { showAuthSection: false, showNoAuthSection: true, };
+                  this.headerMenusService.headerManagement.next(headerInfo);
+                  this.sharedService.errorLog(error.error);
+                },
+                  () => console.log("Login complete.")
+                )
     }
 }
 }

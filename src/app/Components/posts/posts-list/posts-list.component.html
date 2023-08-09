@@ -1,33 +1,33 @@
-<h2>Your Company activity data:</h2>
+<h2>My Company activity data:</h2>
 
 <div  class="mat-elevation-z8">
-<mat-table *ngIf="!isGridView" [dataSource]="consumptions">
+<mat-table *ngIf="!isGridView" [dataSource]="dataSource" matSort class="mat-elevation-z8">
   <ng-container matColumnDef="delegation">
-    <mat-header-cell *matHeaderCellDef>Delegation</mat-header-cell>
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Delegation</mat-header-cell>
     <mat-cell *matCellDef="let consumption">{{consumption.delegation}}</mat-cell>
   </ng-container>
   <ng-container matColumnDef="aspect">
-    <mat-header-cell *matHeaderCellDef>Aspect</mat-header-cell>
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Aspect</mat-header-cell>
     <mat-cell *matCellDef="let consumption">{{consumption.aspectES}}</mat-cell>
   </ng-container>
   <ng-container matColumnDef="energy">
-    <mat-header-cell *matHeaderCellDef>Energy</mat-header-cell>
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Energy</mat-header-cell>
     <mat-cell *matCellDef="let consumption">{{consumption.energyES}}</mat-cell>
   </ng-container>
   <ng-container matColumnDef="residue">
-    <mat-header-cell *matHeaderCellDef>Residue</mat-header-cell>
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Residue</mat-header-cell>
     <mat-cell *matCellDef="let consumption">{{consumption.residueES}}</mat-cell>
   </ng-container>
   <ng-container matColumnDef="quantity">
-    <mat-header-cell *matHeaderCellDef>Quantity</mat-header-cell>
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Quantity</mat-header-cell>
     <mat-cell *matCellDef="let consumption">{{consumption.quantity}}</mat-cell>
   </ng-container>
   <ng-container matColumnDef="fromDate">
-    <mat-header-cell *matHeaderCellDef>from Date</mat-header-cell>
+    <mat-header-cell *matHeaderCellDef mat-sort-header>from Date</mat-header-cell>
     <mat-cell *matCellDef="let consumption" matTooltip={{consumption.fromDate}}>{{consumption.fromDate}}</mat-cell>
   </ng-container>
   <ng-container matColumnDef="toDate">
-    <mat-header-cell *matHeaderCellDef>to Date</mat-header-cell>
+    <mat-header-cell *matHeaderCellDef mat-sort-header>to Date</mat-header-cell>
     <mat-cell *matCellDef="let consumption" matTooltip={{consumption.toDate}}>{{consumption.toDate}}</mat-cell>
   </ng-container>
   <ng-container matColumnDef="ACTIONS">

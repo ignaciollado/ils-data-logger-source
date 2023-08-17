@@ -83,6 +83,19 @@ export class DashboardComponent implements OnInit {
   quantityGasNovember : number = 0;
   quantityGasDecember : number = 0;
 
+  quantityElectricityJanuary : number = 0;
+  quantityElectricityFebruary : number = 0;
+  quantityElectricityMarch : number = 0;
+  quantityElectricityApril : number = 0;
+  quantityElectricityMay : number = 0;
+  quantityElectricityJune : number = 0;
+  quantityElectricityJuly : number = 0;
+  quantityElectricityAugust : number = 0;
+  quantityElectricitySeptember : number = 0;
+  quantityElectricityOctober : number = 0;
+  quantityElectricityNovember : number = 0;
+  quantityElectricityDecember : number = 0;
+
   quantityWaterJanuary : number = 0;
   quantityWaterFebruary : number = 0;
   quantityWaterMarch : number = 0;
@@ -146,7 +159,7 @@ export class DashboardComponent implements OnInit {
     private router: Router,
     private jwtHelper: JwtHelperService
   ) {
-    this.allBackgroundColors = [ 'rgba(255, 99, 132, 0.2)', 'rgba(255, 159, 64, 0.2)', 'rgba(0, 205, 86, 0.2)', 'rgba(75, 192, 192, 0.2)', 'rgba(54, 162, 235, 0.2)' ]
+    this.allBackgroundColors = [ 'rgba(255, 99, 132, 0.2)', 'rgba(255, 159, 64, 0.2)', 'rgba(0, 205, 86, 0.2)', 'rgba(75, 192, 192, 0.2)', 'rgba(54, 162, 235, 0.2)', 'rgba(200, 162, 235, 0.2)' ]
     this.allBorderColors = [ 'rgb(255, 99, 132)', 'rgb(255, 159, 64)', 'rgb(255, 205, 86)', 'rgb(75, 192, 192)', 'rgb(54, 162, 235)' ]
   }
 
@@ -235,6 +248,7 @@ export class DashboardComponent implements OnInit {
               if ( consumption.energy == 16 && mmFrom == 12 && mmTo == 12) {/* Gasóleo A en diciembre */
               this.quantityGasoleoADecember = this.quantityGasoleoADecember + (+consumption.quantity*consumption.pci)
               }
+
               if ( consumption.energy == 15 && mmFrom == 1 && mmTo == 1) {/* Gasóleo B en enero */
               this.quantityGasoleoBJanuary = this.quantityGasoleoBJanuary + (+consumption.quantity*consumption.pci)
               }
@@ -270,6 +284,43 @@ export class DashboardComponent implements OnInit {
               }
               if ( consumption.energy == 15 && mmFrom == 12 && mmTo == 12) {/* Gasóleo B en diciembre */
               this.quantityGasoleoBDecember = this.quantityGasoleoBDecember + (+consumption.quantity*consumption.pci)
+              }
+
+              if ( consumption.energy == 14 && mmFrom == 1 && mmTo == 1) {/* Gasóleo A en enero */
+              this.quantityElectricityJanuary = this.quantityElectricityJanuary + (+consumption.quantity*consumption.pci)
+              }
+              if ( consumption.energy == 14 && mmFrom == 2 && mmTo == 2) {/* Gasóleo A en febrero */
+              this.quantityElectricityFebruary = this.quantityElectricityFebruary + (+consumption.quantity*consumption.pci)
+              }
+              if ( consumption.energy == 14 && mmFrom == 3 && mmTo == 3) {/* Gasóleo A en marzo */
+              this.quantityElectricityMarch = this.quantityElectricityMarch + (+consumption.quantity*consumption.pci)
+              }
+              if ( consumption.energy == 14 && mmFrom == 4 && mmTo == 4) {/* Gasóleo A en abril */
+              this.quantityElectricityApril = this.quantityElectricityApril + (+consumption.quantity*consumption.pci)
+              }
+              if ( consumption.energy == 14 && mmFrom == 5 && mmTo == 5) {/* Gasóleo A en mayo */
+              this.quantityElectricityMay = this.quantityElectricityMay + (+consumption.quantity*consumption.pci)
+              }
+              if ( consumption.energy == 14 && mmFrom == 6 && mmTo == 6) {/* Gasóleo A en junio */
+              this.quantityElectricityJune = this.quantityElectricityJune + (+consumption.quantity*consumption.pci)
+              }
+              if ( consumption.energy == 14 && mmFrom == 7 && mmTo == 7) {/* Gasóleo A en julio */
+              this.quantityElectricityJuly = this.quantityElectricityJuly + (+consumption.quantity*consumption.pci)
+              }
+              if ( consumption.energy == 14 && mmFrom == 8 && mmTo == 8) {/* Gasóleo A en agosto */
+              this.quantityElectricityAugust = this.quantityElectricityAugust + (+consumption.quantity*consumption.pci)
+              }
+              if ( consumption.energy == 14 && mmFrom == 9 && mmTo == 9) {/* Gasóleo A en setiembre */
+              this.quantityElectricitySeptember = this.quantityElectricitySeptember + (+consumption.quantity*consumption.pci)
+              }
+              if ( consumption.energy == 14 && mmFrom == 10 && mmTo == 10) {/* Gasóleo A en octubre */
+              this.quantityElectricityOctober = this.quantityElectricityOctober + (+consumption.quantity*consumption.pci)
+              }
+              if ( consumption.energy == 14 && mmFrom == 11 && mmTo == 11) {/* Gasóleo A en noviembre */
+              this.quantityElectricityNovember = this.quantityElectricityNovember + (+consumption.quantity*consumption.pci)
+              }
+              if ( consumption.energy == 14 && mmFrom == 12 && mmTo == 12) {/* Gasóleo A en diciembre */
+              this.quantityElectricityDecember = this.quantityElectricityDecember + (+consumption.quantity*consumption.pci)
               }
 
               if ( consumption.energy == 5 && mmFrom == 1 && mmTo == 1) {/* Gasolina en enero */
@@ -563,6 +614,43 @@ export class DashboardComponent implements OnInit {
               this.quantityGasoleoBDecember = this.quantityGasoleoBDecember + (+consumption.quantity*consumption.pci)
               }
 
+              if ( consumption.energy == 14 && mmFrom == 1 && mmTo == 1) {/* Gasóleo A en enero */
+              this.quantityElectricityJanuary = this.quantityElectricityJanuary + (+consumption.quantity*consumption.pci)
+              }
+              if ( consumption.energy == 14 && mmFrom == 2 && mmTo == 2) {/* Gasóleo A en febrero */
+              this.quantityElectricityFebruary = this.quantityElectricityFebruary + (+consumption.quantity*consumption.pci)
+              }
+              if ( consumption.energy == 14 && mmFrom == 3 && mmTo == 3) {/* Gasóleo A en marzo */
+              this.quantityElectricityMarch = this.quantityElectricityMarch + (+consumption.quantity*consumption.pci)
+              }
+              if ( consumption.energy == 14 && mmFrom == 4 && mmTo == 4) {/* Gasóleo A en abril */
+              this.quantityElectricityApril = this.quantityElectricityApril + (+consumption.quantity*consumption.pci)
+              }
+              if ( consumption.energy == 14 && mmFrom == 5 && mmTo == 5) {/* Gasóleo A en mayo */
+              this.quantityElectricityMay = this.quantityElectricityMay + (+consumption.quantity*consumption.pci)
+              }
+              if ( consumption.energy == 14 && mmFrom == 6 && mmTo == 6) {/* Gasóleo A en junio */
+              this.quantityElectricityJune = this.quantityElectricityJune + (+consumption.quantity*consumption.pci)
+              }
+              if ( consumption.energy == 14 && mmFrom == 7 && mmTo == 7) {/* Gasóleo A en julio */
+              this.quantityElectricityJuly = this.quantityElectricityJuly + (+consumption.quantity*consumption.pci)
+              }
+              if ( consumption.energy == 14 && mmFrom == 8 && mmTo == 8) {/* Gasóleo A en agosto */
+              this.quantityElectricityAugust = this.quantityElectricityAugust + (+consumption.quantity*consumption.pci)
+              }
+              if ( consumption.energy == 14 && mmFrom == 9 && mmTo == 9) {/* Gasóleo A en setiembre */
+              this.quantityElectricitySeptember = this.quantityElectricitySeptember + (+consumption.quantity*consumption.pci)
+              }
+              if ( consumption.energy == 14 && mmFrom == 10 && mmTo == 10) {/* Gasóleo A en octubre */
+              this.quantityElectricityOctober = this.quantityElectricityOctober + (+consumption.quantity*consumption.pci)
+              }
+              if ( consumption.energy == 14 && mmFrom == 11 && mmTo == 11) {/* Gasóleo A en noviembre */
+              this.quantityElectricityNovember = this.quantityElectricityNovember + (+consumption.quantity*consumption.pci)
+              }
+              if ( consumption.energy == 14 && mmFrom == 12 && mmTo == 12) {/* Gasóleo A en diciembre */
+              this.quantityElectricityDecember = this.quantityElectricityDecember + (+consumption.quantity*consumption.pci)
+              }
+
               if ( consumption.energy == 5 && mmFrom == 1 && mmTo == 1) {/* Gasolina en enero */
               this.quantityGasolinaJanuary = this.quantityGasolinaJanuary + (+consumption.quantity*consumption.pci)
               }
@@ -734,6 +822,21 @@ export class DashboardComponent implements OnInit {
               if ( consumption.residueId == 4 && mmFrom == 7 && mmTo == 7) {/* Vidrio en julio */
                 this.quantityResidueVidrioJuly = this.quantityResidueVidrioJuly + (+consumption.quantity)
               }
+              if ( consumption.residueId == 4 && mmFrom == 8 && mmTo == 8) {/* Vidrio en julio */
+              this.quantityResidueVidrioAugust = this.quantityResidueVidrioAugust + (+consumption.quantity)
+              }
+              if ( consumption.residueId == 4 && mmFrom == 9 && mmTo == 9) {/* Vidrio en julio */
+              this.quantityResidueVidrioSeptember = this.quantityResidueVidrioSeptember + (+consumption.quantity)
+              }
+              if ( consumption.residueId == 4 && mmFrom == 10 && mmTo == 10) {/* Vidrio en julio */
+              this.quantityResidueVidrioOctober = this.quantityResidueVidrioOctober + (+consumption.quantity)
+              }
+              if ( consumption.residueId == 4 && mmFrom == 11 && mmTo == 11) {/* Vidrio en julio */
+              this.quantityResidueVidrioNovember = this.quantityResidueVidrioNovember + (+consumption.quantity)
+              }
+              if ( consumption.residueId == 4 && mmFrom == 12 && mmTo == 12) {/* Vidrio en julio */
+              this.quantityResidueVidrioDecember = this.quantityResidueVidrioDecember + (+consumption.quantity)
+              }
             }
             if ( consumption.aspectId == 4 ) { /* MATERIALES */
                 this.quantityMaterials = this.quantityMaterials + +consumption.quantity
@@ -820,6 +923,15 @@ export class DashboardComponent implements OnInit {
               this.quantityGasolinaMay, this.quantityGasolinaJune,this.quantityGasolinaJuly,this.quantityGasolinaAugust,
               this.quantityGasolinaSeptember, this.quantityGasolinaOctober,this.quantityGasolinaNovember,this.quantityGasolinaDecember],
             backgroundColor: this.allBackgroundColors[4],
+            borderColor: this.allBorderColors[4],
+            borderWidth: 1
+          },
+          {
+            label: "Electricidad",
+            data: [ this.quantityElectricityJanuary, this.quantityElectricityFebruary,this.quantityElectricityMarch,this.quantityElectricityApril,
+              this.quantityElectricityMay, this.quantityElectricityJune,this.quantityElectricityJuly,this.quantityElectricityAugust,
+              this.quantityElectricitySeptember, this.quantityElectricityOctober,this.quantityElectricityNovember,this.quantityElectricityDecember],
+            backgroundColor: this.allBackgroundColors[5],
             borderColor: this.allBorderColors[4],
             borderWidth: 1
           }

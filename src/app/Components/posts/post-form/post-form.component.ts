@@ -222,6 +222,7 @@ export class PostFormComponent implements OnInit {
 
     }
   }
+
   private editPost(): void {
     let errorResponse: any;
     let responseOK: boolean = false;
@@ -275,7 +276,7 @@ export class PostFormComponent implements OnInit {
         .subscribe(
           () => {
             responseOK = true;
-            this.delegation.reset()
+            /* this.delegation.reset() */
             this.energy.reset()
             this.fromDate.reset()
             this.toDate.reset()

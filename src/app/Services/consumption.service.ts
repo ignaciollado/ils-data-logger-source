@@ -51,17 +51,15 @@ export class ConsumptionService {
   }
 
   getAllConsumptionsByCompany(companyId:string): Observable<ConsumptionDTO[]> {
-    companyId = '284'
-    console.log (`-${companyId}-`)
     if (companyId) {
+      console.log ("logged in")
       return this.http
-    .get<ConsumptionDTO[]>(`${URL_API}consumptionGetByCompanyId.php?companyId=${companyId}`)
+        .get<ConsumptionDTO[]>(`${URL_API}consumptionGetByCompanyId.php?companyId=${companyId}`)
     } else {
+      console.log("NOT logged")
       return this.http
-      .get<ConsumptionDTO[]>(`${URL_API_SRV}/api/get-all-consumptions`, httpOptions)
+        .get<ConsumptionDTO[]>(`${URL_API_SRV}/api/get-all-consumptions`, httpOptions)
     }
-    /* return this.http
-    .get<ConsumptionDTO[]>(`${URL_API}consumptionGetByCompanyId.php?companyId=${companyId}`) */
   }
 
   getConsumptionsById(consumptionId: string): Observable<ConsumptionDTO> {

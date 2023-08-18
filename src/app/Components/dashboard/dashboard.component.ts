@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ConsumptionDTO } from 'src/app/Models/consumption.dto';
 import { ConsumptionService } from 'src/app/Services/consumption.service';
 import { SharedService } from 'src/app/Services/shared.service';
-import Chart from 'chart.js/auto';
+import Chart, { controllers } from 'chart.js/auto';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { HeaderMenusService } from 'src/app/Services/header-menus.service';
 import { HeaderMenus } from 'src/app/Models/header-menus.dto';
@@ -120,6 +120,17 @@ export class DashboardComponent implements OnInit {
 
     let errorResponse: any;
     const companyId = sessionStorage.getItem('user_id');
+    /* if (companyId) { */
+      this.consumptionService.getAllConsumptionsByCompany(companyId).subscribe((consumptions:ConsumptionDTO[]) => { 
+          this.consumptions = consumptions
+          console.log(this.consumptions)
+      })
+    /* } else {
+      this.consumptionService.getAllConsumptions().subscribe((consumptions:ConsumptionDTO[]) => { this.consumptions = consumptions})
+    } */
+    
+    return
+
     if (companyId) { /* when logged in */
     this.consumptionService.getAllConsumptionsByCompany(companyId)
     .subscribe(

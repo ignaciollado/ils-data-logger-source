@@ -51,10 +51,17 @@ export class ConsumptionService {
   }
 
   getAllConsumptionsByCompany(companyId:string): Observable<ConsumptionDTO[]> {
-    console.log (companyId)
-    return this.http
+    companyId = '284'
+    console.log (`-${companyId}-`)
+    if (companyId) {
+      return this.http
     .get<ConsumptionDTO[]>(`${URL_API}consumptionGetByCompanyId.php?companyId=${companyId}`)
-   /*  .get<ConsumptionDTO[]>(`${URL_API_SRV}/api/get-all-company-consumptions/${companyId}`, httpOptions) */
+    } else {
+      return this.http
+      .get<ConsumptionDTO[]>(`${URL_API_SRV}/api/get-all-consumptions`, httpOptions)
+    }
+    /* return this.http
+    .get<ConsumptionDTO[]>(`${URL_API}consumptionGetByCompanyId.php?companyId=${companyId}`) */
   }
 
   getConsumptionsById(consumptionId: string): Observable<ConsumptionDTO> {

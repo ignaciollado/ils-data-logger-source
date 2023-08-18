@@ -46,6 +46,9 @@ export class DashboardComponent implements OnInit {
   quantity13GraphResidue:  number[] = [0,0,0,0,0,0,0,0,0,0,0,0]
   quantity14GraphResidue:  number[] = [0,0,0,0,0,0,0,0,0,0,0,0]
 
+  quantityWater:  number[] = [0,0,0,0,0,0,0,0,0,0,0,0]
+
+
   quantityWaterJanuary : number = 0
   quantityWaterFebruary : number = 0
   quantityWaterMarch : number = 0
@@ -157,7 +160,6 @@ export class DashboardComponent implements OnInit {
         this.consumptions = consumptions
         this.consumptions.forEach((consumption) => 
         {
-          console.log(consumption)
           dateFromDate = new Date(consumption.fromDate)
           dateToDate = new Date(consumption.toDate)
           dateYearInsert = new Date(consumption.created_at)
@@ -166,7 +168,7 @@ export class DashboardComponent implements OnInit {
           yyFrom = dateFromDate.getFullYear()
           yyTo = dateToDate.getFullYear()
 
-            if ( consumption.aspectId == 1 ) { 
+            if ( consumption.aspectId == 1 ) { /* ENERGY */
               if ( mmFrom == 1 && mmTo == 1 ) {
               switch ( +consumption.energy ) {
                 case 2:
@@ -672,89 +674,89 @@ export class DashboardComponent implements OnInit {
                 }
               }
             }
-            if ( consumption.aspectId == 2 ) { 
-            if (mmFrom == 1 && mmTo == 1) {/* Gas natural liquado en enero */
-                this.quantityWaterJanuary = this.quantityWaterJanuary + (+consumption.quantity)
+            if ( consumption.aspectId == 2 ) { /* WATER */
+            if (mmFrom == 1 && mmTo == 1) {
+              this.quantityWater[0] = this.quantityWater[0] + (+consumption.quantity)
               }
-            if (mmFrom == 2 && mmTo == 2) {/* Gas natural liquado en febrero */
-              this.quantityWaterFebruary = this.quantityWaterFebruary + (+consumption.quantity)
+            if (mmFrom == 2 && mmTo == 2) {
+              this.quantityWater[1] = this.quantityWater[1] + (+consumption.quantity)
               }
-            if (mmFrom == 3 && mmTo == 3) {/* Gas natural liquado en marzo */
-              this.quantityWaterMarch = this.quantityWaterMarch + (+consumption.quantity)
+            if (mmFrom == 3 && mmTo == 3) {
+              this.quantityWater[2] = this.quantityWater[2] + (+consumption.quantity)
               }
-            if (mmFrom == 4 && mmTo == 4) {/* Gas natural liquado en abril */
-              this.quantityWaterApril = this.quantityWaterApril + (+consumption.quantity)
+            if (mmFrom == 4 && mmTo == 4) {
+              this.quantityWater[3] = this.quantityWater[3] + (+consumption.quantity)
               }
-            if (mmFrom == 5 && mmTo == 5) {/* Gas natural liquado en mayo */
-              this.quantityWaterMay = this.quantityWaterMay + (+consumption.quantity)
+            if (mmFrom == 5 && mmTo == 5) {
+              this.quantityWater[4] = this.quantityWater[4] + (+consumption.quantity)
               }
-            if (mmFrom == 6 && mmTo == 6) {/* Gas natural liquado en junio */
-              this.quantityWaterJune = this.quantityWaterJune + (+consumption.quantity)
+            if (mmFrom == 6 && mmTo == 6) {
+              this.quantityWater[5] = this.quantityWater[5] + (+consumption.quantity)
               }
-            if (mmFrom == 7 && mmTo == 7) {/* Gas natural liquado en julio */
-              this.quantityWaterJuly = this.quantityWaterJuly + (+consumption.quantity)
+            if (mmFrom == 7 && mmTo == 7) {
+              this.quantityWater[6] = this.quantityWater[6] + (+consumption.quantity)
               }
-            if (mmFrom == 8 && mmTo == 8) {/* Gas natural liquado en agosto */
-              this.quantityWaterAugust = this.quantityWaterAugust + (+consumption.quantity)
+            if (mmFrom == 8 && mmTo == 8) {
+              this.quantityWater[7] = this.quantityWater[7] + (+consumption.quantity)
               }
-            if (mmFrom == 9 && mmTo == 9) {/* Gas natural liquado en setiembre */
-              this.quantityWaterSeptember = this.quantityWaterSeptember + (+consumption.quantity)
+            if (mmFrom == 9 && mmTo == 9) {
+              this.quantityWater[8] = this.quantityWater[8] + (+consumption.quantity)
               }
-            if (mmFrom == 10 && mmTo == 10) {/* Gas natural liquado en octubre */
-              this.quantityWaterOctober = this.quantityWaterOctober + (+consumption.quantity)
+            if (mmFrom == 10 && mmTo == 10) {
+              this.quantityWater[9] = this.quantityWater[9] + (+consumption.quantity)
               }
-            if (mmFrom == 11 && mmTo == 11) {/* Gas natural liquado en noviembre */
-              this.quantityWaterNovember = this.quantityWaterNovember + (+consumption.quantity)
+            if (mmFrom == 11 && mmTo == 11) {
+              this.quantityWater[10] = this.quantityWater[10] + (+consumption.quantity)
               }
-            if (mmFrom == 12 && mmTo == 12) {/* Gas natural liquado en diciembre */
-              this.quantityWaterDecember = this.quantityWaterDecember + (+consumption.quantity)
+            if (mmFrom == 12 && mmTo == 12) {
+              this.quantityWater[11] = this.quantityWater[11] + (+consumption.quantity)
               }
             }
-            if ( consumption.aspectId == 3 ) { 
+            if ( consumption.aspectId == 3 ) { /* RESIDUE */
 
               if ( mmFrom == 1 && mmTo == 1 ) {
               switch ( +consumption.residueId ) {
                 case 1:
-                  this.quantity1GraphResidue[0] = this.quantity1GraphResidue[0] + (+consumption.quantity*consumption.pci)
+                  this.quantity1GraphResidue[0] = this.quantity1GraphResidue[0] + (+consumption.quantity)
                   break
                 case 2:
-                  this.quantity2GraphResidue[0] = this.quantity2GraphResidue[0] + (+consumption.quantity*consumption.pci)
+                  this.quantity2GraphResidue[0] = this.quantity2GraphResidue[0] + (+consumption.quantity)
                   break
                 case 3:
-                  this.quantity3GraphResidue[0] = this.quantity3GraphResidue[0] + (+consumption.quantity*consumption.pci)
+                  this.quantity3GraphResidue[0] = this.quantity3GraphResidue[0] + (+consumption.quantity)
                   break
                 case 4:
-                  this.quantity4GraphResidue[0] = this.quantity4GraphResidue[0] + (+consumption.quantity*consumption.pci)
+                  this.quantity4GraphResidue[0] = this.quantity4GraphResidue[0] + (+consumption.quantity)
                   break
                 case 5:
-                  this.quantity5GraphResidue[0] = this.quantity5GraphResidue[0] + (+consumption.quantity*consumption.pci)
+                  this.quantity5GraphResidue[0] = this.quantity5GraphResidue[0] + (+consumption.quantity)
                   break                
                 case 6:
-                  this.quantity6GraphResidue[0] = this.quantity6GraphResidue[0] + (+consumption.quantity*consumption.pci)
+                  this.quantity6GraphResidue[0] = this.quantity6GraphResidue[0] + (+consumption.quantity)
                   break
                 case 7:
-                  this.quantity7GraphResidue[0] = this.quantity7GraphResidue[0] + (+consumption.quantity*consumption.pci)
+                  this.quantity7GraphResidue[0] = this.quantity7GraphResidue[0] + (+consumption.quantity)
                   break
                 case 8:
-                  this.quantity8GraphResidue[0] = this.quantity8GraphResidue[0] + (+consumption.quantity*consumption.pci)
+                  this.quantity8GraphResidue[0] = this.quantity8GraphResidue[0] + (+consumption.quantity)
                   break
                 case 9:
-                  this.quantity9GraphResidue[0] = this.quantity9GraphResidue[0] + (+consumption.quantity*consumption.pci)
+                  this.quantity9GraphResidue[0] = this.quantity9GraphResidue[0] + (+consumption.quantity)
                   break
                 case 10:
-                  this.quantity10GraphResidue[0] = this.quantity10GraphResidue[0] + (+consumption.quantity*consumption.pci)
+                  this.quantity10GraphResidue[0] = this.quantity10GraphResidue[0] + (+consumption.quantity)
                   break
                 case 11:
-                  this.quantity11GraphResidue[0] = this.quantity11GraphResidue[0] + (+consumption.quantity*consumption.pci)
+                  this.quantity11GraphResidue[0] = this.quantity11GraphResidue[0] + (+consumption.quantity)
                   break
                 case 12:
-                  this.quantity12GraphResidue[0] = this.quantity12GraphResidue[0] + (+consumption.quantity*consumption.pci)
+                  this.quantity12GraphResidue[0] = this.quantity12GraphResidue[0] + (+consumption.quantity)
                   break
                 case 13:
-                  this.quantity13GraphResidue[0] = this.quantity13GraphResidue[0] + (+consumption.quantity*consumption.pci)
+                  this.quantity13GraphResidue[0] = this.quantity13GraphResidue[0] + (+consumption.quantity)
                   break
                 case 14:
-                  this.quantity14GraphResidue[0] = this.quantity14GraphResidue[0] + (+consumption.quantity*consumption.pci)
+                  this.quantity14GraphResidue[0] = this.quantity14GraphResidue[0] + (+consumption.quantity)
                   break                                    
                 default:
                   console.log("no matching case found when logged in")
@@ -763,46 +765,46 @@ export class DashboardComponent implements OnInit {
               if ( mmFrom == 2 && mmTo == 2 ) {
                 switch ( +consumption.residueId ) {
                   case 1:
-                    this.quantity1GraphResidue[1] = this.quantity1GraphResidue[1] + (+consumption.quantity*consumption.pci)
+                    this.quantity1GraphResidue[1] = this.quantity1GraphResidue[1] + (+consumption.quantity)
                     break
                   case 2:
-                    this.quantity2GraphResidue[1] = this.quantity2GraphResidue[1] + (+consumption.quantity*consumption.pci)
+                    this.quantity2GraphResidue[1] = this.quantity2GraphResidue[1] + (+consumption.quantity)
                     break
                   case 3:
-                    this.quantity3GraphResidue[1] = this.quantity3GraphResidue[1] + (+consumption.quantity*consumption.pci)
+                    this.quantity3GraphResidue[1] = this.quantity3GraphResidue[1] + (+consumption.quantity)
                     break
                   case 4:
-                    this.quantity4GraphResidue[1] = this.quantity4GraphResidue[1] + (+consumption.quantity*consumption.pci)
+                    this.quantity4GraphResidue[1] = this.quantity4GraphResidue[1] + (+consumption.quantity)
                     break
                   case 5:
-                    this.quantity5GraphResidue[1] = this.quantity5GraphResidue[1] + (+consumption.quantity*consumption.pci)
+                    this.quantity5GraphResidue[1] = this.quantity5GraphResidue[1] + (+consumption.quantity)
                     break                
                   case 6:
-                    this.quantity6GraphResidue[1] = this.quantity6GraphResidue[1] + (+consumption.quantity*consumption.pci)
+                    this.quantity6GraphResidue[1] = this.quantity6GraphResidue[1] + (+consumption.quantity)
                     break
                   case 7:
-                    this.quantity7GraphResidue[1] = this.quantity7GraphResidue[1] + (+consumption.quantity*consumption.pci)
+                    this.quantity7GraphResidue[1] = this.quantity7GraphResidue[1] + (+consumption.quantity)
                     break
                   case 8:
-                    this.quantity8GraphResidue[1] = this.quantity8GraphResidue[1] + (+consumption.quantity*consumption.pci)
+                    this.quantity8GraphResidue[1] = this.quantity8GraphResidue[1] + (+consumption.quantity)
                     break
                   case 9:
-                    this.quantity9GraphResidue[1] = this.quantity9GraphResidue[1] + (+consumption.quantity*consumption.pci)
+                    this.quantity9GraphResidue[1] = this.quantity9GraphResidue[1] + (+consumption.quantity)
                     break
                   case 10:
-                    this.quantity10GraphResidue[1] = this.quantity10GraphResidue[1] + (+consumption.quantity*consumption.pci)
+                    this.quantity10GraphResidue[1] = this.quantity10GraphResidue[1] + (+consumption.quantity)
                     break
                   case 11:
-                    this.quantity11GraphResidue[1] = this.quantity11GraphResidue[1] + (+consumption.quantity*consumption.pci)
+                    this.quantity11GraphResidue[1] = this.quantity11GraphResidue[1] + (+consumption.quantity)
                     break
                   case 12:
-                    this.quantity12GraphResidue[1] = this.quantity12GraphResidue[1] + (+consumption.quantity*consumption.pci)
+                    this.quantity12GraphResidue[1] = this.quantity12GraphResidue[1] + (+consumption.quantity)
                     break
                   case 13:
-                    this.quantity13GraphResidue[1] = this.quantity13GraphResidue[1] + (+consumption.quantity*consumption.pci)
+                    this.quantity13GraphResidue[1] = this.quantity13GraphResidue[1] + (+consumption.quantity)
                     break
                   case 14:
-                    this.quantity14GraphResidue[1] = this.quantity14GraphResidue[1] + (+consumption.quantity*consumption.pci)
+                    this.quantity14GraphResidue[1] = this.quantity14GraphResidue[1] + (+consumption.quantity)
                     break                                    
                   default:
                     console.log("no matching case found when logged in")
@@ -811,46 +813,46 @@ export class DashboardComponent implements OnInit {
               if ( mmFrom == 3 && mmTo == 3 ) {
                 switch ( +consumption.residueId ) {
                   case 1:
-                    this.quantity1GraphResidue[2] = this.quantity1GraphResidue[2] + (+consumption.quantity*consumption.pci)
+                    this.quantity1GraphResidue[2] = this.quantity1GraphResidue[2] + (+consumption.quantity)
                     break
                   case 2:
-                    this.quantity2GraphResidue[2] = this.quantity2GraphResidue[2] + (+consumption.quantity*consumption.pci)
+                    this.quantity2GraphResidue[2] = this.quantity2GraphResidue[2] + (+consumption.quantity)
                     break
                   case 3:
-                    this.quantity3GraphResidue[2] = this.quantity3GraphResidue[2] + (+consumption.quantity*consumption.pci)
+                    this.quantity3GraphResidue[2] = this.quantity3GraphResidue[2] + (+consumption.quantity)
                     break
                   case 4:
-                    this.quantity4GraphResidue[2] = this.quantity4GraphResidue[2] + (+consumption.quantity*consumption.pci)
+                    this.quantity4GraphResidue[2] = this.quantity4GraphResidue[2] + (+consumption.quantity)
                     break
                   case 5:
-                    this.quantity5GraphResidue[2] = this.quantity5GraphResidue[2] + (+consumption.quantity*consumption.pci)
+                    this.quantity5GraphResidue[2] = this.quantity5GraphResidue[2] + (+consumption.quantity)
                     break                
                   case 6:
-                    this.quantity6GraphResidue[2] = this.quantity6GraphResidue[2] + (+consumption.quantity*consumption.pci)
+                    this.quantity6GraphResidue[2] = this.quantity6GraphResidue[2] + (+consumption.quantity)
                     break
                   case 7:
-                    this.quantity7GraphResidue[2] = this.quantity7GraphResidue[2] + (+consumption.quantity*consumption.pci)
+                    this.quantity7GraphResidue[2] = this.quantity7GraphResidue[2] + (+consumption.quantity)
                     break
                   case 8:
-                    this.quantity8GraphResidue[2] = this.quantity8GraphResidue[2] + (+consumption.quantity*consumption.pci)
+                    this.quantity8GraphResidue[2] = this.quantity8GraphResidue[2] + (+consumption.quantity)
                     break
                   case 9:
-                    this.quantity9GraphResidue[2] = this.quantity9GraphResidue[2] + (+consumption.quantity*consumption.pci)
+                    this.quantity9GraphResidue[2] = this.quantity9GraphResidue[2] + (+consumption.quantity)
                     break
                   case 10:
-                    this.quantity10GraphResidue[2] = this.quantity10GraphResidue[2] + (+consumption.quantity*consumption.pci)
+                    this.quantity10GraphResidue[2] = this.quantity10GraphResidue[2] + (+consumption.quantity)
                     break
                   case 11:
-                    this.quantity11GraphResidue[2] = this.quantity11GraphResidue[2] + (+consumption.quantity*consumption.pci)
+                    this.quantity11GraphResidue[2] = this.quantity11GraphResidue[2] + (+consumption.quantity)
                     break
                   case 12:
-                    this.quantity12GraphResidue[2] = this.quantity12GraphResidue[2] + (+consumption.quantity*consumption.pci)
+                    this.quantity12GraphResidue[2] = this.quantity12GraphResidue[2] + (+consumption.quantity)
                     break
                   case 13:
-                    this.quantity13GraphResidue[2] = this.quantity13GraphResidue[2] + (+consumption.quantity*consumption.pci)
+                    this.quantity13GraphResidue[2] = this.quantity13GraphResidue[2] + (+consumption.quantity)
                     break
                   case 14:
-                    this.quantity14GraphResidue[2] = this.quantity14GraphResidue[2] + (+consumption.quantity*consumption.pci)
+                    this.quantity14GraphResidue[2] = this.quantity14GraphResidue[2] + (+consumption.quantity)
                     break                                    
                   default:
                     console.log("no matching case found when logged in")
@@ -859,46 +861,46 @@ export class DashboardComponent implements OnInit {
               if ( mmFrom == 4 && mmTo == 4 ) {
                 switch ( +consumption.residueId ) {
                   case 1:
-                    this.quantity1GraphResidue[3] = this.quantity1GraphResidue[3] + (+consumption.quantity*consumption.pci)
+                    this.quantity1GraphResidue[3] = this.quantity1GraphResidue[3] + (+consumption.quantity)
                     break
                   case 2:
-                    this.quantity2GraphResidue[3] = this.quantity2GraphResidue[3] + (+consumption.quantity*consumption.pci)
+                    this.quantity2GraphResidue[3] = this.quantity2GraphResidue[3] + (+consumption.quantity)
                     break
                   case 3:
-                    this.quantity3GraphResidue[3] = this.quantity3GraphResidue[3] + (+consumption.quantity*consumption.pci)
+                    this.quantity3GraphResidue[3] = this.quantity3GraphResidue[3] + (+consumption.quantity)
                     break
                   case 4:
-                    this.quantity4GraphResidue[3] = this.quantity4GraphResidue[3] + (+consumption.quantity*consumption.pci)
+                    this.quantity4GraphResidue[3] = this.quantity4GraphResidue[3] + (+consumption.quantity)
                     break
                   case 5:
-                    this.quantity5GraphResidue[3] = this.quantity5GraphResidue[3] + (+consumption.quantity*consumption.pci)
+                    this.quantity5GraphResidue[3] = this.quantity5GraphResidue[3] + (+consumption.quantity)
                     break                
                   case 6:
-                    this.quantity6GraphResidue[3] = this.quantity6GraphResidue[3] + (+consumption.quantity*consumption.pci)
+                    this.quantity6GraphResidue[3] = this.quantity6GraphResidue[3] + (+consumption.quantity)
                     break
                   case 7:
-                    this.quantity7GraphResidue[3] = this.quantity7GraphResidue[3] + (+consumption.quantity*consumption.pci)
+                    this.quantity7GraphResidue[3] = this.quantity7GraphResidue[3] + (+consumption.quantity)
                     break
                   case 8:
-                    this.quantity8GraphResidue[3] = this.quantity8GraphResidue[3] + (+consumption.quantity*consumption.pci)
+                    this.quantity8GraphResidue[3] = this.quantity8GraphResidue[3] + (+consumption.quantity)
                     break
                   case 9:
-                    this.quantity9GraphResidue[3] = this.quantity9GraphResidue[3] + (+consumption.quantity*consumption.pci)
+                    this.quantity9GraphResidue[3] = this.quantity9GraphResidue[3] + (+consumption.quantity)
                     break
                   case 10:
-                    this.quantity10GraphResidue[3] = this.quantity10GraphResidue[3] + (+consumption.quantity*consumption.pci)
+                    this.quantity10GraphResidue[3] = this.quantity10GraphResidue[3] + (+consumption.quantity)
                     break
                   case 11:
-                    this.quantity11GraphResidue[3] = this.quantity11GraphResidue[3] + (+consumption.quantity*consumption.pci)
+                    this.quantity11GraphResidue[3] = this.quantity11GraphResidue[3] + (+consumption.quantity)
                     break
                   case 12:
-                    this.quantity12GraphResidue[3] = this.quantity12GraphResidue[3] + (+consumption.quantity*consumption.pci)
+                    this.quantity12GraphResidue[3] = this.quantity12GraphResidue[3] + (+consumption.quantity)
                     break
                   case 13:
-                    this.quantity13GraphResidue[3] = this.quantity13GraphResidue[3] + (+consumption.quantity*consumption.pci)
+                    this.quantity13GraphResidue[3] = this.quantity13GraphResidue[3] + (+consumption.quantity)
                     break
                   case 14:
-                    this.quantity14GraphResidue[3] = this.quantity14GraphResidue[3] + (+consumption.quantity*consumption.pci)
+                    this.quantity14GraphResidue[3] = this.quantity14GraphResidue[3] + (+consumption.quantity)
                     break                                    
                   default:
                     console.log("no matching case found when logged in")
@@ -907,46 +909,46 @@ export class DashboardComponent implements OnInit {
               if ( mmFrom == 5 && mmTo == 5 ) {
                 switch ( +consumption.residueId ) {
                   case 1:
-                    this.quantity1GraphResidue[4] = this.quantity1GraphResidue[4] + (+consumption.quantity*consumption.pci)
+                    this.quantity1GraphResidue[4] = this.quantity1GraphResidue[4] + (+consumption.quantity)
                     break
                   case 2:
-                    this.quantity2GraphResidue[4] = this.quantity2GraphResidue[4] + (+consumption.quantity*consumption.pci)
+                    this.quantity2GraphResidue[4] = this.quantity2GraphResidue[4] + (+consumption.quantity)
                     break
                   case 3:
-                    this.quantity3GraphResidue[4] = this.quantity3GraphResidue[4] + (+consumption.quantity*consumption.pci)
+                    this.quantity3GraphResidue[4] = this.quantity3GraphResidue[4] + (+consumption.quantity)
                     break
                   case 4:
-                    this.quantity4GraphResidue[4] = this.quantity4GraphResidue[4] + (+consumption.quantity*consumption.pci)
+                    this.quantity4GraphResidue[4] = this.quantity4GraphResidue[4] + (+consumption.quantity)
                     break
                   case 5:
-                    this.quantity5GraphResidue[4] = this.quantity5GraphResidue[4] + (+consumption.quantity*consumption.pci)
+                    this.quantity5GraphResidue[4] = this.quantity5GraphResidue[4] + (+consumption.quantity)
                     break                
                   case 6:
-                    this.quantity6GraphResidue[4] = this.quantity6GraphResidue[4] + (+consumption.quantity*consumption.pci)
+                    this.quantity6GraphResidue[4] = this.quantity6GraphResidue[4] + (+consumption.quantity)
                     break
                   case 7:
-                    this.quantity7GraphResidue[4] = this.quantity7GraphResidue[4] + (+consumption.quantity*consumption.pci)
+                    this.quantity7GraphResidue[4] = this.quantity7GraphResidue[4] + (+consumption.quantity)
                     break
                   case 8:
-                    this.quantity8GraphResidue[4] = this.quantity8GraphResidue[4] + (+consumption.quantity*consumption.pci)
+                    this.quantity8GraphResidue[4] = this.quantity8GraphResidue[4] + (+consumption.quantity)
                     break
                   case 9:
-                    this.quantity9GraphResidue[4] = this.quantity9GraphResidue[4] + (+consumption.quantity*consumption.pci)
+                    this.quantity9GraphResidue[4] = this.quantity9GraphResidue[4] + (+consumption.quantity)
                     break
                   case 10:
-                    this.quantity10GraphResidue[4] = this.quantity10GraphResidue[4] + (+consumption.quantity*consumption.pci)
+                    this.quantity10GraphResidue[4] = this.quantity10GraphResidue[4] + (+consumption.quantity)
                     break
                   case 11:
-                    this.quantity11GraphResidue[4] = this.quantity11GraphResidue[4] + (+consumption.quantity*consumption.pci)
+                    this.quantity11GraphResidue[4] = this.quantity11GraphResidue[4] + (+consumption.quantity)
                     break
                   case 12:
-                    this.quantity12GraphResidue[4] = this.quantity12GraphResidue[4] + (+consumption.quantity*consumption.pci)
+                    this.quantity12GraphResidue[4] = this.quantity12GraphResidue[4] + (+consumption.quantity)
                     break
                   case 13:
-                    this.quantity13GraphResidue[4] = this.quantity13GraphResidue[4] + (+consumption.quantity*consumption.pci)
+                    this.quantity13GraphResidue[4] = this.quantity13GraphResidue[4] + (+consumption.quantity)
                     break
                   case 14:
-                    this.quantity14GraphResidue[4] = this.quantity14GraphResidue[4] + (+consumption.quantity*consumption.pci)
+                    this.quantity14GraphResidue[4] = this.quantity14GraphResidue[4] + (+consumption.quantity)
                     break                                    
                   default:
                     console.log("no matching case found when logged in")
@@ -955,94 +957,95 @@ export class DashboardComponent implements OnInit {
               if ( mmFrom == 6 && mmTo == 6 ) {
                 switch ( +consumption.residueId ) {
                   case 1:
-                    this.quantity1GraphResidue[5] = this.quantity1GraphResidue[5] + (+consumption.quantity*consumption.pci)
+                    this.quantity1GraphResidue[5] = this.quantity1GraphResidue[5] + (+consumption.quantity)
                     break
                   case 2:
-                    this.quantity2GraphResidue[5] = this.quantity2GraphResidue[5] + (+consumption.quantity*consumption.pci)
+                    this.quantity2GraphResidue[5] = this.quantity2GraphResidue[5] + (+consumption.quantity)
                     break
                   case 3:
-                    this.quantity3GraphResidue[5] = this.quantity3GraphResidue[5] + (+consumption.quantity*consumption.pci)
+                    this.quantity3GraphResidue[5] = this.quantity3GraphResidue[5] + (+consumption.quantity)
                     break
                   case 4:
-                    this.quantity4GraphResidue[5] = this.quantity4GraphResidue[5] + (+consumption.quantity*consumption.pci)
+                    this.quantity4GraphResidue[5] = this.quantity4GraphResidue[5] + (+consumption.quantity)
                     break
                   case 5:
-                    this.quantity5GraphResidue[5] = this.quantity5GraphResidue[5] + (+consumption.quantity*consumption.pci)
+                    this.quantity5GraphResidue[5] = this.quantity5GraphResidue[5] + (+consumption.quantity)
                     break                
                   case 6:
-                    this.quantity6GraphResidue[5] = this.quantity6GraphResidue[5] + (+consumption.quantity*consumption.pci)
+                    this.quantity6GraphResidue[5] = this.quantity6GraphResidue[5] + (+consumption.quantity)
                     break
                   case 7:
-                    this.quantity7GraphResidue[5] = this.quantity7GraphResidue[5] + (+consumption.quantity*consumption.pci)
+                    this.quantity7GraphResidue[5] = this.quantity7GraphResidue[5] + (+consumption.quantity)
                     break
                   case 8:
-                    this.quantity8GraphResidue[5] = this.quantity8GraphResidue[5] + (+consumption.quantity*consumption.pci)
+                    this.quantity8GraphResidue[5] = this.quantity8GraphResidue[5] + (+consumption.quantity)
                     break
                   case 9:
-                    this.quantity9GraphResidue[5] = this.quantity9GraphResidue[5] + (+consumption.quantity*consumption.pci)
+                    this.quantity9GraphResidue[5] = this.quantity9GraphResidue[5] + (+consumption.quantity)
                     break
                   case 10:
-                    this.quantity10GraphResidue[5] = this.quantity10GraphResidue[5] + (+consumption.quantity*consumption.pci)
+                    this.quantity10GraphResidue[5] = this.quantity10GraphResidue[5] + (+consumption.quantity)
                     break
                   case 11:
-                    this.quantity11GraphResidue[5] = this.quantity11GraphResidue[5] + (+consumption.quantity*consumption.pci)
+                    this.quantity11GraphResidue[5] = this.quantity11GraphResidue[5] + (+consumption.quantity)
                     break
                   case 12:
-                    this.quantity12GraphResidue[5] = this.quantity12GraphResidue[5] + (+consumption.quantity*consumption.pci)
+                    this.quantity12GraphResidue[5] = this.quantity12GraphResidue[5] + (+consumption.quantity)
                     break
                   case 13:
-                    this.quantity13GraphResidue[5] = this.quantity13GraphResidue[5] + (+consumption.quantity*consumption.pci)
+                    this.quantity13GraphResidue[5] = this.quantity13GraphResidue[5] + (+consumption.quantity)
                     break
                   case 14:
-                    this.quantity14GraphResidue[5] = this.quantity14GraphResidue[5] + (+consumption.quantity*consumption.pci)
+                    this.quantity14GraphResidue[5] = this.quantity14GraphResidue[5] + (+consumption.quantity)
                     break                                    
                   default:
                     console.log("no matching case found when logged in")
                 }
               }
               if ( mmFrom == 7 && mmTo == 7 ) {
+                console.log(mmFrom, mmTo, consumption.residueId, consumption.quantity)
                 switch ( +consumption.residueId ) {
                   case 1:
-                    this.quantity1GraphResidue[6] = this.quantity1GraphResidue[6] + (+consumption.quantity*consumption.pci)
+                    this.quantity1GraphResidue[6] = this.quantity1GraphResidue[6] + (+consumption.quantity)
                     break
                   case 2:
-                    this.quantity2GraphResidue[6] = this.quantity2GraphResidue[6] + (+consumption.quantity*consumption.pci)
+                    this.quantity2GraphResidue[6] = this.quantity2GraphResidue[6] + (+consumption.quantity)
                     break
                   case 3:
-                    this.quantity3GraphResidue[6] = this.quantity3GraphResidue[6] + (+consumption.quantity*consumption.pci)
+                    this.quantity3GraphResidue[6] = this.quantity3GraphResidue[6] + (+consumption.quantity)
                     break
                   case 4:
-                    this.quantity4GraphResidue[6] = this.quantity4GraphResidue[6] + (+consumption.quantity*consumption.pci)
+                    this.quantity4GraphResidue[6] = this.quantity4GraphResidue[6] + (+consumption.quantity)
                     break
                   case 5:
-                    this.quantity5GraphResidue[6] = this.quantity5GraphResidue[6] + (+consumption.quantity*consumption.pci)
+                    this.quantity5GraphResidue[6] = this.quantity5GraphResidue[6] + (+consumption.quantity)
                     break                
                   case 6:
-                    this.quantity6GraphResidue[6] = this.quantity6GraphResidue[6] + (+consumption.quantity*consumption.pci)
+                    this.quantity6GraphResidue[6] = this.quantity6GraphResidue[6] + (+consumption.quantity)
                     break
                   case 7:
-                    this.quantity7GraphResidue[6] = this.quantity7GraphResidue[6] + (+consumption.quantity*consumption.pci)
+                    this.quantity7GraphResidue[6] = this.quantity7GraphResidue[6] + (+consumption.quantity)
                     break
                   case 8:
-                    this.quantity8GraphResidue[6] = this.quantity8GraphResidue[6] + (+consumption.quantity*consumption.pci)
+                    this.quantity8GraphResidue[6] = this.quantity8GraphResidue[6] + (+consumption.quantity)
                     break
                   case 9:
-                    this.quantity9GraphResidue[6] = this.quantity9GraphResidue[6] + (+consumption.quantity*consumption.pci)
+                    this.quantity9GraphResidue[6] = this.quantity9GraphResidue[6] + (+consumption.quantity)
                     break
                   case 10:
-                    this.quantity10GraphResidue[6] = this.quantity10GraphResidue[6] + (+consumption.quantity*consumption.pci)
+                    this.quantity10GraphResidue[6] = this.quantity10GraphResidue[6] + (+consumption.quantity)
                     break
                   case 11:
-                    this.quantity11GraphResidue[6] = this.quantity11GraphResidue[6] + (+consumption.quantity*consumption.pci)
+                    this.quantity11GraphResidue[6] = this.quantity11GraphResidue[6] + (+consumption.quantity)
                     break
                   case 12:
-                    this.quantity12GraphResidue[6] = this.quantity12GraphResidue[6] + (+consumption.quantity*consumption.pci)
+                    this.quantity12GraphResidue[6] = this.quantity12GraphResidue[6] + (+consumption.quantity)
                     break
                   case 13:
-                    this.quantity13GraphResidue[6] = this.quantity13GraphResidue[6] + (+consumption.quantity*consumption.pci)
+                    this.quantity13GraphResidue[6] = this.quantity13GraphResidue[6] + (+consumption.quantity)
                     break
                   case 14:
-                    this.quantity14GraphResidue[6] = this.quantity14GraphResidue[6] + (+consumption.quantity*consumption.pci)
+                    this.quantity14GraphResidue[6] = this.quantity14GraphResidue[6] + (+consumption.quantity)
                     break                                    
                   default:
                     console.log("no matching case found when logged in")
@@ -1051,46 +1054,46 @@ export class DashboardComponent implements OnInit {
               if ( mmFrom == 8 && mmTo == 8 ) {
                 switch ( +consumption.residueId ) {
                   case 1:
-                    this.quantity1GraphResidue[7] = this.quantity1GraphResidue[7] + (+consumption.quantity*consumption.pci)
+                    this.quantity1GraphResidue[7] = this.quantity1GraphResidue[7] + (+consumption.quantity)
                     break
                   case 2:
-                    this.quantity2GraphResidue[7] = this.quantity2GraphResidue[7] + (+consumption.quantity*consumption.pci)
+                    this.quantity2GraphResidue[7] = this.quantity2GraphResidue[7] + (+consumption.quantity)
                     break
                   case 3:
-                    this.quantity3GraphResidue[7] = this.quantity3GraphResidue[7] + (+consumption.quantity*consumption.pci)
+                    this.quantity3GraphResidue[7] = this.quantity3GraphResidue[7] + (+consumption.quantity)
                     break
                   case 4:
-                    this.quantity4GraphResidue[7] = this.quantity4GraphResidue[7] + (+consumption.quantity*consumption.pci)
+                    this.quantity4GraphResidue[7] = this.quantity4GraphResidue[7] + (+consumption.quantity)
                     break
                   case 5:
-                    this.quantity5GraphResidue[7] = this.quantity5GraphResidue[7] + (+consumption.quantity*consumption.pci)
+                    this.quantity5GraphResidue[7] = this.quantity5GraphResidue[7] + (+consumption.quantity)
                     break                
                   case 6:
-                    this.quantity6GraphResidue[7] = this.quantity6GraphResidue[7] + (+consumption.quantity*consumption.pci)
+                    this.quantity6GraphResidue[7] = this.quantity6GraphResidue[7] + (+consumption.quantity)
                     break
                   case 7:
-                    this.quantity7GraphResidue[7] = this.quantity7GraphResidue[7] + (+consumption.quantity*consumption.pci)
+                    this.quantity7GraphResidue[7] = this.quantity7GraphResidue[7] + (+consumption.quantity)
                     break
                   case 8:
-                    this.quantity8GraphResidue[7] = this.quantity8GraphResidue[7] + (+consumption.quantity*consumption.pci)
+                    this.quantity8GraphResidue[7] = this.quantity8GraphResidue[7] + (+consumption.quantity)
                     break
                   case 9:
-                    this.quantity9GraphResidue[7] = this.quantity9GraphResidue[7] + (+consumption.quantity*consumption.pci)
+                    this.quantity9GraphResidue[7] = this.quantity9GraphResidue[7] + (+consumption.quantity)
                     break
                   case 10:
-                    this.quantity10GraphResidue[7] = this.quantity10GraphResidue[7] + (+consumption.quantity*consumption.pci)
+                    this.quantity10GraphResidue[7] = this.quantity10GraphResidue[7] + (+consumption.quantity)
                     break
                   case 11:
-                    this.quantity11GraphResidue[7] = this.quantity11GraphResidue[7] + (+consumption.quantity*consumption.pci)
+                    this.quantity11GraphResidue[7] = this.quantity11GraphResidue[7] + (+consumption.quantity)
                     break
                   case 12:
-                    this.quantity12GraphResidue[7] = this.quantity12GraphResidue[7] + (+consumption.quantity*consumption.pci)
+                    this.quantity12GraphResidue[7] = this.quantity12GraphResidue[7] + (+consumption.quantity)
                     break
                   case 13:
-                    this.quantity13GraphResidue[7] = this.quantity13GraphResidue[7] + (+consumption.quantity*consumption.pci)
+                    this.quantity13GraphResidue[7] = this.quantity13GraphResidue[7] + (+consumption.quantity)
                     break
                   case 14:
-                    this.quantity14GraphResidue[7] = this.quantity14GraphResidue[7] + (+consumption.quantity*consumption.pci)
+                    this.quantity14GraphResidue[7] = this.quantity14GraphResidue[7] + (+consumption.quantity)
                     break                                    
                   default:
                     console.log("no matching case found when logged in")
@@ -1099,46 +1102,46 @@ export class DashboardComponent implements OnInit {
               if ( mmFrom == 9 && mmTo == 9 ) {
                 switch ( +consumption.residueId ) {
                   case 1:
-                    this.quantity1GraphResidue[8] = this.quantity1GraphResidue[8] + (+consumption.quantity*consumption.pci)
+                    this.quantity1GraphResidue[8] = this.quantity1GraphResidue[8] + (+consumption.quantity)
                     break
                   case 2:
-                    this.quantity2GraphResidue[8] = this.quantity2GraphResidue[8] + (+consumption.quantity*consumption.pci)
+                    this.quantity2GraphResidue[8] = this.quantity2GraphResidue[8] + (+consumption.quantity)
                     break
                   case 3:
-                    this.quantity3GraphResidue[8] = this.quantity3GraphResidue[8] + (+consumption.quantity*consumption.pci)
+                    this.quantity3GraphResidue[8] = this.quantity3GraphResidue[8] + (+consumption.quantity)
                     break
                   case 4:
-                    this.quantity4GraphResidue[8] = this.quantity4GraphResidue[8] + (+consumption.quantity*consumption.pci)
+                    this.quantity4GraphResidue[8] = this.quantity4GraphResidue[8] + (+consumption.quantity)
                     break
                   case 5:
-                    this.quantity5GraphResidue[8] = this.quantity5GraphResidue[8] + (+consumption.quantity*consumption.pci)
+                    this.quantity5GraphResidue[8] = this.quantity5GraphResidue[8] + (+consumption.quantity)
                     break                
                   case 6:
-                    this.quantity6GraphResidue[8] = this.quantity6GraphResidue[8] + (+consumption.quantity*consumption.pci)
+                    this.quantity6GraphResidue[8] = this.quantity6GraphResidue[8] + (+consumption.quantity)
                     break
                   case 7:
-                    this.quantity7GraphResidue[8] = this.quantity7GraphResidue[8] + (+consumption.quantity*consumption.pci)
+                    this.quantity7GraphResidue[8] = this.quantity7GraphResidue[8] + (+consumption.quantity)
                     break
                   case 8:
-                    this.quantity8GraphResidue[8] = this.quantity8GraphResidue[8] + (+consumption.quantity*consumption.pci)
+                    this.quantity8GraphResidue[8] = this.quantity8GraphResidue[8] + (+consumption.quantity)
                     break
                   case 9:
-                    this.quantity9GraphResidue[8] = this.quantity9GraphResidue[8] + (+consumption.quantity*consumption.pci)
+                    this.quantity9GraphResidue[8] = this.quantity9GraphResidue[8] + (+consumption.quantity)
                     break
                   case 10:
-                    this.quantity10GraphResidue[8] = this.quantity10GraphResidue[8] + (+consumption.quantity*consumption.pci)
+                    this.quantity10GraphResidue[8] = this.quantity10GraphResidue[8] + (+consumption.quantity)
                     break
                   case 11:
-                    this.quantity11GraphResidue[8] = this.quantity11GraphResidue[8] + (+consumption.quantity*consumption.pci)
+                    this.quantity11GraphResidue[8] = this.quantity11GraphResidue[8] + (+consumption.quantity)
                     break
                   case 12:
-                    this.quantity12GraphResidue[8] = this.quantity12GraphResidue[8] + (+consumption.quantity*consumption.pci)
+                    this.quantity12GraphResidue[8] = this.quantity12GraphResidue[8] + (+consumption.quantity)
                     break
                   case 13:
-                    this.quantity13GraphResidue[8] = this.quantity13GraphResidue[8] + (+consumption.quantity*consumption.pci)
+                    this.quantity13GraphResidue[8] = this.quantity13GraphResidue[8] + (+consumption.quantity)
                     break
                   case 14:
-                    this.quantity14GraphResidue[8] = this.quantity14GraphResidue[8] + (+consumption.quantity*consumption.pci)
+                    this.quantity14GraphResidue[8] = this.quantity14GraphResidue[8] + (+consumption.quantity)
                     break                                    
                   default:
                     console.log("no matching case found when logged in")
@@ -1147,46 +1150,46 @@ export class DashboardComponent implements OnInit {
               if ( mmFrom == 10 && mmTo == 10 ) {
                 switch ( +consumption.residueId ) {
                   case 1:
-                    this.quantity1GraphResidue[9] = this.quantity1GraphResidue[9] + (+consumption.quantity*consumption.pci)
+                    this.quantity1GraphResidue[9] = this.quantity1GraphResidue[9] + (+consumption.quantity)
                     break
                   case 2:
-                    this.quantity2GraphResidue[9] = this.quantity2GraphResidue[9] + (+consumption.quantity*consumption.pci)
+                    this.quantity2GraphResidue[9] = this.quantity2GraphResidue[9] + (+consumption.quantity)
                     break
                   case 3:
-                    this.quantity3GraphResidue[9] = this.quantity3GraphResidue[9] + (+consumption.quantity*consumption.pci)
+                    this.quantity3GraphResidue[9] = this.quantity3GraphResidue[9] + (+consumption.quantity)
                     break
                   case 4:
-                    this.quantity4GraphResidue[9] = this.quantity4GraphResidue[9] + (+consumption.quantity*consumption.pci)
+                    this.quantity4GraphResidue[9] = this.quantity4GraphResidue[9] + (+consumption.quantity)
                     break
                   case 5:
-                    this.quantity5GraphResidue[9] = this.quantity5GraphResidue[9] + (+consumption.quantity*consumption.pci)
+                    this.quantity5GraphResidue[9] = this.quantity5GraphResidue[9] + (+consumption.quantity)
                     break                
                   case 6:
-                    this.quantity6GraphResidue[9] = this.quantity6GraphResidue[9] + (+consumption.quantity*consumption.pci)
+                    this.quantity6GraphResidue[9] = this.quantity6GraphResidue[9] + (+consumption.quantity)
                     break
                   case 7:
-                    this.quantity7GraphResidue[9] = this.quantity7GraphResidue[9] + (+consumption.quantity*consumption.pci)
+                    this.quantity7GraphResidue[9] = this.quantity7GraphResidue[9] + (+consumption.quantity)
                     break
                   case 8:
-                    this.quantity8GraphResidue[9] = this.quantity8GraphResidue[9] + (+consumption.quantity*consumption.pci)
+                    this.quantity8GraphResidue[9] = this.quantity8GraphResidue[9] + (+consumption.quantity)
                     break
                   case 9:
-                    this.quantity9GraphResidue[9] = this.quantity9GraphResidue[9] + (+consumption.quantity*consumption.pci)
+                    this.quantity9GraphResidue[9] = this.quantity9GraphResidue[9] + (+consumption.quantity)
                     break
                   case 10:
-                    this.quantity10GraphResidue[9] = this.quantity10GraphResidue[9] + (+consumption.quantity*consumption.pci)
+                    this.quantity10GraphResidue[9] = this.quantity10GraphResidue[9] + (+consumption.quantity)
                     break
                   case 11:
-                    this.quantity11GraphResidue[9] = this.quantity11GraphResidue[9] + (+consumption.quantity*consumption.pci)
+                    this.quantity11GraphResidue[9] = this.quantity11GraphResidue[9] + (+consumption.quantity)
                     break
                   case 12:
-                    this.quantity12GraphResidue[9] = this.quantity12GraphResidue[9] + (+consumption.quantity*consumption.pci)
+                    this.quantity12GraphResidue[9] = this.quantity12GraphResidue[9] + (+consumption.quantity)
                     break
                   case 13:
-                    this.quantity13GraphResidue[9] = this.quantity13GraphResidue[9] + (+consumption.quantity*consumption.pci)
+                    this.quantity13GraphResidue[9] = this.quantity13GraphResidue[9] + (+consumption.quantity)
                     break
                   case 14:
-                    this.quantity14GraphResidue[9] = this.quantity14GraphResidue[9] + (+consumption.quantity*consumption.pci)
+                    this.quantity14GraphResidue[9] = this.quantity14GraphResidue[9] + (+consumption.quantity)
                     break                                    
                   default:
                     console.log("no matching case found when logged in")
@@ -1195,46 +1198,46 @@ export class DashboardComponent implements OnInit {
               if ( mmFrom == 11 && mmTo == 11 ) {
                 switch ( +consumption.residueId ) {
                   case 1:
-                    this.quantity1GraphResidue[10] = this.quantity1GraphResidue[10] + (+consumption.quantity*consumption.pci)
+                    this.quantity1GraphResidue[10] = this.quantity1GraphResidue[10] + (+consumption.quantity)
                     break
                   case 2:
-                    this.quantity2GraphResidue[10] = this.quantity2GraphResidue[10] + (+consumption.quantity*consumption.pci)
+                    this.quantity2GraphResidue[10] = this.quantity2GraphResidue[10] + (+consumption.quantity)
                     break
                   case 3:
-                    this.quantity3GraphResidue[10] = this.quantity3GraphResidue[10] + (+consumption.quantity*consumption.pci)
+                    this.quantity3GraphResidue[10] = this.quantity3GraphResidue[10] + (+consumption.quantity)
                     break
                   case 4:
-                    this.quantity4GraphResidue[10] = this.quantity4GraphResidue[10] + (+consumption.quantity*consumption.pci)
+                    this.quantity4GraphResidue[10] = this.quantity4GraphResidue[10] + (+consumption.quantity)
                     break
                   case 5:
-                    this.quantity5GraphResidue[10] = this.quantity5GraphResidue[10] + (+consumption.quantity*consumption.pci)
+                    this.quantity5GraphResidue[10] = this.quantity5GraphResidue[10] + (+consumption.quantity)
                     break                
                   case 6:
-                    this.quantity6GraphResidue[10] = this.quantity6GraphResidue[10] + (+consumption.quantity*consumption.pci)
+                    this.quantity6GraphResidue[10] = this.quantity6GraphResidue[10] + (+consumption.quantity)
                     break
                   case 7:
-                    this.quantity7GraphResidue[10] = this.quantity7GraphResidue[10] + (+consumption.quantity*consumption.pci)
+                    this.quantity7GraphResidue[10] = this.quantity7GraphResidue[10] + (+consumption.quantity)
                     break
                   case 8:
-                    this.quantity8GraphResidue[10] = this.quantity8GraphResidue[10] + (+consumption.quantity*consumption.pci)
+                    this.quantity8GraphResidue[10] = this.quantity8GraphResidue[10] + (+consumption.quantity)
                     break
                   case 9:
-                    this.quantity9GraphResidue[10] = this.quantity9GraphResidue[10] + (+consumption.quantity*consumption.pci)
+                    this.quantity9GraphResidue[10] = this.quantity9GraphResidue[10] + (+consumption.quantity)
                     break
                   case 10:
-                    this.quantity10GraphResidue[10] = this.quantity10GraphResidue[10] + (+consumption.quantity*consumption.pci)
+                    this.quantity10GraphResidue[10] = this.quantity10GraphResidue[10] + (+consumption.quantity)
                     break
                   case 11:
-                    this.quantity11GraphResidue[10] = this.quantity11GraphResidue[10] + (+consumption.quantity*consumption.pci)
+                    this.quantity11GraphResidue[10] = this.quantity11GraphResidue[10] + (+consumption.quantity)
                     break
                   case 12:
-                    this.quantity12GraphResidue[10] = this.quantity12GraphResidue[10] + (+consumption.quantity*consumption.pci)
+                    this.quantity12GraphResidue[10] = this.quantity12GraphResidue[10] + (+consumption.quantity)
                     break
                   case 13:
-                    this.quantity13GraphResidue[10] = this.quantity13GraphResidue[10] + (+consumption.quantity*consumption.pci)
+                    this.quantity13GraphResidue[10] = this.quantity13GraphResidue[10] + (+consumption.quantity)
                     break
                   case 14:
-                    this.quantity14GraphResidue[10] = this.quantity14GraphResidue[10] + (+consumption.quantity*consumption.pci)
+                    this.quantity14GraphResidue[10] = this.quantity14GraphResidue[10] + (+consumption.quantity)
                     break                                    
                   default:
                     console.log("no matching case found when logged in")
@@ -1243,56 +1246,56 @@ export class DashboardComponent implements OnInit {
               if ( mmFrom == 12 && mmTo == 12 ) {
                 switch ( +consumption.residueId ) {
                   case 1:
-                    this.quantity1GraphResidue[11] = this.quantity1GraphResidue[11] + (+consumption.quantity*consumption.pci)
+                    this.quantity1GraphResidue[11] = this.quantity1GraphResidue[11] + (+consumption.quantity)
                     break
                   case 2:
-                    this.quantity2GraphResidue[11] = this.quantity2GraphResidue[11] + (+consumption.quantity*consumption.pci)
+                    this.quantity2GraphResidue[11] = this.quantity2GraphResidue[11] + (+consumption.quantity)
                     break
                   case 3:
-                    this.quantity3GraphResidue[11] = this.quantity3GraphResidue[11] + (+consumption.quantity*consumption.pci)
+                    this.quantity3GraphResidue[11] = this.quantity3GraphResidue[11] + (+consumption.quantity)
                     break
                   case 4:
-                    this.quantity4GraphResidue[11] = this.quantity4GraphResidue[11] + (+consumption.quantity*consumption.pci)
+                    this.quantity4GraphResidue[11] = this.quantity4GraphResidue[11] + (+consumption.quantity)
                     break
                   case 5:
-                    this.quantity5GraphResidue[11] = this.quantity5GraphResidue[11] + (+consumption.quantity*consumption.pci)
+                    this.quantity5GraphResidue[11] = this.quantity5GraphResidue[11] + (+consumption.quantity)
                     break                
                   case 6:
-                    this.quantity6GraphResidue[11] = this.quantity6GraphResidue[11] + (+consumption.quantity*consumption.pci)
+                    this.quantity6GraphResidue[11] = this.quantity6GraphResidue[11] + (+consumption.quantity)
                     break
                   case 7:
-                    this.quantity7GraphResidue[11] = this.quantity7GraphResidue[11] + (+consumption.quantity*consumption.pci)
+                    this.quantity7GraphResidue[11] = this.quantity7GraphResidue[11] + (+consumption.quantity)
                     break
                   case 8:
-                    this.quantity8GraphResidue[11] = this.quantity8GraphResidue[11] + (+consumption.quantity*consumption.pci)
+                    this.quantity8GraphResidue[11] = this.quantity8GraphResidue[11] + (+consumption.quantity)
                     break
                   case 9:
-                    this.quantity9GraphResidue[11] = this.quantity9GraphResidue[11] + (+consumption.quantity*consumption.pci)
+                    this.quantity9GraphResidue[11] = this.quantity9GraphResidue[11] + (+consumption.quantity)
                     break
                   case 10:
-                    this.quantity10GraphResidue[11] = this.quantity10GraphResidue[11] + (+consumption.quantity*consumption.pci)
+                    this.quantity10GraphResidue[11] = this.quantity10GraphResidue[11] + (+consumption.quantity)
                     break
                   case 11:
-                    this.quantity11GraphResidue[11] = this.quantity11GraphResidue[11] + (+consumption.quantity*consumption.pci)
+                    this.quantity11GraphResidue[11] = this.quantity11GraphResidue[11] + (+consumption.quantity)
                     break
                   case 12:
-                    this.quantity12GraphResidue[11] = this.quantity12GraphResidue[11] + (+consumption.quantity*consumption.pci)
+                    this.quantity12GraphResidue[11] = this.quantity12GraphResidue[11] + (+consumption.quantity)
                     break
                   case 13:
-                    this.quantity13GraphResidue[11] = this.quantity13GraphResidue[11] + (+consumption.quantity*consumption.pci)
+                    this.quantity13GraphResidue[11] = this.quantity13GraphResidue[11] + (+consumption.quantity)
                     break
                   case 14:
-                    this.quantity14GraphResidue[11] = this.quantity14GraphResidue[11] + (+consumption.quantity*consumption.pci)
+                    this.quantity14GraphResidue[11] = this.quantity14GraphResidue[11] + (+consumption.quantity)
                     break                                    
                   default:
                     console.log("no matching case found when logged in")
                 }
               }
             }
-            if ( consumption.aspectId == 4 ) { 
+            if ( consumption.aspectId == 4 ) { /* MATERIALS */
                 this.quantityMaterials = this.quantityMaterials + +consumption.quantity
             }
-            if ( consumption.aspectId == 5 ) { 
+            if ( consumption.aspectId == 5 ) { /* EMISSIONS */
             if (yyFrom == 2021 && yyTo == 2021) {
               this.quantityEmissions2021ScopeOne = this.quantityEmissions2021ScopeOne + (+consumption.scopeOne)
               this.quantityEmissions2021ScopeTwo = this.quantityEmissions2021ScopeTwo + (+consumption.scopeTwo)
@@ -1449,11 +1452,9 @@ export class DashboardComponent implements OnInit {
         datasets: [
           {
             label: "Water",
-            data: [ this.quantityWaterJanuary, this.quantityWaterFebruary,this.quantityWaterMarch,this.quantityWaterApril,
-              this.quantityWaterMay, this.quantityWaterJune,this.quantityWaterJuly,this.quantityWaterAugust,
-              this.quantityWaterSeptember, this.quantityWaterOctober,this.quantityWaterNovember,this.quantityWaterDecember],
-            backgroundColor: this.allBackgroundColors,
-            borderColor: this.allBorderColors,
+            data: this.quantityWater,
+            backgroundColor: this.allBackgroundColors[5],
+            borderColor: this.allBorderColors[5],
             borderWidth: 1
           }]
       },

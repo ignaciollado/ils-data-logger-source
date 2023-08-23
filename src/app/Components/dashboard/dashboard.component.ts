@@ -1417,7 +1417,12 @@ export class DashboardComponent implements OnInit {
             backgroundColor: this.allBackgroundColors[11],
             borderColor: this.allBorderColors[11],
             borderWidth: 1
-          }
+          },
+          {
+            type: 'line',
+            label: 'Ratios Dataset',
+            data: [500, 750, 500, 250, 500, 750, 500, 250, 500, 750],
+        }
         ]
       },
       options: {
@@ -1446,17 +1451,23 @@ export class DashboardComponent implements OnInit {
 
   private chartWater(){
     this.chart = new Chart("graphDashboardWater", {
-      type: 'line',
+
       data: {
         labels:  [ 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December' ],
         datasets: [
           {
+            type: 'bar',
             label: "Water",
             data: this.quantityWater,
             backgroundColor: this.allBackgroundColors[5],
             borderColor: this.allBorderColors[5],
             borderWidth: 1
-          }]
+          }, {
+            type: 'line',
+            label: 'Line Dataset',
+            data: [50, 75, 50, 25, 50, 75],
+        }
+        ]
       },
       options: {
         responsive: true,

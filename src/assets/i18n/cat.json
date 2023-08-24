@@ -10,9 +10,23 @@
 
     "companyName": "Nom de l'empresa",
 
+    "activityData": "Dades de l'activitat",
     "aspects": "Aspectes",
     "energies": "Energies",
     "residues": "Residus",
+
+    "companyActivityData": "Dades d'activitat de la meva empresa",
+    "consumptionList": "Llistat de consums:",
+    "delegation": "Delegació",
+    "aspect": "Aspecte",
+    "energy": "Energía",
+    "water": "Aigua",
+    "residue": "Residu",
+    "emissions": "Emissions",
+    "quantity": "Quantitat",
+    "fromDate": "Des de",
+    "toDate": "Fins a",
+    "actions": "ACCIONS ",
 
     "copyright": "Creat per l'Institut d'Innovació Empresarial de les Illes Balears",
     "workSession": "Iniciar sessió de treball",

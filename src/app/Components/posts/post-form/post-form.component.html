@@ -1,5 +1,5 @@
   <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="start">
-    <mat-tab label="Energy">
+    <mat-tab label="{{'energy' | translate}}">
     <div class="container-form" [@fadeInOut] >
       <h1>Energy consumption</h1>
       <form
@@ -55,12 +55,12 @@
           </section>
 
           <button mat-raised-button color="primary" type="submit" [disabled]="!energyForm.valid">ADD</button>
+
         </mat-card>
       </form>
     </div>
-    <!-- <app-posts-list></app-posts-list> -->
 
-    <h2>Energy consumption list</h2>
+    <h2>{{'consumptionList' | translate}}</h2>
     <table *ngIf="!isGridView" mat-table [dataSource]="consumptions" class="mat-elevation-z8">
 
       <ng-container matColumnDef="delegation">
@@ -110,15 +110,15 @@
 
   </mat-tab>
 
-  <mat-tab label="Water">
+  <mat-tab label="{{'water' | translate}}">
     <app-water-form></app-water-form>
   </mat-tab>
 
-  <mat-tab label="Residue">
+  <mat-tab label="{{'residue' | translate}}">
     <app-residue-form></app-residue-form>
   </mat-tab>
 
-  <mat-tab label="Emissions">
+  <mat-tab label="{{'emissions' | translate}}">
     <app-emission-form></app-emission-form>
   </mat-tab>
 

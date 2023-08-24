@@ -1,37 +1,37 @@
-<h2>My Company activity data:</h2>
+<h2>{{'companyActivityData' | translate}}:</h2>
 
 <div  class="mat-elevation-z8">
 <mat-table *ngIf="!isGridView" [dataSource]="dataSource" matSort class="mat-elevation-z8">
   <ng-container matColumnDef="delegation">
-    <mat-header-cell *matHeaderCellDef mat-sort-header>Delegation</mat-header-cell>
+    <mat-header-cell *matHeaderCellDef mat-sort-header>{{'delegation' | translate}}</mat-header-cell>
     <mat-cell *matCellDef="let consumption">{{consumption.delegation}}</mat-cell>
   </ng-container>
   <ng-container matColumnDef="aspect">
-    <mat-header-cell *matHeaderCellDef mat-sort-header>Aspect</mat-header-cell>
+    <mat-header-cell *matHeaderCellDef mat-sort-header>{{'aspect' | translate}}</mat-header-cell>
     <mat-cell *matCellDef="let consumption">{{consumption.aspectES}}</mat-cell>
   </ng-container>
   <ng-container matColumnDef="energy">
-    <mat-header-cell *matHeaderCellDef mat-sort-header>Energy</mat-header-cell>
+    <mat-header-cell *matHeaderCellDef mat-sort-header>{{'energy' | translate}}</mat-header-cell>
     <mat-cell *matCellDef="let consumption">{{consumption.energyES}}</mat-cell>
   </ng-container>
   <ng-container matColumnDef="residue">
-    <mat-header-cell *matHeaderCellDef mat-sort-header>Residue</mat-header-cell>
+    <mat-header-cell *matHeaderCellDef mat-sort-header>{{'residue' | translate}}</mat-header-cell>
     <mat-cell *matCellDef="let consumption">{{consumption.residueES}}</mat-cell>
   </ng-container>
   <ng-container matColumnDef="quantity">
-    <mat-header-cell *matHeaderCellDef mat-sort-header>Quantity</mat-header-cell>
+    <mat-header-cell *matHeaderCellDef mat-sort-header>{{'quantity' | translate}}</mat-header-cell>
     <mat-cell *matCellDef="let consumption">{{consumption.quantity}}</mat-cell>
   </ng-container>
   <ng-container matColumnDef="fromDate">
-    <mat-header-cell *matHeaderCellDef mat-sort-header>from Date</mat-header-cell>
+    <mat-header-cell *matHeaderCellDef mat-sort-header>{{'fromDate' | translate}}</mat-header-cell>
     <mat-cell *matCellDef="let consumption" matTooltip={{consumption.fromDate}}>{{consumption.fromDate}}</mat-cell>
   </ng-container>
   <ng-container matColumnDef="toDate">
-    <mat-header-cell *matHeaderCellDef mat-sort-header>to Date</mat-header-cell>
+    <mat-header-cell *matHeaderCellDef mat-sort-header>{{'toDate' | translate}}</mat-header-cell>
     <mat-cell *matCellDef="let consumption" matTooltip={{consumption.toDate}}>{{consumption.toDate}}</mat-cell>
   </ng-container>
   <ng-container matColumnDef="ACTIONS">
-    <mat-header-cell *matHeaderCellDef> ACTIONS <button mat-mini-fab color="primary" matTooltip="Add activity data" aria-label="Add activity data" (click)="createPost()">
+    <mat-header-cell *matHeaderCellDef> {{'actions' | translate}} <button mat-mini-fab color="primary" matTooltip="Add activity data" aria-label="Add activity data" (click)="createPost()">
       <mat-icon>add</mat-icon>
     </button></mat-header-cell>
     <mat-cell *matCellDef="let consumption">

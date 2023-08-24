@@ -10,9 +10,23 @@
 
     "companyName": "Nombre de la empresa",
 
+    "activityData": "Datos de la actividad",
     "aspects": "Aspectos",
     "energies": "Energías",
     "residues": "Residuos",
+
+    "companyActivityData": "Datos de actividad de mi empresa",
+    "consumptionList": "Listado de consumos:",
+    "delegation": "Delegación",
+    "aspect": "Aspecto",
+    "energy": "Energía",
+    "water": "Agua",
+    "residue": "Residuo",
+    "emissions": "Emisiones",
+    "quantity": "Cantidad",
+    "fromDate": "Desde",
+    "toDate": "Hasta",
+    "actions": "ACCIONES ",
 
     "copyright": "Creado por el Instituto de Innovación Empresarial de las Islas Baleares",
     "workSession": "Iniciar sesión de trabajo",

@@ -1351,7 +1351,7 @@ export class DashboardComponent implements OnInit {
     )
   }
 
-  private  chartEnergy() {
+  private chartEnergy() {
     this.chart = new Chart("graphDashboard", {
       type: 'bar',
       data: {
@@ -1450,7 +1450,7 @@ export class DashboardComponent implements OnInit {
       },
       options: {
         responsive: true,
-        aspectRatio:1.61,
+        aspectRatio: 1.0,
         plugins: {
           legend: {
             position: 'bottom',
@@ -1487,14 +1487,14 @@ export class DashboardComponent implements OnInit {
             borderWidth: 1
           }, {
             type: 'line',
-            label: 'Line Dataset',
+            label: 'Ratios Dataset',
             data: [50, 75, 50, 25, 50, 75],
         }
         ]
       },
       options: {
         responsive: true,
-        aspectRatio:1.61,
+        aspectRatio:1.0,
         plugins: {
           legend: {
             position: 'bottom',
@@ -1616,7 +1616,7 @@ export class DashboardComponent implements OnInit {
       },
       options: {
         responsive: true,
-        aspectRatio:1.61,
+        aspectRatio:1.0,
         plugins: {
           legend: {
             position: 'bottom',
@@ -1663,7 +1663,7 @@ export class DashboardComponent implements OnInit {
       },
       options: {
           responsive: true,
-          aspectRatio:1.61,
+          aspectRatio:1.0,
           plugins: {
             legend: {
               position: 'bottom',

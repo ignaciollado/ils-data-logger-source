@@ -78,6 +78,11 @@ export class DashboardComponent implements OnInit {
 
   allBackgroundColors!: string[]
   allBorderColors!: string[]
+  graphMonths: string[]
+  aspectEnergy: string
+  aspectWater: string
+  aspectResidue: string
+  aspectEmissions: string
 
   constructor(
     private consumptionService: ConsumptionService,
@@ -118,6 +123,25 @@ export class DashboardComponent implements OnInit {
         'rgb(255, 235, 59)',
         'rgb(255, 193, 7)'
       ]
+      
+    this.graphMonths = [ 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December' ]
+    this.aspectEnergy = "Aspect Energy (kWh)"
+    this.aspectWater = "Aspect Water (Liters)"
+    this.aspectResidue = "Aspect Residue (Kg)"
+    this.aspectEmissions = "Aspect Emissions (CO2e in T)"
+    if (localStorage.getItem('preferredLang') === 'cat') {
+      this.graphMonths = [ 'Gener', 'Febrer', 'Març', 'April', 'Maig', 'Juny', 'Juliol', 'Agost', 'Setembre', 'Octubre', 'Novembre', 'Desembre' ]
+      this.aspectEnergy = "Aspecte Energía (kWh)"
+      this.aspectWater = "Aspecte Aigua (Litres)"
+      this.aspectResidue = "Aspecte Residu (Kg)"
+      this.aspectEmissions = "Aspecte Emissions (CO2e in T)"
+    } else if (localStorage.getItem('preferredLang') === 'cas') {
+      this.graphMonths = [ 'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agusto', 'Setiembre', 'Octubre', 'Noviembre', 'Diciembre' ]      
+      this.aspectEnergy = "Aspecto Energía (kWh)"
+      this.aspectWater = "Aspecto Agua (Litros)"
+      this.aspectResidue = "Aspecto Residuo (Kg)"
+      this.aspectEmissions = "Aspecto Emisiones (CO2e in T)"
+    }
   }
 
   ngOnInit(): void {
@@ -1325,14 +1349,13 @@ export class DashboardComponent implements OnInit {
         this.sharedService.errorLog(errorResponse);
       }
     )
-    
   }
 
-  private  chartEnergy(){
+  private  chartEnergy() {
     this.chart = new Chart("graphDashboard", {
       type: 'bar',
       data: {
-        labels:  [ 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December' ],
+        labels:  this.graphMonths,
         datasets: [
           {
             label: "Gas natural",
@@ -1434,7 +1457,7 @@ export class DashboardComponent implements OnInit {
           },
           title: {
             display: true,
-            text: 'Aspect Energy (kWh)'
+            text: this.aspectEnergy
           }
         },
         scales: {
@@ -1449,11 +1472,11 @@ export class DashboardComponent implements OnInit {
     });
   }
 
-  private chartWater(){
+  private chartWater() {
     this.chart = new Chart("graphDashboardWater", {
 
       data: {
-        labels:  [ 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December' ],
+        labels:  this.graphMonths,
         datasets: [
           {
             type: 'bar',
@@ -1478,18 +1501,18 @@ export class DashboardComponent implements OnInit {
           },
           title: {
             display: true,
-            text: 'Aspect Water (Liters)'
+            text: this.aspectWater
           }
         }
       }
     });
   }
 
-  private chartResidue(){
+  private chartResidue() {
     this.chart = new Chart("graphDashboardResidue", {
       type: 'bar',
       data: {
-        labels:  [ 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December' ],
+        labels:  this.graphMonths,
         datasets: [
           {
             label: "Urbano mezclado",
@@ -1600,7 +1623,7 @@ export class DashboardComponent implements OnInit {
           },
           title: {
             display: true,
-            text: 'Aspect Residue (Kg)'
+            text: this.aspectResidue
           }
         },
         scales: {
@@ -1615,7 +1638,7 @@ export class DashboardComponent implements OnInit {
     });
   }
 
-  private chartEmission(){
+  private chartEmission() {
     this.chart = new Chart("graphDashboardEmissions", {
       type: 'bar',
       data: {
@@ -1647,7 +1670,7 @@ export class DashboardComponent implements OnInit {
             },
             title: {
               display: true,
-              text: 'Aspect Emissions (CO2e in T)'
+              text: this.aspectEmissions
             }
           },
           scales: {

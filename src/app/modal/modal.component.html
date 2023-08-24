@@ -1,0 +1,8 @@
+<ng-container *ngIf="displayLanguageSelect">
+    <section>
+        <div>
+            <button class ="btncat" #langSelect mat-raised-button color="primary" (click)=" switchLanguage('cat') ">Català</button>
+            <button class ="btncas" #langSelect mat-raised-button color="primary" (click)=" switchLanguage('cas') ">Castellano</button>
+        </div>
+    </section>
+</ng-container>

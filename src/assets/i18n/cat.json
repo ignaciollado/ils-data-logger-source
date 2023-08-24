@@ -1,0 +1,89 @@
+{
+    "IdiOneLine": "Institut d'Innovació Empresarial \nde les Illes Balears",
+    "IdiLine_1": "Institut d'Innovació",
+    "IdiLine_2": "Empresarial",
+    "IdiLine_3": "de les Illes Balears",
+    "home": "Inici",
+    "login": "Entrar",
+    "logout": "Sortir",
+    "totalActivityReported": "Activitat total reportada",
+
+    "companyName": "Nom de l'empresa",
+
+    "aspects": "Aspectes",
+    "energies": "Energies",
+    "residues": "Residus",
+
+    "copyright": "Creat per l'Institut d'Innovació Empresarial de les Illes Balears",
+    "workSession": "Iniciar sessió de treball",
+    "Password": "Contrassenya",
+    "IsRequired": " aquesta dada és obligatòria",
+    "InvalidPattern": "format no vàlid",
+    "CharsMin": ", longitud mínima de ",
+    "CharsMax": ", longitud màxima de ",
+    "Characters": "caràcters",
+    "profile": "Les meves dades",
+
+    "Name": "Nom",
+    "Email": "Adreça electrònica",
+    "Mobile": "Mòbil",
+    "Update": "Actualitzar",
+    "Error": "Per favor, indiqui els detalls requerits.",
+
+    "quienesSomos": "Qui som",
+    "queOfrecemos": "Que oferim",
+    "queOfrecemosServiciosActivos": "Serveis actius",
+    "queOfrecemosHistorico": "Directori",
+    "agendaTitle": "Agenda",
+    "noHayPublicoObjetivo": "Disculpi les molèsties, de moment, no tenim projectes disponibles per a vostè!",
+    "ViewRelatedContents": "Veure contingut relacionat",
+
+    "Ayudas_Subv": "Ajuts i subvencions",
+    "Formacion": "Formació",
+    "Transparencia": "Transparència",
+    "Sede_Elect": "Seu electrònica",
+
+    "noticiasTitle": "Notícies",
+
+    "ExploraIDI": "Explora els nostres projectes",
+    "NoTeEncuentras": "No et trobes en aquest menú?",
+    "Accesibilidad": "Accesibilitat",
+    "AvisoLegal": "Avís legal",
+    "Contacta": "Contacta",
+    "Contactanos": "Contacta'ns",
+    "Links": "Enllaços externs",
+    "IDI": "IDI",
+    "PoliticaCookies": "Política de cookies",
+    "PoliticaPrivacidad": "Política de privacitat",
+    "ProgramasIDI": "Programes de l'IDI",
+
+    "writeHere": "Escrigui aquí, per favor",
+
+    "howCanWeHelpYou": "Com et podem ajudar?",
+    "recievedOK": "Hem rebut correctament la següent consulta:",
+    "fullName": "El seu nom per a dirigir-nos a vostè",
+    "contactPhone": "Un telèfon de contacte, no és obligatori",
+    "contactEmail": "Una adreça electrònica de contacte",
+    "subject": "L'asumpte de la seva consulta",
+    "yourMessage": "La seva consulta",
+    "acceptTerms": " He llegit i accept els termes i les condicions",
+    "send": "Envia",
+    "searchTheWeb": "Busca en la web",
+    "newsLetterSubscription": "Subscriu-te al butlletí de notícies:",
+
+    "isRequired": " és obligatori.",
+    "fieldValue": "Aquest camp",
+
+    "gettingFeaturedIDI": "Obtenint destacats IDI ...",
+    "gettingNews": "Obtenint les darreres notícies de l'IDI ...",
+    "gettingServices": "Obtenint els nostres serveis per empreses i per emprenedors ...",
+    "gettingContentsIDI": "Obtenint continguts de l'IDI ...",
+    "descubreServiciosIDI": "Descobreix els nostres serveis per a empreses i emprenedors",
+    "comoAyudaIDI": "Com t'ajuda l'IDI?",
+    "otrosServiciosIDI": "Altres serveis de l'IDI",
+    "NewsLetterSubs": "Subscriu-te al butlletí de notícies:",
+    "ArchivadoEn": "Arxivat com:",
+
+    "inscriptionOK": "Inscripció realitzada."
+
+  }

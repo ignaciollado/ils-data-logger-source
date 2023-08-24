@@ -3,11 +3,10 @@
 
 <!-- NO AUTH REQUIRED -->
 <div *ngIf="showNoAuthSection">
-  
   <mat-menu #menu="matMenu">
-    <!-- <button mat-menu-item (click)="dashboard()"><mat-icon>dashboard</mat-icon><span>ILS dashboard</span></button> -->
-    <button mat-menu-item (click)="dashboard()"><mat-icon>home</mat-icon><span>Home</span></button>
-    <button mat-menu-item (click)="login()"><mat-icon>login</mat-icon><span>Login</span></button>
+    <button mat-menu-item (click)="dashboard()"><mat-icon>home</mat-icon><span>{{'home' | translate}}</span></button>
+    <button mat-menu-item (click)="login()"><mat-icon>login</mat-icon><span>{{'login' | translate}}</span></button>
+  <app-select-language></app-select-language>
   </mat-menu>
 
   <mat-toolbar color="primary" class="toolbar">
@@ -15,25 +14,24 @@
       <mat-icon>menu</mat-icon>
     </button>
     <span [ngClass]="'not-has-to-be-shown'">ILS-data logger</span>
-    <!-- <button mat-button (click)="dashboard()" [ngClass]="'has-to-be-shown'">ILS Dashboard</button> -->
-    <button mat-button (click)="dashboard()" [ngClass]="'has-to-be-shown'">Home</button>
-    <button mat-button (click)="login()" [ngClass]="'has-to-be-shown'">Login</button>
+    <button mat-button (click)="dashboard()" [ngClass]="'has-to-be-shown'">{{'home' | translate}}</button>
+    <button mat-button (click)="login()" [ngClass]="'has-to-be-shown'">{{'login' | translate}}</button>
+    <app-select-language></app-select-language>
   </mat-toolbar>
 </div>
-
 <!-- AUTH REQUIRED -->
 
 <div *ngIf="showAuthSection">
   <mat-menu #menu="matMenu">
     <button mat-menu-item (click)="dashboard()"><mat-icon>chart</mat-icon><span>ILS Graphboard</span></button>
-    <button mat-menu-item (click)="home()"><mat-icon>home</mat-icon><span>Home</span></button>
-    <button mat-menu-item (click)="adminConsumptions()"><mat-icon>input</mat-icon><span>Activity data</span></button>
-    <button mat-menu-item (click)="adminAspects()">Aspects</button>
-    <button mat-menu-item (click)="adminEnergies()">Energies</button>
-    <button mat-menu-item (click)="adminResidues()">Residues</button>
-    <button mat-menu-item (click)="profile()"><mat-icon>person</mat-icon><span>Profile</span></button>
-   <!--  <button mat-menu-item (click)="register()"><mat-icon>register</mat-icon><span>Add company</span></button> -->
-    <button mat-menu-item (click)="logout()"><mat-icon>logout</mat-icon><span>Logout</span></button>
+    <button mat-menu-item (click)="home()"><mat-icon>home</mat-icon><span>{{'home' | translate}}</span></button>
+    <button mat-menu-item (click)="adminConsumptions()"><mat-icon>input</mat-icon><span>{{'activity_data' | translate}}</span></button>
+    <button mat-menu-item (click)="adminAspects()">{{'aspects' | translate}}</button>
+    <button mat-menu-item (click)="adminEnergies()">{{'energies' | translate}}</button>
+    <button mat-menu-item (click)="adminResidues()">{{'residues' | translate}}</button>
+    <button mat-menu-item (click)="profile()"><mat-icon>person</mat-icon><span>{{'profile' | translate}}</span></button>
+    <button mat-menu-item (click)="logout()"><mat-icon>logout</mat-icon><span>{{'logout' | translate}}</span></button>
+    <app-select-language></app-select-language>
   </mat-menu>
 
   <mat-toolbar color="primary" class="toolbar">
@@ -42,15 +40,14 @@
     </button>
     <span [ngClass]="'not-has-to-be-shown'">ILS-data logger</span>
     <button mat-button (click)="dashboard()" [ngClass]="'has-to-be-shown'">ILS Graphboard</button>
-   <!--  <button mat-button (click)="home()" [ngClass]="'has-to-be-shown'">Home</button> -->
-    <button mat-button (click)="adminConsumptions()" [ngClass]="'has-to-be-shown'">Activity data</button>
-    <button mat-button (click)="adminAspects()" [ngClass]="'has-to-be-shown'">Aspects</button>
-    <button mat-button (click)="adminEnergies()" [ngClass]="'has-to-be-shown'">Energies</button>
-    <button mat-button (click)="adminResidues()" [ngClass]="'has-to-be-shown'">Residues</button>
+    <button mat-button (click)="adminConsumptions()" [ngClass]="'has-to-be-shown'">{{'activity_data' | translate}}</button>
+    <button mat-button (click)="adminAspects()" [ngClass]="'has-to-be-shown'">{{'aspects' | translate}}</button>
+    <button mat-button (click)="adminEnergies()" [ngClass]="'has-to-be-shown'">{{'energies' | translate}}</button>
+    <button mat-button (click)="adminResidues()" [ngClass]="'has-to-be-shown'">{{'residues' | translate}}</button>
 
-    <button mat-button (click)="profile()" [ngClass]="'has-to-be-shown'">My profile</button>
-    <!-- <button mat-button (click)="register()" [ngClass]="'has-to-be-shown'">Add company</button> -->
-    <button mat-button (click)="logout()" [ngClass]="'has-to-be-shown'">Logout</button>
+    <button mat-button (click)="profile()" [ngClass]="'has-to-be-shown'">{{'profile' | translate}}</button>
+    <button mat-button (click)="logout()" [ngClass]="'has-to-be-shown'">{{'logout' | translate}}</button>
+    <app-select-language></app-select-language>
   </mat-toolbar>
 </div>
 <main flex layout="column"></main>

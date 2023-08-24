@@ -6,6 +6,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
+import { I18nModule } from "./i18n/i18n.module";
+
 import { FooterComponent } from './Components/footer/footer.component';
 import { HeaderComponent } from './Components/header/header.component';
 import { HomeComponent } from './Components/home/home.component';
@@ -51,11 +53,12 @@ import { EnergyFormComponent } from './Components/energies/energy-form/energy-fo
 import { EnergyListComponent } from './Components/energies/energy-list/energy-list.component';
 import { ResidueListComponent } from './Components/residues/residue-list/residue-list.component';
 import { ResidueAdminFormComponent } from './Components/residues/residue-admin-form/residue-admin-form.component';
+import { SelectLanguageComponent } from './select-language/select-language.component';
+import { ModalComponent } from './modal/modal.component';
 
 export function tokenGetter() {
   return sessionStorage.getItem("access_token");
 }
-
 
 @NgModule({
   declarations: [
@@ -83,12 +86,15 @@ export function tokenGetter() {
     EnergyListComponent,
     ResidueListComponent,
     ResidueAdminFormComponent,
+    SelectLanguageComponent,
+    ModalComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
+    I18nModule,
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,
@@ -96,6 +102,7 @@ export function tokenGetter() {
         disallowedRoutes: ["http://example.com/examplebadroute/"],
       },
     }),
+    
     BrowserAnimationsModule,
     MatTableModule,
     MatButtonToggleModule,

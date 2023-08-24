@@ -1,6 +1,6 @@
 <div class="container-chart">
 
-  <h2>Total activity data reported:</h2>
+  <h2>{{ 'totalActivityReported' | translate }}:</h2>
 
 
   <li *ngFor="let item of aspectConsumptions; index as i; first as isFirst">
@@ -24,6 +24,10 @@
       <canvas  id="graphDashboardTesting" aria-label= "Testing">{{ chart }}</canvas>
     </div>
   </div>
+
+
+  <app-modal></app-modal>
+
   
   <div class="loader" *ngIf="!consumptions">No records found yet...</div>
 

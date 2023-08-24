@@ -1,0 +1,45 @@
+{
+  "IdiOneLine": "Instituto de Innovación Empresarial de las Islas Baleares",
+  "IdiLine_1": "Instituto de Innovación",
+  "IdiLine_2": "Empresarial",
+  "IdiLine_3": "de las Islas Baleares",
+  "home": "Home",
+  "login": "Login",
+  "logout": "Logout",
+  "totalActivityReported": "Total activity reported",
+
+  "aspects": "Aspects",
+  "energies": "Energies",
+  "residues": "Residues",
+
+  "copyright": "Created by Instituto de Innovación Empresarial de las Islas Baleares",
+  "workSession": "Work session",
+  "Password": "Password",
+  "IsRequired": " data required",
+  "InvalidPattern": "not a valid format",
+  "CharsMin": ", min length ",
+  "CharsMax": ", max length ",
+  "Characters": "characters",
+
+  "profile": "My profile",
+
+    "Name": "Name",
+    "Email": "Email",
+    "Mobile": "Mobile",
+    "Update": "Update",
+    "Error": "Please, set the required values.",
+
+    "Emprendedor": "Emprendedor",
+    "Empresa": "Empresa",
+    "Sectores": "Sectores",
+    "Ayudas_Subv": "Ayudas y subvenciones",
+    "Formacion": "Formación",
+    "Transparencia": "Transparencia",
+    "Sede_Elect": "Sede electrónica",
+
+    "noticiasTitle": "News",
+
+    "gettingFeaturedIDI": "Getting featured data from IDI ...",
+    "descubreServiciosIDI": "Descubre nuestros servicios para empresas y emprendedores",
+    "NewsLetterSubs": "Subscribe to our newsletter:"
+  }

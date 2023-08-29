@@ -14,6 +14,7 @@ ils_consumption.residueId, ils_consumption.reuse, ils_consumption.recycling, ils
 ils_consumption.dump, ils_consumption.compost,
 ils_consumption.scopeOne, ils_consumption.scopeTwo,
 ils_consumption.created_at, ils_consumption.updated_at,
+ils_consumption.numberOfPersons, ils_consumption.monthlyBilling,
 ils_energy.nameES as energyES, ils_energy.nameCA, ils_energy.pci as pci,
 ils_company_delegation.name as delegation, ils_company_delegation.address,
 ils_aspect.nameES as aspectES, ils_aspect.nameCA,

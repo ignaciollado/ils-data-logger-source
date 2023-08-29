@@ -42,6 +42,8 @@ export class ResidueFormComponent {
   compost: UntypedFormControl
   fromDateResidue: UntypedFormControl
   toDateResidue: UntypedFormControl
+  numberOfPersons: UntypedFormControl
+  monthlyBilling: UntypedFormControl
   quantityResidue: UntypedFormControl
   residueForm: UntypedFormGroup
 
@@ -59,7 +61,7 @@ export class ResidueFormComponent {
   consumptions!: ConsumptionDTO[];
 
   isGridView: boolean = false
-  columnsDisplayed = ['delegation', 'residue', 'quantity', 'reuse', 'recycling', 'incineration',  'dump', 'compost', 'fromDate', 'toDate', 'ACTIONS'];
+  columnsDisplayed = ['delegation', 'numberOfPersons', 'monthlyBilling', 'residue', 'quantity', 'reuse', 'recycling', 'incineration',  'dump', 'compost', 'fromDate', 'toDate', 'ACTIONS'];
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -81,7 +83,7 @@ export class ResidueFormComponent {
     this.consumptionId = this.activatedRoute.snapshot.paramMap.get('id');
     this.userId = this.localStorageService.get('user_id');
 
-    this.consumption = new ConsumptionDTO(0, 0, this._adapter.today(), this._adapter.today(), '', '', '','','','', 0, '', '', 0);
+    this.consumption = new ConsumptionDTO(0, 0, this._adapter.today(), this._adapter.today(), '', '', '', '', 1, 0, '', '', 0, '', '', 0);
     this.isUpdateMode = false;
     this.validRequest = false;
     this.delegation = new UntypedFormControl('', [ Validators.required ]);
@@ -91,6 +93,8 @@ export class ResidueFormComponent {
     this.incineration = new UntypedFormControl('', [ Validators.required, Validators.min(0), Validators.max(100) ]);
     this.dump = new UntypedFormControl('', [ Validators.required, Validators.min(0), Validators.max(100) ]);
     this.compost = new UntypedFormControl('', [ Validators.required, Validators.min(0), Validators.max(100) ]);
+    this.numberOfPersons = new UntypedFormControl('', [ Validators.required, Validators.min(1) ]);
+    this.monthlyBilling = new UntypedFormControl('', [ Validators.required, Validators.min(1) ]);
     this.quantityResidue = new UntypedFormControl('', [ Validators.required, Validators.min(0) ]);
     this.companyId = new UntypedFormControl(this.userId, [ Validators.required ]);
     this.fromDateResidue = new UntypedFormControl('', [ Validators.required ]);
@@ -109,7 +113,9 @@ export class ResidueFormComponent {
       compost: this.compost,
       fromDateResidue: this.fromDateResidue,
       toDateResidue: this.toDateResidue,
-      quantityResidue: this.quantityResidue
+      quantityResidue: this.quantityResidue,
+      numberOfPersons: this.numberOfPersons,
+      monthlyBilling: this.monthlyBilling
     })
 
     this.loadConsumption();

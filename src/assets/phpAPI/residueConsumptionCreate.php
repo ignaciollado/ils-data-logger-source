@@ -16,7 +16,7 @@ reuse,
 recycling,
 incineration,
 dump,
-compost, quantity, fromDate, toDate) VALUES ("
+compost, numberOfPersons, monthlyBilling, quantity, fromDate, toDate) VALUES ("
 .$request['companyId'].","
 .$request['delegation'].","
 .$request['aspectId'].","
@@ -27,6 +27,9 @@ compost, quantity, fromDate, toDate) VALUES ("
 .$request['dump'].","
 .$request['compost'].","
 .$request['quantityResidue'].","
+.$request['numberOfPersons'].","
+.$request['monthlyBilling'].","
+
 ."DATE_ADD(STR_TO_DATE('".$request['fromDateResidue']."', '%Y-%m-%d'), INTERVAL 1 DAY)," 
 ."DATE_ADD(STR_TO_DATE('".$request['toDateResidue']."', '%Y-%m-%d'), INTERVAL 1 DAY))";
 /* ."STR_TO_DATE('".$request['fromDateResidue']."', '%Y-%m-%d'), STR_TO_DATE('".$request['toDateResidue']."', '%Y-%m-%d'))"; */

@@ -33,6 +33,8 @@ export class EmissionFormComponent {
   scopeone: UntypedFormControl
   scopetwo: UntypedFormControl
   companyId: UntypedFormControl
+  numberOfPersons: UntypedFormControl
+  monthlyBilling: UntypedFormControl
   yearEmission: UntypedFormControl
   emissionForm: UntypedFormGroup
 
@@ -49,7 +51,7 @@ export class EmissionFormComponent {
   consumptions!: ConsumptionDTO[];
 
   isGridView: boolean = false
-  columnsDisplayed = ['delegation', 'quantity', 'scopeone', 'scopetwo', 'fromDate', 'toDate', 'ACTIONS'];
+  columnsDisplayed = ['delegation', 'numberOfPersons', 'monthlyBilling', 'quantity', 'scopeone', 'scopetwo', 'fromDate', 'toDate', 'ACTIONS'];
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -70,13 +72,16 @@ export class EmissionFormComponent {
     this.consumptionId = this.activatedRoute.snapshot.paramMap.get('id');
     this.userId = this.localStorageService.get('user_id');
 
-    this.consumption = new ConsumptionDTO(0, 0, this._adapter.today(), this._adapter.today(), '', '', '','','','', 0, '', '', 0);
+    this.consumption = new ConsumptionDTO(0, 0, this._adapter.today(), this._adapter.today(), '', '', '', '', 1, 0, '', '', 0, '', '', 0);
     this.isUpdateMode = false;
     this.validRequest = false;
     this.delegation = new UntypedFormControl('', [ Validators.required ]);
     this.companyId = new UntypedFormControl(this.userId, [ Validators.required ]);
     this.yearEmission = new UntypedFormControl('', [ Validators.required ]);
     this.quantityEmission = new UntypedFormControl('', [ Validators.required, Validators.min(1)]);
+    this.numberOfPersons = new UntypedFormControl('', [ Validators.required, Validators.min(1)]);
+    this.monthlyBilling = new UntypedFormControl('', [ Validators.required, Validators.min(1)]);
+
     this.scopeone = new UntypedFormControl('', [ Validators.required ]);
     this.scopetwo = new UntypedFormControl('', [ Validators.required ]);
 
@@ -87,7 +92,9 @@ export class EmissionFormComponent {
       scopeone: this.scopeone,
       scopetwo: this.scopetwo,
       yearEmission: this.yearEmission,
-      quantityEmission: this.quantityEmission
+      quantityEmission: this.quantityEmission,
+      numberOfPersons: this.numberOfPersons,
+      monthlyBilling: this.monthlyBilling
     })
 
     this.loadConsumption();

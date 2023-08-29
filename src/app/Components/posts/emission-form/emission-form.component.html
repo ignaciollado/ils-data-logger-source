@@ -21,6 +21,22 @@
 
       <section>
         <mat-form-field [style.width.px]=327>
+          <mat-label>Number of persons</mat-label>
+          <input matInput type="number" [formControl]="numberOfPersons" />
+          <mat-error *ngIf="numberOfPersons.hasError('required')">Number of persons <strong>is required</strong></mat-error>
+        </mat-form-field>
+      </section>
+
+      <section>
+        <mat-form-field [style.width.px]=327>
+          <mat-label>Monthly billing</mat-label>
+          <input matInput type="number" [formControl]="monthlyBilling" />
+          <mat-error *ngIf="monthlyBilling.hasError('required')">Monthly billing<<strong>is required</strong></mat-error>
+        </mat-form-field>
+      </section>
+
+      <section>
+        <mat-form-field [style.width.px]=327>
           <mat-label>Year</mat-label>
           <mat-select [formControl]="yearEmission">
             <mat-option value="2020">2020</mat-option>
@@ -69,6 +85,14 @@
   <ng-container matColumnDef="delegation">
     <th mat-header-cell *matHeaderCellDef>Delegation</th>
     <td mat-cell *matCellDef="let consumption">{{consumption.delegation}}</td>
+  </ng-container>
+  <ng-container matColumnDef="numberOfPersons">
+    <th mat-header-cell *matHeaderCellDef>Number of persons</th>
+    <td mat-cell *matCellDef="let consumption">{{consumption.numberOfPersons}}</td>
+  </ng-container>
+  <ng-container matColumnDef="monthlyBilling">
+    <th mat-header-cell *matHeaderCellDef>Monthly billing</th>
+    <td mat-cell *matCellDef="let consumption">{{consumption.monthlyBilling}}</td>
   </ng-container>
   <ng-container matColumnDef="quantity">
     <th mat-header-cell *matHeaderCellDef>Quantity (T)</th>

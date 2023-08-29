@@ -33,6 +33,8 @@ export class WaterFormComponent {
   energy: UntypedFormControl
   companyId: UntypedFormControl
 
+  numberOfPersons: UntypedFormControl
+  monthlyBilling: UntypedFormControl
   fromDateWater: UntypedFormControl
   toDateWater: UntypedFormControl
   quantityWater: UntypedFormControl
@@ -51,7 +53,7 @@ export class WaterFormComponent {
   consumptions!: ConsumptionDTO[];
 
   isGridView: boolean = false
-  columnsDisplayed = ['delegation', 'quantity', 'fromDate', 'toDate', 'ACTIONS'];
+  columnsDisplayed = ['delegation', 'numberOfPersons', 'monthlyBilling', 'quantity', 'fromDate', 'toDate', 'ACTIONS'];
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -72,7 +74,7 @@ export class WaterFormComponent {
     this.consumptionId = this.activatedRoute.snapshot.paramMap.get('id');
     this.userId = this.localStorageService.get('user_id');
 
-    this.consumption = new ConsumptionDTO(0, 0, this._adapter.today(), this._adapter.today(), '', '', '','','','', 0, '', '', 0);
+    this.consumption = new ConsumptionDTO(0, 0, this._adapter.today(), this._adapter.today(), '', '', '', '', 1, 0, '', '', 0, '', '', 0);
     this.isUpdateMode = false;
     this.validRequest = false;
     this.delegation = new UntypedFormControl('', [ Validators.required ]);
@@ -81,6 +83,8 @@ export class WaterFormComponent {
     this.fromDateWater = new UntypedFormControl('', [ Validators.required ]);
     this.toDateWater = new UntypedFormControl('', [ Validators.required ]);
     this.quantityWater = new UntypedFormControl('', [ Validators.required, Validators.min(1)]);
+    this.numberOfPersons = new UntypedFormControl('', [ Validators.required, Validators.min(1)]);
+    this.monthlyBilling = new UntypedFormControl('', [ Validators.required, Validators.min(1)]);
 
     this.loadDelegations();
 
@@ -90,7 +94,9 @@ export class WaterFormComponent {
       delegation: this.delegation,
       fromDateWater: this.fromDateWater,
       toDateWater: this.toDateWater,
-      quantityWater: this.quantityWater
+      quantityWater: this.quantityWater,
+      numberOfPersons: this.numberOfPersons,
+      monthlyBilling: this.monthlyBilling,
     })
 
     this.loadConsumption();

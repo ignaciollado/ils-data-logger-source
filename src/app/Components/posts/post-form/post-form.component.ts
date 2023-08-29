@@ -49,6 +49,8 @@ export class PostFormComponent implements OnInit {
   fromDate: UntypedFormControl
   toDate: UntypedFormControl
   energy: UntypedFormControl
+  numberOfPersons: UntypedFormControl
+  monthlyBilling: UntypedFormControl
   quantity: UntypedFormControl
   companyId: UntypedFormControl
   energyForm: UntypedFormGroup
@@ -72,7 +74,7 @@ export class PostFormComponent implements OnInit {
   consumptions!: ConsumptionDTO[];
 
   isGridView: boolean = false
-  columnsDisplayed = ['delegation', 'energy', 'quantity', 'fromDate', 'toDate', 'ACTIONS'];
+  columnsDisplayed = ['delegation', 'numberOfPersons', 'monthlyBilling', 'energy', 'quantity', 'fromDate', 'toDate', 'ACTIONS'];
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -116,13 +118,15 @@ export class PostFormComponent implements OnInit {
     this.consumptionId = this.activatedRoute.snapshot.paramMap.get('id');
     this.userId = this.jwtHelper.decodeToken().id_ils
 
-    this.consumption = new ConsumptionDTO(0, 0, this._adapter.today(), this._adapter.today(), '', '', '','','','', 0, '', '', 0);
+    this.consumption = new ConsumptionDTO(0, 0, this._adapter.today(), this._adapter.today(), '', '', '', '', 1, 0, '', '', 0, '', '', 0);
     this.isUpdateMode = false;
     this.validRequest = false;
     this.delegation = new UntypedFormControl('', [ Validators.required ]);
     this.fromDate = new UntypedFormControl('', [ Validators.required ]);
     this.toDate = new UntypedFormControl('', [ Validators.required ]);
     this.energy = new UntypedFormControl('', [ Validators.required ]);
+    this.numberOfPersons = new UntypedFormControl('', [ Validators.required, Validators.min(1) ]);
+    this.monthlyBilling = new UntypedFormControl('', [ Validators.required, Validators.min(1) ]);
     this.companyId = new UntypedFormControl(this.userId, [ Validators.required ]);
     this.quantity = new UntypedFormControl('', [ Validators.required, Validators.min(1) ]);
 
@@ -131,6 +135,8 @@ export class PostFormComponent implements OnInit {
       fromDate: this.fromDate,
       toDate: this.toDate,
       energy: this.energy,
+      numberOfPersons: this.numberOfPersons,
+      monthlyBilling: this.monthlyBilling,
       quantity: this.quantity,
       companyId: this.companyId
     });
@@ -276,7 +282,6 @@ export class PostFormComponent implements OnInit {
         .subscribe(
           () => {
             responseOK = true;
-            /* this.delegation.reset() */
             this.energy.reset()
             this.fromDate.reset()
             this.toDate.reset()

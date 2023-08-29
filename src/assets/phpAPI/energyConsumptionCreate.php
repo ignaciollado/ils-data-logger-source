@@ -11,12 +11,15 @@ mysqli_query($conn, "SET NAMES 'utf8'");
 $postedData = file_get_contents("php://input");
 $request = json_decode($postedData, TRUE);
 
-$sql = "INSERT INTO ils_consumption(companyId, companyDelegationId, aspectId, energyId, quantity, fromDate, toDate) VALUES ("
+$sql = "INSERT INTO ils_consumption(companyId, companyDelegationId, aspectId, energyId, quantity, numberOfPersons, monthlyBilling, fromDate, toDate) VALUES ("
 .$request['companyId'].","
 .$request['delegation'].","
 .$request['aspectId'].","
 .$request['energy'].","
 .$request['quantity'].","
+.$request['numberOfPersons'].","
+.$request['monthlyBilling'].","
+
 ."DATE_ADD(STR_TO_DATE('".$request['fromDate']."', '%Y-%m-%d'), INTERVAL 1 DAY)," 
 ."DATE_ADD(STR_TO_DATE('".$request['toDate']."', '%Y-%m-%d'), INTERVAL 1 DAY))";
 /* ."STR_TO_DATE('".$request['fromDate']."', '%Y-%m-%d'), STR_TO_DATE('".$request['toDate']."', '%Y-%m-%d'))"; */

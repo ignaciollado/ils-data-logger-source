@@ -9,6 +9,8 @@ export class ConsumptionDTO {
   quantity: number
   fromDate: Date
   toDate: Date
+  numberOfPersons: number
+  monthlyBilling: number
   created_at!: Date
   updated_at!: Date
   energy!: number
@@ -38,6 +40,8 @@ constructor(
   energyCA: string,
   residueES: string,
   residueCA: string,
+  numberOfPersons: number,
+  monthlyBilling: number,
   aspectES: string,
   aspectCA: string,
   quantity: number,
@@ -56,8 +60,10 @@ constructor(
   this.aspectCA = aspectCA,
   this.unit = unit,
   this.pci = pci,
-  this.quantity = quantity
-  this.fromDate = fromDate
-  this.toDate = toDate
+  this.quantity = quantity,
+  this.fromDate = fromDate,
+  this.toDate = toDate,
+  this.monthlyBilling = monthlyBilling,
+  this.numberOfPersons = numberOfPersons
 }
 }

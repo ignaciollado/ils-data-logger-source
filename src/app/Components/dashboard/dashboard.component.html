@@ -2,34 +2,26 @@
 
   <h2>{{ 'totalActivityReported' | translate }}:</h2>
 
-
-  <li *ngFor="let item of aspectConsumptions; index as i; first as isFirst">
+  <!-- <li *ngFor="let item of aspectConsumptions; index as i; first as isFirst">
     {{i}}/{{aspectConsumptions.length}}. {{item.quantity}} {{item.pci}} {{item.fromDate}} {{item.toDate}} {{item.quantity*item.pci}}<span *ngIf="isFirst">default</span>
-  </li>
+  </li> -->
+  <mat-button-toggle-group name="charts" aria-label="Chart selection">
+    <mat-button-toggle checked value="Energy" (click)="showChartEnergy()">{{aspectEnergy}}</mat-button-toggle>
+    <mat-button-toggle value="Water" (click)="showChartWater()">{{aspectWater}}</mat-button-toggle>
+    <mat-button-toggle value="Residue" (click)="showChartResidue()">{{aspectResidue}}</mat-button-toggle>
+    <mat-button-toggle value="Emissions" (click)="showChartEmission()">{{aspectEmissions}}</mat-button-toggle>
+  </mat-button-toggle-group>
+
   
   <div class="graphContainer">
-    <div class="chart-container">
-      <canvas  id="graphDashboard" aria-label="bar graph total Energy, Water, Residue, Material and CO2">{{ chart }}</canvas>
-    </div>
-    <div class="chart-container">
-      <canvas  id="graphDashboardWater" aria-label="Water">{{ chart }}</canvas>
-    </div>
-    <div class="chart-container">
-      <canvas  id="graphDashboardResidue" aria-label="Residue">{{ chart }}</canvas>
-    </div>
-    <div class="chart-container">
-      <canvas  id="graphDashboardEmissions" aria-label= "COe2 Emissions">{{ chart }}</canvas>
-    </div>
-    <div class="chart-container">
-      <canvas  id="graphDashboardTesting" aria-label= "Testing">{{ chart }}</canvas>
-    </div>
+    <canvas id="graph" aria-label= "COe2 Emissions" role="chart">{{ chart }}</canvas>
   </div>
 
 
   <app-modal></app-modal>
 
   
-  <div class="loader" *ngIf="!consumptions">No records found yet...</div>
+  <div class="loader" *ngIf="!consumptions">No data found yet...</div>
 
 </div>
 

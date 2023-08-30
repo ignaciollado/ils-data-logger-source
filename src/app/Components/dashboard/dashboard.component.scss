@@ -1,8 +1,9 @@
 .graphContainer{
     display: grid;
-    grid-template-columns: 50% 50%;
-    margin-bottom: 3rem;
-    row-gap: 7rem;
+    grid-template-columns: auto;
+    margin-left: 20rem;
+    margin-right: 20rem;
+    margin-bottom: 6rem;
 }
 
 @media only screen and (max-width: 768px) {

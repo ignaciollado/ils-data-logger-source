@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpParams, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { DelegationDTO } from '../Models/delegation.dto';
 import { Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import { NONE_TYPE } from '@angular/compiler';
 import { SharedService } from './shared.service';
 
 const URL_API = '../../assets/phpAPI/'
@@ -51,7 +50,6 @@ export class DelegationService {
 
   deleteDelegation(companyDelegationId: string): Observable<deleteResponse> {
     return this.http
-      /* .delete<deleteResponse>(`${this.urlAPiMySql}delegationDeleteByCompany.php?companyId=${companyDelegationId}`) */
       .delete<deleteResponse>(`${URL_API_SRV}/api/delete-company-delegation/${companyDelegationId}`, httpOptions)
       .pipe(catchError(this.sharedService.handleError));
   }

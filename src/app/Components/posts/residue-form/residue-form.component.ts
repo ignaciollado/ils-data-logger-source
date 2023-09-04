@@ -42,6 +42,7 @@ export class ResidueFormComponent {
   compost: UntypedFormControl
   fromDateResidue: UntypedFormControl
   toDateResidue: UntypedFormControl
+  month: UntypedFormControl
   numberOfPersons: UntypedFormControl
   monthlyBilling: UntypedFormControl
   quantityResidue: UntypedFormControl
@@ -83,7 +84,7 @@ export class ResidueFormComponent {
     this.consumptionId = this.activatedRoute.snapshot.paramMap.get('id');
     this.userId = this.localStorageService.get('user_id');
 
-    this.consumption = new ConsumptionDTO(0, 0, this._adapter.today(), this._adapter.today(), '', '', '', '', 1, 0, '', '', 0, '', '', 0);
+    this.consumption = new ConsumptionDTO(0, 0, this._adapter.today(), this._adapter.today(), '','', '', '', '', 1, 0, '', '', 0, '', '', 0);
     this.isUpdateMode = false;
     this.validRequest = false;
     this.delegation = new UntypedFormControl('', [ Validators.required ]);
@@ -99,6 +100,8 @@ export class ResidueFormComponent {
     this.companyId = new UntypedFormControl(this.userId, [ Validators.required ]);
     this.fromDateResidue = new UntypedFormControl('', [ Validators.required ]);
     this.toDateResidue = new UntypedFormControl('', [ Validators.required ]);
+    this.month = new UntypedFormControl('', [ Validators.required ]);
+
 
     this.loadDelegations();
     this.loadResidues();
@@ -113,6 +116,7 @@ export class ResidueFormComponent {
       compost: this.compost,
       fromDateResidue: this.fromDateResidue,
       toDateResidue: this.toDateResidue,
+      month: this.month,
       quantityResidue: this.quantityResidue,
       numberOfPersons: this.numberOfPersons,
       monthlyBilling: this.monthlyBilling

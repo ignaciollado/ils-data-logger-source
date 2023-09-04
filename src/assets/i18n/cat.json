@@ -10,14 +10,14 @@
 
     "companyName": "Nom de l'empresa",
 
-    "activityData": "Dades de l'activitat",
+    "activityData": "Entrada de dades",
     "aspects": "Aspectes",
     "energies": "Energies",
     "residues": "Residus",
 
     "companyActivityData": "Dades d'activitat de la meva empresa",
     "consumptionList": "Llistat de consums:",
-    "delegation": "Delegació",
+    "delegation": "Emplaçament",
     "aspect": "Aspecte",
     "energy": "Energía",
     "water": "Aigua",

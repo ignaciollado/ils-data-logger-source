@@ -22,6 +22,7 @@ import { ResidueFormComponent } from './Components/posts/residue-form/residue-fo
 import { ResidueAdminFormComponent } from './Components/residues/residue-admin-form/residue-admin-form.component';
 import { PersonsComponent } from './ratios/persons/persons.component';
 import { BillingComponent } from './ratios/billing/billing.component';
+import { RatiosContainerComponent } from './ratios/ratios-container/ratios-container.component';
 
 const routes: Routes = [
   {
@@ -56,7 +57,7 @@ const routes: Routes = [
   },
   {
     path: 'consumptions',
-    component: PostsListComponent,
+    component: PostFormComponent,
     canActivate: [AuthGuard],
   },
   {
@@ -70,13 +71,8 @@ const routes: Routes = [
     canActivate: [AuthGuard],
   },
   {
-    path: 'persons',
-    component: PersonsComponent,
-    canActivate: [AuthGuard],
-  },
-  {
-    path: 'billing',
-    component: BillingComponent,
+    path: 'adminRatios',
+    component: RatiosContainerComponent,
     canActivate: [AuthGuard],
   },
   {

@@ -92,7 +92,7 @@ export class PostFormComponent implements OnInit {
   consumptions!: ConsumptionDTO[];
 
   isGridView: boolean = false
-  columnsDisplayed = ['delegation', 'numberOfPersons', 'monthlyBilling', 'energy', 'quantity', 'fromDate', 'toDate', 'ACTIONS'];
+  columnsDisplayed = ['delegation', 'energy', 'year', 'enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'setiembre', 'octubre', 'noviembre', 'diciembre', 'ACTIONS'];
 
   constructor(
     private activatedRoute: ActivatedRoute,

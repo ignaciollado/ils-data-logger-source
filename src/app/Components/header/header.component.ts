@@ -95,12 +95,8 @@ export class HeaderComponent implements OnInit {
     this.router.navigateByUrl('residues');
   }
 
-  persons(): void {
-    this.router.navigateByUrl('persons');
-  }
-
-  billing(): void {
-    this.router.navigateByUrl('billing');
+  adminRatios(): void {
+    this.router.navigateByUrl('adminRatios');
   }
 
   profile(): void {

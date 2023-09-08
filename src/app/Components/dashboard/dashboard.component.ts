@@ -1684,25 +1684,32 @@ export class DashboardComponent implements OnInit {
 
   private chartEmission() {
     this.chart = new Chart("graph", {
-      type: 'bar',
+      type: 'pie',
       data: {
-        labels:  [ '2021', '2022', '2023', '2024' ],
+       
+        labels:  [ 'CO2e Emissions SCOPE one (T)','CO2e Emissions SCOPE two (T)' ],
         datasets: [
-          
           {
-            label: "CO2e Emissions SCOPE one (T)",
-            data: [ this.quantityEmissions2021ScopeOne, this.quantityEmissions2022ScopeOne, this.quantityEmissions2023ScopeOne, this.quantityEmissions2024ScopeOne ],
-            backgroundColor: ['rgba(54, 162, 235, 0.2)'],
-            borderColor: ['rgba(54, 162, 235, 1.0)'],
-            borderWidth: 1
+            label: "2021",
+            data: [ this.quantityEmissions2021ScopeOne, this.quantityEmissions2021ScopeTwo ],
+            backgroundColor: [ '#b9936c', '#dac292'],
+          /*   borderColor: ['rgba(0, 0, 255, 1.0)', 'rgba(0, 255, 0, 1.0)'],
+            borderWidth: 1 */
           },
           {
-            label: "CO2e Emissions SCOPE two (T)",
-            data: [ this.quantityEmissions2021ScopeTwo, this.quantityEmissions2022ScopeTwo, this.quantityEmissions2023ScopeTwo, this.quantityEmissions2024ScopeTwo ],
-            backgroundColor: ['rgba(75, 192, 192, 0.2)'],
-            borderColor: ['rgba(75, 192, 192, 1.0)'],
-            borderWidth: 1
-          }
+            label: "2022",
+            data: [ this.quantityEmissions2022ScopeOne, this.quantityEmissions2022ScopeTwo ],
+            backgroundColor: [ '#b9936c', '#dac292'],
+           /*  borderColor: ['rgba(0, 0, 255, 1.0)', 'rgba(0, 255, 0, 1.0)'],
+            borderWidth: 1 */
+          },
+          {
+            label: "2023",
+            data: [ this.quantityEmissions2023ScopeOne, this.quantityEmissions2023ScopeTwo ],
+            backgroundColor: [ '#b9936c', '#dac292'],
+           /*  borderColor: ['rgba(0, 0, 255, 1.0)', 'rgba(0, 255, 0, 1.0)'],
+            borderWidth: 1 */
+          },
         ]
       },
       options: {

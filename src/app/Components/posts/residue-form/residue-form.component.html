@@ -6,7 +6,6 @@
         (ngSubmit)="saveResidueForm()">
 
         <mat-card [class.mat-elevation-z8]="isElevated">
-
         <section >
           <mat-form-field [style.width.px]=200>
             <mat-label>{{'delegation' | translate}}</mat-label>
@@ -17,58 +16,22 @@
             </mat-select>
             <mat-error *ngIf="delegation.hasError('required')">{{'delegation' | translate}} <strong>is required</strong></mat-error>
           </mat-form-field>
-       </section> 
 
-        <section class="oneline-container background-color-container">
-          <mat-form-field [style.width.px]=327>
-            <mat-label>Number of persons</mat-label>
-            <input matInput type="number" [formControl]="numberOfPersons" />
-            <mat-error *ngIf="numberOfPersons.hasError('required')">Number of persons <strong>is required</strong></mat-error>
-          </mat-form-field> 
-
-            <mat-form-field [style.width.px]=327>
-              <mat-label>Monthly billing</mat-label>
-              <input matInput type="number" [formControl]="monthlyBilling" />
-              <mat-error *ngIf="monthlyBilling.hasError('required')">Monthly Billing <strong>is required</strong></mat-error>
-            </mat-form-field>
-          </section> 
-<!--           <section>
-          <mat-form-field [style.width.px]=327>
-            <mat-label>Month</mat-label>
-            <mat-select [formControl]="month">
-              <mat-option *ngFor="let month of months" [value]="month.monthId">
-                {{month.nameES}}
-              </mat-option>
-            </mat-select>
-            <mat-error *ngIf="month.hasError('required')">Month <strong>is required</strong></mat-error>
+          <mat-form-field [style.width.px]=200>
+            <mat-label>Month and Year</mat-label>
+            <input matInput [matDatepicker]="dp" [formControl]="fromDateResidue">
+            <mat-hint>MM/YYYY</mat-hint>
+            <mat-datepicker-toggle matIconSuffix [for]="dp"></mat-datepicker-toggle>
+            <mat-datepicker #dp
+                            startView="multi-year"
+                            (monthSelected)="setMonthAndYear($event, dp)"
+                            panelClass="example-month-picker">
+            </mat-datepicker>
           </mat-form-field>
-        </section>  -->
-          <section> 
-             <mat-form-field [style.width.px]=327>
-              <mat-label>Date range</mat-label>
-              <mat-date-range-input [rangePicker]="picker">
-                <input matStartDate [formControl]="fromDateResidue" placeholder="Start date">
-                <input matEndDate [formControl]="toDateResidue" placeholder="End date">
-              </mat-date-range-input>
-              <mat-hint>dd/mm/yyyy – dd/mm/yyyy</mat-hint>
-              <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-              <mat-date-range-picker #picker></mat-date-range-picker>
-            </mat-form-field> 
-          </section>
-
-         <!--  <section>
-            <mat-form-field [style.width.px]=127>
-              <mat-label>Month</mat-label>
-              <mat-select [formControl]="month">
-                <mat-option *ngFor="let month of months" [value]="month.monthId">
-                  {{month.nameES}}
-                </mat-option>
-              </mat-select>
-              <mat-error *ngIf="month.hasError('required')">Month <strong>is required</strong></mat-error>
-            </mat-form-field>
-          </section> -->
+        </section>
+        
           <section class="oneline-container background-color-container">            
-            <mat-form-field [style.width.px]=327>
+            <mat-form-field [style.width.px]=200>
               <mat-label>Residue type</mat-label>
               <mat-select [formControl]="residue">
                 <mat-option *ngFor="let residue of residues" [value]="residue.residueId">
@@ -78,7 +41,7 @@
               <mat-error *ngIf="residue.hasError('required')">Residue <strong>is required</strong></mat-error>
             </mat-form-field>
      
-           <mat-form-field [style.width.px]=327>
+           <mat-form-field [style.width.px]=200>
               <mat-label>Quantity (Kg)</mat-label>
               <input matInput type="number" [formControl]="quantityResidue" />
               <mat-error *ngIf="quantityResidue.hasError('required')">quantityResidue <strong>is required</strong></mat-error>
@@ -88,35 +51,35 @@
           <mat-label>Residue destination:</mat-label>
         </section>
         <section class="oneline-container background-color-container">
-            <mat-form-field [style.width.px]=327>
+            <mat-form-field [style.width.px]=200>
               <mat-label>Reuse (%)</mat-label>
               <input matInput type="number" [formControl]="reuse" />
               <mat-error *ngIf="reuse.hasError('required')">reuse <strong>is required</strong></mat-error>
             </mat-form-field>
 
-            <mat-form-field [style.width.px]=327>
+            <mat-form-field [style.width.px]=200>
               <mat-label>Recycling (%)</mat-label>
               <input matInput type="number" [formControl]="recycling" />
               <mat-error *ngIf="recycling.hasError('required')">recycling <strong>is required</strong></mat-error>
             </mat-form-field>
           </section> 
 
-        <section class="oneline-container background-color-container"> 
-            <mat-form-field [style.width.px]=327>
+          <section class="oneline-container background-color-container"> 
+            <mat-form-field [style.width.px]=200>
               <mat-label>Incineration (%)</mat-label>
               <input matInput type="number" [formControl]="incineration" />
               <mat-error *ngIf="incineration.hasError('required')">incineration <strong>is required</strong></mat-error>
             </mat-form-field>
 
-            <mat-form-field [style.width.px]=327>
+            <mat-form-field [style.width.px]=200>
               <mat-label>Dump (%)</mat-label>
               <input matInput type="number" [formControl]="dump" />
               <mat-error *ngIf="dump.hasError('required')">dump <strong>is required</strong></mat-error>
             </mat-form-field>
-        </section> 
+          </section> 
 
-        <section class="background-color-container">
-            <mat-form-field [style.width.px]=327>
+          <section class="background-color-container">
+            <mat-form-field [style.width.px]=200>
               <mat-label>Compost (%)</mat-label>
               <input matInput type="number" [formControl]="compost" />
               <mat-error *ngIf="compost.hasError('required')">compost <strong>is required</strong></mat-error>
@@ -132,17 +95,10 @@
 <table *ngIf="!isGridView" mat-table [dataSource]="consumptions" class="mat-elevation-z8">
 
   <ng-container matColumnDef="delegation">
-    <th mat-header-cell *matHeaderCellDef>Delegation</th>
+    <th mat-header-cell *matHeaderCellDef>{{'delegation' | translate}}</th>
     <td mat-cell *matCellDef="let consumption">{{consumption.delegation}}</td>
   </ng-container>
-  <ng-container matColumnDef="numberOfPersons">
-    <th mat-header-cell *matHeaderCellDef>Number of persons</th>
-    <td mat-cell *matCellDef="let consumption">{{consumption.numberOfPersons}}</td>
-  </ng-container>
-  <ng-container matColumnDef="monthlyBilling">
-    <th mat-header-cell *matHeaderCellDef>Monthly billing</th>
-    <td mat-cell *matCellDef="let consumption">{{consumption.monthlyBilling}}</td>
-  </ng-container>
+
   <ng-container matColumnDef="residue">
     <th mat-header-cell *matHeaderCellDef>Residue type</th>
     <td mat-cell *matCellDef="let consumption">{{consumption.residueES}}</td>

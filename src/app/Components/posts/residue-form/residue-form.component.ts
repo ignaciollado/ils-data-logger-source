@@ -23,6 +23,21 @@ import { ResidueService } from 'src/app/Services/residue.service';
 import { ResidueDTO } from 'src/app/Models/residue.dto';
 import { MonthService } from 'src/app/Services/month.service';
 import { MonthDTO } from 'src/app/Models/month.dto';
+import { animate, state, style, transition, trigger } from '@angular/animations';
+import { Moment } from 'moment';
+import { MatDatepicker } from '@angular/material/datepicker';
+
+export const MY_FORMATS = {
+  parse: {
+    dateInput: 'MM/YYYY',
+  },
+  display: {
+    dateInput: 'MM/YYYY',
+    monthYearLabel: 'MMM YYYY',
+    dateA11yLabel: 'LL',
+    monthYearA11yLabel: 'MMMM YYYY',
+  },
+};
 
 @Component({
   selector: 'app-residue-form',
@@ -65,7 +80,7 @@ export class ResidueFormComponent {
   consumptions!: ConsumptionDTO[];
 
   isGridView: boolean = false
-  columnsDisplayed = ['delegation', 'numberOfPersons', 'monthlyBilling', 'residue', 'quantity', 'reuse', 'recycling', 'incineration',  'dump', 'compost', 'fromDate', 'toDate', 'ACTIONS'];
+  columnsDisplayed = ['delegation', 'residue', 'quantity', 'reuse', 'recycling', 'incineration',  'dump', 'compost', 'fromDate', 'toDate', 'ACTIONS'];
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -274,6 +289,14 @@ export class ResidueFormComponent {
       this.createResidueConsumption();
     }
 
+  }
+
+  setMonthAndYear(normalizedMonthAndYear: Moment, datepicker: MatDatepicker<Moment>) {
+    const ctrlValue = this.fromDateResidue.value!;
+    ctrlValue.month(normalizedMonthAndYear.month());
+    ctrlValue.year(normalizedMonthAndYear.year());
+    this.fromDateResidue.setValue(ctrlValue);
+    datepicker.close();
   }
 
 }

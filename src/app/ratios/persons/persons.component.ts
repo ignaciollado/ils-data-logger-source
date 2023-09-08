@@ -19,16 +19,40 @@ import { deleteResponse } from 'src/app/Services/category.service';
 import { DelegationService } from 'src/app/Services/delegation.service';
 import { MonthService } from 'src/app/Services/month.service';
 import { MonthDTO } from 'src/app/Models/month.dto';
+import { animate, state, style, transition, trigger } from '@angular/animations';
 import { Moment } from 'moment';
 import { MatDatepicker } from '@angular/material/datepicker';
+
+export const MY_FORMATS = {
+  parse: {
+    dateInput: 'MM/YYYY',
+  },
+  display: {
+    dateInput: 'MM/YYYY',
+    monthYearLabel: 'MMM YYYY',
+    dateA11yLabel: 'LL',
+    monthYearA11yLabel: 'MMMM YYYY',
+  },
+};
 
 @Component({
   selector: 'app-persons',
   templateUrl: './persons.component.html',
-  styleUrls: ['./persons.component.scss']
+  styleUrls: ['./persons.component.scss'],
+  animations: [
+    trigger( 'fadeInOut',[
+      state(
+        'void',
+        style({
+          opacity: 0.2
+        })
+      ),
+      transition('void <-> *', animate(1500))
+    ])
+  ],
 })
-export class PersonsComponent {
 
+export class PersonsComponent {
   minDate: Date;
   maxDate: Date;
   startDate = new Date(new Date().getFullYear(), 0, 1);
@@ -60,7 +84,7 @@ export class PersonsComponent {
   consumptions!: ConsumptionDTO[];
 
   isGridView: boolean = false
-  columnsDisplayed = ['delegation', 'numberOfPersons', 'monthlyBilling', 'quantity', 'enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'setiembre', 'octubre', 'noviembre', 'diciembre', 'ACTIONS'];
+  columnsDisplayed = ['delegation', 'quantity', 'month'];
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -206,7 +230,7 @@ export class PersonsComponent {
   private editPost(): void {
 
   }
-  
+
   deletePerson(consumptionId: number): void {
     let errorResponse: any;
     let result = confirm('Confirm delete this consumption with id: ' + consumptionId + ' .');

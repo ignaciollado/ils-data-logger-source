@@ -51,7 +51,7 @@ export class EmissionFormComponent {
   consumptions!: ConsumptionDTO[];
 
   isGridView: boolean = false
-  columnsDisplayed = ['delegation', 'numberOfPersons', 'monthlyBilling', 'quantity', 'scopeone', 'scopetwo', 'fromDate', 'toDate', 'ACTIONS'];
+  columnsDisplayed = ['delegation', 'quantity', 'scopeone', 'scopetwo', 'fromDate', 'toDate', 'ACTIONS'];
 
   constructor(
     private activatedRoute: ActivatedRoute,

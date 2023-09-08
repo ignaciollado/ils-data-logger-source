@@ -14,8 +14,8 @@
     "companyAddress": "Domicilio",
 
 
-    "activityData": "Datos de actividad ambientales (aspectos)",
-    "productionData": "Datos de actividad de producción (ratios)",
+    "activityData": "Actividad ambiental (aspectos)",
+    "productionData": "Actividad de producción (ratios)",
 
     "aspects": "Aspectos",
     "energies": "Energías",

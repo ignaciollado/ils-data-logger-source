@@ -28,7 +28,7 @@ import { MonthDTO } from 'src/app/Models/month.dto';
 })
 
 export class WaterFormComponent {
-  minDate: Date;
+  minDate: string;
   maxDate: Date;
   startDate = new Date(new Date().getFullYear(), 0, 1);
 
@@ -59,7 +59,7 @@ export class WaterFormComponent {
   consumptions!: ConsumptionDTO[];
 
   isGridView: boolean = false
-  columnsDisplayed = ['delegation', 'numberOfPersons', 'monthlyBilling', 'quantity', 'enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'setiembre', 'octubre', 'noviembre', 'diciembre', 'ACTIONS'];
+  columnsDisplayed = ['delegation', 'year', 'enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'setiembre', 'octubre', 'noviembre', 'diciembre', 'ACTIONS'];
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -77,7 +77,7 @@ export class WaterFormComponent {
 
     const currentYear = new Date().getFullYear();
     const currentMonth = new Date().getMonth();
-    this.minDate = new Date(currentYear , currentMonth, 1);
+    this.minDate = currentYear.toString() ;
     this.maxDate = new Date(currentYear, currentMonth, 31);
 
     this._locale = 'es-ES';

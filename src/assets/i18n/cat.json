@@ -13,8 +13,8 @@
     "companyName": "Nom de l'empresa",
     "companyAddress": "Domicili",
 
-    "activityData": "Dedes d'activitat ambientals (aspectes)",
-    "productionData": "Dades d'activitat de producció (ratios)",
+    "activityData": "Activitat ambiental (aspectes)",
+    "productionData": "Activitat de producció (ratios)",
     "aspects": "Aspectes",
     "energies": "Energies",
     "residues": "Residus",

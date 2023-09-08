@@ -19,34 +19,8 @@
         </mat-form-field>
       </section>
 
-    <!--   <section class="oneline-container background-color-container">
+      <section>
         <mat-form-field [style.width.px]=327>
-          <mat-label>Number of persons</mat-label>
-          <input matInput type="number" [formControl]="numberOfPersons" />
-          <mat-error *ngIf="numberOfPersons.hasError('required')">Number of persons <strong>is required</strong></mat-error>
-        </mat-form-field>
-
-        <mat-form-field [style.width.px]=327>
-          <mat-label>Monthly billing</mat-label>
-          <input matInput type="number" [formControl]="monthlyBilling" />
-          <mat-error *ngIf="monthlyBilling.hasError('required')">Monthly Billing <strong>is required</strong></mat-error>
-        </mat-form-field>
-      </section> -->
-
-<!--       <section>
-        <mat-form-field [style.width.px]=327>
-          <mat-label>Month</mat-label>
-          <mat-select [formControl]="month">
-            <mat-option *ngFor="let month of months" [value]="month.monthId">
-              {{month.nameES}}
-            </mat-option>
-          </mat-select>
-          <mat-error *ngIf="month.hasError('required')">Month <strong>is required</strong></mat-error>
-        </mat-form-field>
-      </section>  -->
-
-      <section class="example-section">
-        <mat-form-field>
           <mat-label>Month and Year</mat-label>
           <input matInput [matDatepicker]="dp" [formControl]="fromDateWater">
           <mat-hint>MM/YYYY</mat-hint>
@@ -57,19 +31,6 @@
           </mat-datepicker>
         </mat-form-field>
       </section>
-
-     <!--  <section>
-        <mat-form-field [style.width.px]=327>
-          <mat-label>Date range</mat-label>
-          <mat-date-range-input [rangePicker]="picker">
-            <input matStartDate [formControl]="fromDateWater" placeholder="Start date">
-            <input matEndDate [formControl]="toDateWater" placeholder="End date">
-          </mat-date-range-input>
-          <mat-hint>dd/mm/yyyy – dd/mm/yyyy</mat-hint>
-          <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-          <mat-date-range-picker touchUi #picker></mat-date-range-picker>
-        </mat-form-field> 
-      </section> -->
 
       <section>
         <mat-form-field [style.width.px]=327>
@@ -90,17 +51,9 @@
     <th mat-header-cell *matHeaderCellDef>{{'delegation' | translate}}</th>
     <td mat-cell *matCellDef="let consumption">{{consumption.delegation}}</td>
   </ng-container>
-  <ng-container matColumnDef="numberOfPersons">
-    <th mat-header-cell *matHeaderCellDef>Number of persons</th>
-    <td mat-cell *matCellDef="let consumption">{{consumption.numberOfPersons}}</td>
-  </ng-container>
-  <ng-container matColumnDef="monthlyBilling">
-    <th mat-header-cell *matHeaderCellDef>Monthly billing</th>
-    <td mat-cell *matCellDef="let consumption">{{consumption.monthlyBilling}}</td>
-  </ng-container>
-  <ng-container matColumnDef="quantity">
-    <th mat-header-cell *matHeaderCellDef>Quantity (Litres)</th>
-    <td mat-cell *matCellDef="let consumption">{{consumption.quantity}}</td>
+  <ng-container matColumnDef="year">
+    <th mat-header-cell *matHeaderCellDef>Year</th>
+    <td mat-cell *matCellDef="let consumption">{{consumption.energyES}}</td>
   </ng-container>
   <ng-container matColumnDef="enero">
     <th mat-header-cell *matHeaderCellDef>Enero</th>

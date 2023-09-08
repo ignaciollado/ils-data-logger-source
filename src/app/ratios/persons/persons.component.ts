@@ -19,6 +19,8 @@ import { deleteResponse } from 'src/app/Services/category.service';
 import { DelegationService } from 'src/app/Services/delegation.service';
 import { MonthService } from 'src/app/Services/month.service';
 import { MonthDTO } from 'src/app/Models/month.dto';
+import { Moment } from 'moment';
+import { MatDatepicker } from '@angular/material/datepicker';
 
 @Component({
   selector: 'app-persons',
@@ -40,9 +42,9 @@ export class PersonsComponent {
   monthlyBilling: UntypedFormControl
   fromDate: UntypedFormControl
   toDate: UntypedFormControl
-  quantityWater: UntypedFormControl
+  quantity: UntypedFormControl
   month: UntypedFormControl
-  waterForm: UntypedFormGroup
+  personForm: UntypedFormGroup
 
   isValidForm: boolean | null
   isElevated = true
@@ -96,7 +98,7 @@ export class PersonsComponent {
     this.toDate = new UntypedFormControl( this.maxDate, [ Validators.required ] );
     this.month = new UntypedFormControl( '', [ Validators.required ] );
 
-    this.quantityWater = new UntypedFormControl('', [ Validators.required, Validators.min(1)]);
+    this.quantity = new UntypedFormControl('', [ Validators.required, Validators.min(1)]);
     this.numberOfPersons = new UntypedFormControl('', [ Validators.required, Validators.min(1)]);
     this.monthlyBilling = new UntypedFormControl('', [ Validators.required, Validators.min(1)]);
 
@@ -104,17 +106,16 @@ export class PersonsComponent {
     this.loadMonths();
 
     this.energy = new UntypedFormControl(0);
-    this.waterForm = this.formBuilder.group({
+    this.personForm = this.formBuilder.group({
       delegation: this.delegation,
-      fromDateWater: this.fromDateWater,
-      toDateWater: this.toDateWater,
-      quantityWater: this.quantityWater,
+      fromDateWater: this.fromDate,
+      toDateWater: this.toDate,
+      quantityWater: this.quantity,
       numberOfPersons: this.numberOfPersons,
       monthlyBilling: this.monthlyBilling,
     })
 
     this.loadConsumption();
-
   }
 
   private loadDelegations(): void {
@@ -189,9 +190,9 @@ export class PersonsComponent {
         .subscribe(
           () => {
             responseOK = true;
-            this.fromDateWater.reset()
-            this.toDateWater.reset()
-            this.quantityWater.reset()
+            this.fromDate.reset()
+            this.toDate.reset()
+            this.quantity.reset()
             this.loadConsumption();
           },
           (error: HttpErrorResponse) => {
@@ -205,7 +206,8 @@ export class PersonsComponent {
   private editPost(): void {
 
   }
-  deleteWaterConsumption(consumptionId: number): void {
+  
+  deletePerson(consumptionId: number): void {
     let errorResponse: any;
     let result = confirm('Confirm delete this consumption with id: ' + consumptionId + ' .');
     if (result) {
@@ -224,21 +226,28 @@ export class PersonsComponent {
     }
   }
 
-  saveWaterForm(): void {
+  savePersonForm(): void {
     this.isValidForm = false;
-    if (this.waterForm.invalid) {
+    if (this.personForm.invalid) {
       return;
     }
 
     this.isValidForm = true;
-    this.consumption = this.waterForm.value;
+    this.consumption = this.personForm.value;
 
     if (this.isUpdateMode) {
       this.editPost();
     } else {
       this.createWaterConsumption();
     }
+  }
 
+  setMonthAndYear(normalizedMonthAndYear: Moment, datepicker: MatDatepicker<Moment>) {
+    const ctrlValue = this.fromDate.value!;
+    ctrlValue.month(normalizedMonthAndYear.month());
+    ctrlValue.year(normalizedMonthAndYear.year());
+    this.fromDate.setValue(ctrlValue);
+    datepicker.close();
   }
 
 }

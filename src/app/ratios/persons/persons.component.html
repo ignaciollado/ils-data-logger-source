@@ -4,8 +4,8 @@
       <h1>Energy consumption</h1>
       <form
         *ngIf=""
-        [formGroup]=""
-        (ngSubmit)="">
+        [formGroup]="personForm"
+        (ngSubmit)="savePersonForm()">
 
         <mat-card [class.mat-elevation-z8]="">
 
@@ -50,30 +50,6 @@
             
           </section>
 
-<!--           <section>
-            <mat-form-field [style.width.px]=327>
-              <mat-label>Month</mat-label>
-              <mat-select [formControl]="month">
-                <mat-option *ngFor="let month of months" [value]="month.monthId">
-                  {{month.nameES}}
-                </mat-option>
-              </mat-select>
-              <mat-error *ngIf="month.hasError('required')">Month <strong>is required</strong></mat-error>
-            </mat-form-field>
-          </section>  -->
-
-           <section>
-            <mat-form-field [style.width.px]=327>
-              <mat-label>Energy type</mat-label>
-              <mat-select [formControl]="energy">
-                <mat-option *ngFor="let energy of energies" [value]="energy.energyId">
-                  {{energy.nameES}}
-                </mat-option>
-              </mat-select>
-              <mat-error *ngIf="energy.hasError('required')">Energy type <strong>is required</strong></mat-error>
-            </mat-form-field>
-          </section>
-
           <section>
             <mat-form-field [style.width.px]=327>
               <mat-label>Quantity</mat-label>
@@ -82,7 +58,7 @@
             </mat-form-field>
           </section>
 
-          <button mat-raised-button color="primary" type="submit" [disabled]="!energyForm.valid">ADD</button>
+          <button mat-raised-button color="primary" type="submit" [disabled]="!personForm.valid">ADD</button>
 
         </mat-card>
       </form>
@@ -128,7 +104,7 @@
             <mat-icon>edit</mat-icon>
           </button> -->
           <button mat-icon-button color="warn" matTooltip="Permanently delete this activity"
-          aria-label="Button that displays a tooltip and permanently deletes this activity" (click)="deleteEnergyConsumption(consumption.consumptionId)">
+          aria-label="Button that displays a tooltip and permanently deletes this activity" (click)="deletePerson(consumption.consumptionId)">
             <mat-icon>delete</mat-icon>
           </button>
         </td>

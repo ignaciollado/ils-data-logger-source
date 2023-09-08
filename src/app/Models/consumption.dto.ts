@@ -9,7 +9,20 @@ export class ConsumptionDTO {
   quantity: number
   fromDate: Date
   toDate: Date
-  month: string
+  year?:number
+  month?: string
+  january?: number
+  february?: number
+  march?: number
+  april?: number
+  may?: number
+  june?: number
+  july?: number
+  august?: number
+  september?: number
+  october?: number
+  november?: number
+  december?: number
   numberOfPersons: number
   monthlyBilling: number
   created_at!: Date

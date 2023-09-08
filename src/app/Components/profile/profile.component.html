@@ -25,7 +25,7 @@
 
       <section>
         <mat-form-field [style.width.px]=327>
-          <mat-label>Company address{{ 'companyName' | translate }}</mat-label>
+          <mat-label>{{ 'companyAddress' | translate }}</mat-label>
           <input matInput type="text" readonly [formControl]="domicilio" />
           <mat-error *ngIf="domicilio.hasError('minlength')" >domicilio must be at least 5 characters long</mat-error>
           <mat-error *ngIf="domicilio.hasError('maxlength')" >domicilio can be max 25 characters long</mat-error>
@@ -51,7 +51,7 @@
           <mat-error *ngIf="localidad.hasError('required')">localidad <strong>is required</strong></mat-error>
         </mat-form-field>
       </section>  
-      <button mat-raised-button color="primary" type="submit" [disabled]="profileForm.valid">Update Company</button>
+     <!--  <button mat-raised-button color="primary" type="submit" [disabled]="profileForm.valid">Update Company</button> -->
     </mat-card>
   </form>
   <div style="margin-left: auto; margin-right: auto">

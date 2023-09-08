@@ -1,4 +1,3 @@
-
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, Inject } from '@angular/core';
 import {
@@ -7,7 +6,6 @@ import {
   UntypedFormGroup,
   Validators,
 } from '@angular/forms';
-
 import {DateAdapter, MAT_DATE_LOCALE} from '@angular/material/core';
 
 import { ActivatedRoute, Router } from '@angular/router';
@@ -19,36 +17,32 @@ import { ConsumptionService } from 'src/app/Services/consumption.service';
 import { SharedService } from 'src/app/Services/shared.service';
 import { deleteResponse } from 'src/app/Services/category.service';
 import { DelegationService } from 'src/app/Services/delegation.service';
-import { ResidueService } from 'src/app/Services/residue.service';
-import { ResidueDTO } from 'src/app/Models/residue.dto';
 import { MonthService } from 'src/app/Services/month.service';
 import { MonthDTO } from 'src/app/Models/month.dto';
 
 @Component({
-  selector: 'app-residue-form',
-  templateUrl: './residue-form.component.html',
-  styleUrls: ['./residue-form.component.scss'],
-
+  selector: 'app-persons',
+  templateUrl: './persons.component.html',
+  styleUrls: ['./persons.component.scss']
 })
+export class PersonsComponent {
 
-export class ResidueFormComponent {
+  minDate: Date;
+  maxDate: Date;
+  startDate = new Date(new Date().getFullYear(), 0, 1);
+
   consumption: ConsumptionDTO
   delegation: UntypedFormControl
+  energy: UntypedFormControl
   companyId: UntypedFormControl
-  residue: UntypedFormControl
-  reuse: UntypedFormControl
-  recycling: UntypedFormControl
-  incineration: UntypedFormControl
-  dump: UntypedFormControl
-  compost: UntypedFormControl
-  fromDateResidue: UntypedFormControl
-  toDateResidue: UntypedFormControl
-  month: UntypedFormControl
 
   numberOfPersons: UntypedFormControl
   monthlyBilling: UntypedFormControl
-  quantityResidue: UntypedFormControl
-  residueForm: UntypedFormGroup
+  fromDate: UntypedFormControl
+  toDate: UntypedFormControl
+  quantityWater: UntypedFormControl
+  month: UntypedFormControl
+  waterForm: UntypedFormGroup
 
   isValidForm: boolean | null
   isElevated = true
@@ -61,25 +55,29 @@ export class ResidueFormComponent {
 
   delegations!: DelegationDTO[];
   months!: MonthDTO[];
-  residues!: ResidueDTO[];
   consumptions!: ConsumptionDTO[];
 
   isGridView: boolean = false
-  columnsDisplayed = ['delegation', 'numberOfPersons', 'monthlyBilling', 'residue', 'quantity', 'reuse', 'recycling', 'incineration',  'dump', 'compost', 'fromDate', 'toDate', 'ACTIONS'];
+  columnsDisplayed = ['delegation', 'numberOfPersons', 'monthlyBilling', 'quantity', 'enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'setiembre', 'octubre', 'noviembre', 'diciembre', 'ACTIONS'];
 
   constructor(
     private activatedRoute: ActivatedRoute,
     private consumptionService: ConsumptionService,
     private delegationService: DelegationService,
     private monthService: MonthService,
-    private residueService: ResidueService,
     private formBuilder: UntypedFormBuilder,
     private router: Router,
     private sharedService: SharedService,
     private localStorageService: LocalStorageService,
     private _adapter: DateAdapter<any>,
+    
     @Inject(MAT_DATE_LOCALE) private _locale: string,
   ) {
+
+    const currentYear = new Date().getFullYear();
+    const currentMonth = new Date().getMonth();
+    this.minDate = new Date(currentYear , currentMonth, 1);
+    this.maxDate = new Date(currentYear, currentMonth, 31);
 
     this._locale = 'es-ES';
     this._adapter.setLocale(this._locale);
@@ -91,41 +89,32 @@ export class ResidueFormComponent {
     this.consumption = new ConsumptionDTO(0, 0, this._adapter.today(), this._adapter.today(), '','', '', '', '', 1, 0, '', '', 0, '', '', 0);
     this.isUpdateMode = false;
     this.validRequest = false;
-    this.delegation = new UntypedFormControl('', [ Validators.required ]);
-    this.residue = new UntypedFormControl('', [ Validators.required ]);
-    this.reuse = new UntypedFormControl('', [ Validators.required, Validators.min(0), Validators.max(100) ]);
-    this.recycling = new UntypedFormControl('', [ Validators.required, Validators.min(0), Validators.max(100) ]);
-    this.incineration = new UntypedFormControl('', [ Validators.required, Validators.min(0), Validators.max(100) ]);
-    this.dump = new UntypedFormControl('', [ Validators.required, Validators.min(0), Validators.max(100) ]);
-    this.compost = new UntypedFormControl('', [ Validators.required, Validators.min(0), Validators.max(100) ]);
-    this.numberOfPersons = new UntypedFormControl('', [ Validators.required, Validators.min(1) ]);
-    this.monthlyBilling = new UntypedFormControl('', [ Validators.required, Validators.min(1) ]);
-    this.quantityResidue = new UntypedFormControl('', [ Validators.required, Validators.min(0) ]);
-    this.companyId = new UntypedFormControl(this.userId, [ Validators.required ]);
-    this.fromDateResidue = new UntypedFormControl('', [ Validators.required ]);
-    this.toDateResidue = new UntypedFormControl('', [ Validators.required ]);
-    this.month = new UntypedFormControl('', [ Validators.required ]);
+    this.delegation = new UntypedFormControl( '', [ Validators.required ] );
+    this.companyId = new UntypedFormControl( this.userId, [ Validators.required ] );
+
+    this.fromDate = new UntypedFormControl( this.minDate, [ Validators.required ] );
+    this.toDate = new UntypedFormControl( this.maxDate, [ Validators.required ] );
+    this.month = new UntypedFormControl( '', [ Validators.required ] );
+
+    this.quantityWater = new UntypedFormControl('', [ Validators.required, Validators.min(1)]);
+    this.numberOfPersons = new UntypedFormControl('', [ Validators.required, Validators.min(1)]);
+    this.monthlyBilling = new UntypedFormControl('', [ Validators.required, Validators.min(1)]);
 
     this.loadDelegations();
-    this.loadResidues();
+    this.loadMonths();
 
-    this.residueForm = this.formBuilder.group({
+    this.energy = new UntypedFormControl(0);
+    this.waterForm = this.formBuilder.group({
       delegation: this.delegation,
-      residue: this.residue,
-      reuse: this.reuse,
-      recycling: this.recycling,
-      incineration: this.incineration,
-      dump: this.dump,
-      compost: this.compost,
-      fromDateResidue: this.fromDateResidue,
-      toDateResidue: this.toDateResidue,
-      month: this.month,
-      quantityResidue: this.quantityResidue,
+      fromDateWater: this.fromDateWater,
+      toDateWater: this.toDateWater,
+      quantityWater: this.quantityWater,
       numberOfPersons: this.numberOfPersons,
-      monthlyBilling: this.monthlyBilling
+      monthlyBilling: this.monthlyBilling,
     })
 
     this.loadConsumption();
+
   }
 
   private loadDelegations(): void {
@@ -157,27 +146,12 @@ export class ResidueFormComponent {
       );
   }
 
-  private loadResidues(): void {
-    let errorResponse: any;
-    if (this.userId) {
-      this.residueService.getAllResidues().subscribe(
-        (residues: ResidueDTO[]) => {
-          this.residues = residues;
-        },
-        (error: HttpErrorResponse) => {
-          errorResponse = error.error;
-          this.sharedService.errorLog(errorResponse);
-        }
-      );
-    }
-  }
-
   private loadConsumption(): void {
     let errorResponse: any;
     const userId = this.localStorageService.get('user_id');
     if (userId) {
 
-        this.consumptionService.getAllConsumptionsByCompanyAndAspect(userId, 3).subscribe(
+        this.consumptionService.getAllConsumptionsByCompanyAndAspect(userId, 2).subscribe(
         (consumptions: ConsumptionDTO[]) => {
           this.consumptions = consumptions
         },
@@ -190,14 +164,15 @@ export class ResidueFormComponent {
     }
   }
 
-  private createResidueConsumption(): void {
+  /* ASPECT WATER */
+  private createWaterConsumption(): void {
     let errorResponse: any;
     let responseOK: boolean = false;
     const userId = this.localStorageService.get('user_id');
     if (userId) {
       this.consumption.companyId = userId;
-      this.consumption.aspectId = 3; /* Residues aspect id : 3 */
-      this.consumptionService.createResidueConsumption(this.consumption)
+      this.consumption.aspectId = 2; /* Water aspect id : 2 */
+      this.consumptionService.createWaterConsumption(this.consumption)
         .pipe(
           finalize(async () => {
             await this.sharedService.managementToast(
@@ -214,17 +189,9 @@ export class ResidueFormComponent {
         .subscribe(
           () => {
             responseOK = true;
-            /* this.delegation.reset() */
-           /*  this.fromDateResidue.reset()
-            this.toDateResidue.reset() */
-            this.quantityResidue.reset()
-            this.residue.reset()
-            this.reuse.reset()
-            this.recycling.reset()
-            this.incineration.reset()
-            this.dump.reset()
-            this.compost.reset()
-
+            this.fromDateWater.reset()
+            this.toDateWater.reset()
+            this.quantityWater.reset()
             this.loadConsumption();
           },
           (error: HttpErrorResponse) => {
@@ -238,16 +205,14 @@ export class ResidueFormComponent {
   private editPost(): void {
 
   }
-
-  deleteResidueConsumption(consumptionId: number): void {
-
+  deleteWaterConsumption(consumptionId: number): void {
     let errorResponse: any;
     let result = confirm('Confirm delete this consumption with id: ' + consumptionId + ' .');
     if (result) {
       this.consumptionService.deleteConsumption(consumptionId).subscribe(
         (rowsAffected: deleteResponse) => {
           if (rowsAffected.affected > 0) {
-            
+
           }
         },
         (error: HttpErrorResponse) => {
@@ -259,21 +224,22 @@ export class ResidueFormComponent {
     }
   }
 
-  saveResidueForm(): void {
+  saveWaterForm(): void {
     this.isValidForm = false;
-    if (this.residueForm.invalid) {
+    if (this.waterForm.invalid) {
       return;
     }
 
     this.isValidForm = true;
-    this.consumption = this.residueForm.value;
+    this.consumption = this.waterForm.value;
 
     if (this.isUpdateMode) {
       this.editPost();
     } else {
-      this.createResidueConsumption();
+      this.createWaterConsumption();
     }
 
   }
 
 }
+

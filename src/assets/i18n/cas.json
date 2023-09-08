@@ -6,11 +6,17 @@
     "home": "Inicio",
     "login": "Entrar",
     "logout": "Salir",
+    "name": "Denominación",
+    "ubication": "Ubicación",
     "totalActivityReported": "Actividad total reportada",
 
     "companyName": "Nombre de la empresa",
+    "companyAddress": "Domicilio",
 
-    "activityData": "Entrada de datos",
+
+    "activityData": "Datos de actividad ambientales (aspectos)",
+    "productionData": "Datos de actividad de producción (ratios)",
+
     "aspects": "Aspectos",
     "energies": "Energías",
     "residues": "Residuos",
@@ -18,6 +24,9 @@
     "companyActivityData": "Datos de actividad de mi empresa",
     "consumptionList": "Listado de consumos:",
     "delegation": "Emplazamiento",
+    "delegationAdd": "Añadir emplazamiento",
+    "delegationList": "Emplazamientos de esta empresa",
+
     "aspect": "Aspecto",
     "energy": "Energía",
     "water": "Agua",
@@ -45,19 +54,6 @@
     "Update": "Actualizar",
     "Error": "Por favor, indique los detalles requeridos.",
 
-    "quienesSomos": "Quienes somos",
-    "queOfrecemos": "Que ofrecemos",
-    "queOfrecemosServiciosActivos": "Servicios activos",
-    "queOfrecemosHistorico": "Directorio",
-    "agendaTitle": "Agenda",
-    "noHayPublicoObjetivo": "¡Disculpe las molestias, de momento, no tenemos proyectos disponibles para usted!",
-    "ViewRelatedContents": "Ver contenido relacionado",
-    "directorioIDI": "Directorio",
-
-    "noticiasTitle": "Noticias",
-
-    "ExploraIDI": "Explora nuestros proyectos",
-    "NoTeEncuentras": "¿No te encuentras en este menú?",
     "Accesibilidad": "Accesibilidad",
     "AvisoLegal": "Aviso legal",
     "Contacta": "Contacta",

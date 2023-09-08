@@ -60,12 +60,12 @@ export class LoginComponent implements OnInit {
   ) {
     this.loginUser = new AuthDTO('', '', '', '');
 
-    this.email = new UntypedFormControl('', [
+    this.email = new UntypedFormControl('nacho@gmail.com', [
       Validators.required,
       Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,4}$'),
     ]);
 
-    this.password = new UntypedFormControl('', [
+    this.password = new UntypedFormControl('12345678', [
       Validators.required,
       Validators.minLength(8),
       Validators.maxLength(16),

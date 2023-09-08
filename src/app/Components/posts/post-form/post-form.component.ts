@@ -24,6 +24,20 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
 import { DelegationService } from 'src/app/Services/delegation.service';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { HeaderMenusService } from 'src/app/Services/header-menus.service';
+import { Moment } from 'moment';
+import { MatDatepicker } from '@angular/material/datepicker';
+
+export const MY_FORMATS = {
+  parse: {
+    dateInput: 'MM/YYYY',
+  },
+  display: {
+    dateInput: 'MM/YYYY',
+    monthYearLabel: 'MMM YYYY',
+    dateA11yLabel: 'LL',
+    monthYearA11yLabel: 'MMMM YYYY',
+  },
+};
 
 @Component({
   selector: 'app-post-form',
@@ -48,6 +62,7 @@ export class PostFormComponent implements OnInit {
   delegation: UntypedFormControl
   fromDate: UntypedFormControl
   toDate: UntypedFormControl
+  month: UntypedFormControl
   energy: UntypedFormControl
   numberOfPersons: UntypedFormControl
   monthlyBilling: UntypedFormControl
@@ -63,6 +78,9 @@ export class PostFormComponent implements OnInit {
   showAuthSection: boolean;
   showNoAuthSection: boolean;
   access_token: string | null;
+  today: Date
+  sixMonthsAgo: Date
+
 
   private isUpdateMode: boolean;
   private validRequest: boolean;
@@ -89,18 +107,17 @@ export class PostFormComponent implements OnInit {
     private _adapter: DateAdapter<any>,
     @Inject(MAT_DATE_LOCALE) private _locale: string,
   ) {
-
     this.showButtons = false
     this.access_token = sessionStorage.getItem("access_token")
-    this.showAuthSection = false;
-    this.showNoAuthSection = true;
+    this.showAuthSection = false
+    this.showNoAuthSection = true
 
     if (this.access_token === null) {
-      const headerInfo: HeaderMenus = { showAuthSection: false, showNoAuthSection: true, };
+      const headerInfo: HeaderMenus = { showAuthSection: false, showNoAuthSection: true, }
       this.headerMenusService.headerManagement.next(headerInfo)
     } else {
       if (!this.jwtHelper.isTokenExpired (this.access_token)) {
-        const headerInfo: HeaderMenus = { showAuthSection: true, showNoAuthSection: false, };
+        const headerInfo: HeaderMenus = { showAuthSection: true, showNoAuthSection: false, }
         this.headerMenusService.headerManagement.next(headerInfo)
       } else {
         const headerInfo: HeaderMenus = { showAuthSection: false, showNoAuthSection: true, };
@@ -111,11 +128,15 @@ export class PostFormComponent implements OnInit {
       }
     }
 
-    this._locale = 'es-ES';
-    this._adapter.setLocale(this._locale);
+    this.today = new Date();
+    this.sixMonthsAgo = new Date();
+    this.sixMonthsAgo.setMonth(this.today.getMonth() - 6);
+
+    this._locale = 'es-ES'
+    this._adapter.setLocale(this._locale)
 
     this.isValidForm = null;
-    this.consumptionId = this.activatedRoute.snapshot.paramMap.get('id');
+    this.consumptionId = this.activatedRoute.snapshot.paramMap.get('id')
     this.userId = this.jwtHelper.decodeToken().id_ils
 
     this.consumption = new ConsumptionDTO(0, 0, this._adapter.today(), this._adapter.today(), '','', '', '', '', 1, 0, '', '', 0, '', '', 0);
@@ -124,6 +145,8 @@ export class PostFormComponent implements OnInit {
     this.delegation = new UntypedFormControl('', [ Validators.required ]);
     this.fromDate = new UntypedFormControl('', [ Validators.required ]);
     this.toDate = new UntypedFormControl('', [ Validators.required ]);
+    this.month = new UntypedFormControl('', [ Validators.required ]);
+
     this.energy = new UntypedFormControl('', [ Validators.required ]);
     this.numberOfPersons = new UntypedFormControl('', [ Validators.required, Validators.min(1) ]);
     this.monthlyBilling = new UntypedFormControl('', [ Validators.required, Validators.min(1) ]);
@@ -134,6 +157,7 @@ export class PostFormComponent implements OnInit {
       delegation: this.delegation,
       fromDate: this.fromDate,
       toDate: this.toDate,
+      month: this.month,
       energy: this.energy,
       numberOfPersons: this.numberOfPersons,
       monthlyBilling: this.monthlyBilling,
@@ -331,6 +355,14 @@ export class PostFormComponent implements OnInit {
       this.createEnergyConsumption();
     }
 
+  }
+
+  setMonthAndYear(normalizedMonthAndYear: Moment, datepicker: MatDatepicker<Moment>) {
+    const ctrlValue = this.fromDate.value!;
+    ctrlValue.month(normalizedMonthAndYear.month());
+    ctrlValue.year(normalizedMonthAndYear.year());
+    this.fromDate.setValue(ctrlValue);
+    datepicker.close();
   }
 
 }

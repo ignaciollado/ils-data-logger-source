@@ -30,7 +30,7 @@ export class HeaderComponent implements OnInit {
       if (!this.jwtHelper.isTokenExpired (this.access_token)) {
         const headerInfo: HeaderMenus = {  showAuthSection: true, showNoAuthSection: false, };
         this.headerMenusService.headerManagement.next(headerInfo)
-      } else {
+      } else { /* logout */
         const headerInfo: HeaderMenus = { showAuthSection: false, showNoAuthSection: true, };
         sessionStorage.removeItem('user_id')
         sessionStorage.removeItem('access_token')
@@ -93,6 +93,14 @@ export class HeaderComponent implements OnInit {
 
   adminResidues(): void {
     this.router.navigateByUrl('residues');
+  }
+
+  persons(): void {
+    this.router.navigateByUrl('persons');
+  }
+
+  billing(): void {
+    this.router.navigateByUrl('billing');
   }
 
   profile(): void {

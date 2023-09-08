@@ -4,7 +4,7 @@
 </div>
 
 <div class="container-form" [@fadeInOut] >  
-    <h2>Add delegation</h2>
+    <h2>{{'delegationAdd' | translate}}</h2>
     <form
       *ngIf="delegationForm"
       [formGroup]="delegationForm"
@@ -14,21 +14,21 @@
 
         <section>
             <mat-form-field [style.width.px]=327>
-              <mat-label>Name</mat-label>
+              <mat-label>{{'name' | translate}}</mat-label>
               <input matInput type="text" [formControl]="name" />
-              <mat-error *ngIf="name.hasError('required')">Name <strong>is required</strong></mat-error>
-              <mat-error *ngIf="name.hasError('minlength')">Name must be greater than 3 characters</mat-error>
-              <mat-error *ngIf="name.hasError('maxlength')">Name must be less than 25 characters</mat-error>
+              <mat-error *ngIf="name.hasError('required')">{{'name' | translate}} <strong>is required</strong></mat-error>
+              <mat-error *ngIf="name.hasError('minlength')">{{'name' | translate}} must be greater than 3 characters</mat-error>
+              <mat-error *ngIf="name.hasError('maxlength')">{{'name' | translate}} must be less than 25 characters</mat-error>
             </mat-form-field>
         </section>
   
         <section>
           <mat-form-field [style.width.px]=327>
-            <mat-label>Address</mat-label>
+            <mat-label>{{'ubication' | translate}}</mat-label>
             <input matInput type="text" [formControl]="address" />
-            <mat-error *ngIf="address.hasError('required')">Address <strong>is required</strong></mat-error>
-            <mat-error *ngIf="address.hasError('minlength')">Address must be greater than 8 characters</mat-error>
-            <mat-error *ngIf="address.hasError('maxlength')">Address must be less than 25 characters</mat-error>
+            <mat-error *ngIf="address.hasError('required')">{{'ubication' | translate}} <strong>is required</strong></mat-error>
+            <mat-error *ngIf="address.hasError('minlength')">{{'ubication' | translate}} must be greater than 8 characters</mat-error>
+            <mat-error *ngIf="address.hasError('maxlength')">{{'ubication' | translate}} must be less than 25 characters</mat-error>
           </mat-form-field>
         </section>
 

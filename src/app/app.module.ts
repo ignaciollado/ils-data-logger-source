@@ -23,6 +23,8 @@ import { FormatDatePipe } from './Pipes/format-date.pipe';
 import { DashboardComponent } from './Components/dashboard/dashboard.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import { MatRadioModule } from "@angular/material/radio";
 import {MatTableModule} from '@angular/material/table';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import {MatCardModule} from '@angular/material/card';
@@ -55,6 +57,9 @@ import { ResidueListComponent } from './Components/residues/residue-list/residue
 import { ResidueAdminFormComponent } from './Components/residues/residue-admin-form/residue-admin-form.component';
 import { SelectLanguageComponent } from './select-language/select-language.component';
 import { ModalComponent } from './modal/modal.component';
+import { PersonsComponent } from './ratios/persons/persons.component';
+import { BillingComponent } from './ratios/billing/billing.component';
+import { RatiosContainerComponent } from './ratios/ratios-container/ratios-container.component';
 
 export function tokenGetter() {
   return sessionStorage.getItem("access_token");
@@ -88,6 +93,9 @@ export function tokenGetter() {
     ResidueAdminFormComponent,
     SelectLanguageComponent,
     ModalComponent,
+    PersonsComponent,
+    BillingComponent,
+    RatiosContainerComponent,
   ],
   imports: [
     BrowserModule,
@@ -121,7 +129,9 @@ export function tokenGetter() {
     MatTabsModule,
     MatMenuModule,
     MatSortModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatCheckboxModule,
+    MatRadioModule
   ],
   providers: [
     {

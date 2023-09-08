@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { DelegationDTO } from '../Models/delegation.dto';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { catchError } from 'rxjs/operators';
 import { SharedService } from './shared.service';
+import { MonthDTO } from '../Models/month.dto';
 
 @Injectable({
   providedIn: 'root'
@@ -15,8 +14,8 @@ export class MonthService {
       this.urlAPiMySql = '../../assets/phpAPI/'
     }
 
-  getAllMonths (companyId: string): Observable<DelegationDTO[]> {
+  getAllMonths (): Observable<MonthDTO[]> {
     return this.http
-      .get<DelegationDTO[]>(`${this.urlAPiMySql}delegationGetByCompany.php?companyId=${companyId}`)
+      .get<MonthDTO[]>(`${this.urlAPiMySql}monthGetAll.php`)
   }
 }

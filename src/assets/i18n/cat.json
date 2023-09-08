@@ -6,11 +6,15 @@
     "home": "Inici",
     "login": "Entrar",
     "logout": "Sortir",
+    "name": "Denominació",
+    "ubication": "Ubicació",
     "totalActivityReported": "Activitat total reportada",
 
     "companyName": "Nom de l'empresa",
+    "companyAddress": "Domicili",
 
-    "activityData": "Entrada de dades",
+    "activityData": "Dedes d'activitat ambientals (aspectes)",
+    "productionData": "Dades d'activitat de producció (ratios)",
     "aspects": "Aspectes",
     "energies": "Energies",
     "residues": "Residus",
@@ -18,6 +22,9 @@
     "companyActivityData": "Dades d'activitat de la meva empresa",
     "consumptionList": "Llistat de consums:",
     "delegation": "Emplaçament",
+    "delegationAdd": "Afegir emplaçament",
+    "delegationList": "Emplaçaments d'aquesta empresa",
+
     "aspect": "Aspecte",
     "energy": "Energía",
     "water": "Aigua",
@@ -44,23 +51,6 @@
     "Update": "Actualitzar",
     "Error": "Per favor, indiqui els detalls requerits.",
 
-    "quienesSomos": "Qui som",
-    "queOfrecemos": "Que oferim",
-    "queOfrecemosServiciosActivos": "Serveis actius",
-    "queOfrecemosHistorico": "Directori",
-    "agendaTitle": "Agenda",
-    "noHayPublicoObjetivo": "Disculpi les molèsties, de moment, no tenim projectes disponibles per a vostè!",
-    "ViewRelatedContents": "Veure contingut relacionat",
-
-    "Ayudas_Subv": "Ajuts i subvencions",
-    "Formacion": "Formació",
-    "Transparencia": "Transparència",
-    "Sede_Elect": "Seu electrònica",
-
-    "noticiasTitle": "Notícies",
-
-    "ExploraIDI": "Explora els nostres projectes",
-    "NoTeEncuentras": "No et trobes en aquest menú?",
     "Accesibilidad": "Accesibilitat",
     "AvisoLegal": "Avís legal",
     "Contacta": "Contacta",

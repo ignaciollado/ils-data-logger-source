@@ -20,6 +20,8 @@ import { AspectFormComponent } from './Components/aspects/aspect-form/aspect-for
 import { EnergyFormComponent } from './Components/energies/energy-form/energy-form.component';
 import { ResidueFormComponent } from './Components/posts/residue-form/residue-form.component';
 import { ResidueAdminFormComponent } from './Components/residues/residue-admin-form/residue-admin-form.component';
+import { PersonsComponent } from './ratios/persons/persons.component';
+import { BillingComponent } from './ratios/billing/billing.component';
 
 const routes: Routes = [
   {
@@ -65,6 +67,16 @@ const routes: Routes = [
   {
     path: 'user/consumption',
     component: PostFormComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'persons',
+    component: PersonsComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'billing',
+    component: BillingComponent,
     canActivate: [AuthGuard],
   },
   {

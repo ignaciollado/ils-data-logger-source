@@ -9,13 +9,13 @@
 
       <section>
         <mat-form-field [style.width.px]=327>
-          <mat-label>Delegation</mat-label>
+          <mat-label>{{'delegation' | translate}}</mat-label>
           <mat-select [formControl]="delegation">
             <mat-option *ngFor="let delegation of delegations" [value]="delegation.companyDelegationId">
               {{delegation.name}}
             </mat-option>
           </mat-select>
-          <mat-error *ngIf="delegation.hasError('required')">Delegation <strong>is required</strong></mat-error>
+          <mat-error *ngIf="delegation.hasError('required')">{{'delegation' | translate}} <strong>is required</strong></mat-error>
         </mat-form-field>
       </section>
 

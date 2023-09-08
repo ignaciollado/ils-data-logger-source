@@ -59,7 +59,7 @@ export class WaterFormComponent {
   consumptions!: ConsumptionDTO[];
 
   isGridView: boolean = false
-  columnsDisplayed = ['delegation', 'year', 'enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'setiembre', 'octubre', 'noviembre', 'diciembre', 'ACTIONS'];
+  columnsDisplayed = ['delegation', 'water', 'year', 'enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'setiembre', 'octubre', 'noviembre', 'diciembre', 'ACTIONS'];
 
   constructor(
     private activatedRoute: ActivatedRoute,

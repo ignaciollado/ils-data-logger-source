@@ -69,7 +69,7 @@
         <td mat-cell *matCellDef="let consumption">{{consumption.delegation}}</td>
       </ng-container>
       <ng-container matColumnDef="energy">
-        <th mat-header-cell *matHeaderCellDef>Energy type</th>
+        <th mat-header-cell *matHeaderCellDef>{{'energyType' | translate}}</th>
         <td mat-cell *matCellDef="let consumption">{{consumption.energyES}}</td>
       </ng-container>
       <ng-container matColumnDef="year">

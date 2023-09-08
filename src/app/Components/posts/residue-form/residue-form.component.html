@@ -7,7 +7,7 @@
 
         <mat-card [class.mat-elevation-z8]="isElevated">
         <section >
-          <mat-form-field [style.width.px]=200>
+          <mat-form-field [style.width.px]=360>
             <mat-label>{{'delegation' | translate}}</mat-label>
             <mat-select [formControl]="delegation">
               <mat-option *ngFor="let delegation of delegations" [value]="delegation.companyDelegationId">
@@ -16,8 +16,9 @@
             </mat-select>
             <mat-error *ngIf="delegation.hasError('required')">{{'delegation' | translate}} <strong>is required</strong></mat-error>
           </mat-form-field>
-
-          <mat-form-field [style.width.px]=200>
+        </section>
+        <section>
+          <mat-form-field [style.width.px]=360>
             <mat-label>Month and Year</mat-label>
             <input matInput [matDatepicker]="dp" [formControl]="fromDateResidue">
             <mat-hint>MM/YYYY</mat-hint>
@@ -30,8 +31,8 @@
           </mat-form-field>
         </section>
         
-          <section class="oneline-container background-color-container">            
-            <mat-form-field [style.width.px]=200>
+          <section>            
+            <mat-form-field [style.width.px]=360>
               <mat-label>Residue type</mat-label>
               <mat-select [formControl]="residue">
                 <mat-option *ngFor="let residue of residues" [value]="residue.residueId">
@@ -40,38 +41,37 @@
               </mat-select>
               <mat-error *ngIf="residue.hasError('required')">Residue <strong>is required</strong></mat-error>
             </mat-form-field>
-     
-           <mat-form-field [style.width.px]=200>
+          </section>
+          <section>
+            <mat-form-field [style.width.px]=360>
               <mat-label>Quantity (Kg)</mat-label>
               <input matInput type="number" [formControl]="quantityResidue" />
               <mat-error *ngIf="quantityResidue.hasError('required')">quantityResidue <strong>is required</strong></mat-error>
             </mat-form-field> 
-         </section>
-         <section>
-          <mat-label>Residue destination:</mat-label>
-        </section>
-        <section class="oneline-container background-color-container">
-            <mat-form-field [style.width.px]=200>
+          </section>
+          <section>
+            <mat-label>Residue destination:</mat-label>
+          </section>
+          <section >
+            <mat-form-field [style.width.px]=90>
               <mat-label>Reuse (%)</mat-label>
               <input matInput type="number" [formControl]="reuse" />
               <mat-error *ngIf="reuse.hasError('required')">reuse <strong>is required</strong></mat-error>
             </mat-form-field>
 
-            <mat-form-field [style.width.px]=200>
+            <mat-form-field [style.width.px]=90>
               <mat-label>Recycling (%)</mat-label>
               <input matInput type="number" [formControl]="recycling" />
               <mat-error *ngIf="recycling.hasError('required')">recycling <strong>is required</strong></mat-error>
             </mat-form-field>
-          </section> 
 
-          <section class="oneline-container background-color-container"> 
-            <mat-form-field [style.width.px]=200>
+            <mat-form-field [style.width.px]=90>
               <mat-label>Incineration (%)</mat-label>
               <input matInput type="number" [formControl]="incineration" />
               <mat-error *ngIf="incineration.hasError('required')">incineration <strong>is required</strong></mat-error>
             </mat-form-field>
 
-            <mat-form-field [style.width.px]=200>
+            <mat-form-field [style.width.px]=90>
               <mat-label>Dump (%)</mat-label>
               <input matInput type="number" [formControl]="dump" />
               <mat-error *ngIf="dump.hasError('required')">dump <strong>is required</strong></mat-error>
@@ -79,7 +79,7 @@
           </section> 
 
           <section class="background-color-container">
-            <mat-form-field [style.width.px]=200>
+            <mat-form-field [style.width.px]=115>
               <mat-label>Compost (%)</mat-label>
               <input matInput type="number" [formControl]="compost" />
               <mat-error *ngIf="compost.hasError('required')">compost <strong>is required</strong></mat-error>
@@ -100,13 +100,13 @@
   </ng-container>
 
   <ng-container matColumnDef="residue">
-    <th mat-header-cell *matHeaderCellDef>Residue type</th>
+    <th mat-header-cell *matHeaderCellDef>{{'residueType' | translate}}</th>
     <td mat-cell *matCellDef="let consumption">{{consumption.residueES}}</td>
   </ng-container>
   <ng-container matColumnDef="quantity">
     <th mat-header-cell *matHeaderCellDef>Quantity (Kg)</th>
     <td mat-cell *matCellDef="let consumption">{{consumption.quantity}}</td>
-  </ng-container>'', '', '',  '', ''
+  </ng-container>
   <ng-container matColumnDef="reuse">
     <th mat-header-cell *matHeaderCellDef>Reuse</th>
     <td mat-cell *matCellDef="let consumption">{{consumption.reuse}}</td>

@@ -13,9 +13,8 @@
     "companyName": "Nombre de la empresa",
     "companyAddress": "Domicilio",
 
-
-    "activityData": "Actividad ambiental (aspectos)",
-    "productionData": "Actividad de producción (ratios)",
+    "activityData": "Datos ambientales",
+    "productionData": "Datos de producción",
 
     "aspects": "Aspectos",
     "energies": "Energías",
@@ -30,9 +29,13 @@
     "aspect": "Aspecto",
     "energy": "Energía",
     "water": "Agua",
+    "energyType": "Tipo de energía",
+    "residueType": "Tipo de residuo",
     "residue": "Residuo",
     "emissions": "Emisiones",
     "quantity": "Cantidad",
+    "quantityCO2e": "Cantidad (T de CO2e)",
+    "year": "Año",
     "fromDate": "Desde",
     "toDate": "Hasta",
     "actions": "ACCIONES ",

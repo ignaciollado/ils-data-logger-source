@@ -50,37 +50,35 @@
             </mat-form-field> 
           </section>
           <section>
-            <mat-label>Residue destination:</mat-label>
+            <mat-label>Residue destination (%):</mat-label>
           </section>
           <section >
-            <mat-form-field [style.width.px]=90>
-              <mat-label>Reuse (%)</mat-label>
+            <mat-form-field [style.width.px]=70>
+              <mat-label>Reuse</mat-label>
               <input matInput type="number" [formControl]="reuse" />
               <mat-error *ngIf="reuse.hasError('required')">reuse <strong>is required</strong></mat-error>
             </mat-form-field>
 
-            <mat-form-field [style.width.px]=90>
-              <mat-label>Recycling (%)</mat-label>
+            <mat-form-field [style.width.px]=70>
+              <mat-label>Recycling</mat-label>
               <input matInput type="number" [formControl]="recycling" />
               <mat-error *ngIf="recycling.hasError('required')">recycling <strong>is required</strong></mat-error>
             </mat-form-field>
 
-            <mat-form-field [style.width.px]=90>
-              <mat-label>Incineration (%)</mat-label>
+            <mat-form-field [style.width.px]=70>
+              <mat-label>Incineration</mat-label>
               <input matInput type="number" [formControl]="incineration" />
               <mat-error *ngIf="incineration.hasError('required')">incineration <strong>is required</strong></mat-error>
             </mat-form-field>
 
-            <mat-form-field [style.width.px]=90>
-              <mat-label>Dump (%)</mat-label>
+            <mat-form-field [style.width.px]=70>
+              <mat-label>Dump</mat-label>
               <input matInput type="number" [formControl]="dump" />
               <mat-error *ngIf="dump.hasError('required')">dump <strong>is required</strong></mat-error>
             </mat-form-field>
-          </section> 
 
-          <section class="background-color-container">
-            <mat-form-field [style.width.px]=115>
-              <mat-label>Compost (%)</mat-label>
+            <mat-form-field [style.width.px]=70>
+              <mat-label>Compost</mat-label>
               <input matInput type="number" [formControl]="compost" />
               <mat-error *ngIf="compost.hasError('required')">compost <strong>is required</strong></mat-error>
             </mat-form-field>
@@ -98,53 +96,72 @@
     <th mat-header-cell *matHeaderCellDef>{{'delegation' | translate}}</th>
     <td mat-cell *matCellDef="let consumption">{{consumption.delegation}}</td>
   </ng-container>
-
   <ng-container matColumnDef="residue">
     <th mat-header-cell *matHeaderCellDef>{{'residueType' | translate}}</th>
     <td mat-cell *matCellDef="let consumption">{{consumption.residueES}}</td>
   </ng-container>
-  <ng-container matColumnDef="quantity">
-    <th mat-header-cell *matHeaderCellDef>Quantity (Kg)</th>
-    <td mat-cell *matCellDef="let consumption">{{consumption.quantity}}</td>
+  <ng-container matColumnDef="year">
+    <th mat-header-cell *matHeaderCellDef>Year</th>
+    <td mat-cell *matCellDef="let consumption">{{consumption.year}}</td>
   </ng-container>
-  <ng-container matColumnDef="reuse">
-    <th mat-header-cell *matHeaderCellDef>Reuse</th>
-    <td mat-cell *matCellDef="let consumption">{{consumption.reuse}}</td>
+  <ng-container matColumnDef="enero">
+    <th mat-header-cell *matHeaderCellDef>Enero</th>
+    <td mat-cell *matCellDef="let consumption" matTooltip={{consumption.quantity}}>{{ consumption.quantity }}</td>
   </ng-container>
-  <ng-container matColumnDef="recycling">
-    <th mat-header-cell *matHeaderCellDef>Recycling</th>
-    <td mat-cell *matCellDef="let consumption">{{consumption.recycling}}</td>
+  <ng-container matColumnDef="febrero">
+    <th mat-header-cell *matHeaderCellDef>Febrero</th>
+    <td mat-cell *matCellDef="let consumption" matTooltip={{consumption.quantity}}>{{consumption.quantity }}</td>
   </ng-container>
-  <ng-container matColumnDef="incineration">
-    <th mat-header-cell *matHeaderCellDef>Incineration</th>
-    <td mat-cell *matCellDef="let consumption">{{consumption.incineration}}</td>
+  <ng-container matColumnDef="marzo">
+    <th mat-header-cell *matHeaderCellDef>Marzo</th>
+    <td mat-cell *matCellDef="let consumption" matTooltip={{consumption.quantity}}>{{ consumption.quantity }}</td>
   </ng-container>
-  <ng-container matColumnDef="dump">
-    <th mat-header-cell *matHeaderCellDef>Dump</th>
-    <td mat-cell *matCellDef="let consumption">{{consumption.dump}}</td>
+  <ng-container matColumnDef="abril">
+    <th mat-header-cell *matHeaderCellDef>Abril</th>
+    <td mat-cell *matCellDef="let consumption" matTooltip={{consumption.quantity}}>{{consumption.quantity }}</td>
   </ng-container>
-  <ng-container matColumnDef="compost">
-    <th mat-header-cell *matHeaderCellDef>Compost</th>
-    <td mat-cell *matCellDef="let consumption">{{consumption.compost}}</td>
+  <ng-container matColumnDef="mayo">
+    <th mat-header-cell *matHeaderCellDef>Mayo</th>
+    <td mat-cell *matCellDef="let consumption" matTooltip={{consumption.quantity}}>{{ consumption.quantity }}</td>
   </ng-container>
-  <ng-container matColumnDef="fromDate">
-    <th mat-header-cell *matHeaderCellDef>FROM</th>
-    <td mat-cell *matCellDef="let consumption" matTooltip={{consumption.fromDate}}>{{ consumption.fromDate | formatDate: 3 }}</td>
+  <ng-container matColumnDef="junio">
+    <th mat-header-cell *matHeaderCellDef>Junio</th>
+    <td mat-cell *matCellDef="let consumption" matTooltip={{consumption.quantity}}>{{consumption.quantity }}</td>
   </ng-container>
-  <ng-container matColumnDef="toDate">
-    <th mat-header-cell *matHeaderCellDef>TO</th>
-    <td mat-cell *matCellDef="let consumption" matTooltip={{consumption.toDate}}>{{consumption.toDate | formatDate: 3}}</td>
+  <ng-container matColumnDef="julio">
+    <th mat-header-cell *matHeaderCellDef>Julio</th>
+    <td mat-cell *matCellDef="let consumption" matTooltip={{consumption.quantity}}>{{ consumption.quantity }}</td>
+  </ng-container>
+  <ng-container matColumnDef="agosto">
+    <th mat-header-cell *matHeaderCellDef>Agosto</th>
+    <td mat-cell *matCellDef="let consumption" matTooltip={{consumption.quantity}}>{{consumption.quantity }}</td>
+  </ng-container>
+  <ng-container matColumnDef="setiembre">
+    <th mat-header-cell *matHeaderCellDef>Setiembre</th>
+    <td mat-cell *matCellDef="let consumption" matTooltip={{consumption.quantity}}>{{ consumption.quantity }}</td>
+  </ng-container>
+  <ng-container matColumnDef="octubre">
+    <th mat-header-cell *matHeaderCellDef>Octubre</th>
+    <td mat-cell *matCellDef="let consumption" matTooltip={{consumption.quantity}}>{{consumption.quantity }}</td>
+  </ng-container>
+  <ng-container matColumnDef="noviembre">
+    <th mat-header-cell *matHeaderCellDef>Noviembre</th>
+    <td mat-cell *matCellDef="let consumption" matTooltip={{consumption.quantity}}>{{ consumption.quantity }}</td>
+  </ng-container>
+  <ng-container matColumnDef="diciembre">
+    <th mat-header-cell *matHeaderCellDef>Diciembre</th>
+    <td mat-cell *matCellDef="let consumption" matTooltip={{consumption.quantity}}>{{consumption.quantity }}</td>
   </ng-container>
 
   <ng-container matColumnDef="ACTIONS">
     <th mat-header-cell *matHeaderCellDef> ACTIONS</th>
     <td mat-cell *matCellDef="let consumption">
-   <!--    <button mat-icon-button color="accent" matTooltip="Update this indicator"
-      aria-label="Button that displays a tooltip and updates this indicator" (click)="updatePost(consumption.consumptionId)">
-        <mat-icon>edit</mat-icon>
-      </button> -->
+      <button mat-icon-button color="accent" matTooltip="View detail of this indicator"
+      aria-label="Button that displays a tooltip and shows this indicator" (click)="saveResidueForm()">
+        <mat-icon>Detail</mat-icon>
+      </button>
       <button mat-icon-button color="warn" matTooltip="Permanently delete this indicator"
-      aria-label="Button that displays a tooltip and permanently deletes this indicator" (click)="deleteResidueConsumption(consumption.consumptionId)">
+      aria-label="Button that displays a tooltip and permanently deletes this indicator" (click)="deleteResidue(consumption.consumptionId)">
         <mat-icon>delete</mat-icon>
       </button>
     </td>

@@ -29,6 +29,14 @@
   animation: fadein 0.5s, fadeout 0.5s 2.5s;
 }
 
+.example-month-picker .mat-calendar-period-button {
+  pointer-events: none;
+}
+
+.example-month-picker .mat-calendar-arrow {
+  display: none;
+}
+
 @-webkit-keyframes fadein {
   from {
     bottom: 0;

@@ -80,7 +80,7 @@ export class ResidueFormComponent {
   consumptions!: ConsumptionDTO[];
 
   isGridView: boolean = false
-  columnsDisplayed = ['delegation', 'residue', 'quantity', 'reuse', 'recycling', 'incineration',  'dump', 'compost', 'fromDate', 'toDate', 'ACTIONS'];
+  columnsDisplayed = ['delegation', 'residue', 'year', 'enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'setiembre', 'octubre', 'noviembre', 'diciembre', 'ACTIONS'];
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -108,11 +108,11 @@ export class ResidueFormComponent {
     this.validRequest = false;
     this.delegation = new UntypedFormControl('', [ Validators.required ]);
     this.residue = new UntypedFormControl('', [ Validators.required ]);
-    this.reuse = new UntypedFormControl('', [ Validators.required, Validators.min(0), Validators.max(100) ]);
-    this.recycling = new UntypedFormControl('', [ Validators.required, Validators.min(0), Validators.max(100) ]);
-    this.incineration = new UntypedFormControl('', [ Validators.required, Validators.min(0), Validators.max(100) ]);
-    this.dump = new UntypedFormControl('', [ Validators.required, Validators.min(0), Validators.max(100) ]);
-    this.compost = new UntypedFormControl('', [ Validators.required, Validators.min(0), Validators.max(100) ]);
+    this.reuse = new UntypedFormControl('', [ Validators.min(0), Validators.max(100) ]);
+    this.recycling = new UntypedFormControl('', [ Validators.min(0), Validators.max(100) ]);
+    this.incineration = new UntypedFormControl('', [ Validators.min(0), Validators.max(100) ]);
+    this.dump = new UntypedFormControl('', [ Validators.min(0), Validators.max(100) ]);
+    this.compost = new UntypedFormControl('', [ Validators.min(0), Validators.max(100) ]);
     this.numberOfPersons = new UntypedFormControl('', [ Validators.required, Validators.min(1) ]);
     this.monthlyBilling = new UntypedFormControl('', [ Validators.required, Validators.min(1) ]);
     this.quantityResidue = new UntypedFormControl('', [ Validators.required, Validators.min(0) ]);
@@ -250,11 +250,11 @@ export class ResidueFormComponent {
     }
   }
 
-  private editPost(): void {
+  private editResidue(): void {
 
   }
 
-  deleteResidueConsumption(consumptionId: number): void {
+  deleteResidue(consumptionId: number): void {
 
     let errorResponse: any;
     let result = confirm('Confirm delete this consumption with id: ' + consumptionId + ' .');
@@ -274,7 +274,9 @@ export class ResidueFormComponent {
     }
   }
 
+
   saveResidueForm(): void {
+
     this.isValidForm = false;
     if (this.residueForm.invalid) {
       return;
@@ -284,7 +286,7 @@ export class ResidueFormComponent {
     this.consumption = this.residueForm.value;
 
     if (this.isUpdateMode) {
-      this.editPost();
+      this.editResidue();
     } else {
       this.createResidueConsumption();
     }

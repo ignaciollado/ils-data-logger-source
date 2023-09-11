@@ -9,6 +9,7 @@
     "name": "Denominació",
     "ubication": "Ubicació",
     "totalActivityReported": "Activitat total reportada",
+    "sustainabilityIndicatorsCharts": "Gràfiques d'indicadors",
 
     "companyName": "Nom de l'empresa",
     "companyAddress": "Domicili",
@@ -28,7 +29,7 @@
     "aspect": "Aspecte",
     "energy": "Energía",
     "water": "Aigua",
-    "energyType": "Tipus d'energia",
+    "energyType": "Consum de",
     "residueType": "Tipus de residu",
     "residue": "Residu",
     "emissions": "Emissions",

@@ -1,7 +1,8 @@
 import { formatDate } from '@angular/common';
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, OnInit, ViewEncapsulation } from '@angular/core';
 import {
+  FormControl,
   UntypedFormBuilder,
   UntypedFormControl,
   UntypedFormGroup,
@@ -24,8 +25,9 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
 import { DelegationService } from 'src/app/Services/delegation.service';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { HeaderMenusService } from 'src/app/Services/header-menus.service';
-import { Moment } from 'moment';
 import { MatDatepicker } from '@angular/material/datepicker';
+
+
 
 export const MY_FORMATS = {
   parse: {
@@ -43,6 +45,7 @@ export const MY_FORMATS = {
   selector: 'app-post-form',
   templateUrl: './post-form.component.html',
   styleUrls: ['./post-form.component.scss'],
+  encapsulation: ViewEncapsulation.None,
   animations: [
     trigger( 'fadeInOut',[
       state(
@@ -62,6 +65,7 @@ export class PostFormComponent implements OnInit {
   delegation: UntypedFormControl
   fromDate: UntypedFormControl
   toDate: UntypedFormControl
+  monthYearDate: FormControl
   month: UntypedFormControl
   energy: UntypedFormControl
   numberOfPersons: UntypedFormControl
@@ -145,6 +149,7 @@ export class PostFormComponent implements OnInit {
     this.delegation = new UntypedFormControl('', [ Validators.required ]);
     this.fromDate = new UntypedFormControl('', [ Validators.required ]);
     this.toDate = new UntypedFormControl('', [ Validators.required ]);
+    this.monthYearDate = new FormControl('', [ Validators.required ]);
     this.month = new UntypedFormControl('', [ Validators.required ]);
 
     this.energy = new UntypedFormControl('', [ Validators.required ]);
@@ -157,7 +162,7 @@ export class PostFormComponent implements OnInit {
       delegation: this.delegation,
       fromDate: this.fromDate,
       toDate: this.toDate,
-      month: this.month,
+      monthYearDate: this.monthYearDate,
       energy: this.energy,
       numberOfPersons: this.numberOfPersons,
       monthlyBilling: this.monthlyBilling,
@@ -185,6 +190,7 @@ export class PostFormComponent implements OnInit {
 
           this.fromDate.setValue(formatDate(this.consumptionFields[4], 'yyyy-MM-dd', 'en'))
           this.toDate.setValue(formatDate(this.consumptionFields[5], 'yyyy-MM-dd', 'en'))
+
           this.energy.setValue(this.consumptionFields[3])
           this.quantity.setValue(this.consumptionFields[2])
           this.companyId.setValue(this.consumptionFields[1])
@@ -285,6 +291,7 @@ export class PostFormComponent implements OnInit {
       }
     }
   }
+
   /* ASPECT ENERGY */
   private createEnergyConsumption(): void {
     let errorResponse: any;
@@ -319,6 +326,7 @@ export class PostFormComponent implements OnInit {
         );
     }
   }
+
   deleteEnergyConsumption(consumptionId: number): void {
     let errorResponse: any;
 
@@ -357,12 +365,13 @@ export class PostFormComponent implements OnInit {
 
   }
 
-  setMonthAndYear(normalizedMonthAndYear: Moment, datepicker: MatDatepicker<Moment>) {
-    const ctrlValue = this.fromDate.value!;
-    ctrlValue.month(normalizedMonthAndYear.month());
-    ctrlValue.year(normalizedMonthAndYear.year());
-    this.fromDate.setValue(ctrlValue);
-    datepicker.close();
+  setMonthAndYear(normalizedMonthAndYear: Date, datepicker: MatDatepicker<Date>) {
+
+    const ctrlValue = this.monthYearDate.value!
+/*     ctrlValue.month(normalizedMonthAndYear.getMonth()+1)
+    ctrlValue.year(normalizedMonthAndYear.getFullYear()) */
+    this.monthYearDate.setValue( (normalizedMonthAndYear.getMonth()+1)+"/"+ normalizedMonthAndYear.getFullYear())
+    datepicker.close()
   }
 
 }

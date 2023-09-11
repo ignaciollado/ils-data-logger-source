@@ -23,7 +23,7 @@
 
 <div *ngIf="showAuthSection">
   <mat-menu #menu="matMenu">
-    <button mat-menu-item (click)="dashboard()"><mat-icon>chart</mat-icon><span>ILS Graphboard</span></button>
+    <button mat-menu-item (click)="dashboard()"><mat-icon>chart</mat-icon><span>{{'sustainabilityIndicatorsCharts' | translate}}</span></button>
     <button mat-menu-item (click)="home()"><mat-icon>home</mat-icon><span>{{'home' | translate}}</span></button>
     <button mat-menu-item (click)="adminConsumptions()"><mat-icon>input</mat-icon><span>{{'activityData' | translate}}</span></button>
     <button mat-button (click)="adminRatios()">{{'productionData' | translate}}</button>
@@ -44,7 +44,7 @@
       <mat-icon>menu</mat-icon>
     </button>
     <span [ngClass]="'not-has-to-be-shown'">ILS-data logger</span>
-    <button mat-button (click)="dashboard()" [ngClass]="'has-to-be-shown'">ILS Graphboard</button>
+    <button mat-button (click)="dashboard()" [ngClass]="'has-to-be-shown'">{{'sustainabilityIndicatorsCharts' | translate}}</button>
     <button mat-button (click)="adminConsumptions()" [ngClass]="'has-to-be-shown'">{{'activityData' | translate}}</button>
     <button mat-button (click)="adminRatios()">{{'productionData' | translate}}</button>
     <!--     <mat-menu #ratios="matMenu">

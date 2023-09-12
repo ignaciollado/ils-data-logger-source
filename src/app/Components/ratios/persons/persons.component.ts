@@ -141,7 +141,7 @@ export class PersonsComponent {
 
   private loadConsumption(): void {
     let errorResponse: any;
-    const userId = this.localStorageService.get('user_id');
+    const userId = this.jwtHelper.decodeToken().id_ils;
     if (userId) {
 
         this.consumptionService.getAllConsumptionsByCompanyAndAspect(userId, 2).subscribe(

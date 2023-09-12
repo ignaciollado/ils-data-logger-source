@@ -14,7 +14,7 @@
               {{delegation.name}}
             </mat-option>
           </mat-select>
-          <mat-error *ngIf="delegation.hasError('required')">{{'delegation' | translate}}<strong>is required</strong></mat-error>
+          <mat-error *ngIf="delegation.hasError('required')">{{'delegation' | translate}}<strong>{{'isRequired' | translate}}</strong></mat-error>
         </mat-form-field>
       </section>
 
@@ -32,14 +32,15 @@
                           (monthSelected)="setMonthAndYear($event, dp)"
                           >
           </mat-datepicker>
+          <mat-error *ngIf="monthYearDate.hasError('required')">{{'monthAndYear' | translate}} <strong>{{'isRequired' | translate}}</strong></mat-error> 
         </mat-form-field>
       </section>
 
       <section>
         <mat-form-field [style.width.px]=327>
-          <mat-label>Quantity (Litres)</mat-label>
+          <mat-label>{{'quantity' | translate}} (L)</mat-label>
           <input matInput type="number" [formControl]="quantityWater" />
-          <mat-error *ngIf="quantityWater.hasError('required')">Quantity <strong>is required</strong></mat-error>
+          <mat-error *ngIf="quantityWater.hasError('required')">{{'quantity' | translate}} <strong>{{'isRequired' | translate}}</strong></mat-error>
         </mat-form-field>
       </section>
       <button mat-raised-button color="primary" type="submit" [disabled]="!waterForm.valid">ADD</button>

@@ -49,7 +49,7 @@ export class EmissionFormComponent {
   consumptions!: ConsumptionDTO[];
 
   isGridView: boolean = false
-  columnsDisplayed = ['delegation', 'quantity', 'scopeone', 'scopetwo', 'fromDate', 'toDate', 'ACTIONS'];
+  columnsDisplayed = ['delegation', 'year', 'quantity', 'scopeone', 'scopetwo', 'ACTIONS'];
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -111,7 +111,7 @@ export class EmissionFormComponent {
 
   private loadConsumption(): void {
     let errorResponse: any;
-    const userId = this.localStorageService.get('user_id');
+    const userId = this.jwtHelper.decodeToken().id_ils;
     if (userId) {
 
         this.consumptionService.getAllConsumptionsByCompanyAndAspect(userId, 5).subscribe(

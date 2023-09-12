@@ -36,10 +36,23 @@
 
     "residueType": "Tipus de residu",
     "residue": "Residu",
+    "residueConsumption": "Generació de residus",
+    "residueDestination": "Destinació del residu (%)",
+    "reuse": "Reutilització",
+    "recycling": "Reciclatge",
+    "incineration": "Incineració",
+    "dump": "Abocador",
+    "compost": "Compostatge",
+
     "emissions": "Emissions",
+    "emissionConsumption": "Emissions de CO2e (T)",
+
+    "scopeOne": "Abast un",
+    "scopeTwo": "Abast dos",
     "quantity": "Quantitat",
     "quantityCO2e": "Quantitat (T de CO2e)",
     "year": "Any",
+
     "fromDate": "Des de",
     "toDate": "Fins a",
     "monthAndYear": "Mes i any",

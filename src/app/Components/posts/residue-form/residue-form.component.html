@@ -1,5 +1,5 @@
 <div class="container-form">
-      <h1>Residue consumption</h1>
+      <h1>{{'residueConsumption' | translate}}</h1>
       <form
         *ngIf="residueForm"
         [formGroup]="residueForm"
@@ -7,19 +7,19 @@
 
         <mat-card [class.mat-elevation-z8]="isElevated">
         <section >
-          <mat-form-field [style.width.px]=360>
+          <mat-form-field [style.width.px]=425>
             <mat-label>{{'delegation' | translate}}</mat-label>
             <mat-select [formControl]="delegation">
               <mat-option *ngFor="let delegation of delegations" [value]="delegation.companyDelegationId">
                 {{delegation.name}}
               </mat-option>
             </mat-select>
-            <mat-error *ngIf="delegation.hasError('required')">{{'delegation' | translate}} <strong>is required</strong></mat-error>
+            <mat-error *ngIf="delegation.hasError('required')">{{'delegation' | translate}} <strong>{{'isRequired' | translate}}</strong></mat-error>
           </mat-form-field>
         </section>
 
       <section>
-        <mat-form-field appearance="fill" [style.width.px]=360>
+        <mat-form-field appearance="fill" [style.width.px]=425>
           <mat-label>{{'monthAndYear' | translate}}</mat-label>
           <input matInput maxlength="7" minlength="7"
               [matDatepicker]="dp" 
@@ -32,63 +32,64 @@
                           (monthSelected)="setMonthAndYear($event, dp)"
                           >
           </mat-datepicker>
+          <mat-error *ngIf="monthYearDate.hasError('required')">{{'monthAndYear' | translate}} <strong>{{'isRequired' | translate}}</strong></mat-error>
         </mat-form-field>
       </section>
         
           <section>            
-            <mat-form-field [style.width.px]=360>
-              <mat-label>Residue type</mat-label>
+            <mat-form-field [style.width.px]=425>
+              <mat-label>{{'residueType' | translate}}</mat-label>
               <mat-select [formControl]="residue">
                 <mat-option *ngFor="let residue of residues" [value]="residue.residueId">
                   {{residue.nameES}}
                 </mat-option>
               </mat-select>
-              <mat-error *ngIf="residue.hasError('required')">Residue <strong>is required</strong></mat-error>
+              <mat-error *ngIf="residue.hasError('required')">{{'residueType' | translate}} <strong>{{'isRequired' | translate}}</strong></mat-error>
             </mat-form-field>
           </section>
 
           <section>
-            <mat-form-field [style.width.px]=360>
-              <mat-label>Quantity (Kg)</mat-label>
+            <mat-form-field [style.width.px]=425>
+              <mat-label>{{'quantity' | translate}} (Kg)</mat-label>
               <input matInput type="number" [formControl]="quantityResidue" />
-              <mat-error *ngIf="quantityResidue.hasError('required')">quantityResidue <strong>is required</strong></mat-error>
+              <mat-error *ngIf="quantityResidue.hasError('required')">{{'quantity' | translate}} <strong>{{'isRequired' | translate}}</strong></mat-error>
             </mat-form-field> 
           </section>
 
           <section>
-            <mat-label>Residue destination (%):</mat-label>
+            <mat-label>{{'residueDestination' | translate}}</mat-label>
           </section>
 
           <section >
 
-            <mat-form-field [style.width.px]=70>
-              <mat-label>Reuse</mat-label>
+            <mat-form-field [style.width.px]=85>
+              <mat-label class="smallLabel">{{'reuse' | translate}}</mat-label>
               <input matInput type="number" [formControl]="reuse" />
-              <mat-error *ngIf="reuse.hasError('required')">reuse <strong>is required</strong></mat-error>
+              <mat-error *ngIf="reuse.hasError('required')">{{'reuse' | translate}} <strong>is required</strong></mat-error>
             </mat-form-field>
 
-            <mat-form-field [style.width.px]=70>
-              <mat-label>Recycling</mat-label>
+            <mat-form-field [style.width.px]=85>
+              <mat-label class="smallLabel">{{'recycling' | translate}}</mat-label>
               <input matInput type="number" [formControl]="recycling" />
-              <mat-error *ngIf="recycling.hasError('required')">recycling <strong>is required</strong></mat-error>
+              <mat-error *ngIf="recycling.hasError('required')">{{'recycling' | translate}} <strong>is required</strong></mat-error>
             </mat-form-field>
 
-            <mat-form-field [style.width.px]=70>
-              <mat-label>Incineration</mat-label>
+            <mat-form-field [style.width.px]=85>
+              <mat-label class="smallLabel">{{'incineration' | translate}}</mat-label>
               <input matInput type="number" [formControl]="incineration" />
-              <mat-error *ngIf="incineration.hasError('required')">incineration <strong>is required</strong></mat-error>
+              <mat-error *ngIf="incineration.hasError('required')">{{'incineration' | translate}} <strong>is required</strong></mat-error>
             </mat-form-field>
 
-            <mat-form-field [style.width.px]=70>
-              <mat-label>Dump</mat-label>
+            <mat-form-field [style.width.px]=85>
+              <mat-label class="smallLabel">{{'dump' | translate}}</mat-label>
               <input matInput type="number" [formControl]="dump" />
-              <mat-error *ngIf="dump.hasError('required')">dump <strong>is required</strong></mat-error>
+              <mat-error *ngIf="dump.hasError('required')">{{'dump' | translate}} <strong>is required</strong></mat-error>
             </mat-form-field>
 
-            <mat-form-field [style.width.px]=70>
-              <mat-label>Compost</mat-label>
+            <mat-form-field [style.width.px]=85>
+              <mat-label class="smallLabel">{{'compost' | translate}}</mat-label>
               <input matInput type="number" [formControl]="compost" />
-              <mat-error *ngIf="compost.hasError('required')">compost <strong>is required</strong></mat-error>
+              <mat-error *ngIf="compost.hasError('required')">{{'compost' | translate}} <strong>is required</strong></mat-error>
             </mat-form-field>
 
           </section>

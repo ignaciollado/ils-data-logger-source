@@ -165,7 +165,7 @@ export class ResidueFormComponent {
 
   private loadConsumption(): void {
     let errorResponse: any;
-    const userId = this.localStorageService.get('user_id');
+    const userId = this.jwtHelper.decodeToken().id_ils;
     if (userId) {
 
         this.consumptionService.getAllConsumptionsByCompanyAndAspect(userId, 3).subscribe(

@@ -1,5 +1,5 @@
 <div class="container-form">
-  <h1>CO2 e emission</h1>
+  <h1>{{'emissionConsumption' | translate}}</h1>
   <form
     *ngIf="emissionForm"
     [formGroup]="emissionForm"
@@ -14,13 +14,13 @@
               {{delegation.name}}
             </mat-option>
           </mat-select>
-          <mat-error *ngIf="delegation.hasError('required')">{{'delegation' | translate}} <strong>is required</strong></mat-error>
+          <mat-error *ngIf="delegation.hasError('required')">{{'delegation' | translate}} <strong>{{'isRequired' | translate}}</strong></mat-error>
         </mat-form-field>
       </section>
 
       <section>
         <mat-form-field [style.width.px]=327>
-          <mat-label>Year</mat-label>
+          <mat-label>{{'year' | translate}}</mat-label>
           <mat-select [formControl]="yearEmission">
             <mat-option value="2020">2020</mat-option>
             <mat-option value="2021">2021</mat-option>
@@ -29,6 +29,7 @@
             <mat-option value="2024">2024</mat-option>
             <mat-option value="2025">2025</mat-option>
           </mat-select>
+          <mat-error *ngIf="yearEmission.hasError('required')">{{'year' | translate}} <strong>{{'isRequired' | translate}}</strong></mat-error>
         </mat-form-field>
       </section>
 
@@ -36,24 +37,23 @@
         <mat-form-field [style.width.px]=327>
           <mat-label>{{'quantityCO2e' | translate}}</mat-label>
           <input matInput type="number" [formControl]="quantityEmission" />
-          <mat-error *ngIf="quantityEmission.hasError('required')">Quantity <strong>is required</strong></mat-error>
+          <mat-error *ngIf="quantityEmission.hasError('required')">{{'quantity' | translate}} <strong>{{'isRequired' | translate}}</strong></mat-error>
         </mat-form-field>
       </section>
 
-      <mat-label>Scope</mat-label>
       <section>
         <mat-form-field [style.width.px]=327>
-          <mat-label>One</mat-label>
+          <mat-label>{{"scopeOne" | translate}}</mat-label>
           <input matInput type="number" [formControl]="scopeone" />
-          <mat-error *ngIf="scopeone.hasError('required')">Scope <strong>is required</strong></mat-error>
+          <mat-error *ngIf="scopeone.hasError('required')">{{"scopeOne" | translate}} <strong>{{'isRequired' | translate}}</strong></mat-error>
         </mat-form-field>
       </section>
 
       <section>
         <mat-form-field [style.width.px]=327>
-          <mat-label>Two</mat-label>
+          <mat-label>{{"scopeTwo" | translate}}</mat-label>
           <input matInput type="number" [formControl]="scopetwo" />
-          <mat-error *ngIf="scopetwo.hasError('required')">quantity <strong>is required</strong></mat-error>
+          <mat-error *ngIf="scopetwo.hasError('required')">{{'scopeTwo' | translate}} <strong>{{'isRequired' | translate}}</strong></mat-error>
         </mat-form-field>
       </section>
 
@@ -69,25 +69,23 @@
     <th mat-header-cell *matHeaderCellDef>{{'delegation' | translate}}</th>
     <td mat-cell *matCellDef="let consumption">{{consumption.delegation}}</td>
   </ng-container>
+
+  <ng-container matColumnDef="year">
+    <th mat-header-cell *matHeaderCellDef>{{'year' | translate}}</th>
+    <td mat-cell *matCellDef="let consumption">{{consumption.year}}</td>
+  </ng-container>
+  
   <ng-container matColumnDef="quantity">
     <th mat-header-cell *matHeaderCellDef>{{'quantityCO2e' | translate}}</th>
     <td mat-cell *matCellDef="let consumption">{{consumption.quantity}}</td>
   </ng-container>
   <ng-container matColumnDef="scopeone">
-    <th mat-header-cell *matHeaderCellDef>Scope one</th>
+    <th mat-header-cell *matHeaderCellDef>{{'scopeOne' | translate}}</th>
     <td mat-cell *matCellDef="let consumption">{{consumption.scopeOne}}</td>
   </ng-container>
   <ng-container matColumnDef="scopetwo">
-    <th mat-header-cell *matHeaderCellDef>Scope two</th>
+    <th mat-header-cell *matHeaderCellDef>{{'scopeTwo' | translate}}</th>
     <td mat-cell *matCellDef="let consumption">{{consumption.scopeTwo}}</td>
-  </ng-container>
-  <ng-container matColumnDef="fromDate">
-    <th mat-header-cell *matHeaderCellDef>FROM</th>
-    <td mat-cell *matCellDef="let consumption" matTooltip={{consumption.fromDate}}>{{ consumption.fromDate | formatDate: 3 }}</td>
-  </ng-container>
-  <ng-container matColumnDef="toDate">
-    <th mat-header-cell *matHeaderCellDef>TO</th>
-    <td mat-cell *matCellDef="let consumption" matTooltip={{consumption.toDate}}>{{consumption.toDate | formatDate: 3}}</td>
   </ng-container>
 
   <ng-container matColumnDef="ACTIONS">

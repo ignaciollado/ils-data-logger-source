@@ -1,5 +1,10 @@
 @use '../../../../base';
 
+
+.smallLabel {
+    font-size: .7rem;
+}
+
 @media only screen and (max-width: base.$app-break-point) {
     
     .denominacion::before, .denominacio::before {

@@ -38,7 +38,6 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import {MAT_DATE_LOCALE, MatNativeDateModule} from '@angular/material/core';
-import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatPaginator, MatPaginatorModule} from '@angular/material/paginator';
@@ -55,11 +54,14 @@ import { EnergyFormComponent } from './Components/energies/energy-form/energy-fo
 import { EnergyListComponent } from './Components/energies/energy-list/energy-list.component';
 import { ResidueListComponent } from './Components/residues/residue-list/residue-list.component';
 import { ResidueAdminFormComponent } from './Components/residues/residue-admin-form/residue-admin-form.component';
-import { SelectLanguageComponent } from './select-language/select-language.component';
-import { ModalComponent } from './modal/modal.component';
-import { PersonsComponent } from './ratios/persons/persons.component';
-import { BillingComponent } from './ratios/billing/billing.component';
-import { RatiosContainerComponent } from './ratios/ratios-container/ratios-container.component';
+import { SelectLanguageComponent } from './Components/select-language/select-language.component';
+import { ModalComponent } from './Components/modal/modal.component';
+import { PersonsComponent } from './Components/ratios/persons/persons.component';
+import { BillingComponent } from './Components/ratios/billing/billing.component';
+import { RatiosContainerComponent } from './Components/ratios/ratios-container/ratios-container.component';
+import { MatDatepickerModule } from "@angular/material/datepicker";
+import { MatMomentDateModule } from "@angular/material-moment-adapter";
+import { DatePickerFormatDirective } from './Components/shared/date-picker-format-directive/date-picker-format-directive';
 
 export function tokenGetter() {
   return sessionStorage.getItem("access_token");
@@ -96,6 +98,8 @@ export function tokenGetter() {
     PersonsComponent,
     BillingComponent,
     RatiosContainerComponent,
+    DatePickerFormatDirective,
+    /* CustomDateFormat, */
   ],
   imports: [
     BrowserModule,
@@ -126,6 +130,7 @@ export function tokenGetter() {
     MatButtonModule,
     MatNativeDateModule,
     MatDatepickerModule,
+    MatMomentDateModule,
     MatTabsModule,
     MatMenuModule,
     MatSortModule,

@@ -20,9 +20,9 @@ import { AspectFormComponent } from './Components/aspects/aspect-form/aspect-for
 import { EnergyFormComponent } from './Components/energies/energy-form/energy-form.component';
 import { ResidueFormComponent } from './Components/posts/residue-form/residue-form.component';
 import { ResidueAdminFormComponent } from './Components/residues/residue-admin-form/residue-admin-form.component';
-import { PersonsComponent } from './ratios/persons/persons.component';
-import { BillingComponent } from './ratios/billing/billing.component';
-import { RatiosContainerComponent } from './ratios/ratios-container/ratios-container.component';
+import { PersonsComponent } from './Components/ratios/persons/persons.component';
+import { BillingComponent } from './Components/ratios/billing/billing.component';
+import { RatiosContainerComponent } from './Components/ratios/ratios-container/ratios-container.component';
 
 const routes: Routes = [
   {

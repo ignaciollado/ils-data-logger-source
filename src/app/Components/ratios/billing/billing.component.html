@@ -20,15 +20,18 @@
           </section>
         
           <section>
-            <mat-form-field [style.width.px]=327>
-              <mat-label>Month and Year</mat-label>
-              <input matInput [matDatepicker]="dp" [formControl]="fromDate">
+            <mat-form-field appearance="fill" [style.width.px]=327>
+              <mat-label>{{'monthAndYear' | translate}}</mat-label>
+              <input matInput maxlength="7" minlength="7"
+                  [matDatepicker]="dp" 
+                  datePickerFormat="MM/YYYY"
+                  [formControl]="monthYearDate">
               <mat-hint>MM/YYYY</mat-hint>
-              <mat-datepicker-toggle matIconSuffix [for]="dp"></mat-datepicker-toggle>
+             <!--  <mat-datepicker-toggle matIconSuffix [for]="dp"></mat-datepicker-toggle> -->
               <mat-datepicker #dp
                               startView="multi-year"
                               (monthSelected)="setMonthAndYear($event, dp)"
-                              panelClass="example-month-picker">
+                              >
               </mat-datepicker>
             </mat-form-field>
           </section>

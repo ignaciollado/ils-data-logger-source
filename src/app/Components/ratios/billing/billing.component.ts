@@ -1,6 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, Inject } from '@angular/core';
-import {
+import { FormControl,
   UntypedFormBuilder,
   UntypedFormControl,
   UntypedFormGroup,
@@ -17,11 +17,10 @@ import { ConsumptionService } from 'src/app/Services/consumption.service';
 import { SharedService } from 'src/app/Services/shared.service';
 import { deleteResponse } from 'src/app/Services/category.service';
 import { DelegationService } from 'src/app/Services/delegation.service';
-import { MonthService } from 'src/app/Services/month.service';
-import { MonthDTO } from 'src/app/Models/month.dto';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { Moment } from 'moment';
 import { MatDatepicker } from '@angular/material/datepicker';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 export const MY_FORMATS = {
   parse: {
@@ -53,9 +52,6 @@ export const MY_FORMATS = {
 })
 
 export class BillingComponent {
-  minDate: Date;
-  maxDate: Date;
-  startDate = new Date(new Date().getFullYear(), 0, 1);
 
   consumption: ConsumptionDTO
   delegation: UntypedFormControl
@@ -64,10 +60,8 @@ export class BillingComponent {
 
   numberOfPersons: UntypedFormControl
   monthlyBilling: UntypedFormControl
-  fromDate: UntypedFormControl
-  toDate: UntypedFormControl
+  monthYearDate: FormControl
   quantity: UntypedFormControl
-  month: UntypedFormControl
   billingForm: UntypedFormGroup
 
   isValidForm: boolean | null
@@ -80,7 +74,6 @@ export class BillingComponent {
   private userId: string | null;
 
   delegations!: DelegationDTO[];
-  months!: MonthDTO[];
   consumptions!: ConsumptionDTO[];
 
   isGridView: boolean = false
@@ -90,52 +83,40 @@ export class BillingComponent {
     private activatedRoute: ActivatedRoute,
     private consumptionService: ConsumptionService,
     private delegationService: DelegationService,
-    private monthService: MonthService,
     private formBuilder: UntypedFormBuilder,
-    private router: Router,
     private sharedService: SharedService,
     private localStorageService: LocalStorageService,
+    private jwtHelper: JwtHelperService,
     private _adapter: DateAdapter<any>,
     
     @Inject(MAT_DATE_LOCALE) private _locale: string,
   ) {
 
-    const currentYear = new Date().getFullYear();
-    const currentMonth = new Date().getMonth();
-    this.minDate = new Date(currentYear , currentMonth, 1);
-    this.maxDate = new Date(currentYear, currentMonth, 31);
 
     this._locale = 'es-ES';
     this._adapter.setLocale(this._locale);
 
     this.isValidForm = null;
     this.consumptionId = this.activatedRoute.snapshot.paramMap.get('id');
-    this.userId = this.localStorageService.get('user_id');
+    this.userId = this.jwtHelper.decodeToken().id_ils
 
     this.consumption = new ConsumptionDTO(0, 0, this._adapter.today(), this._adapter.today(), '','', '', '', '', 1, 0, '', '', 0, '', '', 0);
     this.isUpdateMode = false;
     this.validRequest = false;
     this.delegation = new UntypedFormControl( '', [ Validators.required ] );
     this.companyId = new UntypedFormControl( this.userId, [ Validators.required ] );
-
-    this.fromDate = new UntypedFormControl( this.minDate, [ Validators.required ] );
-    this.toDate = new UntypedFormControl( this.maxDate, [ Validators.required ] );
-    this.month = new UntypedFormControl( '', [ Validators.required ] );
+    this.monthYearDate = new FormControl('', [ Validators.required, Validators.min(7), Validators.max(7) ]);
 
     this.quantity = new UntypedFormControl('', [ Validators.required, Validators.min(1)]);
-    this.numberOfPersons = new UntypedFormControl('', [ Validators.required, Validators.min(1)]);
     this.monthlyBilling = new UntypedFormControl('', [ Validators.required, Validators.min(1)]);
 
     this.loadDelegations();
-    this.loadMonths();
 
     this.energy = new UntypedFormControl(0);
     this.billingForm = this.formBuilder.group({
       delegation: this.delegation,
-      fromDateWater: this.fromDate,
-      toDateWater: this.toDate,
+      monthYearDate: this.monthYearDate,
       quantityWater: this.quantity,
-      numberOfPersons: this.numberOfPersons,
       monthlyBilling: this.monthlyBilling,
     })
 
@@ -157,20 +138,6 @@ export class BillingComponent {
     }
   }
 
-  private loadMonths(): void {
-    let errorResponse: any;
-      this.monthService.getAllMonths().subscribe(
-        (months: MonthDTO[]) => {
-          console.log (`---${months}---`)
-          this.months = months;
-        },
-        (error: HttpErrorResponse) => {
-          errorResponse = error.error;
-          this.sharedService.errorLog(errorResponse);
-        }
-      );
-  }
-
   private loadConsumption(): void {
     let errorResponse: any;
     const userId = this.localStorageService.get('user_id');
@@ -189,7 +156,6 @@ export class BillingComponent {
     }
   }
 
-  /* ASPECT WATER */
   private createWaterConsumption(): void {
     let errorResponse: any;
     let responseOK: boolean = false;
@@ -214,8 +180,7 @@ export class BillingComponent {
         .subscribe(
           () => {
             responseOK = true;
-            this.fromDate.reset()
-            this.toDate.reset()
+            this.monthYearDate.reset()
             this.quantity.reset()
             this.loadConsumption();
           },
@@ -267,10 +232,10 @@ export class BillingComponent {
   }
 
   setMonthAndYear(normalizedMonthAndYear: Moment, datepicker: MatDatepicker<Moment>) {
-    const ctrlValue = this.fromDate.value!;
+    const ctrlValue = this.monthYearDate.value!;
     ctrlValue.month(normalizedMonthAndYear.month());
     ctrlValue.year(normalizedMonthAndYear.year());
-    this.fromDate.setValue(ctrlValue);
+    this.monthYearDate.setValue(ctrlValue);
     datepicker.close();
   }
 

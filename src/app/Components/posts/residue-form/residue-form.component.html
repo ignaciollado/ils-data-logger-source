@@ -17,19 +17,23 @@
             <mat-error *ngIf="delegation.hasError('required')">{{'delegation' | translate}} <strong>is required</strong></mat-error>
           </mat-form-field>
         </section>
-        <section>
-          <mat-form-field [style.width.px]=360>
-            <mat-label>Month and Year</mat-label>
-            <input matInput [matDatepicker]="dp" [formControl]="fromDateResidue">
-            <mat-hint>MM/YYYY</mat-hint>
-            <mat-datepicker-toggle matIconSuffix [for]="dp"></mat-datepicker-toggle>
-            <mat-datepicker #dp
-                            startView="multi-year"
-                            (monthSelected)="setMonthAndYear($event, dp)"
-                            panelClass="example-month-picker">
-            </mat-datepicker>
-          </mat-form-field>
-        </section>
+
+      <section>
+        <mat-form-field appearance="fill" [style.width.px]=360>
+          <mat-label>{{'monthAndYear' | translate}}</mat-label>
+          <input matInput maxlength="7" minlength="7"
+              [matDatepicker]="dp" 
+              datePickerFormat="MM/YYYY"
+              [formControl]="monthYearDate">
+          <mat-hint>MM/YYYY</mat-hint>
+         <!--  <mat-datepicker-toggle matIconSuffix [for]="dp"></mat-datepicker-toggle> -->
+          <mat-datepicker #dp
+                          startView="multi-year"
+                          (monthSelected)="setMonthAndYear($event, dp)"
+                          >
+          </mat-datepicker>
+        </mat-form-field>
+      </section>
         
           <section>            
             <mat-form-field [style.width.px]=360>
@@ -42,6 +46,7 @@
               <mat-error *ngIf="residue.hasError('required')">Residue <strong>is required</strong></mat-error>
             </mat-form-field>
           </section>
+
           <section>
             <mat-form-field [style.width.px]=360>
               <mat-label>Quantity (Kg)</mat-label>
@@ -49,10 +54,13 @@
               <mat-error *ngIf="quantityResidue.hasError('required')">quantityResidue <strong>is required</strong></mat-error>
             </mat-form-field> 
           </section>
+
           <section>
             <mat-label>Residue destination (%):</mat-label>
           </section>
+
           <section >
+
             <mat-form-field [style.width.px]=70>
               <mat-label>Reuse</mat-label>
               <input matInput type="number" [formControl]="reuse" />
@@ -82,11 +90,14 @@
               <input matInput type="number" [formControl]="compost" />
               <mat-error *ngIf="compost.hasError('required')">compost <strong>is required</strong></mat-error>
             </mat-form-field>
+
           </section>
           <button mat-raised-button color="primary" type="submit" [disabled]="!residueForm.valid">ADD</button>
         </mat-card>
-
       </form>
+      <div style="margin-left: auto; margin-right: auto">
+        <span id="postFeedback"></span>
+      </div>
 </div>
 
 <h2>{{'consumptionList' | translate}}</h2>

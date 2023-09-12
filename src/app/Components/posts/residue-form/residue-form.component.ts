@@ -1,7 +1,7 @@
 
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, Inject } from '@angular/core';
-import {
+import { FormControl,
   UntypedFormBuilder,
   UntypedFormControl,
   UntypedFormGroup,
@@ -23,9 +23,9 @@ import { ResidueService } from 'src/app/Services/residue.service';
 import { ResidueDTO } from 'src/app/Models/residue.dto';
 import { MonthService } from 'src/app/Services/month.service';
 import { MonthDTO } from 'src/app/Models/month.dto';
-import { animate, state, style, transition, trigger } from '@angular/animations';
 import { Moment } from 'moment';
 import { MatDatepicker } from '@angular/material/datepicker';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 export const MY_FORMATS = {
   parse: {
@@ -56,12 +56,8 @@ export class ResidueFormComponent {
   incineration: UntypedFormControl
   dump: UntypedFormControl
   compost: UntypedFormControl
-  fromDateResidue: UntypedFormControl
-  toDateResidue: UntypedFormControl
-  month: UntypedFormControl
+  monthYearDate: FormControl
 
-  numberOfPersons: UntypedFormControl
-  monthlyBilling: UntypedFormControl
   quantityResidue: UntypedFormControl
   residueForm: UntypedFormGroup
 
@@ -92,6 +88,7 @@ export class ResidueFormComponent {
     private router: Router,
     private sharedService: SharedService,
     private localStorageService: LocalStorageService,
+    private jwtHelper: JwtHelperService,
     private _adapter: DateAdapter<any>,
     @Inject(MAT_DATE_LOCALE) private _locale: string,
   ) {
@@ -101,7 +98,7 @@ export class ResidueFormComponent {
 
     this.isValidForm = null;
     this.consumptionId = this.activatedRoute.snapshot.paramMap.get('id');
-    this.userId = this.localStorageService.get('user_id');
+    this.userId = this.jwtHelper.decodeToken().id_ils
 
     this.consumption = new ConsumptionDTO(0, 0, this._adapter.today(), this._adapter.today(), '','', '', '', '', 1, 0, '', '', 0, '', '', 0);
     this.isUpdateMode = false;
@@ -113,18 +110,12 @@ export class ResidueFormComponent {
     this.incineration = new UntypedFormControl('', [ Validators.min(0), Validators.max(100) ]);
     this.dump = new UntypedFormControl('', [ Validators.min(0), Validators.max(100) ]);
     this.compost = new UntypedFormControl('', [ Validators.min(0), Validators.max(100) ]);
-    this.numberOfPersons = new UntypedFormControl('', [ Validators.required, Validators.min(1) ]);
-    this.monthlyBilling = new UntypedFormControl('', [ Validators.required, Validators.min(1) ]);
     this.quantityResidue = new UntypedFormControl('', [ Validators.required, Validators.min(0) ]);
     this.companyId = new UntypedFormControl(this.userId, [ Validators.required ]);
-    this.fromDateResidue = new UntypedFormControl('', [ Validators.required ]);
-    this.toDateResidue = new UntypedFormControl('', [ Validators.required ]);
-    this.month = new UntypedFormControl('', [ Validators.required ]);
-
-    this.loadDelegations();
-    this.loadResidues();
+    this.monthYearDate = new FormControl('', [ Validators.required ]);
 
     this.residueForm = this.formBuilder.group({
+
       delegation: this.delegation,
       residue: this.residue,
       reuse: this.reuse,
@@ -132,14 +123,13 @@ export class ResidueFormComponent {
       incineration: this.incineration,
       dump: this.dump,
       compost: this.compost,
-      fromDateResidue: this.fromDateResidue,
-      toDateResidue: this.toDateResidue,
-      month: this.month,
+      monthYearDate: this.monthYearDate,
       quantityResidue: this.quantityResidue,
-      numberOfPersons: this.numberOfPersons,
-      monthlyBilling: this.monthlyBilling
+
     })
 
+    this.loadDelegations();
+    this.loadResidues();
     this.loadConsumption();
   }
 
@@ -156,20 +146,6 @@ export class ResidueFormComponent {
         }
       );
     }
-  }
-
-  private loadMonths(): void {
-    let errorResponse: any;
-      this.monthService.getAllMonths().subscribe(
-        (months: MonthDTO[]) => {
-          console.log (`---${months}---`)
-          this.months = months;
-        },
-        (error: HttpErrorResponse) => {
-          errorResponse = error.error;
-          this.sharedService.errorLog(errorResponse);
-        }
-      );
   }
 
   private loadResidues(): void {
@@ -294,10 +270,10 @@ export class ResidueFormComponent {
   }
 
   setMonthAndYear(normalizedMonthAndYear: Moment, datepicker: MatDatepicker<Moment>) {
-    const ctrlValue = this.fromDateResidue.value!;
+    const ctrlValue = this.monthYearDate.value!;
     ctrlValue.month(normalizedMonthAndYear.month());
     ctrlValue.year(normalizedMonthAndYear.year());
-    this.fromDateResidue.setValue(ctrlValue);
+    this.monthYearDate.setValue(ctrlValue);
     datepicker.close();
   }
 

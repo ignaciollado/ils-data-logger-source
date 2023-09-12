@@ -1,6 +1,5 @@
 <div class="container-form">
-
-  <h1>Water consumption</h1>
+  <h1>{{'waterConsumption' | translate}}</h1>
   <form
     *ngIf="waterForm"
     [formGroup]="waterForm"
@@ -20,14 +19,18 @@
       </section>
 
       <section>
-        <mat-form-field [style.width.px]=327>
-          <mat-label>Month and Year</mat-label>
-          <input matInput [matDatepicker]="dp" [formControl]="fromDateWater">
+        <mat-form-field appearance="fill" [style.width.px]=327>
+          <mat-label>{{'monthAndYear' | translate}}</mat-label>
+          <input matInput maxlength="7" minlength="7"
+              [matDatepicker]="dp" 
+              datePickerFormat="MM/YYYY"
+              [formControl]="monthYearDate">
           <mat-hint>MM/YYYY</mat-hint>
-          <mat-datepicker-toggle matIconSuffix [for]="dp"></mat-datepicker-toggle>
+         <!--  <mat-datepicker-toggle matIconSuffix [for]="dp"></mat-datepicker-toggle> -->
           <mat-datepicker #dp
                           startView="multi-year"
-                          panelClass="example-month-picker">
+                          (monthSelected)="setMonthAndYear($event, dp)"
+                          >
           </mat-datepicker>
         </mat-form-field>
       </section>
@@ -42,6 +45,9 @@
       <button mat-raised-button color="primary" type="submit" [disabled]="!waterForm.valid">ADD</button>
     </mat-card>
   </form>
+  <div style="margin-left: auto; margin-right: auto">
+    <span id="postFeedback"></span>
+  </div>
 </div>
 
 <h2>{{'consumptionList' | translate}}</h2>

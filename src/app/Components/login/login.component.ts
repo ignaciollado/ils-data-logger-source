@@ -90,7 +90,6 @@ export class LoginComponent implements OnInit {
         this.router.navigateByUrl('user/consumption')
       } else {
         const headerInfo: HeaderMenus = { showAuthSection: false, showNoAuthSection: true, };
-       /*  sessionStorage.removeItem('user_id') */ //this.localStorageService.remove('user_id');
         sessionStorage.removeItem('access_token') //this.localStorageService.remove('access_token');
         this.headerMenusService.headerManagement.next(headerInfo);
         this.router.navigateByUrl('login');
@@ -112,7 +111,7 @@ export class LoginComponent implements OnInit {
                 (item:AuthToken ) => {
                     console.log ("Welcome to the ILS datalogger.industrialocalsostenible.com created by IDI!!")
                     responseOK = true;
-                    this.loginUser.user_id = item.user_id
+                    this.loginUser.user_id = item.user_id /* this.jwtHelper.decodeToken().id_ils */
                     this.loginUser.access_token = item.access_token
                     sessionStorage.setItem('user_id', this.loginUser.user_id)
                     sessionStorage.setItem('access_token', this.loginUser.access_token)
@@ -123,7 +122,7 @@ export class LoginComponent implements OnInit {
                       const headerInfo: HeaderMenus = { showAuthSection: true, showNoAuthSection: false, };
                       this.router.navigateByUrl('profile');
                       this.headerMenusService.headerManagement.next(headerInfo);
-                      this.delegationService.getTotalDelegationsByCompany(this.loginUser.user_id)
+                      this.delegationService.getTotalDelegationsByCompany(this.jwtHelper.decodeToken().id_ils)
                       .subscribe( item => {
                         if (item.totalDelegations == 0) {
                           this.router.navigateByUrl('profile')

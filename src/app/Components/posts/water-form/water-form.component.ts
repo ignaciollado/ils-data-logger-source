@@ -1,6 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, Inject } from '@angular/core';
-import {
+import { FormControl,
   UntypedFormBuilder,
   UntypedFormControl,
   UntypedFormGroup,
@@ -18,8 +18,9 @@ import { ConsumptionService } from 'src/app/Services/consumption.service';
 import { SharedService } from 'src/app/Services/shared.service';
 import { deleteResponse } from 'src/app/Services/category.service';
 import { DelegationService } from 'src/app/Services/delegation.service';
-import { MonthService } from 'src/app/Services/month.service';
-import { MonthDTO } from 'src/app/Models/month.dto';
+import { HeaderMenusService } from 'src/app/Services/header-menus.service';
+import { MatDatepicker } from '@angular/material/datepicker';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Component({
   selector: 'app-water-form',
@@ -34,15 +35,12 @@ export class WaterFormComponent {
 
   consumption: ConsumptionDTO
   delegation: UntypedFormControl
-  energy: UntypedFormControl
+  water: UntypedFormControl
   companyId: UntypedFormControl
 
-  numberOfPersons: UntypedFormControl
-  monthlyBilling: UntypedFormControl
-  fromDateWater: UntypedFormControl
-  toDateWater: UntypedFormControl
+  monthYearDate: FormControl
   quantityWater: UntypedFormControl
-  month: UntypedFormControl
+
   waterForm: UntypedFormGroup
 
   isValidForm: boolean | null
@@ -55,7 +53,6 @@ export class WaterFormComponent {
   private userId: string | null;
 
   delegations!: DelegationDTO[];
-  months!: MonthDTO[];
   consumptions!: ConsumptionDTO[];
 
   isGridView: boolean = false
@@ -65,27 +62,21 @@ export class WaterFormComponent {
     private activatedRoute: ActivatedRoute,
     private consumptionService: ConsumptionService,
     private delegationService: DelegationService,
-    private monthService: MonthService,
     private formBuilder: UntypedFormBuilder,
-    private router: Router,
     private sharedService: SharedService,
     private localStorageService: LocalStorageService,
+    private jwtHelper: JwtHelperService,
     private _adapter: DateAdapter<any>,
     
     @Inject(MAT_DATE_LOCALE) private _locale: string,
   ) {
-
-    const currentYear = new Date().getFullYear();
-    const currentMonth = new Date().getMonth();
-    this.minDate = currentYear.toString() ;
-    this.maxDate = new Date(currentYear, currentMonth, 31);
 
     this._locale = 'es-ES';
     this._adapter.setLocale(this._locale);
 
     this.isValidForm = null;
     this.consumptionId = this.activatedRoute.snapshot.paramMap.get('id');
-    this.userId = this.localStorageService.get('user_id');
+    this.userId = this.jwtHelper.decodeToken().id_ils
 
     this.consumption = new ConsumptionDTO(0, 0, this._adapter.today(), this._adapter.today(), '','', '', '', '', 1, 0, '', '', 0, '', '', 0);
     this.isUpdateMode = false;
@@ -93,29 +84,20 @@ export class WaterFormComponent {
     this.delegation = new UntypedFormControl( '', [ Validators.required ] );
     this.companyId = new UntypedFormControl( this.userId, [ Validators.required ] );
 
-    this.fromDateWater = new UntypedFormControl( this.minDate, [ Validators.required ] );
-    this.toDateWater = new UntypedFormControl( this.maxDate, [ Validators.required ] );
-    this.month = new UntypedFormControl( '', [ Validators.required ] );
+    this.monthYearDate = new UntypedFormControl('', [ Validators.required, Validators.min(7), Validators.max(7) ]);
 
     this.quantityWater = new UntypedFormControl('', [ Validators.required, Validators.min(1)]);
-    this.numberOfPersons = new UntypedFormControl('', [ Validators.required, Validators.min(1)]);
-    this.monthlyBilling = new UntypedFormControl('', [ Validators.required, Validators.min(1)]);
 
-    this.loadDelegations();
-    this.loadMonths();
-
-    this.energy = new UntypedFormControl(0);
+    this.water = new UntypedFormControl(0);
     this.waterForm = this.formBuilder.group({
       delegation: this.delegation,
-      fromDateWater: this.fromDateWater,
-      toDateWater: this.toDateWater,
       quantityWater: this.quantityWater,
-      numberOfPersons: this.numberOfPersons,
-      monthlyBilling: this.monthlyBilling,
+      monthYearDate: this.monthYearDate,
+
     })
 
+    this.loadDelegations();
     this.loadConsumption();
-
   }
 
   private loadDelegations(): void {
@@ -133,19 +115,6 @@ export class WaterFormComponent {
     }
   }
 
-  private loadMonths(): void {
-    let errorResponse: any;
-      this.monthService.getAllMonths().subscribe(
-        (months: MonthDTO[]) => {
-          console.log (`---${months}---`)
-          this.months = months;
-        },
-        (error: HttpErrorResponse) => {
-          errorResponse = error.error;
-          this.sharedService.errorLog(errorResponse);
-        }
-      );
-  }
 
   private loadConsumption(): void {
     let errorResponse: any;
@@ -190,8 +159,7 @@ export class WaterFormComponent {
         .subscribe(
           () => {
             responseOK = true;
-            this.fromDateWater.reset()
-            this.toDateWater.reset()
+            this.monthYearDate.reset()
             this.quantityWater.reset()
             this.loadConsumption();
           },
@@ -206,6 +174,7 @@ export class WaterFormComponent {
   private editPost(): void {
 
   }
+
   deleteWaterConsumption(consumptionId: number): void {
     let errorResponse: any;
     let result = confirm('Confirm delete this consumption with id: ' + consumptionId + ' .');
@@ -240,6 +209,15 @@ export class WaterFormComponent {
       this.createWaterConsumption();
     }
 
+  }
+
+  setMonthAndYear(normalizedMonthAndYear: Date, datepicker: MatDatepicker<Date>) {
+
+    const ctrlValue = this.monthYearDate.value!
+/*     ctrlValue.month(normalizedMonthAndYear.getMonth()+1)
+    ctrlValue.year(normalizedMonthAndYear.getFullYear()) */
+    this.monthYearDate.setValue( (normalizedMonthAndYear.getMonth()+1)+"/"+ normalizedMonthAndYear.getFullYear())
+    datepicker.close()
   }
 
 }

@@ -18,7 +18,7 @@ import { ConsumptionService } from 'src/app/Services/consumption.service';
 import { SharedService } from 'src/app/Services/shared.service';
 import { deleteResponse } from 'src/app/Services/category.service';
 import { DelegationService } from 'src/app/Services/delegation.service';
-import { min } from 'moment';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 
 @Component({
@@ -33,8 +33,6 @@ export class EmissionFormComponent {
   scopeone: UntypedFormControl
   scopetwo: UntypedFormControl
   companyId: UntypedFormControl
-  numberOfPersons: UntypedFormControl
-  monthlyBilling: UntypedFormControl
   yearEmission: UntypedFormControl
   emissionForm: UntypedFormGroup
 
@@ -61,6 +59,7 @@ export class EmissionFormComponent {
     private router: Router,
     private sharedService: SharedService,
     private localStorageService: LocalStorageService,
+    private jwtHelper: JwtHelperService,
     private _adapter: DateAdapter<any>,
     @Inject(MAT_DATE_LOCALE) private _locale: string,
   ) {
@@ -70,7 +69,7 @@ export class EmissionFormComponent {
 
     this.isValidForm = null;
     this.consumptionId = this.activatedRoute.snapshot.paramMap.get('id');
-    this.userId = this.localStorageService.get('user_id');
+    this.userId = this.jwtHelper.decodeToken().id_ils
 
     this.consumption = new ConsumptionDTO(0, 0, this._adapter.today(), this._adapter.today(), '','', '', '', '', 1, 0, '', '', 0, '', '', 0);
     this.isUpdateMode = false;
@@ -79,13 +78,9 @@ export class EmissionFormComponent {
     this.companyId = new UntypedFormControl(this.userId, [ Validators.required ]);
     this.yearEmission = new UntypedFormControl('', [ Validators.required ]);
     this.quantityEmission = new UntypedFormControl('', [ Validators.required, Validators.min(1)]);
-    this.numberOfPersons = new UntypedFormControl('', [ Validators.required, Validators.min(1)]);
-    this.monthlyBilling = new UntypedFormControl('', [ Validators.required, Validators.min(1)]);
 
     this.scopeone = new UntypedFormControl('', [ Validators.required ]);
     this.scopetwo = new UntypedFormControl('', [ Validators.required ]);
-
-    this.loadDelegations();
 
     this.emissionForm = this.formBuilder.group({
       delegation: this.delegation,
@@ -93,10 +88,9 @@ export class EmissionFormComponent {
       scopetwo: this.scopetwo,
       yearEmission: this.yearEmission,
       quantityEmission: this.quantityEmission,
-      numberOfPersons: this.numberOfPersons,
-      monthlyBilling: this.monthlyBilling
     })
 
+    this.loadDelegations();
     this.loadConsumption();
   }
 

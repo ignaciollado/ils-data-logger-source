@@ -1,7 +1,7 @@
   <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="start">
     <mat-tab label="{{'energy' | translate}}">
     <div class="container-form" [@fadeInOut] >
-      <h1>Energy consumption</h1>
+      <h1>{{'energyConsumption' | translate}}</h1>
       <form
         *ngIf="energyForm"
         [formGroup]="energyForm"
@@ -23,13 +23,13 @@
 
           <section>
             <mat-form-field appearance="fill" [style.width.px]=327>
-              <mat-label>Month and Year</mat-label>
-              <input matInput 
+              <mat-label>{{'monthAndYear' | translate}}</mat-label>
+              <input matInput maxlength="7" minlength="7"
                   [matDatepicker]="dp" 
-                  datePickerFormat="YYYY/MM"
+                  datePickerFormat="MM/YYYY"
                   [formControl]="monthYearDate">
-              <!-- <mat-hint>MM/YYYY</mat-hint> -->
-              <mat-datepicker-toggle matIconSuffix [for]="dp"></mat-datepicker-toggle>
+              <mat-hint>MM/YYYY</mat-hint>
+             <!--  <mat-datepicker-toggle matIconSuffix [for]="dp"></mat-datepicker-toggle> -->
               <mat-datepicker #dp
                               startView="multi-year"
                               (monthSelected)="setMonthAndYear($event, dp)"
@@ -62,6 +62,9 @@
 
         </mat-card>
       </form>
+      <div style="margin-left: auto; margin-right: auto">
+        <span id="postFeedback"></span>
+      </div>
     </div>
 
     <h2>{{'consumptionList' | translate}}</h2>
@@ -147,10 +150,6 @@
     </table>
 
     <div class="loader" *ngIf="!consumptions">No records found yet...</div>
-
-    <div style="margin-left: auto; margin-right: auto">
-      <p id="postFeedback"></p>
-    </div>
 
   </mat-tab>
 

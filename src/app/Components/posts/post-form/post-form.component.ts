@@ -63,13 +63,8 @@ export class PostFormComponent implements OnInit {
 
   consumption: ConsumptionDTO
   delegation: UntypedFormControl
-  fromDate: UntypedFormControl
-  toDate: UntypedFormControl
   monthYearDate: FormControl
-  month: UntypedFormControl
   energy: UntypedFormControl
-  numberOfPersons: UntypedFormControl
-  monthlyBilling: UntypedFormControl
   quantity: UntypedFormControl
   companyId: UntypedFormControl
   energyForm: UntypedFormGroup
@@ -109,8 +104,10 @@ export class PostFormComponent implements OnInit {
     private energyService: EnergyService,
     private jwtHelper: JwtHelperService,
     private _adapter: DateAdapter<any>,
+
     @Inject(MAT_DATE_LOCALE) private _locale: string,
   ) {
+
     this.showButtons = false
     this.access_token = sessionStorage.getItem("access_token")
     this.showAuthSection = false
@@ -132,10 +129,6 @@ export class PostFormComponent implements OnInit {
       }
     }
 
-    this.today = new Date();
-    this.sixMonthsAgo = new Date();
-    this.sixMonthsAgo.setMonth(this.today.getMonth() - 6);
-
     this._locale = 'es-ES'
     this._adapter.setLocale(this._locale)
 
@@ -147,25 +140,16 @@ export class PostFormComponent implements OnInit {
     this.isUpdateMode = false;
     this.validRequest = false;
     this.delegation = new UntypedFormControl('', [ Validators.required ]);
-    this.fromDate = new UntypedFormControl('', [ Validators.required ]);
-    this.toDate = new UntypedFormControl('', [ Validators.required ]);
-    this.monthYearDate = new FormControl('', [ Validators.required ]);
-    this.month = new UntypedFormControl('', [ Validators.required ]);
+    this.monthYearDate = new FormControl('', [ Validators.required, Validators.min(7), Validators.max(7) ]);
 
     this.energy = new UntypedFormControl('', [ Validators.required ]);
-    this.numberOfPersons = new UntypedFormControl('', [ Validators.required, Validators.min(1) ]);
-    this.monthlyBilling = new UntypedFormControl('', [ Validators.required, Validators.min(1) ]);
     this.companyId = new UntypedFormControl(this.userId, [ Validators.required ]);
     this.quantity = new UntypedFormControl('', [ Validators.required, Validators.min(1) ]);
 
     this.energyForm = this.formBuilder.group({
       delegation: this.delegation,
-      fromDate: this.fromDate,
-      toDate: this.toDate,
       monthYearDate: this.monthYearDate,
       energy: this.energy,
-      numberOfPersons: this.numberOfPersons,
-      monthlyBilling: this.monthlyBilling,
       quantity: this.quantity,
       companyId: this.companyId
     });
@@ -188,16 +172,13 @@ export class PostFormComponent implements OnInit {
           this.consumption = consumption;
           this.consumptionFields = Object.entries(consumption).map( item => item[1])
 
-          this.fromDate.setValue(formatDate(this.consumptionFields[4], 'yyyy-MM-dd', 'en'))
-          this.toDate.setValue(formatDate(this.consumptionFields[5], 'yyyy-MM-dd', 'en'))
-
+          this.monthYearDate.setValue(formatDate(this.consumptionFields[4], 'YYYY/MM', 'en'))
           this.energy.setValue(this.consumptionFields[3])
           this.quantity.setValue(this.consumptionFields[2])
           this.companyId.setValue(this.consumptionFields[1])
 
           this.energyForm = this.formBuilder.group({
-            fromDate: this.fromDate,
-            toDate: this.toDate,
+            monthYearDate: this.monthYearDate,
             energy: this.energy,
             quantity: this.quantity,
             companyId: this.companyId
@@ -314,8 +295,7 @@ export class PostFormComponent implements OnInit {
           () => {
             responseOK = true;
             this.energy.reset()
-            this.fromDate.reset()
-            this.toDate.reset()
+            this.monthYearDate.reset()
             this.quantity.reset()
             this.loadConsumption();
           },

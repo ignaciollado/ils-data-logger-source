@@ -29,7 +29,11 @@
     "aspect": "Aspecte",
     "energy": "Energía",
     "water": "Aigua",
+    "waterConsumption": "Consum d'aigua",
+
     "energyType": "Consum de",
+    "energyConsumption": "Consum d'energia",
+
     "residueType": "Tipus de residu",
     "residue": "Residu",
     "emissions": "Emissions",
@@ -38,6 +42,7 @@
     "year": "Any",
     "fromDate": "Des de",
     "toDate": "Fins a",
+    "monthAndYear": "Mes i any",
     "actions": "ACCIONS ",
 
     "copyright": "Creat per l'Institut d'Innovació Empresarial de les Illes Balears",

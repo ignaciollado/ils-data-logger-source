@@ -68,7 +68,7 @@ export class HomeComponent {
 
   private loadConsumptions(): void {
     let errorResponse: any;
-    this.userId = sessionStorage.getItem('user_id');
+    this.userId = this.jwtHelper.decodeToken().id_ils
     if (this.userId) {
       this.showButtons = true;
       this.consumptionService.getAllConsumptionsByCompany(this.userId).subscribe(

@@ -30,7 +30,11 @@
     "aspect": "Aspecto",
     "energy": "Energía",
     "water": "Agua",
+    "waterConsumption": "Consumo de agua",
+
     "energyType": "Consumo de",
+    "energyConsumption": "Consumo de energía",
+
     "residueType": "Tipo de residuo",
     "residue": "Residuo",
     "emissions": "Emisiones",
@@ -39,6 +43,7 @@
     "year": "Año",
     "fromDate": "Desde",
     "toDate": "Hasta",
+    "monthAndYear": "Mes y año",
     "actions": "ACCIONES ",
 
     "copyright": "Creado por el Instituto de Innovación Empresarial de las Islas Baleares",

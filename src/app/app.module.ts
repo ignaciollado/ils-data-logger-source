@@ -24,8 +24,7 @@ import { DashboardComponent } from './Components/dashboard/dashboard.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import {MatCheckboxModule} from '@angular/material/checkbox';
-import { MatRadioModule } from "@angular/material/radio";
-import {MatTableModule} from '@angular/material/table';
+import {MatRadioModule} from "@angular/material/radio";
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import {MatCardModule} from '@angular/material/card';
 import {MatGridListModule} from '@angular/material/grid-list';
@@ -40,8 +39,9 @@ import {MatButtonModule} from '@angular/material/button';
 import {MAT_DATE_LOCALE, MatNativeDateModule} from '@angular/material/core';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatMenuModule} from '@angular/material/menu';
-import {MatPaginator, MatPaginatorModule} from '@angular/material/paginator';
-import {MatSort, Sort, MatSortModule} from '@angular/material/sort';
+import {MatTableModule} from '@angular/material/table';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatSortModule} from '@angular/material/sort';
 
 import { DelegationListComponent } from './Components/profile/delegation-list/delegation-list.component';
 import { DelegationFormComponent } from './Components/profile/delegation-form/delegation-form.component';

@@ -63,6 +63,7 @@ export class PersonsComponent {
   monthlyBilling: UntypedFormControl
   monthYearDate: FormControl
   quantity: UntypedFormControl
+  objective: UntypedFormControl
   personForm: UntypedFormGroup
 
   isValidForm: boolean | null
@@ -78,7 +79,7 @@ export class PersonsComponent {
   consumptions!: ConsumptionDTO[];
 
   isGridView: boolean = false
-  columnsDisplayed = ['delegation', 'quantity', 'month'];
+  columnsDisplayed = ['delegation', 'year', 'enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'setiembre', 'octubre', 'noviembre', 'diciembre', 'ACTIONS'];
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -98,26 +99,26 @@ export class PersonsComponent {
 
     this.isValidForm = null;
     this.consumptionId = this.activatedRoute.snapshot.paramMap.get('id');
-    this.userId = this.localStorageService.get('user_id');
+    this.userId = this.jwtHelper.decodeToken().id_ils;
 
     this.consumption = new ConsumptionDTO(0, 0, this._adapter.today(), this._adapter.today(), '','', '', '', '', 1, 0, '', '', 0, '', '', 0);
     this.isUpdateMode = false;
     this.validRequest = false;
+
     this.delegation = new UntypedFormControl( '', [ Validators.required ] );
     this.companyId = new UntypedFormControl( this.userId, [ Validators.required ] );
-
-    this.monthYearDate = new FormControl('', [ Validators.required, Validators.min(7), Validators.max(7) ]);
-
+    this.monthYearDate = new FormControl('', [ Validators.required, Validators.min(1), Validators.max(12) ]);
     this.quantity = new UntypedFormControl('', [ Validators.required, Validators.min(1)]);
-    this.numberOfPersons = new UntypedFormControl('', [ Validators.required, Validators.min(1)]);
+    this.objective = new UntypedFormControl('', [ Validators.required, Validators.min(1)]);
+
 
     this.energy = new UntypedFormControl(0);
     this.personForm = this.formBuilder.group({
       delegation: this.delegation,
       monthYearDate: this.monthYearDate,
-      quantityWater: this.quantity,
-      numberOfPersons: this.numberOfPersons,
-      monthlyBilling: this.monthlyBilling,
+      quantity: this.quantity,
+      objective: this.objective,
+
     })
 
     this.loadDelegations();
@@ -157,10 +158,10 @@ export class PersonsComponent {
     }
   }
 
-  private createWaterConsumption(): void {
+  private createPerson(): void {
     let errorResponse: any;
     let responseOK: boolean = false;
-    const userId = this.localStorageService.get('user_id');
+    const userId = this.jwtHelper.decodeToken().id_ils;
     if (userId) {
       this.consumption.companyId = userId;
       this.consumption.aspectId = 2; /* Water aspect id : 2 */
@@ -228,7 +229,7 @@ export class PersonsComponent {
     if (this.isUpdateMode) {
       this.editPost();
     } else {
-      this.createWaterConsumption();
+      this.createPerson();
     }
   }
 

@@ -12,13 +12,19 @@ $postedData = file_get_contents("php://input");
 
 $request = json_decode($postedData, TRUE);
 
-$query = "INSERT INTO ils_consumption(companyId, companyDelegationId, aspectId, energyId, quantity, fromDate, toDate) VALUES ("
+$monthAndYear = $request['monthYearDate'];
+
+$monthAndYear = explode("/", $monthAndYear);
+$monthBilling = $monthAndYear[0];
+$yearBilling = $monthAndYear[1];
+
+$query = "INSERT INTO ils_consumption(companyId, companyDelegationId, aspectId, energyId, quantity, month, year) VALUES ("
 .$request['companyId'].","
 .$request['delegation'].","
 .$request['aspectId'].",0,"
-.$request['quantityWater'].","
-."DATE_ADD(STR_TO_DATE('".$request['fromDateWater']."', '%Y-%m-%d'), INTERVAL 1 DAY)," 
-."DATE_ADD(STR_TO_DATE('".$request['toDateWater']."', '%Y-%m-%d'), INTERVAL 1 DAY))";
+.$request['quantityWater'].",'"
+.$monthBilling."','"
+.$yearBilling."')";
 
 $result = mysqli_query($conn, $query);
 

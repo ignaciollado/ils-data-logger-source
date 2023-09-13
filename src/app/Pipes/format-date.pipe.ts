@@ -34,6 +34,9 @@ export class FormatDatePipe implements PipeTransform {
     if (type === 4) {
       newFormat = yyyy + '-' + mmFormat + '-' + ddFormat;
     }
+    if (type === 5) {
+      newFormat = mmFormat + '-' + yyyy;
+    }
 
     return newFormat;
   }

@@ -58,6 +58,11 @@
     "monthAndYear": "Mes y año",
     "actions": "ACCIONES ",
 
+    "billing": "Facturación (€)",
+    "monthlyBilling": "Facturación mes",
+    "persons": "Media personal",
+    "monthlyPersons": "Personal mes",
+
     "copyright": "Creado por el Instituto de Innovación Empresarial de las Islas Baleares",
     "workSession": "Iniciar sesión de trabajo",
     "Password": "Contraseña",

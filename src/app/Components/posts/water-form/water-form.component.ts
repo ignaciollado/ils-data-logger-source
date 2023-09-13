@@ -81,11 +81,10 @@ export class WaterFormComponent {
     this.consumption = new ConsumptionDTO(0, 0, this._adapter.today(), this._adapter.today(), '','', '', '', '', 1, 0, '', '', 0, '', '', 0);
     this.isUpdateMode = false;
     this.validRequest = false;
+
     this.delegation = new UntypedFormControl( '', [ Validators.required ] );
     this.companyId = new UntypedFormControl( this.userId, [ Validators.required ] );
-
     this.monthYearDate = new UntypedFormControl('', [ Validators.required, Validators.min(7), Validators.max(7) ]);
-
     this.quantityWater = new UntypedFormControl('', [ Validators.required, Validators.min(1)]);
 
     this.water = new UntypedFormControl(0);

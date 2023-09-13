@@ -11,12 +11,17 @@ mysqli_query($conn, "SET NAMES 'utf8'");
 $postedData = file_get_contents("php://input");
 $request = json_decode($postedData, TRUE);
 
+$monthAndYear = $request['monthYearDate'];
+$monthAndYear = explode("/", $monthAndYear);
+$monthBilling = $monthAndYear[0];
+$yearBilling = $monthAndYear[1];
+
 $sql = "INSERT INTO ils_consumption(companyId, companyDelegationId, aspectId, residueId,
 reuse,
 recycling,
 incineration,
 dump,
-compost, numberOfPersons, monthlyBilling, quantity, fromDate, toDate) VALUES ("
+compost, numberOfPersons, monthlyBilling, quantity, month, year) VALUES ("
 .$request['companyId'].","
 .$request['delegation'].","
 .$request['aspectId'].","
@@ -26,13 +31,9 @@ compost, numberOfPersons, monthlyBilling, quantity, fromDate, toDate) VALUES ("
 .$request['incineration'].","
 .$request['dump'].","
 .$request['compost'].","
-.$request['quantityResidue'].","
-.$request['numberOfPersons'].","
-.$request['monthlyBilling'].","
-
-."DATE_ADD(STR_TO_DATE('".$request['fromDateResidue']."', '%Y-%m-%d'), INTERVAL 1 DAY)," 
-."DATE_ADD(STR_TO_DATE('".$request['toDateResidue']."', '%Y-%m-%d'), INTERVAL 1 DAY))";
-/* ."STR_TO_DATE('".$request['fromDateResidue']."', '%Y-%m-%d'), STR_TO_DATE('".$request['toDateResidue']."', '%Y-%m-%d'))"; */
+.$request['quantityResidue'].",'"
+.$monthBilling."','"
+.$yearBilling."')";
 
 $result = mysqli_query($conn, $sql);
 

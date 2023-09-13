@@ -58,6 +58,11 @@
     "monthAndYear": "Mes i any",
     "actions": "ACCIONS ",
 
+    "billing": "Facturació (€)",
+    "monthlyBilling": "Facturació mes",
+    "persons": "Mitjana de personal",
+    "monthlyPersons": "Personal mes",
+
     "copyright": "Creat per l'Institut d'Innovació Empresarial de les Illes Balears",
     "workSession": "Iniciar sessió de treball",
     "Password": "Contrassenya",

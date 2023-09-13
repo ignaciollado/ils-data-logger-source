@@ -43,6 +43,7 @@
           <mat-error *ngIf="quantityWater.hasError('required')">{{'quantity' | translate}} <strong>{{'isRequired' | translate}}</strong></mat-error>
         </mat-form-field>
       </section>
+      
       <button mat-raised-button color="primary" type="submit" [disabled]="!waterForm.valid">ADD</button>
     </mat-card>
   </form>

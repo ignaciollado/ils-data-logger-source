@@ -61,7 +61,6 @@ import { BillingComponent } from './Components/ratios/billing/billing.component'
 import { RatiosContainerComponent } from './Components/ratios/ratios-container/ratios-container.component';
 import { MatDatepickerModule } from "@angular/material/datepicker";
 import { MatMomentDateModule } from "@angular/material-moment-adapter";
-import { DatePickerFormatDirective } from './Components/shared/date-picker-format-directive/date-picker-format-directive';
 
 export function tokenGetter() {
   return sessionStorage.getItem("access_token");
@@ -97,9 +96,7 @@ export function tokenGetter() {
     ModalComponent,
     PersonsComponent,
     BillingComponent,
-    RatiosContainerComponent,
-    DatePickerFormatDirective,
-    /* CustomDateFormat, */
+    RatiosContainerComponent
   ],
   imports: [
     BrowserModule,

@@ -20,7 +20,6 @@ import { deleteResponse } from 'src/app/Services/category.service';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { JwtHelperService } from '@auth0/angular-jwt';
 
-
 @Component({
   selector: 'app-billing',
   templateUrl: './billing.component.html',
@@ -41,9 +40,11 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 export class BillingComponent {
 
   billing: BillingDTO
+  billingOBJs: any [] = []
+  billingLines: {delegation: string, year: string, quantity: string[]}
+
   delegation: UntypedFormControl
   companyId: UntypedFormControl
-
   monthYearDate: UntypedFormControl
   quantity: UntypedFormControl
   objective: UntypedFormControl
@@ -51,7 +52,6 @@ export class BillingComponent {
 
   isValidForm: boolean | null
   isElevated = true
-  billingMatrix: string[][] = []
 
   private isUpdateMode: boolean;
   private validRequest: boolean;
@@ -76,6 +76,11 @@ export class BillingComponent {
     
     @Inject(MAT_DATE_LOCALE) private _locale: string,
   ) {
+    this.billingLines = { 
+                          "delegation": "",
+                          "year": "",
+                          "quantity": ['-','-','-','-','-','-','-','-','-','-','-','-']
+                        }
 
     this._locale = 'es-ES';
     this._adapter.setLocale(this._locale);
@@ -123,21 +128,61 @@ export class BillingComponent {
   private loadBilling(): void {
     let errorResponse: any;
     const userId = this.jwtHelper.decodeToken().id_ils;
+    
     if (userId) {
+      let currentDelegation: string
+      let currentYear: string
+      let previousDelegation: string
+      let previousYear: string
 
-        this.billingService.getAllBillingsByCompany(userId).subscribe(
-        (billings: BillingDTO[]) => {
-          this.billings = billings
-          this.billings.map( (field:any) => {
+      this.billingService.getAllBillingsByCompanyMock(userId).subscribe(
+        (billingsMock: BillingDTO[]) => 
+        {
+          billingsMock.forEach( (item:BillingDTO) => { 
 
-          })
-          console.log (this.billingMatrix)
+            currentDelegation = item.companyDelegationId.toString()
+            currentYear = item.year
+
+            if ( currentDelegation != previousDelegation ) {
+              this.billingLines.delegation = item.companyDelegationId.toString()
+            }
+
+            if ( currentYear != previousYear ) {
+              this.billingLines.year = item.year.toString()
+            }
+
+            this.billingLines.quantity[+item.month-1] = item.quantity +"/"+ item.objective
+            this.billingOBJs.push({"delegation": this.billingLines.delegation, "year":this.billingLines.year, "quantity":  this.billingLines.quantity})
+          
+            this.billingLines = { "delegation": "",
+              "year": "",
+              "quantity": ['-','-','-','-','-','-','-','-','-','-','-','-']
+            }
+            
+            console.log ( previousDelegation, previousYear, currentDelegation, currentYear)
+            previousDelegation = currentDelegation
+            previousYear = currentYear
+          
+          } )
+          
         },
         (error: HttpErrorResponse) => {
           errorResponse = error.error;
           this.sharedService.errorLog(errorResponse)
         }
-      );
+      ); 
+
+    /*    this.billingService.getAllBillingsByCompany(userId).subscribe(
+        (billings: BillingDTO[]) => {
+          this.billings = billings
+          console.log (this.billings)
+          } 
+        ,
+        (error: HttpErrorResponse) => {
+          errorResponse = error.error;
+          this.sharedService.errorLog(errorResponse)
+        }
+      ); */
 
     }
   }

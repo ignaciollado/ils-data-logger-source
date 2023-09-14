@@ -7,7 +7,7 @@ import { catchError } from 'rxjs/operators';
 
 const URL_API = '../../assets/phpAPI/'
 const URL_API_SRV = "https://jwt.idi.es/public/index.php"
-const URL_MOCKS = '../../assets/mocks/consumptions.json'
+const URL_MOCKS = '../../assets/mocks/billing_SQL.json'
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -36,13 +36,25 @@ export class BillingService {
     this.urlAPiMySql = '../../assets/phpAPI/'
   }
 
-  getAllBillingsByCompany(companyId:string): Observable<BillingDTO[]> {
+  getAllBillingsByCompanyMock(companyId:string): Observable<BillingDTO[]> {
     if (companyId) {
       console.log ("logged IN")
       return this.http
-        .get<BillingDTO[]>(`${URL_API}billingGetByCompanyId.php?companyId=${companyId}`)
+        .get<BillingDTO[]>(`${URL_MOCKS}`)
     } else {
       console.log("NOT logged")
+      return this.http
+        .get<BillingDTO[]>(`${URL_API_SRV}/api/get-all-billings`, httpOptions)
+    }
+  }
+
+  getAllBillingsByCompany(companyId:string): Observable<BillingDTO[]> {
+    if (companyId) {
+      console.log ("logged INNN", companyId)
+      return this.http
+        .get<BillingDTO[]>(`${URL_API}billingGetByCompanyId.php?companyId=${companyId}`) 
+    } else {
+      console.log("NOTTT logged")
       return this.http
         .get<BillingDTO[]>(`${URL_API_SRV}/api/get-all-billings`, httpOptions)
     }

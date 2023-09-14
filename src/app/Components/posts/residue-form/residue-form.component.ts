@@ -21,7 +21,6 @@ import { deleteResponse } from 'src/app/Services/category.service';
 import { DelegationService } from 'src/app/Services/delegation.service';
 import { ResidueService } from 'src/app/Services/residue.service';
 import { ResidueDTO } from 'src/app/Models/residue.dto';
-import { MonthService } from 'src/app/Services/month.service';
 import { MonthDTO } from 'src/app/Models/month.dto';
 import { Moment } from 'moment';
 import { MatDatepicker } from '@angular/material/datepicker';
@@ -82,7 +81,6 @@ export class ResidueFormComponent {
     private activatedRoute: ActivatedRoute,
     private consumptionService: ConsumptionService,
     private delegationService: DelegationService,
-    private monthService: MonthService,
     private residueService: ResidueService,
     private formBuilder: UntypedFormBuilder,
     private router: Router,

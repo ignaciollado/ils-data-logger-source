@@ -138,31 +138,37 @@ export class BillingComponent {
       this.billingService.getAllBillingsByCompanyMock(userId).subscribe(
         (billingsMock: BillingDTO[]) => 
         {
-          billingsMock.forEach( (item:BillingDTO) => { 
-
+          billingsMock.forEach( (item:BillingDTO) => {
             currentDelegation = item.companyDelegationId.toString()
             currentYear = item.year
 
             if ( currentDelegation != previousDelegation ) {
               this.billingLines.delegation = item.companyDelegationId.toString()
             }
-
             if ( currentYear != previousYear ) {
               this.billingLines.year = item.year.toString()
             }
+           
+            if (currentDelegation === '' && currentYear === '') {
+              this.billingOBJs.forEach( (element:any) => {
+                if (element.delegation === currentDelegation && element.currentYear) {
+                  element.delegation = previousDelegation
+                  element.year = previousYear
+                  element.quantity[+item.month-1]= item.quantity +"/"+ item.objective
+                }
+              })
+            } else {
+              this.billingLines.quantity[+item.month-1] = item.quantity +"/"+ item.objective
+              this.billingOBJs.push({"delegation": this.billingLines.delegation, "year": this.billingLines.year, "quantity": this.billingLines.quantity})
+            }
 
-            this.billingLines.quantity[+item.month-1] = item.quantity +"/"+ item.objective
-            this.billingOBJs.push({"delegation": this.billingLines.delegation, "year":this.billingLines.year, "quantity":  this.billingLines.quantity})
-          
             this.billingLines = { "delegation": "",
               "year": "",
               "quantity": ['-','-','-','-','-','-','-','-','-','-','-','-']
             }
-            
-            console.log ( previousDelegation, previousYear, currentDelegation, currentYear)
             previousDelegation = currentDelegation
             previousYear = currentYear
-          
+            console.log (this.billingOBJs)
           } )
           
         },

@@ -15,7 +15,7 @@
         "quantity": 300, 
         "objective": 300, 
         "month": "03", 
-        "year": "2020"
+        "year": "2022"
     },
     {
         "Id": 24, 
@@ -38,16 +38,16 @@
     {
         "Id": 26, 
         "companyId": 284, 
-        "companyDelegationId": "centro 3",  
+        "companyDelegationId": "centro 4",  
         "quantity": 151, 
         "objective": 126, 
         "month": "04", 
-        "year": "2022"
+        "year": "2020"
     },
     {
         "Id": 27, 
         "companyId": 284, 
-        "companyDelegationId": "centro 4",  
+        "companyDelegationId": "centro 3",  
         "quantity": 651, 
         "objective": 114, 
         "month": "10", 

@@ -130,37 +130,41 @@ export class BillingComponent {
     const userId = this.jwtHelper.decodeToken().id_ils;
     
     if (userId) {
-      let currentDelegation: string
-      let currentYear: string
-      let previousDelegation: string
-      let previousYear: string
+      let currentDelegation: string = ''
+      let currentYear: string = ''
+      let previousDelegation: string = ''
+      let previousYear: string = ''
 
-      this.billingService.getAllBillingsByCompanyMock(userId).subscribe(
+      this.billingService.getAllBillingsByCompany(userId).subscribe(
         (billingsMock: BillingDTO[]) => 
         {
           billingsMock.forEach( (item:BillingDTO) => {
             currentDelegation = item.companyDelegationId.toString()
             currentYear = item.year
-
-            if ( currentDelegation != previousDelegation ) {
+      
+            if ( currentDelegation != previousDelegation || previousDelegation === '' ) {
               this.billingLines.delegation = item.companyDelegationId.toString()
             }
-            if ( currentYear != previousYear ) {
+            if ( currentYear != previousYear || previousYear === '') {
               this.billingLines.year = item.year.toString()
             }
-           
-            if (currentDelegation === '' && currentYear === '') {
+
+            if ( currentDelegation != previousDelegation && currentYear != previousYear ) { // ADD record
+              console.log ("estoy en ADD", currentDelegation, currentYear)
+              this.billingLines.quantity[+item.month-1] = item.quantity +"/"+ item.objective
+              this.billingOBJs.push({"delegation": currentDelegation, "year": currentYear, "quantity": this.billingLines.quantity})
+
+            } /* else { // UPDATE existing record
+              console.log ("estoy en UPDATE", currentDelegation, currentYear)
               this.billingOBJs.forEach( (element:any) => {
                 if (element.delegation === currentDelegation && element.currentYear) {
                   element.delegation = previousDelegation
                   element.year = previousYear
                   element.quantity[+item.month-1]= item.quantity +"/"+ item.objective
                 }
-              })
-            } else {
-              this.billingLines.quantity[+item.month-1] = item.quantity +"/"+ item.objective
-              this.billingOBJs.push({"delegation": this.billingLines.delegation, "year": this.billingLines.year, "quantity": this.billingLines.quantity})
-            }
+              } )
+
+            } */
 
             this.billingLines = { "delegation": "",
               "year": "",
@@ -168,7 +172,8 @@ export class BillingComponent {
             }
             previousDelegation = currentDelegation
             previousYear = currentYear
-            console.log (this.billingOBJs)
+            currentDelegation = ''
+            currentYear = ''
           } )
           
         },

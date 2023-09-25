@@ -27,6 +27,12 @@ $sql = "INSERT INTO ils_consumption(companyId, companyDelegationId, aspectId,
 
 ."STR_TO_DATE('".$fromDate."', '%Y-%m-%d'), STR_TO_DATE('".$toDate."', '%Y-%m-%d'))";
 
+/* EMISSION CASE:
+INSERT INTO `ils_consumption` (companyId, companyDelegationId, aspectId, year,
+`01`, `02`, `03`, `04`, `05`, `06`, `07`, `08`, `09`, `10`, `11`, `12`)
+VALUES(284, 19, 5, '2019', '', '', '2000/1500/500', '', '', '', '', '', '', '', '', '') ON DUPLICATE KEY UPDATE
+`03`='2000/1500/500'  */
+
 $result = mysqli_query($conn, $sql);
 
 mysqli_close($conn);

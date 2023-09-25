@@ -26,6 +26,12 @@ $query = "INSERT INTO ils_consumption(companyId, companyDelegationId, aspectId, 
 .$monthBilling."','"
 .$yearBilling."')";
 
+/* WATER CASE:
+INSERT INTO `ils_consumption` (companyId, companyDelegationId, aspectId, year,
+`01`, `02`, `03`, `04`, `05`, `06`, `07`, `08`, `09`, `10`, `11`, `12`)
+VALUES(284, 19, 2, '2019', '', '', '', '', '', '', '', '', '1500', '', '', '') ON DUPLICATE KEY UPDATE
+`09`= 1500 */
+
 $result = mysqli_query($conn, $query);
 
 mysqli_close($conn);

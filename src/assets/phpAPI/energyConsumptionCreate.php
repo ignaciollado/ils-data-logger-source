@@ -25,6 +25,12 @@ $sql = "INSERT INTO ils_consumption(companyId, companyDelegationId, aspectId, en
 .$monthBilling.",'"
 .$yearBilling.",')";
 
+/* ENERGY CASE:
+INSERT INTO `ils_consumption` (companyId, companyDelegationId, aspectId, energyId, year,
+`01`, `02`, `03`, `04`, `05`, `06`, `07`, `08`, `09`, `10`, `11`, `12`)
+VALUES(284, 19, 1, 14, '2019', '', '', '', '', '', '', '', '', '300', '', '', '') ON DUPLICATE KEY UPDATE
+`09` = 300 */
+
 $result = mysqli_query($conn, $sql);
 
 mysqli_close($conn);

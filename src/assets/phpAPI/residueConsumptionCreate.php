@@ -35,6 +35,12 @@ compost, numberOfPersons, monthlyBilling, quantity, month, year) VALUES ("
 .$monthBilling."','"
 .$yearBilling."')";
 
+/* RESIDUE CASE:
+INSERT INTO `ils_consumption` (companyId, companyDelegationId, aspectId, residueId, year,
+`01`, `02`, `03`, `04`, `05`, `06`, `07`, `08`, `09`, `10`, `11`, `12`)
+VALUES(284, 19, 3, 12, '2019',  '', '440/20/20/20/20/20', '', '', '', '', '', '', '', '', '', '') ON DUPLICATE KEY UPDATE
+`02`='440/20/20/20/20/20' */
+
 $result = mysqli_query($conn, $sql);
 
 mysqli_close($conn);

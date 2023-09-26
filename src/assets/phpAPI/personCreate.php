@@ -16,23 +16,12 @@ $monthAndYear = explode("/", $monthAndYear);
 $monthBilling = $monthAndYear[0];
 $yearBilling = $monthAndYear[1];
 
-/*$sql = "INSERT INTO `ils_billing` (companyId, companyDelegationId, year, `01`, `02`, `03`, `04`, `05`, `06`, `07`, `08`, `09`, `10`, `11`, `12`)
-VALUES(1000, 19, '2019', '', '', '', '', '', '', '', '', '444/555', '', '', '') ON DUPLICATE KEY UPDATE
-`09`='440/550'" */
-
-/*$sql = "INSERT INTO `ils_billing` (companyId, companyDelegationId, year, month, quantity, objective)
-VALUES(999, 999, '2019', '09', 1000, 950) ON DUPLICATE KEY UPDATE
-quantity='500', objective='450'"
- */
-
-$sql = "INSERT INTO ils_persons(companyId, companyDelegationId, quantity, objective, month, year)
-VALUES ("
+$sql = "INSERT INTO ils_persons (companyId, companyDelegationId, year, `".$monthBilling;
+$sql = $sql . "`) VALUES("
 .$request['companyId'].","
-.$request['delegation'].","
-.$request['quantity'].","
-.$request['objective'].",'"
-.$monthBilling."','"
-.$yearBilling."')";
+.$request['delegation'].",'"
+.$yearBilling."','"
+.$request['quantity']."/".$request['objective']."') ON DUPLICATE KEY UPDATE `".$monthBilling."` = '".$request['quantity']."/".$request['objective']."'";
 
 $result = mysqli_query($conn, $sql);
 

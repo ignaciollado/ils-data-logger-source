@@ -22,20 +22,13 @@
           </section>
 
           <section>
-            <mat-form-field appearance="fill" [style.width.px]=327>
+            <mat-form-field [style.width.px]=327>
               <mat-label>{{'monthAndYear' | translate}}</mat-label>
-              <input matInput maxlength="7" minlength="7"
-                  [matDatepicker]="dp" 
-                  datePickerFormat="MM/YYYY"
-                  [formControl]="monthYearDate">
+              <input matInput type="text" maxlength="7" minlength="7" [formControl]="monthYearDate">
               <mat-hint>MM/YYYY</mat-hint>
-             <!--  <mat-datepicker-toggle matIconSuffix [for]="dp"></mat-datepicker-toggle> -->
-              <mat-datepicker #dp
-                              startView="multi-year"
-                              (monthSelected)="setMonthAndYear($event, dp)"
-                              >
-              </mat-datepicker>
               <mat-error *ngIf="monthYearDate.hasError('required')">{{'monthAndYear' | translate}} <strong>{{'isRequired' | translate}}</strong></mat-error>
+              <mat-error *ngIf="monthYearDate.errors?.min">Minimum required number is 01.</mat-error> 
+              <mat-error *ngIf="monthYearDate.errors?.max">Maximum number can be 12.</mat-error>
             </mat-form-field>
           </section>
 
@@ -85,51 +78,51 @@
       </ng-container>
       <ng-container matColumnDef="enero">
         <th mat-header-cell *matHeaderCellDef>Enero</th>
-        <td mat-cell *matCellDef="let consumption" matTooltip={{consumption.quantity}}>{{ consumption.quantity }}</td>
+        <td mat-cell *matCellDef="let consumption" matTooltip={{consumption.jan}}>{{consumption.jan}}</td>
       </ng-container>
       <ng-container matColumnDef="febrero">
         <th mat-header-cell *matHeaderCellDef>Febrero</th>
-        <td mat-cell *matCellDef="let consumption" matTooltip={{consumption.quantity}}>{{consumption.quantity }}</td>
+        <td mat-cell *matCellDef="let consumption" matTooltip={{consumption.feb}}>{{consumption.feb}}</td>
       </ng-container>
       <ng-container matColumnDef="marzo">
         <th mat-header-cell *matHeaderCellDef>Marzo</th>
-        <td mat-cell *matCellDef="let consumption" matTooltip={{consumption.quantity}}>{{ consumption.quantity }}</td>
+        <td mat-cell *matCellDef="let consumption" matTooltip={{consumption.mar}}>{{consumption.mar}}</td>
       </ng-container>
       <ng-container matColumnDef="abril">
         <th mat-header-cell *matHeaderCellDef>Abril</th>
-        <td mat-cell *matCellDef="let consumption" matTooltip={{consumption.quantity}}>{{consumption.quantity }}</td>
+        <td mat-cell *matCellDef="let consumption" matTooltip={{consumption.apr}}>{{consumption.apr}}</td>
       </ng-container>
       <ng-container matColumnDef="mayo">
         <th mat-header-cell *matHeaderCellDef>Mayo</th>
-        <td mat-cell *matCellDef="let consumption" matTooltip={{consumption.quantity}}>{{ consumption.quantity }}</td>
+        <td mat-cell *matCellDef="let consumption" matTooltip={{consumption.may}}>{{consumption.may}}</td>
       </ng-container>
       <ng-container matColumnDef="junio">
         <th mat-header-cell *matHeaderCellDef>Junio</th>
-        <td mat-cell *matCellDef="let consumption" matTooltip={{consumption.quantity}}>{{consumption.quantity }}</td>
+        <td mat-cell *matCellDef="let consumption" matTooltip={{consumption.jun}}>{{consumption.jun}}</td>
       </ng-container>
       <ng-container matColumnDef="julio">
         <th mat-header-cell *matHeaderCellDef>Julio</th>
-        <td mat-cell *matCellDef="let consumption" matTooltip={{consumption.quantity}}>{{ consumption.quantity }}</td>
+        <td mat-cell *matCellDef="let consumption" matTooltip={{consumption.jul}}>{{consumption.jul}}</td>
       </ng-container>
       <ng-container matColumnDef="agosto">
         <th mat-header-cell *matHeaderCellDef>Agosto</th>
-        <td mat-cell *matCellDef="let consumption" matTooltip={{consumption.quantity}}>{{consumption.quantity }}</td>
+        <td mat-cell *matCellDef="let consumption" matTooltip={{consumption.aug}}>{{consumption.aug}}</td>
       </ng-container>
       <ng-container matColumnDef="setiembre">
         <th mat-header-cell *matHeaderCellDef>Setiembre</th>
-        <td mat-cell *matCellDef="let consumption" matTooltip={{consumption.quantity}}>{{ consumption.quantity }}</td>
+        <td mat-cell *matCellDef="let consumption" matTooltip={{consumption.sep}}>{{consumption.sep}}</td>
       </ng-container>
       <ng-container matColumnDef="octubre">
         <th mat-header-cell *matHeaderCellDef>Octubre</th>
-        <td mat-cell *matCellDef="let consumption" matTooltip={{consumption.quantity}}>{{consumption.quantity }}</td>
+        <td mat-cell *matCellDef="let consumption" matTooltip={{consumption.oct}}>{{consumption.oct}}</td>
       </ng-container>
       <ng-container matColumnDef="noviembre">
         <th mat-header-cell *matHeaderCellDef>Noviembre</th>
-        <td mat-cell *matCellDef="let consumption" matTooltip={{consumption.quantity}}>{{ consumption.quantity }}</td>
+        <td mat-cell *matCellDef="let consumption" matTooltip={{consumption.nov}}>{{consumption.nov}}</td>
       </ng-container>
       <ng-container matColumnDef="diciembre">
         <th mat-header-cell *matHeaderCellDef>Diciembre</th>
-        <td mat-cell *matCellDef="let consumption" matTooltip={{consumption.quantity}}>{{consumption.quantity }}</td>
+        <td mat-cell *matCellDef="let consumption" matTooltip={{consumption.dec}}>{{consumption.dec}}</td>
       </ng-container>
 
       <ng-container matColumnDef="ACTIONS">

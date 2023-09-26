@@ -10,26 +10,30 @@ require_once 'encrDecr.php';
 mysqli_query($conn, "SET NAMES 'utf8'");
 $postedData = file_get_contents("php://input");
 $request = json_decode($postedData, TRUE);
-
 $monthAndYear = $request['monthYearDate'];
 $monthAndYear = explode("/", $monthAndYear);
-$monthBilling = $monthAndYear[0];
-$yearBilling = $monthAndYear[1];
+$monthEnergyConsumption = $monthAndYear[0];
+$yearEnergyConsumption = $monthAndYear[1];
 
-$sql = "INSERT INTO ils_consumption(companyId, companyDelegationId, aspectId, energyId, quantity, month, year) VALUES ("
+/* $sql = "INSERT INTO ils_consumption(companyId, companyDelegationId, aspectId, energyId, quantity, month, year) VALUES ("
 .$request['companyId'].","
 .$request['delegation'].","
 .$request['aspectId'].","
 .$request['energy'].","
 .$request['quantity'].",'"
-.$monthBilling.",'"
-.$yearBilling.",')";
+.$monthEnergyConsumption.",'"
+.$yearEnergyConsumption.",')"; */
 
-/* ENERGY CASE:
-INSERT INTO `ils_consumption` (companyId, companyDelegationId, aspectId, energyId, year,
-`01`, `02`, `03`, `04`, `05`, `06`, `07`, `08`, `09`, `10`, `11`, `12`)
-VALUES(284, 19, 1, 14, '2019', '', '', '', '', '', '', '', '', '300', '', '', '') ON DUPLICATE KEY UPDATE
-`09` = 300 */
+/* ENERGY CASE: */
+
+$sql = "INSERT INTO `ils_consumption` (companyId, companyDelegationId, aspectId, energyId, year, `".$monthEnergyConsumption;
+$sql = $sql . "`) VALUES("
+.$request['companyId'].","
+.$request['delegation'].",'"
+.$request['aspectId']."','"
+.$request['energy']."','"
+.$yearEnergyConsumption."','"
+.$request['quantity']."') ON DUPLICATE KEY UPDATE `".$monthEnergyConsumption."` = '".$request['quantity']."'";
 
 $result = mysqli_query($conn, $sql);
 

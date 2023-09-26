@@ -36,7 +36,7 @@ export class BillingService {
     this.urlAPiMySql = '../../assets/phpAPI/'
   }
 
-  getAllBillingsByCompanyMock(companyId:string): Observable<BillingDTO[]> {
+/*   getAllBillingsByCompanyMock(companyId:string): Observable<BillingDTO[]> {
     if (companyId) {
       console.log ("logged IN")
       return this.http
@@ -46,9 +46,9 @@ export class BillingService {
       return this.http
         .get<BillingDTO[]>(`${URL_API_SRV}/api/get-all-billings`, httpOptions)
     }
-  }
+  } */
 
-  getAllBillingsByCompany(companyId:string): Observable<BillingDTO[]> {
+  getBillingsByCompany(companyId:string): Observable<BillingDTO[]> {
     if (companyId) {
       console.log ("logged INNN", companyId)
       return this.http
@@ -76,6 +76,5 @@ export class BillingService {
       .delete<deleteResponse>(`${URL_API}consumptionDelete.php?consumptionId=${Id}`)
       .pipe(catchError(this.sharedService.handleError));
   }
-
 
 }

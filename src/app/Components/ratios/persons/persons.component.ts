@@ -11,10 +11,10 @@ import {DateAdapter, MAT_DATE_LOCALE} from '@angular/material/core';
 
 import { ActivatedRoute, Router } from '@angular/router';
 import { finalize } from 'rxjs/operators';
-import { ConsumptionDTO } from 'src/app/Models/consumption.dto';
+import { PersonDTO } from 'src/app/Models/person.dto';
 import { DelegationDTO } from 'src/app/Models/delegation.dto';
 import { LocalStorageService } from 'src/app/Services/local-storage.service';
-import { ConsumptionService } from 'src/app/Services/consumption.service';
+import { PersonsService } from 'src/app/Services/persons.service';
 import { SharedService } from 'src/app/Services/shared.service';
 import { deleteResponse } from 'src/app/Services/category.service';
 import { DelegationService } from 'src/app/Services/delegation.service';
@@ -22,6 +22,7 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
 import { Moment } from 'moment';
 import { MatDatepicker } from '@angular/material/datepicker';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { BillingDTO } from 'src/app/Models/billing.dto';
 
 export const MY_FORMATS = {
   parse: {
@@ -54,11 +55,10 @@ export const MY_FORMATS = {
 
 export class PersonsComponent {
 
-  consumption: ConsumptionDTO
+  person: PersonDTO
   delegation: UntypedFormControl
   energy: UntypedFormControl
   companyId: UntypedFormControl
-
   numberOfPersons: UntypedFormControl
   monthlyBilling: UntypedFormControl
   monthYearDate: FormControl
@@ -76,14 +76,16 @@ export class PersonsComponent {
   private userId: string | null;
 
   delegations!: DelegationDTO[];
-  consumptions!: ConsumptionDTO[];
+  persons!: PersonDTO[];
 
   isGridView: boolean = false
+  /* columnsDisplayed = ['delegation', 'year', 'enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'setiembre', 'octubre', 'noviembre', 'diciembre', 'ACTIONS']; */
   columnsDisplayed = ['delegation', 'year', 'enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'setiembre', 'octubre', 'noviembre', 'diciembre', 'ACTIONS'];
+
 
   constructor(
     private activatedRoute: ActivatedRoute,
-    private consumptionService: ConsumptionService,
+    private personService: PersonsService,
     private delegationService: DelegationService,
     private formBuilder: UntypedFormBuilder,
     private sharedService: SharedService,
@@ -101,7 +103,7 @@ export class PersonsComponent {
     this.consumptionId = this.activatedRoute.snapshot.paramMap.get('id');
     this.userId = this.jwtHelper.decodeToken().id_ils;
 
-    this.consumption = new ConsumptionDTO(0, 0, this._adapter.today(), this._adapter.today(), '','', '', '', '', 1, 0, '', '', 0, '', '', 0);
+    this.person = new PersonDTO(0, 0, 0, '', '', '', '', '', '', '', '', '', '', '', '', '');
     this.isUpdateMode = false;
     this.validRequest = false;
 
@@ -122,7 +124,7 @@ export class PersonsComponent {
     })
 
     this.loadDelegations();
-    this.loadConsumption();
+    this.loadPersons();
   }
 
   private loadDelegations(): void {
@@ -140,14 +142,13 @@ export class PersonsComponent {
     }
   }
 
-  private loadConsumption(): void {
+  private loadPersons(): void {
     let errorResponse: any;
-    const userId = this.jwtHelper.decodeToken().id_ils;
-    if (userId) {
+    if (this.userId) {
 
-        this.consumptionService.getAllConsumptionsByCompanyAndAspect(userId, 2).subscribe(
-        (consumptions: ConsumptionDTO[]) => {
-          this.consumptions = consumptions
+        this.personService.getPersonsByCompany(this.userId).subscribe(
+        (persons: PersonDTO[]) => {
+          this.persons = persons
         },
         (error: HttpErrorResponse) => {
           errorResponse = error.error;
@@ -163,9 +164,9 @@ export class PersonsComponent {
     let responseOK: boolean = false;
     const userId = this.jwtHelper.decodeToken().id_ils;
     if (userId) {
-      this.consumption.companyId = userId;
-      this.consumption.aspectId = 2; /* Water aspect id : 2 */
-      this.consumptionService.createWaterConsumption(this.consumption)
+      this.person.companyId = userId;
+      
+      this.personService.createPerson(this.person)
         .pipe(
           finalize(async () => {
             await this.sharedService.managementToast(
@@ -173,7 +174,6 @@ export class PersonsComponent {
               responseOK,
               errorResponse
             );
-
             /* if (responseOK) {
               this.router.navigateByUrl('posts');
             } */
@@ -184,7 +184,7 @@ export class PersonsComponent {
             responseOK = true;
             this.monthYearDate.reset()
             this.quantity.reset()
-            this.loadConsumption();
+            this.loadPersons();
           },
           (error: HttpErrorResponse) => {
             errorResponse = error.error;
@@ -198,11 +198,11 @@ export class PersonsComponent {
 
   }
 
-  deletePerson(consumptionId: number): void {
+  deletePerson(personId: number): void {
     let errorResponse: any;
-    let result = confirm('Confirm delete this consumption with id: ' + consumptionId + ' .');
+    let result = confirm('Confirm delete this consumption with id: ' + personId + ' .');
     if (result) {
-      this.consumptionService.deleteConsumption(consumptionId).subscribe(
+      this.personService.deletePerson(personId).subscribe(
         (rowsAffected: deleteResponse) => {
           if (rowsAffected.affected > 0) {
 
@@ -213,7 +213,7 @@ export class PersonsComponent {
           this.sharedService.errorLog(errorResponse);
         }
       )
-      this.loadConsumption()
+      this.loadPersons()
     }
   }
 
@@ -224,7 +224,7 @@ export class PersonsComponent {
     }
 
     this.isValidForm = true;
-    this.consumption = this.personForm.value;
+    this.person = this.personForm.value;
 
     if (this.isUpdateMode) {
       this.editPost();

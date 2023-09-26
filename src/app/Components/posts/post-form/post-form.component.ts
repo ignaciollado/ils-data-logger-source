@@ -63,7 +63,7 @@ export class PostFormComponent implements OnInit {
 
   consumption: ConsumptionDTO
   delegation: UntypedFormControl
-  monthYearDate: FormControl
+  monthYearDate: UntypedFormControl
   energy: UntypedFormControl
   quantity: UntypedFormControl
   companyId: UntypedFormControl
@@ -79,7 +79,6 @@ export class PostFormComponent implements OnInit {
   access_token: string | null;
   today: Date
   sixMonthsAgo: Date
-
 
   private isUpdateMode: boolean;
   private validRequest: boolean;
@@ -136,11 +135,11 @@ export class PostFormComponent implements OnInit {
     this.consumptionId = this.activatedRoute.snapshot.paramMap.get('id')
     this.userId = this.jwtHelper.decodeToken().id_ils
 
-    this.consumption = new ConsumptionDTO(0, 0, this._adapter.today(), this._adapter.today(), '','', '', '', '', 1, 0, '', '', 0, '', '', 0);
+    this.consumption = new ConsumptionDTO(0, 0, this._adapter.today(), this._adapter.today(), '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 0, 0, '', '', 0, '', '', 0);
     this.isUpdateMode = false;
     this.validRequest = false;
     this.delegation = new UntypedFormControl('', [ Validators.required ]);
-    this.monthYearDate = new FormControl('', [ Validators.required, Validators.min(7), Validators.max(7) ]);
+    this.monthYearDate = new UntypedFormControl('', [ Validators.required, Validators.min(1), Validators.max(12) ]);
 
     this.energy = new UntypedFormControl('', [ Validators.required ]);
     this.companyId = new UntypedFormControl(this.userId, [ Validators.required ]);

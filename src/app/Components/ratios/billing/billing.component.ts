@@ -89,7 +89,7 @@ export class BillingComponent {
     this.consumptionId = this.activatedRoute.snapshot.paramMap.get('id');
     this.userId = this.jwtHelper.decodeToken().id_ils
 
-    this.billing = new BillingDTO (0, 0, 0, '','', 0, 0);
+    this.billing = new BillingDTO (0, 0, 0, '', '', '', '', '', '', '', '', '', '', '', '', '');
     this.isUpdateMode = false;
     this.validRequest = false;
 
@@ -107,7 +107,7 @@ export class BillingComponent {
     })
 
     this.loadDelegations();
-    this.loadBilling();
+    this.loadBillings();
   }
 
   private loadDelegations(): void {
@@ -125,76 +125,21 @@ export class BillingComponent {
     }
   }
 
-  private loadBilling(): void {
+  private loadBillings(): void {
     let errorResponse: any;
-    const userId = this.jwtHelper.decodeToken().id_ils;
     
-    if (userId) {
-      let currentDelegation: string = ''
-      let currentYear: string = ''
-      let previousDelegation: string = ''
-      let previousYear: string = ''
+    if (this.userId) {
+    
 
-      this.billingService.getAllBillingsByCompany(userId).subscribe(
-        (billingsMock: BillingDTO[]) => 
-        {
-          billingsMock.forEach( (item:BillingDTO) => {
-            currentDelegation = item.companyDelegationId.toString()
-            currentYear = item.year
-      
-            if ( currentDelegation != previousDelegation || previousDelegation === '' ) {
-              this.billingLines.delegation = item.companyDelegationId.toString()
-            }
-            if ( currentYear != previousYear || previousYear === '') {
-              this.billingLines.year = item.year.toString()
-            }
-
-            if ( currentDelegation != previousDelegation && currentYear != previousYear ) { // ADD record
-              console.log ("estoy en ADD", currentDelegation, currentYear)
-              this.billingLines.quantity[+item.month-1] = item.quantity +"/"+ item.objective
-              this.billingOBJs.push({"delegation": currentDelegation, "year": currentYear, "quantity": this.billingLines.quantity})
-
-            } /* else { // UPDATE existing record
-              console.log ("estoy en UPDATE", currentDelegation, currentYear)
-              this.billingOBJs.forEach( (element:any) => {
-                if (element.delegation === currentDelegation && element.currentYear) {
-                  element.delegation = previousDelegation
-                  element.year = previousYear
-                  element.quantity[+item.month-1]= item.quantity +"/"+ item.objective
-                }
-              } )
-
-            } */
-
-            this.billingLines = { "delegation": "",
-              "year": "",
-              "quantity": ['-','-','-','-','-','-','-','-','-','-','-','-']
-            }
-            previousDelegation = currentDelegation
-            previousYear = currentYear
-            currentDelegation = ''
-            currentYear = ''
-          } )
-          
+      this.billingService.getBillingsByCompany(this.userId).subscribe(
+        (billings: BillingDTO[]) => {
+          this.billings  = billings
         },
         (error: HttpErrorResponse) => {
           errorResponse = error.error;
           this.sharedService.errorLog(errorResponse)
         }
-      ); 
-
-    /*    this.billingService.getAllBillingsByCompany(userId).subscribe(
-        (billings: BillingDTO[]) => {
-          this.billings = billings
-          console.log (this.billings)
-          } 
-        ,
-        (error: HttpErrorResponse) => {
-          errorResponse = error.error;
-          this.sharedService.errorLog(errorResponse)
-        }
-      ); */
-
+      );
     }
   }
 
@@ -205,7 +150,6 @@ export class BillingComponent {
 
     if (userId) {
       this.billing.companyId = userId;
-
       this.billingService.createBilling(this.billing)
         .pipe(
           finalize(async () => {
@@ -225,7 +169,7 @@ export class BillingComponent {
             responseOK = true;
             this.monthYearDate.reset()
             this.quantity.reset()
-            this.loadBilling();
+            this.loadBillings();
           },
           (error: HttpErrorResponse) => {
             errorResponse = error.error;
@@ -254,7 +198,7 @@ export class BillingComponent {
           this.sharedService.errorLog(errorResponse);
         }
       )
-      this.loadBilling()
+      this.loadBillings()
     }
   }
 

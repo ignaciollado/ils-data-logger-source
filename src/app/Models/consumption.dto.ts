@@ -9,20 +9,20 @@ export class ConsumptionDTO {
   quantity: number
   fromDate: Date
   toDate: Date
-  year?:number
+  year:string
   month?: string
-  january?: number
-  february?: number
-  march?: number
-  april?: number
-  may?: number
-  june?: number
-  july?: number
-  august?: number
-  september?: number
-  october?: number
-  november?: number
-  december?: number
+  jan: string
+  feb: string
+  mar: string
+  apr: string
+  may: string
+  jun: string
+  jul: string
+  aug: string
+  sep: string
+  oct: string
+  nov: string
+  dec: string
   numberOfPersons: number
   monthlyBilling: number
   created_at!: Date
@@ -51,6 +51,19 @@ constructor(
   fromDate: Date,
   toDate: Date,
   month: string,
+  year: string,
+  jan: string,
+  feb: string,
+  mar: string,
+  apr: string,
+  may: string,
+  jun: string,
+  jul: string,
+  aug: string,
+  sep: string,
+  oct: string,
+  nov: string,
+  dec: string,
   energyES: string,
   energyCA: string,
   residueES: string,
@@ -80,6 +93,19 @@ constructor(
   this.toDate = toDate,
   this.month = month,
   this.monthlyBilling = monthlyBilling,
-  this.numberOfPersons = numberOfPersons
+  this.numberOfPersons = numberOfPersons,
+  this.year = year,
+  this.jan = jan,
+  this.feb = feb,
+  this.mar = mar,
+  this.apr = apr,
+  this.may = may,
+  this.jun = jun,
+  this.jul = jul,
+  this.aug = aug,
+  this.sep = sep,
+  this.oct = oct,
+  this.nov = nov,
+  this.dec = dec
 }
 }

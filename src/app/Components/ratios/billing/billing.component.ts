@@ -40,9 +40,6 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 export class BillingComponent {
 
   billing: BillingDTO
-  billingOBJs: any [] = []
-  billingLines: {delegation: string, year: string, quantity: string[]}
-
   delegation: UntypedFormControl
   companyId: UntypedFormControl
   monthYearDate: UntypedFormControl
@@ -76,11 +73,6 @@ export class BillingComponent {
     
     @Inject(MAT_DATE_LOCALE) private _locale: string,
   ) {
-    this.billingLines = { 
-                          "delegation": "",
-                          "year": "",
-                          "quantity": ['-','-','-','-','-','-','-','-','-','-','-','-']
-                        }
 
     this._locale = 'es-ES';
     this._adapter.setLocale(this._locale);

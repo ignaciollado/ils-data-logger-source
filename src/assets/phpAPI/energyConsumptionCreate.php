@@ -15,23 +15,14 @@ $monthAndYear = explode("/", $monthAndYear);
 $monthEnergyConsumption = $monthAndYear[0];
 $yearEnergyConsumption = $monthAndYear[1];
 
-/* $sql = "INSERT INTO ils_consumption(companyId, companyDelegationId, aspectId, energyId, quantity, month, year) VALUES ("
-.$request['companyId'].","
-.$request['delegation'].","
-.$request['aspectId'].","
-.$request['energy'].","
-.$request['quantity'].",'"
-.$monthEnergyConsumption.",'"
-.$yearEnergyConsumption.",')"; */
-
 /* ENERGY CASE: */
 
 $sql = "INSERT INTO `ils_consumption` (companyId, companyDelegationId, aspectId, energyId, year, `".$monthEnergyConsumption;
 $sql = $sql . "`) VALUES("
 .$request['companyId'].","
-.$request['delegation'].",'"
-.$request['aspectId']."','"
-.$request['energy']."','"
+.$request['delegation'].","
+.$request['aspectId'].","
+.$request['energy'].",'"
 .$yearEnergyConsumption."','"
 .$request['quantity']."') ON DUPLICATE KEY UPDATE `".$monthEnergyConsumption."` = '".$request['quantity']."'";
 

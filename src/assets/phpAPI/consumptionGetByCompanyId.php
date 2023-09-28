@@ -35,7 +35,7 @@ if (isset($aspectId)) {
   $sql .= " AND ils_consumption.aspectId=".$aspectId;
 }
 
-$sql .= " ORDER BY consumptionId";
+$sql .= " ORDER BY ils_consumption.year, ils_company_delegation.name, ils_energy.nameES ";
 
 $result = mysqli_query($conn, $sql);
 

@@ -1,6 +1,6 @@
 import { formatDate } from '@angular/common';
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component, Inject, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, Inject, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import {
   FormControl,
   UntypedFormBuilder,
@@ -25,11 +25,12 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
 import { DelegationService } from 'src/app/Services/delegation.service';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { HeaderMenusService } from 'src/app/Services/header-menus.service';
-import { MatDatepicker } from '@angular/material/datepicker';
+/* import { MatDatepicker } from '@angular/material/datepicker'; */
+import { MatTableDataSource } from '@angular/material/table';
+import { MatSort } from '@angular/material/sort';
 
 
-
-export const MY_FORMATS = {
+/* export const MY_FORMATS = {
   parse: {
     dateInput: 'MM/YYYY',
   },
@@ -39,7 +40,7 @@ export const MY_FORMATS = {
     dateA11yLabel: 'LL',
     monthYearA11yLabel: 'MMMM YYYY',
   },
-};
+}; */
 
 @Component({
   selector: 'app-post-form',
@@ -90,7 +91,14 @@ export class PostFormComponent implements OnInit {
   consumptions!: ConsumptionDTO[];
 
   isGridView: boolean = false
-  columnsDisplayed = ['delegation', 'energy', 'year', 'enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'setiembre', 'octubre', 'noviembre', 'diciembre', 'ACTIONS'];
+  columnsDisplayed = ['delegation', 'year', 'energy', 'enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'setiembre', 'octubre', 'noviembre', 'diciembre', 'ACTIONS'];
+  dataSource = new MatTableDataSource(this.consumptions);
+
+  @ViewChild('energyTbSort') energyTbSort = new MatSort();
+
+  ngAfterViewInit() {
+    this.dataSource.sort = this.energyTbSort;
+  }
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -229,6 +237,8 @@ export class PostFormComponent implements OnInit {
         this.consumptionService.getAllConsumptionsByCompanyAndAspect(this.userId, 1).subscribe(
         (consumptions: ConsumptionDTO[]) => {
           this.consumptions = consumptions
+          this.dataSource = new MatTableDataSource(this.consumptions);
+          this.dataSource.sort = this.energyTbSort;
         },
         (error: HttpErrorResponse) => {
           errorResponse = error.error;
@@ -344,13 +354,13 @@ export class PostFormComponent implements OnInit {
 
   }
 
-  setMonthAndYear(normalizedMonthAndYear: Date, datepicker: MatDatepicker<Date>) {
+/*   setMonthAndYear(normalizedMonthAndYear: Date, datepicker: MatDatepicker<Date>) {
 
     const ctrlValue = this.monthYearDate.value!
-/*     ctrlValue.month(normalizedMonthAndYear.getMonth()+1)
-    ctrlValue.year(normalizedMonthAndYear.getFullYear()) */
+    ctrlValue.month(normalizedMonthAndYear.getMonth()+1)
+    ctrlValue.year(normalizedMonthAndYear.getFullYear()) 
     this.monthYearDate.setValue( (normalizedMonthAndYear.getMonth()+1)+"/"+ normalizedMonthAndYear.getFullYear())
     datepicker.close()
-  }
+  } */
 
 }

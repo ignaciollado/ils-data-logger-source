@@ -1,6 +1,6 @@
 import { formatDate } from '@angular/common';
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, OnInit, ViewChild } from '@angular/core';
 import {
   UntypedFormBuilder,
   UntypedFormControl,
@@ -19,7 +19,8 @@ import { SharedService } from 'src/app/Services/shared.service';
 import { deleteResponse } from 'src/app/Services/category.service';
 import { DelegationService } from 'src/app/Services/delegation.service';
 import { JwtHelperService } from '@auth0/angular-jwt';
-
+import { MatTableDataSource } from '@angular/material/table';
+import { MatSort } from '@angular/material/sort';
 
 @Component({
   selector: 'app-emission-form',
@@ -50,7 +51,14 @@ export class EmissionFormComponent {
 
   isGridView: boolean = false
   columnsDisplayed = ['delegation', 'year', 'quantity', 'scopeone', 'scopetwo', 'ACTIONS'];
+  dataSource = new MatTableDataSource(this.consumptions);
 
+  @ViewChild('emissionTbSort') emissionTbSort = new MatSort();
+
+  ngAfterViewInit() {
+    this.dataSource.sort = this.emissionTbSort;
+  }
+  
   constructor(
     private activatedRoute: ActivatedRoute,
     private consumptionService: ConsumptionService,
@@ -117,6 +125,8 @@ export class EmissionFormComponent {
         this.consumptionService.getAllConsumptionsByCompanyAndAspect(userId, 5).subscribe(
         (consumptions: ConsumptionDTO[]) => {
           this.consumptions = consumptions
+          this.dataSource = new MatTableDataSource(this.consumptions)
+          this.dataSource.sort = this.emissionTbSort
         },
         (error: HttpErrorResponse) => {
           errorResponse = error.error;

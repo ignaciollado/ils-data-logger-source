@@ -8,31 +8,24 @@ require_once 'conectar_a_bbdd_pindust.php';
 require_once 'encrDecr.php';
 
 mysqli_query($conn, "SET NAMES 'utf8'");
+
 $postedData = file_get_contents("php://input");
-
 $request = json_decode($postedData, TRUE);
-
 $monthAndYear = $request['monthYearDate'];
-
 $monthAndYear = explode("/", $monthAndYear);
-$monthBilling = $monthAndYear[0];
-$yearBilling = $monthAndYear[1];
+$monthWaterConsumption = $monthAndYear[0];
+$yearWaterConsumption = $monthAndYear[1];
 
-$query = "INSERT INTO ils_consumption(companyId, companyDelegationId, aspectId, energyId, quantity, month, year) VALUES ("
+$sql = "INSERT INTO `ils_consumption` (companyId, companyDelegationId, aspectId, energyId, year, `".$monthWaterConsumption;
+$sql = $sql . "`) VALUES("
 .$request['companyId'].","
 .$request['delegation'].","
-.$request['aspectId'].",0,"
-.$request['quantityWater'].",'"
-.$monthBilling."','"
-.$yearBilling."')";
+.$request['aspectId'].","
+.$request['energy']."0,'"
+.$yearWaterConsumption."',"
+.$request['quantityWater'].") ON DUPLICATE KEY UPDATE `".$monthWaterConsumption."` = ".$request['quantityWater'];
 
-/* WATER CASE:
-INSERT INTO `ils_consumption` (companyId, companyDelegationId, aspectId, year,
-`01`, `02`, `03`, `04`, `05`, `06`, `07`, `08`, `09`, `10`, `11`, `12`)
-VALUES(284, 19, 2, '2019', '', '', '', '', '', '', '', '', '1500', '', '', '') ON DUPLICATE KEY UPDATE
-`09`= 1500 */
-
-$result = mysqli_query($conn, $query);
+$result = mysqli_query($conn, $sql);
 
 mysqli_close($conn);
 if ($result) {

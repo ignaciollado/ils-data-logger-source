@@ -1,7 +1,7 @@
 
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component, Inject } from '@angular/core';
-import { FormControl,
+import { Component, Inject, ViewChild } from '@angular/core';
+import { 
   UntypedFormBuilder,
   UntypedFormControl,
   UntypedFormGroup,
@@ -14,19 +14,22 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { finalize } from 'rxjs/operators';
 import { ConsumptionDTO } from 'src/app/Models/consumption.dto';
 import { DelegationDTO } from 'src/app/Models/delegation.dto';
+import { ResidueDTO } from 'src/app/Models/residue.dto';
 import { LocalStorageService } from 'src/app/Services/local-storage.service';
 import { ConsumptionService } from 'src/app/Services/consumption.service';
 import { SharedService } from 'src/app/Services/shared.service';
 import { deleteResponse } from 'src/app/Services/category.service';
 import { DelegationService } from 'src/app/Services/delegation.service';
 import { ResidueService } from 'src/app/Services/residue.service';
-import { ResidueDTO } from 'src/app/Models/residue.dto';
-import { MonthDTO } from 'src/app/Models/month.dto';
+
+/* import { MonthDTO } from 'src/app/Models/month.dto'; */
 import { Moment } from 'moment';
 import { MatDatepicker } from '@angular/material/datepicker';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatSort } from '@angular/material/sort';
 
-export const MY_FORMATS = {
+/* export const MY_FORMATS = {
   parse: {
     dateInput: 'MM/YYYY',
   },
@@ -36,7 +39,7 @@ export const MY_FORMATS = {
     dateA11yLabel: 'LL',
     monthYearA11yLabel: 'MMMM YYYY',
   },
-};
+}; */
 
 @Component({
   selector: 'app-residue-form',
@@ -46,6 +49,7 @@ export const MY_FORMATS = {
 })
 
 export class ResidueFormComponent {
+
   consumption: ConsumptionDTO
   delegation: UntypedFormControl
   companyId: UntypedFormControl
@@ -55,7 +59,7 @@ export class ResidueFormComponent {
   incineration: UntypedFormControl
   dump: UntypedFormControl
   compost: UntypedFormControl
-  monthYearDate: FormControl
+  monthYearDate: UntypedFormControl
 
   quantityResidue: UntypedFormControl
   residueForm: UntypedFormGroup
@@ -70,12 +74,19 @@ export class ResidueFormComponent {
   private userId: string | null;
 
   delegations!: DelegationDTO[];
-  months!: MonthDTO[];
+  /* months!: MonthDTO[]; */
   residues!: ResidueDTO[];
   consumptions!: ConsumptionDTO[];
 
   isGridView: boolean = false
-  columnsDisplayed = ['delegation', 'residue', 'year', 'enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'setiembre', 'octubre', 'noviembre', 'diciembre', 'ACTIONS'];
+  columnsDisplayed = ['delegation', 'year', 'residue', 'enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'setiembre', 'octubre', 'noviembre', 'diciembre', 'ACTIONS'];
+  dataSource = new MatTableDataSource(this.consumptions);
+
+  @ViewChild('residueTbSort') residueTbSort = new MatSort();
+
+  ngAfterViewInit() {
+    this.dataSource.sort = this.residueTbSort;
+  }
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -110,7 +121,7 @@ export class ResidueFormComponent {
     this.compost = new UntypedFormControl('', [ Validators.min(0), Validators.max(100) ]);
     this.quantityResidue = new UntypedFormControl('', [ Validators.required, Validators.min(0) ]);
     this.companyId = new UntypedFormControl(this.userId, [ Validators.required ]);
-    this.monthYearDate = new FormControl('', [ Validators.required ]);
+    this.monthYearDate = new UntypedFormControl('', [ Validators.required, Validators.min(1), Validators.max(12) ]);
 
     this.residueForm = this.formBuilder.group({
 
@@ -163,12 +174,13 @@ export class ResidueFormComponent {
 
   private loadConsumption(): void {
     let errorResponse: any;
-    const userId = this.jwtHelper.decodeToken().id_ils;
-    if (userId) {
+    if (this.userId) {
 
-        this.consumptionService.getAllConsumptionsByCompanyAndAspect(userId, 3).subscribe(
+        this.consumptionService.getAllConsumptionsByCompanyAndAspect(this.userId, 3).subscribe(
         (consumptions: ConsumptionDTO[]) => {
           this.consumptions = consumptions
+          this.dataSource = new MatTableDataSource(this.consumptions)
+          this.dataSource.sort = this.residueTbSort
         },
         (error: HttpErrorResponse) => {
           errorResponse = error.error;
@@ -182,9 +194,8 @@ export class ResidueFormComponent {
   private createResidueConsumption(): void {
     let errorResponse: any;
     let responseOK: boolean = false;
-    const userId = this.localStorageService.get('user_id');
-    if (userId) {
-      this.consumption.companyId = userId;
+    if (this.userId) {
+      this.consumption.companyId = this.userId;
       this.consumption.aspectId = 3; /* Residues aspect id : 3 */
       this.consumptionService.createResidueConsumption(this.consumption)
         .pipe(
@@ -203,9 +214,6 @@ export class ResidueFormComponent {
         .subscribe(
           () => {
             responseOK = true;
-            /* this.delegation.reset() */
-           /*  this.fromDateResidue.reset()
-            this.toDateResidue.reset() */
             this.quantityResidue.reset()
             this.residue.reset()
             this.reuse.reset()

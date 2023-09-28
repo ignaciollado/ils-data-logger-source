@@ -1,5 +1,5 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, ViewChild } from '@angular/core';
 import {
   FormControl,
   UntypedFormBuilder,
@@ -23,6 +23,8 @@ import { Moment } from 'moment';
 import { MatDatepicker } from '@angular/material/datepicker';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { BillingDTO } from 'src/app/Models/billing.dto';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatSort } from '@angular/material/sort';
 
 export const MY_FORMATS = {
   parse: {
@@ -79,9 +81,14 @@ export class PersonsComponent {
   persons!: PersonDTO[];
 
   isGridView: boolean = false
-  /* columnsDisplayed = ['delegation', 'year', 'enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'setiembre', 'octubre', 'noviembre', 'diciembre', 'ACTIONS']; */
   columnsDisplayed = ['delegation', 'year', 'enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'setiembre', 'octubre', 'noviembre', 'diciembre', 'ACTIONS'];
+  dataSource = new MatTableDataSource(this.persons);
 
+  @ViewChild('personTbSort') personTbSort = new MatSort();
+
+  ngAfterViewInit() {
+    this.dataSource.sort = this.personTbSort;
+  }
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -145,10 +152,11 @@ export class PersonsComponent {
   private loadPersons(): void {
     let errorResponse: any;
     if (this.userId) {
-
         this.personService.getPersonsByCompany(this.userId).subscribe(
         (persons: PersonDTO[]) => {
           this.persons = persons
+          this.dataSource = new MatTableDataSource(this.persons)
+          this.dataSource.sort = this.personTbSort
         },
         (error: HttpErrorResponse) => {
           errorResponse = error.error;
@@ -233,13 +241,9 @@ export class PersonsComponent {
     }
   }
 
-  setMonthAndYear(normalizedMonthAndYear: Moment, datepicker: MatDatepicker<Moment>) {
-    const ctrlValue = this.monthYearDate.value!;
-    ctrlValue.month(normalizedMonthAndYear.month());
-    ctrlValue.year(normalizedMonthAndYear.year());
-    this.monthYearDate.setValue(ctrlValue);
-    datepicker.close();
+  public applyFilter(value: Event):void {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
-
 }
 

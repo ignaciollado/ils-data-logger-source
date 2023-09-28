@@ -23,8 +23,8 @@ import { DelegationService } from 'src/app/Services/delegation.service';
 import { ResidueService } from 'src/app/Services/residue.service';
 
 /* import { MonthDTO } from 'src/app/Models/month.dto'; */
-import { Moment } from 'moment';
-import { MatDatepicker } from '@angular/material/datepicker';
+/* import { Moment } from 'moment';
+import { MatDatepicker } from '@angular/material/datepicker'; */
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
@@ -275,12 +275,9 @@ export class ResidueFormComponent {
 
   }
 
-  setMonthAndYear(normalizedMonthAndYear: Moment, datepicker: MatDatepicker<Moment>) {
-    const ctrlValue = this.monthYearDate.value!;
-    ctrlValue.month(normalizedMonthAndYear.month());
-    ctrlValue.year(normalizedMonthAndYear.year());
-    this.monthYearDate.setValue(ctrlValue);
-    datepicker.close();
+  public applyFilter(value: Event):void {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
 }

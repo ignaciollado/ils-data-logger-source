@@ -1,5 +1,5 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, ViewChild } from '@angular/core';
 import {
   UntypedFormBuilder,
   UntypedFormControl,
@@ -19,6 +19,8 @@ import { DelegationService } from 'src/app/Services/delegation.service';
 import { deleteResponse } from 'src/app/Services/category.service';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatSort } from '@angular/material/sort';
 
 @Component({
   selector: 'app-billing',
@@ -60,7 +62,13 @@ export class BillingComponent {
 
   isGridView: boolean = false
   columnsDisplayed = ['delegation', 'year', 'enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'setiembre', 'octubre', 'noviembre', 'diciembre', 'ACTIONS'];
+  dataSource = new MatTableDataSource(this.billings);
 
+  @ViewChild('billingTbSort') billingTbSort = new MatSort();
+
+  ngAfterViewInit() {
+    this.dataSource.sort = this.billingTbSort;
+  }
   constructor(
     private activatedRoute: ActivatedRoute,
     private billingService: BillingService,
@@ -121,11 +129,11 @@ export class BillingComponent {
     let errorResponse: any;
     
     if (this.userId) {
-    
-
       this.billingService.getBillingsByCompany(this.userId).subscribe(
         (billings: BillingDTO[]) => {
           this.billings  = billings
+          this.dataSource = new MatTableDataSource(this.billings)
+          this.dataSource.sort = this.billingTbSort
         },
         (error: HttpErrorResponse) => {
           errorResponse = error.error;
@@ -208,6 +216,11 @@ export class BillingComponent {
     } else {
       this.createBilling();
     }
+  }
+
+  public applyFilter(value: Event):void {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
 }

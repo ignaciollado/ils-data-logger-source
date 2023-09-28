@@ -16,6 +16,10 @@
 
     "activityData": "Dades ambientals",
     "productionData": "Dades de producció",
+    "billingList": "Llistat de facturació",
+    "personsList": "Llistat de personal",
+    "monthlyObjective": "Objetiu mensual",
+
     "aspects": "Aspectes",
     "energies": "Energies",
     "residues": "Residus",

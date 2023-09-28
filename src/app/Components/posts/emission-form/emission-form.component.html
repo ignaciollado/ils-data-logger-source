@@ -63,6 +63,10 @@
   </form>
 </div>
 <h2>{{'consumptionList' | translate}}</h2>
+<mat-form-field>
+  <mat-label>Filter</mat-label>
+  <input matInput (keyup)="applyFilter($event)" placeholder="Search columns" #input>
+</mat-form-field>
 <table *ngIf="!isGridView" mat-table [dataSource]="consumptions" class="mat-elevation-z8" matSort
 #emissionTbSort="matSort">
 <ng-container matColumnDef="delegation">

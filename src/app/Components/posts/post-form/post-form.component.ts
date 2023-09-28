@@ -354,13 +354,9 @@ export class PostFormComponent implements OnInit {
 
   }
 
-/*   setMonthAndYear(normalizedMonthAndYear: Date, datepicker: MatDatepicker<Date>) {
-
-    const ctrlValue = this.monthYearDate.value!
-    ctrlValue.month(normalizedMonthAndYear.getMonth()+1)
-    ctrlValue.year(normalizedMonthAndYear.getFullYear()) 
-    this.monthYearDate.setValue( (normalizedMonthAndYear.getMonth()+1)+"/"+ normalizedMonthAndYear.getFullYear())
-    datepicker.close()
-  } */
+  public applyFilter(value: Event):void {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
 
 }

@@ -19,7 +19,7 @@ import { SharedService } from 'src/app/Services/shared.service';
 import { deleteResponse } from 'src/app/Services/category.service';
 import { DelegationService } from 'src/app/Services/delegation.service';
 import { HeaderMenusService } from 'src/app/Services/header-menus.service';
-import { MatDatepicker } from '@angular/material/datepicker';
+/* import { MatDatepicker } from '@angular/material/datepicker'; */
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
@@ -215,13 +215,9 @@ export class WaterFormComponent {
 
   }
 
-  setMonthAndYear(normalizedMonthAndYear: Date, datepicker: MatDatepicker<Date>) {
-
-    const ctrlValue = this.monthYearDate.value!
-/*     ctrlValue.month(normalizedMonthAndYear.getMonth()+1)
-    ctrlValue.year(normalizedMonthAndYear.getFullYear()) */
-    this.monthYearDate.setValue( (normalizedMonthAndYear.getMonth()+1)+"/"+ normalizedMonthAndYear.getFullYear())
-    datepicker.close()
+  public applyFilter(value: Event):void {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
 }

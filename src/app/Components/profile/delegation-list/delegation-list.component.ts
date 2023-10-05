@@ -30,10 +30,10 @@ export class DelegationListComponent {
 
   private loadDelegations(): void {
     let errorResponse: any;
-    const companyId = this.localStorageService.get('user_id');
-    if (companyId) {
+    const userId = this.localStorageService.get('user_id');
+    if (userId) {
 
-        this.delegationService.getAllDelegationsByCompanyIdFromMySQL(companyId).subscribe(
+        this.delegationService.getAllDelegationsByCompanyIdFromMySQL(userId).subscribe(
         (delegations: DelegationDTO[]) => {
           this.delegations = delegations
         },

@@ -6,6 +6,7 @@ import { deleteResponse } from 'src/app/Services/category.service';
 import { LocalStorageService } from 'src/app/Services/local-storage.service';
 import { DelegationService } from 'src/app/Services/delegation.service';
 import { SharedService } from 'src/app/Services/shared.service';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Component({
   selector: 'app-delegation',
@@ -17,23 +18,26 @@ export class DelegationListComponent {
 
   isGridView: boolean = false
   columnsDisplayed = ['name', 'address', 'ACTIONS'];
+  result: boolean = false
+  private userId: string | null;
 
   constructor(
     private delegationService: DelegationService,
     private router: Router,
     private localStorageService: LocalStorageService,
     private sharedService: SharedService,
+    private jwtHelper: JwtHelperService,
   ) {
-
+    this.userId = this.jwtHelper.decodeToken().id_ils
     this.loadDelegations();
   }
 
   private loadDelegations(): void {
     let errorResponse: any;
-    const userId = this.localStorageService.get('user_id');
-    if (userId) {
 
-        this.delegationService.getAllDelegationsByCompanyIdFromMySQL(userId).subscribe(
+    if (this.userId) {
+
+        this.delegationService.getAllDelegationsByCompanyIdFromMySQL(this.userId).subscribe(
         (delegations: DelegationDTO[]) => {
           this.delegations = delegations
         },
@@ -52,8 +56,8 @@ export class DelegationListComponent {
 
   deleteDelegation(companyDelegationId: string): void {
     let errorResponse: any;
-    let result = confirm('Confirm delete this delegation with id: ' + companyDelegationId + ' .');
-    if (result) {
+    this.result = confirm('Confirm delete this delegation.');
+    if (this.result) {
       this.delegationService.deleteDelegation(companyDelegationId).subscribe(
         (rowsAffected: deleteResponse) => {
           if (rowsAffected.affected > 0) {

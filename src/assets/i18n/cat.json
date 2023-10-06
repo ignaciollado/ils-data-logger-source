@@ -8,11 +8,13 @@
     "logout": "Sortir",
     "name": "Denominació",
     "ubication": "Ubicació",
+    "city": "Localitat",
     "totalActivityReported": "Activitat total reportada",
     "sustainabilityIndicatorsCharts": "Gràfiques d'indicadors",
 
     "companyName": "Nom de l'empresa",
     "companyAddress": "Domicili",
+    "companyCNAE": "CNAE de l'empresa",
 
     "activityData": "Dades ambientals",
     "productionData": "Dades de producció",
@@ -69,12 +71,12 @@
 
     "copyright": "Creat per l'Institut d'Innovació Empresarial de les Illes Balears",
     "workSession": "Iniciar sessió de treball",
-    "Password": "Contrassenya",
+    "password": "Contrassenya",
     "IsRequired": " aquesta dada és obligatòria",
-    "InvalidPattern": "format no vàlid",
-    "CharsMin": ", longitud mínima de ",
-    "CharsMax": ", longitud màxima de ",
-    "Characters": "caràcters",
+    "invalidPattern": "format no vàlid",
+    "charsMin": ", longitud mínima de ",
+    "charsMax": ", longitud màxima de ",
+    "characters": "caràcters",
     "profile": "Les meves dades",
 
     "Name": "Nom",
@@ -120,6 +122,17 @@
     "NewsLetterSubs": "Subscriu-te al butlletí de notícies:",
     "ArchivadoEn": "Arxivat com:",
 
-    "inscriptionOK": "Inscripció realitzada."
+    "january": "Gener",
+    "february": "Febrer",
+    "march": "Març",
+    "april": "Abril",
+    "may": "Maig",
+    "june": "Juny",
+    "july": "Juliol",
+    "august": "Agost",
+    "september": "Setembre",
+    "october": "Octubre",
+    "november": "Novembre",
+    "december": "Decembre"
 
   }

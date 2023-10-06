@@ -11,10 +11,10 @@ import { HeaderMenus } from 'src/app/Models/header-menus.dto';
 import { HeaderMenusService } from 'src/app/Services/header-menus.service';
 import { finalize } from 'rxjs/operators';
 import { UserDTO } from 'src/app/Models/user.dto';
+import { CnaeDTO } from 'src/app/Models/cnae.dto';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { SharedService } from 'src/app/Services/shared.service';
 import { UserService } from 'src/app/Services/user.service';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-profile',
@@ -34,47 +34,50 @@ import { Router } from '@angular/router';
 })
 export class ProfileComponent implements OnInit {
   profileUser: UserDTO;
-
+  cnae: CnaeDTO
+  cnaeList: CnaeDTO[]
   name: UntypedFormControl;
   email: UntypedFormControl;
   nif: UntypedFormControl;
   domicilio: UntypedFormControl;
   localidad: UntypedFormControl;
+  cnaeSelect: UntypedFormControl
 
   profileForm: UntypedFormGroup;
   isValidForm: boolean | null;
   isElevated = true;
   userFields: string[] = [];
   access_token: string | null;
+  private userId: string | null;
 
   constructor(
     private formBuilder: UntypedFormBuilder,
     private userService: UserService,
     private sharedService: SharedService,
-    private router: Router,
     private headerMenusService: HeaderMenusService,
     private jwtHelper: JwtHelperService,
   ) {
-    this.profileUser = new UserDTO('', '', '', '', '');
-
+    this.profileUser = new UserDTO('', '', '', '', '', '');
     this.isValidForm = null;
+
+    this.userId = this.jwtHelper.decodeToken().id_ils
 
     this.name = new UntypedFormControl(this.profileUser.name, [
       Validators.required,
       Validators.minLength(5),
-      Validators.maxLength(25),
+      Validators.maxLength(100),
     ]);
 
     this.domicilio = new UntypedFormControl(this.profileUser.domicilio, [
       Validators.required,
       Validators.minLength(5),
-      Validators.maxLength(25),
+      Validators.maxLength(100),
     ]);
 
     this.localidad = new UntypedFormControl(this.profileUser.localidad, [
       Validators.required,
       Validators.minLength(5),
-      Validators.maxLength(25),
+      Validators.maxLength(100),
     ]);
 
     this.email = new UntypedFormControl(this.profileUser.email, [
@@ -87,15 +90,19 @@ export class ProfileComponent implements OnInit {
       Validators.minLength(8),
     ]);
 
+    this.cnaeSelect = new UntypedFormControl(this.profileUser.cnae, [ Validators.required ]);
+
     this.profileForm = this.formBuilder.group({
       name: this.name,
       email: this.email,
       nif: this.nif,
       domicilio: this.domicilio,
-      localidad: this.localidad
+      localidad: this.localidad,
+      cnaeSelect: this.cnaeSelect
     });
 
     this.access_token = sessionStorage.getItem("access_token")
+
     if (this.access_token === null) {
       const headerInfo: HeaderMenus = {
         showAuthSection: false,
@@ -111,28 +118,31 @@ export class ProfileComponent implements OnInit {
         this.headerMenusService.headerManagement.next(headerInfo)
       }
     }
+    this.loadCnaes()
   }
 
   ngOnInit(): void {
     let errorResponse: any;
-    // load user data
-    const userId = sessionStorage.getItem("user_id");
-    if (userId) {
-      this.userService.getUSerByIdMySQL(userId).subscribe(
+
+    if (this.userId) {
+      this.userService.getUSerByIdMySQL(this.userId).subscribe(
         (userData: UserDTO) => {
+
           this.userFields = Object.entries(userData).map( item => item[1])
-          this.name.setValue(this.userFields[1]);
-          this.email.setValue(this.userFields[8]);
-          this.nif.setValue(this.userFields[2]);
-          this.domicilio.setValue(this.userFields[3]);
-          this.localidad.setValue(this.userFields[4]);
+          this.name.setValue(this.userFields[1])
+          this.nif.setValue(this.userFields[2])
+          this.domicilio.setValue(this.userFields[3])
+          this.localidad.setValue(this.userFields[4])
+          this.cnaeSelect.setValue(this.userFields[6])
+          this.email.setValue(this.userFields[9])
 
           this.profileForm = this.formBuilder.group({
             name: this.name,
-            email: this.email,
             nif: this.nif,
             domicilio: this.domicilio,
-            localidad: this.localidad
+            email: this.email,
+            localidad: this.localidad,
+            cnaeSelect: this.cnaeSelect
           });
         },
         (error: HttpErrorResponse) => {
@@ -141,6 +151,19 @@ export class ProfileComponent implements OnInit {
         }
       );
     }
+  }
+
+  private loadCnaes(): void {
+    let errorResponse: any;
+    this.userService.getUserCnae().subscribe(
+      (cnaes: CnaeDTO[]) => {
+        this.cnaeList = cnaes
+      },
+      (error: HttpErrorResponse) => {
+        errorResponse = error.error;
+        this.sharedService.errorLog(errorResponse)
+      }
+    );
   }
 
   updateUser(): void {
@@ -154,12 +177,10 @@ export class ProfileComponent implements OnInit {
 
     this.isValidForm = true;
     this.profileUser = this.profileForm.value;
- 
-    const userId = sessionStorage.getItem('user_id');
 
-    if (userId) {
+    if (this.userId) {
       this.userService
-        .updateUserMySQL(userId, this.profileUser)
+        .updateUserPindustExpedientes(this.userId, this.profileUser)
         .pipe(
           finalize(async () => {
             await this.sharedService.managementToast(
@@ -170,8 +191,9 @@ export class ProfileComponent implements OnInit {
           })
         )
         .subscribe(
-          () => {
-            responseOK = true;
+          ( data ) => {
+            console.log (data)
+            responseOK = true
           },
           (error: HttpErrorResponse) => {
             responseOK = false;

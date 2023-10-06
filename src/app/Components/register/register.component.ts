@@ -27,6 +27,7 @@ export class RegisterComponent implements OnInit {
   email: UntypedFormControl;
   password: UntypedFormControl;
   domicilio: UntypedFormControl;
+  cnae: UntypedFormControl;
 
   registerForm: UntypedFormGroup;
   isValidForm: boolean | null;
@@ -38,7 +39,7 @@ export class RegisterComponent implements OnInit {
     private headerMenusService: HeaderMenusService,
     private router: Router
   ) {
-    this.registerUser = new UserDTO('', '', '', '', '');
+    this.registerUser = new UserDTO('', '', '', '', '', '');
 
     this.isValidForm = null;
 
@@ -65,11 +66,14 @@ export class RegisterComponent implements OnInit {
       Validators.maxLength(25),
     ]);
 
+    this.cnae = new UntypedFormControl(this.registerUser.cnae, [ Validators.required ]);
+
     this.registerForm = this.formBuilder.group({
       name: this.name,
       email: this.email,
       password: this.password,
-      domicilio: this.domicilio
+      domicilio: this.domicilio,
+      cnae: this.cnae
     });
   }
 

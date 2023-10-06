@@ -8,6 +8,14 @@ table {
     font-size: .7rem;
 }
 
+mat-cell.title {
+    border: 2px red solid;
+}
+
+mat-cell[matTooltip] {
+    background-color: aqua;
+}
+
 @media only screen and (max-width: base.$app-break-point) {
     
     .denominacion::before, .denominacio::before {

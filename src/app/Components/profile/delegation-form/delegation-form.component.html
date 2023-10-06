@@ -16,9 +16,9 @@
             <mat-form-field [style.width.px]=327>
               <mat-label>{{'name' | translate}}</mat-label>
               <input matInput type="text" [formControl]="name" />
-              <mat-error *ngIf="name.hasError('required')">{{'name' | translate}} <strong>is required</strong></mat-error>
-              <mat-error *ngIf="name.hasError('minlength')">{{'name' | translate}} must be greater than 3 characters</mat-error>
-              <mat-error *ngIf="name.hasError('maxlength')">{{'name' | translate}} must be less than 25 characters</mat-error>
+              <mat-error *ngIf="name.hasError('required')">{{'name' | translate}}  <strong>{{'isRequired' | translate}}</strong></mat-error>
+              <mat-error *ngIf="name.hasError('minlength')">{{'name' | translate}} <strong>{{'charsMin' | translate}}</strong> 3 <strong>{{'characters' | translate}}</strong></mat-error>
+              <mat-error *ngIf="name.hasError('maxlength')">{{'name' | translate}} <strong>{{'charsMax' | translate}}</strong> 25 <strong>{{'characters' | translate}}</strong></mat-error>
             </mat-form-field>
         </section>
   
@@ -26,25 +26,11 @@
           <mat-form-field [style.width.px]=327>
             <mat-label>{{'ubication' | translate}}</mat-label>
             <input matInput type="text" [formControl]="address" />
-            <mat-error *ngIf="address.hasError('required')">{{'ubication' | translate}} <strong>is required</strong></mat-error>
-            <mat-error *ngIf="address.hasError('minlength')">{{'ubication' | translate}} must be greater than 8 characters</mat-error>
-            <mat-error *ngIf="address.hasError('maxlength')">{{'ubication' | translate}} must be less than 25 characters</mat-error>
+            <mat-error *ngIf="address.hasError('required')">{{'ubication' | translate}}  <strong>{{'isRequired' | translate}}</strong></mat-error>
+            <mat-error *ngIf="address.hasError('minlength')">{{'ubication' | translate}} <strong>{{'charsMin' | translate}}</strong> 8 <strong>{{'characters' | translate}} 8 characters</strong></mat-error>
+            <mat-error *ngIf="address.hasError('maxlength')">{{'ubication' | translate}} <strong>{{'charsMax' | translate}}</strong> 25 <strong>{{'characters' | translate}}</strong></mat-error>
           </mat-form-field>
         </section>
-
-        <section>
-          <mat-form-field appearance="fill" [style.width.px]=327>
-            <mat-label>{{'companyCNAE' | translate}}</mat-label>
-            <mat-select [formControl]="cnaeSelect" required>
-              <mat-option>--</mat-option>
-              <mat-option *ngFor="let cnaeItem of cnaeList" [value]="cnaeItem">
-                {{cnaeItem.subsector}}
-              </mat-option>
-            </mat-select>
-            <mat-error *ngIf="cnaeSelect.hasError('required')">Please choose your CNAE</mat-error>
-            <mat-hint>{{cnaeSelect.value?.sound}}</mat-hint>
-          </mat-form-field>
-      </section>
 
         <button mat-raised-button color="primary" type="submit" [disabled]="!delegationForm.valid">ADD</button>  
       </mat-card>

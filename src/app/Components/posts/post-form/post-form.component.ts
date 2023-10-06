@@ -71,8 +71,9 @@ export class PostFormComponent implements OnInit {
   energyForm: UntypedFormGroup
 
   isValidForm: boolean | null
-  isElevated = true
+  isElevated: boolean = true
   consumptionFields: string[] = []
+  result : boolean =false
 
   showButtons: boolean;
   showAuthSection: boolean;
@@ -319,8 +320,8 @@ export class PostFormComponent implements OnInit {
   deleteEnergyConsumption(consumptionId: number): void {
     let errorResponse: any;
 
-    let result = confirm('Confirm delete this activity with id: ' + consumptionId + ' .');
-    if (result) {
+    this.result = confirm('Confirm delete this energy');
+    if (this.result) {
       this.consumptionService.deleteConsumption(consumptionId).subscribe (
         (rowsAffected: deleteResponse) => {
           if (rowsAffected.affected > 0) {

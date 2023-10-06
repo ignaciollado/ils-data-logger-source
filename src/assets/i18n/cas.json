@@ -8,11 +8,13 @@
     "logout": "Salir",
     "name": "Denominación",
     "ubication": "Ubicación",
+    "city": "Localidad",
     "totalActivityReported": "Actividad total reportada",
     "sustainabilityIndicatorsCharts": "Gráficas de indicadores",
 
     "companyName": "Nombre de la empresa",
     "companyAddress": "Domicilio",
+    "companyCNAE": "CNAE de la empresa",
 
     "activityData": "Datos ambientales",
     "productionData": "Datos de producción",
@@ -68,12 +70,12 @@
 
     "copyright": "Creado por el Instituto de Innovación Empresarial de las Islas Baleares",
     "workSession": "Iniciar sesión de trabajo",
-    "Password": "Contraseña",
+    "password": "Contraseña",
     "isRequired": " este dato es obligatorio",
-    "InvalidPattern": "formato no válido",
-    "CharsMin": ", longitud mínima de ",
-    "CharsMax": ", longitud máxima de ",
-    "Characters": "caracteres",
+    "invalidPattern": "formato no válido",
+    "charsMin": ", longitud mínima de ",
+    "charsMax": ", longitud máxima de ",
+    "characters": "caracteres",
 
     "profile": "Mis datos",
 
@@ -106,17 +108,18 @@
     "send": "Envía",
     "fieldValue": "Este campo",
     "searchTheWeb": "Busca en la web",
-    "newsLetterSubscription": "Subscribirse a nuestro boletín de noticias:",
 
-    "gettingFeaturedIDI": "Obteniendo destacados IDI ...",
-    "gettingNews": "Obteniendo las últimas noticias del IDI ...",
-    "gettingServices": "Obteniendo nuestros servicios para empresas y para emprendedores ...",
-    "gettingContentsIDI": "Obteniendo contenidos del IDI ...",
-    "descubreServiciosIDI": "Descubre nuestros servicios para empresas y emprendedores",
-    "comoAyudaIDI": "¿Cómo te ayuda el IDI?",
-    "otrosServiciosIDI": "Otros servicios del IDI",
-    "NewsLetterSubs": "Subscríbase a nuestro boletín de noticias:",
-    "ArchivadoEn": "Archivado como:",
+    "january": "Enero",
+    "february": "Febrero",
+    "march": "Marzo",
+    "april": "Abril",
+    "may": "Mayo",
+    "june": "Junio",
+    "july": "Julio",
+    "august": "Agosto",
+    "september": "Setiembre",
+    "october": "Octubre",
+    "november": "Noviembre",
+    "december": "Diciembre"
 
-    "inscriptionOK": "Inscripción realizada."
   }

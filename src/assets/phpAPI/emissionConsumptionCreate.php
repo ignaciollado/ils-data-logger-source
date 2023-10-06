@@ -15,15 +15,14 @@ $fromDate = $request['yearEmission']."-01-01";
 $toDate =   $request['yearEmission']."-12-31";
 
 $sql = "INSERT INTO ils_consumption(companyId, companyDelegationId, aspectId,
- quantity, scopeOne, scopeTwo, numberOfPersons, monthlyBilling, fromDate, toDate) VALUES ("
+ quantity, year, scopeOne, scopeTwo, fromDate, toDate) VALUES ("
 .$request['companyId'].","
 .$request['delegation'].","
 .$request['aspectId'].","
-.$request['quantityEmission'].","
+.$request['quantityEmission'].",'"
+.$request['yearEmission']."',"
 .$request['scopeone'].","
 .$request['scopetwo'].","
-.$request['numberOfPersons'].","
-.$request['monthlyBilling'].","
 
 ."STR_TO_DATE('".$fromDate."', '%Y-%m-%d'), STR_TO_DATE('".$toDate."', '%Y-%m-%d'))";
 

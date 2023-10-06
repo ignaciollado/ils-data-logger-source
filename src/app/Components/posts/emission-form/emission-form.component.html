@@ -22,6 +22,7 @@
         <mat-form-field [style.width.px]=327>
           <mat-label>{{'year' | translate}}</mat-label>
           <mat-select [formControl]="yearEmission">
+            <mat-option value="2019">2019</mat-option>
             <mat-option value="2020">2020</mat-option>
             <mat-option value="2021">2021</mat-option>
             <mat-option value="2022">2022</mat-option>
@@ -59,53 +60,51 @@
 
       <button mat-raised-button color="primary" type="submit" [disabled]="!emissionForm.valid">ADD</button>
     </mat-card>
-
   </form>
 </div>
+
 <h2>{{'consumptionList' | translate}}</h2>
 <mat-form-field>
   <mat-label>Filter</mat-label>
   <input matInput (keyup)="applyFilter($event)" placeholder="Search columns" #input>
 </mat-form-field>
-<table *ngIf="!isGridView" mat-table [dataSource]="consumptions" class="mat-elevation-z8" matSort
-#emissionTbSort="matSort">
-<ng-container matColumnDef="delegation">
-  <th mat-header-cell *matHeaderCellDef mat-sort-header>{{'delegation' | translate}}</th>
-  <td mat-cell *matCellDef="let consumption">{{consumption.delegation}}</td>
-</ng-container>
+
+<mat-table *ngIf="!isGridView" [dataSource]="consumptions" class="mat-elevation-z8" matSort #emissionTbSort="matSort">
+  <ng-container matColumnDef="delegation">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>{{'delegation' | translate}}</mat-header-cell>
+    <mat-cell *matCellDef="let consumption">{{consumption.delegation}}</mat-cell>
+  </ng-container>
   <ng-container matColumnDef="year">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header>{{'year' | translate}}</th>
-    <td mat-cell *matCellDef="let consumption">{{consumption.year}}</td>
+    <mat-header-cell *matHeaderCellDef mat-sort-header>{{'year' | translate}}</mat-header-cell>
+    <mat-cell *matCellDef="let consumption">{{consumption.year}}</mat-cell>
   </ng-container>
   <ng-container matColumnDef="quantity">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header>{{'quantityCO2e' | translate}}</th>
-    <td mat-cell *matCellDef="let consumption">{{consumption.quantity}}</td>
+    <mat-header-cell *matHeaderCellDef mat-sort-header>{{'quantityCO2e' | translate}}</mat-header-cell>
+    <mat-cell *matCellDef="let consumption">{{consumption.quantity}}</mat-cell>
   </ng-container>
   <ng-container matColumnDef="scopeone">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header>{{'scopeOne' | translate}}</th>
-    <td mat-cell *matCellDef="let consumption">{{consumption.scopeOne}}</td>
+    <mat-header-cell *matHeaderCellDef mat-sort-header>{{'scopeOne' | translate}}</mat-header-cell>
+    <mat-cell *matCellDef="let consumption">{{consumption.scopeOne}}</mat-cell>
   </ng-container>
   <ng-container matColumnDef="scopetwo">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header>{{'scopeTwo' | translate}}</th>
-    <td mat-cell *matCellDef="let consumption">{{consumption.scopeTwo}}</td>
+    <mat-header-cell *matHeaderCellDef mat-sort-header>{{'scopeTwo' | translate}}</mat-header-cell>
+    <mat-cell *matCellDef="let consumption">{{consumption.scopeTwo}}</mat-cell>
   </ng-container>
 
   <ng-container matColumnDef="ACTIONS">
-    <th mat-header-cell *matHeaderCellDef> ACTIONS</th>
-    <td mat-cell *matCellDef="let consumption">
-   <!--    <button mat-icon-button color="accent" matTooltip="Update this indicator"
-      aria-label="Button that displays a tooltip and updates this indicator" (click)="updatePost(consumption.consumptionId)">
+    <mat-header-cell *matHeaderCellDef>ACTIONS</mat-header-cell>
+    <mat-cell *matCellDef="let consumption">
+<!--       <button mat-icon-button color="accent" matTooltip="Update this indicator"
+        aria-label="Button that displays a tooltip and updates this indicator" (click)="updateEmissionConsumption(consumption.consumptionId)">
         <mat-icon>edit</mat-icon>
       </button> -->
       <button mat-icon-button color="warn" matTooltip="Permanently delete this indicator"
-      aria-label="Button that displays a tooltip and permanently deletes this indicator" (click)="deleteEmissionConsumption(consumption.consumptionId)">
-        <mat-icon>delete</mat-icon>
-      </button>
-    </td>
+      aria-label="Button that displays a tooltip and deletes this indicator" (click)="deleteEmissionConsumption(consumption.consumptionId)"><mat-icon>delete</mat-icon></button>
+    </mat-cell>
   </ng-container>
 
-  <tr mat-header-row *matHeaderRowDef="columnsDisplayed"></tr>
-  <tr mat-row *matRowDef="let item; columns: columnsDisplayed;" class="animate__animated animate__fadeInLeft"></tr>
-</table>
+  <mat-header-row *matHeaderRowDef="columnsDisplayed"></mat-header-row>
+  <mat-row *matRowDef="let item; columns: columnsDisplayed;"></mat-row>
+</mat-table>
 
 <div class="loader" *ngIf="!consumptions">No records found yet...</div>

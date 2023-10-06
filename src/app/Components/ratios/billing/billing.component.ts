@@ -50,7 +50,8 @@ export class BillingComponent {
   billingForm: UntypedFormGroup
 
   isValidForm: boolean | null
-  isElevated = true
+  isElevated: boolean = true
+  result: boolean = false
 
   private isUpdateMode: boolean;
   private validRequest: boolean;
@@ -69,6 +70,7 @@ export class BillingComponent {
   ngAfterViewInit() {
     this.dataSource.sort = this.billingTbSort;
   }
+
   constructor(
     private activatedRoute: ActivatedRoute,
     private billingService: BillingService,
@@ -185,8 +187,8 @@ export class BillingComponent {
 
   deleteBilling(billingId: number): void {
     let errorResponse: any;
-    let result = confirm('Confirm delete this billing with id: ' + billingId + ' .');
-    if (result) {
+    this.result = confirm('Confirm delete this billing.');
+    if (this.result) {
       this.billingService.deleteBilling(billingId).subscribe(
         (rowsAffected: deleteResponse) => {
           if (rowsAffected.affected > 0) {

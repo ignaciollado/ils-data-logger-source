@@ -20,6 +20,8 @@ import { ProfileComponent } from './Components/profile/profile.component';
 import { RegisterComponent } from './Components/register/register.component';
 import { AuthInterceptorService } from './Services/auth-interceptor.service';
 import { FormatDatePipe } from './Pipes/format-date.pipe';
+import { FormatQuantityPipe } from "./Pipes/format-quantity.pipe";
+
 import { DashboardComponent } from './Components/dashboard/dashboard.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -80,6 +82,7 @@ export function tokenGetter() {
     CategoryFormComponent,
     CategoriesListComponent,
     FormatDatePipe,
+    FormatQuantityPipe,
     DashboardComponent,
     DelegationListComponent,
     DelegationFormComponent,

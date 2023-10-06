@@ -50,56 +50,56 @@
     },
     {
         "sector": "INDUSTRIA MANUFACTURERA - ALIMENTACIÓN",
-        "subsector": "1012",
-        "cnaeCode": "",
+        "subsector": "Procesado y conservación de volatería",
+        "cnaeCode": "1012",
         "activityIndicator": "kg",
         "emissionIndicator": ["kg CO2 eq/kg"]
     },
     {
         "sector": "INDUSTRIA MANUFACTURERA - ALIMENTACIÓN",
-        "subsector": "",
+        "subsector": "Elaboración de productos cárnicos y de volatería",
         "cnaeCode": "1013",
         "activityIndicator": "kg",
         "emissionIndicator": ["kg CO2 eq/kg"]
     },
     {
         "sector": "INDUSTRIA MANUFACTURERA - ALIMENTACIÓN",
-        "subsector": "",
+        "subsector": "Procesado de pescados, crustáceos y moluscos",
         "cnaeCode": "1021",
         "activityIndicator": "kg",
         "emissionIndicator": ["kg CO2 eq/kg"]
     },
     {
         "sector": "INDUSTRIA MANUFACTURERA - ALIMENTACIÓN",
-        "subsector": "",
+        "subsector": "Fabricación de conservas de pescado",
         "cnaeCode": "1022",
         "activityIndicator": "kg",
         "emissionIndicator": ["kg CO2 eq/kg"]
     },
     {
         "sector": "INDUSTRIA MANUFACTURERA - ALIMENTACIÓN",
-        "subsector": "",
+        "subsector": "Procesado y conservación de patatas",
         "cnaeCode": "1031",
         "activityIndicator": "kg",
         "emissionIndicator": ["kg CO2 eq/kg"]
     },
     {
         "sector": "INDUSTRIA MANUFACTURERA - ALIMENTACIÓN",
-        "subsector": "",
+        "subsector": "Elaboración de zumos de frutas y hortalizas",
         "cnaeCode": "1032",
         "activityIndicator": "Litro",
         "emissionIndicator": ["kg CO2 eq/L"]
     },
     {
         "sector": "INDUSTRIA MANUFACTURERA - ALIMENTACIÓN",
-        "subsector": "",
+        "subsector": "Otro procesado y conservación de frutas y hortalizas ",
         "cnaeCode": "1039",
         "activityIndicator": "kg",
         "emissionIndicator": ["kg CO2 eq/kg"]
     },
     {
         "sector": "INDUSTRIA MANUFACTURERA - ALIMENTACIÓN",
-        "subsector": "",
+        "subsector": "Fabricación de margarina y grasas comestibles similares",
         "cnaeCode": "1042",
         "activityIndicator": "kg",
         "emissionIndicator": ["kg CO2 eq/kg"]

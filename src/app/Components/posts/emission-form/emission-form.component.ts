@@ -38,8 +38,9 @@ export class EmissionFormComponent {
   emissionForm: UntypedFormGroup
 
   isValidForm: boolean | null
-  isElevated = true
+  isElevated: boolean = true
   consumptionFields: string[] = []
+  result : boolean =false
 
   private isUpdateMode: boolean;
   private validRequest: boolean;
@@ -140,9 +141,9 @@ export class EmissionFormComponent {
   private createEmissionConsumption(): void {
     let errorResponse: any;
     let responseOK: boolean = false;
-    const userId = this.localStorageService.get('user_id');
-    if (userId) {
-      this.consumption.companyId = userId;
+
+    if (this.userId) {
+      this.consumption.companyId = this.userId;
       this.consumption.aspectId = 5; /* Emission aspect id : 5 */
       this.consumptionService.createEmissionConsumption(this.consumption)
         .pipe(
@@ -178,13 +179,12 @@ export class EmissionFormComponent {
 
   }
 
-  deleteEmissionConsumption(consumptionId: number): void {
+  deleteEmissionConsumption(consumptionId: number) {
 
     let errorResponse: any;
+    this.result = confirm('Confirm delete this emission');
 
-    // show confirmation popup
-    let result = confirm('Confirm delete this consumption with id: ' + consumptionId + ' .');
-    if (result) {
+    if (this.result) {
       this.consumptionService.deleteConsumption(consumptionId).subscribe(
         (rowsAffected: deleteResponse) => {
           if (rowsAffected.affected > 0) {
@@ -198,6 +198,10 @@ export class EmissionFormComponent {
       )
       this.loadConsumption()
     }
+  }
+
+  updateEmissionConsumption(consumptionId: number) {
+    this.result = confirm('Confirm update this consumption with id: ' + consumptionId + ' .');
   }
 
   saveEmissionForm(): void {
@@ -215,6 +219,23 @@ export class EmissionFormComponent {
       this.createEmissionConsumption();
     }
 
+  }
+
+  getRecord(row) {
+    let errorResponse: any;
+    console.log(row);
+    this.consumptionService.deleteConsumption(row).subscribe(
+      (rowsAffected: deleteResponse) => {
+        if (rowsAffected.affected > 0) {
+ 
+        }
+      },
+      (error: HttpErrorResponse) => {
+        errorResponse = error.error;
+        this.sharedService.errorLog(errorResponse);
+      }
+    )
+    this.loadConsumption()
   }
 
   public applyFilter(value: Event):void {

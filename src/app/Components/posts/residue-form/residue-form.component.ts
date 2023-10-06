@@ -65,8 +65,9 @@ export class ResidueFormComponent {
   residueForm: UntypedFormGroup
 
   isValidForm: boolean | null
-  isElevated = true
+  isElevated: boolean = true
   consumptionFields: string[] = []
+  result: boolean = false
 
   private isUpdateMode: boolean;
   private validRequest: boolean;
@@ -239,8 +240,8 @@ export class ResidueFormComponent {
   deleteResidue(consumptionId: number): void {
 
     let errorResponse: any;
-    let result = confirm('Confirm delete this consumption with id: ' + consumptionId + ' .');
-    if (result) {
+    this.result = confirm('Confirm delete this residue.');
+    if (this.result) {
       this.consumptionService.deleteConsumption(consumptionId).subscribe(
         (rowsAffected: deleteResponse) => {
           if (rowsAffected.affected > 0) {

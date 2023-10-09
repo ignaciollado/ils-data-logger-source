@@ -15,29 +15,45 @@ $monthAndYear = explode("/", $monthAndYear);
 $monthResidueConsumption = $monthAndYear[0];
 $yearResidueConsumption = $monthAndYear[1];
 
-$sql = "INSERT INTO ils_consumption(companyId, companyDelegationId, aspectId, residueId,
-year, `".$monthResidueConsumption;
-$sql = $sql . "`) VALUES("
-.$request['companyId'].","
-.$request['delegation'].","
-.$request['aspectId'].","
-.$request['residue'].",'"
-.$yearResidueConsumption."','"
-.$request['quantityResidue']."/".$request['reuse']."/".$request['recycling']."/".$request['incineration']."/".$request['dump']."/".$request['compost']."') 
-ON DUPLICATE KEY UPDATE `".$monthResidueConsumption."` = '".$request['quantityResidue']."/".$request['reuse']."/".$request['recycling']."/".$request['incineration']."/".$request['dump']."/".$request['compost']."'";
+/* CONTAR CUANTOS REGISTROS HAY */
+$sqlCount = "SELECT *
+FROM `ils_consumption` 
+WHERE  companyId=". $request['companyId']." 
+AND companyDelegationId =". $request['delegation']." 
+AND aspectId =". $request['aspectId']." 
+AND residueId =". $request['residue']." 
+AND year ='". $yearResidueConsumption."'";
 
-/* RESIDUE CASE:
-INSERT INTO `ils_consumption` (companyId, companyDelegationId, aspectId, residueId, year,
-`01`, `02`, `03`, `04`, `05`, `06`, `07`, `08`, `09`, `10`, `11`, `12`)
-VALUES(284, 19, 3, 12, '2019',  '', '440/20/20/20/20/20', '', '', '', '', '', '', '', '', '', '') ON DUPLICATE KEY UPDATE
-`02`='440/20/20/20/20/20' */
+if ($result=mysqli_query($conn,$sqlCount))
+{
+  $rowcount=mysqli_num_rows($result);
+  if ($rowcount > 0) {
+    $sql = "UPDATE `ils_consumption`
+            SET `".$monthResidueConsumption."` = '".$request['quantityResidue']."'
+            WHERE  companyId=". $request['companyId']." 
+            AND companyDelegationId =". $request['delegation']." 
+            AND aspectId =". $request['aspectId']." 
+            AND residueId =". $request['residue']." 
+            AND year ='". $yearResidueConsumption."'"; 
+  } else {
+    $sql = "INSERT INTO `ils_consumption` (companyId, companyDelegationId, aspectId, residueId, year, `".$monthResidueConsumption
+           ."`) VALUES("
+          .$request['companyId'].","
+          .$request['delegation'].","
+          .$request['aspectId'].","
+          .$request['residue'].",'"
+          .$yearResidueConsumption."','"
+          .$request['quantityResidue']."')";
+  }
+}
+mysqli_free_result($result);
 
 $result = mysqli_query($conn, $sql);
 
 mysqli_close($conn);
 if ($result) {
   header('Content-Type: application/json');
-  echo  json_encode(array('user_id'=>$field[0], 'access_token' => $field[2], 'email'=>$field[4], 'password' => $field[2],'response_code'=>200));
+  echo  http_response_code(200);
 } else  {
   echo http_response_code(401);
 }

@@ -15,23 +15,45 @@ $monthAndYear = explode("/", $monthAndYear);
 $monthEnergyConsumption = $monthAndYear[0];
 $yearEnergyConsumption = $monthAndYear[1];
 
-/* ENERGY CASE: */
+/* CONTAR CUANTOS REGISTROS HAY */
+$sqlCount = "SELECT *
+FROM `ils_consumption` 
+WHERE  companyId=". $request['companyId']." 
+AND companyDelegationId =". $request['delegation']." 
+AND aspectId =". $request['aspectId']." 
+AND energyId =". $request['energy']." 
+AND year ='". $yearEnergyConsumption."'";
 
-$sql = "INSERT INTO `ils_consumption` (companyId, companyDelegationId, aspectId, energyId, year, `".$monthEnergyConsumption;
-$sql = $sql . "`) VALUES("
-.$request['companyId'].","
-.$request['delegation'].","
-.$request['aspectId'].","
-.$request['energy'].",'"
-.$yearEnergyConsumption."','"
-.$request['quantity']."') ON DUPLICATE KEY UPDATE `".$monthEnergyConsumption."` = '".$request['quantity']."'";
+if ($result=mysqli_query($conn,$sqlCount))
+{
+  $rowcount=mysqli_num_rows($result);
+  if ($rowcount > 0) {
+    $sql = "UPDATE `ils_consumption`
+            SET `".$monthEnergyConsumption."` = '".$request['quantity']."'
+            WHERE  companyId=". $request['companyId']." 
+            AND companyDelegationId =". $request['delegation']." 
+            AND aspectId =". $request['aspectId']." 
+            AND energyId =". $request['energy']." 
+            AND year ='". $yearEnergyConsumption."'"; 
+  } else {
+    $sql = "INSERT INTO `ils_consumption` (companyId, companyDelegationId, aspectId, energyId, year, `".$monthEnergyConsumption
+           ."`) VALUES("
+          .$request['companyId'].","
+          .$request['delegation'].","
+          .$request['aspectId'].","
+          .$request['energy'].",'"
+          .$yearEnergyConsumption."','"
+          .$request['quantity']."')";
+  }
+}
+mysqli_free_result($result);
 
 $result = mysqli_query($conn, $sql);
 
 mysqli_close($conn);
 if ($result) {
   header('Content-Type: application/json');
-  echo  json_encode(array('user_id'=>$field[0], 'access_token' => $field[2], 'email'=>$field[4], 'password' => $field[2],'response_code'=>200));
+  echo  http_response_code(200);
 } else  {
   echo http_response_code(401);
 }

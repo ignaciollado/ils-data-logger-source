@@ -113,7 +113,7 @@
   </ng-container>
   <ng-container matColumnDef="residue">
     <mat-header-cell *matHeaderCellDef mat-sort-header>{{'residueType' | translate}}</mat-header-cell>
-    <mat-cell *matCellDef="let consumption" matTooltip="{{consumption.residueES}}">{{consumption.residueES}}</mat-cell>
+    <mat-cell *matCellDef="let consumption" matTooltip="{{consumption.residueES}}"><small>{{consumption.residueES}}</small></mat-cell>
   </ng-container>
   <ng-container matColumnDef="enero">
     <mat-header-cell *matHeaderCellDef mat-sort-header>{{'january' | translate}}</mat-header-cell>

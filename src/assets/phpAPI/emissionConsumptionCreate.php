@@ -14,7 +14,7 @@ $request = json_decode($postedData, TRUE);
 $fromDate = $request['yearEmission']."-01-01";
 $toDate =   $request['yearEmission']."-12-31";
 
-$sql = "INSERT INTO ils_consumption(companyId, companyDelegationId, aspectId,
+/* $sql = "INSERT INTO ils_consumption(companyId, companyDelegationId, aspectId,
  quantity, year, scopeOne, scopeTwo, fromDate, toDate) VALUES ("
 .$request['companyId'].","
 .$request['delegation'].","
@@ -24,20 +24,50 @@ $sql = "INSERT INTO ils_consumption(companyId, companyDelegationId, aspectId,
 .$request['scopeone'].","
 .$request['scopetwo'].","
 
-."STR_TO_DATE('".$fromDate."', '%Y-%m-%d'), STR_TO_DATE('".$toDate."', '%Y-%m-%d'))";
+."STR_TO_DATE('".$fromDate."', '%Y-%m-%d'), STR_TO_DATE('".$toDate."', '%Y-%m-%d'))"; */
 
-/* EMISSION CASE:
-INSERT INTO `ils_consumption` (companyId, companyDelegationId, aspectId, year,
-`01`, `02`, `03`, `04`, `05`, `06`, `07`, `08`, `09`, `10`, `11`, `12`)
-VALUES(284, 19, 5, '2019', '', '', '2000/1500/500', '', '', '', '', '', '', '', '', '') ON DUPLICATE KEY UPDATE
-`03`='2000/1500/500'  */
+/* CONTAR CUANTOS REGISTROS HAY */
+$sqlCount = "SELECT *
+FROM `ils_consumption` 
+WHERE  companyId=". $request['companyId']." 
+AND companyDelegationId =". $request['delegation']." 
+AND aspectId =". $request['aspectId']." 
+AND year ='". $request['yearEmission']."'";
+
+if ($result=mysqli_query($conn,$sqlCount))
+{
+  $rowcount=mysqli_num_rows($result);
+  if ($rowcount > 0) {
+    $sql = "UPDATE `ils_consumption`
+            SET quantity = '".$request['quantityEmission']."',
+            scopeOne = '".$request['scopeone']."',
+            scopetwo = '".$request['scopetwo']."'
+
+            WHERE  companyId=". $request['companyId']." 
+            AND companyDelegationId =". $request['delegation']." 
+            AND aspectId =". $request['aspectId']." 
+            AND year ='". $request['yearEmission']."'"; 
+  } else {
+    $sql = "INSERT INTO ils_consumption(companyId, companyDelegationId, aspectId,
+      quantity, year, scopeOne, scopeTwo, fromDate, toDate) VALUES ("
+      .$request['companyId'].","
+      .$request['delegation'].","
+      .$request['aspectId'].","
+      .$request['quantityEmission'].",'"
+      .$request['yearEmission']."',"
+      .$request['scopeone'].","
+      .$request['scopetwo'].","
+      ."STR_TO_DATE('".$fromDate."', '%Y-%m-%d'), STR_TO_DATE('".$toDate."', '%Y-%m-%d'))";
+  }
+}
+mysqli_free_result($result);
 
 $result = mysqli_query($conn, $sql);
 
 mysqli_close($conn);
 if ($result) {
   header('Content-Type: application/json');
-  echo  json_encode(array('user_id'=>$field[0], 'access_token' => $field[2], 'email'=>$field[4], 'password' => $field[2],'response_code'=>200));
+  echo  http_response_code(200);
 } else  {
   echo http_response_code(401);
 }

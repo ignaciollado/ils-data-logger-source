@@ -24,8 +24,8 @@ export class FormatQuantityPipe implements PipeTransform {
     let theQuantityAsArray = value.split('/');
     let type: number = args[0];
 
-    if (type === 1) { //only quantity
-      newFormat = theQuantityAsArray[0];
+    if (type === 1) { //only quantity and € symbol
+      newFormat = theQuantityAsArray[0] + " €";
     }
     if (type === 2) { //quantity and residue destination
         newFormat =  "Quantity: "+theQuantityAsArray[0] + "\n"
@@ -35,18 +35,18 @@ export class FormatQuantityPipe implements PipeTransform {
                     +"Dump: "+theQuantityAsArray[4] + " %\n"
                     +"Compost: "+theQuantityAsArray[5] + " %\n"
     }
-    if (type === 3) { //quantity and residue destination in html format
-        newFormat =  "Quantity: <span class='highlight'>"+ theQuantityAsArray[0] +"</span>" 
-                    +"Reuse: "+theQuantityAsArray[1] + " %<br>"
-                    +"Recycling: "+theQuantityAsArray[2] + " %<br>"
-                    +"Incineration: "+theQuantityAsArray[3] + " %<br>"
-                    +"Dump: "+theQuantityAsArray[4] + " %<br>"
-                    +"Compost: "+theQuantityAsArray[5] + " %<br>"
+    if (type === 3) { //quantity and objective
+        newFormat =  "Quantity: "+ theQuantityAsArray[0] +"\n" 
+                    +"Objective: "+theQuantityAsArray[1] + "\n"
     }
 
     if (type === 4) {
         newFormat = theQuantityAsArray[0] 
         + '<span style="color:#b30000;">Reuse: ' + theQuantityAsArray[0] + '*</span>';  
+    }
+
+    if (type === 5) { //only quantity and  persons string
+      newFormat = theQuantityAsArray[0] + " persons";
     }
 
     //return this.sanitizer.bypassSecurityTrustHtml(newFormat);

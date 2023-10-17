@@ -15,7 +15,7 @@ $monthAndYear = explode("/", $monthAndYear);
 $monthEnergyConsumption = $monthAndYear[0];
 $yearEnergyConsumption = $monthAndYear[1];
 
-/* CONTAR CUANTOS REGISTROS HAY */
+/* CONTAR CUANTOS REGISTROS IGUALES HAY */
 $sqlCount = "SELECT *
 FROM `ils_consumption` 
 WHERE  companyId=". $request['companyId']." 
@@ -29,7 +29,7 @@ if ($result=mysqli_query($conn,$sqlCount))
   $rowcount=mysqli_num_rows($result);
   if ($rowcount > 0) {
     $sql = "UPDATE `ils_consumption`
-            SET `".$monthEnergyConsumption."` = '".$request['quantity']."'
+            SET `".$monthEnergyConsumption."` = '".$request['quantity'].'/'.$request['objective']."'
             WHERE  companyId=". $request['companyId']." 
             AND companyDelegationId =". $request['delegation']." 
             AND aspectId =". $request['aspectId']." 
@@ -43,7 +43,7 @@ if ($result=mysqli_query($conn,$sqlCount))
           .$request['aspectId'].","
           .$request['energy'].",'"
           .$yearEnergyConsumption."','"
-          .$request['quantity']."')";
+          .$request['quantity'].'/'.$request['objective']."')";
   }
 }
 mysqli_free_result($result);

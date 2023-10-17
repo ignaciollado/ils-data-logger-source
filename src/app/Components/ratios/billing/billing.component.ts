@@ -46,7 +46,7 @@ export class BillingComponent {
   companyId: UntypedFormControl
   monthYearDate: UntypedFormControl
   quantity: UntypedFormControl
-  objective: UntypedFormControl
+/*   objective: UntypedFormControl */
   billingForm: UntypedFormGroup
 
   isValidForm: boolean | null
@@ -99,13 +99,13 @@ export class BillingComponent {
     this.companyId = new UntypedFormControl( 284, [ Validators.required ] );
     this.monthYearDate = new UntypedFormControl('', [ Validators.required, Validators.min(1), Validators.max(12) ]);
     this.quantity = new UntypedFormControl('', [ Validators.required, Validators.min(1)]);
-    this.objective = new UntypedFormControl('', [ Validators.required, Validators.min(1)]);
+/*     this.objective = new UntypedFormControl('', [ Validators.required, Validators.min(1)]); */
 
     this.billingForm = this.formBuilder.group({
       delegation: this.delegation,
       monthYearDate: this.monthYearDate,
       quantity: this.quantity,
-      objective: this.objective,
+/*       objective: this.objective, */
     })
 
     this.loadDelegations();

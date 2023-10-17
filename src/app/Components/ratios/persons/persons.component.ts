@@ -22,7 +22,6 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
 import { Moment } from 'moment';
 import { MatDatepicker } from '@angular/material/datepicker';
 import { JwtHelperService } from '@auth0/angular-jwt';
-import { BillingDTO } from 'src/app/Models/billing.dto';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 
@@ -65,7 +64,7 @@ export class PersonsComponent {
   monthlyBilling: UntypedFormControl
   monthYearDate: FormControl
   quantity: UntypedFormControl
-  objective: UntypedFormControl
+/*   objective: UntypedFormControl */
   personForm: UntypedFormGroup
 
   isValidForm: boolean | null
@@ -119,7 +118,7 @@ export class PersonsComponent {
     this.companyId = new UntypedFormControl( this.userId, [ Validators.required ] );
     this.monthYearDate = new FormControl('', [ Validators.required, Validators.min(1), Validators.max(12) ]);
     this.quantity = new UntypedFormControl('', [ Validators.required, Validators.min(1)]);
-    this.objective = new UntypedFormControl('', [ Validators.required, Validators.min(1)]);
+/*     this.objective = new UntypedFormControl('', [ Validators.required, Validators.min(1)]); */
 
 
     this.energy = new UntypedFormControl(0);
@@ -127,7 +126,7 @@ export class PersonsComponent {
       delegation: this.delegation,
       monthYearDate: this.monthYearDate,
       quantity: this.quantity,
-      objective: this.objective,
+/*       objective: this.objective, */
 
     })
 

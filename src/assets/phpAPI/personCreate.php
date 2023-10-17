@@ -21,7 +21,7 @@ $sql = $sql . "`) VALUES("
 .$request['companyId'].","
 .$request['delegation'].",'"
 .$yearBilling."','"
-.$request['quantity']."/".$request['objective']."') ON DUPLICATE KEY UPDATE `".$monthBilling."` = '".$request['quantity']."/".$request['objective']."'";
+.$request['quantity']."') ON DUPLICATE KEY UPDATE `".$monthBilling."` = '".$request['quantity']."'";
 
 $result = mysqli_query($conn, $sql);
 

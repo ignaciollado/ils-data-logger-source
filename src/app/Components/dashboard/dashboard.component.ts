@@ -208,8 +208,8 @@ export class DashboardComponent implements OnInit {
                   break
                 case 14:
                   this.quantity14GraphEnergy[0] = this.quantity14GraphEnergy[0] + (+consumption.quantity*consumption.pci)
-                  this.ratioPersona14GraphEnergy[0] = this.ratioPersona14GraphEnergy[0] + (this.quantity14GraphEnergy[0]/+consumption.numberOfPersons)
-                  this.ratioBilling14GraphEnergy[0] = this.ratioBilling14GraphEnergy[0] + (this.quantity14GraphEnergy[0]/+consumption.monthlyBilling)
+                  this.ratioPersona14GraphEnergy[0] = this.ratioPersona14GraphEnergy[0] + (this.quantity14GraphEnergy[0]/+consumption.objective)
+                  this.ratioBilling14GraphEnergy[0] = this.ratioBilling14GraphEnergy[0] + (this.quantity14GraphEnergy[0]/+consumption.objective)
                   break
                 case 15:
                   this.quantity15GraphEnergy[0] = this.quantity15GraphEnergy[0] + (+consumption.quantity*consumption.pci)
@@ -252,8 +252,8 @@ export class DashboardComponent implements OnInit {
                   break
                 case 14:
                   this.quantity14GraphEnergy[1] = this.quantity14GraphEnergy[1] + (+consumption.quantity*consumption.pci)
-                  this.ratioPersona14GraphEnergy[1] = this.ratioPersona14GraphEnergy[1] + (this.quantity14GraphEnergy[1]/+consumption.numberOfPersons)
-                  this.ratioBilling14GraphEnergy[1] = this.ratioBilling14GraphEnergy[1] + (this.quantity14GraphEnergy[1]/+consumption.monthlyBilling)
+                  this.ratioPersona14GraphEnergy[1] = this.ratioPersona14GraphEnergy[1] + (this.quantity14GraphEnergy[1]/+consumption.objective)
+                  this.ratioBilling14GraphEnergy[1] = this.ratioBilling14GraphEnergy[1] + (this.quantity14GraphEnergy[1]/+consumption.objective)
                   break
                 case 15:
                   this.quantity15GraphEnergy[1] = this.quantity15GraphEnergy[1] + (+consumption.quantity*consumption.pci)
@@ -296,8 +296,8 @@ export class DashboardComponent implements OnInit {
                   break
                 case 14:
                   this.quantity14GraphEnergy[2] = this.quantity14GraphEnergy[2] + (+consumption.quantity*consumption.pci)
-                  this.ratioPersona14GraphEnergy[2] = this.ratioPersona14GraphEnergy[2] + (this.quantity14GraphEnergy[2]/+consumption.numberOfPersons)
-                  this.ratioBilling14GraphEnergy[2] = this.ratioBilling14GraphEnergy[2] + (this.quantity14GraphEnergy[2]/+consumption.monthlyBilling)
+                  this.ratioPersona14GraphEnergy[2] = this.ratioPersona14GraphEnergy[2] + (this.quantity14GraphEnergy[2]/+consumption.objective)
+                  this.ratioBilling14GraphEnergy[2] = this.ratioBilling14GraphEnergy[2] + (this.quantity14GraphEnergy[2]/+consumption.objective)
                   break
                 case 15:
                   this.quantity15GraphEnergy[2] = this.quantity15GraphEnergy[2] + (+consumption.quantity*consumption.pci)
@@ -340,8 +340,8 @@ export class DashboardComponent implements OnInit {
                   break
                 case 14:
                   this.quantity14GraphEnergy[3] = this.quantity14GraphEnergy[3] + (+consumption.quantity*consumption.pci)
-                  this.ratioPersona14GraphEnergy[3] = this.ratioPersona14GraphEnergy[3] + (this.quantity14GraphEnergy[3]/+consumption.numberOfPersons)
-                  this.ratioBilling14GraphEnergy[3] = this.ratioBilling14GraphEnergy[3] + (this.quantity14GraphEnergy[3]/+consumption.monthlyBilling)
+                  this.ratioPersona14GraphEnergy[3] = this.ratioPersona14GraphEnergy[3] + (this.quantity14GraphEnergy[3]/+consumption.objective)
+                  this.ratioBilling14GraphEnergy[3] = this.ratioBilling14GraphEnergy[3] + (this.quantity14GraphEnergy[3]/+consumption.objective)
                   break
                 case 15:
                   this.quantity15GraphEnergy[3] = this.quantity15GraphEnergy[3] + (+consumption.quantity*consumption.pci)
@@ -384,8 +384,8 @@ export class DashboardComponent implements OnInit {
                   break
                 case 14:
                   this.quantity14GraphEnergy[4] = this.quantity14GraphEnergy[4] + (+consumption.quantity*consumption.pci)
-                  this.ratioPersona14GraphEnergy[4] = this.ratioPersona14GraphEnergy[4] + (this.quantity14GraphEnergy[4]/+consumption.numberOfPersons)
-                  this.ratioBilling14GraphEnergy[4] = this.ratioBilling14GraphEnergy[4] + (this.quantity14GraphEnergy[4]/+consumption.monthlyBilling)
+                  this.ratioPersona14GraphEnergy[4] = this.ratioPersona14GraphEnergy[4] + (this.quantity14GraphEnergy[4]/+consumption.objective)
+                  this.ratioBilling14GraphEnergy[4] = this.ratioBilling14GraphEnergy[4] + (this.quantity14GraphEnergy[4]/+consumption.objective)
                   break
                 case 15:
                   this.quantity15GraphEnergy[4] = this.quantity15GraphEnergy[4] + (+consumption.quantity*consumption.pci)
@@ -428,8 +428,8 @@ export class DashboardComponent implements OnInit {
                     break
                   case 14:
                     this.quantity14GraphEnergy[5] = this.quantity14GraphEnergy[5] + (+consumption.quantity*consumption.pci)
-                    this.ratioPersona14GraphEnergy[5] = this.ratioPersona14GraphEnergy[5] + (this.quantity14GraphEnergy[5]/+consumption.numberOfPersons)
-                    this.ratioBilling14GraphEnergy[5] = this.ratioBilling14GraphEnergy[5] + (this.quantity14GraphEnergy[5]/+consumption.monthlyBilling)
+                    this.ratioPersona14GraphEnergy[5] = this.ratioPersona14GraphEnergy[5] + (this.quantity14GraphEnergy[5]/+consumption.objective)
+                    this.ratioBilling14GraphEnergy[5] = this.ratioBilling14GraphEnergy[5] + (this.quantity14GraphEnergy[5]/+consumption.objective)
                     break
                   case 14:
                     this.quantity15GraphEnergy[5] = this.quantity15GraphEnergy[5] + (+consumption.quantity*consumption.pci)
@@ -472,8 +472,8 @@ export class DashboardComponent implements OnInit {
                     break
                   case 14:
                     this.quantity14GraphEnergy[6] = this.quantity14GraphEnergy[6] + (+consumption.quantity*consumption.pci)
-                    this.ratioPersona14GraphEnergy[6] = this.ratioPersona14GraphEnergy[6] + (this.quantity14GraphEnergy[6]/+consumption.numberOfPersons)
-                    this.ratioBilling14GraphEnergy[6] = this.ratioBilling14GraphEnergy[6] + (this.quantity14GraphEnergy[6]/+consumption.monthlyBilling)
+                    this.ratioPersona14GraphEnergy[6] = this.ratioPersona14GraphEnergy[6] + (this.quantity14GraphEnergy[6]/+consumption.objective)
+                    this.ratioBilling14GraphEnergy[6] = this.ratioBilling14GraphEnergy[6] + (this.quantity14GraphEnergy[6]/+consumption.objective)
                     break
                   case 15:
                     this.quantity15GraphEnergy[6] = this.quantity15GraphEnergy[6] + (+consumption.quantity*consumption.pci)
@@ -516,8 +516,8 @@ export class DashboardComponent implements OnInit {
                     break
                   case 14:
                     this.quantity14GraphEnergy[7] = this.quantity14GraphEnergy[7] + (+consumption.quantity*consumption.pci)
-                    this.ratioPersona14GraphEnergy[7] = this.ratioPersona14GraphEnergy[7] + (this.quantity14GraphEnergy[7]/+consumption.numberOfPersons)
-                    this.ratioBilling14GraphEnergy[7] = this.ratioBilling14GraphEnergy[7] + (this.quantity14GraphEnergy[7]/+consumption.monthlyBilling)
+                    this.ratioPersona14GraphEnergy[7] = this.ratioPersona14GraphEnergy[7] + (this.quantity14GraphEnergy[7]/+consumption.objective)
+                    this.ratioBilling14GraphEnergy[7] = this.ratioBilling14GraphEnergy[7] + (this.quantity14GraphEnergy[7]/+consumption.objective)
                     break
                   case 15:
                     this.quantity15GraphEnergy[7] = this.quantity15GraphEnergy[7] + (+consumption.quantity*consumption.pci)
@@ -560,8 +560,8 @@ export class DashboardComponent implements OnInit {
                     break
                   case 14:
                     this.quantity14GraphEnergy[8] = this.quantity14GraphEnergy[8] + (+consumption.quantity*consumption.pci)
-                    this.ratioPersona14GraphEnergy[8] = this.ratioPersona14GraphEnergy[8] + (this.quantity14GraphEnergy[8]/+consumption.numberOfPersons)
-                    this.ratioBilling14GraphEnergy[9] = this.ratioBilling14GraphEnergy[9] + (this.quantity14GraphEnergy[9]/+consumption.monthlyBilling)
+                    this.ratioPersona14GraphEnergy[8] = this.ratioPersona14GraphEnergy[8] + (this.quantity14GraphEnergy[8]/+consumption.objective)
+                    this.ratioBilling14GraphEnergy[9] = this.ratioBilling14GraphEnergy[9] + (this.quantity14GraphEnergy[9]/+consumption.objective)
                     break
                   case 15:
                     this.quantity15GraphEnergy[8] = this.quantity15GraphEnergy[8] + (+consumption.quantity*consumption.pci)
@@ -604,8 +604,8 @@ export class DashboardComponent implements OnInit {
                     break
                   case 14:
                     this.quantity14GraphEnergy[9] = this.quantity14GraphEnergy[9] + (+consumption.quantity*consumption.pci)
-                    this.ratioPersona14GraphEnergy[9] = this.ratioPersona14GraphEnergy[9] + (this.quantity14GraphEnergy[9]/+consumption.numberOfPersons)
-                    this.ratioBilling14GraphEnergy[10] = this.ratioBilling14GraphEnergy[10] + (this.quantity14GraphEnergy[10]/+consumption.monthlyBilling)
+                    this.ratioPersona14GraphEnergy[9] = this.ratioPersona14GraphEnergy[9] + (this.quantity14GraphEnergy[9]/+consumption.objective)
+                    this.ratioBilling14GraphEnergy[10] = this.ratioBilling14GraphEnergy[10] + (this.quantity14GraphEnergy[10]/+consumption.objective)
                     break
                   case 15:
                     this.quantity15GraphEnergy[9] = this.quantity15GraphEnergy[9] + (+consumption.quantity*consumption.pci)
@@ -648,8 +648,8 @@ export class DashboardComponent implements OnInit {
                     break
                   case 14:
                     this.quantity14GraphEnergy[10] = this.quantity14GraphEnergy[10] + (+consumption.quantity*consumption.pci)
-                    this.ratioPersona14GraphEnergy[10] = this.ratioPersona14GraphEnergy[10] + (this.quantity14GraphEnergy[10]/+consumption.numberOfPersons)
-                    this.ratioBilling14GraphEnergy[10] = this.ratioBilling14GraphEnergy[10] + (this.quantity14GraphEnergy[10]/+consumption.monthlyBilling)
+                    this.ratioPersona14GraphEnergy[10] = this.ratioPersona14GraphEnergy[10] + (this.quantity14GraphEnergy[10]/+consumption.objective)
+                    this.ratioBilling14GraphEnergy[10] = this.ratioBilling14GraphEnergy[10] + (this.quantity14GraphEnergy[10]/+consumption.objective)
                     break
                   case 15:
                     this.quantity15GraphEnergy[10] = this.quantity15GraphEnergy[10] + (+consumption.quantity*consumption.pci)
@@ -692,8 +692,8 @@ export class DashboardComponent implements OnInit {
                     break
                   case 14:
                     this.quantity14GraphEnergy[11] = this.quantity14GraphEnergy[11] + (+consumption.quantity*consumption.pci)
-                    this.ratioPersona14GraphEnergy[11] = this.ratioPersona14GraphEnergy[11] + (this.quantity14GraphEnergy[11]/+consumption.numberOfPersons)
-                    this.ratioBilling14GraphEnergy[11] = this.ratioBilling14GraphEnergy[11] + (this.quantity14GraphEnergy[11]/+consumption.monthlyBilling)
+                    this.ratioPersona14GraphEnergy[11] = this.ratioPersona14GraphEnergy[11] + (this.quantity14GraphEnergy[11]/+consumption.objective)
+                    this.ratioBilling14GraphEnergy[11] = this.ratioBilling14GraphEnergy[11] + (this.quantity14GraphEnergy[11]/+consumption.objective)
                     break
                   case 15:
                     this.quantity15GraphEnergy[11] = this.quantity15GraphEnergy[11] + (+consumption.quantity*consumption.pci)

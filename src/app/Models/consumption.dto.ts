@@ -7,6 +7,7 @@ export class ConsumptionDTO {
   delegation: number
   aspectId: number
   quantity: number
+  objective?: number
   fromDate: Date
   toDate: Date
   year:string
@@ -23,8 +24,6 @@ export class ConsumptionDTO {
   oct: string
   nov: string
   dec: string
-  numberOfPersons: number
-  monthlyBilling: number
   created_at!: Date
   updated_at!: Date
   energy!: number
@@ -68,8 +67,6 @@ constructor(
   energyCA: string,
   residueES: string,
   residueCA: string,
-  numberOfPersons: number,
-  monthlyBilling: number,
   aspectES: string,
   aspectCA: string,
   quantity: number,
@@ -92,8 +89,6 @@ constructor(
   this.fromDate = fromDate,
   this.toDate = toDate,
   this.month = month,
-  this.monthlyBilling = monthlyBilling,
-  this.numberOfPersons = numberOfPersons,
   this.year = year,
   this.jan = jan,
   this.feb = feb,

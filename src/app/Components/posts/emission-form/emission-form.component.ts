@@ -36,6 +36,7 @@ export class EmissionFormComponent {
   companyId: UntypedFormControl
   yearEmission: UntypedFormControl
   emissionForm: UntypedFormGroup
+  objective: UntypedFormControl
 
   isValidForm: boolean | null
   isElevated: boolean = true
@@ -80,13 +81,14 @@ export class EmissionFormComponent {
     this.consumptionId = this.activatedRoute.snapshot.paramMap.get('id');
     this.userId = this.jwtHelper.decodeToken().id_ils
 
-    this.consumption = new ConsumptionDTO(0, 0, this._adapter.today(), this._adapter.today(), '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 0, 0, '', '', 0, '', '', 0);
+    this.consumption = new ConsumptionDTO(0, 0, this._adapter.today(), this._adapter.today(), '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 0, '', '', 0);
     this.isUpdateMode = false;
     this.validRequest = false;
     this.delegation = new UntypedFormControl('', [ Validators.required ]);
     this.companyId = new UntypedFormControl(this.userId, [ Validators.required ]);
     this.yearEmission = new UntypedFormControl('', [ Validators.required ]);
     this.quantityEmission = new UntypedFormControl('', [ Validators.required, Validators.min(1)]);
+    this.objective = new UntypedFormControl('', [ Validators.min(1) ]);
 
     this.scopeone = new UntypedFormControl('', [ Validators.required ]);
     this.scopetwo = new UntypedFormControl('', [ Validators.required ]);

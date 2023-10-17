@@ -62,6 +62,7 @@ export class ResidueFormComponent {
   monthYearDate: UntypedFormControl
 
   quantityResidue: UntypedFormControl
+  objective: UntypedFormControl
   residueForm: UntypedFormGroup
 
   isValidForm: boolean | null
@@ -110,7 +111,7 @@ export class ResidueFormComponent {
     this.consumptionId = this.activatedRoute.snapshot.paramMap.get('id');
     this.userId = this.jwtHelper.decodeToken().id_ils
 
-    this.consumption = new ConsumptionDTO(0, 0, this._adapter.today(), this._adapter.today(), '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 0, 0, '', '', 0, '', '', 0);
+    this.consumption = new ConsumptionDTO(0, 0, this._adapter.today(), this._adapter.today(), '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 0, '', '', 0);
     this.isUpdateMode = false;
     this.validRequest = false;
     this.delegation = new UntypedFormControl('', [ Validators.required ]);
@@ -121,6 +122,7 @@ export class ResidueFormComponent {
     this.dump = new UntypedFormControl('', [ Validators.min(0), Validators.max(100) ]);
     this.compost = new UntypedFormControl('', [ Validators.min(0), Validators.max(100) ]);
     this.quantityResidue = new UntypedFormControl('', [ Validators.required, Validators.min(0) ]);
+    this.objective = new UntypedFormControl('', [ Validators.min(1) ]);
     this.companyId = new UntypedFormControl(this.userId, [ Validators.required ]);
     this.monthYearDate = new UntypedFormControl('', [ Validators.required, Validators.min(1), Validators.max(12) ]);
 

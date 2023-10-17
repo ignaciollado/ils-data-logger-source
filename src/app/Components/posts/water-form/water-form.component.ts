@@ -42,11 +42,12 @@ export class WaterFormComponent {
 
   monthYearDate: UntypedFormControl
   quantityWater: UntypedFormControl
+  objective: UntypedFormControl;
 
   waterForm: UntypedFormGroup
 
   isValidForm: boolean | null
-  isElevated:boolean = true
+  isElevated: boolean = true
   consumptionFields: string[] = []
   result: boolean = false
 
@@ -86,7 +87,7 @@ export class WaterFormComponent {
     this.isValidForm = null;
     this.consumptionId = this.activatedRoute.snapshot.paramMap.get('id');
     this.userId = this.jwtHelper.decodeToken().id_ils
-    this.consumption = new ConsumptionDTO(0, 0, this._adapter.today(), this._adapter.today(), '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 0, 0, '', '', 0, '', '', 0);
+    this.consumption = new ConsumptionDTO(0, 0, this._adapter.today(), this._adapter.today(), '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 0, '', '', 0);
     this.isUpdateMode = false;
     this.validRequest = false;
 
@@ -94,6 +95,7 @@ export class WaterFormComponent {
     this.companyId = new UntypedFormControl( this.userId, [ Validators.required ] );
     this.monthYearDate = new UntypedFormControl('', [ Validators.required, Validators.min(1), Validators.max(12) ]);
     this.quantityWater = new UntypedFormControl('', [ Validators.required, Validators.min(1)]);
+    this.objective = new UntypedFormControl('', [ Validators.min(1) ]);
 
     this.water = new UntypedFormControl(0);
     this.waterForm = this.formBuilder.group({

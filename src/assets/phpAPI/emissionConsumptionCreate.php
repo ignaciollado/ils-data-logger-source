@@ -39,7 +39,7 @@ if ($result=mysqli_query($conn,$sqlCount))
   $rowcount=mysqli_num_rows($result);
   if ($rowcount > 0) {
     $sql = "UPDATE `ils_consumption`
-            SET quantity = '".$request['quantityEmission']."',
+            SET quantity = '".$request['quantityEmission'].'/'.$request['objective']."',
             scopeOne = '".$request['scopeone']."',
             scopetwo = '".$request['scopetwo']."'
 
@@ -53,7 +53,7 @@ if ($result=mysqli_query($conn,$sqlCount))
       .$request['companyId'].","
       .$request['delegation'].","
       .$request['aspectId'].","
-      .$request['quantityEmission'].",'"
+      .$request['quantityEmission'].'/'.$request['objective'].",'"
       .$request['yearEmission']."',"
       .$request['scopeone'].","
       .$request['scopetwo'].","

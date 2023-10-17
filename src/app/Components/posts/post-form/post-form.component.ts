@@ -2,7 +2,6 @@ import { formatDate } from '@angular/common';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, Inject, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import {
-  FormControl,
   UntypedFormBuilder,
   UntypedFormControl,
   UntypedFormGroup,
@@ -25,22 +24,8 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
 import { DelegationService } from 'src/app/Services/delegation.service';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { HeaderMenusService } from 'src/app/Services/header-menus.service';
-/* import { MatDatepicker } from '@angular/material/datepicker'; */
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
-
-
-/* export const MY_FORMATS = {
-  parse: {
-    dateInput: 'MM/YYYY',
-  },
-  display: {
-    dateInput: 'MM/YYYY',
-    monthYearLabel: 'MMM YYYY',
-    dateA11yLabel: 'LL',
-    monthYearA11yLabel: 'MMMM YYYY',
-  },
-}; */
 
 @Component({
   selector: 'app-post-form',
@@ -69,6 +54,7 @@ export class PostFormComponent implements OnInit {
   quantity: UntypedFormControl
   companyId: UntypedFormControl
   energyForm: UntypedFormGroup
+  objective: UntypedFormControl
 
   isValidForm: boolean | null
   isElevated: boolean = true
@@ -78,6 +64,7 @@ export class PostFormComponent implements OnInit {
   showButtons: boolean;
   showAuthSection: boolean;
   showNoAuthSection: boolean;
+  absoluteData: boolean = true;
   access_token: string | null;
   today: Date
   sixMonthsAgo: Date
@@ -144,7 +131,7 @@ export class PostFormComponent implements OnInit {
     this.consumptionId = this.activatedRoute.snapshot.paramMap.get('id')
     this.userId = this.jwtHelper.decodeToken().id_ils
 
-    this.consumption = new ConsumptionDTO(0, 0, this._adapter.today(), this._adapter.today(), '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 0, 0, '', '', 0, '', '', 0);
+    this.consumption = new ConsumptionDTO(0, 0, this._adapter.today(), this._adapter.today(), '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 0, '', '', 0);
     this.isUpdateMode = false;
     this.validRequest = false;
     this.delegation = new UntypedFormControl('', [ Validators.required ]);
@@ -153,12 +140,14 @@ export class PostFormComponent implements OnInit {
     this.energy = new UntypedFormControl('', [ Validators.required ]);
     this.companyId = new UntypedFormControl(this.userId, [ Validators.required ]);
     this.quantity = new UntypedFormControl('', [ Validators.required, Validators.min(1) ]);
+    this.objective = new UntypedFormControl('', [ Validators.min(1) ]);
 
     this.energyForm = this.formBuilder.group({
       delegation: this.delegation,
       monthYearDate: this.monthYearDate,
       energy: this.energy,
       quantity: this.quantity,
+      objective: this.objective,
       companyId: this.companyId
     });
 
@@ -283,7 +272,7 @@ export class PostFormComponent implements OnInit {
     }
   }
 
-  /* ASPECT ENERGY */
+  /* ASPECT ENERGY ID:1*/
   private createEnergyConsumption(): void {
     let errorResponse: any;
     let responseOK: boolean = false;
@@ -360,4 +349,8 @@ export class PostFormComponent implements OnInit {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
+  public absoluteRelativeToggle(): void {
+    this.absoluteData = !this.absoluteData
+    console.log(this.absoluteData)
+  }
 }

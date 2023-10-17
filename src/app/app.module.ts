@@ -63,6 +63,8 @@ import { BillingComponent } from './Components/ratios/billing/billing.component'
 import { RatiosContainerComponent } from './Components/ratios/ratios-container/ratios-container.component';
 import { MatDatepickerModule } from "@angular/material/datepicker";
 import { MatMomentDateModule } from "@angular/material-moment-adapter";
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 export function tokenGetter() {
   return sessionStorage.getItem("access_token");
@@ -136,7 +138,9 @@ export function tokenGetter() {
     MatSortModule,
     MatPaginatorModule,
     MatCheckboxModule,
-    MatRadioModule
+    MatRadioModule,
+    MatExpansionModule,
+    MatSlideToggleModule
   ],
   providers: [
     {

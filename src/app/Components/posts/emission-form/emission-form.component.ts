@@ -99,6 +99,7 @@ export class EmissionFormComponent {
       scopetwo: this.scopetwo,
       yearEmission: this.yearEmission,
       quantityEmission: this.quantityEmission,
+      objective: this.objective
     })
 
     this.loadDelegations();
@@ -165,6 +166,7 @@ export class EmissionFormComponent {
           () => {
             responseOK = true;
             this.quantityEmission.reset()
+            this.yearEmission.reset()
             this.scopeone.reset()
             this.scopetwo.reset()
             this.loadConsumption();

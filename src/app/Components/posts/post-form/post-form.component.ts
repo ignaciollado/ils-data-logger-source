@@ -61,6 +61,8 @@ export class PostFormComponent implements OnInit {
   consumptionFields: string[] = []
   result : boolean =false
 
+  monthYearPattern: string = "^[0-9]{2}\/[0-9]{4}"
+
   showButtons: boolean;
   showAuthSection: boolean;
   showNoAuthSection: boolean;
@@ -135,7 +137,7 @@ export class PostFormComponent implements OnInit {
     this.isUpdateMode = false;
     this.validRequest = false;
     this.delegation = new UntypedFormControl('', [ Validators.required ]);
-    this.monthYearDate = new UntypedFormControl('', [ Validators.required, Validators.min(1), Validators.max(12) ]);
+    this.monthYearDate = new UntypedFormControl('', [ Validators.required, Validators.min(1), Validators.max(12), Validators.pattern(this.monthYearPattern) ]);
 
     this.energy = new UntypedFormControl('', [ Validators.required ]);
     this.companyId = new UntypedFormControl(this.userId, [ Validators.required ]);

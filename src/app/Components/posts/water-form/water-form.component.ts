@@ -50,6 +50,7 @@ export class WaterFormComponent {
   isElevated: boolean = true
   consumptionFields: string[] = []
   result: boolean = false
+  monthYearPattern: string = "^[0-9]{2}\/[0-9]{4}"
 
   private isUpdateMode: boolean;
   private validRequest: boolean;
@@ -93,7 +94,7 @@ export class WaterFormComponent {
 
     this.delegation = new UntypedFormControl( '', [ Validators.required ] );
     this.companyId = new UntypedFormControl( this.userId, [ Validators.required ] );
-    this.monthYearDate = new UntypedFormControl('', [ Validators.required, Validators.min(1), Validators.max(12) ]);
+    this.monthYearDate = new UntypedFormControl('', [ Validators.required, Validators.min(1), Validators.max(12), Validators.pattern(this.monthYearPattern) ]);
     this.quantityWater = new UntypedFormControl('', [ Validators.required, Validators.min(1)]);
     this.objective = new UntypedFormControl('', [ Validators.min(1) ]);
 
@@ -102,6 +103,7 @@ export class WaterFormComponent {
       delegation: this.delegation,
       monthYearDate: this.monthYearDate,
       quantityWater: this.quantityWater,
+      objective: this.objective
     })
 
     this.loadDelegations();
@@ -122,7 +124,6 @@ export class WaterFormComponent {
       );
     }
   }
-
 
   private loadConsumption(): void {
     let errorResponse: any;

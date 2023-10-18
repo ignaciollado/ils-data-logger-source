@@ -69,6 +69,7 @@ export class ResidueFormComponent {
   isElevated: boolean = true
   consumptionFields: string[] = []
   result: boolean = false
+  monthYearPattern: string = "^[0-9]{2}\/[0-9]{4}"
 
   private isUpdateMode: boolean;
   private validRequest: boolean;
@@ -124,7 +125,7 @@ export class ResidueFormComponent {
     this.quantityResidue = new UntypedFormControl('', [ Validators.required, Validators.min(0) ]);
     this.objective = new UntypedFormControl('', [ Validators.min(1) ]);
     this.companyId = new UntypedFormControl(this.userId, [ Validators.required ]);
-    this.monthYearDate = new UntypedFormControl('', [ Validators.required, Validators.min(1), Validators.max(12) ]);
+    this.monthYearDate = new UntypedFormControl('', [ Validators.required, Validators.min(1), Validators.max(12), Validators.pattern(this.monthYearPattern) ]);
 
     this.residueForm = this.formBuilder.group({
 
@@ -137,6 +138,7 @@ export class ResidueFormComponent {
       compost: this.compost,
       monthYearDate: this.monthYearDate,
       quantityResidue: this.quantityResidue,
+      objective: this.objective
 
     })
 
@@ -217,8 +219,9 @@ export class ResidueFormComponent {
         .subscribe(
           () => {
             responseOK = true;
+            this.monthYearDate.reset()
             this.quantityResidue.reset()
-            this.residue.reset()
+            /* this.residue.reset() */
             this.reuse.reset()
             this.recycling.reset()
             this.incineration.reset()

@@ -53,8 +53,8 @@
     "emissionConsumption": "Emisiones de CO2e (T)",
 
 
-    "scopeOne": "Alcance uno",
-    "scopeTwo": "Alcance dos",
+    "scopeOne": "Alcance uno (T de CO2e)",
+    "scopeTwo": "Alcance dos (T de CO2e)",
     "quantity": "Cantidad",
     "quantityCO2e": "Cantidad (T de CO2e)",
     "year": "Año",

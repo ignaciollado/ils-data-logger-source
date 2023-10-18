@@ -28,7 +28,7 @@ export class FormatQuantityPipe implements PipeTransform {
       newFormat = theQuantityAsArray[0] + " €";
     }
     if (type === 2) { //quantity and residue destination
-        newFormat =  "Quantity: "+theQuantityAsArray[0] + "\n"
+      newFormat =  "Quantity: "+theQuantityAsArray[0] + "\n"
                     +"Reuse: "+theQuantityAsArray[1] + " %\n"
                     +"Recycling: "+theQuantityAsArray[2] + " %\n"
                     +"Incineration: "+theQuantityAsArray[3] + " %\n"
@@ -36,12 +36,12 @@ export class FormatQuantityPipe implements PipeTransform {
                     +"Compost: "+theQuantityAsArray[5] + " %\n"
     }
     if (type === 3) { //quantity and objective
-        newFormat =  "Quantity: "+ theQuantityAsArray[0] +"\n" 
+      newFormat =  "Quantity: "+ theQuantityAsArray[0] +"\n" 
                     +"Objective: "+theQuantityAsArray[1] + "\n"
     }
 
     if (type === 4) {
-        newFormat = theQuantityAsArray[0] 
+      newFormat = theQuantityAsArray[0] 
         + '<span style="color:#b30000;">Reuse: ' + theQuantityAsArray[0] + '*</span>';  
     }
 

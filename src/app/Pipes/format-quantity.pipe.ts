@@ -24,12 +24,16 @@ export class FormatQuantityPipe implements PipeTransform {
     let theQuantityAsArray = value.split('/');
     let type: number = args[0];
 
+   
+    if (type === 0) { //only quantity
+      newFormat = theQuantityAsArray[0];
+    }    
     if (type === 1) { //only quantity and € symbol
       newFormat = theQuantityAsArray[0] + " €";
     }
     if (type === 2) { //quantity and objective and residue destination
       newFormat =  "Quantity: "+theQuantityAsArray[0] + "\n"
-                    +"Objective: "+theQuantityAsArray[1] + " %\n"
+                    +"Objective: "+theQuantityAsArray[1] + " \n"
                     +"Reuse: "+theQuantityAsArray[2] + " %\n"
                     +"Recycling: "+theQuantityAsArray[3] + " %\n"
                     +"Incineration: "+theQuantityAsArray[4] + " %\n"

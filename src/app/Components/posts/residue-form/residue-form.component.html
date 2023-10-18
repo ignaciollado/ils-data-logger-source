@@ -108,8 +108,7 @@
   <mat-label>Filter</mat-label>
   <input matInput (keyup)="applyFilter($event)" placeholder="Search columns" #input>
 </mat-form-field>
-<mat-table *ngIf="!isGridView" [dataSource]="dataSource" class="mat-elevation-z8" matSort
-#residueTbSort="matSort">
+<mat-table *ngIf="!isGridView" [dataSource]="dataSource" class="mat-elevation-z8" matSort #residueTbSort="matSort">
   <ng-container matColumnDef="delegation">
     <mat-header-cell *matHeaderCellDef mat-sort-header>{{'delegation' | translate}}</mat-header-cell>
     <mat-cell *matCellDef="let consumption">{{consumption.delegation}}</mat-cell>

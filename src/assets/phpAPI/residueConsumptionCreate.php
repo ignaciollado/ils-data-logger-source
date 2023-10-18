@@ -29,7 +29,7 @@ if ($result=mysqli_query($conn,$sqlCount))
   $rowcount=mysqli_num_rows($result);
   if ($rowcount > 0) {
     $sql = "UPDATE `ils_consumption`
-            SET `".$monthResidueConsumption."` = '".$request['quantityResidue'].'/'.$request['objective']."'
+            SET `".$monthResidueConsumption."` = '".$request['quantityResidue'].'/'.$request['objective'].'/'.$request['reuse'].'/'.$request['recycling'].'/'.$request['incineration'].'/'.$request['dump'].'/'.$request['compost']."'
             WHERE  companyId=". $request['companyId']." 
             AND companyDelegationId =". $request['delegation']." 
             AND aspectId =". $request['aspectId']." 

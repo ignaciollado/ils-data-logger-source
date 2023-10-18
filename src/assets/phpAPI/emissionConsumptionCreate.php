@@ -39,7 +39,7 @@ if ($result=mysqli_query($conn,$sqlCount))
   $rowcount=mysqli_num_rows($result);
   if ($rowcount > 0) {
     $sql = "UPDATE `ils_consumption`
-            SET quantity = '".$request['quantityEmission'].'/'.$request['objective']."',
+            SET quantity = ".$request['quantityEmission'].', objective = '.$request['objective'].",
             scopeOne = '".$request['scopeone']."',
             scopetwo = '".$request['scopetwo']."'
 
@@ -49,11 +49,12 @@ if ($result=mysqli_query($conn,$sqlCount))
             AND year ='". $request['yearEmission']."'"; 
   } else {
     $sql = "INSERT INTO ils_consumption(companyId, companyDelegationId, aspectId,
-      quantity, year, scopeOne, scopeTwo, fromDate, toDate) VALUES ("
+      quantity, objective, year, scopeOne, scopeTwo, fromDate, toDate) VALUES ("
       .$request['companyId'].","
       .$request['delegation'].","
       .$request['aspectId'].","
-      .$request['quantityEmission'].'/'.$request['objective'].",'"
+      .$request['quantityEmission'].","
+      .$request['objective'].",'"
       .$request['yearEmission']."',"
       .$request['scopeone'].","
       .$request['scopetwo'].","

@@ -52,7 +52,7 @@ export class EmissionFormComponent {
   consumptions!: ConsumptionDTO[];
 
   isGridView: boolean = false
-  columnsDisplayed = ['delegation', 'year', 'quantity', 'scopeone', 'scopetwo', 'ACTIONS'];
+  columnsDisplayed = ['delegation', 'year', 'quantity', 'objective', 'scopeone', 'scopetwo', 'ACTIONS'];
   dataSource = new MatTableDataSource(this.consumptions);
 
   @ViewChild('emissionTbSort') emissionTbSort = new MatSort();

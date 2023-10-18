@@ -90,6 +90,10 @@
     <mat-header-cell *matHeaderCellDef mat-sort-header>{{'quantityCO2e' | translate}}</mat-header-cell>
     <mat-cell *matCellDef="let consumption" title="{{consumption.quantity | formatQuantity: 8}}">{{consumption.quantity}}</mat-cell>
   </ng-container>
+  <ng-container matColumnDef="objective">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>{{'objectiveCO2e' | translate}}</mat-header-cell>
+    <mat-cell *matCellDef="let consumption" title="{{consumption.objective | formatQuantity: 8}}">{{consumption.objective}}</mat-cell>
+  </ng-container>
   <ng-container matColumnDef="scopeone">
     <mat-header-cell *matHeaderCellDef mat-sort-header>{{'scopeOne' | translate}}</mat-header-cell>
     <mat-cell *matCellDef="let consumption" title="{{consumption.scopeOne | formatQuantity: 8}}">{{consumption.scopeOne}}</mat-cell>

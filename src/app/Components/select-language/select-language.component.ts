@@ -4,11 +4,11 @@ import {Router, ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-select-language',
-  template: `<mat-button-toggle-group name="selectLanguage" aria-label="Please, select your preferred language">
-                  <mat-button-toggle #langSelect (click)="switchLanguage('cat')">cat</mat-button-toggle>
-                  <mat-button-toggle #langSelect (click)="switchLanguage('cas')">cas</mat-button-toggle>
-                  <mat-button-toggle #langSelect (click)="switchLanguage('en')">eng</mat-button-toggle>
-              </mat-button-toggle-group>`,
+  template: `<!-- <mat-button-toggle-group name="selectLanguage" aria-label="Please, select your preferred language"> -->
+                  <a mat-button #langSelect (click)="switchLanguage('cat')">cat</a>
+                  <a mat-button #langSelect (click)="switchLanguage('cas')">cas</a>
+                <!--   <a mat-button #langSelect (click)="switchLanguage('en')">eng</a> -->
+              <!-- </mat-button-toggle-group> -->`,
   styles: [`
     select:hover, option:hover {
       cursor: pointer;

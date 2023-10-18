@@ -57,6 +57,8 @@
     "scopeTwo": "Alcance dos (T de CO2e)",
     "quantity": "Cantidad",
     "quantityCO2e": "Cantidad (T de CO2e)",
+    "objectiveCO2e": "Objetivo (T de CO2e)",
+
     "year": "Año",
     "fromDate": "Desde",
     "toDate": "Hasta",

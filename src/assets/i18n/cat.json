@@ -57,8 +57,9 @@
     "scopeTwo": "Abast dos (T de CO2e)",
     "quantity": "Quantitat",
     "quantityCO2e": "Quantitat (T de CO2e)",
-    "year": "Any",
+    "objectiveCO2e": "Objectiu (T de CO2e)",
 
+    "year": "Any",
     "fromDate": "Des de",
     "toDate": "Fins a",
     "monthAndYear": "Mes i any",

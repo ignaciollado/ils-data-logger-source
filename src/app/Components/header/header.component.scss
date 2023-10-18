@@ -15,6 +15,11 @@
     margin: 1rem;
 }
 
+mat-menu {
+    display: flex;
+  justify-content: space-between;
+}
+
 @media only screen and (max-width: 768px) {
     .has-to-be-shown {
         display: none;

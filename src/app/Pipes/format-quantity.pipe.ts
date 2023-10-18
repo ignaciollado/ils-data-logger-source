@@ -45,9 +45,22 @@ export class FormatQuantityPipe implements PipeTransform {
         + '<span style="color:#b30000;">Reuse: ' + theQuantityAsArray[0] + '*</span>';  
     }
 
-    if (type === 5) { //only quantity and  persons string
-      newFormat = theQuantityAsArray[0] + " persons";
+    if (type === 5) { //only quantity and  workers string
+      newFormat = theQuantityAsArray[0] + " workers";
     }
+
+    if (type === 6) { //only quantity and  Litres unit
+      newFormat = theQuantityAsArray[0] + " L";
+    }
+
+    if (type === 7) { //only quantity and  Kg unit
+      newFormat = theQuantityAsArray[0] + " kg";
+    }
+
+    if (type === 8) { //only quantity and  T de CO2e unit
+      newFormat = theQuantityAsArray[0] + " T de CO2e";
+    }
+
 
     //return this.sanitizer.bypassSecurityTrustHtml(newFormat);
     return newFormat

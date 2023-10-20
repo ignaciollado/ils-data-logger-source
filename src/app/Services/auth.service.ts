@@ -36,7 +36,9 @@ export class AuthService {
     login(auth: AuthDTO): Observable<AuthToken> {
       return this.http
         .post<AuthToken>( `${URL_API_SRV}/api/login-users/`, auth, httpOptions )
-        .pipe(catchError(this.sharedService.handleError))
+        /* .pipe(
+            catchError(this.sharedService.handleError),
+          )  */
     }
 
     logout(): Observable<any> {

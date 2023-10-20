@@ -16,6 +16,7 @@ import { DelegationService } from 'src/app/Services/delegation.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { finalize } from 'rxjs/operators';
+import { catchError } from 'rxjs/operators';
 
 @Component({
   selector: 'app-login',
@@ -109,22 +110,25 @@ export class LoginComponent implements OnInit {
     if ( this.loginUser ) {
         this.authService.login( this.loginUser )
         .pipe(
+          /* catchError(this.sharedService.handleError), */
           finalize(async () => {
+            responseOK = false
+            errorResponse = "login fail"
             this.sharedService.managementToast( 'loginFeedback', responseOK, errorResponse )
             if (responseOK) {
               this.router.navigateByUrl('posts');
             }
           })
-        )
-            .subscribe(
+            )
+        .subscribe(
                 (item:AuthToken ) => {
                     console.log ("Welcome to the ILS datalogger.industrialocalsostenible.com created by IDI!!")
                     responseOK = true;
+                    errorResponse = "login correct"
                     this.loginUser.user_id = item.user_id /* this.jwtHelper.decodeToken().id_ils */
                     this.loginUser.access_token = item.access_token
                     sessionStorage.setItem('user_id', this.loginUser.user_id)
                     sessionStorage.setItem('access_token', this.loginUser.access_token)
-
                     this.sharedService.managementToast( 'loginFeedback', responseOK, errorResponse )
 
                     if (responseOK) {
@@ -133,7 +137,7 @@ export class LoginComponent implements OnInit {
                       this.headerMenusService.headerManagement.next(headerInfo);
                       this.delegationService.getTotalDelegationsByCompany(this.jwtHelper.decodeToken().id_ils)
                       .subscribe( item => {
-                        if (item.totalDelegations == 0) {
+                        if (item.totalDelegations === 0) {
                           this.router.navigateByUrl('profile')
                         } else {
                           this.router.navigateByUrl('user/consumption')
@@ -144,13 +148,13 @@ export class LoginComponent implements OnInit {
                 },
                 (error: any) => {
                   responseOK = false;
-                  errorResponse = error.error;
+                  errorResponse = error.status;
                   const headerInfo: HeaderMenus = { showAuthSection: false, showNoAuthSection: true, };
                   this.headerMenusService.headerManagement.next(headerInfo);
                   this.sharedService.errorLog(error.error);
                 },
                   () => console.log("Login complete.")
-                )
+        )
     }
 }
 }

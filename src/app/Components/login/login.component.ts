@@ -15,6 +15,7 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
 import { DelegationService } from 'src/app/Services/delegation.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { finalize } from 'rxjs/operators';
 
 @Component({
   selector: 'app-login',
@@ -107,6 +108,14 @@ export class LoginComponent implements OnInit {
 
     if ( this.loginUser ) {
         this.authService.login( this.loginUser )
+        .pipe(
+          finalize(async () => {
+            this.sharedService.managementToast( 'loginFeedback', responseOK, errorResponse )
+            if (responseOK) {
+              this.router.navigateByUrl('posts');
+            }
+          })
+        )
             .subscribe(
                 (item:AuthToken ) => {
                     console.log ("Welcome to the ILS datalogger.industrialocalsostenible.com created by IDI!!")

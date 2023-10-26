@@ -10,7 +10,6 @@ import {
 import { ActivatedRoute, Router } from '@angular/router';
 import { finalize } from 'rxjs/operators';
 import { DelegationDTO } from 'src/app/Models/delegation.dto';
-import { CnaeDTO } from 'src/app/Models/cnae.dto';
 import { DelegationService } from 'src/app/Services/delegation.service';
 import { LocalStorageService } from 'src/app/Services/local-storage.service';
 import { HeaderMenus } from 'src/app/Models/header-menus.dto';
@@ -18,6 +17,7 @@ import { SharedService } from 'src/app/Services/shared.service';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { HeaderMenusService } from 'src/app/Services/header-menus.service';
 import { UserService } from 'src/app/Services/user.service';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Component({
   selector: 'app-delegation-form',
@@ -60,10 +60,11 @@ export class DelegationFormComponent implements OnInit {
     private sharedService: SharedService,
     private localStorageService: LocalStorageService,
     private headerMenusService: HeaderMenusService,
+    private jwtHelper: JwtHelperService,
   ) {
 
     this.isValidForm = null;
-    this.companyId = this.localStorageService.get('user_id');
+    this.companyId = this.jwtHelper.decodeToken().id_ils
     
     this.delegation = new DelegationDTO('', '')
     this.isUpdateMode = false
@@ -73,7 +74,7 @@ export class DelegationFormComponent implements OnInit {
       Validators.minLength(3),
       Validators.maxLength(25), ]);
     this.address = new UntypedFormControl(this.delegation.address, [ Validators.required,
-      Validators.minLength(8),
+      Validators.minLength(3),
       Validators.maxLength(25), ]);
 
     this.delegationForm = this.formBuilder.group({
@@ -124,6 +125,8 @@ export class DelegationFormComponent implements OnInit {
       .subscribe(
         () => {
           responseOK = true;
+          this.name.reset()
+          this.address.reset()
         },
         (error: HttpErrorResponse) => {
           responseOK = false;

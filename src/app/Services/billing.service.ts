@@ -73,7 +73,7 @@ export class BillingService {
 
   deleteBilling(Id: number): Observable<deleteResponse> {
     return this.http
-      .delete<deleteResponse>(`${URL_API}consumptionDelete.php?consumptionId=${Id}`)
+      .delete<deleteResponse>(`${URL_API}billingDelete.php?Id=${Id}`)
       .pipe(catchError(this.sharedService.handleError));
   }
 

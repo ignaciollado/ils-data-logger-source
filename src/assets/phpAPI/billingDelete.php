@@ -6,9 +6,9 @@ require_once 'conectar_a_bbdd_pindust.php';
 
 mysqli_query($conn, "SET NAMES 'utf8'");
 
-$consumptionId = mysqli_real_escape_string($conn, $_GET["consumptionId"]);
+$Id = mysqli_real_escape_string($conn, $_GET["Id"]);
 
-$query = "DELETE FROM ils_consumption WHERE consumptionId = ". $consumptionId;
+$query = "DELETE FROM ils_billing WHERE Id = ". $Id;
 
 mysqli_query($conn, $query);
 

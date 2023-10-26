@@ -50,7 +50,8 @@ export class DelegationService {
 
   deleteDelegation(companyDelegationId: string): Observable<deleteResponse> {
     return this.http
-      .delete<deleteResponse>(`${URL_API_SRV}/api/delete-company-delegation/${companyDelegationId}`, httpOptions)
+      /* .delete<deleteResponse>(`${URL_API_SRV}/api/delete-company-delegation/${companyDelegationId}`, httpOptions) */
+      .delete<deleteResponse>(`${URL_API}delegationDelete.php?companyDelegationId=${companyDelegationId}`)
       .pipe(catchError(this.sharedService.handleError));
   }
 }

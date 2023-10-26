@@ -61,7 +61,7 @@ export class PersonsService {
 
   deletePerson(Id: number): Observable<deleteResponse> {
     return this.http
-      .delete<deleteResponse>(`${URL_API}consumptionDelete.php?consumptionId=${Id}`)
+      .delete<deleteResponse>(`${URL_API}personDelete.php?Id=${Id}`)
       .pipe(catchError(this.sharedService.handleError));
   }
 }

@@ -27,12 +27,12 @@
             <mat-label>{{'ubication' | translate}}</mat-label>
             <input matInput type="text" [formControl]="address" />
             <mat-error *ngIf="address.hasError('required')">{{'ubication' | translate}}  <strong>{{'isRequired' | translate}}</strong></mat-error>
-            <mat-error *ngIf="address.hasError('minlength')">{{'ubication' | translate}} <strong>{{'charsMin' | translate}}</strong> 8 <strong>{{'characters' | translate}} 8 characters</strong></mat-error>
+            <mat-error *ngIf="address.hasError('minlength')">{{'ubication' | translate}} <strong>{{'charsMin' | translate}}</strong> 3 <strong>{{'characters' | translate}}</strong></mat-error>
             <mat-error *ngIf="address.hasError('maxlength')">{{'ubication' | translate}} <strong>{{'charsMax' | translate}}</strong> 25 <strong>{{'characters' | translate}}</strong></mat-error>
           </mat-form-field>
         </section>
-
         <button mat-raised-button color="primary" type="submit" [disabled]="!delegationForm.valid">ADD</button>  
       </mat-card>
     </form>
+    <div style="margin-left: auto; margin-right: auto"><span id="postFeedback"></span></div>
   </div>

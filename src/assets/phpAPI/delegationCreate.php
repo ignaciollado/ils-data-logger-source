@@ -16,7 +16,7 @@ $sql = "INSERT INTO ils_company_delegation(companyId, name, address) VALUES ("
 .$request['name']."','"
 .$request['address']."'
  )";
- 
+
 $result = mysqli_query($conn, $sql);
 $rowcount=mysqli_num_rows($result);
 $field = mysqli_fetch_row($result);

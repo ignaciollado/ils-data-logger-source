@@ -218,9 +218,10 @@ export class ProfileComponent implements OnInit {
       if (itemActivityIndicator['selected']) {
         console.log(itemActivityIndicator['indicator'])
         this.activityIndicator.setValue(itemActivityIndicator['indicator'])
+        this.profileForm.get('activityIndicator').setValue(itemActivityIndicator['indicator']);
       }
     })
     this.activityIndicator.enable()
-    
+
   }
 }

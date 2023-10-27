@@ -10,7 +10,7 @@
         <mat-card [class.mat-elevation-z8]="isElevated">
 
           <section>
-            <mat-form-field [style.width.px]=327>
+            <mat-form-field appearance="outline" [style.width.px]=425>
               <mat-label>{{'delegation' | translate}}</mat-label>
               <mat-select [formControl]="delegation" panelClass="panel-{{delegation.value}}">
                 <mat-option *ngFor="let delegation of delegations" [value]="delegation.companyDelegationId">
@@ -22,7 +22,7 @@
           </section>
 
           <section>
-            <mat-form-field [style.width.px]=327>
+            <mat-form-field appearance="outline" [style.width.px]=425>
               <mat-label>{{'energyType' | translate}}</mat-label>
               <mat-select [formControl]="energy">
                 <mat-option *ngFor="let energy of energies" [value]="energy.energyId">
@@ -34,7 +34,7 @@
           </section>
 
           <section>
-            <mat-form-field [style.width.px]=327>
+            <mat-form-field appearance="outline" [style.width.px]=425>
               <mat-label>{{'monthAndYear' | translate}}</mat-label>
               <input matInput type="text" maxlength="7" minlength="7" [formControl]="monthYearDate">
               <mat-hint>MM/YYYY</mat-hint>
@@ -46,7 +46,7 @@
           </section>
 
           <section>
-            <mat-form-field [style.width.px]=327>
+            <mat-form-field appearance="outline" [style.width.px]=425>
               <mat-label>{{'quantity' | translate}}</mat-label>
               <input matInput type="number" [formControl]="quantity" />
               <mat-error *ngIf="quantity.hasError('required')">{{'quantity' | translate}} <strong>{{'isRequired' | translate}}</strong></mat-error>
@@ -55,7 +55,7 @@
 
           <section>
             <mat-label>{{'selectRatioType' | translate}}</mat-label><br>
-            <mat-radio-group aria-label="Please, select the ratio type" [formControl]="theRatioType" (change)='ratioTypeSelected(theRatioType.value)'>
+            <mat-radio-group aria-label="Select a ratio type" [formControl]="theRatioType" (change)='ratioTypeSelected(theRatioType.value)'>
               <mat-radio-button value="billing">{{'billing' | translate}} (kEUR)</mat-radio-button>
               <!-- <mat-radio-button value="persons">Workers</mat-radio-button> -->
               <mat-radio-button value="cnae">CNAE</mat-radio-button>
@@ -63,7 +63,7 @@
           </section>
 
           <section>           
-            <mat-form-field [style.width.px]=327>  
+            <mat-form-field appearance="outline" [style.width.px]=425>  
               <mat-label>{{'monthlyObjective' | translate}}</mat-label>
               <input matInput type="number" [formControl]="objective"/>
               <mat-error *ngIf="objective.hasError('required')">{{'monthlyObjective' | translate}} <strong>{{'isRequired' | translate}}</strong></mat-error>

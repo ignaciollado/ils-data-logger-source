@@ -4,7 +4,7 @@
   <form [formGroup]="profileForm" (ngSubmit)="updateUser()">
     <mat-card [class.mat-elevation-z8]="isElevated">
       <section>
-          <mat-form-field [style.width.px]=425>
+          <mat-form-field appearance="outline" [style.width.px]=425>
             <mat-label>{{ 'companyName' | translate }}</mat-label>
             <input matInput type="text" readonly [formControl]="name" />
             <mat-error *ngIf="name.hasError('minlength')" >Name must be at least 5 characters long</mat-error>
@@ -14,7 +14,7 @@
       </section>
 
       <section>
-        <mat-form-field [style.width.px]=425>
+        <mat-form-field appearance="outline" [style.width.px]=425>
           <mat-label>NIF</mat-label>
           <input matInput type="text" readonly [formControl]="nif" />
           <mat-error *ngIf="nif.hasError('minlength')" >nif must be at least 5 characters long</mat-error>
@@ -24,7 +24,7 @@
       </section>
 
       <section>
-        <mat-form-field [style.width.px]=425>
+        <mat-form-field appearance="outline" [style.width.px]=425>
           <mat-label>{{ 'companyAddress' | translate }}</mat-label>
           <input matInput type="text" readonly [formControl]="domicilio" />
           <mat-error *ngIf="domicilio.hasError('minlength')" >domicilio must be at least 5 characters long</mat-error>
@@ -34,7 +34,7 @@
       </section>
   
       <section>
-          <mat-form-field [style.width.px]=425>
+          <mat-form-field appearance="outline" [style.width.px]=425>
             <mat-label>Email</mat-label>
             <input matInput type="email" readonly [formControl]="email" required />
             <mat-error *ngIf="email.hasError('pattern')" >Email not a valid format</mat-error>
@@ -43,7 +43,7 @@
       </section>  
   
       <section>
-        <mat-form-field [style.width.px]=425>
+        <mat-form-field appearance="outline" [style.width.px]=425>
           <mat-label>Localidad</mat-label>
           <input matInput type="text" readonly [formControl]="localidad" />
           <mat-error *ngIf="localidad.hasError('minlength')" >{{'city' | translate}} <strong>{{'charsMin' | translate}}</strong> 8 <strong>{{'characters' | translate}} 8 characters</strong></mat-error>
@@ -53,7 +53,7 @@
       </section>
 
       <section>
-        <mat-form-field appearance="fill" [style.width.px]=425>
+        <mat-form-field appearance="outline" [style.width.px]=425>
           <mat-label>{{'companyCNAE' | translate}}</mat-label>
           <mat-select [formControl]="cnaeSelect" required (selectionChange)='cnaeSelected(cnaeSelect.value)'>
             <mat-option>--</mat-option>
@@ -67,7 +67,7 @@
       </section>
 
       <section>
-        <mat-form-field appearance="fill" [style.width.px]=425>
+        <mat-form-field appearance="outline" [style.width.px]=425>
           <mat-label>{{'activityIndicator' | translate}}</mat-label>
           <mat-select [formControl]="activityIndicator" required  [(value)]="activityIndicator['selected']" matTooltip="{{'activityIndicatorSelect' | translate}}">
             <mat-option>--</mat-option>

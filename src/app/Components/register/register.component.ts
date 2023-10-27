@@ -39,7 +39,7 @@ export class RegisterComponent implements OnInit {
     private headerMenusService: HeaderMenusService,
     private router: Router
   ) {
-    this.registerUser = new UserDTO('', '', '', '', '', '');
+    this.registerUser = new UserDTO('', '', '', '', '', '', '');
 
     this.isValidForm = null;
 

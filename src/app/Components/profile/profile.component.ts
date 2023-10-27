@@ -42,7 +42,8 @@ export class ProfileComponent implements OnInit {
   nif: UntypedFormControl;
   domicilio: UntypedFormControl;
   localidad: UntypedFormControl;
-  cnaeSelect: UntypedFormControl
+  cnaeSelect: UntypedFormControl;
+  activityIndicator: UntypedFormControl;
 
   profileForm: UntypedFormGroup;
   isValidForm: boolean | null;
@@ -59,7 +60,7 @@ export class ProfileComponent implements OnInit {
     private headerMenusService: HeaderMenusService,
     private jwtHelper: JwtHelperService,
   ) {
-    this.profileUser = new UserDTO('', '', '', '', '', '');
+    this.profileUser = new UserDTO('', '', '', '', '', '', '');
     this.isValidForm = null;
 
     this.userId = this.jwtHelper.decodeToken().id_ils
@@ -93,6 +94,8 @@ export class ProfileComponent implements OnInit {
     ]);
 
     this.cnaeSelect = new UntypedFormControl(this.profileUser.cnae, [ Validators.required ]);
+    this.activityIndicator = new UntypedFormControl(this.profileUser.activityIndicator, [ Validators.required ]);
+
 
     this.profileForm = this.formBuilder.group({
       name: this.name,
@@ -100,7 +103,8 @@ export class ProfileComponent implements OnInit {
       nif: this.nif,
       domicilio: this.domicilio,
       localidad: this.localidad,
-      cnaeSelect: this.cnaeSelect
+      cnaeSelect: this.cnaeSelect,
+      activityIndicator: this.activityIndicator
     });
 
     this.access_token = sessionStorage.getItem("access_token")

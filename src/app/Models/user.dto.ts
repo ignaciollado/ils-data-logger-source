@@ -10,6 +10,7 @@ export class UserDTO {
   localidad!: string
   cpostal!: string
   cnae: string
+  activityIndicator: string
 
   constructor(
     name: string,
@@ -17,7 +18,8 @@ export class UserDTO {
     password: string,
     domicilio: string,
     nif: string,
-    cnae: string
+    cnae: string,
+    activityIndicator: string
   ) {
     this.name = name
     this.email = email
@@ -25,5 +27,6 @@ export class UserDTO {
     this.domicilio = domicilio
     this.nif = nif
     this.cnae = cnae
+    this.activityIndicator = activityIndicator
   }
 }

@@ -60,6 +60,8 @@
     "objectiveCO2e": "Objectiu (T de CO2e)",
 
     "selectRatioType": "Seleccioni el tipus de 'ratio':",
+    "activityIndicator": "Indicator d'activitat",
+    "activityIndicatorSelect": "Seleccioni l'indicator d'activitat",
 
     "year": "Any",
     "fromDate": "Des de",

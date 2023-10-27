@@ -94,8 +94,7 @@ export class ProfileComponent implements OnInit {
     ]);
 
     this.cnaeSelect = new UntypedFormControl(this.profileUser.cnae, [ Validators.required ]);
-    this.activityIndicator = new UntypedFormControl(this.profileUser.activityIndicator, [ Validators.required ]);
-
+    this.activityIndicator = new UntypedFormControl({value: this.profileUser.activityIndicator, disabled: true}, [ Validators.required ]);
 
     this.profileForm = this.formBuilder.group({
       name: this.name,
@@ -221,5 +220,7 @@ export class ProfileComponent implements OnInit {
         this.activityIndicator.setValue(itemActivityIndicator['indicator'])
       }
     })
+    this.activityIndicator.enable()
+    
   }
 }

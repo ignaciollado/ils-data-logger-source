@@ -59,7 +59,9 @@
     "quantityCO2e": "Cantidad (T de CO2e)",
     "objectiveCO2e": "Objetivo (T de CO2e)",
 
-    "selectRatioType": "Por favor, seleccione el tipo de 'ratio':",
+    "selectRatioType": "Seleccione el tipo de 'ratio':",
+    "activityIndicator": "Indicador de activitad",
+    "activityIndicatorSelect": "Seleccione el indicador de activitad que desea usar",
 
     "year": "Año",
     "fromDate": "Desde",

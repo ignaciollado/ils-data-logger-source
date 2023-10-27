@@ -3,21 +3,21 @@
         "sector": "INDUSTRIA MANUFACTURERA - ALIMENTACIÓN",
         "subsector": "Fabricación de otros aceites y grasas",
         "cnaeCode": "1044",
-        "activityIndicator": [{"indicator":"kg", "selected":true}, {"indicator":"Litro", "selected":false}],
+        "activityIndicator": [{"indicator":"kg*", "selected":true}, {"indicator":"Litro", "selected":false}],
         "emissionIndicator": ["kg CO2 eq/kg", "kg CO2 eq/L"]
     },
     {
         "sector": "INDUSTRIA MANUFACTURERA - INDUSTRIA QUÍMICA",
         "subsector": "Fabricación de fertilizantes y compuestos nitrogenados",
         "cnaeCode": "2015",
-        "activityIndicator": [{"indicator":"Tonelada", "selected":true}, {"indicator":"Metro cúbico", "selected":false}],
+        "activityIndicator": [{"indicator":"Tonelada*", "selected":true}, {"indicator":"Metro cúbico", "selected":false}],
         "emissionIndicator": ["kg CO2 eq/tn", "kg CO2 eq/m3"]
     },
     {
         "sector": "INDUSTRIA MANUFACTURERA - FABRICACIÓN DE PRODUCTOS DE CAUCHO Y PLÁSTICOS",
         "subsector": "Fabricación de neumáticos y cámaras de caucho; reconstrucción y recauchutado de neumáticos ",
         "cnaeCode": "2211",
-        "activityIndicator": [{"indicator":"Tonelada", "selected":true}, {"indicator":"Kg", "selected":false}, {"indicator":"Unidad", "selected":false}],
+        "activityIndicator": [{"indicator":"Tonelada*", "selected":true}, {"indicator":"Kg", "selected":false}, {"indicator":"Unidad", "selected":false}],
         "emissionIndicator": ["kg CO2 eq/tn", "kg CO2 eq/kg", "kg CO2 eq/ud"]
     }
 ]

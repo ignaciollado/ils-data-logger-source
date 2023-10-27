@@ -211,7 +211,15 @@ export class ProfileComponent implements OnInit {
   }
 
   public cnaeSelected(cnaeItem: string) {
+
     this.enterpriseActivityIndicators = this.cnaeList.filter( item => item.cnaeCode === cnaeItem)[0].activityIndicator
-    console.log(cnaeItem, this.enterpriseActivityIndicators, this.enterpriseActivityIndicators[0]['indicator'], this.enterpriseActivityIndicators[0]['selected'])
+    /* this.activityIndicator.setValue(this.enterpriseActivityIndicators[0]['indicator']) */
+    /* console.log(this.enterpriseActivityIndicators, this.enterpriseActivityIndicators[0]['indicator'], this.enterpriseActivityIndicators[0]['selected']) */
+    this.enterpriseActivityIndicators.map( itemActivityIndicator => {
+      if (itemActivityIndicator['selected']) {
+        console.log(itemActivityIndicator['indicator'])
+        this.activityIndicator.setValue(itemActivityIndicator['indicator'])
+      }
+    })
   }
 }

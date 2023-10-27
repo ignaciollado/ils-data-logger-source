@@ -42,7 +42,8 @@ export class WaterFormComponent {
 
   monthYearDate: UntypedFormControl
   quantityWater: UntypedFormControl
-  objective: UntypedFormControl;
+  objective: UntypedFormControl
+  theRatioType: UntypedFormControl
 
   waterForm: UntypedFormGroup
 
@@ -50,15 +51,17 @@ export class WaterFormComponent {
   isElevated: boolean = true
   consumptionFields: string[] = []
   result: boolean = false
+  theRatioTypeSelected : boolean = false
+
   monthYearPattern: string = "^[0-9]{2}\/[0-9]{4}"
 
-  private isUpdateMode: boolean;
-  private validRequest: boolean;
-  private consumptionId: string | null;
-  private userId: string | null;
+  private isUpdateMode: boolean
+  private validRequest: boolean
+  private consumptionId: string | null
+  private userId: string | null
 
-  delegations!: DelegationDTO[];
-  consumptions!: ConsumptionDTO[];
+  delegations!: DelegationDTO[]
+  consumptions!: ConsumptionDTO[]
 
   isGridView: boolean = false
   columnsDisplayed = ['delegation', 'year', 'water', 'enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'setiembre', 'octubre', 'noviembre', 'diciembre', 'ACTIONS'];
@@ -69,6 +72,7 @@ export class WaterFormComponent {
   ngAfterViewInit() {
     this.dataSource.sort = this.waterTbSort;
   }
+
   constructor(
     private activatedRoute: ActivatedRoute,
     private consumptionService: ConsumptionService,
@@ -85,25 +89,27 @@ export class WaterFormComponent {
     this._locale = 'es-ES';
     this._adapter.setLocale(this._locale);
 
-    this.isValidForm = null;
-    this.consumptionId = this.activatedRoute.snapshot.paramMap.get('id');
+    this.isValidForm = null
+    this.consumptionId = this.activatedRoute.snapshot.paramMap.get('id')
     this.userId = this.jwtHelper.decodeToken().id_ils
     this.consumption = new ConsumptionDTO(0, 0, this._adapter.today(), this._adapter.today(), '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 0, '', '', 0);
     this.isUpdateMode = false;
     this.validRequest = false;
 
-    this.delegation = new UntypedFormControl( '', [ Validators.required ] );
-    this.companyId = new UntypedFormControl( this.userId, [ Validators.required ] );
+    this.delegation = new UntypedFormControl( '', [ Validators.required ] )
+    this.companyId = new UntypedFormControl( this.userId, [ Validators.required ] )
     this.monthYearDate = new UntypedFormControl('', [ Validators.required, Validators.min(1), Validators.max(12), Validators.pattern(this.monthYearPattern) ]);
-    this.quantityWater = new UntypedFormControl('', [ Validators.required, Validators.min(1)]);
-    this.objective = new UntypedFormControl('', [ Validators.min(1) ]);
+    this.quantityWater = new UntypedFormControl('', [ Validators.required, Validators.min(1)])
+    this.objective = new UntypedFormControl({value: '', disabled: true}, [ Validators.min(1) ])
+    this.theRatioType = new UntypedFormControl({value: '', disabled: false})
 
     this.water = new UntypedFormControl(0);
     this.waterForm = this.formBuilder.group({
       delegation: this.delegation,
       monthYearDate: this.monthYearDate,
       quantityWater: this.quantityWater,
-      objective: this.objective
+      objective: this.objective,
+      theRatioType: this.theRatioType
     })
 
     this.loadDelegations();
@@ -222,6 +228,13 @@ export class WaterFormComponent {
   public applyFilter(value: Event):void {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
+  public ratioTypeSelected(ratioType: any) {
+    console.log(ratioType)
+    this.theRatioTypeSelected = !this.theRatioTypeSelected
+    this.objective.enable()
+    this.objective.addValidators(Validators.required)
   }
 
 }

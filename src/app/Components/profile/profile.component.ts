@@ -32,6 +32,7 @@ import { UserService } from 'src/app/Services/user.service';
     ])
   ],
 })
+
 export class ProfileComponent implements OnInit {
   profileUser: UserDTO;
   cnae: CnaeDTO
@@ -47,6 +48,7 @@ export class ProfileComponent implements OnInit {
   isValidForm: boolean | null;
   isElevated = true;
   userFields: string[] = [];
+  enterpriseActivityIndicators: string[]
   access_token: string | null;
   private userId: string | null;
 
@@ -202,5 +204,10 @@ export class ProfileComponent implements OnInit {
           }
         );
     }
+  }
+
+  public cnaeSelected(cnaeItem: string) {
+    this.enterpriseActivityIndicators = this.cnaeList.filter( item => item.cnaeCode === cnaeItem)[0].activityIndicator
+    console.log(cnaeItem, this.enterpriseActivityIndicators, this.enterpriseActivityIndicators[0]['indicator'], this.enterpriseActivityIndicators[0]['selected'])
   }
 }

@@ -51,13 +51,13 @@
   "compost": "Compostaje",
   "emissions": "Emisiones",
   "emissionConsumption": "Emisiones de CO2e (T)",
-
-
   "scopeOne": "Scope one (T de CO2e)",
   "scopeTwo": "Scope two (T de CO2e)",
   "quantity": "Quantity",
   "quantityCO2e": "Quantity (T de CO2e)",
   "objectiveCO2e": "Objective (T de CO2e)",
+
+  "selectRatioType": "Please, select the ratio type:",
 
   "year": "Year",
   "fromDate": "From",

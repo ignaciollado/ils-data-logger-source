@@ -36,12 +36,14 @@ export class EmissionFormComponent {
   companyId: UntypedFormControl
   yearEmission: UntypedFormControl
   emissionForm: UntypedFormGroup
+  theRatioType: UntypedFormControl
   objective: UntypedFormControl
 
   isValidForm: boolean | null
   isElevated: boolean = true
+  theRatioTypeSelected: boolean = false
   consumptionFields: string[] = []
-  result : boolean =false
+  result : boolean = false
 
   private isUpdateMode: boolean;
   private validRequest: boolean;
@@ -88,10 +90,11 @@ export class EmissionFormComponent {
     this.companyId = new UntypedFormControl(this.userId, [ Validators.required ]);
     this.yearEmission = new UntypedFormControl('', [ Validators.required ]);
     this.quantityEmission = new UntypedFormControl('', [ Validators.required, Validators.min(1)]);
-    this.objective = new UntypedFormControl('', [ Validators.min(1) ]);
+    this.theRatioType = new UntypedFormControl({value: '', disabled: false})
+    this.objective = new UntypedFormControl({value: '', disabled: true}, [ Validators.min(1) ]);
 
-    this.scopeone = new UntypedFormControl('', [ Validators.required ]);
-    this.scopetwo = new UntypedFormControl('', [ Validators.required ]);
+    this.scopeone = new UntypedFormControl({value: '', disabled: true}, [ Validators.required ]);
+    this.scopetwo = new UntypedFormControl({value: '', disabled: true}, [ Validators.required ]);
 
     this.emissionForm = this.formBuilder.group({
       delegation: this.delegation,
@@ -99,6 +102,7 @@ export class EmissionFormComponent {
       scopetwo: this.scopetwo,
       yearEmission: this.yearEmission,
       quantityEmission: this.quantityEmission,
+      theRatioType: this.theRatioType,
       objective: this.objective
     })
 
@@ -245,6 +249,15 @@ export class EmissionFormComponent {
   public applyFilter(value: Event):void {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
+  public ratioTypeSelected(ratioType: any) {
+    console.log(ratioType)
+    this.theRatioTypeSelected = !this.theRatioTypeSelected
+    this.objective.enable()
+    this.objective.addValidators(Validators.required)
+    this.scopeone.enable()
+    this.scopetwo.enable()
   }
 
 }

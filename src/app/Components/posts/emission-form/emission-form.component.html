@@ -43,6 +43,15 @@
       </section>
 
       <section>
+        <mat-label>{{'selectRatioType' | translate}}</mat-label><br>
+        <mat-radio-group aria-label="Please, select the ratio type" [formControl]="theRatioType" (change)='ratioTypeSelected(theRatioType.value)'>
+          <mat-radio-button value="billing">{{'billing' | translate}} (kEUR)</mat-radio-button>
+          <!-- <mat-radio-button value="persons">Workers</mat-radio-button> -->
+          <mat-radio-button value="cnae">CNAE</mat-radio-button>
+        </mat-radio-group>
+      </section>
+
+      <section>
         <mat-form-field [style.width.px]=327>
           <mat-label>{{'monthlyObjective' | translate}}</mat-label>
           <input matInput type="number" [formControl]="objective" />

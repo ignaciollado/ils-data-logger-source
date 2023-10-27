@@ -64,7 +64,6 @@ export class UserService {
   }
 
   getUserCnae(): Observable<CnaeDTO[]> {
-
     return this.http
       .get<CnaeDTO[]>(`${this.urlAPiMock}cnaeList.json`)
       .pipe(catchError(this.sharedService.handleError))

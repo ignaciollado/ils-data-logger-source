@@ -1,128 +1,16 @@
 [
     {
-        "sector": "INDUSTRIA EXTRACTIVA",
-        "subsector": "Extracción de piedra ornamental y para la construcción, piedra caliza, yeso, creta y pizarra",
-        "cnaeCode": "0811",
-        "activityIndicator": "Tonelada",
-        "emissionIndicator": ["kg CO2 eq/tn"]
-    },
-    {
-        "sector": "INDUSTRIA EXTRACTIVA",
-        "subsector": "Extracción de gravas y arenas; extracción de arcilla y caolín",
-        "cnaeCode": "0812",
-        "activityIndicator": "Tonelada",
-        "emissionIndicator": ["kg CO2 eq/tn"]
-    },
-    {
-        "sector": "INDUSTRIA EXTRACTIVA",
-        "subsector": "Extracción de minerales para productos químicos y fertilizantes",
-        "cnaeCode": "0891",
-        "activityIndicator": "Tonelada",
-        "emissionIndicator": ["kg CO2 eq/tn"]
-    },
-    {
-        "sector": "INDUSTRIA EXTRACTIVA",
-        "subsector": "Extracción de turba",
-        "cnaeCode": "0892",
-        "activityIndicator": "Tonelada",
-        "emissionIndicator": ["kg CO2 eq/tn"]
-    },
-    {
-        "sector": "INDUSTRIA EXTRACTIVA",
-        "subsector": "Extracción de sal",
-        "cnaeCode": "0893",
-        "activityIndicator": "Tonelada",
-        "emissionIndicator": ["kg CO2 eq/tn"]
-    },
-    {
-        "sector": "INDUSTRIA EXTRACTIVA",
-        "subsector": "Otras industrias extractivas n.c.o.p.",
-        "cnaeCode": "0899",
-        "activityIndicator": "Tonelada",
-        "emissionIndicator": ["kg CO2 eq/tn"]
-    },
-    {
-        "sector": "INDUSTRIA MANUFACTURERA - ALIMENTACIÓN",
-        "subsector": "Procesado y conservación de carne",
-        "cnaeCode": "1011",
-        "activityIndicator": "kg",
-        "emissionIndicator": ["kg CO2 eq/kg"]
-    },
-    {
-        "sector": "INDUSTRIA MANUFACTURERA - ALIMENTACIÓN",
-        "subsector": "Procesado y conservación de volatería",
-        "cnaeCode": "1012",
-        "activityIndicator": "kg",
-        "emissionIndicator": ["kg CO2 eq/kg"]
-    },
-    {
-        "sector": "INDUSTRIA MANUFACTURERA - ALIMENTACIÓN",
-        "subsector": "Elaboración de productos cárnicos y de volatería",
-        "cnaeCode": "1013",
-        "activityIndicator": "kg",
-        "emissionIndicator": ["kg CO2 eq/kg"]
-    },
-    {
-        "sector": "INDUSTRIA MANUFACTURERA - ALIMENTACIÓN",
-        "subsector": "Procesado de pescados, crustáceos y moluscos",
-        "cnaeCode": "1021",
-        "activityIndicator": "kg",
-        "emissionIndicator": ["kg CO2 eq/kg"]
-    },
-    {
-        "sector": "INDUSTRIA MANUFACTURERA - ALIMENTACIÓN",
-        "subsector": "Fabricación de conservas de pescado",
-        "cnaeCode": "1022",
-        "activityIndicator": "kg",
-        "emissionIndicator": ["kg CO2 eq/kg"]
-    },
-    {
-        "sector": "INDUSTRIA MANUFACTURERA - ALIMENTACIÓN",
-        "subsector": "Procesado y conservación de patatas",
-        "cnaeCode": "1031",
-        "activityIndicator": "kg",
-        "emissionIndicator": ["kg CO2 eq/kg"]
-    },
-    {
-        "sector": "INDUSTRIA MANUFACTURERA - ALIMENTACIÓN",
-        "subsector": "Elaboración de zumos de frutas y hortalizas",
-        "cnaeCode": "1032",
-        "activityIndicator": "Litro",
-        "emissionIndicator": ["kg CO2 eq/L"]
-    },
-    {
-        "sector": "INDUSTRIA MANUFACTURERA - ALIMENTACIÓN",
-        "subsector": "Otro procesado y conservación de frutas y hortalizas ",
-        "cnaeCode": "1039",
-        "activityIndicator": "kg",
-        "emissionIndicator": ["kg CO2 eq/kg"]
-    },
-    {
-        "sector": "INDUSTRIA MANUFACTURERA - ALIMENTACIÓN",
-        "subsector": "Fabricación de margarina y grasas comestibles similares",
-        "cnaeCode": "1042",
-        "activityIndicator": "kg",
-        "emissionIndicator": ["kg CO2 eq/kg"]
-    },
-    {
-        "sector": "INDUSTRIA MANUFACTURERA - ALIMENTACIÓN",
-        "subsector": "Fabricación de aceite de oliva",
-        "cnaeCode": "1043",
-        "activityIndicator": "Litro",
-        "emissionIndicator": ["kg CO2 eq/L"]
-    },
-    {
         "sector": "INDUSTRIA MANUFACTURERA - ALIMENTACIÓN",
         "subsector": "Fabricación de otros aceites y grasas",
         "cnaeCode": "1044",
-        "activityIndicator": "kg/Litro",
-        "emissionIndicator": ["kg CO2 eq/kg kg", "CO2 eq/L"]
+        "activityIndicator": [{"indicator":"kg", "selected":true}, {"indicator":"Litro", "selected":false}],
+        "emissionIndicator": ["kg CO2 eq/kg", "kg CO2 eq/L"]
     },
     {
-        "sector": "INDUSTRIA MANUFACTURERA - ALIMENTACIÓN",
-        "subsector": "Elaboración de helados",
-        "cnaeCode": "1052",
-        "activityIndicator": "Litro",
-        "emissionIndicator": ["kg CO2 eq/L"]
+        "sector": "INDUSTRIA MANUFACTURERA - INDUSTRIA QUÍMICA",
+        "subsector": "Fabricación de fertilizantes y compuestos nitrogenados",
+        "cnaeCode": "2015",
+        "activityIndicator": [{"indicator":"Tonelada", "selected":true}, {"indicator":"Metro cúbico", "selected":false}],
+        "emissionIndicator": ["kg CO2 eq/tn", "kg CO2 eq/m3"]
     }
 ]

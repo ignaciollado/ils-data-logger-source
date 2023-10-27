@@ -59,6 +59,8 @@
     "quantityCO2e": "Quantitat (T de CO2e)",
     "objectiveCO2e": "Objectiu (T de CO2e)",
 
+    "selectRatioType": "Seleccioni el tipus de 'ratio':",
+
     "year": "Any",
     "fromDate": "Des de",
     "toDate": "Fins a",

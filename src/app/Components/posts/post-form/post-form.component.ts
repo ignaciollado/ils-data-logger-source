@@ -55,11 +55,13 @@ export class PostFormComponent implements OnInit {
   companyId: UntypedFormControl
   energyForm: UntypedFormGroup
   objective: UntypedFormControl
+  theRatioType: UntypedFormControl
 
   isValidForm: boolean | null
   isElevated: boolean = true
   consumptionFields: string[] = []
-  result : boolean =false
+  result : boolean = false
+  theRatioTypeSelected : boolean = false
 
   monthYearPattern: string = "^[0-9]{2}\/[0-9]{4}"
 
@@ -139,10 +141,11 @@ export class PostFormComponent implements OnInit {
     this.delegation = new UntypedFormControl('', [ Validators.required ]);
     this.monthYearDate = new UntypedFormControl('', [ Validators.required, Validators.min(1), Validators.max(12), Validators.pattern(this.monthYearPattern) ]);
 
-    this.energy = new UntypedFormControl('', [ Validators.required ]);
-    this.companyId = new UntypedFormControl(this.userId, [ Validators.required ]);
-    this.quantity = new UntypedFormControl('', [ Validators.required, Validators.min(1) ]);
-    this.objective = new UntypedFormControl('', [ Validators.min(1) ]);
+    this.energy = new UntypedFormControl('', [ Validators.required ])
+    this.companyId = new UntypedFormControl(this.userId, [ Validators.required ])
+    this.quantity = new UntypedFormControl('', [ Validators.required, Validators.min(1) ])
+    this.objective = new UntypedFormControl({value: '', disabled: true}, [ Validators.min(1) ])
+    this.theRatioType = new UntypedFormControl({value: '', disabled: false})
 
     this.energyForm = this.formBuilder.group({
       delegation: this.delegation,
@@ -150,7 +153,8 @@ export class PostFormComponent implements OnInit {
       energy: this.energy,
       quantity: this.quantity,
       objective: this.objective,
-      companyId: this.companyId
+      companyId: this.companyId,
+      theRatioType: this.theRatioType
     });
 
     this.loadEnergies();
@@ -308,7 +312,7 @@ export class PostFormComponent implements OnInit {
     }
   }
 
-  deleteEnergyConsumption(consumptionId: number): void {
+  public deleteEnergyConsumption(consumptionId: number): void {
     let errorResponse: any;
 
     this.result = confirm('Confirm delete this energy');
@@ -328,7 +332,7 @@ export class PostFormComponent implements OnInit {
     }
   }
 
-  saveForm(): void {
+  public saveForm(): void {
 
     this.isValidForm = false;
     if (this.energyForm.invalid) {
@@ -354,5 +358,12 @@ export class PostFormComponent implements OnInit {
   public absoluteRelativeToggle(): void {
     this.absoluteData = !this.absoluteData
     console.log(this.absoluteData)
+  }
+
+  public ratioTypeSelected(ratioType: any) {
+      console.log(ratioType)
+      this.theRatioTypeSelected = !this.theRatioTypeSelected
+      this.objective.enable()
+      this.objective.addValidators(Validators.required)
   }
 }

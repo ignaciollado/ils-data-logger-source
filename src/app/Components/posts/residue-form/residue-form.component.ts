@@ -62,11 +62,14 @@ export class ResidueFormComponent {
   monthYearDate: UntypedFormControl
 
   quantityResidue: UntypedFormControl
+  theRatioType: UntypedFormControl
   objective: UntypedFormControl
+
   residueForm: UntypedFormGroup
 
   isValidForm: boolean | null
   isElevated: boolean = true
+  theRatioTypeSelected: boolean = false
   consumptionFields: string[] = []
   result: boolean = false
   monthYearPattern: string = "^[0-9]{2}\/[0-9]{4}"
@@ -115,17 +118,18 @@ export class ResidueFormComponent {
     this.consumption = new ConsumptionDTO(0, 0, this._adapter.today(), this._adapter.today(), '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 0, '', '', 0);
     this.isUpdateMode = false;
     this.validRequest = false;
-    this.delegation = new UntypedFormControl('', [ Validators.required ]);
-    this.residue = new UntypedFormControl('', [ Validators.required ]);
-    this.reuse = new UntypedFormControl('', [ Validators.min(0), Validators.max(100) ]);
-    this.recycling = new UntypedFormControl('', [ Validators.min(0), Validators.max(100) ]);
-    this.incineration = new UntypedFormControl('', [ Validators.min(0), Validators.max(100) ]);
-    this.dump = new UntypedFormControl('', [ Validators.min(0), Validators.max(100) ]);
-    this.compost = new UntypedFormControl('', [ Validators.min(0), Validators.max(100) ]);
-    this.quantityResidue = new UntypedFormControl('', [ Validators.required, Validators.min(0) ]);
-    this.objective = new UntypedFormControl('', [ Validators.min(1) ]);
-    this.companyId = new UntypedFormControl(this.userId, [ Validators.required ]);
-    this.monthYearDate = new UntypedFormControl('', [ Validators.required, Validators.min(1), Validators.max(12), Validators.pattern(this.monthYearPattern) ]);
+    this.delegation = new UntypedFormControl('', [ Validators.required ])
+    this.residue = new UntypedFormControl('', [ Validators.required ])
+    this.reuse = new UntypedFormControl('', [ Validators.min(0), Validators.max(100) ])
+    this.recycling = new UntypedFormControl('', [ Validators.min(0), Validators.max(100) ])
+    this.incineration = new UntypedFormControl('', [ Validators.min(0), Validators.max(100) ])
+    this.dump = new UntypedFormControl('', [ Validators.min(0), Validators.max(100) ])
+    this.compost = new UntypedFormControl('', [ Validators.min(0), Validators.max(100) ])
+    this.quantityResidue = new UntypedFormControl('', [ Validators.required, Validators.min(0) ])
+    this.theRatioType = new UntypedFormControl({value: '', disabled: false})
+    this.objective = new UntypedFormControl({value: '', disabled: true}, [ Validators.min(1) ])
+    this.companyId = new UntypedFormControl(this.userId, [ Validators.required ])
+    this.monthYearDate = new UntypedFormControl('', [ Validators.required, Validators.min(1), Validators.max(12), Validators.pattern(this.monthYearPattern) ])
 
     this.residueForm = this.formBuilder.group({
 
@@ -138,7 +142,8 @@ export class ResidueFormComponent {
       compost: this.compost,
       monthYearDate: this.monthYearDate,
       quantityResidue: this.quantityResidue,
-      objective: this.objective
+      objective: this.objective,
+      theRatioType: this.theRatioType
 
     })
 
@@ -284,6 +289,13 @@ export class ResidueFormComponent {
   public applyFilter(value: Event):void {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
+  public ratioTypeSelected(ratioType: any) {
+    console.log(ratioType)
+    this.theRatioTypeSelected = !this.theRatioTypeSelected
+    this.objective.enable()
+    this.objective.addValidators(Validators.required)
   }
 
 }

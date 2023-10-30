@@ -69,8 +69,7 @@
       <section>
         <mat-form-field appearance="outline" [style.width.px]=425>
           <mat-label>{{'activityIndicator' | translate}}</mat-label>
-          <mat-select [formControl]="activityIndicator" required  [(value)]="activityIndicator['selected']" matTooltip="{{'activityIndicatorSelect' | translate}}">
-            <mat-option>--</mat-option>
+          <mat-select [formControl]="activityIndicator" required [(value)]="selected" matTooltip="{{'activityIndicatorSelect' | translate}}">
             <mat-option *ngFor="let activityIndicator of enterpriseActivityIndicators" [value]="activityIndicator">
               <small>{{activityIndicator['indicator']}}</small>
             </mat-option>

@@ -50,6 +50,7 @@ export class ProfileComponent implements OnInit {
   isElevated = true;
   userFields: string[] = [];
   enterpriseActivityIndicators: string[]
+  selected: string
   access_token: string | null;
   private userId: string | null;
 
@@ -217,8 +218,8 @@ export class ProfileComponent implements OnInit {
     this.enterpriseActivityIndicators.map( itemActivityIndicator => {
       if (itemActivityIndicator['selected']) {
         console.log(itemActivityIndicator['indicator'])
-        this.activityIndicator.setValue(itemActivityIndicator['indicator'])
-        this.profileForm.get('activityIndicator').setValue(itemActivityIndicator['indicator']);
+        /* this.activityIndicator.setValue(itemActivityIndicator['indicator']) */
+        this.selected = itemActivityIndicator['indicator']
       }
     })
     this.activityIndicator.enable()

@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, pipe } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { UserDTO } from '../Models/user.dto';
 import { CnaeDTO } from '../Models/cnae.dto';
@@ -23,7 +23,6 @@ export class UserService {
     this.urlBlogUocApi = 'http://localhost:3000/' + this.controller;
     this.urlAPiMySql = '../../assets/phpAPI/'
     this.urlAPiMock = '../../assets/mocks/'
-
   }
 
   register(user: UserDTO): Observable<UserDTO> {
@@ -45,7 +44,6 @@ export class UserService {
   }
 
   updateUserPindustExpedientes(userId: string, profile: UserDTO): Observable<UserDTO> {
-    console.log (profile)
     return this.http
       .put<UserDTO>(`${this.urlAPiMySql}userPindustExpedientesUpdate.php?userId=${userId}`,profile)
       .pipe(catchError(this.sharedService.handleError))

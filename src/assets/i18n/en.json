@@ -60,6 +60,7 @@
   "selectRatioType": "Select the ratio type:",
   "activityIndicator": "Activity indicator",
   "activityIndicatorSelect": "Select the activity indicator to use",
+  "activityIndicatorChange": "Change the activity indicator to use",
 
   "year": "Year",
   "fromDate": "From",

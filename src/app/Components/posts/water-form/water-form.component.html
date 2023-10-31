@@ -7,7 +7,7 @@
 
     <mat-card [class.mat-elevation-z8]="isElevated">
       <section>
-        <mat-form-field [style.width.px]=327>
+        <mat-form-field appearance="outline" [style.width.px]=425>
           <mat-label>{{'delegation' | translate}}</mat-label>
           <mat-select [formControl]="delegation">
             <mat-option *ngFor="let delegation of delegations" [value]="delegation.companyDelegationId">
@@ -19,7 +19,7 @@
       </section>
 
       <section>
-        <mat-form-field [style.width.px]=327>
+        <mat-form-field appearance="outline" [style.width.px]=425>
           <mat-label>{{'monthAndYear' | translate}}</mat-label>
           <input matInput type="text" maxlength="7" minlength="7" [formControl]="monthYearDate">
           <mat-hint>MM/YYYY</mat-hint>
@@ -31,7 +31,7 @@
       </section>
 
       <section>
-        <mat-form-field [style.width.px]=327>
+        <mat-form-field appearance="outline" [style.width.px]=425>
           <mat-label>{{'quantity' | translate}} (L)</mat-label>
           <input matInput type="number" [formControl]="quantityWater" />
           <mat-error *ngIf="quantityWater.hasError('required')">{{'quantity' | translate}} <strong>{{'isRequired' | translate}}</strong></mat-error>

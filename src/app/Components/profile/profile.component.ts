@@ -37,22 +37,25 @@ export class ProfileComponent implements OnInit {
   profileUser: UserDTO;
   cnae: CnaeDTO
   cnaeList: CnaeDTO[]
-  name: UntypedFormControl;
-  email: UntypedFormControl;
-  nif: UntypedFormControl;
-  domicilio: UntypedFormControl;
-  localidad: UntypedFormControl;
-  cnaeSelect: UntypedFormControl;
-  activityIndicator: UntypedFormControl;
+  name: UntypedFormControl
+  email: UntypedFormControl
+  nif: UntypedFormControl
+  domicilio: UntypedFormControl
+  localidad: UntypedFormControl
+  cnaeSelect: UntypedFormControl
+  activityIndicator: UntypedFormControl
+  currentActivityIndicator: string
 
-  profileForm: UntypedFormGroup;
-  isValidForm: boolean | null;
-  isElevated = true;
-  userFields: string[] = [];
-  enterpriseActivityIndicators: string[]
+  profileForm: UntypedFormGroup
+  isValidForm: boolean | null
+  isElevated = true
+  userFields: string[] = []
+  enterpriseActivityIndicatorsTemp: CnaeDTO[] = []
+  enterpriseActivityIndicators: any[] = []
+
   selected: string
-  access_token: string | null;
-  private userId: string | null;
+  access_token: string | null
+  private userId: string | null
 
   constructor(
     private formBuilder: UntypedFormBuilder,
@@ -95,6 +98,7 @@ export class ProfileComponent implements OnInit {
     ]);
 
     this.cnaeSelect = new UntypedFormControl(this.profileUser.cnae, [ Validators.required ]);
+
     this.activityIndicator = new UntypedFormControl({value: this.profileUser.activityIndicator, disabled: true}, [ Validators.required ]);
 
     this.profileForm = this.formBuilder.group({
@@ -129,18 +133,19 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit(): void {
     let errorResponse: any;
-
+    
     if (this.userId) {
       this.userService.getUSerByIdMySQL(this.userId).subscribe(
         (userData: UserDTO) => {
-
           this.userFields = Object.entries(userData).map( item => item[1])
           this.name.setValue(this.userFields[1])
           this.nif.setValue(this.userFields[2])
           this.domicilio.setValue(this.userFields[3])
           this.localidad.setValue(this.userFields[4])
           this.cnaeSelect.setValue(this.userFields[6])
-          this.email.setValue(this.userFields[9])
+          this.activityIndicator.setValue(this.userFields[7])
+          this.currentActivityIndicator = JSON.parse(JSON.stringify(this.userFields[7]))
+          this.email.setValue(this.userFields[10])
 
           this.profileForm = this.formBuilder.group({
             name: this.name,
@@ -148,8 +153,10 @@ export class ProfileComponent implements OnInit {
             domicilio: this.domicilio,
             email: this.email,
             localidad: this.localidad,
-            cnaeSelect: this.cnaeSelect
+            cnaeSelect: this.cnaeSelect,
+            activityIndicator: this.activityIndicator
           });
+          this.cnaeSelected(this.userFields[6])
         },
         (error: HttpErrorResponse) => {
           errorResponse = error.error;
@@ -172,7 +179,7 @@ export class ProfileComponent implements OnInit {
     );
   }
 
-  updateUser(): void {
+  public updateUser(): void {
     let responseOK: boolean = false;
     this.isValidForm = false;
     let errorResponse: any;
@@ -198,7 +205,6 @@ export class ProfileComponent implements OnInit {
         )
         .subscribe(
           ( data ) => {
-            console.log (data)
             responseOK = true
           },
           (error: HttpErrorResponse) => {
@@ -210,19 +216,15 @@ export class ProfileComponent implements OnInit {
     }
   }
 
-  public cnaeSelected(cnaeItem: string) {
+  public cnaeSelected(cnaeItem: any) {
 
-    this.enterpriseActivityIndicators = this.cnaeList.filter( item => item.cnaeCode === cnaeItem)[0].activityIndicator
-    /* this.activityIndicator.setValue(this.enterpriseActivityIndicators[0]['indicator']) */
-    /* console.log(this.enterpriseActivityIndicators, this.enterpriseActivityIndicators[0]['indicator'], this.enterpriseActivityIndicators[0]['selected']) */
-    this.enterpriseActivityIndicators.map( itemActivityIndicator => {
-      if (itemActivityIndicator['selected']) {
-        console.log(itemActivityIndicator['indicator'])
-        /* this.activityIndicator.setValue(itemActivityIndicator['indicator']) */
-        this.selected = itemActivityIndicator['indicator']
-      }
-    })
-    this.activityIndicator.enable()
+    this.enterpriseActivityIndicatorsTemp = this.cnaeList.filter( item => item.cnaeCode === cnaeItem.value )
+    this.enterpriseActivityIndicators = this.enterpriseActivityIndicatorsTemp[0].activityIndicator
+    this.activityIndicator.enable() 
 
+  }
+
+  public activityIndicatorSelected( activityInd: any ) {
+    console.log(activityInd.value)
   }
 }

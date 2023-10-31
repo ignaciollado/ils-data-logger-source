@@ -12,7 +12,7 @@ require_once 'encrDecr.php';
 mysqli_query($conn, "SET NAMES 'utf8'");
 $userId = $_GET['userId'];
 
-$sql = "SELECT id, empresa, nif, domicilio, localidad, cpostal, cnae,
+$sql = "SELECT id, empresa, nif, domicilio, localidad, cpostal, cnae, activityIndicator,
 telefono_rep, situacion, email_rep FROM pindust_expediente WHERE id = " .$userId;
 
 $result = mysqli_query($conn, $sql);

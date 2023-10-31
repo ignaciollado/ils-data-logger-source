@@ -132,6 +132,7 @@ export class LoginComponent implements OnInit {
                     this.sharedService.managementToast( 'loginFeedback', responseOK, errorResponse )
 
                     if (responseOK) {
+                      
                       const headerInfo: HeaderMenus = { showAuthSection: true, showNoAuthSection: false, };
                       this.router.navigateByUrl('profile');
                       this.headerMenusService.headerManagement.next(headerInfo);

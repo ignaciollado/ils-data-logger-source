@@ -1,5 +1,5 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component, Inject, ViewChild } from '@angular/core';
+import { Component, Inject, ViewChild, Input } from '@angular/core';
 import { FormControl,
   UntypedFormBuilder,
   UntypedFormControl,
@@ -54,6 +54,10 @@ export class WaterFormComponent {
   theRatioTypeSelected : boolean = false
 
   monthYearPattern: string = "^[0-9]{2}\/[0-9]{4}"
+
+  @Input() monthYearDefault: string;
+  @Input() delegationDefault: string;
+
 
   private isUpdateMode: boolean
   private validRequest: boolean
@@ -173,7 +177,7 @@ export class WaterFormComponent {
         .subscribe(
           () => {
             responseOK = true;
-            this.monthYearDate.reset()
+            /* this.monthYearDate.reset() */
             this.quantityWater.reset()
             this.loadConsumption();
           },

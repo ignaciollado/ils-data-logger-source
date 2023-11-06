@@ -299,7 +299,8 @@ export class PostFormComponent implements OnInit {
         .subscribe(
           () => {
             responseOK = true;
-            this.energy.reset()
+            /* this.energy.reset() */
+            console.log (this.monthYearDate.value, this.monthYearDate.value.substring(-4))
             this.monthYearDate.reset()
             this.quantity.reset()
             this.loadConsumption();

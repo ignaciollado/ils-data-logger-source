@@ -170,7 +170,7 @@ export class EmissionFormComponent {
           () => {
             responseOK = true;
             this.quantityEmission.reset()
-            this.yearEmission.reset()
+            /* this.yearEmission.reset() */
             this.scopeone.reset()
             this.scopetwo.reset()
             this.loadConsumption();

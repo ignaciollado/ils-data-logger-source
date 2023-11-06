@@ -1,6 +1,6 @@
 
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component, Inject, ViewChild } from '@angular/core';
+import { Component, Inject, Input, ViewChild } from '@angular/core';
 import { 
   UntypedFormBuilder,
   UntypedFormControl,
@@ -73,6 +73,10 @@ export class ResidueFormComponent {
   consumptionFields: string[] = []
   result: boolean = false
   monthYearPattern: string = "^[0-9]{2}\/[0-9]{4}"
+
+  @Input() monthYearDefault: string;
+  @Input() delegationDefault: string;
+
 
   private isUpdateMode: boolean;
   private validRequest: boolean;
@@ -224,7 +228,7 @@ export class ResidueFormComponent {
         .subscribe(
           () => {
             responseOK = true;
-            this.monthYearDate.reset()
+            /* this.monthYearDate.reset() */
             this.quantityResidue.reset()
             /* this.residue.reset() */
             this.reuse.reset()

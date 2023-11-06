@@ -182,15 +182,15 @@
   </mat-tab>
 
   <mat-tab label="{{'water' | translate}}">
-    <app-water-form></app-water-form>
+    <app-water-form [monthYearDefault]="monthYearDate.value" [delegationDefault]="delegation.value"></app-water-form>
   </mat-tab>
 
   <mat-tab label="{{'residue' | translate}}">
-    <app-residue-form></app-residue-form>
+    <app-residue-form [monthYearDefault]="monthYearDate.value" [delegationDefault]="delegation.value"></app-residue-form>
   </mat-tab>
 
   <mat-tab label="{{'emissions' | translate}}">
-    <app-emission-form></app-emission-form>
+    <app-emission-form ></app-emission-form>
   </mat-tab>
 
 </mat-tab-group>

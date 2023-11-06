@@ -19,5 +19,117 @@
         "cnaeCode": "2211",
         "activityIndicator": [{"indicator":"Tonelada*", "selected":true}, {"indicator":"Kg", "selected":false}, {"indicator":"Unidad", "selected":false}],
         "emissionIndicator": ["kg CO2 eq/tn", "kg CO2 eq/kg", "kg CO2 eq/ud"]
+    },
+    {
+        "sector": "INDUSTRIA MANUFACTURERA - ALIMENTACIÓN",
+        "subsector": "Fabricación de otros aceites y grasas",
+        "cnaeCode": "1044",
+        "activityIndicator": [{"indicator":"kg*", "selected":true}, {"indicator":"Litro", "selected":false}],
+        "emissionIndicator": ["kg CO2 eq/kg", "kg CO2 eq/L"]
+    },
+    {
+        "sector": "INDUSTRIA MANUFACTURERA – METALURGIA; FABRICACIÓN DE PRODUCTOS DE HIERRO, ACERO Y FERROALEACIONES",
+        "subsector": "Fabricación de productos básicos de hierro, acero y ferroaleacioines",
+        "cnaeCode": "2410",
+        "activityIndicator": [{"indicator":"Tonelada*", "selected":true}, {"indicator":"Kg", "selected":false}, {"indicator":"unidad", "selected":false}],
+        "emissionIndicator": ["kg CO2 eq/tn ", "kg CO2 eq/kg", "kg CO2 eq/ud"]
+	},
+	{
+        "sector": "INDUSTRIA MANUFACTURERA – METALURGIA; FABRICACIÓN DE PRODUCTOS DE HIERRO, ACERO Y FERROALEACIONES",
+        "subsector": "Fabricación de tubos, tuberías, perfiles huecos y sus accerorios de acero ",
+        "cnaeCode": "2420",
+        "activityIndicator": [{"indicator":"Tonelada*", "selected":true}, {"indicator":"Kg", "selected":false},{"indicator":"metro", "selected":false}, {"indicator":"Unidad", "selected":false}],
+        "emissionIndicator": ["kg CO2 eq/tn", "kg CO2 eq/kg","kg CO2 eq/m", "kg CO2 eq/ud"]
+	},
+	{
+	"sector": "INDUSTRIA MANUFACTURERA – METALURGIA; FABRICACIÓN DE PRODUCTOS DE HIERRO, ACERO Y FERROALEACIONES",
+	"subsector": "Estirado en frío",
+	"cnaeCode": "2431",
+	"activityIndicator": [{"indicator":"Tonelada*", "selected":true}, {"indicator":"Kg", "selected":false},{"indicator":"metro", "selected":false}, {"indicator":"Unidad", "selected":false}],
+	"emissionIndicator": ["kg CO2 eq/tn", "kg CO2 eq/kg","kg CO2 eq/m", "kg CO2 eq/ud"]
+	},
+	{
+	"sector": "INDUSTRIA MANUFACTURERA – METALURGIA; FABRICACIÓN DE PRODUCTOS DE HIERRO, ACERO Y FERROALEACIONES",
+	"subsector": "Laminación en frío",
+	"cnaeCode": "2432",
+	"activityIndicator": [{"indicator":"Tonelada*", "selected":true}], 
+	"emissionIndicator": ["kg CO2 eq/tn"]
+    },
+	{
+	"sector": "INDUSTRIA MANUFACTURERA – METALURGIA; FABRICACIÓN DE PRODUCTOS DE HIERRO, ACERO Y FERROALEACIONES",
+	"subsector": "Producción de perfiles en frío",
+	"cnaeCode": "2433",
+	"activityIndicator": [{"indicator":"Tonelada*", "selected":true}, {"indicator":"Kg", "selected":false},{"indicator":"metro", "selected":false}, {"indicator":"Unidad", "selected":false}],
+	"emissionIndicator": ["kg CO2 eq/tn", "kg CO2 eq/kg","kg CO2 eq/m", "kg CO2 eq/ud"]
+	},
+	{
+	"sector": "INDUSTRIA MANUFACTURERA – METALURGIA; FABRICACIÓN DE PRODUCTOS DE HIERRO, ACERO Y FERROALEACIONES",
+	"subsector": "Trefilado en frío",
+	"cnaeCode": "2434",
+	"activityIndicator": [{"indicator":"Tonelada*", "selected":true}, {"indicator":"Kg", "selected":false},{"indicator":"metro", "selected":false}, {"indicator":"Unidad", "selected":false}],
+	"emissionIndicator": ["kg CO2 eq/tn", "kg CO2 eq/kg","kg CO2 eq/m", "kg CO2 eq/ud"]
+	},
+	{
+	"sector": "INDUSTRIA MANUFACTURERA – METALURGIA; FABRICACIÓN DE PRODUCTOS DE HIERRO, ACERO Y FERROALEACIONES",
+	"subsector": "Producción de metales preciosos",
+	"cnaeCode": "2441",
+	"activityIndicator": [{"indicator":"Tonelada*", "selected":true}, {"indicator":"Kg", "selected":false}],
+	"emissionIndicator": ["kg CO2 eq/tn", "kg CO2 eq/kg"]
+	},
+	{
+	"sector": "INDUSTRIA MANUFACTURERA – METALURGIA; FABRICACIÓN DE PRODUCTOS DE HIERRO, ACERO Y FERROALEACIONES",
+	"subsector": "Producción de aluminio",
+	"cnaeCode": "2442",
+	"activityIndicator": [{"indicator":"Tonelada*", "selected":true}, {"indicator":"Kg", "selected":false}],
+	"emissionIndicator": ["kg CO2 eq/tn", "kg CO2 eq/kg"]
+	},
+	{
+	"sector": "INDUSTRIA MANUFACTURERA – METALURGIA; FABRICACIÓN DE PRODUCTOS DE HIERRO, ACERO Y FERROALEACIONES",
+	"subsector": "Producción de plomo, zinc y estaño",
+	"cnaeCode": "2443",
+	"activityIndicator": [{"indicator":"Tonelada*", "selected":true}, {"indicator":"Kg", "selected":false}],
+	"emissionIndicator": ["kg CO2 eq/tn", "kg CO2 eq/kg"]
+	},
+	{
+	"sector": "INDUSTRIA MANUFACTURERA – METALURGIA; FABRICACIÓN DE PRODUCTOS DE HIERRO, ACERO Y FERROALEACIONES",
+	"subsector": "Producción de cobre",
+	"cnaeCode": "2444",
+	"activityIndicator": [{"indicator":"Tonelada*", "selected":true}, {"indicator":"Kg", "selected":false}],
+	"emissionIndicator": ["kg CO2 eq/tn", "kg CO2 eq/kg"]
+	},
+	{
+	"sector": "INDUSTRIA MANUFACTURERA – METALURGIA; FABRICACIÓN DE PRODUCTOS DE HIERRO, ACERO Y FERROALEACIONES",
+	"subsector": "Producción de otros metales no ferreos",
+	"cnaeCode": "2445",
+	"activityIndicator": [{"indicator":"Tonelada*", "selected":true}, {"indicator":"Kg", "selected":false}],
+	"emissionIndicator": ["kg CO2 eq/tn", "kg CO2 eq/kg"]
+	},
+	{
+	"sector": "INDUSTRIA MANUFACTURERA – METALURGIA; FABRICACIÓN DE PRODUCTOS DE HIERRO, ACERO Y FERROALEACIONES",
+	"subsector": "Fundición de hierro",
+	"cnaeCode": "2451",
+	"activityIndicator": [{"indicator":"Tonelada*", "selected":true}, {"indicator":"Kg", "selected":false}],
+	"emissionIndicator": ["kg CO2 eq/tn", "kg CO2 eq/kg"]
+	},
+	{
+	"sector": "INDUSTRIA MANUFACTURERA – METALURGIA; FABRICACIÓN DE PRODUCTOS DE HIERRO, ACERO Y FERROALEACIONES",
+	"subsector": "Fundición de acero",
+	"cnaeCode": "2452",
+	"activityIndicator": [{"indicator":"Tonelada*", "selected":true}, {"indicator":"Kg", "selected":false}],
+	"emissionIndicator": ["kg CO2 eq/tn", "kg CO2 eq/kg"]
+	},
+	{
+	"sector": "INDUSTRIA MANUFACTURERA – METALURGIA; FABRICACIÓN DE PRODUCTOS DE HIERRO, ACERO Y FERROALEACIONES",
+	"subsector": "Fundición de metales ligeros",
+	"cnaeCode": "2453",
+	"activityIndicator": [{"indicator":"Tonelada*", "selected":true}, {"indicator":"Kg", "selected":false}],
+	"emissionIndicator": ["kg CO2 eq/tn", "kg CO2 eq/kg"]
+	},
+	{
+	"sector": "INDUSTRIA MANUFACTURERA – METALURGIA; FABRICACIÓN DE PRODUCTOS DE HIERRO, ACERO Y FERROALEACIONES",
+	"subsector": "Producción de aluminio",
+	"cnaeCode": "2454",
+	"activityIndicator": [{"indicator":"Tonelada*", "selected":true}, {"indicator":"Kg", "selected":false}],
+	"emissionIndicator": ["kg CO2 eq/tn", "kg CO2 eq/kg"]
     }
 ]

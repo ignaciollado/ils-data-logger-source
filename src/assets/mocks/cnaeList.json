@@ -1,12 +1,5 @@
 [
     {
-        "sector": "INDUSTRIA MANUFACTURERA - ALIMENTACIÓN",
-        "subsector": "Fabricación de otros aceites y grasas",
-        "cnaeCode": "1044",
-        "activityIndicator": [{"indicator":"kg*", "selected":true}, {"indicator":"Litro", "selected":false}],
-        "emissionIndicator": ["kg CO2 eq/kg", "kg CO2 eq/L"]
-    },
-    {
         "sector": "INDUSTRIA MANUFACTURERA - INDUSTRIA QUÍMICA",
         "subsector": "Fabricación de fertilizantes y compuestos nitrogenados",
         "cnaeCode": "2015",

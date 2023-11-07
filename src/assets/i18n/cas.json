@@ -18,6 +18,8 @@
 
     "activityData": "Datos ambientales",
     "productionData": "Datos de producción",
+    "myObjectives": "Mis objetivos",
+    "myObjectivesDetail": "Detalle de mis objetivos",
     "billingList": "Listado de facturación",
     "personsList": "Listado de personal",
     "monthlyObjective": "Objetivo",
@@ -51,7 +53,6 @@
     "compost": "Compostaje",
     "emissions": "Emisiones",
     "emissionConsumption": "Emisiones de CO2e (T)",
-
 
     "scopeOne": "Alcance uno (T de CO2e)",
     "scopeTwo": "Alcance dos (T de CO2e)",

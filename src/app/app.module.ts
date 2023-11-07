@@ -58,13 +58,14 @@ import { ResidueListComponent } from './Components/residues/residue-list/residue
 import { ResidueAdminFormComponent } from './Components/residues/residue-admin-form/residue-admin-form.component';
 import { SelectLanguageComponent } from './Components/select-language/select-language.component';
 import { ModalComponent } from './Components/modal/modal.component';
-import { PersonsComponent } from './Components/ratios/persons/persons.component';
+import { CnaesComponent } from "./Components/ratios/cnaes/cnaes.component";
 import { BillingComponent } from './Components/ratios/billing/billing.component';
 import { RatiosContainerComponent } from './Components/ratios/ratios-container/ratios-container.component';
 import { MatDatepickerModule } from "@angular/material/datepicker";
 import { MatMomentDateModule } from "@angular/material-moment-adapter";
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { ObjectivesComponent } from './Components/objectives/objectives.component';
 
 export function tokenGetter() {
   return sessionStorage.getItem("access_token");
@@ -99,9 +100,10 @@ export function tokenGetter() {
     ResidueAdminFormComponent,
     SelectLanguageComponent,
     ModalComponent,
-    PersonsComponent,
+    CnaesComponent,
     BillingComponent,
-    RatiosContainerComponent
+    RatiosContainerComponent,
+    ObjectivesComponent
   ],
   imports: [
     BrowserModule,

@@ -1,9 +1,9 @@
     <div class="container-form" >
-      <h1>{{'persons' | translate}}</h1>
+      <h1>{{'cnaes' | translate}}</h1>
       <form
-        *ngIf="personForm"
-        [formGroup]="personForm"
-        (ngSubmit)="savePersonForm()">
+        *ngIf="cnaeForm"
+        [formGroup]="cnaeForm"
+        (ngSubmit)="savecnaeForm()">
 
         <mat-card [class.mat-elevation-z8]="">
           <section>
@@ -38,15 +38,15 @@
             </mat-form-field>
           </section>
 
-          <button mat-raised-button color="primary" type="submit" [disabled]="!personForm.valid">ADD</button>
+          <button mat-raised-button color="primary" type="submit" [disabled]="!cnaeForm.valid">ADD</button>
 
         </mat-card>
       </form>
       <div style="margin-left: auto; margin-right: auto">
         <span id="postFeedback"></span>
       </div>
-<!--       <p>Form Value: {{ personForm.value | json }}</p>
-      <p>Form Status: {{ personForm.status }}</p> -->
+<!--       <p>Form Value: {{ cnaeForm.value | json }}</p>
+      <p>Form Status: {{ cnaeForm.status }}</p> -->
     </div>
 
     <h2>{{'personsList' | translate}}</h2>

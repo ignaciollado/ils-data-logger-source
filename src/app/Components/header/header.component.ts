@@ -99,6 +99,11 @@ export class HeaderComponent implements OnInit {
     this.router.navigateByUrl('adminRatios');
   }
 
+  myObjectives(): void {
+    this.router.navigateByUrl('myObjectives');
+  }
+
+
   profile(): void {
     this.router.navigateByUrl('profile');
   }

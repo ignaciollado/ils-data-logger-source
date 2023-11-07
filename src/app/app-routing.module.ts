@@ -20,9 +20,10 @@ import { AspectFormComponent } from './Components/aspects/aspect-form/aspect-for
 import { EnergyFormComponent } from './Components/energies/energy-form/energy-form.component';
 import { ResidueFormComponent } from './Components/posts/residue-form/residue-form.component';
 import { ResidueAdminFormComponent } from './Components/residues/residue-admin-form/residue-admin-form.component';
-import { PersonsComponent } from './Components/ratios/persons/persons.component';
+import { CnaesComponent } from './Components/ratios/cnaes/cnaes.component';
 import { BillingComponent } from './Components/ratios/billing/billing.component';
 import { RatiosContainerComponent } from './Components/ratios/ratios-container/ratios-container.component';
+import { ObjectivesComponent } from './Components/objectives/objectives.component';
 
 const routes: Routes = [
   {
@@ -73,6 +74,11 @@ const routes: Routes = [
   {
     path: 'adminRatios',
     component: RatiosContainerComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'myObjectives',
+    component: ObjectivesComponent,
     canActivate: [AuthGuard],
   },
   {

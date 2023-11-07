@@ -39,8 +39,8 @@ export const MY_FORMATS = {
 
 @Component({
   selector: 'app-persons',
-  templateUrl: './persons.component.html',
-  styleUrls: ['./persons.component.scss'],
+  templateUrl: './cnaes.component.html',
+  styleUrls: ['./cnaes.component.scss'],
   animations: [
     trigger( 'fadeInOut',[
       state(
@@ -54,18 +54,15 @@ export const MY_FORMATS = {
   ],
 })
 
-export class PersonsComponent {
+export class CnaesComponent {
 
   person: PersonDTO
   delegation: UntypedFormControl
   energy: UntypedFormControl
   companyId: UntypedFormControl
-  numberOfPersons: UntypedFormControl
-  monthlyBilling: UntypedFormControl
   monthYearDate: FormControl
   quantity: UntypedFormControl
-/*   objective: UntypedFormControl */
-  personForm: UntypedFormGroup
+  cnaeForm: UntypedFormGroup
 
   isValidForm: boolean | null
   isElevated: boolean = true
@@ -122,12 +119,10 @@ export class PersonsComponent {
 
 
     this.energy = new UntypedFormControl(0);
-    this.personForm = this.formBuilder.group({
+    this.cnaeForm = this.formBuilder.group({
       delegation: this.delegation,
       monthYearDate: this.monthYearDate,
-      quantity: this.quantity,
-/*       objective: this.objective, */
-
+      quantity: this.quantity
     })
 
     this.loadDelegations();
@@ -225,14 +220,14 @@ export class PersonsComponent {
     }
   }
 
-  savePersonForm(): void {
+  savecnaeForm(): void {
     this.isValidForm = false;
-    if (this.personForm.invalid) {
+    if (this.cnaeForm.invalid) {
       return;
     }
 
     this.isValidForm = true;
-    this.person = this.personForm.value;
+    this.person = this.cnaeForm.value;
 
     if (this.isUpdateMode) {
       this.editPost();

@@ -129,7 +129,7 @@ export class ResidueFormComponent {
     this.incineration = new UntypedFormControl('', [ Validators.min(0), Validators.max(100) ])
     this.dump = new UntypedFormControl('', [ Validators.min(0), Validators.max(100) ])
     this.compost = new UntypedFormControl('', [ Validators.min(0), Validators.max(100) ])
-    this.quantityResidue = new UntypedFormControl('', [ Validators.required, Validators.min(0) ])
+    this.quantityResidue = new UntypedFormControl('', [ Validators.required, Validators.min(0)])
     this.theRatioType = new UntypedFormControl({value: '', disabled: false})
     this.objective = new UntypedFormControl({value: '', disabled: true}, [ Validators.min(1) ])
     this.companyId = new UntypedFormControl(this.userId, [ Validators.required ])

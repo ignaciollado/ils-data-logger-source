@@ -1,22 +1,126 @@
-import { Component } from '@angular/core';
-import { UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
-import { DelegationService } from 'src/app/Services/delegation.service';
-import { DelegationDTO } from 'src/app/Models/delegation.dto';
-import { EnergyDTO } from 'src/app/Models/energy.dto';
-import { JwtHelperService } from '@auth0/angular-jwt';
-import { HttpErrorResponse } from '@angular/common/http';
-import { SharedService } from 'src/app/Services/shared.service';
-import { EnergyService } from 'src/app/Services/energy.service';
-import { ResidueDTO } from 'src/app/Models/residue.dto';
-import { ResidueService } from 'src/app/Services/residue.service';
-import { UserService } from 'src/app/Services/user.service';
-import { UserDTO } from 'src/app/Models/user.dto';
+import { Component } from '@angular/core'
+import { UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms'
+
+import { DelegationService } from 'src/app/Services/delegation.service'
+import { DelegationDTO } from 'src/app/Models/delegation.dto'
+import { ObjectiveService } from 'src/app/Services/objective.service'
+import { ObjectiveColumns, ObjectiveDTO } from 'src/app/Models/objective.dto'
+import { EnergyService } from 'src/app/Services/energy.service'
+import { EnergyDTO } from 'src/app/Models/energy.dto'
+
+import { JwtHelperService } from '@auth0/angular-jwt'
+import { HttpErrorResponse } from '@angular/common/http'
+import { SharedService } from 'src/app/Services/shared.service'
+
+import { UserService } from 'src/app/Services/user.service'
+import { UserDTO } from 'src/app/Models/user.dto'
+import { MatTableDataSource } from '@angular/material/table'
+
+import { MatDialog } from '@angular/material/dialog'
+import { ConfirmDialogComponent } from 'src/app/confirm-dialog/confirm-dialog.component'
+
+const USER_DATA = [
+  {id: 1, delegation: "Son Castelló", year: "2019", energyES: "Electricidad (kWh)", "objectiveType": "Billing", "jan": 1.50},
+  {id: 2, delegation: "Can Valero", year: "2020", energyES: "Fuel (kg)", "objectiveType": "Billing", "jan": .300},
+  {id: 3, delegation: "Son Castelló", year: "2019", energyES: "Gas butano (kg)", "objectiveType": "Activity indicator: Tonelada*", "feb": 1.4579},
+  {id: 4, delegation: "Son Castelló", year: "2020", energyES: "Gas Natural (kWh)", "objectiveType": "Activity indicator:  Tonelada*", "jan": 1.2550}
+];
+
+/* const COLUMNS_SCHEMA = [
+  {
+    key: 'isSelected',
+    type: 'isSelected',
+    label: '',
+  },
+  {
+      key: "delegation",
+      type: "text",
+      label: "Emplaçament"
+  },
+  {
+      key: "year",
+      type: "text",
+      label: "Year"
+  },
+  {
+      key: "enviromental",
+      type: "number",
+      label: "Enviromental"
+  },
+  {
+      key: "enero",
+      type: "number",
+      label: "January"
+  },
+  {
+    key: "febrero",
+    type: "number",
+    label: "February"
+  },
+  {
+    key: "marzo",
+    type: "number",
+    label: "March"
+  },
+  {
+    key: "abril",
+    type: "number",
+    label: "April"
+  },
+  {
+    key: "mayo",
+    type: "number",
+    label: "May"
+  },
+  {
+    key: "junio",
+    type: "number",
+    label: "June"
+  },  
+  {
+    key: "julio",
+    type: "number",
+    label: "July"
+  },
+  {
+    key: "agosto",
+    type: "number",
+    label: "August"
+  },
+  {
+    key: "setiembre",
+    type: "number",
+    label: "September"
+  },
+  {
+    key: "octubre",
+    type: "number",
+    label: "October"
+  },
+  {
+    key: "noviembre",
+    type: "number",
+    label: "November"
+  },
+  {
+    key: "diciembre",
+    type: "number",
+    label: "December"
+  },
+  {
+    key: "isEdit",
+    type: "isEdit",
+    label: ""
+  },
+  
+] */
 
 @Component({
   selector: 'app-objectives',
   templateUrl: './objectives.component.html',
   styleUrls: ['./objectives.component.scss']
 })
+
 export class ObjectivesComponent {
 
   delegation: UntypedFormControl
@@ -51,31 +155,40 @@ export class ObjectivesComponent {
 
   objectiveForm: UntypedFormGroup
   delegations!: DelegationDTO[]
-  energies!: EnergyDTO[];
-  residues!: ResidueDTO[];
+  objectives!: ObjectiveDTO[]
+  energies!: EnergyDTO[]
   yearObjective: UntypedFormControl
+  objectiveType: UntypedFormControl
   userFields: string[] = []
 
   private userId: string | null
-  currentActivityIndicator: string = "pending..."
+  currentActivityIndicator: string = "Not selected"
+
+  isGridView: boolean = false
+  columnsDisplayed : string[] = ObjectiveColumns.map((col) => col.key);
+  /* dataSource: any = USER_DATA; */
+  columnsSchema: any = ObjectiveColumns;
+  /* dataSource = new MatTableDataSource(this.consumptions) */
+  dataSource = new MatTableDataSource<ObjectiveDTO>()
 
   constructor(
     private delegationService: DelegationService,
     private jwtHelper: JwtHelperService,
     private sharedService: SharedService,
     private energyService: EnergyService,
-    private residueService: ResidueService,
+    private objectiveService: ObjectiveService,
     private formBuilder: UntypedFormBuilder,
     private userService: UserService,
+    public dialog: MatDialog,
   ) {
     this.userId = this.jwtHelper.decodeToken().id_ils;
-
     this.energy = new UntypedFormControl('', [ Validators.required ])
     this.delegation = new UntypedFormControl( '', [ Validators.required ] );
     this.companyId = new UntypedFormControl( this.userId, [ Validators.required ] );
     this.yearObjective = new UntypedFormControl('', [ Validators.required ]);
+    this.objectiveType = new UntypedFormControl('', [ Validators.required ]);
 
-    this.genCnae= new UntypedFormControl('', [ Validators.required , Validators.min(1) ])
+/*     this.genCnae= new UntypedFormControl('', [ Validators.required , Validators.min(1) ])
     this.febCnae= new UntypedFormControl('', [ Validators.required , Validators.min(1) ])
     this.marCnae= new UntypedFormControl('', [ Validators.required , Validators.min(1) ])
     this.aprCnae= new UntypedFormControl('', [ Validators.required , Validators.min(1) ])
@@ -86,9 +199,9 @@ export class ObjectivesComponent {
     this.sepCnae= new UntypedFormControl('', [ Validators.required , Validators.min(1) ])
     this.octCnae= new UntypedFormControl('', [ Validators.required , Validators.min(1) ])
     this.novCnae= new UntypedFormControl('', [ Validators.required , Validators.min(1) ])
-    this.decCnae= new UntypedFormControl('', [ Validators.required , Validators.min(1) ])
+    this.decCnae= new UntypedFormControl('', [ Validators.required , Validators.min(1) ]) */
 
-    this.genBill= new UntypedFormControl('', [ Validators.required , Validators.min(1) ])
+/*     this.genBill= new UntypedFormControl('', [ Validators.required , Validators.min(1) ])
     this.febBill= new UntypedFormControl('', [ Validators.required , Validators.min(1) ])
     this.marBill= new UntypedFormControl('', [ Validators.required , Validators.min(1) ])
     this.aprBill= new UntypedFormControl('', [ Validators.required , Validators.min(1) ])
@@ -99,13 +212,14 @@ export class ObjectivesComponent {
     this.sepBill= new UntypedFormControl('', [ Validators.required , Validators.min(1) ])
     this.octBill= new UntypedFormControl('', [ Validators.required , Validators.min(1) ])
     this.novBill= new UntypedFormControl('', [ Validators.required , Validators.min(1) ])
-    this.decBill= new UntypedFormControl('', [ Validators.required , Validators.min(1) ])
+    this.decBill= new UntypedFormControl('', [ Validators.required , Validators.min(1) ]) */
 
     this.objectiveForm = this.formBuilder.group({
       delegation: this.delegation,
       energy: this.energy,
       yearObjective: this.yearObjective,
-      genCnae: this.genCnae,
+      objectiveType: this.objectiveType,
+     /*  genCnae: this.genCnae,
       genBill: this.genBill,
       febCnae: this.febCnae,
       febBill: this.febBill,
@@ -128,13 +242,16 @@ export class ObjectivesComponent {
       novCnae: this.novCnae,
       novBill: this.novBill,
       decCnae: this.decCnae,
-      decBill: this.decBill,
+      decBill: this.decBill, */
     })
 
     this.loadDelegations()
     this.loadEnergies()
-    this.loadResidues()
     this.getCurrentIndicator(this.userId)
+  }
+
+  ngOnInit() {
+    this.loadObjectives( this.userId )
   }
 
   private loadDelegations(): void {
@@ -167,28 +284,19 @@ export class ObjectivesComponent {
     }
   }
 
-  private loadResidues( ): void {
-    let errorResponse: any;
-    if (this.userId) {
-      this.residueService.getAllResidues().subscribe(
-        (residues: ResidueDTO[]) => {
-          this.residues = residues;
-        },
-        (error: HttpErrorResponse) => {
-          errorResponse = error.error;
-          this.sharedService.errorLog(errorResponse);
-        }
-      );
-    }
-  }
+  private loadObjectives( userId: string ): void {
+    this.objectiveService.getAllObjectivesByCompany(this.userId).subscribe((res: any) => {
+      this.dataSource.data = res;
+    });
+  } 
 
   private getCurrentIndicator( companyId: string ){
     let errorResponse: any;
-    if (companyId) {
-      this.userService.getUSerByIdMySQL(companyId).subscribe(
+    if (this.userId) {
+      this.userService.getUSerByIdMySQL(this.userId).subscribe(
         (userData: UserDTO) => {
-          console.log (companyId, Object.entries(userData).map( item => item[1]),  JSON.parse(JSON.stringify(this.userFields[7])))
           this.userFields = Object.entries(userData).map( item => item[1])
+          console.log (Object.entries(userData).map( item => item[1]),  JSON.parse(JSON.stringify(this.userFields[7])))
           this.currentActivityIndicator =  JSON.parse(JSON.stringify(this.userFields[7]));
         },
         (error: HttpErrorResponse) => {
@@ -200,7 +308,8 @@ export class ObjectivesComponent {
   }
 
   public saveObjectiveForm( ) {
-
+    const newRow = {"delegation": this.delegation.value, "year": this.yearObjective.value, "energyES": this.energy.value, "objectiveType": this.objectiveType.value, isEdit: true}
+  /*   this.dataSource = [...this.dataSource, newRow];  */
   }
          
   public copyCnaeMonthValue( resource: string ) {
@@ -235,6 +344,50 @@ export class ObjectivesComponent {
     this.octBill.setValue( resource )
     this.novBill.setValue( resource )
     this.decBill.setValue( resource )
+  }
+
+  public deleteObjective( objectiveId: string) {
+    
+  }
+
+  public addRow() {
+    const newRow = {"delegation": this.delegation.value, "year": this.yearObjective.value, "energyES": this.energy.value, "objectiveType": this.objectiveType.value, isEdit: true}
+   /*  this.dataSource = [...this.dataSource, newRow];  */
+  }
+
+  public removeRow(id: number) {
+   /*  this.dataSource = this.dataSource.filter((u:any) => u.id !== id); */
+  }
+
+  public removeSelectedRows() {
+    /* this.dataSource = this.dataSource.filter((u: any) => !u.isSelected); */
+     this.dialog
+      .open(ConfirmDialogComponent)
+      .afterClosed()
+      .subscribe((confirm) => {
+        if (confirm) {
+           this.objectiveService.deleteObjective(this.userId).subscribe(() => {
+            this.dataSource.data = this.dataSource.data.filter(
+              (u: ObjectiveDTO) => !u.isSelected,
+            )
+          }) 
+        }
+      }) 
+  }
+
+  public isAllSelected() {
+    /* return this.dataSource.every((item: any) => item.isSelected); */
+  }
+
+  public isAnySelected() {
+    /* return this.dataSource.some((item: any) => item.isSelected); */
+  }
+
+  public selectAll(event) {
+    /* this.dataSource = this.dataSource.map((item: any) => ({
+      ...item,
+      isSelected: event.checked,
+    })); */
   }
 
 

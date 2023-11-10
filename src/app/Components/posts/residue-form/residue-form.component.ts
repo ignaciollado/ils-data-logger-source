@@ -84,7 +84,6 @@ export class ResidueFormComponent {
   private userId: string | null;
 
   delegations!: DelegationDTO[];
-  /* months!: MonthDTO[]; */
   residues!: ResidueDTO[];
   consumptions!: ConsumptionDTO[];
 

@@ -15,6 +15,7 @@
     "companyName": "Nom de l'empresa",
     "companyAddress": "Domicili",
     "companyCNAE": "CNAE de l'empresa",
+    "selectObjectiveType": "Seleccioni el RATIO per l'objectiu ",
 
     "activityData": "Dades ambientals",
     "productionData": "Dades de producció",

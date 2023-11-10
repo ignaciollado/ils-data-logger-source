@@ -56,6 +56,7 @@ export class UserService {
   }
 
   getUSerByIdMySQL(userId: string): Observable<UserDTO> {
+    console.log (userId)
     return this.http
       .get<UserDTO>(`${this.urlAPiMySql}userGet.php?userId=${userId}`)
       .pipe(catchError(this.sharedService.handleError));

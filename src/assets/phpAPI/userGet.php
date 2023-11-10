@@ -15,6 +15,8 @@ $userId = $_GET['userId'];
 $sql = "SELECT id, empresa, nif, domicilio, localidad, cpostal, cnae, activityIndicator,
 telefono_rep, situacion, email_rep FROM pindust_expediente WHERE id = " .$userId;
 
+/* echo $sql; */
+
 $result = mysqli_query($conn, $sql);
 
 if ( $result ) {

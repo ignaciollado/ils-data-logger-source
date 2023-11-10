@@ -1,6 +1,7 @@
 import { JwtModule } from "@auth0/angular-jwt";
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
@@ -44,6 +45,10 @@ import {MatMenuModule} from '@angular/material/menu';
 import {MatTableModule} from '@angular/material/table';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatSortModule} from '@angular/material/sort';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatChipsModule} from '@angular/material/chips';
+
+import {DialogModule} from '@angular/cdk/dialog';
 
 import { DelegationListComponent } from './Components/profile/delegation-list/delegation-list.component';
 import { DelegationFormComponent } from './Components/profile/delegation-form/delegation-form.component';
@@ -66,6 +71,7 @@ import { MatMomentDateModule } from "@angular/material-moment-adapter";
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { ObjectivesComponent } from './Components/objectives/objectives.component';
+import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
 
 export function tokenGetter() {
   return sessionStorage.getItem("access_token");
@@ -103,12 +109,14 @@ export function tokenGetter() {
     CnaesComponent,
     BillingComponent,
     RatiosContainerComponent,
-    ObjectivesComponent
+    ObjectivesComponent,
+    ConfirmDialogComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
+    FormsModule,
     HttpClientModule,
     I18nModule,
     JwtModule.forRoot({
@@ -138,11 +146,14 @@ export function tokenGetter() {
     MatTabsModule,
     MatMenuModule,
     MatSortModule,
+    MatChipsModule,
+    DialogModule,
     MatPaginatorModule,
     MatCheckboxModule,
     MatRadioModule,
     MatExpansionModule,
-    MatSlideToggleModule
+    MatSlideToggleModule,
+    MatDialogModule
   ],
   providers: [
     {

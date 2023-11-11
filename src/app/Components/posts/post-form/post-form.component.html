@@ -39,7 +39,7 @@
               <input matInput type="text" maxlength="7" minlength="7" [formControl]="monthYearDate">
               <mat-hint>MM/YYYY</mat-hint>
               <mat-error *ngIf="monthYearDate.hasError('required')">{{'monthAndYear' | translate}} <strong>{{'isRequired' | translate}}</strong></mat-error>
-              <mat-error *ngIf="monthYearDate.errors?.min">Minimum required number is 01.</mat-error> 
+              <mat-error *ngIf="monthYearDate.errors?.min">Minimum required number is 01.</mat-error>
               <mat-error *ngIf="monthYearDate.errors?.max">Maximum number can be 12.</mat-error>
               <mat-error *ngIf="monthYearDate.errors?.pattern">No tiene el formato adecuado: MM/AAAA.</mat-error>
             </mat-form-field>
@@ -53,22 +53,21 @@
             </mat-form-field>
           </section>
 
-          <section>
+          <!--  <section>
             <mat-label>{{'selectRatioType' | translate}}</mat-label><br>
             <mat-radio-group aria-label="Select a ratio type" [formControl]="theRatioType" (change)='ratioTypeSelected(theRatioType.value)'>
               <mat-radio-button value="billing">{{'billing' | translate}} (kEUR)</mat-radio-button>
-              <!-- <mat-radio-button value="persons">Workers</mat-radio-button> -->
               <mat-radio-button value="cnae">CNAE</mat-radio-button>
             </mat-radio-group>
-          </section>
+          </section> -->
 
-          <section>           
-            <mat-form-field appearance="outline" [style.width.px]=425>  
+<!--           <section>
+            <mat-form-field appearance="outline" [style.width.px]=425>
               <mat-label>{{'monthlyObjective' | translate}}</mat-label>
               <input matInput type="number" [formControl]="objective"/>
               <mat-error *ngIf="objective.hasError('required')">{{'monthlyObjective' | translate}} <strong>{{'isRequired' | translate}}</strong></mat-error>
             </mat-form-field>
-          </section>
+          </section> -->
 
           <button mat-raised-button color="primary" type="submit" [disabled]="!energyForm.valid">ADD</button>
 
@@ -89,14 +88,14 @@
             <mat-icon>manage_search</mat-icon>
           </mat-panel-description>
         </mat-expansion-panel-header>
-    
+
         <mat-form-field>
           <mat-label>Enter data term to filter</mat-label>
           <input matInput (keyup)="applyFilter($event)" placeholder="Search columns" #input>
         </mat-form-field>
       </mat-expansion-panel>
     </mat-accordion>
-    
+
     <table *ngIf="!isGridView" mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort #energyTbSort="matSort">
       <ng-container matColumnDef="delegation">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>{{'delegation' | translate}}</th>

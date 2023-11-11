@@ -1,14 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, forkJoin } from 'rxjs';
 import { ObjectiveDTO } from '../Models/objective.dto';
 import { SharedService } from './shared.service';
 import { catchError } from 'rxjs/operators';
-
-const URL_API = '../../assets/phpAPI/'
-const URL_API_SRV = "https://jwt.idi.es/public/index.php"
-const URL_MOCKS = '../../assets/mocks/consumptions.json'
-
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -29,83 +24,76 @@ export interface deleteResponse {
 })
 
 export class ObjectiveService {
-  
+
+private URL_API: string = '../../assets/phpAPI/'
+private URL_API_SRV: string = "https://jwt.idi.es/public/index.php"
+private URL_MOCKS: string = '../../assets/mocks/consumptions.json'
+
   private urlAPiMySql:  string;
 
   constructor(private http: HttpClient,
-    private sharedService: SharedService) {
-
-    this.urlAPiMySql = '../../assets/phpAPI/'
-  }
+    private sharedService: SharedService) { }
 
   getAllObjectives(): Observable<ObjectiveDTO[]> {
     return this.http
-      .get<ObjectiveDTO[]>(`${URL_API_SRV}/api/get-all-Objectives`, httpOptions)
+      .get<ObjectiveDTO[]>(`${this.URL_API_SRV}/api/get-all-Objectives`, httpOptions)
 
   }
 
   getAllObjectivesByCompanyAndAspect(companyId:any, aspectId?: number): Observable<ObjectiveDTO[]> {
     return this.http
      /* .get<ObjectiveDTO[]>(`${URL_API_SRV}/api/get-all-company-aspect-Objectives/${companyId}/${aspectId}`, httpOptions) */
-     .get<ObjectiveDTO[]>(`${URL_API}objectiveGetByCompanyId.php?companyId=${companyId}&aspectId=${aspectId}`, httpOptions)
+     .get<ObjectiveDTO[]>(`${this.URL_API}objectiveGetByCompanyId.php?companyId=${companyId}&aspectId=${aspectId}`, httpOptions)
   }
-
   getAllObjectivesByCompany(companyId:string): Observable<ObjectiveDTO[]> {
     if (companyId) {
       console.log ("logged in")
       return this.http
-        .get<ObjectiveDTO[]>(`${URL_API}objectiveGetByCompanyId.php?companyId=${companyId}`)
+        .get<ObjectiveDTO[]>(`${this.URL_API}objectiveGetByCompanyId.php?companyId=${companyId}`)
     } else {
       console.log("NOT logged")
       return this.http
-        .get<ObjectiveDTO[]>(`${URL_API_SRV}/api/get-all-Objectives`, httpOptions)
+        .get<ObjectiveDTO[]>(`${this.URL_API_SRV}/api/get-all-Objectives`, httpOptions)
     }
   }
 
-  getObjectivesById(consumptionId: string): Observable<ObjectiveDTO> {
+  getObjectiveById(consumptionId: string): Observable<ObjectiveDTO> {
     return this.http
-    .get<ObjectiveDTO>(`${URL_API}energyConsumptionGetByConsumptionId.php?consumptionId=${consumptionId}`)
+    .get<ObjectiveDTO>(`${this.URL_API}energyConsumptionGetByConsumptionId.php?consumptionId=${consumptionId}`)
   }
 
-  createEnergyConsumption(energyConsumption: ObjectiveDTO): Observable<ObjectiveDTO> {
+  createObjective(objective: ObjectiveDTO): Observable<ObjectiveDTO> {
     return this.http
-      .post<ObjectiveDTO>(`${URL_API}energyConsumptionCreate.php`, energyConsumption)
+/*       .post<ObjectiveDTO>(`${this.URL_API}energyConsumptionCreate.php`, energyConsumption)
+      .pipe(catchError(this.sharedService.handleError)); */
+      .post<ObjectiveDTO>(`${this.URL_API}objectiveCreate.php`, objective);
+  }
+
+
+  updateObjective(objectiveId: number, objective: ObjectiveDTO): Observable<ObjectiveDTO> {
+    return this.http
+      /* .put<ObjectiveDTO>(`${this.URL_API}energyConsumptionUpdate.php?consumptionId=${consumptionId}`, consumption) */
+      .patch<ObjectiveDTO>(`${this.URL_API}objectiveUpdate.php?objectiveId=${objectiveId}`, objective)
+  }
+
+  deleteObjective(objectiveId: number): Observable<deleteResponse> {
+    return this.http
+      .delete<deleteResponse>(`${this.URL_API}objectiveDelete.php?objectiveId=${objectiveId}`)
       .pipe(catchError(this.sharedService.handleError));
   }
 
-  createWaterConsumption(waterConsumption: ObjectiveDTO): Observable<ObjectiveDTO> {
-    return this.http
-      .post<ObjectiveDTO>(`${URL_API}waterConsumptionCreate.php`, waterConsumption)
-      .pipe(catchError(this.sharedService.handleError));
-  }
-
-  createResidueConsumption(residueConsumption: ObjectiveDTO): Observable<ObjectiveDTO> {
-    return this.http
-      .post<ObjectiveDTO>(`${URL_API}residueConsumptionCreate.php`, residueConsumption)
-      .pipe(catchError(this.sharedService.handleError));
-  }
-
-  createEmissionConsumption(residueConsumption: ObjectiveDTO): Observable<ObjectiveDTO> {
-    return this.http
-      .post<ObjectiveDTO>(`${URL_API}emissionConsumptionCreate.php`, residueConsumption)
-      .pipe(catchError(this.sharedService.handleError));
-  }
-
-  updateObjectives(consumptionId: string, consumption: ObjectiveDTO): Observable<ObjectiveDTO> {
-    return this.http
-      .put<ObjectiveDTO>(`${URL_API}energyConsumptionUpdate.php?consumptionId=${consumptionId}`, consumption)
-  }
-
-  deleteObjective(objectiveId: string): Observable<deleteResponse> {
-    return this.http
-      .delete<deleteResponse>(`${URL_API}objectiveDelete.php?objectiveId=${objectiveId}`)
-      .pipe(catchError(this.sharedService.handleError));
+  deleteObjectives(objectives: ObjectiveDTO[]): Observable<ObjectiveDTO[]> {
+    return forkJoin(
+      objectives.map((objective) =>
+        this.http.delete<ObjectiveDTO>(`${this.URL_API}objectivesDelete.php?objectives=${objective.id}`)
+      )
+    );
   }
 
   errorLog(error: HttpErrorResponse): void {
     console.error('An error occurred:', error.error.msg);
     console.error('Backend returned code:', error.status);
     console.error('Complete message was::', error.message);
-  }  
+  }
 
 }

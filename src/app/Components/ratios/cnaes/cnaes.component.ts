@@ -64,6 +64,8 @@ export class CnaesComponent {
   quantity: UntypedFormControl
   cnaeForm: UntypedFormGroup
 
+  currentActivityIndicator: string = "Not selected"
+
   isValidForm: boolean | null
   isElevated: boolean = true
   consumptionFields: string[] = []
@@ -96,7 +98,7 @@ export class CnaesComponent {
     private localStorageService: LocalStorageService,
     private jwtHelper: JwtHelperService,
     private _adapter: DateAdapter<any>,
-    
+
     @Inject(MAT_DATE_LOCALE) private _locale: string,
   ) {
 
@@ -168,7 +170,7 @@ export class CnaesComponent {
     const userId = this.jwtHelper.decodeToken().id_ils;
     if (userId) {
       this.person.companyId = userId;
-      
+
       this.personService.createPerson(this.person)
         .pipe(
           finalize(async () => {

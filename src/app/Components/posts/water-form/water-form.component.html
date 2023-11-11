@@ -17,14 +17,14 @@
           <mat-error *ngIf="delegation.hasError('required')">{{'delegation' | translate}}<strong>{{'isRequired' | translate}}</strong></mat-error>
         </mat-form-field>
       </section>
-      
+
       <section>
         <mat-form-field appearance="outline" [style.width.px]=425>
           <mat-label>{{'monthAndYear' | translate}}</mat-label>
           <input matInput type="text" maxlength="7" minlength="7" [formControl]="monthYearDate" value="{{monthYearDefault}}">
           <mat-hint>MM/YYYY</mat-hint>
           <mat-error *ngIf="monthYearDate.hasError('required')">{{'monthAndYear' | translate}} <strong>{{'isRequired' | translate}}</strong></mat-error>
-          <mat-error *ngIf="monthYearDate.errors?.min">Minimum required number is 01.</mat-error> 
+          <mat-error *ngIf="monthYearDate.errors?.min">Minimum required number is 01.</mat-error>
           <mat-error *ngIf="monthYearDate.errors?.max">Maximum number can be 12.</mat-error>
           <mat-error *ngIf="monthYearDate.errors?.pattern">No tiene el formato adecuado: MM/AAAA.</mat-error>
         </mat-form-field>
@@ -38,23 +38,22 @@
         </mat-form-field>
       </section>
 
-      <section>
+<!--       <section>
         <mat-label>{{'selectRatioType' | translate}}</mat-label><br>
         <mat-radio-group aria-label="Please, select the ratio type" [formControl]="theRatioType" (change)='ratioTypeSelected(theRatioType.value)'>
           <mat-radio-button value="billing">{{'billing' | translate}} (kEUR)</mat-radio-button>
-         <!--  <mat-radio-button value="persons">Workers</mat-radio-button> -->
           <mat-radio-button value="cnae">CNAE</mat-radio-button>
         </mat-radio-group>
-      </section>
+      </section> -->
 
-      <section>
+<!--       <section>
         <mat-form-field [style.width.px]=327>
           <mat-label>{{'monthlyObjective' | translate}}</mat-label>
           <input matInput type="number" [formControl]="objective" />
           <mat-error *ngIf="objective.hasError('required')">{{'monthlyObjective' | translate}} <strong>{{'isRequired' | translate}}</strong></mat-error>
         </mat-form-field>
-      </section>
-      
+      </section> -->
+
       <button mat-raised-button color="primary" type="submit" [disabled]="!waterForm.valid">ADD</button>
     </mat-card>
   </form>

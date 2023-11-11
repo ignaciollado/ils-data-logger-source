@@ -6,30 +6,22 @@ export class ObjectiveDTO {
   aspectId!: number
   theRatioType: string
   isSelected: boolean
+  isEdit: boolean
   year: string
-  jan: string
-  feb: string
-  mar: string
-  apr: string
-  may: string
-  jun: string
-  jul: string
-  aug: string
-  sep: string
-  oct: string
-  nov: string
-  dec: string
-  created_at!: Date
-  updated_at!: Date
+  jan: number
+  feb: number
+  mar: number
+  apr: number
+  may: number
+  jun: number
+  jul: number
+  aug: number
+  sep: number
+  oct: number
+  nov: number
+  dec: number
   energy!: number
   residueId!: number
-  scopeOne!: number
-  scopeTwo!: number
-  reuse!:number
-  recycling!:number
-  incineration!:number
-  dump!:number
-  compost!:number
   energyES!: string
   energyCA!: string
   residueES!: string
@@ -45,19 +37,21 @@ constructor(
   aspectId: number,
   theRatioType: string,
   isSelected: boolean,
+  isEdit: boolean,
+
   year: string,
-  jan: string,
-  feb: string,
-  mar: string,
-  apr: string,
-  may: string,
-  jun: string,
-  jul: string,
-  aug: string,
-  sep: string,
-  oct: string,
-  nov: string,
-  dec: string,
+  jan: number,
+  feb: number,
+  mar: number,
+  apr: number,
+  may: number,
+  jun: number,
+  jul: number,
+  aug: number,
+  sep: number,
+  oct: number,
+  nov: number,
+  dec: number,
   energyES: string,
   energyCA: string,
   residueES: string,
@@ -71,6 +65,8 @@ constructor(
   this.delegation = delegation,
   this.aspectId = aspectId,
   this.isSelected = isSelected,
+  this.isEdit = isEdit,
+
   this.theRatioType = theRatioType,
   this.energyES = energyES,
   this.energyCA = energyCA,
@@ -101,6 +97,11 @@ export const ObjectiveColumns = [
         label: '',
       },
       {
+        key: "id",
+        type: "number",
+        label: "ID"
+      },
+      {
           key: "delegation",
           type: "text",
           label: "Emplaçament"
@@ -111,7 +112,7 @@ export const ObjectiveColumns = [
           label: "Year"
       },
       {
-          key: "energyES",
+          key: "nameES",
           type: "text",
           label: "Enviromental"
       },
@@ -122,62 +123,62 @@ export const ObjectiveColumns = [
     },
       {
         key: "jan",
-        type: "text",
+        type: "number",
         label: "January"
       },
       {
         key: "feb",
-        type: "text",
+        type: "number",
         label: "February"
       },
       {
         key: "mar",
-        type: "text",
+        type: "number",
         label: "March"
       },
       {
         key: "apr",
-        type: "text",
+        type: "number",
         label: "April"
       },
       {
         key: "may",
-        type: "text",
+        type: "number",
         label: "May"
       },
       {
         key: "jun",
-        type: "text",
+        type: "number",
         label: "June"
-      },  
+      },
       {
         key: "jul",
-        type: "text",
+        type: "number",
         label: "July"
       },
       {
         key: "aug",
-        type: "text",
+        type: "number",
         label: "August"
       },
       {
         key: "sep",
-        type: "text",
+        type: "number",
         label: "September"
       },
       {
         key: "oct",
-        type: "text",
+        type: "number",
         label: "October"
       },
       {
         key: "nov",
-        type: "text",
+        type: "number",
         label: "November"
       },
       {
         key: "dec",
-        type: "text",
+        type: "number",
         label: "December"
       },
       {

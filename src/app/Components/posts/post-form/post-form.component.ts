@@ -227,9 +227,9 @@ export class PostFormComponent implements OnInit {
 
   private loadConsumption(): void {
     let errorResponse: any;
-    
+
     if (this.userId) {
-      
+
         this.consumptionService.getAllConsumptionsByCompanyAndAspect(this.userId, 1).subscribe(
         (consumptions: ConsumptionDTO[]) => {
           this.consumptions = consumptions
@@ -282,7 +282,7 @@ export class PostFormComponent implements OnInit {
   private createEnergyConsumption(): void {
     let errorResponse: any;
     let responseOK: boolean = false;
-    
+
     if (this.userId) {
       this.consumption.companyId = this.userId;
       this.consumption.aspectId = 1; /* Energy aspect id : 1 */
@@ -321,7 +321,7 @@ export class PostFormComponent implements OnInit {
       this.consumptionService.deleteConsumption(consumptionId).subscribe (
         (rowsAffected: deleteResponse) => {
           if (rowsAffected.affected > 0) {
-           
+
           }
         },
         (error: HttpErrorResponse) => {

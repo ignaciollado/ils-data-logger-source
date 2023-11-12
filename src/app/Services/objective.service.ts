@@ -71,6 +71,7 @@ private URL_MOCKS: string = '../../assets/mocks/consumptions.json'
 
 
   updateObjective(objectiveId: number, objective: ObjectiveDTO): Observable<ObjectiveDTO> {
+
     return this.http
       /* .put<ObjectiveDTO>(`${this.URL_API}energyConsumptionUpdate.php?consumptionId=${consumptionId}`, consumption) */
       .patch<ObjectiveDTO>(`${this.URL_API}objectiveUpdate.php?objectiveId=${objectiveId}`, objective)
@@ -85,7 +86,7 @@ private URL_MOCKS: string = '../../assets/mocks/consumptions.json'
   deleteObjectives(objectives: ObjectiveDTO[]): Observable<ObjectiveDTO[]> {
     return forkJoin(
       objectives.map((objective) =>
-        this.http.delete<ObjectiveDTO>(`${this.URL_API}objectivesDelete.php?objectives=${objective.id}`)
+        this.http.delete<ObjectiveDTO>(`${this.URL_API}objectivesDelete.php?objectives=${objective.Id}`)
       )
     );
   }

@@ -381,7 +381,7 @@ export class ObjectivesComponent {
    /*  const newRow = {"delegation": this.delegation.value, "year": this.yearObjective.value, "energyES": this.energy.value, "objectiveType": this.objectiveType.value, isEdit: true} */
    /*  this.dataSource = [...this.dataSource, newRow];  */
    const newRow: ObjectiveDTO = {
-    id: 0,
+    Id: 0,
     companyId: this.userId,
     companyDelegationId: this.delegation.value,
     delegation: '',
@@ -414,22 +414,24 @@ export class ObjectivesComponent {
   this.dataSource.data = [newRow, ...this.dataSource.data];
   }
   editRow(row: ObjectiveDTO) {
-    console.log (row)
-    if (row.id === 0) {
-      this.objectiveService.createObjective(row).subscribe((newUser: ObjectiveDTO) => {
-        row.id = newUser.id;
+    console.log (row.isEdit)
+    if (row.Id === 0) {
+      this.objectiveService.createObjective (row).subscribe((newUser: ObjectiveDTO) => {
+        row.Id = newUser.Id;
         row.isEdit = false;
       });
     } else {
-      this.objectiveService.updateObjective(row.id, row).subscribe(() => (row.isEdit = false));
+      this.objectiveService.updateObjective(row.Id, row).subscribe(() => (row.isEdit = false));
     }
-   /*  this.objectiveService.updateObjective(row.id, row).subscribe(() => row.isEdit = false); */
+    row.isEdit = false;
+    console.log (row.isEdit)
+
   }
   public removeRow(id: number) {
    /*  this.dataSource = this.dataSource.filter((u:any) => u.id !== id); */
    this.objectiveService.deleteObjective(id).subscribe(() => {
     this.dataSource.data = this.dataSource.data.filter(
-      (u: ObjectiveDTO) => u.id !== id
+      (u: ObjectiveDTO) => u.Id !== id
     );
   });
   }

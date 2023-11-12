@@ -1,5 +1,5 @@
 export class ObjectiveDTO {
-  id!: number
+  Id!: number
   companyId: string
   companyDelegationId: number
   delegation: string
@@ -30,7 +30,7 @@ export class ObjectiveDTO {
   aspectCA!: string
 
 constructor(
-  id: number,
+  Id: number,
   companyId: string,
   companyDelegationId: number,
   delegation: string,
@@ -59,7 +59,7 @@ constructor(
   aspectES: string,
   aspectCA: string,
 ) {
-  this.id = id,
+  this.Id = Id,
   this.companyId = companyId,
   this.companyDelegationId = companyDelegationId,
   this.delegation = delegation,

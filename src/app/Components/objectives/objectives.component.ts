@@ -177,7 +177,7 @@ export class ObjectivesComponent {
   columnsSchema: any = ObjectiveColumns;
   /* dataSource = new MatTableDataSource(this.consumptions) */
   dataSource = new MatTableDataSource<ObjectiveDTO>()
-
+  valid: any = {}
   constructor (
     private delegationService: DelegationService,
     private jwtHelper: JwtHelperService,
@@ -462,6 +462,13 @@ export class ObjectivesComponent {
           })
         }
       }) */
+  }
+
+  disableSubmit(id: number) {
+    if (this.valid[id]) {
+      return Object.values(this.valid[id]).some((item) => item === false)
+    }
+    return false
   }
 
   public isAllSelected() {

@@ -291,7 +291,7 @@
                 </div>
                 <div [ngSwitch]="col.type" *ngIf="element.isEdit">
                   <div class="btn-edit" *ngSwitchCase="'isEdit'">
-                    <button mat-button (click)="editRow(element)">Done</button>
+                    <button mat-button (click)="editRow(element)" [disabled]="disableSubmit(element.id)">Done</button>
                   </div>
                   <mat-form-field *ngSwitchCase="'date'" appearance="fill">
                     <mat-label>Choose a date</mat-label>

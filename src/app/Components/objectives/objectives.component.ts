@@ -315,6 +315,7 @@ export class ObjectivesComponent {
   private loadObjectives( userId: string ): void {
     this.objectiveService.getAllObjectivesByCompany(this.userId).subscribe((res: any) => {
       this.dataSource.data = res;
+      console.log (res)
     });
   }
 
@@ -386,7 +387,7 @@ export class ObjectivesComponent {
     companyDelegationId: this.delegation.value,
     delegation: '',
     aspectId: this.environmentalData.value,
-    theRatioType: this.currentActivityIndicator,
+    theRatioType: this.objectiveType.value,
     energy: 0,
     residueId: 0,
     energyES: '',
@@ -414,7 +415,7 @@ export class ObjectivesComponent {
   this.dataSource.data = [newRow, ...this.dataSource.data];
   }
   editRow(row: ObjectiveDTO) {
-    console.log (row.isEdit)
+    console.log (row.isEdit, row.Id)
     if (row.Id === 0) {
       this.objectiveService.createObjective (row).subscribe((newUser: ObjectiveDTO) => {
         row.Id = newUser.Id;

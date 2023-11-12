@@ -97,28 +97,28 @@ export const ObjectiveColumns = [
         label: '',
       },
       {
-        key: "id",
-        type: "number",
+        key: "Id",
+        type: "label",
         label: "ID"
       },
       {
           key: "delegation",
-          type: "text",
+          type: "label",
           label: "Emplaçament"
       },
       {
           key: "year",
-          type: "text",
+          type: "label",
           label: "Year"
       },
       {
-          key: "nameES",
-          type: "text",
+          key: "energyES",
+          type: "label",
           label: "Enviromental"
       },
       {
-        key: "objectiveType",
-        type: "text",
+        key: "theRatioType",
+        type: "label",
         label: "Tipo de RATIO"
     },
       {

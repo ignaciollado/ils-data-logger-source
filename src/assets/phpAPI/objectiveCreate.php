@@ -11,12 +11,14 @@ mysqli_query($conn, "SET NAMES 'utf8'");
 $postedData = file_get_contents("php://input");
 $request = json_decode($postedData, TRUE);
 
-$sql = "INSERT INTO ils_objective(companyDelegationId, aspectId,
- quantity, year,'01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12') VALUES ("
+$sql = "INSERT INTO ils_objective(companyDelegationId, companyId,
+ theRatioType, year) VALUES ("
 
-.$request['delegation'].","
-.$request['aspectId'].","
-.$request['yearEmission']."',"
+.$request['companyDelegationId'].","
+.$request['companyId'].","
+.$request['theRatioType'].",'"
+.$request['year']."')";
+/*
 .$request['01'].","
 .$request['02'].","
 .$request['03'].","
@@ -28,7 +30,7 @@ $sql = "INSERT INTO ils_objective(companyDelegationId, aspectId,
 .$request['09'].","
 .$request['10'].","
 .$request['11'].","
-.$request['12'].")";
+.$request['12'].")"; */
 
 /* CONTAR CUANTOS REGISTROS HAY */
 /* $sqlCount = "SELECT *

@@ -71,6 +71,12 @@ export class BillingService {
       .pipe(catchError(this.sharedService.handleError));
   }
 
+  updateBilling(billingId: number, billing: BillingDTO): Observable<BillingDTO> {
+    return this.http
+      /* .put<BillingDTO>(`${this.URL_API}energyConsumptionUpdate.php?consumptionId=${consumptionId}`, consumption) */
+      .patch<BillingDTO>(`${URL_API}billingUpdate.php?billingId=${billingId}`, billing)
+  }
+
   deleteBilling(Id: number): Observable<deleteResponse> {
     return this.http
       .delete<deleteResponse>(`${URL_API}billingDelete.php?Id=${Id}`)

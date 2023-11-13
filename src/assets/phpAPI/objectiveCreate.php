@@ -11,26 +11,23 @@ mysqli_query($conn, "SET NAMES 'utf8'");
 $postedData = file_get_contents("php://input");
 $request = json_decode($postedData, TRUE);
 
-$sql = "INSERT INTO ils_objective(companyDelegationId, companyId,
- theRatioType, year) VALUES ("
-
-.$request['companyDelegationId'].","
-.$request['companyId'].","
-.$request['theRatioType'].",'"
-.$request['year']."')";
-/*
-.$request['01'].","
-.$request['02'].","
-.$request['03'].","
-.$request['04'].","
-.$request['05'].","
-.$request['06'].","
-.$request['07'].","
-.$request['08'].","
-.$request['09'].","
-.$request['10'].","
-.$request['11'].","
-.$request['12'].")"; */
+$sql = "INSERT INTO ils_objective(companyId, companyDelegationId, aspectId,
+ theRatioType, energyId, residueId, year, 
+ `01`, `02`, `03`, `04`, `05`, `06`, `07`, `08`, `09`, `10`, `11`, `12`) VALUES ("
+.$request['companyId'].",".$request['companyDelegationId'].",".$request['aspectId'].",'"
+.$request['theRatioType']."',".$request['energyId'].",".$request['residueId'].",'".$request['year']."',"
+.$request['jan'].","
+.$request['feb'].","
+.$request['mar'].","
+.$request['apr'].","
+.$request['may'].","
+.$request['jun'].","
+.$request['jul'].","
+.$request['aug'].","
+.$request['sep'].","
+.$request['oct'].","
+.$request['nov'].","
+.$request['dec'].")";
 
 /* CONTAR CUANTOS REGISTROS HAY */
 /* $sqlCount = "SELECT *
@@ -68,9 +65,9 @@ if ($result=mysqli_query($conn,$sqlCount))
   }
 } */
 
-echo $sql;
-
 mysqli_free_result($result);
+
+echo $sql;
 
 $result = mysqli_query($conn, $sql);
 
@@ -81,5 +78,4 @@ if ($result) {
 } else  {
   echo http_response_code(401);
 }
-
 ?>

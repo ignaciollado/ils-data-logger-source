@@ -2,8 +2,9 @@ export class ObjectiveDTO {
   Id!: number
   companyId: string
   companyDelegationId: number
-  delegation: string
   aspectId!: number
+  energyId!: number
+  residueId!: number
   theRatioType: string
   isSelected: boolean
   isEdit: boolean
@@ -20,21 +21,14 @@ export class ObjectiveDTO {
   oct: number
   nov: number
   dec: number
-  energy!: number
-  residueId!: number
-  energyES!: string
-  energyCA!: string
-  residueES!: string
-  residueCA!: string
-  aspectES!: string
-  aspectCA!: string
 
 constructor(
   Id: number,
   companyId: string,
   companyDelegationId: number,
-  delegation: string,
   aspectId: number,
+  energyId: number,
+  residueId: number,
   theRatioType: string,
   isSelected: boolean,
   isEdit: boolean,
@@ -52,28 +46,17 @@ constructor(
   oct: number,
   nov: number,
   dec: number,
-  energyES: string,
-  energyCA: string,
-  residueES: string,
-  residueCA: string,
-  aspectES: string,
-  aspectCA: string,
 ) {
   this.Id = Id,
   this.companyId = companyId,
   this.companyDelegationId = companyDelegationId,
-  this.delegation = delegation,
+  this.energyId = energyId,
   this.aspectId = aspectId,
+  this.residueId = residueId,
   this.isSelected = isSelected,
   this.isEdit = isEdit,
 
   this.theRatioType = theRatioType,
-  this.energyES = energyES,
-  this.energyCA = energyCA,
-  this.residueES = residueES,
-  this.residueCA = residueCA,
-  this.aspectES = aspectES,
-  this.aspectCA = aspectCA,
   this.year = year,
   this.jan = jan,
   this.feb = feb,
@@ -112,14 +95,14 @@ export const ObjectiveColumns = [
           label: "Year"
       },
       {
-          key: "energyES",
+          key: "enviromentalDataName",
           type: "label",
-          label: "Enviromental"
+          label: "Enviromental Data"
       },
       {
         key: "theRatioType",
         type: "label",
-        label: "Tipo de RATIO"
+        label: "RATIO type"
     },
       {
         key: "jan",

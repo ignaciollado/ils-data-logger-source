@@ -40,6 +40,11 @@ private URL_MOCKS: string = '../../assets/mocks/consumptions.json'
 
   }
 
+  getAllEnvironmentalData(): Observable<ObjectiveDTO[]> {
+    return this.http
+      .get<ObjectiveDTO[]>(`${this.URL_API}environmentalDataGetAll.php`, httpOptions)
+  }
+
   getAllObjectivesByCompanyAndAspect(companyId:any, aspectId?: number): Observable<ObjectiveDTO[]> {
     return this.http
      /* .get<ObjectiveDTO[]>(`${URL_API_SRV}/api/get-all-company-aspect-Objectives/${companyId}/${aspectId}`, httpOptions) */
@@ -64,20 +69,18 @@ private URL_MOCKS: string = '../../assets/mocks/consumptions.json'
 
   createObjective(objective: ObjectiveDTO): Observable<ObjectiveDTO> {
     return this.http
-/*       .post<ObjectiveDTO>(`${this.URL_API}energyConsumptionCreate.php`, energyConsumption)
-      .pipe(catchError(this.sharedService.handleError)); */
       .post<ObjectiveDTO>(`${this.URL_API}objectiveCreate.php`, objective);
   }
 
 
   updateObjective(objectiveId: number, objective: ObjectiveDTO): Observable<ObjectiveDTO> {
-
     return this.http
       /* .put<ObjectiveDTO>(`${this.URL_API}energyConsumptionUpdate.php?consumptionId=${consumptionId}`, consumption) */
       .patch<ObjectiveDTO>(`${this.URL_API}objectiveUpdate.php?objectiveId=${objectiveId}`, objective)
   }
 
   deleteObjective(objectiveId: number): Observable<deleteResponse> {
+    console.log (objectiveId)
     return this.http
       .delete<deleteResponse>(`${this.URL_API}objectiveDelete.php?objectiveId=${objectiveId}`)
       .pipe(catchError(this.sharedService.handleError));

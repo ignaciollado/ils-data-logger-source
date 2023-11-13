@@ -1,18 +1,18 @@
 export class EnvironmentalDTO {
-  idEnv: string
+  idEnv: number
   nameES: string
   nameCA: string
-  aspectId: number
+  aspect: number
 
   constructor(
     nameES: string,
     nameCA: string,
-    aspectId: number,
-    idEnv: string,
+    aspect: number,
+    idEnv: number,
   ) {
     this.nameES = nameES
     this.nameCA = nameCA
-    this.aspectId = aspectId
+    this.aspect = aspect
     this.idEnv = idEnv
     }
 }

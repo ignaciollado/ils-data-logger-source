@@ -5,12 +5,12 @@ header('Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Ac
 require_once 'conectar_a_bbdd_pindust.php';
 
 mysqli_query($conn, "SET NAMES 'utf8'");
+$objectiveId = $_GET['objectiveId'];
+/* $Id = mysqli_real_escape_string($conn, $_GET["Id"]); */
 
-$Id = mysqli_real_escape_string($conn, $_GET["Id"]);
+$sql = "DELETE FROM ils_objective WHERE id = ". $objectiveId;
 
-$query = "DELETE FROM ils_objective WHERE Id = ". $Id;
-
-mysqli_query($conn, $query);
+mysqli_query($conn, $sql);
 
 if(mysqli_affected_rows($conn) == 0){
     echo http_response_code(404);

@@ -5,7 +5,6 @@ import { DelegationService } from 'src/app/Services/delegation.service'
 import { DelegationDTO } from 'src/app/Models/delegation.dto'
 import { ObjectiveService } from 'src/app/Services/objective.service'
 import { ObjectiveColumns, ObjectiveDTO } from 'src/app/Models/objective.dto'
-import { EnergyService } from 'src/app/Services/energy.service'
 import { EnergyDTO } from 'src/app/Models/energy.dto'
 
 import { JwtHelperService } from '@auth0/angular-jwt'
@@ -21,7 +20,6 @@ import { ConfirmDialogComponent } from 'src/app/confirm-dialog/confirm-dialog.co
 
 import { DateAdapter, MAT_DATE_LOCALE } from '@angular/material/core'
 import { ResidueDTO } from 'src/app/Models/residue.dto'
-import { ResidueService } from 'src/app/Services/residue.service'
 import { EnvironmentalDTO } from 'src/app/Models/environmental.dto'
 
 /* const USER_DATA = [
@@ -182,8 +180,6 @@ export class ObjectivesComponent {
     private delegationService: DelegationService,
     private jwtHelper: JwtHelperService,
     private sharedService: SharedService,
-    private energyService: EnergyService,
-    private residueService: ResidueService,
     private objectiveService: ObjectiveService,
     private formBuilder: UntypedFormBuilder,
     private userService: UserService,
@@ -255,7 +251,7 @@ export class ObjectivesComponent {
     })
 
     this.loadDelegations()
-    this.loadEnergies()
+    this.loadEnvironmentalData()
     this.getCurrentIndicator( this.userId )
   }
 
@@ -276,46 +272,16 @@ export class ObjectivesComponent {
       );
     }
   }
-  private loadEnergies(): void {
-    let errorResponse: any;
-    if (this.userId) {
-      this.energyService.getAllEnergies().subscribe(
-        (energies: EnergyDTO[]) => {
-          energies.map( item => {
-            this.environmentalDataList = [...this.environmentalDataList, {idEnv:item.energyId, nameES: item.nameES, nameCA: item.nameCA, aspectId: item.aspectId}]
-          });
-          this.loadResidues()
-        },
-        (error: HttpErrorResponse) => {
-          errorResponse = error.error;
-          this.sharedService.errorLog(errorResponse);
-        }
-      );
-    }
-  }
-  private loadResidues(): void {
-    let errorResponse: any;
-    if (this.userId) {
-      this.residueService.getAllResidues().subscribe(
-        (residues: ResidueDTO[]) => {
-          residues.map( item => {
-            this.environmentalDataList = [...this.environmentalDataList, {idEnv:item.residueId, nameES: item.nameES, nameCA: item.nameCA, aspectId: 3}]
-        });
-        this.environmentalDataList = [...this.environmentalDataList, {idEnv:"98", nameES: "Water (L)", nameCA: "Water (L)", aspectId: 2}]
-        this.environmentalDataList = [...this.environmentalDataList, {idEnv:"99", nameES: "Emisiones de CO2e (T)", nameCA: "Emisiones de CO2e (T)", aspectId: 5}]
-        },
-        (error: HttpErrorResponse) => {
-          errorResponse = error.error;
-          this.sharedService.errorLog(errorResponse);
-        }
-      );
-    }
-  }
 
   private loadObjectives( userId: string ): void {
-    this.objectiveService.getAllObjectivesByCompany(this.userId).subscribe((res: any) => {
+    this.objectiveService.getAllObjectivesByCompany(userId).subscribe((res: any) => {
       this.dataSource.data = res;
-      console.log (res)
+    });
+  }
+
+  private loadEnvironmentalData(): void {
+    this.objectiveService.getAllEnvironmentalData().subscribe((res: any) => {
+      this.environmentalDataList = res
     });
   }
 
@@ -379,56 +345,72 @@ export class ObjectivesComponent {
   }
 
   public addRow() {
-   /*  const newRow = {"delegation": this.delegation.value, "year": this.yearObjective.value, "energyES": this.energy.value, "objectiveType": this.objectiveType.value, isEdit: true} */
-   /*  this.dataSource = [...this.dataSource, newRow];  */
-   const newRow: ObjectiveDTO = {
-    Id: 0,
-    companyId: this.userId,
-    companyDelegationId: this.delegation.value,
-    delegation: '',
-    aspectId: this.environmentalData.value,
-    theRatioType: this.objectiveType.value,
-    energy: 0,
-    residueId: 0,
-    energyES: '',
-    energyCA: '',
-    residueES: '',
-    residueCA: '',
-    aspectES: '',
-    aspectCA: '',
-    year: this.yearObjective.value,
-    jan: 0,
-    feb: 0,
-    mar: 0,
-    apr: 0,
-    may: 0,
-    jun: 0,
-    jul: 0,
-    aug: 0,
-    sep: 0,
-    oct: 0,
-    nov: 0,
-    dec: 0,
-    isEdit: true,
-    isSelected: false,
-  };
-  this.dataSource.data = [newRow, ...this.dataSource.data];
+    let environmentalDataEnergy: number = 0
+    let environmentalDataResidue: number = 0
+    /*  const newRow = {"delegation": this.delegation.value, "year": this.yearObjective.value, "energyES": this.energy.value, "objectiveType": this.objectiveType.value, isEdit: true} */
+    /*  this.dataSource = [...this.dataSource, newRow];  */
+    
+    if (this.environmentalData.value.aspect == 1) {
+      environmentalDataEnergy = this.environmentalData.value.idEnv
+      environmentalDataResidue = 0
+    }
+    if (this.environmentalData.value.aspect == 2) {
+      environmentalDataEnergy = 0
+      environmentalDataResidue = 0
+    }
+    if (this.environmentalData.value.aspect == 3) {
+      environmentalDataEnergy = 0
+      environmentalDataResidue = this.environmentalData.value.idEnv
+    }
+    if (this.environmentalData.value.aspect == 5) {
+      environmentalDataEnergy = 0
+      environmentalDataResidue = 0
+    }
+    const newRow: ObjectiveDTO = {
+      Id: 0,
+      companyId: this.userId,
+      companyDelegationId: this.delegation.value,
+      aspectId: this.environmentalData.value.aspect,
+      theRatioType: this.objectiveType.value,
+      energyId: environmentalDataEnergy,
+      residueId: environmentalDataResidue,
+      year: this.yearObjective.value,
+      jan: 0,
+      feb: 0,
+      mar: 0,
+      apr: 0,
+      may: 0,
+      jun: 0,
+      jul: 0,
+      aug: 0,
+      sep: 0,
+      oct: 0,
+      nov: 0,
+      dec: 0,
+      isEdit: true,
+      isSelected: false,
+    };
+    this.dataSource.data = [newRow, ...this.dataSource.data]
   }
+
   editRow(row: ObjectiveDTO) {
-    console.log (row.isEdit, row.Id)
     if (row.Id === 0) {
-      this.objectiveService.createObjective (row).subscribe((newUser: ObjectiveDTO) => {
-        row.Id = newUser.Id;
-        row.isEdit = false;
+      this.objectiveService.createObjective(row).subscribe((newObjective: ObjectiveDTO) => {
+        row.Id = newObjective.Id
+        row.isEdit = false
+        this.loadObjectives( this.userId )
       });
     } else {
-      this.objectiveService.updateObjective(row.Id, row).subscribe(() => (row.isEdit = false));
+      this.objectiveService.updateObjective(row.Id, row).subscribe(() => {
+        row.isEdit = false
+        this.loadObjectives( this.userId )
+      })
     }
-    row.isEdit = false;
-    console.log (row.isEdit)
-
+    row.isEdit = false
+    
   }
-  public removeRow(id: number) {
+
+  public removeRow(id: any) {
    /*  this.dataSource = this.dataSource.filter((u:any) => u.id !== id); */
    this.objectiveService.deleteObjective(id).subscribe(() => {
     this.dataSource.data = this.dataSource.data.filter(
@@ -436,6 +418,7 @@ export class ObjectivesComponent {
     );
   });
   }
+
   public removeSelectedRows() {
     /* this.dataSource = this.dataSource.filter((u: any) => !u.isSelected); */
 

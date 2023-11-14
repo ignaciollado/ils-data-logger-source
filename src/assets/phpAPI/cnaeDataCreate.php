@@ -20,10 +20,11 @@ $sql = $sql . "`) VALUES("
 .$yearBilling."','"
 .$request['quantity']."') ON DUPLICATE KEY UPDATE `".$monthBilling."` = '".$request['quantity']."'"; */
 
-$sql = "INSERT INTO ils_billing (companyId, companyDelegationId, year,
+$sql = "INSERT INTO ils_cnaes (companyId, companyDelegationId, cnaeUnitSelected, year,
 `01`, `02`, `03`, `04`, `05`, `06`, `07`, `08`, `09`, `10`, `11`, `12`) VALUES("
 .$request['companyId'].","
 .$request['companyDelegationId'].",'"
+.$request['cnaeUnitSelected']."','"
 .$request['year']."','"
 .$request['jan']."','"
 .$request['feb']."','"

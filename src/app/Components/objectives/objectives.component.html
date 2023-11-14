@@ -259,7 +259,8 @@
         <div></div>
         <button class="button-remove-rows" mat-button (click)="removeSelectedRows()">Remove selected Rows</button>
       </article>
-      <article>
+
+      <article *ngIf="dataSource">
         <table mat-table [dataSource]="dataSource">
           <ng-container [matColumnDef]="col.key" *ngFor="let col of columnsSchema">
             <th mat-header-cell *matHeaderCellDef [ngSwitch]="col.key">
@@ -300,7 +301,7 @@
                     <input [type]="col.type" matInput [(ngModel)]="element[col.key]" ngClass="small-data small-data-input"/>
                   </mat-form-field>
                 </div>
-              </td>
+            </td>
           </ng-container>
           <tr mat-header-row *matHeaderRowDef="columnsDisplayed"></tr>
           <tr mat-row *matRowDef="let row; columns: columnsDisplayed;"></tr>

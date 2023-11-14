@@ -258,6 +258,7 @@ export class ObjectivesComponent {
   ngOnInit() {
     this.loadObjectives( this.userId )
   }
+  
   private loadDelegations(): void {
     let errorResponse: any;
     if (this.userId) {
@@ -274,7 +275,7 @@ export class ObjectivesComponent {
   }
 
   private loadObjectives( userId: string ): void {
-    this.objectiveService.getAllObjectivesByCompany(userId).subscribe((res: any) => {
+    this.objectiveService.getAllObjectivesByCompany(userId).subscribe((res: ObjectiveDTO[]) => {
       this.dataSource.data = res;
     });
   }
@@ -394,7 +395,7 @@ export class ObjectivesComponent {
   }
 
   editRow(row: ObjectiveDTO) {
-    if (row.Id === 0) {
+    if (row.Id == 0) {
       this.objectiveService.createObjective(row).subscribe((newObjective: ObjectiveDTO) => {
         row.Id = newObjective.Id
         row.isEdit = false

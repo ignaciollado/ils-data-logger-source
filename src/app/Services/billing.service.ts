@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, forkJoin } from 'rxjs';
 import { BillingDTO } from '../Models/billing.dto';
 import { SharedService } from './shared.service';
 import { catchError } from 'rxjs/operators';
@@ -81,6 +81,14 @@ export class BillingService {
     return this.http
       .delete<deleteResponse>(`${URL_API}billingDelete.php?Id=${Id}`)
       .pipe(catchError(this.sharedService.handleError));
+  }
+
+  deleteBillings(billings: BillingDTO[]): Observable<BillingDTO[]> {
+    return forkJoin(
+      billings.map((objective) =>
+        this.http.delete<BillingDTO>(`${URL_API}billingsDelete.php?billings=${billings}`)
+      )
+    );
   }
 
 }

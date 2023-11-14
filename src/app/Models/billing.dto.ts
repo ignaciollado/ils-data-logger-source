@@ -19,11 +19,7 @@ export class BillingDTO {
   oct: string
   nov: string
   dec: string
-  quantity!: number
-  objective!: number
-  updated_at!: Date
-  deleted_at!: Date
-
+  
 constructor (
   Id: number,
   companyId: number,

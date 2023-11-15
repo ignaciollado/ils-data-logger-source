@@ -38,7 +38,7 @@
               <mat-label>{{'activityData' | translate}}</mat-label>
               <mat-select [formControl]="environmentalData">
                 <mat-option *ngFor="let environmentalData of environmentalDataList" [value]="environmentalData">
-                  {{environmentalData.nameES}} {{environmentalData.aspect}}
+                  {{environmentalData.nameES}}
                 </mat-option>
               </mat-select>
              <!--  <mat-error *ngIf="enviromentalData.hasError('required')">{{'activityData' | translate}} <strong>{{'isRequired' | translate}}</strong></mat-error> -->

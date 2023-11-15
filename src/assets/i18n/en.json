@@ -10,7 +10,7 @@
   "ubication": "Ubication",
   "city": "City",
   "totalActivityReported": "Total activity reported",
-  "sustainabilityIndicatorsCharts": "Sustainability indicators Charts",
+  "sustainabilityIndicatorsCharts": "Indicators Charts",
 
   "companyName": "Company name",
   "companyAddress": "Company address",
@@ -21,6 +21,8 @@
   "myObjectives": "My objectives",
   "myObjectivesDetail": "My objectives detail",
   "selectObjectiveType": "Select the RATIO for the objective ",
+  "cnaes": "CNAE",
+  "currentRatioType": "RATIO type:",
 
   "billingList": "Billing list",
   "personsList": "Personal list",

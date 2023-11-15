@@ -22,6 +22,7 @@ import { DateAdapter, MAT_DATE_LOCALE } from '@angular/material/core'
 import { ResidueDTO } from 'src/app/Models/residue.dto'
 import { EnvironmentalDTO } from 'src/app/Models/environmental.dto'
 
+
 /* const USER_DATA = [
   {id: 1, delegation: "Son Castelló", year: "2019", energyES: "Electricidad (kWh)", "objectiveType": "Billing", "jan": 1.50},
   {id: 2, delegation: "Can Valero", year: "2020", energyES: "Fuel (kg)", "objectiveType": "Billing", "jan": .300},
@@ -308,6 +309,7 @@ export class ObjectivesComponent {
   }
 
   public copyCnaeMonthValue( resource: string ) {
+    alert (resource)
     this.genCnae.setValue( resource )
     this.febCnae.setValue( resource )
     this.marCnae.setValue( resource )
@@ -339,6 +341,15 @@ export class ObjectivesComponent {
     this.octBill.setValue( resource )
     this.novBill.setValue( resource )
     this.decBill.setValue( resource )
+  }
+
+  public setAll(completed: boolean) {
+    alert (completed)
+    /* this.allComplete = completed;
+    if (this.task.subtasks == null) {
+      return;
+    }
+    this.task.subtasks.forEach(t => (t.completed = completed)); */
   }
 
   public deleteObjective( objectiveId: string) {

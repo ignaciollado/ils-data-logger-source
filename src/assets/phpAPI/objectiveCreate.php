@@ -67,8 +67,6 @@ if ($result=mysqli_query($conn,$sqlCount))
 
 mysqli_free_result($result);
 
-echo $sql;
-
 $result = mysqli_query($conn, $sql);
 
 mysqli_close($conn);

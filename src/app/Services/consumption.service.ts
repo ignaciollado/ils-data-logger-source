@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, forkJoin } from 'rxjs';
 import { ConsumptionDTO } from '../Models/consumption.dto';
 import { SharedService } from './shared.service';
 import { catchError } from 'rxjs/operators';
@@ -100,6 +100,14 @@ export class ConsumptionService {
     return this.http
       .delete<deleteResponse>(`${URL_API}consumptionDelete.php?consumptionId=${consumptionId}`)
       .pipe(catchError(this.sharedService.handleError));
+  }
+
+  deleteConsumptions(consumptionData: ConsumptionDTO[]): Observable<ConsumptionDTO[]> {
+    return forkJoin(
+        consumptionData.map((consumptions) =>
+        this.http.delete<ConsumptionDTO>(`${URL_API}consumptionsDataDelete.php?consumptions=${consumptions}`)
+      )
+    );
   }
 
   errorLog(error: HttpErrorResponse): void {

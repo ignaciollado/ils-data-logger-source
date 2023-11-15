@@ -5,20 +5,16 @@ html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 .container-form {
-
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     padding: 4rem;
-  
   }
 
-  .container-chart {
-
+.container-chart {
     justify-content: center;
     align-items: center;
-  
   }
 
 .grid-view {
@@ -30,4 +26,42 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .mat-toolbar.mat-primary {
   background: #365446;
   color: #fff;
+}
+
+.small-data {
+  font-size: .7rem!important;
+  color: green!important;
+}
+.small-data-input{
+border-bottom: 1px solid blue;
+appearance: textfield!important;
+}
+.small-data-readonly{
+color: black!important;
+border: none 0px grey!important;
+}
+.button-add-row {
+  background: #1b9e1b;
+  color: #ffffff;
+}
+.table-header {
+  width: 90%;
+  margin: auto;
+  text-align: right;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.button-add-row {
+  background: #1b9e1b;
+  color: #ffffff;
+}
+.button-remove-rows {
+  background: red;
+  color: #ffffff;
+  margin-right: 5px;
+}
+.button-remove {
+  color: red;
 }

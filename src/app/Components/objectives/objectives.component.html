@@ -49,7 +49,7 @@
           <mat-radio-group aria-label="Select an option" [formControl]="objectiveType">
             <mat-label>{{'selectObjectiveType' | translate}}:</mat-label><br>
             <mat-radio-button value="billing" name="objectiveType" value="Billing">Por facturación</mat-radio-button>
-            <mat-radio-button value="cnae" name="objectiveType" value="Activity indicator: Tonelada*">Por CNAE  <mat-chip>{{currentActivityIndicator}}</mat-chip></mat-radio-button>
+            <mat-radio-button value="cnae" name="objectiveType" value="{{currentActivityIndicator}}">Por CNAE  <mat-chip>{{currentActivityIndicator}}</mat-chip></mat-radio-button>
           </mat-radio-group>
         </section>
 
@@ -294,10 +294,12 @@
                   <div class="btn-edit" *ngSwitchCase="'isEdit'">
                     <button mat-button (click)="editRow(element)" [disabled]="valid[element.Id] === false">Done</button>
                   </div>
-                  <mat-form-field *ngSwitchCase="'label'" [style.width.px]='60'>
+
+                  <mat-form-field *ngSwitchCase="'label'" [style.width.px]='60' [color]="'warn'">
                     <input [type]="col.type" readonly matInput [(ngModel)]="element[col.key]" ngClass="small-data small-data-readonly"/>
                   </mat-form-field>
-                  <mat-form-field *ngSwitchDefault appearance="outline" [style.width.px]='60'>
+
+                  <mat-form-field *ngSwitchDefault appearance="outline" [style.width.px]='60' [color]="'accent'">
                     <input [type]="col.type" matInput [(ngModel)]="element[col.key]" ngClass="small-data small-data-input"/>
                   </mat-form-field>
                 </div>

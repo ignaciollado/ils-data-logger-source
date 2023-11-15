@@ -13,7 +13,7 @@ import {DateAdapter, MAT_DATE_LOCALE} from '@angular/material/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { finalize } from 'rxjs/operators';
 import { HeaderMenus } from 'src/app/Models/header-menus.dto';
-import { ConsumptionDTO } from 'src/app/Models/consumption.dto';
+import { ConsumptionDTO, energyColumns } from 'src/app/Models/consumption.dto';
 import { EnergyDTO } from 'src/app/Models/energy.dto';
 import { DelegationDTO } from 'src/app/Models/delegation.dto';
 import { EnergyService } from 'src/app/Services/energy.service';
@@ -26,6 +26,9 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 import { HeaderMenusService } from 'src/app/Services/header-menus.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
+
+import { MatDialog } from '@angular/material/dialog'
+import { ConfirmDialogComponent } from 'src/app/confirm-dialog/confirm-dialog.component'
 
 @Component({
   selector: 'app-post-form',
@@ -49,7 +52,7 @@ export class PostFormComponent implements OnInit {
 
   consumption: ConsumptionDTO
   delegation: UntypedFormControl
-  monthYearDate: UntypedFormControl
+  yearEnergy: UntypedFormControl
   energy: UntypedFormControl
   quantity: UntypedFormControl
   companyId: UntypedFormControl
@@ -83,8 +86,13 @@ export class PostFormComponent implements OnInit {
   consumptions!: ConsumptionDTO[];
 
   isGridView: boolean = false
-  columnsDisplayed = ['delegation', 'year', 'energy', 'enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'setiembre', 'octubre', 'noviembre', 'diciembre', 'ACTIONS'];
-  dataSource = new MatTableDataSource(this.consumptions);
+  columnsDisplayed: string[] = energyColumns.map((col) => col.key);
+  /* dataSource = new MatTableDataSource(this.billings); */
+  columnsSchema: any = energyColumns;
+  dataSource = new MatTableDataSource<ConsumptionDTO>()
+  valid: any = {}
+/*   columnsDisplayed = ['delegation', 'year', 'energy', 'enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'setiembre', 'octubre', 'noviembre', 'diciembre', 'ACTIONS'];
+  dataSource = new MatTableDataSource(this.consumptions); */
 
   @ViewChild('energyTbSort') energyTbSort = new MatSort();
 
@@ -103,6 +111,7 @@ export class PostFormComponent implements OnInit {
     private energyService: EnergyService,
     private jwtHelper: JwtHelperService,
     private _adapter: DateAdapter<any>,
+    public dialog: MatDialog,
 
     @Inject(MAT_DATE_LOCALE) private _locale: string,
   ) {
@@ -135,32 +144,26 @@ export class PostFormComponent implements OnInit {
     this.consumptionId = this.activatedRoute.snapshot.paramMap.get('id')
     this.userId = this.jwtHelper.decodeToken().id_ils
 
-    this.consumption = new ConsumptionDTO(0, 0, this._adapter.today(), this._adapter.today(), '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 0, '', '', 0);
+    this.consumption = new ConsumptionDTO(0, 0, this._adapter.today(), this._adapter.today(), '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 0, '', '', 0);
     this.isUpdateMode = false;
     this.validRequest = false;
     this.delegation = new UntypedFormControl('', [ Validators.required ]);
-    this.monthYearDate = new UntypedFormControl('', [ Validators.required, Validators.min(1), Validators.max(12), Validators.pattern(this.monthYearPattern) ]);
+    this.yearEnergy = new UntypedFormControl('', [ Validators.required ]);
 
     this.energy = new UntypedFormControl('', [ Validators.required ])
     this.companyId = new UntypedFormControl(this.userId, [ Validators.required ])
-    this.quantity = new UntypedFormControl('', [ Validators.required, Validators.min(1) ])
-    this.objective = new UntypedFormControl({value: '', disabled: true}, [ Validators.min(1) ])
     this.theRatioType = new UntypedFormControl({value: '', disabled: false})
 
     this.energyForm = this.formBuilder.group({
       delegation: this.delegation,
-      monthYearDate: this.monthYearDate,
+      yearEnergy: this.yearEnergy,
       energy: this.energy,
-      quantity: this.quantity,
-      objective: this.objective,
       companyId: this.companyId,
-      theRatioType: this.theRatioType
     });
 
     this.loadEnergies();
-    this.loadDelegations();
-    this.loadConsumption();
-
+    this.loadDelegations(this.userId);
+    this.loadConsumption(this.userId);
   }
 
   ngOnInit(): void {
@@ -175,13 +178,13 @@ export class PostFormComponent implements OnInit {
           this.consumption = consumption;
           this.consumptionFields = Object.entries(consumption).map( item => item[1])
 
-          this.monthYearDate.setValue(formatDate(this.consumptionFields[4], 'YYYY/MM', 'en'))
+          this.yearEnergy.setValue(formatDate(this.consumptionFields[4], 'YYYY', 'en'))
           this.energy.setValue(this.consumptionFields[3])
           this.quantity.setValue(this.consumptionFields[2])
           this.companyId.setValue(this.consumptionFields[1])
 
           this.energyForm = this.formBuilder.group({
-            monthYearDate: this.monthYearDate,
+            yearEnergy: this.yearEnergy,
             energy: this.energy,
             quantity: this.quantity,
             companyId: this.companyId
@@ -210,10 +213,10 @@ export class PostFormComponent implements OnInit {
     }
   }
 
-  private loadDelegations(): void {
+  private loadDelegations(userId: string): void {
     let errorResponse: any;
-    if (this.userId) {
-      this.delegationService.getAllDelegationsByCompanyIdFromMySQL(this.userId).subscribe(
+    if (userId) {
+      this.delegationService.getAllDelegationsByCompanyIdFromMySQL(userId).subscribe(
         (delegations: DelegationDTO[]) => {
           this.delegations = delegations;
         },
@@ -225,12 +228,12 @@ export class PostFormComponent implements OnInit {
     }
   }
 
-  private loadConsumption(): void {
+  private loadConsumption(userId: string): void {
     let errorResponse: any;
 
     if (this.userId) {
 
-        this.consumptionService.getAllConsumptionsByCompanyAndAspect(this.userId, 1).subscribe(
+        this.consumptionService.getAllConsumptionsByCompanyAndAspect(userId, 1).subscribe(
         (consumptions: ConsumptionDTO[]) => {
           this.consumptions = consumptions
           this.dataSource = new MatTableDataSource(this.consumptions);
@@ -300,10 +303,9 @@ export class PostFormComponent implements OnInit {
           () => {
             responseOK = true;
             /* this.energy.reset() */
-            console.log (this.monthYearDate.value, this.monthYearDate.value.substring(-4))
-            this.monthYearDate.reset()
-            this.quantity.reset()
-            this.loadConsumption();
+            console.log (this.yearEnergy.value, this.yearEnergy.value.substring(-4))
+            this.yearEnergy.reset()
+            this.loadConsumption(this.userId);
           },
           (error: HttpErrorResponse) => {
             errorResponse = error.error;
@@ -329,7 +331,7 @@ export class PostFormComponent implements OnInit {
           this.sharedService.errorLog(errorResponse);
         }
       )
-      this.loadConsumption()
+      this.loadConsumption(this.userId)
     }
   }
 
@@ -367,4 +369,114 @@ export class PostFormComponent implements OnInit {
       this.objective.enable()
       this.objective.addValidators(Validators.required)
   }
+
+
+  public addRow() {
+
+    /*  const newRow = {"delegation": this.delegation.value, "year": this.yearObjective.value, "energyES": this.energy.value, "objectiveType": this.objectiveType.value, isEdit: true} */
+    /*  this.dataSource = [...this.dataSource, newRow];  */
+    
+    const newRow: ConsumptionDTO = {
+      consumptionId: '0',
+      companyId: this.userId,
+      delegation: this.delegation.value,
+      aspectId: 1,
+      year: this.yearEnergy.value,
+      jan: '0',
+      feb: '0',
+      mar: '0',
+      apr: '0',
+      may: '0',
+      jun: '0',
+      jul: '0',
+      aug: '0',
+      sep: '0',
+      oct: '0',
+      nov: '0',
+      dec: '0',
+      quantity: 0,
+      energy: this.energy.value,
+      residueId: 0,
+      scopeOne: 0,
+      scopeTwo: 0,
+      reuse: 0,
+      recycling: 0,
+      incineration: 0,
+      dump: 0,
+      compost: 0,
+      energyCA: '',
+      energyES: '',
+      residueCA: '',
+      residueES: '',
+      aspectCA: '',
+      aspectES: '',
+      unit: '',
+      pci: 1,
+      isEdit: true,
+      isSelected: false,
+      fromDate: new Date(),
+      toDate: new Date(),
+      created_at: new Date(),
+      objective: ''
+    };
+    this.dataSource.data = [newRow, ...this.dataSource.data]
+  }
+
+  public editRow(row: ConsumptionDTO) {
+    if (row.consumptionId === '0') {
+      this.consumptionService.createEnergyConsumption(row).subscribe((newConsumption: ConsumptionDTO) => {
+        row.consumptionId = newConsumption.consumptionId
+        row.isEdit = false
+        this.loadConsumption( this.userId )
+      });
+    } else {
+      this.consumptionService.updateConsumptions(row.consumptionId, row).subscribe(() => {
+        row.isEdit = false
+        this.loadConsumption( this.userId )
+      })
+    }
+    row.isEdit = false
+    
+  }
+
+  public removeRow(id: any) {
+   /*  this.dataSource = this.dataSource.filter((u:any) => u.id !== id); */
+   this.consumptionService.deleteConsumption(id).subscribe(() => {
+    this.dataSource.data = this.dataSource.data.filter(
+      (u: ConsumptionDTO) => u.consumptionId !== id
+    );
+  });
+  }
+
+  public removeSelectedRows() {
+    /* this.dataSource = this.dataSource.filter((u: any) => !u.isSelected); */
+
+    const consumptionData = this.dataSource.data.filter((u: ConsumptionDTO) => u.isSelected);
+    this.dialog
+      .open(ConfirmDialogComponent)
+      .afterClosed()
+      .subscribe((confirm) => {
+        if (confirm) {
+          this.consumptionService.deleteConsumptions(consumptionData).subscribe(() => {
+            this.dataSource.data = this.dataSource.data.filter(
+              (u: ConsumptionDTO) => !u.isSelected
+            );
+          });
+        }
+      });
+
+     /* this.dialog
+      .open(ConfirmDialogComponent)
+      .afterClosed()
+      .subscribe((confirm) => {
+        if (confirm) {
+           this.objectiveService.deleteObjective(id).subscribe(() => {
+            this.dataSource.data = this.dataSource.data.filter(
+              (u: ObjectiveDTO) => !u.isSelected,
+            )
+          })
+        }
+      }) */
+  }
+
 }

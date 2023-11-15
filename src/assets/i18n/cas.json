@@ -10,13 +10,15 @@
     "ubication": "Ubicación",
     "city": "Localidad",
     "totalActivityReported": "Actividad total reportada",
-    "sustainabilityIndicatorsCharts": "Gráficas de indicadores",
+    "sustainabilityIndicatorsCharts": "Cuadro de mandos",
 
     "companyName": "Nombre de la empresa",
     "companyAddress": "Domicilio",
     "companyCNAE": "CNAE de la empresa",
     "selectObjectiveType": "Seleccione el RATIO para el objetivo",
-
+    "cnaes": "CNAE",
+    "currentRatioType": "Tipo de RATIO:",
+    
     "activityData": "Datos ambientales",
     "productionData": "Datos de producción",
     "myObjectives": "Mis objetivos",

@@ -5,13 +5,15 @@ export class ConsumptionDTO {
   consumptionId!: string
   companyId: string
   delegation: number
+  quantity!: number
+  fromDate!: Date
+  toDate!: Date
+  created_at!: Date
+  objective: string
   aspectId: number
-  quantity: number
-  objective?: number
-  fromDate: Date
-  toDate: Date
   year:string
-  month?: string
+  isEdit: boolean
+  isSelected: boolean
   jan: string
   feb: string
   mar: string
@@ -24,8 +26,7 @@ export class ConsumptionDTO {
   oct: string
   nov: string
   dec: string
-  created_at!: Date
-  updated_at!: Date
+
   energy!: number
   residueId!: number
   scopeOne!: number
@@ -47,9 +48,8 @@ export class ConsumptionDTO {
 constructor(
   aspectId: number,
   delegation: number,
-  fromDate: Date,
-  toDate: Date,
-  month: string,
+  isEdit: boolean,
+  isSelected: boolean,
   year: string,
   jan: string,
   feb: string,
@@ -77,6 +77,7 @@ constructor(
   this.companyId = companyId,
   this.delegation = delegation,
   this.aspectId = aspectId,
+  this.year = year,
   this.energyES = energyES,
   this.energyCA = energyCA,
   this.residueES = residueES,
@@ -85,11 +86,6 @@ constructor(
   this.aspectCA = aspectCA,
   this.unit = unit,
   this.pci = pci,
-  this.quantity = quantity,
-  this.fromDate = fromDate,
-  this.toDate = toDate,
-  this.month = month,
-  this.year = year,
   this.jan = jan,
   this.feb = feb,
   this.mar = mar,
@@ -101,6 +97,190 @@ constructor(
   this.sep = sep,
   this.oct = oct,
   this.nov = nov,
-  this.dec = dec
+  this.dec = dec,
+  this.isSelected = isSelected,
+  this.isEdit = isEdit
 }
 }
+
+export const energyColumns = [
+  {
+    key: 'isSelected',
+    type: 'isSelected',
+    label: '',
+  },
+  {
+    key: "Id",
+    type: "label",
+    label: "ID"
+  },
+  {
+      key: "delegation",
+      type: "label",
+      label: "Emplaçament"
+  },
+  {
+      key: "year",
+      type: "label",
+      label: "Year"
+  },
+  {
+      key: "energyES",
+      type: "label",
+      label: "Consumption"
+  },
+
+  {
+    key: "jan",
+    type: "number",
+    label: "January"
+  },
+  {
+    key: "feb",
+    type: "number",
+    label: "February"
+  },
+  {
+    key: "mar",
+    type: "number",
+    label: "March"
+  },
+  {
+    key: "apr",
+    type: "number",
+    label: "April"
+  },
+  {
+    key: "may",
+    type: "number",
+    label: "May"
+  },
+  {
+    key: "jun",
+    type: "number",
+    label: "June"
+  },
+  {
+    key: "jul",
+    type: "number",
+    label: "July"
+  },
+  {
+    key: "aug",
+    type: "number",
+    label: "August"
+  },
+  {
+    key: "sep",
+    type: "number",
+    label: "September"
+  },
+  {
+    key: "oct",
+    type: "number",
+    label: "October"
+  },
+  {
+    key: "nov",
+    type: "number",
+    label: "November"
+  },
+  {
+    key: "dec",
+    type: "number",
+    label: "December"
+  },
+  {
+    key: "isEdit",
+    type: "isEdit",
+    label: ""
+  },
+]
+
+export const waterColumns = [
+  {
+    key: 'isSelected',
+    type: 'isSelected',
+    label: '',
+  },
+  {
+    key: "Id",
+    type: "label",
+    label: "ID"
+  },
+  {
+      key: "delegation",
+      type: "label",
+      label: "Emplaçament"
+  },
+  {
+      key: "year",
+      type: "label",
+      label: "Year"
+  },
+  {
+    key: "jan",
+    type: "number",
+    label: "January"
+  },
+  {
+    key: "feb",
+    type: "number",
+    label: "February"
+  },
+  {
+    key: "mar",
+    type: "number",
+    label: "March"
+  },
+  {
+    key: "apr",
+    type: "number",
+    label: "April"
+  },
+  {
+    key: "may",
+    type: "number",
+    label: "May"
+  },
+  {
+    key: "jun",
+    type: "number",
+    label: "June"
+  },
+  {
+    key: "jul",
+    type: "number",
+    label: "July"
+  },
+  {
+    key: "aug",
+    type: "number",
+    label: "August"
+  },
+  {
+    key: "sep",
+    type: "number",
+    label: "September"
+  },
+  {
+    key: "oct",
+    type: "number",
+    label: "October"
+  },
+  {
+    key: "nov",
+    type: "number",
+    label: "November"
+  },
+  {
+    key: "dec",
+    type: "number",
+    label: "December"
+  },
+  {
+    key: "isEdit",
+    type: "isEdit",
+    label: ""
+  },
+]

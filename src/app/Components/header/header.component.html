@@ -30,9 +30,12 @@
       <button mat-menu-item (click)="adminRatios()"><mat-icon>business_center</mat-icon>{{'productionData' | translate}}</button>
       <button mat-menu-item (click)="myObjectives()"><mat-icon>business_center</mat-icon>{{'myObjectives' | translate}}</button>
       <button mat-menu-item (click)="profile()"><mat-icon>person</mat-icon><span>{{'profile' | translate}}</span></button>
-      <button mat-menu-item (click)="adminAspects()">{{'aspects' | translate}}</button>
-      <button mat-menu-item (click)="adminEnergies()">{{'energies' | translate}}</button>
-      <button mat-menu-item (click)="adminResidues()">{{'residues' | translate}}</button>
+      <button mat-button [matMenuTriggerFor]="adminMenu"><mat-icon>settings_applications</mat-icon>Admin</button>
+      <mat-menu #adminMenu="matMenu" yPosition="above">
+        <button mat-button (click)="adminAspects()" [ngClass]="'has-to-be-shown'">{{'aspects' | translate}}</button>
+        <button mat-button (click)="adminEnergies()" [ngClass]="'has-to-be-shown'">{{'energies' | translate}}</button>
+        <button mat-button (click)="adminResidues()" [ngClass]="'has-to-be-shown'">{{'residues' | translate}}</button>
+      </mat-menu>
       <button mat-menu-item (click)="logout()"><mat-icon>logout</mat-icon><span>{{'logout' | translate}}</span></button>
     </div>
   </mat-menu>
@@ -47,9 +50,15 @@
     <button mat-button (click)="adminRatios()" [ngClass]="'has-to-be-shown'">{{'productionData' | translate}}</button>
     <button mat-button (click)="myObjectives()" [ngClass]="'has-to-be-shown'">{{'myObjectives' | translate}}</button>
     <button mat-button (click)="profile()" [ngClass]="'has-to-be-shown'">{{'profile' | translate}}</button>
-    <button mat-button (click)="adminAspects()" [ngClass]="'has-to-be-shown'">{{'aspects' | translate}}</button>
+    <button mat-button [matMenuTriggerFor]="adminMenu">Admin</button>
+    <mat-menu #adminMenu="matMenu" yPosition="above">
+      <button mat-button (click)="adminAspects()" [ngClass]="'has-to-be-shown'">{{'aspects' | translate}}</button>
+      <button mat-button (click)="adminEnergies()" [ngClass]="'has-to-be-shown'">{{'energies' | translate}}</button>
+      <button mat-button (click)="adminResidues()" [ngClass]="'has-to-be-shown'">{{'residues' | translate}}</button>
+    </mat-menu>
+   <!--  <button mat-button (click)="adminAspects()" [ngClass]="'has-to-be-shown'">{{'aspects' | translate}}</button>
     <button mat-button (click)="adminEnergies()" [ngClass]="'has-to-be-shown'">{{'energies' | translate}}</button>
-    <button mat-button (click)="adminResidues()" [ngClass]="'has-to-be-shown'">{{'residues' | translate}}</button>
+    <button mat-button (click)="adminResidues()" [ngClass]="'has-to-be-shown'">{{'residues' | translate}}</button> -->
     <button mat-button (click)="logout()" [ngClass]="'has-to-be-shown'">{{'logout' | translate}}</button>
     <app-select-language></app-select-language>
   </mat-toolbar>

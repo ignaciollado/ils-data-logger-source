@@ -10,7 +10,7 @@
   color: black!important;
   border: none 0px grey!important;
 }
-mdc-data-table__cell, .mdc-data-table__header-cell {
+.mdc-data-table__cell, .mdc-data-table__header-cell {
   padding: 0 5px 0 5px!important;
 }
 .ng-star-inserted{
@@ -19,20 +19,19 @@ mdc-data-table__cell, .mdc-data-table__header-cell {
 p {
     font-family: Lato;
   }
-  table {
+table {
     width: 90%;
     margin: auto;
     margin-top: 25px;
   }
-  .btn-edit {
+.btn-edit {
     text-align: right;
   }
-  h2 {
+h2 {
     text-align: center;
     padding-top: 20px;
   }
-
-  .table-header {
+.table-header {
     width: 90%;
     margin: auto;
     text-align: right;
@@ -41,13 +40,11 @@ p {
     align-items: center;
     justify-content: space-between;
   }
-
-  .button-add-row {
+.button-add-row {
     background: #1b9e1b;
     color: #ffffff;
   }
-
-  .button-remove-rows {
+.button-remove-rows {
     background: red;
     color: #ffffff;
     margin-right: 5px;
@@ -57,10 +54,12 @@ p {
     color: red;
   }
 
-  ::ng-deep .mat-form-field-infix {
-    width: 100% !important;
-  }
-
-  .form-input {
-    padding-right: 5px;
+  input {
+    border: none;
+    background: none;
+    padding: 0;
+    outline: none;
+    font: 'Times New Roman';
+    text-align: center;
+    color: currentColor;
   }

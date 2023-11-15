@@ -10,12 +10,14 @@
     "ubication": "Ubicació",
     "city": "Localitat",
     "totalActivityReported": "Activitat total reportada",
-    "sustainabilityIndicatorsCharts": "Gràfiques d'indicadors",
+    "sustainabilityIndicatorsCharts": "Quadre de comandaments",
 
     "companyName": "Nom de l'empresa",
     "companyAddress": "Domicili",
     "companyCNAE": "CNAE de l'empresa",
     "selectObjectiveType": "Seleccioni el RATIO per l'objectiu ",
+    "cnaes": "CNAE",
+    "currentRatioType": "Tipus de RATIO:",
 
     "activityData": "Dades ambientals",
     "productionData": "Dades de producció",

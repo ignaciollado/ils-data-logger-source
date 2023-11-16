@@ -43,6 +43,7 @@ import {MatNativeDateModule} from '@angular/material/core';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatTableModule} from '@angular/material/table';
+import {CdkTableModule} from '@angular/cdk/table';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatSortModule} from '@angular/material/sort';
 import {MatDialogModule} from '@angular/material/dialog';
@@ -129,6 +130,7 @@ export function tokenGetter() {
     
     BrowserAnimationsModule,
     MatTableModule,
+    CdkTableModule,
     MatButtonToggleModule,
     MatCardModule,
     MatGridListModule,

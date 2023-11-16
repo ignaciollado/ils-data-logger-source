@@ -14,3 +14,44 @@
 .button-remove {
   color: red;
 }
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+mat-table {
+  margin-top: .5rem;
+  margin-bottom: 2rem;
+  max-height: 30rem;
+  min-width: 100%;
+}
+
+mat-header-row{
+  background-color: rgb(0, 0, 0);
+}
+
+mat-header-cell {
+  color: white;
+  font-size: .7rem;
+  min-width: 5rem;
+}
+
+mat-row{
+  background-color: rgb(104, 105, 105);
+  font-size: .2rem;
+}
+
+mat-cell {
+  min-width: 6rem;
+}
+
+
+

@@ -23,12 +23,12 @@ import { ResidueDTO } from 'src/app/Models/residue.dto'
 import { EnvironmentalDTO } from 'src/app/Models/environmental.dto'
 
 
-/* const USER_DATA = [
-  {id: 1, delegation: "Son Castelló", year: "2019", energyES: "Electricidad (kWh)", "objectiveType": "Billing", "jan": 1.50},
-  {id: 2, delegation: "Can Valero", year: "2020", energyES: "Fuel (kg)", "objectiveType": "Billing", "jan": .300},
-  {id: 3, delegation: "Son Castelló", year: "2019", energyES: "Gas butano (kg)", "objectiveType": "Activity indicator: Tonelada*", "feb": 1.4579},
-  {id: 4, delegation: "Son Castelló", year: "2020", energyES: "Gas Natural (kWh)", "objectiveType": "Activity indicator:  Tonelada*", "jan": 1.2550}
-]; */
+ const USER_DATA = [
+  {Id: 1, delegation: "Son Castelló", year: "2019", enviromentalDataName: "Electricidad (kWh)", "theRatioType": "Billing", "jan": 1.50},
+  {Id: 2, delegation: "Can Valero", year: "2020", enviromentalDataName: "Fuel (kg)", "theRatioType": "Billing", "jan": .300},
+  {Id: 3, delegation: "Son Castelló", year: "2019", enviromentalDataName: "Gas butano (kg)", "theRatioType": "Tonelada*", "jan": 500.57, "feb": 1.4579},
+  {Id: 4, delegation: "Son Castelló", year: "2020", enviromentalDataName: "Gas Natural (kWh)", "theRatioType": "Tonelada*", "jan": 1.2550}
+];
 
 /* const COLUMNS_SCHEMA = [
   {
@@ -171,11 +171,10 @@ export class ObjectivesComponent {
   currentActivityIndicator: string = "Not selected"
 
   isGridView: boolean = false
-  columnsDisplayed : string[] = ObjectiveColumns.map((col) => col.key);
-  /* dataSource: any = USER_DATA; */
-  columnsSchema: any = ObjectiveColumns;
-  /* dataSource = new MatTableDataSource(this.consumptions) */
-  dataSource = new MatTableDataSource<ObjectiveDTO>()
+  columnsDisplayed : string[] = ObjectiveColumns.map((col) => col.key)
+  dataSource: any = USER_DATA 
+  columnsSchema: any = ObjectiveColumns
+  /* dataSource = new MatTableDataSource<ObjectiveDTO>() */
   valid: any = {}
   constructor (
     private delegationService: DelegationService,
@@ -406,6 +405,7 @@ export class ObjectivesComponent {
   }
 
   editRow(row: ObjectiveDTO) {
+    console.log (row)
     if (row.Id == 0) {
       this.objectiveService.createObjective(row).subscribe((newObjective: ObjectiveDTO) => {
         row.Id = newObjective.Id
@@ -482,6 +482,15 @@ export class ObjectivesComponent {
       ...item,
       isSelected: event.checked,
     })); */
+  }
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
   }
 
 

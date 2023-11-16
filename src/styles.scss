@@ -1,5 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
 @use './base';
+@use '@angular/material' as mat;
+
+@include mat.core;
+
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
@@ -23,31 +27,12 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   grid-template-columns: 50% 50%;
   gap: 2rem;
 }
-
 .mat-toolbar.mat-primary {
   background: #365446;
   color: #fff;
 }
-
 .small-data {
   font-size: .7rem!important;
-  color: green!important;
-}
-.small-data-input{
-border-bottom: 1px solid blue;
-appearance: textfield!important;
-}
-.small-data-readonly{
-color: black!important;
-border: none 0px grey!important;
+  color: black!important;
 }
 
-.table-header {
-  width: 90%;
-  margin: auto;
-  text-align: right;
-  margin-bottom: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}

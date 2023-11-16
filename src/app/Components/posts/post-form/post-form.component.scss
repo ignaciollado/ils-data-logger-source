@@ -29,62 +29,100 @@
   animation: fadein 0.5s, fadeout 0.5s 2.5s;
 }
 
-.example-month-picker .mat-calendar-period-button {
-  pointer-events: none;
+.button-add-row {
+  background: #1b9e1b;
+  color: #ffffff;
+}
+.button-add-row {
+  background: #1b9e1b;
+  color: #ffffff;
+}
+.button-remove-rows {
+  background: red;
+  color: #ffffff;
+  margin-right: 5px;
+}
+.button-remove {
+  color: red;
 }
 
-.example-month-picker .mat-calendar-arrow {
-  display: none;
+.btn-edit{
+  display: grid;
+  grid-template-columns: 100%;
 }
 
-.panel-delegation{
-  background-color: cadetblue;
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
-@-webkit-keyframes fadein {
-  from {
-    bottom: 0;
-    opacity: 0;
-  }
-  to {
-    bottom: 30px;
-    opacity: 1;
-  }
+mat-table {
+  margin-top: .5rem;
+  max-width: 95%;
 }
 
-@keyframes fadein {
-  from {
-    bottom: 0;
-    opacity: 0;
-  }
-  to {
-    bottom: 30px;
-    opacity: 1;
-  }
+.mat-column-year{
+  max-width: 3rem;
+}
+.mat-column-delegation{
+  max-width: 7rem;
+}
+.mat-column-jan{
+  max-width: 5rem;
+}
+.mat-column-feb{
+  max-width: 5rem;
+}
+.mat-column-mar{
+  max-width: 5rem;
+}
+.mat-column-apr{
+  max-width: 5rem;
+}
+.mat-column-may{
+  max-width: 5rem;
+}
+.mat-column-jun{
+  max-width: 5rem;
+}
+.mat-column-jul{
+  max-width: 5rem;
+}
+.mat-column-aug{
+  max-width: 5rem;
+}
+.mat-column-sep{
+  max-width: 5rem;
+}
+.mat-column-oct{
+  max-width: 5rem;
+}
+.mat-column-nov{
+  max-width: 5rem;
+}
+.mat-column-dec{
+  max-width: 5rem;
+}
+.mat-column-isEdit{
+  max-width: 5rem;
 }
 
-@-webkit-keyframes fadeout {
-  from {
-    bottom: 30px;
-    opacity: 1;
-  }
-  to {
-    bottom: 0;
-    opacity: 0;
-  }
+mat-header-row{
+  background-color: #424242;
 }
 
-@keyframes fadeout {
-  from {
-    bottom: 30px;
-    opacity: 1;
-  }
-  to {
-    bottom: 0;
-    opacity: 0;
-  }
+mat-header-cell {
+  color: #fff;
+  font-size: .7rem;
 }
 
-.fields-container mat-form-field + mat-form-field {
-  margin-left: 8px;
+mat-row{
+  background-color: #919191;
+  font-size: .2rem;
+}
+
+mat-cell {
+  color: #000;
 }

@@ -171,7 +171,7 @@ export class ObjectivesComponent {
 
   isGridView: boolean = false
   columnsDisplayed : string[] = ObjectiveColumns.map((col) => col.key)
-  /* dataSource: any = USER_DATA  */
+  /* dataSource: any = USER_DATA */
   columnsSchema: any = ObjectiveColumns
   dataSource = new MatTableDataSource<ObjectiveDTO>()
   valid: any = {}
@@ -257,7 +257,7 @@ export class ObjectivesComponent {
   ngOnInit() {
     this.loadObjectives( this.userId )
   }
-  
+
   private loadDelegations(): void {
     let errorResponse: any;
     if (this.userId) {
@@ -359,7 +359,7 @@ export class ObjectivesComponent {
     let environmentalDataResidue: number = 0
     /*  const newRow = {"delegation": this.delegation.value, "year": this.yearObjective.value, "energyES": this.energy.value, "objectiveType": this.objectiveType.value, isEdit: true} */
     /*  this.dataSource = [...this.dataSource, newRow];  */
-    
+
     if (this.environmentalData.value.aspect == 1) {
       environmentalDataEnergy = this.environmentalData.value.idEnv
       environmentalDataResidue = 0
@@ -418,7 +418,7 @@ export class ObjectivesComponent {
       })
     }
     row.isEdit = false
-    
+
   }
 
   public removeRow(id: any) {

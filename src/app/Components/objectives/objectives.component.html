@@ -1,10 +1,9 @@
-<div class="container-form" >
+<div class="container-form">
     <h1>{{'myObjectivesDetail' | translate}}</h1>
      <form
       *ngIf = "objectiveForm"
       [formGroup] = "objectiveForm"
       (ngSubmit) = "addRow()">
-
       <mat-card [class.mat-elevation-z8]="">
 
         <section>
@@ -164,107 +163,12 @@
 
       </mat-card>
     </form>
-    <div style="margin-left: auto; margin-right: auto">
-      <span id="postFeedback"></span>
-    </div>
-   <!--  <table *ngIf="!isGridView" mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort #personTbSort="matSort">
-        <ng-container matColumnDef="delegation">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header>{{'delegation' | translate}}</th>
-          <td mat-cell *matCellDef="let residue">{{residue.delegation}}</td>
-        </ng-container>
-        <ng-container matColumnDef="enviromental">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header>{{'enviromental' | translate}}</th>
-            <td mat-cell *matCellDef="let residue">{{residue.year}}</td>
-          </ng-container>
-        <ng-container matColumnDef="year">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header>{{'year' | translate}}</th>
-          <td mat-cell *matCellDef="let residue">{{residue.year}}</td>
-        </ng-container>
+    <div style="margin-left: auto; margin-right: auto"><span id="postFeedback"></span></div>
 
-        <ng-container matColumnDef="enero">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header>Enero</th>
-            <td mat-cell *matCellDef="let residue" title="{{residue.jan | formatQuantity: 5}}" (click)="residue.editing = true">
-                <div *ngIf="!residue.editing; else editingTemplate">
-                    {{residue.jan}}
-                </div>
-                <ng-template #editingTemplate>
-                    <input [formControl]="residue.jan" (blur)="residue.editing = false">
-                </ng-template>
-            </td>
-        </ng-container>
-
-        <ng-container matColumnDef="febrero">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header>Febrero</th>
-          <td mat-cell *matCellDef="let residue" title="{{residue.feb | formatQuantity: 5}}">{{residue.feb}}</td>
-        </ng-container>
-        <ng-container matColumnDef="marzo">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header>Marzo</th>
-          <td mat-cell *matCellDef="let residue" title="{{residue.mar | formatQuantity: 5}}">{{residue.mar}}</td>
-        </ng-container>
-        <ng-container matColumnDef="abril">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header>Abril</th>
-          <td mat-cell *matCellDef="let residue" title="{{residue.apr | formatQuantity: 5}}">{{residue.apr}}</td>
-        </ng-container>
-        <ng-container matColumnDef="mayo">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header>Mayo</th>
-          <td mat-cell *matCellDef="let residue" title="{{residue.may | formatQuantity: 5}}">{{residue.may}}</td>
-        </ng-container>
-        <ng-container matColumnDef="junio">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header>Junio</th>
-          <td mat-cell *matCellDef="let residue" title="{{residue.jun | formatQuantity: 5}}">{{residue.jun}}</td>
-        </ng-container>
-        <ng-container matColumnDef="julio">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header>Julio</th>
-          <td mat-cell *matCellDef="let residue" title="{{residue.jul | formatQuantity: 5}}">{{residue.jul}}</td>
-        </ng-container>
-        <ng-container matColumnDef="agosto">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header>Agosto</th>
-          <td mat-cell *matCellDef="let residue" title="{{residue.aug | formatQuantity: 5}}">{{residue.aug}}</td>
-        </ng-container>
-        <ng-container matColumnDef="setiembre">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header>Setiembre</th>
-          <td mat-cell *matCellDef="let residue" title="{{residue.sep | formatQuantity: 5}}">{{residue.sep}}</td>
-        </ng-container>
-        <ng-container matColumnDef="octubre">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header>Octubre</th>
-          <td mat-cell *matCellDef="let residue" title="{{residue.oct | formatQuantity: 5}}">{{residue.oct}}</td>
-        </ng-container>
-        <ng-container matColumnDef="noviembre">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header>Noviembre</th>
-          <td mat-cell *matCellDef="let residue" title="{{residue.nov | formatQuantity: 5}}">{{residue.nov}}</td>
-        </ng-container>
-        <ng-container matColumnDef="diciembre">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header>Diciembre</th>
-          <td mat-cell *matCellDef="let residue" title="{{residue.dec | formatQuantity: 5}}">{{residue.dec}}</td>
-        </ng-container>
-
-        <ng-container matColumnDef="ACTIONS">
-          <th mat-header-cell *matHeaderCellDef> ACTIONS</th>
-          <td mat-cell *matCellDef="let residue">
-             <button mat-icon-button color="accent" matTooltip="Update this person"
-            aria-label="Button that displays a tooltip and updates this person" (click)="updatePerson(person.person.Id)">
-              <mat-icon>edit</mat-icon>
-            </button>
-            <button mat-icon-button color="warn" matTooltip="Permanently delete this peerson"
-            aria-label="Button that displays a tooltip and permanently deletes this person" (click)="deleteObjective(residue.Id)">
-              <mat-icon>delete</mat-icon>
-            </button>
-          </td>
-        </ng-container>
-
-        <tr mat-header-row *matHeaderRowDef="columnsDisplayed; sticky: true"></tr>
-        <tr mat-row *matRowDef="let item; columns: columnsDisplayed;" class="animate__animated animate__fadeInLeft"></tr>
-      </table> -->
 
       <article>
-        <!-- <button class="button-add-row" mat-button color="primary" (click)="addRow()">Add objective</button> -->
         <div></div>
         <button class="button-remove-rows" mat-button (click)="removeSelectedRows()">Remove selected Rows</button>
-       <!--  <mat-form-field>
-          <mat-label>Filter</mat-label>
-          <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
-        </mat-form-field> -->
-
         <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
           <ng-container [matColumnDef]="col.key" *ngFor="let col of columnsSchema">
             <mat-header-cell *matHeaderCellDef [ngSwitch]="col.key">
@@ -286,7 +190,7 @@
                       </mat-checkbox>
                     </ng-container>
                   <div class="btn-edit" *ngSwitchCase="'isEdit'">
-                    <button mat-icon-button (click)="element.isEdit = !element.isEdit" 
+                    <button mat-icon-button (click)="element.isEdit = !element.isEdit"
                       class="material-icons app-toolbar-menu save-button"
                       matTooltip="Edit" color="primary"><mat-icon>edit</mat-icon>
                     </button>
@@ -315,10 +219,9 @@
                 </div>
             </mat-cell>
           </ng-container>
-          
+
           <mat-header-row *matHeaderRowDef="columnsDisplayed"></mat-header-row>
           <mat-row *matRowDef="let row; columns: columnsDisplayed;"></mat-row>
         </mat-table>
-        
       </article>
 </div>

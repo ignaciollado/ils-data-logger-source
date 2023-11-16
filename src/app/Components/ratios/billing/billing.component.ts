@@ -97,7 +97,7 @@ export class BillingComponent {
 
   isGridView: boolean = false
   columnsDisplayed: string[] = BillingColumns.map((col) => col.key);
-  /* dataSource: any = USER_DATA */ 
+  /* dataSource: any = USER_DATA */
   columnsSchema: any = BillingColumns;
   dataSource = new MatTableDataSource<BillingDTO>()
   valid: any = {}
@@ -117,7 +117,7 @@ export class BillingComponent {
     private jwtHelper: JwtHelperService,
     public dialog: MatDialog,
     private _adapter: DateAdapter<any>,
-    
+
     @Inject(MAT_DATE_LOCALE) private _locale: string,
   ) {
     this._locale = 'es-ES';
@@ -238,7 +238,7 @@ export class BillingComponent {
 
     /*  const newRow = {"delegation": this.delegation.value, "year": this.yearObjective.value, "energyES": this.energy.value, "objectiveType": this.objectiveType.value, isEdit: true} */
     /*  this.dataSource = [...this.dataSource, newRow];  */
-    
+
     const newRow: BillingDTO = {
       Id: 0,
       companyId: +this.userId,
@@ -276,7 +276,7 @@ export class BillingComponent {
       })
     }
     row.isEdit = false
-    
+
   }
 
   public removeRow(id: any) {

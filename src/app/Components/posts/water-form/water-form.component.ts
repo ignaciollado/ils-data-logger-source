@@ -1,7 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, Inject, ViewChild, Input } from '@angular/core';
-import { FormControl,
-  UntypedFormBuilder,
+import { UntypedFormBuilder,
   UntypedFormControl,
   UntypedFormGroup,
   Validators,
@@ -25,6 +24,13 @@ import { MatSort } from '@angular/material/sort';
 
 import { MatDialog } from '@angular/material/dialog'
 import { ConfirmDialogComponent } from 'src/app/confirm-dialog/confirm-dialog.component'
+
+const USER_DATA = [
+  {Id: 1, delegation: "Son Castelló", year: "2019", enviromentalDataName: "Electricidad (kWh)", "theRatioType": "Billing", "jan": 1.50},
+  {Id: 2, delegation: "Can Valero", year: "2020", enviromentalDataName: "Fuel (kg)", "theRatioType": "Billing", "jan": .300},
+  {Id: 3, delegation: "Son Castelló", year: "2019", enviromentalDataName: "Gas butano (kg)", "theRatioType": "Tonelada*", "jan": 500.57, "feb": 1.4579},
+  {Id: 4, delegation: "Son Castelló", year: "2020", enviromentalDataName: "Gas Natural (kWh)", "theRatioType": "Tonelada*", "jan": 1.2550}
+];
 
 @Component({
   selector: 'app-water-form',
@@ -70,7 +76,7 @@ export class WaterFormComponent {
 
   isGridView: boolean = false
   columnsDisplayed: string[] = waterColumns.map((col) => col.key);
-  /* dataSource = new MatTableDataSource(this.billings); */
+  /* dataSource: any = USER_DATA */
   columnsSchema: any = waterColumns;
   dataSource = new MatTableDataSource<ConsumptionDTO>()
   valid: any = {}
@@ -92,7 +98,7 @@ export class WaterFormComponent {
     private jwtHelper: JwtHelperService,
     private _adapter: DateAdapter<any>,
     public dialog: MatDialog,
-    
+
     @Inject(MAT_DATE_LOCALE) private _locale: string,
   ) {
 
@@ -234,7 +240,7 @@ export class WaterFormComponent {
 
     /*  const newRow = {"delegation": this.delegation.value, "year": this.yearObjective.value, "energyES": this.energy.value, "objectiveType": this.objectiveType.value, isEdit: true} */
     /*  this.dataSource = [...this.dataSource, newRow];  */
-    
+
     const newRow: ConsumptionDTO = {
       consumptionId: '0',
       companyId: this.userId,
@@ -295,7 +301,7 @@ export class WaterFormComponent {
       })
     }
     row.isEdit = false
-    
+
   }
 
   public removeRow(id: any) {

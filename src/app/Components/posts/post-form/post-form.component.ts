@@ -30,6 +30,12 @@ import { MatSort } from '@angular/material/sort';
 import { MatDialog } from '@angular/material/dialog'
 import { ConfirmDialogComponent } from 'src/app/confirm-dialog/confirm-dialog.component'
 
+const USER_DATA = [
+  {Id: 1, delegation: "Son Castelló", year: "2019", energyES: "Electricidad (kWh)", "jan": 1.50},
+  {Id: 2, delegation: "Can Valero", year: "2020", energyES: "Fuel (kg)", "jan": .300},
+  {Id: 3, delegation: "Son Castelló", year: "2019", energyES: "Gas butano (kg)", "jan": 500.57, "feb": 1.4579},
+  {Id: 4, delegation: "Son Castelló", year: "2020", energyES: "Gas Natural (kWh)", "jan": 1.2550}
+];
 @Component({
   selector: 'app-post-form',
   templateUrl: './post-form.component.html',
@@ -87,12 +93,12 @@ export class PostFormComponent implements OnInit {
 
   isGridView: boolean = false
   columnsDisplayed: string[] = energyColumns.map((col) => col.key);
-  /* dataSource = new MatTableDataSource(this.billings); */
+  /* dataSource: any = USER_DATA */
   columnsSchema: any = energyColumns;
   dataSource = new MatTableDataSource<ConsumptionDTO>()
   valid: any = {}
 /*   columnsDisplayed = ['delegation', 'year', 'energy', 'enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'setiembre', 'octubre', 'noviembre', 'diciembre', 'ACTIONS'];
-  dataSource = new MatTableDataSource(this.consumptions); */
+  ; */
 
   @ViewChild('energyTbSort') energyTbSort = new MatSort();
 
@@ -375,7 +381,7 @@ export class PostFormComponent implements OnInit {
 
     /*  const newRow = {"delegation": this.delegation.value, "year": this.yearObjective.value, "energyES": this.energy.value, "objectiveType": this.objectiveType.value, isEdit: true} */
     /*  this.dataSource = [...this.dataSource, newRow];  */
-    
+
     const newRow: ConsumptionDTO = {
       consumptionId: '0',
       companyId: this.userId,
@@ -436,7 +442,7 @@ export class PostFormComponent implements OnInit {
       })
     }
     row.isEdit = false
-    
+
   }
 
   public removeRow(id: any) {

@@ -70,7 +70,7 @@ const USER_DATA = [
 export class CnaesComponent {
 
   cnaeData: CnaeDataDTO
-  cnaesData: CnaeDataDTO[] 
+  cnaesData: CnaeDataDTO[]
   delegation: UntypedFormControl
   companyId: UntypedFormControl
   yearCnae: UntypedFormControl
@@ -92,7 +92,7 @@ export class CnaesComponent {
 
   isGridView: boolean = false
   columnsDisplayed: string[] = CnaeColumns.map((col) => col.key)
-  /* dataSource: any = USER_DATA  */
+ /* dataSource: any = USER_DATA */
   columnsSchema: any = CnaeColumns
   dataSource = new MatTableDataSource<CnaeDataDTO>()
   valid: any = {}
@@ -192,7 +192,7 @@ export class CnaesComponent {
 
     /*  const newRow = {"delegation": this.delegation.value, "year": this.yearObjective.value, "energyES": this.energy.value, "objectiveType": this.objectiveType.value, isEdit: true} */
     /*  this.dataSource = [...this.dataSource, newRow];  */
-    
+
     const newRow: CnaeDataDTO = {
       Id: 0,
       companyId: +this.userId,
@@ -231,7 +231,7 @@ export class CnaesComponent {
       })
     }
     row.isEdit = false
-    
+
   }
 
   public removeRow(id: any) {

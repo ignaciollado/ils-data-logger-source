@@ -5,16 +5,14 @@
 @include mat.core;
 
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html, body { height: 95%; }
+body { margin: 0 auto; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 .container-form {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    padding-top: 4rem;
-    padding-bottom: 4rem;
   }
 
 .container-chart {
@@ -33,7 +31,6 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 }
 .small-data {
   font-size: .7rem!important;
- 
 }
 
 

@@ -109,24 +109,20 @@ export const energyColumns = [
     type: 'isSelected',
     label: '',
   },
-  {
-    key: "Id",
-    type: "label",
-    label: "ID"
-  },
+
   {
       key: "delegation",
-      type: "label",
+      type: "text",
       label: "Emplaçament"
   },
   {
       key: "year",
-      type: "label",
+      type: "text",
       label: "Year"
   },
   {
       key: "energyES",
-      type: "label",
+      type: "text",
       label: "Consumption"
   },
 
@@ -204,18 +200,13 @@ export const waterColumns = [
     label: '',
   },
   {
-    key: "Id",
-    type: "label",
-    label: "ID"
-  },
-  {
       key: "delegation",
-      type: "label",
+      type: "text",
       label: "Emplaçament"
   },
   {
       key: "year",
-      type: "label",
+      type: "text",
       label: "Year"
   },
   {

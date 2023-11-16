@@ -178,15 +178,13 @@
       <tr mat-header-row *matHeaderRowDef="columnsDisplayed"></tr>
       <tr mat-row *matRowDef="let item; columns: columnsDisplayed;" class="animate__animated animate__fadeInLeft"></tr>
     </table> -->
-    
-    <article class="table-header">
+
+    <article>
       <!-- <button class="button-add-row" mat-button color="primary" (click)="addRow()">Add objective</button> -->
       <div></div>
       <button class="button-remove-rows" mat-button (click)="removeSelectedRows()">Remove selected Rows</button>
-    </article>
-    
-    <article *ngIf="dataSource">
-      <table mat-table [dataSource]="dataSource">
+
+      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort #energyTbSort="matSort">
         <ng-container [matColumnDef]="col.key" *ngFor="let col of columnsSchema">
           <th mat-header-cell *matHeaderCellDef [ngSwitch]="col.key">
               <span *ngSwitchCase="'isSelected'">
@@ -197,7 +195,7 @@
                   </mat-checkbox> -->
               </span>
               <span *ngSwitchDefault>{{ col.label }}</span>
-          </th>
+            </th>
           <td mat-cell *matCellDef="let element">
               <div [ngSwitch]="col.type" *ngIf="!element.isEdit">
                   <ng-container *ngSwitchCase="'isSelected'">
@@ -207,10 +205,14 @@
                     </mat-checkbox>
                   </ng-container>
                 <div class="btn-edit" *ngSwitchCase="'isEdit'">
-                  <button mat-button (click)="element.isEdit = !element.isEdit">Edit</button>
-                  <button mat-button class="button-remove" (click)="removeRow(element.Id)">Delete</button>
+                  <button mat-icon-button (click)="element.isEdit = !element.isEdit"
+                  class="material-icons app-toolbar-menu save-button"
+                  matTooltip="Edit" color="primary"><mat-icon>edit</mat-icon>
+                </button>
+                <button mat-icon-button class="material-icons app-toolbar-menu delete-button" (click)="removeRow(element.Id)"
+                  matTooltip="Delete" color="warn"><mat-icon>delete</mat-icon>
+                </button>
                 </div>
-
                 <span *ngSwitchDefault ngClass="small-data">
                   {{ element[col.key] }}
                 </span>
@@ -219,21 +221,22 @@
                 <div class="btn-edit" *ngSwitchCase="'isEdit'">
                   <button mat-button (click)="editRow(element)" [disabled]="valid[element.Id] === false">Done</button>
                 </div>
-                <mat-form-field *ngSwitchCase="'label'" [style.width.px]='60'>
-                  <input [type]="col.type" readonly matInput [(ngModel)]="element[col.key]" ngClass="small-data small-data-readonly"/>
-                </mat-form-field>
-                <mat-form-field *ngSwitchDefault appearance="outline" [style.width.px]='60'>
-                  <input [type]="col.type" matInput [(ngModel)]="element[col.key]" ngClass="small-data small-data-input"/>
-                </mat-form-field>
+                <span *ngSwitchCase="'isSelected'" ngClass="small-data">
+                  {{element[col.key]}}
+                </span>
+                <span *ngSwitchCase="'text'" ngClass="small-data">
+                  {{element[col.key]}}
+                </span>
+                <input *ngSwitchCase="'number'" [type]="col.type" [(ngModel)]="element[col.key]" ngClass="small-data" [style.width.px]='75'/>
               </div>
-          </td>
+            </td>
         </ng-container>
         <tr mat-header-row *matHeaderRowDef="columnsDisplayed"></tr>
         <tr mat-row *matRowDef="let row; columns: columnsDisplayed;"></tr>
       </table>
     </article>
 
-    <div class="loader" *ngIf="!consumptions">No records found yet...</div>
+    <div class="loader" *ngIf="!dataSource">No records found yet...</div>
 
   </mat-tab>
 

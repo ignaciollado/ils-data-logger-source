@@ -1,3 +1,33 @@
+.error {
+  color: red;
+}
+
+#postFeedback {
+  visibility: hidden;
+  min-width: 250px;
+  color: #fff;
+  text-align: center;
+  border-radius: 10px;
+  padding: 16px;
+  z-index: 1;
+  font-size: 14px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#postFeedback.requestOk {
+  background-color: green;
+}
+
+#postFeedback.requestKo {
+  background-color: red;
+}
+
+#postFeedback.show {
+  visibility: visible;
+  -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
 .button-add-row {
   background: #1b9e1b;
   color: #ffffff;
@@ -17,7 +47,7 @@
 
 .btn-edit{
   display: grid;
-  grid-template-columns: 50% 50%;
+  grid-template-columns: 100%;
 }
 
 /* Chrome, Safari, Edge, Opera */
@@ -29,16 +59,57 @@ input::-webkit-inner-spin-button {
 
 /* Firefox */
 input[type=number] {
-  -moz-appearance: textfield;
-}
-
-.container-vertical-scroll{
-  max-height: 5rem;
+  appearance: textfield;
 }
 
 mat-table {
   margin-top: .5rem;
-  min-width: 100%;
+}
+
+.mat-column-year{
+  max-width: 3rem;
+}
+.mat-column-delegation{
+  max-width: 7rem;
+}
+.mat-column-jan{
+  max-width: 5rem;
+}
+.mat-column-feb{
+  max-width: 5rem;
+}
+.mat-column-mar{
+  max-width: 5rem;
+}
+.mat-column-apr{
+  max-width: 5rem;
+}
+.mat-column-may{
+  max-width: 5rem;
+}
+.mat-column-jun{
+  max-width: 5rem;
+}
+.mat-column-jul{
+  max-width: 5rem;
+}
+.mat-column-aug{
+  max-width: 5rem;
+}
+.mat-column-sep{
+  max-width: 5rem;
+}
+.mat-column-oct{
+  max-width: 5rem;
+}
+.mat-column-nov{
+  max-width: 5rem;
+}
+.mat-column-dec{
+  max-width: 5rem;
+}
+.mat-column-isEdit{
+  max-width: 5rem;
 }
 
 mat-header-row{
@@ -48,7 +119,6 @@ mat-header-row{
 mat-header-cell {
   color: #fff;
   font-size: .7rem;
-  min-width: 5rem;
 }
 
 mat-row{
@@ -57,6 +127,5 @@ mat-row{
 }
 
 mat-cell {
-  min-width: 6rem;
   color: #000;
 }

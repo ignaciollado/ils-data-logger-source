@@ -1,5 +1,6 @@
-    <div class="container-form">
+  <div class="container-form">
       <h1>{{'billing' | translate}}</h1>
+      
       <form
         *ngIf="billingForm"
         [formGroup]="billingForm"
@@ -42,16 +43,17 @@
       <div style="margin-left: auto; margin-right: auto">
         <span id="postFeedback"></span>
       </div>
-<!--       <p>Form Value: {{ billingForm.value | json }}</p>
+        <!--       <p>Form Value: {{ billingForm.value | json }}</p>
       <p>Form Status: {{ billingForm.status }}</p> -->
-    </div>
+    
 
     <h2>{{'billingList' | translate}}</h2>
     <mat-form-field *ngIf="dataSource">
       <mat-label>Filter</mat-label>
       <input matInput (keyup)="applyFilter($event)" placeholder="Search columns" #input>
     </mat-form-field>
-<!--     <table *ngIf="!isGridView" mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort
+
+  <!--     <table *ngIf="!isGridView" mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort
     #billingTbSort="matSort">
       <ng-container matColumnDef="delegation">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>{{'delegation' | translate}}</th>
@@ -129,13 +131,12 @@
     </table> -->
 
     <div class="loader" *ngIf="!dataSource">No records found yet...</div>
-    <article class="table-header" *ngIf="billings">
+    
+    <article>
       <!-- <button class="button-add-row" mat-button color="primary" (click)="addRow()">Add objective</button> -->
       <div></div>
       <button class="button-remove-rows" mat-button (click)="removeSelectedRows()">Remove selected Rows</button>
-    </article>
     
-    <article *ngIf="dataSource">
       <table mat-table [dataSource]="dataSource">
         <ng-container [matColumnDef]="col.key" *ngFor="let col of columnsSchema">
           <th mat-header-cell *matHeaderCellDef [ngSwitch]="col.key">
@@ -182,4 +183,6 @@
         <tr mat-row *matRowDef="let row; columns: columnsDisplayed;"></tr>
       </table>
     </article>
+  
+  </div>
 

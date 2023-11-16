@@ -18,12 +18,13 @@
     "selectObjectiveType": "Seleccioni el RATIO per l'objectiu ",
     "cnaes": "CNAE",
     "currentRatioType": "Tipus de RATIO:",
+    "cnaesDataList": "CNAE per emplaçament, any i mes",
 
     "activityData": "Dades ambientals",
     "productionData": "Dades de producció",
     "myObjectives": "Els meus objectius",
     "myObjectivesDetail": "Detall dels meus objectius",
-    "billingList": "Llistat de facturació",
+    "billingList": "Facturació per emplaçament, any i mes",
     "personsList": "Llistat de personal",
     "monthlyObjective": "Objectiu",
 

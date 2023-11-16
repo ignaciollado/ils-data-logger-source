@@ -18,12 +18,13 @@
     "selectObjectiveType": "Seleccione el RATIO para el objetivo",
     "cnaes": "CNAE",
     "currentRatioType": "Tipo de RATIO:",
+    "cnaesDataList": "CNAE por emplazamiento, año y mes",
     
     "activityData": "Datos ambientales",
     "productionData": "Datos de producción",
     "myObjectives": "Mis objetivos",
     "myObjectivesDetail": "Detalle de mis objetivos",
-    "billingList": "Listado de facturación",
+    "billingList": "Facturación por emplazamiento, año y mes",
     "personsList": "Listado de personal",
     "monthlyObjective": "Objetivo",
 
@@ -132,5 +133,4 @@
     "october": "Octubre",
     "november": "Noviembre",
     "december": "Diciembre"
-
   }

@@ -9,7 +9,8 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    padding: 4rem;
+    padding-top: 4rem;
+    padding-bottom: 4rem;
   }
 
 .container-chart {
@@ -40,10 +41,7 @@ appearance: textfield!important;
 color: black!important;
 border: none 0px grey!important;
 }
-.button-add-row {
-  background: #1b9e1b;
-  color: #ffffff;
-}
+
 .table-header {
   width: 90%;
   margin: auto;
@@ -52,16 +50,4 @@ border: none 0px grey!important;
   display: flex;
   align-items: center;
   justify-content: space-between;
-}
-.button-add-row {
-  background: #1b9e1b;
-  color: #ffffff;
-}
-.button-remove-rows {
-  background: red;
-  color: #ffffff;
-  margin-right: 5px;
-}
-.button-remove {
-  color: red;
 }

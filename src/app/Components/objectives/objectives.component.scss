@@ -1,65 +1,16 @@
-.small-data {
-    font-size: .7rem!important;
-    color: green!important;
-  }
-.small-data-input{
-  border-bottom: 1px solid blue;
-  appearance: textfield!important;
-}
-.small-data-readonly{
-  color: black!important;
-  border: none 0px grey!important;
-}
-.mdc-data-table__cell, .mdc-data-table__header-cell {
-  padding: 0 5px 0 5px!important;
-}
-.ng-star-inserted{
-  font-size: .7rem!important;
-}
-p {
-    font-family: Lato;
-  }
-table {
-    width: 90%;
-    margin: auto;
-    margin-top: 25px;
-  }
-.btn-edit {
-    text-align: right;
-  }
-h2 {
-    text-align: center;
-    padding-top: 20px;
-  }
-.table-header {
-    width: 90%;
-    margin: auto;
-    text-align: right;
-    margin-bottom: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
 .button-add-row {
-    background: #1b9e1b;
-    color: #ffffff;
-  }
+  background: #1b9e1b;
+  color: #ffffff;
+}
+.button-add-row {
+  background: #1b9e1b;
+  color: #ffffff;
+}
 .button-remove-rows {
-    background: red;
-    color: #ffffff;
-    margin-right: 5px;
-  }
-
-  .button-remove {
-    color: red;
-  }
-
-  input {
-    border: none;
-    background: none;
-    padding: 0;
-    outline: none;
-    font: 'Times New Roman';
-    text-align: center;
-    color: currentColor;
-  }
+  background: red;
+  color: #ffffff;
+  margin-right: 5px;
+}
+.button-remove {
+  color: red;
+}

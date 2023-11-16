@@ -130,17 +130,17 @@ export class BillingComponent {
       delegation: this.delegation,
       yearBilling: this.yearBilling
     })
-    this.loadDelegations();
+    this.loadDelegations( this.userId );
   }
 
   ngOnInit() {
     this.loadBillings( this.userId )
   }
 
-  private loadDelegations(): void {
+  private loadDelegations(userId: string): void {
     let errorResponse: any;
     if (this.userId) {
-      this.delegationService.getAllDelegationsByCompanyIdFromMySQL(this.userId).subscribe(
+      this.delegationService.getAllDelegationsByCompanyIdFromMySQL(userId).subscribe(
         (delegations: DelegationDTO[]) => {
           this.delegations = delegations;
         },

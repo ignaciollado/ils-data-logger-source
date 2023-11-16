@@ -5,6 +5,8 @@
       [formGroup] = "objectiveForm"
       (ngSubmit) = "addRow()">
 
+      <mat-card [class.mat-elevation-z8]="">
+
         <section>
           <mat-form-field appearance="outline" [style.width.px]='480'>
             <mat-label>{{'delegation' | translate}}</mat-label>
@@ -53,8 +55,8 @@
           </mat-radio-group>
         </section>
 
-       <!--  <h2>Objetivo por CNAE <small>[Current Activity Indicator {{currentActivityIndicator}}]</small></h2> -->
-       <!--  <section>
+        <!--  <h2>Objetivo por CNAE <small>[Current Activity Indicator {{currentActivityIndicator}}]</small></h2> -->
+        <!--  <section>
             <h2>Objetivo por CNAE <small>[Current Activity Indicator {{currentActivityIndicator}}]</small></h2>
             <mat-form-field appearance="outline" [style.width.px]='80'>
                 <mat-label>{{'january' | translate}}</mat-label>
@@ -106,7 +108,7 @@
             </mat-form-field>
         </section> -->
 
-     <!--    <section>
+        <!--    <section>
             <h2>Objetivo de facturación (€)</h2>
             <mat-form-field appearance="outline" [style.width.px]='80'>
                 <mat-label>{{'january' | translate}}</mat-label>
@@ -158,13 +160,13 @@
             </mat-form-field>
         </section>  -->
 
-      <button mat-raised-button color="primary" type="submit" [disabled]="!objectiveForm.valid">ADD objective</button>
+        <button mat-raised-button color="primary" type="submit" [disabled]="!objectiveForm.valid">ADD</button>
 
+      </mat-card>
     </form>
     <div style="margin-left: auto; margin-right: auto">
       <span id="postFeedback"></span>
     </div>
-
    <!--  <table *ngIf="!isGridView" mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort #personTbSort="matSort">
         <ng-container matColumnDef="delegation">
           <th mat-header-cell *matHeaderCellDef mat-sort-header>{{'delegation' | translate}}</th>
@@ -254,13 +256,11 @@
         <tr mat-row *matRowDef="let item; columns: columnsDisplayed;" class="animate__animated animate__fadeInLeft"></tr>
       </table> -->
 
-      <article class="table-header">
+      <article>
         <!-- <button class="button-add-row" mat-button color="primary" (click)="addRow()">Add objective</button> -->
         <div></div>
         <button class="button-remove-rows" mat-button (click)="removeSelectedRows()">Remove selected Rows</button>
-      </article>
-
-      <article *ngIf="dataSource">
+  
         <table mat-table [dataSource]="dataSource">
           <ng-container [matColumnDef]="col.key" *ngFor="let col of columnsSchema">
             <th mat-header-cell *matHeaderCellDef [ngSwitch]="col.key">
@@ -309,3 +309,4 @@
           <tr mat-row *matRowDef="let row; columns: columnsDisplayed;"></tr>
         </table>
       </article>
+</div>

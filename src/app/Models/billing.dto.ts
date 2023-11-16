@@ -65,19 +65,15 @@ export const BillingColumns = [
     type: 'isSelected',
     label: '',
   },
-  {
-    key: "Id",
-    type: "label",
-    label: "ID"
-  },
+
   {
       key: "delegation",
-      type: "label",
+      type: "text",
       label: "Emplaçament"
   },
   {
       key: "year",
-      type: "label",
+      type: "text",
       label: "Year"
   },
 

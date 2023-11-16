@@ -43,6 +43,13 @@ export const MY_FORMATS = {
   },
 };
 
+const USER_DATA = [
+  {Id: 1, delegation: "Son Castelló", year: "2019", enviromentalDataName: "Electricidad (kWh)", "theRatioType": "Billing", "jan": 1.50},
+  {Id: 2, delegation: "Can Valero", year: "2020", enviromentalDataName: "Fuel (kg)", "theRatioType": "Billing", "jan": .300},
+  {Id: 3, delegation: "Son Castelló", year: "2019", enviromentalDataName: "Gas butano (kg)", "theRatioType": "Tonelada*", "jan": 500.57, "feb": 1.4579},
+  {Id: 4, delegation: "Son Castelló", year: "2020", enviromentalDataName: "Gas Natural (kWh)", "theRatioType": "Tonelada*", "jan": 1.2550}
+];
+
 @Component({
   selector: 'app-persons',
   templateUrl: './cnaes.component.html',
@@ -84,9 +91,9 @@ export class CnaesComponent {
   delegations!: DelegationDTO[];
 
   isGridView: boolean = false
-  columnsDisplayed: string[] = CnaeColumns.map((col) => col.key);
-  /* dataSource = new MatTableDataSource(this.billings); */
-  columnsSchema: any = CnaeColumns;
+  columnsDisplayed: string[] = CnaeColumns.map((col) => col.key)
+  /* dataSource: any = USER_DATA  */
+  columnsSchema: any = CnaeColumns
   dataSource = new MatTableDataSource<CnaeDataDTO>()
   valid: any = {}
   @ViewChild('personTbSort') personTbSort = new MatSort();

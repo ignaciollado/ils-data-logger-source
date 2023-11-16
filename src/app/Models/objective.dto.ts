@@ -79,11 +79,11 @@ export const ObjectiveColumns = [
         type: 'isSelected',
         label: '',
       },
-      {
+/*       {
         key: "Id",
-        type: "text",
+        type: "hidden",
         label: "ID"
-      },
+      }, */
       {
           key: "delegation",
           type: "text",

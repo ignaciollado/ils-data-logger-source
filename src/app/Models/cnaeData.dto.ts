@@ -68,24 +68,20 @@ export const CnaeColumns = [
     type: 'isSelected',
     label: '',
   },
-  {
-    key: "Id",
-    type: "label",
-    label: "ID"
-  },
+
   {
     key: "delegation",
-    type: "label",
+    type: "text",
     label: "Emplaçament"
   },
   {
     key: "year",
-    type: "label",
+    type: "text",
     label: "Year"
   },
   {
     key: "cnaeUnitSelected",
-    type: "label",
+    type: "text",
     label: "CNAE unit"
   },
   {

@@ -20,8 +20,16 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
-import { MatDialog } from '@angular/material/dialog'
-import { ConfirmDialogComponent } from 'src/app/confirm-dialog/confirm-dialog.component'
+import { MatDialog } from '@angular/material/dialog';
+import { ConfirmDialogComponent } from 'src/app/confirm-dialog/confirm-dialog.component';
+
+const USER_DATA = [
+  {Id: 1, delegation: "Son Castelló", year: "2019", enviromentalDataName: "Electricidad (kWh)", "theRatioType": "Billing", "jan": 1.50},
+  {Id: 2, delegation: "Can Valero", year: "2020", enviromentalDataName: "Fuel (kg)", "theRatioType": "Billing", "jan": .300},
+  {Id: 3, delegation: "Son Castelló", year: "2019", enviromentalDataName: "Gas butano (kg)", "theRatioType": "Tonelada*", "jan": 500.57, "feb": 1.4579},
+  {Id: 4, delegation: "Son Castelló", year: "2020", enviromentalDataName: "Gas Natural (kWh)", "theRatioType": "Tonelada*", "jan": 1.2550}
+];
+
 
 @Component({
   selector: 'app-billing',
@@ -89,7 +97,7 @@ export class BillingComponent {
 
   isGridView: boolean = false
   columnsDisplayed: string[] = BillingColumns.map((col) => col.key);
-  /* dataSource = new MatTableDataSource(this.billings); */
+  /* dataSource: any = USER_DATA */ 
   columnsSchema: any = BillingColumns;
   dataSource = new MatTableDataSource<BillingDTO>()
   valid: any = {}

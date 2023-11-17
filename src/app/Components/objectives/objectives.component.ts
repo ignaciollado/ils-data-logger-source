@@ -171,9 +171,9 @@ export class ObjectivesComponent {
 
   isGridView: boolean = false
   columnsDisplayed : string[] = ObjectiveColumns.map((col) => col.key)
-  dataSource: any = OBJECTIVES_DATA
+  /* dataSource: any = OBJECTIVES_DATA */
+  dataSource = new MatTableDataSource<ObjectiveDTO>()
   columnsSchema: any = ObjectiveColumns
-  /* dataSource = new MatTableDataSource<ObjectiveDTO>() */
   valid: any = {}
   constructor (
     private delegationService: DelegationService,

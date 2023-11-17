@@ -93,9 +93,10 @@ export class CnaesComponent {
 
   isGridView: boolean = false
   columnsDisplayed: string[] = CnaeColumns.map((col) => col.key)
-  dataSource: any = CNAES_DATA 
+  /* dataSource: any = CNAES_DATA  */
+  dataSource = new MatTableDataSource<CnaeDataDTO>() 
   columnsSchema: any = CnaeColumns
-  /* dataSource = new MatTableDataSource<CnaeDataDTO>() */
+
   valid: any = {}
   @ViewChild('personTbSort') personTbSort = new MatSort();
 

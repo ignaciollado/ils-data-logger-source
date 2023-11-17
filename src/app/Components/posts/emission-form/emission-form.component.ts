@@ -11,7 +11,7 @@ import {
 import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE} from '@angular/material/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { finalize } from 'rxjs/operators';
-import { ConsumptionDTO } from 'src/app/Models/consumption.dto';
+import { ConsumptionDTO, emissionColumns } from 'src/app/Models/consumption.dto';
 import { DelegationDTO } from 'src/app/Models/delegation.dto';
 import { LocalStorageService } from 'src/app/Services/local-storage.service';
 import { ConsumptionService } from 'src/app/Services/consumption.service';
@@ -21,6 +21,17 @@ import { DelegationService } from 'src/app/Services/delegation.service';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
+
+import { MatDialog } from '@angular/material/dialog'
+import { ConfirmDialogComponent } from 'src/app/confirm-dialog/confirm-dialog.component'
+
+const EMISSION_DATA = [
+  {Id: 1, delegation: "Son Castelló", year: "2019", residueES: "Combustión no peligrosos (kg)", "jan": 15000000, "feb": 15000000, "mar": 15000000, "apr": 15000000, "may": 15000000
+  , "jun": 15000000, "jul": 15000000, "aug": 15000000, "sep": 15000000, "oct": 15000000, "nov": 15000000, "dec": 15000000},
+  {Id: 2, delegation: "Can Valero", year: "2020", residueES: "Construcción y demolición (obra) (kg)", "jan": .300},
+  {Id: 3, delegation: "Son Castelló", year: "2019", residueES: "Productos alimentarios (kg)", "jan": 500.57, "feb": 1.4579},
+  {Id: 4, delegation: "Son Castelló", year: "2020", residueES: "Urbano Mezclado (kg)", "jan": 1.2550}
+];
 
 @Component({
   selector: 'app-emission-form',
@@ -54,8 +65,12 @@ export class EmissionFormComponent {
   consumptions!: ConsumptionDTO[];
 
   isGridView: boolean = false
-  columnsDisplayed = ['delegation', 'year', 'quantity', 'objective', 'scopeone', 'scopetwo', 'ACTIONS'];
-  dataSource = new MatTableDataSource(this.consumptions);
+  columnsDisplayed: string[] = emissionColumns.map((col) => col.key);
+  /* dataSource: any = EMISSION_DATA */
+  dataSource = new MatTableDataSource<ConsumptionDTO>();
+  columnsSchema: any = emissionColumns;
+  /* columnsDisplayed = ['delegation', 'year', 'quantity', 'objective', 'scopeone', 'scopetwo', 'ACTIONS']; */
+  valid: any = {}
 
   @ViewChild('emissionTbSort') emissionTbSort = new MatSort();
 
@@ -68,11 +83,10 @@ export class EmissionFormComponent {
     private consumptionService: ConsumptionService,
     private delegationService: DelegationService,
     private formBuilder: UntypedFormBuilder,
-    private router: Router,
     private sharedService: SharedService,
-    private localStorageService: LocalStorageService,
     private jwtHelper: JwtHelperService,
     private _adapter: DateAdapter<any>,
+    public dialog: MatDialog,
     @Inject(MAT_DATE_LOCALE) private _locale: string,
   ) {
 
@@ -90,9 +104,6 @@ export class EmissionFormComponent {
     this.companyId = new UntypedFormControl(this.userId, [ Validators.required ]);
     this.yearEmission = new UntypedFormControl('', [ Validators.required ]);
     this.quantityEmission = new UntypedFormControl('', [ Validators.required, Validators.min(1)]);
-    this.theRatioType = new UntypedFormControl({value: '', disabled: false})
-    this.objective = new UntypedFormControl({value: '', disabled: true}, [ Validators.min(1) ]);
-
     this.scopeone = new UntypedFormControl({value: '', disabled: true}, [ Validators.required ]);
     this.scopetwo = new UntypedFormControl({value: '', disabled: true}, [ Validators.required ]);
 
@@ -102,12 +113,13 @@ export class EmissionFormComponent {
       scopetwo: this.scopetwo,
       yearEmission: this.yearEmission,
       quantityEmission: this.quantityEmission,
-      theRatioType: this.theRatioType,
-      objective: this.objective
     })
 
     this.loadDelegations();
-    this.loadConsumption();
+  }
+
+  ngOnInit(): void {
+    this.loadConsumption(this.userId);
   }
 
   private loadDelegations(): void {
@@ -125,9 +137,8 @@ export class EmissionFormComponent {
     }
   }
 
-  private loadConsumption(): void {
+  private loadConsumption(userId:string): void {
     let errorResponse: any;
-    const userId = this.jwtHelper.decodeToken().id_ils;
     if (userId) {
 
         this.consumptionService.getAllConsumptionsByCompanyAndAspect(userId, 5).subscribe(
@@ -170,10 +181,10 @@ export class EmissionFormComponent {
           () => {
             responseOK = true;
             this.quantityEmission.reset()
-            /* this.yearEmission.reset() */
+            this.yearEmission.reset()
             this.scopeone.reset()
             this.scopetwo.reset()
-            this.loadConsumption();
+            this.loadConsumption(this.userId);
           },
           (error: HttpErrorResponse) => {
             errorResponse = error.error;
@@ -204,7 +215,7 @@ export class EmissionFormComponent {
           this.sharedService.errorLog(errorResponse);
         }
       )
-      this.loadConsumption()
+      this.loadConsumption(this.userId)
     }
   }
 
@@ -243,12 +254,146 @@ export class EmissionFormComponent {
         this.sharedService.errorLog(errorResponse);
       }
     )
-    this.loadConsumption()
+    this.loadConsumption(this.userId)
   }
 
-  public applyFilter(value: Event):void {
+  public addRow() {
+    /*  const newRow = {"delegation": this.delegation.value, "year": this.yearObjective.value, "energyES": this.energy.value, "objectiveType": this.objectiveType.value, isEdit: true} */
+    /*  this.dataSource = [...this.dataSource, newRow];  */
+    
+    const newRow: ConsumptionDTO = {
+      consumptionId: '0',
+      companyId: this.userId,
+      delegation: this.delegation.value,
+      aspectId: 5,
+      residueId: 0,
+      year: this.yearEmission.value,
+      jan: '0',
+      feb: '0',
+      mar: '0',
+      apr: '0',
+      may: '0',
+      jun: '0',
+      jul: '0',
+      aug: '0',
+      sep: '0',
+      oct: '0',
+      nov: '0',
+      dec: '0',
+      quantity: this.quantityEmission.value,
+      energy: 0,
+      scopeOne: this.scopeone.value,
+      scopeTwo: this.scopetwo.value,
+      reuse: 0,
+      recycling: 0,
+      incineration: 0,
+      dump: 0,
+      compost: 0,
+      energyCA: '',
+      energyES: '',
+      residueCA: '',
+      residueES: '',
+      aspectCA: '',
+      aspectES: '',
+      unit: '',
+      pci: 1,
+      isEdit: true,
+      isSelected: false,
+      fromDate: new Date(),
+      toDate: new Date(),
+      created_at: new Date(),
+      objective: ''
+    };
+    this.dataSource.data = [newRow, ...this.dataSource.data]
+  }
+
+  public editRow(row: ConsumptionDTO) {
+    console.log (row)
+    if (row.consumptionId === '0') {
+      this.consumptionService.createResidueConsumption(row).subscribe((newResidue: ConsumptionDTO) => {
+        row.consumptionId = newResidue.consumptionId
+        row.isEdit = false
+        this.loadConsumption( this.userId )
+      });
+    } else {
+      this.consumptionService.updateConsumptions(row.consumptionId, row).subscribe(() => {
+        row.isEdit = false
+        this.loadConsumption( this.userId )
+      })
+    }
+    row.isEdit = false
+
+  }
+
+  public removeRow(id: any) {
+   /*  this.dataSource = this.dataSource.filter((u:any) => u.id !== id); */
+   this.consumptionService.deleteConsumption(id).subscribe(() => {
+    this.dataSource.data = this.dataSource.data.filter(
+      (u: ConsumptionDTO) => u.consumptionId !== id
+    );
+  });
+  }
+
+  public removeSelectedRows() {
+    /* this.dataSource = this.dataSource.filter((u: any) => !u.isSelected); */
+
+    const residues = this.dataSource.data.filter((u: ConsumptionDTO) => u.isSelected);
+    this.dialog
+      .open(ConfirmDialogComponent)
+      .afterClosed()
+      .subscribe((confirm) => {
+        if (confirm) {
+          this.consumptionService.deleteConsumptions(residues).subscribe(() => {
+            this.dataSource.data = this.dataSource.data.filter(
+              (u: ConsumptionDTO) => !u.isSelected
+            );
+          });
+        }
+      });
+
+     /* this.dialog
+      .open(ConfirmDialogComponent)
+      .afterClosed()
+      .subscribe((confirm) => {
+        if (confirm) {
+           this.objectiveService.deleteObjective(id).subscribe(() => {
+            this.dataSource.data = this.dataSource.data.filter(
+              (u: ObjectiveDTO) => !u.isSelected,
+            )
+          })
+        }
+      }) */
+  }
+
+  disableSubmit(id: number) {
+    if (this.valid[id]) {
+      return Object.values(this.valid[id]).some((item) => item === false)
+    }
+    return false
+  }
+
+  public isAllSelected() {
+    /* return this.dataSource.every((item: any) => item.isSelected); */
+  }
+
+  public isAnySelected() {
+    /* return this.dataSource.some((item: any) => item.isSelected); */
+  }
+
+  public selectAll(event) {
+    /* this.dataSource = this.dataSource.map((item: any) => ({
+      ...item,
+      isSelected: event.checked,
+    })); */
+  }
+
+  applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
+
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
   }
 
   public ratioTypeSelected(ratioType: any) {

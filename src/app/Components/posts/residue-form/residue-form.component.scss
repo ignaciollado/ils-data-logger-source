@@ -1,42 +1,105 @@
 @use '../../../../base';
-
-table {
-    width: 100%;
-}
-
-.smallLabel {
-    font-size: .7rem;
-}
-
-mat-cell.title {
-    border: 2px red solid;
-}
-
-mat-cell[matTooltip] {
-    background-color: aqua;
-}
-
-@media only screen and (max-width: base.$app-break-point) {
-    
-    .denominacion::before, .denominacio::before {
-        font-weight: bolder;
-        padding-right: .5rem;
-    }
-
-    .denominacion::before {
-        content: "Denominación:";
-    } 
-
-    .denominacio::before {
-        content: "Denominació:";   
-    }
-
-}
-
-.oneline-container mat-form-field + mat-form-field {
-    margin-left: 8px;
+.button-add-row {
+    background: #1b9e1b;
+    color: #ffffff;
+  }
+  .button-add-row {
+    background: #1b9e1b;
+    color: #ffffff;
+  }
+  .button-remove-rows {
+    background: red;
+    color: #ffffff;
+    margin-right: 5px;
+  }
+  .button-remove {
+    color: red;
+  }
+.btn-edit{
+    display: grid;
+    grid-template-columns: 100%;
+  }
+  
+  /* Chrome, Safari, Edge, Opera */
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  
+  input[type=number] {
+    appearance: textfield;
+    border: none transparent;
+  outline: none;
+  }
+  
+  input {
+    background-color: aquamarine;
+  }
+  
+  mat-table {
+    margin-top: .5rem;
+    margin-bottom: 2rem;
+    max-width: 100%;
+  }
+  
+  .mat-column-year{
+    max-width: 3rem;
+  }
+  .mat-column-delegation{
+    max-width: 7rem;
+  }
+  .mat-column-jan{
+    max-width: 5rem;
+  }
+  .mat-column-feb{
+    max-width: 5rem;
+  }
+  .mat-column-mar{
+    max-width: 5rem;
+  }
+  .mat-column-apr{
+    max-width: 5rem;
+  }
+  .mat-column-may{
+    max-width: 5rem;
+  }
+  .mat-column-jun{
+    max-width: 5rem;
+  }
+  .mat-column-jul{
+    max-width: 5rem;
+  }
+  .mat-column-aug{
+    max-width: 5rem;
+  }
+  .mat-column-sep{
+    max-width: 5rem;
+  }
+  .mat-column-oct{
+    max-width: 5rem;
+  }
+  .mat-column-nov{
+    max-width: 5rem;
+  }
+  .mat-column-dec{
+    max-width: 5rem;
+  }
+  .mat-column-isEdit{
+    max-width: 5rem;
   }
 
-.background-color-container {
-  background-color: bisque;
-}
+  mat-header-row{
+    background-color: #424242;
+  }
+  
+  mat-header-cell {
+    color: white;
+    font-size: .7rem;
+  
+  }
+  
+  mat-row{
+    background-color: #919191;
+    font-size: .2rem;
+  }

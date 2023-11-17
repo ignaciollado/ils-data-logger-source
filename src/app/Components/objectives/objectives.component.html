@@ -54,118 +54,13 @@
           </mat-radio-group>
         </section>
 
-        <!--  <h2>Objetivo por CNAE <small>[Current Activity Indicator {{currentActivityIndicator}}]</small></h2> -->
-        <!--  <section>
-            <h2>Objetivo por CNAE <small>[Current Activity Indicator {{currentActivityIndicator}}]</small></h2>
-            <mat-form-field appearance="outline" [style.width.px]='80'>
-                <mat-label>{{'january' | translate}}</mat-label>
-                <input matInput type="number" (blur)="copyCnaeMonthValue(genCnae.value)" [formControl]="genCnae" matTooltip="We'll use this value to ..."/>
-            </mat-form-field>
-            <mat-form-field appearance="outline" [style.width.px]='80'>
-                <mat-label>{{'february' | translate}}</mat-label>
-                <input matInput type="number" [formControl]="febCnae" matTooltip="We'll use this value to ..."/>
-            </mat-form-field>
-            <mat-form-field appearance="outline" [style.width.px]='80'>
-                <mat-label>{{'march' | translate}}</mat-label>
-                <input matInput type="number" [formControl]="marCnae" matTooltip="We'll use this value to ..."/>
-            </mat-form-field>
-            <mat-form-field appearance="outline" [style.width.px]='80'>
-                <mat-label>{{'april' | translate}}</mat-label>
-                <input matInput type="number" [formControl]="aprCnae" matTooltip="We'll use this value to ..."/>
-            </mat-form-field>
-            <mat-form-field appearance="outline" [style.width.px]='80'>
-                <mat-label>{{'may' | translate}}</mat-label>
-                <input matInput type="number" [formControl]="mayCnae" matTooltip="We'll use this value to ..."/>
-            </mat-form-field>
-            <mat-form-field appearance="outline" [style.width.px]='80'>
-                <mat-label>{{'june' | translate}}</mat-label>
-                <input matInput type="number" [formControl]="junCnae" matTooltip="We'll use this value to ..."/>
-            </mat-form-field><br>
-            <mat-form-field appearance="outline" [style.width.px]='80'>
-                <mat-label>{{'july' | translate}}</mat-label>
-                <input matInput type="number" [formControl]="julCnae" matTooltip="We'll use this value to ..."/>
-            </mat-form-field>
-            <mat-form-field appearance="outline" [style.width.px]='80'>
-                <mat-label>{{'august' | translate}}</mat-label>
-                <input matInput type="number" [formControl]="augCnae" matTooltip="We'll use this value to ..."/>
-            </mat-form-field>
-            <mat-form-field appearance="outline" [style.width.px]='80'>
-                <mat-label>{{'september' | translate}}</mat-label>
-                <input matInput type="number" [formControl]="sepCnae" matTooltip="We'll use this value to ..."/>
-            </mat-form-field>
-            <mat-form-field appearance="outline" [style.width.px]='80'>
-                <mat-label>{{'october' | translate}}</mat-label>
-                <input matInput type="number" [formControl]="octCnae" matTooltip="We'll use this value to ..."/>
-            </mat-form-field>
-            <mat-form-field appearance="outline" [style.width.px]='80'>
-                <mat-label>{{'november' | translate}}</mat-label>
-                <input matInput type="number" [formControl]="novCnae" matTooltip="We'll use this value to ..."/>
-            </mat-form-field>
-            <mat-form-field appearance="outline" [style.width.px]='80'>
-                <mat-label>{{'december' | translate}}</mat-label>
-                <input matInput type="number" [formControl]="decCnae" matTooltip="We'll use this value to ..."/>
-            </mat-form-field>
-        </section> -->
-
-        <!--    <section>
-            <h2>Objetivo de facturación (€)</h2>
-            <mat-form-field appearance="outline" [style.width.px]='80'>
-                <mat-label>{{'january' | translate}}</mat-label>
-                <input matInput type="number" (blur)="copyBillingMonthValue(genBill.value)" [formControl]="genBill" matTooltip="We'll use this value to ..."/>
-            </mat-form-field>
-            <mat-form-field appearance="outline" [style.width.px]='80'>
-                <mat-label>{{'february' | translate}}</mat-label>
-                <input matInput type="number" [formControl]="genBill" matTooltip="We'll use this value to ..."/>
-            </mat-form-field>
-            <mat-form-field appearance="outline" [style.width.px]='80'>
-                <mat-label>{{'march' | translate}}</mat-label>
-                <input matInput type="number" [formControl]="genBill" matTooltip="We'll use this value to ..."/>
-            </mat-form-field>
-            <mat-form-field appearance="outline" [style.width.px]='80'>
-                <mat-label>{{'april' | translate}}</mat-label>
-                <input matInput type="number" [formControl]="genBill" matTooltip="We'll use this value to ..."/>
-            </mat-form-field>
-            <mat-form-field appearance="outline" [style.width.px]='80'>
-                <mat-label>{{'may' | translate}}</mat-label>
-                <input matInput type="number" [formControl]="genBill" matTooltip="We'll use this value to ..."/>
-            </mat-form-field>
-            <mat-form-field appearance="outline" [style.width.px]='80'>
-                <mat-label>{{'june' | translate}}</mat-label>
-                <input matInput type="number" [formControl]="genBill" matTooltip="We'll use this value to ..."/>
-            </mat-form-field><br>
-            <mat-form-field appearance="outline" [style.width.px]='80'>
-                <mat-label>{{'july' | translate}}</mat-label>
-                <input matInput type="number" [formControl]="genBill" matTooltip="We'll use this value to ..."/>
-            </mat-form-field>
-            <mat-form-field appearance="outline" [style.width.px]='80'>
-                <mat-label>{{'august' | translate}}</mat-label>
-                <input matInput type="number" [formControl]="genBill" matTooltip="We'll use this value to ..."/>
-            </mat-form-field>
-            <mat-form-field appearance="outline" [style.width.px]='80'>
-                <mat-label>{{'september' | translate}}</mat-label>
-                <input matInput type="number" [formControl]="genBill" matTooltip="We'll use this value to ..."/>
-            </mat-form-field>
-            <mat-form-field appearance="outline" [style.width.px]='80'>
-                <mat-label>{{'october' | translate}}</mat-label>
-                <input matInput type="number" [formControl]="genBill" matTooltip="We'll use this value to ..."/>
-            </mat-form-field>
-            <mat-form-field appearance="outline" [style.width.px]='80'>
-                <mat-label>{{'november' | translate}}</mat-label>
-                <input matInput type="number" [formControl]="genBill" matTooltip="We'll use this value to ..."/>
-            </mat-form-field>
-            <mat-form-field appearance="outline" [style.width.px]='80'>
-                <mat-label>{{'december' | translate}}</mat-label>
-                <input matInput type="number" [formControl]="genBill" matTooltip="We'll use this value to ..."/>
-            </mat-form-field>
-        </section>  -->
-
         <button mat-raised-button color="primary" type="submit" [disabled]="!objectiveForm.valid">ADD</button>
 
       </mat-card>
     </form>
     <div style="margin-left: auto; margin-right: auto"><span id="postFeedback"></span></div>
 
-      <article>
+    <article>
         <div></div>
         <button class="button-remove-rows" mat-button (click)="removeSelectedRows()">Remove selected Rows</button>
         <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
@@ -222,5 +117,5 @@
           <mat-header-row *matHeaderRowDef="columnsDisplayed"></mat-header-row>
           <mat-row *matRowDef="let row; columns: columnsDisplayed;"></mat-row>
         </mat-table>
-      </article>
+    </article>
 </div>

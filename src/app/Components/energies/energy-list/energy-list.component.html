@@ -1,5 +1,8 @@
 <h2>Energies list:</h2>
-
+<mat-chip-option color="accent" selected>
+  <strong>Para los resultados de explotación, que tendrán que estar todos en kWh, recordar que:</strong> 
+  <div>hay que multiplicar la cantidad entrada por el usuario por la DENSIDAD y luego por el PCI</div>  
+</mat-chip-option>
 <div class="mat-elevation-z8">
 <mat-table *ngIf="!isGridView" [dataSource]="dataSource" matSort class="mat-elevation-z8">
   <ng-container matColumnDef="nameES">
@@ -18,7 +21,7 @@
   </ng-container>
 
   <ng-container matColumnDef="pci">
-    <mat-header-cell *matHeaderCellDef mat-sort-header>PCI</mat-header-cell>
+    <mat-header-cell *matHeaderCellDef mat-sort-header>PCI(kWh/kg)</mat-header-cell>
     <mat-cell class="pci" *matCellDef="let energy">{{energy.pci}}</mat-cell>
   </ng-container>
 

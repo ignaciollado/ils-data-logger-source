@@ -7,7 +7,7 @@
 
     <mat-card [class.mat-elevation-z8]="isElevated">
       <section>
-        <mat-form-field appearance="outline" [style.width.px]=425>
+        <mat-form-field [style.width.px]=425>
           <mat-label>{{'delegation' | translate}}</mat-label>
           <mat-select [formControl]="delegation">
             <mat-option *ngFor="let delegation of delegations" [value]="delegation.companyDelegationId">
@@ -19,7 +19,7 @@
       </section>
 
       <section>
-        <mat-form-field appearance="outline" [style.width.px]=425>
+        <mat-form-field [style.width.px]=425>
           <mat-label>{{'year' | translate}}</mat-label>
           <mat-select [formControl]="yearEmission">
             <mat-option value="2019">2019</mat-option>
@@ -35,7 +35,7 @@
       </section>
 
       <section>
-        <mat-form-field appearance="outline" [style.width.px]=425>
+        <mat-form-field [style.width.px]=425>
           <mat-label>{{'quantityCO2e' | translate}}</mat-label>
           <input matInput type="number" [formControl]="quantityEmission" />
           <mat-error *ngIf="quantityEmission.hasError('required')">{{'quantity' | translate}} <strong>{{'isRequired' | translate}}</strong></mat-error>
@@ -50,7 +50,7 @@
         </mat-radio-group>
       </section> -->
 
-<!--       <section>
+    <!--       <section>
         <mat-form-field appearance="outline" [style.width.px]=425>
           <mat-label>{{'monthlyObjective' | translate}}</mat-label>
           <input matInput type="number" [formControl]="objective" />
@@ -59,15 +59,13 @@
       </section> -->
 
       <section>
-        <mat-form-field appearance="outline" [style.width]='20'>
+        <mat-form-field [style.width]='20'>
           <mat-label>{{"scopeOne" | translate}}</mat-label>
           <input matInput type="number" [formControl]="scopeone" />
           <mat-error *ngIf="scopeone.hasError('required')">{{"scopeOne" | translate}} <strong>{{'isRequired' | translate}}</strong></mat-error>
         </mat-form-field>
-<!--       </section>
 
-      <section> -->
-        <mat-form-field appearance="outline" [style.width]='20'>
+        <mat-form-field [style.width]='20'>
           <mat-label>{{"scopeTwo" | translate}}</mat-label>
           <input matInput type="number" [formControl]="scopetwo" />
           <mat-error *ngIf="scopetwo.hasError('required')">{{'scopeTwo' | translate}} <strong>{{'isRequired' | translate}}</strong></mat-error>
@@ -77,55 +75,67 @@
       <button mat-raised-button color="primary" type="submit" [disabled]="!emissionForm.valid">ADD</button>
     </mat-card>
   </form>
+  <div style="margin-left: auto; margin-right: auto"><span id="postFeedback"></span></div>
+
+
+<article>
+  <div></div>
+  <button class="button-remove-rows" mat-button (click)="removeSelectedRows()">Remove selected Rows</button>
+  <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <ng-container [matColumnDef]="col.key" *ngFor="let col of columnsSchema">
+      <mat-header-cell *matHeaderCellDef [ngSwitch]="col.key">
+          <span *ngSwitchCase="'isSelected'">
+             <!--  <mat-checkbox
+                  (change)="selectAll($event)"
+                  [checked]="isAllSelected()"
+                  [indeterminate]="!isAllSelected() && isAnySelected()">
+              </mat-checkbox> -->
+          </span>
+          <span *ngSwitchDefault>{{ col.label }}</span>
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+          <div [ngSwitch]="col.type" *ngIf="!element.isEdit">
+              <ng-container *ngSwitchCase="'isSelected'">
+                <mat-checkbox
+                  (change)="element.isSelected = $event.checked"
+                  [checked]="element.isSelected">
+                </mat-checkbox>
+              </ng-container>
+            <div class="btn-edit" *ngSwitchCase="'isEdit'">
+              <button mat-icon-button (click)="element.isEdit = !element.isEdit"
+                class="material-icons app-toolbar-menu save-button"
+                matTooltip="Edit" color="primary"><mat-icon>edit</mat-icon>
+              </button>
+              <button mat-icon-button class="material-icons app-toolbar-menu delete-button" (click)="removeRow(element.Id)"
+                matTooltip="Delete" color="warn"><mat-icon>delete</mat-icon>
+              </button>
+            </div>
+            <span *ngSwitchDefault ngClass="small-data">
+              {{ element[col.key] }}
+            </span>
+          </div>
+
+          <div [ngSwitch]="col.type" *ngIf="element.isEdit">
+            <div class="btn-edit" *ngSwitchCase="'isEdit'">
+              <button mat-button (click)="editRow(element)" [disabled]="valid[element.Id] === false">Done</button>
+            </div>
+            <span *ngSwitchCase="'isSelected'" ngClass="small-data">
+              {{element[col.key]}}
+            </span>
+
+            <span *ngSwitchCase="'text'" ngClass="small-data">
+              {{element[col.key]}}
+            </span>
+
+            <input *ngSwitchCase="'number'" [type]="col.type" [(ngModel)]="element[col.key]" ngClass="small-data" [style.width.px]='70'/>
+          </div>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="columnsDisplayed"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: columnsDisplayed;"></mat-row>
+  </mat-table>
+  <div class="loader" *ngIf="!dataSource">No records found yet...</div>
+</article>
 </div>
 
-<h2>{{'consumptionList' | translate}}</h2>
-<mat-form-field>
-  <mat-label>Filter</mat-label>
-  <input matInput (keyup)="applyFilter($event)" placeholder="Search columns" #input>
-</mat-form-field>
-
-<mat-table *ngIf="!isGridView" [dataSource]="consumptions" class="mat-elevation-z8" matSort #emissionTbSort="matSort">
-  <ng-container matColumnDef="delegation">
-    <mat-header-cell *matHeaderCellDef mat-sort-header>{{'delegation' | translate}}</mat-header-cell>
-    <mat-cell *matCellDef="let consumption">{{consumption.delegation}}</mat-cell>
-  </ng-container>
-  <ng-container matColumnDef="year">
-    <mat-header-cell *matHeaderCellDef mat-sort-header>{{'year' | translate}}</mat-header-cell>
-    <mat-cell *matCellDef="let consumption">{{consumption.year}}</mat-cell>
-  </ng-container>
-  <ng-container matColumnDef="quantity">
-    <mat-header-cell *matHeaderCellDef mat-sort-header>{{'quantityCO2e' | translate}}</mat-header-cell>
-    <mat-cell *matCellDef="let consumption" title="{{consumption.quantity | formatQuantity: 8}}">{{consumption.quantity}}</mat-cell>
-  </ng-container>
-  <ng-container matColumnDef="objective">
-    <mat-header-cell *matHeaderCellDef mat-sort-header>{{'objectiveCO2e' | translate}}</mat-header-cell>
-    <mat-cell *matCellDef="let consumption" title="{{consumption.objective | formatQuantity: 8}}">{{consumption.objective}}</mat-cell>
-  </ng-container>
-  <ng-container matColumnDef="scopeone">
-    <mat-header-cell *matHeaderCellDef mat-sort-header>{{'scopeOne' | translate}}</mat-header-cell>
-    <mat-cell *matCellDef="let consumption" title="{{consumption.scopeOne | formatQuantity: 8}}">{{consumption.scopeOne}}</mat-cell>
-  </ng-container>
-  <ng-container matColumnDef="scopetwo">
-    <mat-header-cell *matHeaderCellDef mat-sort-header>{{'scopeTwo' | translate}}</mat-header-cell>
-    <mat-cell *matCellDef="let consumption" title="{{consumption.scopeTwo | formatQuantity: 8}}">{{consumption.scopeTwo}}</mat-cell>
-  </ng-container>
-
-  <ng-container matColumnDef="ACTIONS">
-    <mat-header-cell *matHeaderCellDef>ACTIONS</mat-header-cell>
-    <mat-cell *matCellDef="let consumption">
-<!--       <button mat-icon-button color="accent" matTooltip="Update this indicator"
-        aria-label="Button that displays a tooltip and updates this indicator" (click)="updateEmissionConsumption(consumption.consumptionId)">
-        <mat-icon>edit</mat-icon>
-      </button> -->
-    <button mat-icon-button color="warn" matTooltip="Permanently delete this indicator"
-      aria-label="Button that displays a tooltip and deletes this indicator" (click)="deleteEmissionConsumption(consumption.consumptionId)"><mat-icon>delete</mat-icon>
-    </button>
-    </mat-cell>
-  </ng-container>
-
-  <mat-header-row *matHeaderRowDef="columnsDisplayed"></mat-header-row>
-  <mat-row *matRowDef="let item; columns: columnsDisplayed;"></mat-row>
-</mat-table>
-
-<div class="loader" *ngIf="!consumptions">No records found yet...</div>

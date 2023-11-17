@@ -30,8 +30,9 @@ import { MatSort } from '@angular/material/sort';
 import { MatDialog } from '@angular/material/dialog'
 import { ConfirmDialogComponent } from 'src/app/confirm-dialog/confirm-dialog.component'
 
-const USER_DATA = [
-  {Id: 1, delegation: "Son Castelló", year: "2019", energyES: "Electricidad (kWh)", "jan": 1.50},
+const ENERGIES_DATA = [
+  {Id: 1, delegation: "Son Castelló", year: "2019", energyES: "Fuel (kg)", "jan": 15000000, "feb": 15000000, "mar": 15000000, "apr": 15000000, "may": 15000000
+  , "jun": 15000000, "jul": 15000000, "aug": 15000000, "sep": 15000000, "oct": 15000000, "nov": 15000000, "dec": 15000000},
   {Id: 2, delegation: "Can Valero", year: "2020", energyES: "Fuel (kg)", "jan": .300},
   {Id: 3, delegation: "Son Castelló", year: "2019", energyES: "Gas butano (kg)", "jan": 500.57, "feb": 1.4579},
   {Id: 4, delegation: "Son Castelló", year: "2020", energyES: "Gas Natural (kWh)", "jan": 1.2550}
@@ -93,9 +94,10 @@ export class PostFormComponent implements OnInit {
 
   isGridView: boolean = false
   columnsDisplayed: string[] = energyColumns.map((col) => col.key);
-  /* dataSource: any = USER_DATA */
+  dataSource: any = ENERGIES_DATA
+    /* dataSource = new MatTableDataSource<ConsumptionDTO>() */
   columnsSchema: any = energyColumns;
-  dataSource = new MatTableDataSource<ConsumptionDTO>()
+
   valid: any = {}
 /*   columnsDisplayed = ['delegation', 'year', 'energy', 'enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'setiembre', 'octubre', 'noviembre', 'diciembre', 'ACTIONS'];
   ; */

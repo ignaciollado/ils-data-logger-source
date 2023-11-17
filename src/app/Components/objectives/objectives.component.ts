@@ -175,6 +175,7 @@ export class ObjectivesComponent {
   dataSource = new MatTableDataSource<ObjectiveDTO>()
   columnsSchema: any = ObjectiveColumns
   valid: any = {}
+  
   constructor (
     private delegationService: DelegationService,
     private jwtHelper: JwtHelperService,

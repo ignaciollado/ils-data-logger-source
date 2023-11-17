@@ -1,6 +1,32 @@
-.button-add-row {
-  background: #1b9e1b;
-  color: #ffffff;
+.error {
+  color: red;
+}
+
+#postFeedback {
+  visibility: hidden;
+  min-width: 250px;
+  color: #fff;
+  text-align: center;
+  border-radius: 10px;
+  padding: 16px;
+  z-index: 1;
+  font-size: 14px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#postFeedback.requestOk {
+  background-color: green;
+}
+
+#postFeedback.requestKo {
+  background-color: red;
+}
+
+#postFeedback.show {
+  visibility: visible;
+  -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  animation: fadein 0.5s, fadeout 0.5s 2.5s;
 }
 .button-add-row {
   background: #1b9e1b;
@@ -33,14 +59,13 @@ input[type=number] {
 outline: none;
 }
 
-input:focus {
+input {
   background-color: aquamarine;
 }
 
 mat-table {
   margin-top: .5rem;
   margin-bottom: 2rem;
-  max-height: 3rem;
   max-width: 100%;
 }
 

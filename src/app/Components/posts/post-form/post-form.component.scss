@@ -33,10 +33,6 @@
   background: #1b9e1b;
   color: #ffffff;
 }
-.button-add-row {
-  background: #1b9e1b;
-  color: #ffffff;
-}
 .button-remove-rows {
   background: red;
   color: #ffffff;
@@ -58,9 +54,20 @@ input::-webkit-inner-spin-button {
   margin: 0;
 }
 
+input[type=number] {
+  appearance: textfield;
+  border: none transparent;
+outline: none;
+}
+
+input {
+  background-color: aquamarine;
+}
+
 mat-table {
   margin-top: .5rem;
-  max-width: 95%;
+  margin-bottom: 2rem;
+  max-width: 100%;
 }
 
 .mat-column-year{
@@ -116,11 +123,12 @@ mat-header-row{
 mat-header-cell {
   color: #fff;
   font-size: .7rem;
+  min-width: 5rem;
 }
 
 mat-row{
   background-color: #919191;
-  font-size: .2rem;
+  min-width: 100%;
 }
 
 mat-cell {

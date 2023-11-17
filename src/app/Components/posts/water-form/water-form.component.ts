@@ -77,9 +77,9 @@ export class WaterFormComponent {
 
   isGridView: boolean = false
   columnsDisplayed: string[] = waterColumns.map((col) => col.key);
-  /* dataSource: any = WATER_DATA */ 
+  dataSource: any = WATER_DATA
+  //dataSource = new MatTableDataSource<ConsumptionDTO>()
   columnsSchema: any = waterColumns;
-  dataSource = new MatTableDataSource<ConsumptionDTO>() 
   valid: any = {}
 /*   columnsDisplayed = ['delegation', 'year', 'water', 'enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'setiembre', 'octubre', 'noviembre', 'diciembre', 'ACTIONS'];
   dataSource = new MatTableDataSource(this.consumptions); */

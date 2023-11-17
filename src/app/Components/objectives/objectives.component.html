@@ -66,7 +66,7 @@
           <ng-container [matColumnDef]="col.key" *ngFor="let col of columnsSchema">
             <mat-header-cell *matHeaderCellDef [ngSwitch]="col.key">
                 <span *ngSwitchCase="'isSelected'">
-                   <!--  <mat-checkbox
+                  <!--   <mat-checkbox
                         (change)="selectAll($event)"
                         [checked]="isAllSelected()"
                         [indeterminate]="!isAllSelected() && isAnySelected()">
@@ -103,15 +103,15 @@
                   <span *ngSwitchCase="'isSelected'" ngClass="small-data">{{element[col.key]}}</span>
                   <span *ngSwitchCase="'text'" ngClass="small-data">{{element[col.key]}}</span>
 
-                  <input *ngSwitchCase="'number'" [type]="col.type" [(ngModel)]="element[col.key]" ngClass="small-data" [style.width.px]='70'/>
+                  <input *ngSwitchCase="'number'" [type]="col.type" [(ngModel)]="element[col.key]" ngClass="small-data-input" [style.width.px]='70'/>
                   <container_element [ngSwitch]="col.key">
-                    <mat-slide-toggle
+                    <mat-checkbox
                     [checked]="checked"
                     [disabled]="disabled"
                     [(ngModel)]="isChecked"
                     matTooltip="Copy me!"
                     matTooltipPosition="after"
-                    (change)="copyCnaeMonthValue(element)" *ngSwitchCase="'jan'"></mat-slide-toggle>
+                    (change)="copyCnaeMonthValue(element)" *ngSwitchCase="'jan'"></mat-checkbox>
                   </container_element>
                 </div>
             </mat-cell>

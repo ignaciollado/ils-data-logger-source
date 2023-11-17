@@ -26,11 +26,11 @@ import { MatDialog } from '@angular/material/dialog'
 import { ConfirmDialogComponent } from 'src/app/confirm-dialog/confirm-dialog.component'
 
 const EMISSION_DATA = [
-  {Id: 1, delegation: "Son Castelló", year: "2019", residueES: "Combustión no peligrosos (kg)", "jan": 15000000, "feb": 15000000, "mar": 15000000, "apr": 15000000, "may": 15000000
+  {Id: 1, delegation: "Mock data", year: "2019", residueES: "Combustión no peligrosos (kg)", "jan": 15000000, "feb": 15000000, "mar": 15000000, "apr": 15000000, "may": 15000000
   , "jun": 15000000, "jul": 15000000, "aug": 15000000, "sep": 15000000, "oct": 15000000, "nov": 15000000, "dec": 15000000},
-  {Id: 2, delegation: "Can Valero", year: "2020", residueES: "Construcción y demolición (obra) (kg)", "jan": .300},
-  {Id: 3, delegation: "Son Castelló", year: "2019", residueES: "Productos alimentarios (kg)", "jan": 500.57, "feb": 1.4579},
-  {Id: 4, delegation: "Son Castelló", year: "2020", residueES: "Urbano Mezclado (kg)", "jan": 1.2550}
+  {Id: 2, delegation: "Mock data", year: "2020", residueES: "Construcción y demolición (obra) (kg)", "jan": .300},
+  {Id: 3, delegation: "Mock data", year: "2019", residueES: "Productos alimentarios (kg)", "jan": 500.57, "feb": 1.4579},
+  {Id: 4, delegation: "Mock data", year: "2020", residueES: "Urbano Mezclado (kg)", "jan": 1.2550}
 ];
 
 @Component({
@@ -66,8 +66,8 @@ export class EmissionFormComponent {
 
   isGridView: boolean = false
   columnsDisplayed: string[] = emissionColumns.map((col) => col.key);
-  /* dataSource: any = EMISSION_DATA */
-  dataSource = new MatTableDataSource<ConsumptionDTO>();
+  dataSource: any = EMISSION_DATA
+  //dataSource = new MatTableDataSource<ConsumptionDTO>();
   columnsSchema: any = emissionColumns;
   /* columnsDisplayed = ['delegation', 'year', 'quantity', 'objective', 'scopeone', 'scopetwo', 'ACTIONS']; */
   valid: any = {}
@@ -77,7 +77,7 @@ export class EmissionFormComponent {
   ngAfterViewInit() {
     this.dataSource.sort = this.emissionTbSort;
   }
-  
+
   constructor(
     private activatedRoute: ActivatedRoute,
     private consumptionService: ConsumptionService,
@@ -207,7 +207,7 @@ export class EmissionFormComponent {
       this.consumptionService.deleteConsumption(consumptionId).subscribe(
         (rowsAffected: deleteResponse) => {
           if (rowsAffected.affected > 0) {
-   
+
           }
         },
         (error: HttpErrorResponse) => {
@@ -246,7 +246,7 @@ export class EmissionFormComponent {
     this.consumptionService.deleteConsumption(row).subscribe(
       (rowsAffected: deleteResponse) => {
         if (rowsAffected.affected > 0) {
- 
+
         }
       },
       (error: HttpErrorResponse) => {
@@ -260,7 +260,7 @@ export class EmissionFormComponent {
   public addRow() {
     /*  const newRow = {"delegation": this.delegation.value, "year": this.yearObjective.value, "energyES": this.energy.value, "objectiveType": this.objectiveType.value, isEdit: true} */
     /*  this.dataSource = [...this.dataSource, newRow];  */
-    
+
     const newRow: ConsumptionDTO = {
       consumptionId: '0',
       companyId: this.userId,
@@ -372,19 +372,19 @@ export class EmissionFormComponent {
     return false
   }
 
-  public isAllSelected() {
-    /* return this.dataSource.every((item: any) => item.isSelected); */
+  public isAllSelected():boolean {
+    return this.dataSource.every((item: any) => item.isSelected);
   }
 
-  public isAnySelected() {
-    /* return this.dataSource.some((item: any) => item.isSelected); */
+  public isAnySelected():boolean {
+    return this.dataSource.some((item: any) => item.isSelected);
   }
 
-  public selectAll(event) {
-    /* this.dataSource = this.dataSource.map((item: any) => ({
+  public selectAll(event):void {
+    this.dataSource = this.dataSource.map((item: any) => ({
       ...item,
       isSelected: event.checked,
-    })); */
+    }));
   }
 
   applyFilter(event: Event) {

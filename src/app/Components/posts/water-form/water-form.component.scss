@@ -63,57 +63,63 @@ input[type=number] {
 outline: none;
 }
 
-input {
+.small-data {
+  font-size: .6rem;
+}
+
+.small-data-input {
+  font-size: .6rem;
   background-color: aquamarine;
+  border: 1px solid black;
 }
 
 mat-table {
   margin-top: .5rem;
   margin-bottom: 2rem;
-  max-width: 100%;
+  width: 100%;
 }
 
 .mat-column-year{
-  max-width: 3rem;
+  max-width: 2.7rem;
 }
 .mat-column-delegation{
   max-width: 7rem;
 }
 .mat-column-jan{
-  max-width: 5rem;
+  max-width: 4.5rem;
 }
 .mat-column-feb{
-  max-width: 5rem;
+  max-width: 4.5rem;
 }
 .mat-column-mar{
-  max-width: 5rem;
+  max-width: 4.5rem;
 }
 .mat-column-apr{
-  max-width: 5rem;
+  max-width: 4.5rem;
 }
 .mat-column-may{
-  max-width: 5rem;
+  max-width: 4.5rem;
 }
 .mat-column-jun{
-  max-width: 5rem;
+  max-width: 4.5rem;
 }
 .mat-column-jul{
-  max-width: 5rem;
+  max-width: 4.5rem;
 }
 .mat-column-aug{
-  max-width: 5rem;
+  max-width: 4.5rem;
 }
 .mat-column-sep{
-  max-width: 5rem;
+  max-width: 4.5rem;
 }
 .mat-column-oct{
-  max-width: 5rem;
+  max-width: 4.5rem;
 }
 .mat-column-nov{
-  max-width: 5rem;
+  max-width: 4.5rem;
 }
 .mat-column-dec{
-  max-width: 5rem;
+  max-width: 4.5rem;
 }
 .mat-column-isEdit{
   max-width: 5rem;
@@ -123,16 +129,11 @@ mat-header-row{
 }
 
 mat-header-cell {
-  color: #fff;
-  font-size: .7rem;
-  min-width: 5rem;
+  color: white;
+  font-size: .5rem;
 }
 
-mat-row{
+mat-cell{
   background-color: #919191;
-  min-width: 100%;
 }
 
-mat-cell {
-  color: #000;
-}

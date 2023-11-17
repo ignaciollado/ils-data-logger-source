@@ -1,6 +1,6 @@
 
   <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="start">
-    
+
     <mat-tab label="{{'energy' | translate}}">
       <div class="container-form">
         <h1>{{'energyConsumption' | translate}}</h1>
@@ -53,67 +53,60 @@
         </form>
         <div style="margin-left: auto; margin-right: auto"><span id="postFeedback"></span></div>
         <article>
-      <div></div>
-      <button class="button-remove-rows" mat-button (click)="removeSelectedRows()">Remove selected Rows</button>
-      <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-        <ng-container [matColumnDef]="col.key" *ngFor="let col of columnsSchema">
-          <mat-header-cell *matHeaderCellDef [ngSwitch]="col.key">
-              <span *ngSwitchCase="'isSelected'">
-                 <!--  <mat-checkbox
-                      (change)="selectAll($event)"
-                      [checked]="isAllSelected()"
-                      [indeterminate]="!isAllSelected() && isAnySelected()">
-                  </mat-checkbox> -->
-              </span>
-              <span *ngSwitchDefault>{{ col.label }}</span>
-          </mat-header-cell>
-          <mat-cell *matCellDef="let element">
-              <div [ngSwitch]="col.type" *ngIf="!element.isEdit">
-                  <ng-container *ngSwitchCase="'isSelected'">
-                    <mat-checkbox
-                      (change)="element.isSelected = $event.checked"
-                      [checked]="element.isSelected">
-                    </mat-checkbox>
-                  </ng-container>
-                <div class="btn-edit" *ngSwitchCase="'isEdit'">
-                  <button mat-icon-button (click)="element.isEdit = !element.isEdit"
-                    class="material-icons app-toolbar-menu save-button"
-                    matTooltip="Edit" color="primary"><mat-icon>edit</mat-icon>
-                  </button>
-                  <button mat-icon-button class="material-icons app-toolbar-menu delete-button" (click)="removeRow(element.Id)"
-                    matTooltip="Delete" color="warn"><mat-icon>delete</mat-icon>
-                  </button>
-                </div>
-                <span *ngSwitchDefault ngClass="small-data">
-                  {{ element[col.key] }}
-                </span>
-              </div>
+          <div></div>
+          <button class="button-remove-rows" mat-button (click)="removeSelectedRows()">Remove selected Rows</button>
+          <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+            <ng-container [matColumnDef]="col.key" *ngFor="let col of columnsSchema">
+              <mat-header-cell *matHeaderCellDef [ngSwitch]="col.key">
+                  <span *ngSwitchCase="'isSelected'">
+                    <!--   <mat-checkbox
+                          (change)="selectAll($event)"
+                          [checked]="isAllSelected()"
+                          [indeterminate]="!isAllSelected() && isAnySelected()">
+                      </mat-checkbox> -->
+                  </span>
+                  <span *ngSwitchDefault>{{ col.label }}</span>
+              </mat-header-cell>
+              <mat-cell *matCellDef="let element">
+                  <div [ngSwitch]="col.type" *ngIf="!element.isEdit">
+                      <ng-container *ngSwitchCase="'isSelected'">
+                        <mat-checkbox
+                          (change)="element.isSelected = $event.checked"
+                          [checked]="element.isSelected">
+                        </mat-checkbox>
+                      </ng-container>
+                    <div class="btn-edit" *ngSwitchCase="'isEdit'">
+                      <button mat-icon-button (click)="element.isEdit = !element.isEdit"
+                        class="material-icons app-toolbar-menu save-button"
+                        matTooltip="Edit" color="primary"><mat-icon>edit</mat-icon>
+                      </button>
+                      <button mat-icon-button class="material-icons app-toolbar-menu delete-button" (click)="removeRow(element.Id)"
+                        matTooltip="Delete" color="warn"><mat-icon>delete</mat-icon>
+                      </button>
+                    </div>
+                    <span *ngSwitchDefault ngClass="small-data">
+                      {{ element[col.key] }}
+                    </span>
+                  </div>
 
-              <div [ngSwitch]="col.type" *ngIf="element.isEdit">
-                <div class="btn-edit" *ngSwitchCase="'isEdit'">
-                  <button mat-button (click)="editRow(element)" [disabled]="valid[element.Id] === false">Done</button>
-                </div>
-                <span *ngSwitchCase="'isSelected'" ngClass="small-data">
-                  {{element[col.key]}}
-                </span>
+                  <div [ngSwitch]="col.type" *ngIf="element.isEdit">
+                    <div class="btn-edit" *ngSwitchCase="'isEdit'">
+                      <button mat-button (click)="editRow(element)" [disabled]="valid[element.Id] === false">Done</button>
+                    </div>
+                    <span *ngSwitchCase="'isSelected'" ngClass="small-data">{{element[col.key]}}</span>
+                    <span *ngSwitchCase="'text'" ngClass="small-data">{{element[col.key]}}</span>
 
-                <span *ngSwitchCase="'text'" ngClass="small-data">
-                  {{element[col.key]}}
-                </span>
-
-                <input *ngSwitchCase="'number'" [type]="col.type" [(ngModel)]="element[col.key]" ngClass="small-data" [style.width.px]='70'/>
-              </div>
-          </mat-cell>
-        </ng-container>
-
-        <mat-header-row *matHeaderRowDef="columnsDisplayed"></mat-header-row>
-        <mat-row *matRowDef="let row; columns: columnsDisplayed;"></mat-row>
-      </mat-table>
-      <div class="loader" *ngIf="!dataSource">No records found yet...</div>
-        </article>
+                    <input *ngSwitchCase="'number'" [type]="col.type" [(ngModel)]="element[col.key]" ngClass="small-data-input" [style.width.px]='70'/>
+                  </div>
+              </mat-cell>
+            </ng-container>
+            <mat-header-row *matHeaderRowDef="columnsDisplayed"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: columnsDisplayed;"></mat-row>
+          </mat-table>
+      </article>
       </div>
     </mat-tab>
-    
+
   <mat-tab label="{{'water' | translate}}">
     <app-water-form [monthYearDefault]="yearEnergy.value" [delegationDefault]="delegation.value"></app-water-form>
   </mat-tab>

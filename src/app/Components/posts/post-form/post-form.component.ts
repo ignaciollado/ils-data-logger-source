@@ -31,11 +31,11 @@ import { MatDialog } from '@angular/material/dialog'
 import { ConfirmDialogComponent } from 'src/app/confirm-dialog/confirm-dialog.component'
 
 const ENERGIES_DATA = [
-  {Id: 1, delegation: "Son Castelló", year: "2019", energyES: "Fuel (kg)", "jan": 15000000, "feb": 15000000, "mar": 15000000, "apr": 15000000, "may": 15000000
+  {Id: 1, delegation: "Mock data", year: "2019", energyES: "Fuel (kg)", "jan": 15000000, "feb": 15000000, "mar": 15000000, "apr": 15000000, "may": 15000000
   , "jun": 15000000, "jul": 15000000, "aug": 15000000, "sep": 15000000, "oct": 15000000, "nov": 15000000, "dec": 15000000},
-  {Id: 2, delegation: "Can Valero", year: "2020", energyES: "Fuel (kg)", "jan": .300},
-  {Id: 3, delegation: "Son Castelló", year: "2019", energyES: "Gas butano (kg)", "jan": 500.57, "feb": 1.4579},
-  {Id: 4, delegation: "Son Castelló", year: "2020", energyES: "Gas Natural (kWh)", "jan": 1.2550}
+  {Id: 2, delegation: "Mock data", year: "2020", energyES: "Fuel (kg)", "jan": .300},
+  {Id: 3, delegation: "Mock data", year: "2019", energyES: "Gas butano (kg)", "jan": 500.57, "feb": 1.4579},
+  {Id: 4, delegation: "Mock data", year: "2020", energyES: "Gas Natural (kWh)", "jan": 1.2550}
 ];
 @Component({
   selector: 'app-post-form',

@@ -42,22 +42,6 @@
         </mat-form-field>
       </section>
 
-     <!--  <section>
-        <mat-label>{{'selectRatioType' | translate}}</mat-label><br>
-        <mat-radio-group aria-label="Please, select the ratio type" [formControl]="theRatioType" (change)='ratioTypeSelected(theRatioType.value)'>
-          <mat-radio-button value="billing">{{'billing' | translate}} (kEUR)</mat-radio-button>
-          <mat-radio-button value="cnae">CNAE</mat-radio-button>
-        </mat-radio-group>
-      </section> -->
-
-    <!--       <section>
-        <mat-form-field appearance="outline" [style.width.px]=425>
-          <mat-label>{{'monthlyObjective' | translate}}</mat-label>
-          <input matInput type="number" [formControl]="objective" />
-          <mat-error *ngIf="objective.hasError('required')">{{'monthlyObjective' | translate}} <strong>{{'isRequired' | translate}}</strong></mat-error>
-        </mat-form-field>
-      </section> -->
-
       <section>
         <mat-form-field [style.width]='20'>
           <mat-label>{{"scopeOne" | translate}}</mat-label>
@@ -127,7 +111,7 @@
               {{element[col.key]}}
             </span>
 
-            <input *ngSwitchCase="'number'" [type]="col.type" [(ngModel)]="element[col.key]" ngClass="small-data" [style.width.px]='70'/>
+            <input *ngSwitchCase="'number'" [type]="col.type" [(ngModel)]="element[col.key]" ngClass="small-data-input" [style.width.px]='70'/>
           </div>
       </mat-cell>
     </ng-container>

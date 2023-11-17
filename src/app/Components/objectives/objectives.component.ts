@@ -234,14 +234,13 @@ export class ObjectivesComponent {
   }
 
   public copyCnaeMonthValue( resource: ObjectiveDTO ) {
-console.log (this.isChecked)
+    console.log (this.isChecked)
     if (this.isChecked) {
       resource.dec = resource.nov = resource.oct = resource.sep = resource.aug = resource.jul = resource.jun = resource.may = resource.apr = resource.mar = resource.feb = resource.jan
     } else {
       resource.dec = resource.nov = resource.oct = resource.sep = resource.aug = resource.jul = resource.jun = resource.may = resource.apr = resource.mar = resource.feb = null
     }
     this.isChecked = false
-
   }
 
   public setAll(completed: boolean) {
@@ -332,7 +331,6 @@ console.log (this.isChecked)
     );
   });
   }
-
   public removeSelectedRows() {
     /* this.dataSource = this.dataSource.filter((u: any) => !u.isSelected); */
 
@@ -363,7 +361,6 @@ console.log (this.isChecked)
         }
       }) */
   }
-
   disableSubmit(id: number) {
     if (this.valid[id]) {
       return Object.values(this.valid[id]).some((item) => item === false)
@@ -371,19 +368,19 @@ console.log (this.isChecked)
     return false
   }
 
-  public isAllSelected() {
-    /* return this.dataSource.every((item: any) => item.isSelected); */
+  public isAllSelected():boolean {
+    return this.dataSource.every((item: any) => item.isSelected);
   }
 
-  public isAnySelected() {
-    /* return this.dataSource.some((item: any) => item.isSelected); */
+  public isAnySelected():boolean {
+    return this.dataSource.some((item: any) => item.isSelected);
   }
 
-  public selectAll(event) {
-    /* this.dataSource = this.dataSource.map((item: any) => ({
+  public selectAll(event):void {
+    this.dataSource = this.dataSource.map((item: any) => ({
       ...item,
       isSelected: event.checked,
-    })); */
+    }));
   }
 
   applyFilter(event: Event) {

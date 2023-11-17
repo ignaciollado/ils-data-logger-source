@@ -1,7 +1,7 @@
 
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, Inject, Input, ViewChild } from '@angular/core';
-import { 
+import {
   UntypedFormBuilder,
   UntypedFormControl,
   UntypedFormGroup,
@@ -78,8 +78,8 @@ export class ResidueFormComponent {
 
   isGridView: boolean = false
   columnsDisplayed: string[] = residueColumns.map((col) => col.key);
-  /* dataSource: any = RESIDUES_DATA */
-  dataSource = new MatTableDataSource<ConsumptionDTO>();
+  dataSource: any = RESIDUES_DATA
+  //dataSource = new MatTableDataSource<ConsumptionDTO>();
   columnsSchema: any = residueColumns;
   /* columnsDisplayed = ['delegation', 'year', 'residue', 'enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'setiembre', 'octubre', 'noviembre', 'diciembre', 'ACTIONS']; */
   valid: any = {}
@@ -120,7 +120,7 @@ export class ResidueFormComponent {
     this.incineration = new UntypedFormControl('', [ Validators.min(0), Validators.max(100) ])
     this.dump = new UntypedFormControl('', [ Validators.min(0), Validators.max(100) ])
     this.compost = new UntypedFormControl('', [ Validators.min(0), Validators.max(100) ]) */
-   
+
     this.companyId = new UntypedFormControl(this.userId, [ Validators.required ])
     this.yearResidue = new UntypedFormControl('', [ Validators.required ])
 
@@ -247,7 +247,7 @@ export class ResidueFormComponent {
       this.consumptionService.deleteConsumption(consumptionId).subscribe(
         (rowsAffected: deleteResponse) => {
           if (rowsAffected.affected > 0) {
-            
+
           }
         },
         (error: HttpErrorResponse) => {
@@ -287,7 +287,7 @@ export class ResidueFormComponent {
   public addRow() {
     /*  const newRow = {"delegation": this.delegation.value, "year": this.yearObjective.value, "energyES": this.energy.value, "objectiveType": this.objectiveType.value, isEdit: true} */
     /*  this.dataSource = [...this.dataSource, newRow];  */
-    
+
     const newRow: ConsumptionDTO = {
       consumptionId: '0',
       companyId: this.userId,
@@ -335,7 +335,6 @@ export class ResidueFormComponent {
   }
 
   public editRow(row: ConsumptionDTO) {
-    console.log (row)
     if (row.consumptionId === '0') {
       this.consumptionService.createResidueConsumption(row).subscribe((newResidue: ConsumptionDTO) => {
         row.consumptionId = newResidue.consumptionId
@@ -399,19 +398,19 @@ export class ResidueFormComponent {
     return false
   }
 
-  public isAllSelected() {
-    /* return this.dataSource.every((item: any) => item.isSelected); */
+  public isAllSelected():boolean {
+    return this.dataSource.every((item: any) => item.isSelected);
   }
 
-  public isAnySelected() {
-    /* return this.dataSource.some((item: any) => item.isSelected); */
+  public isAnySelected():boolean {
+    return this.dataSource.some((item: any) => item.isSelected);
   }
 
-  public selectAll(event) {
-    /* this.dataSource = this.dataSource.map((item: any) => ({
+  public selectAll(event):void {
+    this.dataSource = this.dataSource.map((item: any) => ({
       ...item,
       isSelected: event.checked,
-    })); */
+    }));
   }
 
   applyFilter(event: Event) {

@@ -85,19 +85,19 @@ export const ObjectiveColumns = [
         label: "ID"
       }, */
       {
-          key: "delegation",
-          type: "text",
-          label: "Emplaçament"
+        key: "delegation",
+        type: "text",
+        label: "Emplaçament"
       },
       {
-          key: "year",
-          type: "text",
-          label: "Year"
+        key: "year",
+        type: "text",
+        label: "Year"
       },
       {
-          key: "enviromentalDataName",
-          type: "text",
-          label: "Enviromental Data"
+        key: "enviromentalDataName",
+        type: "text",
+        label: "Enviromental Data"
       },
       {
         key: "theRatioType",

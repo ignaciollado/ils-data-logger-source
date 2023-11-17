@@ -23,7 +23,8 @@ import { ResidueDTO } from 'src/app/Models/residue.dto'
 import { EnvironmentalDTO } from 'src/app/Models/environmental.dto'
 
  const OBJECTIVES_DATA = [
-  {Id: 1, delegation: "Son Castelló", year: "2019", enviromentalDataName: "Electricidad (kWh)", "theRatioType": "Billing", "jan": 1.50},
+  {Id: 1, delegation: "Son Castelló", year: "2019", enviromentalDataName: "Fuel (kg)", "theRatioType": "Billing", "jan": 15000000, "feb": 15000000, "mar": 15000000, "apr": 15000000, "may": 15000000
+  , "jun": 15000000, "jul": 15000000, "aug": 15000000, "sep": 15000000, "oct": 15000000, "nov": 15000000, "dec": 15000000},
   {Id: 2, delegation: "Can Valero", year: "2020", enviromentalDataName: "Fuel (kg)", "theRatioType": "Billing", "jan": .300},
   {Id: 3, delegation: "Son Castelló", year: "2019", enviromentalDataName: "Gas butano (kg)", "theRatioType": "Tonelada*", "jan": 500.57, "feb": 1.4579},
   {Id: 4, delegation: "Son Castelló", year: "2020", enviromentalDataName: "Gas Natural (kWh)", "theRatioType": "Tonelada*", "jan": 1.2550}
@@ -130,32 +131,6 @@ export class ObjectivesComponent {
   environmentalData: UntypedFormControl
   companyId: UntypedFormControl
 
-  genCnae: UntypedFormControl
-  febCnae: UntypedFormControl
-  marCnae: UntypedFormControl
-  aprCnae: UntypedFormControl
-  mayCnae: UntypedFormControl
-  junCnae: UntypedFormControl
-  julCnae: UntypedFormControl
-  augCnae: UntypedFormControl
-  sepCnae: UntypedFormControl
-  octCnae: UntypedFormControl
-  novCnae: UntypedFormControl
-  decCnae: UntypedFormControl
-
-  genBill: UntypedFormControl
-  febBill: UntypedFormControl
-  marBill: UntypedFormControl
-  aprBill: UntypedFormControl
-  mayBill: UntypedFormControl
-  junBill: UntypedFormControl
-  julBill: UntypedFormControl
-  augBill: UntypedFormControl
-  sepBill: UntypedFormControl
-  octBill: UntypedFormControl
-  novBill: UntypedFormControl
-  decBill: UntypedFormControl
-
   objectiveForm: UntypedFormGroup
   delegations!: DelegationDTO[]
   objectives!: ObjectiveDTO[]
@@ -171,11 +146,15 @@ export class ObjectivesComponent {
 
   isGridView: boolean = false
   columnsDisplayed : string[] = ObjectiveColumns.map((col) => col.key)
-  /* dataSource: any = OBJECTIVES_DATA */
-  dataSource = new MatTableDataSource<ObjectiveDTO>()
+  dataSource: any = OBJECTIVES_DATA
+  //dataSource = new MatTableDataSource<ObjectiveDTO>()
   columnsSchema: any = ObjectiveColumns
   valid: any = {}
-  
+
+  checked = false;
+  disabled = false;
+  isChecked = false;
+
   constructor (
     private delegationService: DelegationService,
     private jwtHelper: JwtHelperService,
@@ -193,61 +172,11 @@ export class ObjectivesComponent {
     this.yearObjective = new UntypedFormControl('', [ Validators.required ]);
     this.objectiveType = new UntypedFormControl('', [ Validators.required ]);
 
-/*     this.genCnae= new UntypedFormControl('', [ Validators.required , Validators.min(1) ])
-    this.febCnae= new UntypedFormControl('', [ Validators.required , Validators.min(1) ])
-    this.marCnae= new UntypedFormControl('', [ Validators.required , Validators.min(1) ])
-    this.aprCnae= new UntypedFormControl('', [ Validators.required , Validators.min(1) ])
-    this.mayCnae= new UntypedFormControl('', [ Validators.required , Validators.min(1) ])
-    this.junCnae= new UntypedFormControl('', [ Validators.required , Validators.min(1) ])
-    this.julCnae= new UntypedFormControl('', [ Validators.required , Validators.min(1) ])
-    this.augCnae= new UntypedFormControl('', [ Validators.required , Validators.min(1) ])
-    this.sepCnae= new UntypedFormControl('', [ Validators.required , Validators.min(1) ])
-    this.octCnae= new UntypedFormControl('', [ Validators.required , Validators.min(1) ])
-    this.novCnae= new UntypedFormControl('', [ Validators.required , Validators.min(1) ])
-    this.decCnae= new UntypedFormControl('', [ Validators.required , Validators.min(1) ]) */
-
-/*     this.genBill= new UntypedFormControl('', [ Validators.required , Validators.min(1) ])
-    this.febBill= new UntypedFormControl('', [ Validators.required , Validators.min(1) ])
-    this.marBill= new UntypedFormControl('', [ Validators.required , Validators.min(1) ])
-    this.aprBill= new UntypedFormControl('', [ Validators.required , Validators.min(1) ])
-    this.mayBill= new UntypedFormControl('', [ Validators.required , Validators.min(1) ])
-    this.junBill= new UntypedFormControl('', [ Validators.required , Validators.min(1) ])
-    this.julBill= new UntypedFormControl('', [ Validators.required , Validators.min(1) ])
-    this.augBill= new UntypedFormControl('', [ Validators.required , Validators.min(1) ])
-    this.sepBill= new UntypedFormControl('', [ Validators.required , Validators.min(1) ])
-    this.octBill= new UntypedFormControl('', [ Validators.required , Validators.min(1) ])
-    this.novBill= new UntypedFormControl('', [ Validators.required , Validators.min(1) ])
-    this.decBill= new UntypedFormControl('', [ Validators.required , Validators.min(1) ]) */
-
     this.objectiveForm = this.formBuilder.group({
       delegation: this.delegation,
       enviromentalData: this.environmentalData,
       yearObjective: this.yearObjective,
       objectiveType: this.objectiveType,
-     /*  genCnae: this.genCnae,
-      genBill: this.genBill,
-      febCnae: this.febCnae,
-      febBill: this.febBill,
-      marCnae: this.marCnae,
-      marBill: this.marBill,
-      aprCnae: this.aprCnae,
-      aprBill: this.aprBill,
-      mayCnae: this.mayCnae,
-      mayBill: this.mayBill,
-      junCnae: this.junCnae,
-      junBill: this.junBill,
-      julCnae: this.julCnae,
-      julBill: this.julBill,
-      augCnae: this.augCnae,
-      augBill: this.augBill,
-      sepCnae: this.sepCnae,
-      sepBill: this.sepBill,
-      octCnae: this.octCnae,
-      octBill: this.octBill,
-      novCnae: this.novCnae,
-      novBill: this.novBill,
-      decCnae: this.decCnae,
-      decBill: this.decBill, */
     })
 
     this.loadDelegations()
@@ -258,7 +187,6 @@ export class ObjectivesComponent {
   ngOnInit() {
     this.loadObjectives( this.userId )
   }
-
   private loadDelegations(): void {
     let errorResponse: any;
     if (this.userId) {
@@ -279,13 +207,11 @@ export class ObjectivesComponent {
       this.dataSource.data = res;
     });
   }
-
   private loadEnvironmentalData(): void {
     this.objectiveService.getAllEnvironmentalData().subscribe((res: any) => {
       this.environmentalDataList = res
     });
   }
-
   private getCurrentIndicator( companyId: string ){
     let errorResponse: any;
     if (this.userId) {
@@ -307,39 +233,15 @@ export class ObjectivesComponent {
   /*   this.dataSource = [...this.dataSource, newRow];  */
   }
 
-  public copyCnaeMonthValue( resource: string ) {
-    alert (resource)
-    this.genCnae.setValue( resource )
-    this.febCnae.setValue( resource )
-    this.marCnae.setValue( resource )
-    this.aprCnae.setValue( resource )
+  public copyCnaeMonthValue( resource: ObjectiveDTO ) {
+console.log (this.isChecked)
+    if (this.isChecked) {
+      resource.dec = resource.nov = resource.oct = resource.sep = resource.aug = resource.jul = resource.jun = resource.may = resource.apr = resource.mar = resource.feb = resource.jan
+    } else {
+      resource.dec = resource.nov = resource.oct = resource.sep = resource.aug = resource.jul = resource.jun = resource.may = resource.apr = resource.mar = resource.feb = null
+    }
+    this.isChecked = false
 
-    this.mayCnae.setValue( resource )
-    this.junCnae.setValue( resource )
-    this.julCnae.setValue( resource )
-    this.augCnae.setValue( resource )
-
-    this.sepCnae.setValue( resource )
-    this.octCnae.setValue( resource )
-    this.novCnae.setValue( resource )
-    this.decCnae.setValue( resource )
-  }
-
-  public copyBillingMonthValue( resource: string ) {
-    this.genBill.setValue( resource )
-    this.febBill.setValue( resource )
-    this.marBill.setValue( resource )
-    this.aprBill.setValue( resource )
-
-    this.mayBill.setValue( resource )
-    this.junBill.setValue( resource )
-    this.julBill.setValue( resource )
-    this.augBill.setValue( resource )
-
-    this.sepBill.setValue( resource )
-    this.octBill.setValue( resource )
-    this.novBill.setValue( resource )
-    this.decBill.setValue( resource )
   }
 
   public setAll(completed: boolean) {

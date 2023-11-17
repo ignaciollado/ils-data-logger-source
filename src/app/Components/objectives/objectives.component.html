@@ -55,7 +55,6 @@
         </section>
 
         <button mat-raised-button color="primary" type="submit" [disabled]="!objectiveForm.valid">ADD</button>
-
       </mat-card>
     </form>
     <div style="margin-left: auto; margin-right: auto"><span id="postFeedback"></span></div>
@@ -101,15 +100,19 @@
                   <div class="btn-edit" *ngSwitchCase="'isEdit'">
                     <button mat-button (click)="editRow(element)" [disabled]="valid[element.Id] === false">Done</button>
                   </div>
-                  <span *ngSwitchCase="'isSelected'" ngClass="small-data">
-                    {{element[col.key]}}
-                  </span>
-
-                  <span *ngSwitchCase="'text'" ngClass="small-data">
-                    {{element[col.key]}}
-                  </span>
+                  <span *ngSwitchCase="'isSelected'" ngClass="small-data">{{element[col.key]}}</span>
+                  <span *ngSwitchCase="'text'" ngClass="small-data">{{element[col.key]}}</span>
 
                   <input *ngSwitchCase="'number'" [type]="col.type" [(ngModel)]="element[col.key]" ngClass="small-data" [style.width.px]='70'/>
+                  <container_element [ngSwitch]="col.key">
+                    <mat-slide-toggle
+                    [checked]="checked"
+                    [disabled]="disabled"
+                    [(ngModel)]="isChecked"
+                    matTooltip="Copy me!"
+                    matTooltipPosition="after"
+                    (change)="copyCnaeMonthValue(element)" *ngSwitchCase="'jan'"></mat-slide-toggle>
+                  </container_element>
                 </div>
             </mat-cell>
           </ng-container>

@@ -27,9 +27,14 @@ input::-webkit-inner-spin-button {
   margin: 0;
 }
 
-/* Firefox */
 input[type=number] {
   appearance: textfield;
+  border: none transparent;
+outline: none;
+}
+
+input:focus {
+  background-color: aquamarine;
 }
 
 mat-table {

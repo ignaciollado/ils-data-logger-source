@@ -43,11 +43,12 @@ export const MY_FORMATS = {
   },
 };
 
-const USER_DATA = [
-  {Id: 1, delegation: "Son Castelló", year: "2019", enviromentalDataName: "Electricidad (kWh)", "theRatioType": "Billing", "jan": 1.50},
-  {Id: 2, delegation: "Can Valero", year: "2020", enviromentalDataName: "Fuel (kg)", "theRatioType": "Billing", "jan": .300},
-  {Id: 3, delegation: "Son Castelló", year: "2019", enviromentalDataName: "Gas butano (kg)", "theRatioType": "Tonelada*", "jan": 500.57, "feb": 1.4579},
-  {Id: 4, delegation: "Son Castelló", year: "2020", enviromentalDataName: "Gas Natural (kWh)", "theRatioType": "Tonelada*", "jan": 1.2550}
+const CNAES_DATA = [
+  {Id: 1, delegation: "Son Castelló", year: "2019", enviromentalDataName: "Fuel (kg)", "cnaeUnitSelected": "Billing", "jan": 15000000, "feb": 15000000, "mar": 15000000, "apr": 15000000, "may": 15000000
+  , "jun": 15000000, "jul": 15000000, "aug": 15000000, "sep": 15000000, "oct": 15000000, "nov": 15000000, "dec": 15000000},
+  {Id: 2, delegation: "Can Valero", year: "2020", enviromentalDataName: "Fuel (kg)", "cnaeUnitSelected": "Billing", "jan": .300},
+  {Id: 3, delegation: "Son Castelló", year: "2019", enviromentalDataName: "Gas butano (kg)", "cnaeUnitSelected": "Tonelada*", "jan": 500.57, "feb": 1.4579},
+  {Id: 4, delegation: "Son Castelló", year: "2020", enviromentalDataName: "Gas Natural (kWh)", "cnaeUnitSelected": "Tonelada*", "jan": 1.2550}
 ];
 
 @Component({
@@ -92,9 +93,9 @@ export class CnaesComponent {
 
   isGridView: boolean = false
   columnsDisplayed: string[] = CnaeColumns.map((col) => col.key)
- /* dataSource: any = USER_DATA */
+  dataSource: any = CNAES_DATA 
   columnsSchema: any = CnaeColumns
-  dataSource = new MatTableDataSource<CnaeDataDTO>()
+  /* dataSource = new MatTableDataSource<CnaeDataDTO>() */
   valid: any = {}
   @ViewChild('personTbSort') personTbSort = new MatSort();
 

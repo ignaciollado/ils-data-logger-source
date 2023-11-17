@@ -57,9 +57,14 @@ input::-webkit-inner-spin-button {
   margin: 0;
 }
 
-/* Firefox */
 input[type=number] {
   appearance: textfield;
+  border: none transparent;
+outline: none;
+}
+
+input:focus {
+  background-color: aquamarine;
 }
 
 mat-table {
@@ -70,43 +75,43 @@ mat-table {
   max-width: 3rem;
 }
 .mat-column-delegation{
-  max-width: 7rem;
+  max-width: 7.5rem;
 }
 .mat-column-jan{
-  max-width: 5rem;
+  max-width: 6rem;
 }
 .mat-column-feb{
-  max-width: 5rem;
+  max-width: 6rem;
 }
 .mat-column-mar{
-  max-width: 5rem;
+  max-width: 6rem;
 }
 .mat-column-apr{
-  max-width: 5rem;
+  max-width: 6rem;
 }
 .mat-column-may{
-  max-width: 5rem;
+  max-width: 6rem;
 }
 .mat-column-jun{
-  max-width: 5rem;
+  max-width: 6rem;
 }
 .mat-column-jul{
-  max-width: 5rem;
+  max-width: 6rem;
 }
 .mat-column-aug{
-  max-width: 5rem;
+  max-width: 6rem;
 }
 .mat-column-sep{
-  max-width: 5rem;
+  max-width: 6rem;
 }
 .mat-column-oct{
-  max-width: 5rem;
+  max-width: 6rem;
 }
 .mat-column-nov{
-  max-width: 5rem;
+  max-width: 6rem;
 }
 .mat-column-dec{
-  max-width: 5rem;
+  max-width: 6rem;
 }
 .mat-column-isEdit{
   max-width: 5rem;

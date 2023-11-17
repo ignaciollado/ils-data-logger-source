@@ -41,18 +41,9 @@
           <!--       <p>Form Value: {{ cnaeForm.value | json }}</p>
           <p>Form Status: {{ cnaeForm.status }}</p> -->
 
-
-    <h2>{{'cnaesDataList' | translate}}</h2>
-    <mat-form-field>
-      <mat-label>Filter</mat-label>
-      <input matInput (keyup)="applyFilter($event)" placeholder="Search columns" #input>
-    </mat-form-field>
-
-    <article >
-      <!-- <button class="button-add-row" mat-button color="primary" (click)="addRow()">Add objective</button> -->
+    <article>
       <div></div>
       <button class="button-remove-rows" mat-button (click)="removeSelectedRows()">Remove selected Rows</button>
-
       <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
         <ng-container [matColumnDef]="col.key" *ngFor="let col of columnsSchema">
           <mat-header-cell *matHeaderCellDef [ngSwitch]="col.key">
@@ -91,18 +82,19 @@
                 <div class="btn-edit" *ngSwitchCase="'isEdit'">
                   <button mat-button (click)="editRow(element)" [disabled]="valid[element.Id] === false">Done</button>
                 </div>
-                  <span *ngSwitchCase="'isSelected'" ngClass="small-data">
-                    {{element[col.key]}}
-                  </span>
+                <span *ngSwitchCase="'isSelected'" ngClass="small-data">
+                  {{element[col.key]}}
+                </span>
 
-                  <span *ngSwitchCase="'text'" ngClass="small-data">
-                    {{element[col.key]}}
-                  </span>
+                <span *ngSwitchCase="'text'" ngClass="small-data">
+                  {{element[col.key]}}
+                </span>
 
-                  <input *ngSwitchCase="'number'" [type]="col.type" [(ngModel)]="element[col.key]" ngClass="small-data" [style.width.px]='75'/>
+                <input *ngSwitchCase="'number'" [type]="col.type" [(ngModel)]="element[col.key]" ngClass="small-data" [style.width.px]='65'/>
               </div>
           </mat-cell>
         </ng-container>
+
         <mat-header-row *matHeaderRowDef="columnsDisplayed"></mat-header-row>
         <mat-row *matRowDef="let row; columns: columnsDisplayed;"></mat-row>
       </mat-table>

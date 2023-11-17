@@ -22,7 +22,7 @@ import { DateAdapter, MAT_DATE_LOCALE } from '@angular/material/core'
 import { ResidueDTO } from 'src/app/Models/residue.dto'
 import { EnvironmentalDTO } from 'src/app/Models/environmental.dto'
 
- const USER_DATA = [
+ const OBJECTIVES_DATA = [
   {Id: 1, delegation: "Son Castelló", year: "2019", enviromentalDataName: "Electricidad (kWh)", "theRatioType": "Billing", "jan": 1.50},
   {Id: 2, delegation: "Can Valero", year: "2020", enviromentalDataName: "Fuel (kg)", "theRatioType": "Billing", "jan": .300},
   {Id: 3, delegation: "Son Castelló", year: "2019", enviromentalDataName: "Gas butano (kg)", "theRatioType": "Tonelada*", "jan": 500.57, "feb": 1.4579},
@@ -171,9 +171,9 @@ export class ObjectivesComponent {
 
   isGridView: boolean = false
   columnsDisplayed : string[] = ObjectiveColumns.map((col) => col.key)
-  /* dataSource: any = USER_DATA */
+  dataSource: any = OBJECTIVES_DATA
   columnsSchema: any = ObjectiveColumns
-  dataSource = new MatTableDataSource<ObjectiveDTO>()
+  /* dataSource = new MatTableDataSource<ObjectiveDTO>() */
   valid: any = {}
   constructor (
     private delegationService: DelegationService,

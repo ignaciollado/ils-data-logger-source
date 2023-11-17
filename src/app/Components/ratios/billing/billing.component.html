@@ -44,133 +44,47 @@
       <p>Form Status: {{ billingForm.status }}</p> -->
 
 
-    <mat-form-field *ngIf="dataSource">
-      <mat-label>Filter</mat-label>
-      <input matInput (keyup)="applyFilter($event)" placeholder="Search columns" #input>
-    </mat-form-field>
-
-  <!--     <table *ngIf="!isGridView" mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort
-    #billingTbSort="matSort">
-      <ng-container matColumnDef="delegation">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>{{'delegation' | translate}}</th>
-        <td mat-cell *matCellDef="let billing">{{billing.delegation}}</td>
-      </ng-container>
-      <ng-container matColumnDef="year">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>{{'year' | translate}}</th>
-        <td mat-cell *matCellDef="let billing">{{billing.year}}</td>
-      </ng-container>
-      <ng-container matColumnDef="enero">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Enero</th>
-        <td mat-cell *matCellDef="let billing" title="{{billing.jan | formatQuantity: 1}}">{{billing.jan}}</td>
-      </ng-container>
-      <ng-container matColumnDef="febrero">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Febrero</th>
-        <td mat-cell *matCellDef="let billing" title="{{billing.feb | formatQuantity: 1}}">{{billing.feb}}</td>
-      </ng-container>
-      <ng-container matColumnDef="marzo">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Marzo</th>
-        <td mat-cell *matCellDef="let billing" title="{{billing.mar | formatQuantity: 1}}">{{billing.mar}}</td>
-      </ng-container>
-      <ng-container matColumnDef="abril">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Abril</th>
-        <td mat-cell *matCellDef="let billing" title="{{billing.apr | formatQuantity: 1}}">{{billing.apr}}</td>
-      </ng-container>
-      <ng-container matColumnDef="mayo">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Mayo</th>
-        <td mat-cell *matCellDef="let billing" title="{{billing.may | formatQuantity: 1}}">{{billing.may}}</td>
-      </ng-container>
-      <ng-container matColumnDef="junio">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Junio</th>
-        <td mat-cell *matCellDef="let billing" title="{{billing.jun | formatQuantity: 1}}">{{billing.jun}}</td>
-      </ng-container>
-      <ng-container matColumnDef="julio">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Julio</th>
-        <td mat-cell *matCellDef="let billing" title="{{billing.jul | formatQuantity: 1}}">{{billing.jul}}</td>
-      </ng-container>
-      <ng-container matColumnDef="agosto">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Agosto</th>
-        <td mat-cell *matCellDef="let billing" title="{{billing.aug | formatQuantity: 1}}">{{billing.aug}}</td>
-      </ng-container>
-      <ng-container matColumnDef="setiembre">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Setiembre</th>
-        <td mat-cell *matCellDef="let billing" title="{{billing.sep | formatQuantity: 1}}">{{billing.sep}}</td>
-      </ng-container>
-      <ng-container matColumnDef="octubre">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Octubre</th>
-        <td mat-cell *matCellDef="let billing" title="{{billing.oct | formatQuantity: 1}}">{{billing.oct}}</td>
-      </ng-container>
-      <ng-container matColumnDef="noviembre">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Noviembre</th>
-        <td mat-cell *matCellDef="let billing" title="{{billing.nov | formatQuantity: 1}}">{{billing.nov}}</td>
-      </ng-container>
-      <ng-container matColumnDef="diciembre">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Diciembre</th>
-        <td mat-cell *matCellDef="let billing" title="{{billing.dec | formatQuantity: 1}}">{{billing.dec}}</td>
-      </ng-container>
-
-      <ng-container matColumnDef="ACTIONS">
-        <th mat-header-cell *matHeaderCellDef> ACTIONS</th>
-        <td mat-cell *matCellDef="let billing">
-          <button mat-icon-button color="accent" matTooltip="Update this billing"
-            aria-label="Button that displays a tooltip and updates this billing" (click)="updateBilling(billing.billing.Id)">
-              <mat-icon>edit</mat-icon>
-          </button>
-          <button mat-icon-button color="warn" matTooltip="Permanently delete this billing"
-            aria-label="Button that displays a tooltip and permanently deletes this billing" (click)="deleteBilling(billing.Id)">
-              <mat-icon>delete</mat-icon>
-          </button>
-        </td>
-      </ng-container>
-
-      <tr mat-header-row *matHeaderRowDef="columnsDisplayed"></tr>
-      <tr mat-row *matRowDef="let item; columns: columnsDisplayed;" class="animate__animated animate__fadeInLeft"></tr>
-    </table> -->
-
-    <div class="loader" *ngIf="!dataSource">No records found yet...</div>
-
-
-      <!-- <button class="button-add-row" mat-button color="primary" (click)="addRow()">Add objective</button> -->
-      <div></div>
-      <button class="button-remove-rows" mat-button (click)="removeSelectedRows()">Remove selected Rows</button>
-
-      <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-        <ng-container [matColumnDef]="col.key" *ngFor="let col of columnsSchema">
-          <mat-header-cell *matHeaderCellDef [ngSwitch]="col.key">
-              <span *ngSwitchCase="'isSelected'">
-                 <!--  <mat-checkbox
-                      (change)="selectAll($event)"
-                      [checked]="isAllSelected()"
-                      [indeterminate]="!isAllSelected() && isAnySelected()">
-                  </mat-checkbox> -->
-              </span>
-              <span *ngSwitchDefault>{{ col.label }}</span>
-          </mat-header-cell>
-          <mat-cell *matCellDef="let element">
-              <div [ngSwitch]="col.type" *ngIf="!element.isEdit">
-                  <ng-container *ngSwitchCase="'isSelected'">
-                    <mat-checkbox
-                      (change)="element.isSelected = $event.checked"
-                      [checked]="element.isSelected">
-                    </mat-checkbox>
-                  </ng-container>
-                <div class="btn-edit" *ngSwitchCase="'isEdit'">
-                  <button mat-icon-button (click)="element.isEdit = !element.isEdit"
-                    class="material-icons app-toolbar-menu save-button"
-                    matTooltip="Edit" color="primary"><mat-icon>edit</mat-icon>
-                  </button>
-                  <button mat-icon-button class="material-icons app-toolbar-menu delete-button" (click)="removeRow(element.Id)"
-                    matTooltip="Delete" color="warn"><mat-icon>delete</mat-icon>
-                  </button>
-                </div>
-                <span *ngSwitchDefault ngClass="small-data">
-                  {{ element[col.key] }}
+      <article>
+        <div></div>
+        <button class="button-remove-rows" mat-button (click)="removeSelectedRows()">Remove selected Rows</button>
+        <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+          <ng-container [matColumnDef]="col.key" *ngFor="let col of columnsSchema">
+            <mat-header-cell *matHeaderCellDef [ngSwitch]="col.key">
+                <span *ngSwitchCase="'isSelected'">
+                   <!--  <mat-checkbox
+                        (change)="selectAll($event)"
+                        [checked]="isAllSelected()"
+                        [indeterminate]="!isAllSelected() && isAnySelected()">
+                    </mat-checkbox> -->
                 </span>
-              </div>
-
-              <div [ngSwitch]="col.type" *ngIf="element.isEdit">
-                <div class="btn-edit" *ngSwitchCase="'isEdit'">
-                  <button mat-button (click)="editRow(element)" [disabled]="valid[element.Id] === false">Done</button>
+                <span *ngSwitchDefault>{{ col.label }}</span>
+            </mat-header-cell>
+            <mat-cell *matCellDef="let element">
+                <div [ngSwitch]="col.type" *ngIf="!element.isEdit">
+                    <ng-container *ngSwitchCase="'isSelected'">
+                      <mat-checkbox
+                        (change)="element.isSelected = $event.checked"
+                        [checked]="element.isSelected">
+                      </mat-checkbox>
+                    </ng-container>
+                  <div class="btn-edit" *ngSwitchCase="'isEdit'">
+                    <button mat-icon-button (click)="element.isEdit = !element.isEdit"
+                      class="material-icons app-toolbar-menu save-button"
+                      matTooltip="Edit" color="primary"><mat-icon>edit</mat-icon>
+                    </button>
+                    <button mat-icon-button class="material-icons app-toolbar-menu delete-button" (click)="removeRow(element.Id)"
+                      matTooltip="Delete" color="warn"><mat-icon>delete</mat-icon>
+                    </button>
+                  </div>
+                  <span *ngSwitchDefault ngClass="small-data">
+                    {{ element[col.key] }}
+                  </span>
                 </div>
+
+                <div [ngSwitch]="col.type" *ngIf="element.isEdit">
+                  <div class="btn-edit" *ngSwitchCase="'isEdit'">
+                    <button mat-button (click)="editRow(element)" [disabled]="valid[element.Id] === false">Done</button>
+                  </div>
                   <span *ngSwitchCase="'isSelected'" ngClass="small-data">
                     {{element[col.key]}}
                   </span>
@@ -179,14 +93,14 @@
                     {{element[col.key]}}
                   </span>
 
-                  <input *ngSwitchCase="'number'" [type]="col.type" [(ngModel)]="element[col.key]" ngClass="small-data" [style.width.px]='75'/>
-              </div>
-          </mat-cell>
-        </ng-container>
-        <mat-header-row *matHeaderRowDef="columnsDisplayed"></mat-header-row>
-        <mat-row *matRowDef="let row; columns: columnsDisplayed;"></mat-row>
-      </mat-table>
+                  <input *ngSwitchCase="'number'" [type]="col.type" [(ngModel)]="element[col.key]" ngClass="small-data" [style.width.px]='65'/>
+                </div>
+            </mat-cell>
+          </ng-container>
 
-
+          <mat-header-row *matHeaderRowDef="columnsDisplayed"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: columnsDisplayed;"></mat-row>
+        </mat-table>
+      </article>
   </div>
 

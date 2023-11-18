@@ -1,7 +1,7 @@
 <h2>Energies list:</h2>
 <mat-chip-option color="accent" selected>
-  <strong>Para los resultados de explotación, que tendrán que estar todos en kWh, recordar que:</strong> 
-  <div>hay que multiplicar la cantidad entrada por el usuario por la DENSIDAD y luego por el PCI</div>  
+  <strong>Para los resultados de explotación, que tendrán que estar todos en kWh, recordar que:</strong>
+  <div>hay que multiplicar la cantidad entrada por el usuario por la DENSIDAD y luego por el PCI</div>
 </mat-chip-option>
 <div class="mat-elevation-z8">
 <mat-table *ngIf="!isGridView" [dataSource]="dataSource" matSort class="mat-elevation-z8">
@@ -28,7 +28,7 @@
 
   <ng-container matColumnDef="ACTIONS">
     <mat-header-cell *matHeaderCellDef> ACTIONS <button mat-mini-fab color="primary" matTooltip="Add an energy" aria-label="Add energy" (click)="createEnergy()">
-      <mat-icon>add</mat-icon>
+      <i class="fa-solid fa-plus fa-xs" style="color: #365446;"></i>
     </button></mat-header-cell>
     <mat-cell *matCellDef="let energy">
 <!--       <button mat-icon-button color="accent" matTooltip="Update this energy"
@@ -37,7 +37,7 @@
       </button> -->
       <button mat-icon-button color="warn" matTooltip="Permanently delete this energy"
       aria-label="Permanently deletes this energy" (click)="deleteEnergy(energy.energyId)">
-        <mat-icon>delete</mat-icon>
+      <i class="fa-solid fa-trash fa-xs" style="color: #365446;"></i>
       </button>
     </mat-cell>
   </ng-container>

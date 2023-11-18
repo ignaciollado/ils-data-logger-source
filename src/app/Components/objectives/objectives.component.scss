@@ -43,7 +43,7 @@
 
 .btn-edit{
   display: grid;
-  grid-template-columns: 100%;
+  grid-template-columns: 50% 50%;
 }
 
 /* Chrome, Safari, Edge, Opera */
@@ -123,10 +123,11 @@ mat-table {
   max-width: 4.5rem;
 }
 .mat-column-isEdit{
-  max-width: 5rem;
+width: 24rem;
 }
 mat-header-row{
   background-color: #424242;
+
 }
 
 mat-header-cell {
@@ -140,6 +141,10 @@ mat-cell{
   background-color: #919191;
   padding-left: 0;
   margin-left: 0;
+}
+
+mat-row {
+
 }
 
 

@@ -65,8 +65,8 @@ export class EmissionFormComponent {
 
   isGridView: boolean = false
   columnsDisplayed: string[] = emissionColumns.map((col) => col.key);
-  dataSource: any = EMISSION_DATA
-  //dataSource = new MatTableDataSource<ConsumptionDTO>();
+  //dataSource: any = EMISSION_DATA
+  dataSource = new MatTableDataSource<ConsumptionDTO>();
   columnsSchema: any = emissionColumns;
   /* columnsDisplayed = ['delegation', 'year', 'quantity', 'objective', 'scopeone', 'scopetwo', 'ACTIONS']; */
   valid: any = {}

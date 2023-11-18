@@ -85,10 +85,10 @@
                   <div class="btn-edit" *ngSwitchCase="'isEdit'">
                     <button mat-icon-button (click)="element.isEdit = !element.isEdit"
                       class="material-icons app-toolbar-menu save-button"
-                      matTooltip="Edit" color="primary"><mat-icon>edit</mat-icon>
+                      matTooltip="Edit" color="primary"><i class="fa-solid fa-pencil fa-xs" style="color: #365446;"></i>
                     </button>
                     <button mat-icon-button class="material-icons app-toolbar-menu delete-button" (click)="removeRow(element.Id)"
-                      matTooltip="Delete" color="warn"><mat-icon>delete</mat-icon>
+                      matTooltip="Delete" color="warn"><i class="fa-solid fa-trash fa-xs" style="color: #365446;"></i>
                     </button>
                   </div>
                   <span *ngSwitchDefault ngClass="small-data">

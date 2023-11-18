@@ -34,15 +34,15 @@
         </mat-form-field>
       </section>
 
-      <section>
+<!--       <section>
         <mat-form-field [style.width.px]=425>
           <mat-label>{{'quantityCO2e' | translate}}</mat-label>
           <input matInput type="number" [formControl]="quantityEmission" />
           <mat-error *ngIf="quantityEmission.hasError('required')">{{'quantity' | translate}} <strong>{{'isRequired' | translate}}</strong></mat-error>
         </mat-form-field>
-      </section>
+      </section> -->
 
-      <section>
+    <!--   <section>
         <mat-form-field [style.width]='20'>
           <mat-label>{{"scopeOne" | translate}}</mat-label>
           <input matInput type="number" [formControl]="scopeone" />
@@ -54,7 +54,7 @@
           <input matInput type="number" [formControl]="scopetwo" />
           <mat-error *ngIf="scopetwo.hasError('required')">{{'scopeTwo' | translate}} <strong>{{'isRequired' | translate}}</strong></mat-error>
         </mat-form-field>
-      </section>
+      </section> -->
 
       <button mat-raised-button color="primary" type="submit" [disabled]="!emissionForm.valid">ADD</button>
     </mat-card>
@@ -75,12 +75,7 @@
                   [indeterminate]="!isAllSelected() && isAnySelected()">
               </mat-checkbox> -->
           </span>
-          <span *ngSwitchCase="'scopeOne'">
-            {{ col.label }}
-          </span>
-          <span *ngSwitchCase="'scopeTwo'">
-            {{ col.label }}
-          </span>
+
           <span *ngSwitchDefault>{{ col.label }}</span>
       </mat-header-cell>
       <mat-cell *matCellDef="let element">
@@ -93,16 +88,19 @@
               </ng-container>
             <div class="btn-edit" *ngSwitchCase="'isEdit'">
               <button mat-icon-button (click)="element.isEdit = !element.isEdit"
-                class="material-icons app-toolbar-menu save-button"
-                matTooltip="Edit" color="primary"><mat-icon >edit</mat-icon>
-              </button>
-              <button mat-icon-button class="material-icons app-toolbar-menu delete-button" (click)="removeRow(element.Id)"
-                matTooltip="Delete" color="warn"><mat-icon >delete</mat-icon>
-              </button>
+              class="material-icons app-toolbar-menu save-button"
+              matTooltip="Edit" color="primary"><i class="fa-solid fa-pencil fa-xs" style="color: #365446;"></i>
+            </button>
+            <button mat-icon-button class="material-icons app-toolbar-menu delete-button" (click)="removeRow(element.Id)"
+              matTooltip="Delete" color="warn"><i class="fa-solid fa-trash fa-xs" style="color: #365446;"></i>
+            </button>
             </div>
-            <span *ngSwitchDefault ngClass="small-data">
-              {{ element[col.key] }}
+            <span *ngSwitchCase="'janScope1'" ngClass="small-data">
+              {{element[col.key]}}
             </span>
+            <!-- <span *ngSwitchDefault ngClass="small-data">
+              {{ element[col.key] }}
+            </span> -->
           </div>
 
           <div [ngSwitch]="col.type" *ngIf="element.isEdit">

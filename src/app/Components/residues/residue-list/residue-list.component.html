@@ -5,26 +5,26 @@
       <mat-header-cell *matHeaderCellDef>Denominación</mat-header-cell>
       <mat-cell class="denominacion" *matCellDef="let residue">{{residue.nameES}}</mat-cell>
     </ng-container>
-  
+
     <ng-container matColumnDef="nameCA">
       <mat-header-cell *matHeaderCellDef>Denominació</mat-header-cell>
       <mat-cell class="denominacio" *matCellDef="let residue">{{residue.nameCA}}</mat-cell>
     </ng-container>
-  
+
     <ng-container matColumnDef="ACTIONS">
-      <mat-header-cell class="c" *matHeaderCellDef> ACTIONS 
+      <mat-header-cell class="c" *matHeaderCellDef> ACTIONS
         <button mat-mini-fab color="primary" matTooltip="Add an residue" aria-label="Add residue" (click)="createResidue()">
-          <mat-icon>add</mat-icon>
+          <i class="fa-solid fa-plus fa-xs" style="color: #365446;"></i>
         </button>
       </mat-header-cell>
       <mat-cell *matCellDef="let residue">
         <button mat-icon-button color="warn" matTooltip="Permanently delete this residue"
         aria-label="Button that displays a tooltip and permanently deletes this residue" (click)="deleteResidue(residue.residueId)">
-          <mat-icon>delete</mat-icon>
+        <i class="fa-solid fa-trash fa-xs" style="color: #365446;"></i>
         </button>
       </mat-cell>
     </ng-container>
-  
+
     <mat-header-row *matHeaderRowDef="columnsDisplayed"></mat-header-row>
     <mat-row *matRowDef="let item; columns: columnsDisplayed;" class="animate__animated animate__fadeInLeft"></mat-row>
   </mat-table>
@@ -50,12 +50,12 @@
     </div>
   <!-- </div> -->
 </div>
-  
+
   <mat-paginator [pageSizeOptions]="[5, 10, 20]"
                  showFirstLastButtons
                  aria-label="Select page of residue items">
   </mat-paginator>
 
-</div>  
+</div>
 
 <div class="loader" *ngIf="!residues">No records found yet...</div>

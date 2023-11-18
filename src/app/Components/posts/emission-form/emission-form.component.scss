@@ -47,7 +47,7 @@
 
   .btn-edit{
     display: grid;
-    grid-template-columns: 100%;
+    grid-template-columns: 50% 50%;
   }
 
   /* Chrome, Safari, Edge, Opera */
@@ -194,8 +194,8 @@
     max-width: 65px;
   }
   .mat-column-isEdit{
-    max-width: 5rem;
-  }
+    width: 24rem;
+    }
   mat-header-row{
     background-color: #424242;
   }

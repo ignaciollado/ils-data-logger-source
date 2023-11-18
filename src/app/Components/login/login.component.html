@@ -3,7 +3,7 @@
 </div>
 <div>
 
-<div class="container-form" [@fadeInOut] >  
+<div class="container-form" [@fadeInOut] >
   <h1>{{'workSession' | translate}}</h1>
   <form [formGroup]="loginForm" (ngSubmit)="loginObservable()">
     <mat-card [class.mat-elevation-z8]="isElevated">
@@ -15,13 +15,13 @@
           <mat-error *ngIf="email.hasError('required')">{{'Email' | translate}} <strong>{{'IsRequired' | translate}}</strong></mat-error>
         </mat-form-field>
       </section>
-
+      <!-- {{hide ? 'visibility_off' : 'visibility'}} -->
       <section>
         <mat-form-field [style.width.px]=327>
           <mat-label>{{'Password' | translate}}</mat-label>
           <input matInput [type]="hide ? 'password' : 'text'" [formControl]="password" required />
           <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            <i class="fa-solid fa-eye fa-xs" style="color: #365446;"></i>
           </button>
           <mat-error *ngIf="password.hasError('required')">{{'Password' | translate}} <strong>{{'IsRequired' | translate}}</strong></mat-error>
           <mat-error *ngIf="password.hasError('minlength')">{{'Password' | translate}} {{'CharsMin' | translate}} 8 {{'Characters' | translate}}</mat-error>

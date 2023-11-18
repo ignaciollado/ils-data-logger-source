@@ -150,6 +150,7 @@ export class WaterFormComponent {
           this.consumptions = consumptions
           this.dataSource = new MatTableDataSource(this.consumptions)
           this.dataSource.sort = this.waterTbSort
+          console.log (this.dataSource.data)
         },
         (error: HttpErrorResponse) => {
           errorResponse = error.error;

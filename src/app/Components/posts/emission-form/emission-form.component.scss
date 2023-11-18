@@ -76,7 +76,7 @@
   mat-table {
     margin-top: .5rem;
     margin-bottom: 2rem;
-    width: 100%;
+    max-width: 100%;
   }
 
   .mat-column-year{
@@ -86,40 +86,112 @@
     max-width: 7rem;
   }
   .mat-column-jan{
-    max-width: 4.5rem;
+    max-width: 60px;
+  }
+  .mat-column-janScope1{
+    max-width: 65px;
+  }
+  .mat-column-janScope2{
+    max-width: 65px;
   }
   .mat-column-feb{
-    max-width: 4.5rem;
+    max-width: 60px;
+  }
+  .mat-column-febScope1{
+    max-width: 65px;
+  }
+  .mat-column-febScope2{
+    max-width: 65px;
   }
   .mat-column-mar{
-    max-width: 4.5rem;
+    max-width: 60px;
+  }
+  .mat-column-marScope1{
+    max-width: 65px;
+  }
+  .mat-column-marScope2{
+    max-width: 65px;
   }
   .mat-column-apr{
-    max-width: 4.5rem;
+    max-width: 60px;
+  }
+  .mat-column-aprScope1{
+    max-width: 65px;
+  }
+  .mat-column-aprScope2{
+    max-width: 65px;
   }
   .mat-column-may{
-    max-width: 4.5rem;
+    max-width: 60px;
+  }
+  .mat-column-mayScope1{
+    max-width: 65px;
+  }
+  .mat-column-mayScope2{
+    max-width: 65px;
   }
   .mat-column-jun{
-    max-width: 4.5rem;
+    max-width: 60px;
+  }
+  .mat-column-junScope1{
+    max-width: 65px;
+  }
+  .mat-column-junScope2{
+    max-width: 65px;
   }
   .mat-column-jul{
-    max-width: 4.5rem;
+    max-width: 60px;
+  }
+  .mat-column-julScope1{
+    max-width: 65px;
+  }
+  .mat-column-julScope2{
+    max-width: 65px;
   }
   .mat-column-aug{
-    max-width: 4.5rem;
+    max-width: 60px;
+  }
+  .mat-column-augScope1{
+    max-width: 65px;
+  }
+  .mat-column-augScope2{
+    max-width: 65px;
   }
   .mat-column-sep{
-    max-width: 4.5rem;
+    max-width: 60px;
+  }
+  .mat-column-sepScope1{
+    max-width: 65px;
+  }
+  .mat-column-sepScope2{
+    max-width: 65px;
   }
   .mat-column-oct{
-    max-width: 4.5rem;
+    max-width: 60px;
+  }
+  .mat-column-octScope1{
+    max-width: 65px;
+  }
+  .mat-column-octScope2{
+    max-width: 65px;
   }
   .mat-column-nov{
-    max-width: 4.5rem;
+    max-width: 60px;
+  }
+  .mat-column-novScope1{
+    max-width: 65px;
+  }
+  .mat-column-novScope2{
+    max-width: 65px;
   }
   .mat-column-dec{
-    max-width: 4.5rem;
+    max-width: 60px;
+  }
+  .mat-column-decScope1{
+    max-width: 65px;
+  }
+  .mat-column-decScope2{
+    max-width: 65px;
   }
   .mat-column-isEdit{
     max-width: 5rem;

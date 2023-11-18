@@ -41,7 +41,7 @@ const ENERGIES_DATA = [
   selector: 'app-post-form',
   templateUrl: './post-form.component.html',
   styleUrls: ['./post-form.component.scss'],
-  encapsulation: ViewEncapsulation.None,
+/*   encapsulation: ViewEncapsulation.None,
   animations: [
     trigger( 'fadeInOut',[
       state(
@@ -52,7 +52,7 @@ const ENERGIES_DATA = [
       ),
       transition('void <-> *', animate(1500))
     ])
-  ],
+  ], */
 })
 
 export class PostFormComponent implements OnInit {

@@ -26,7 +26,7 @@ import { MatDialog } from '@angular/material/dialog'
 import { ConfirmDialogComponent } from 'src/app/confirm-dialog/confirm-dialog.component'
 
 const WATER_DATA = [
-  {Id: 1, delegation: "Son Castelló", year: "2019", "jan": 15000000, "feb": 15000000, "mar": 15000000, "apr": 15000000, "may": 15000000
+  {Id: 1, delegation: "Son Castelló", year: "2019", "jan": 15000001, "feb": 15000002, "mar": 15000000, "apr": 15000000, "may": 15000000
   , "jun": 15000000, "jul": 15000000, "aug": 15000000, "sep": 15000000, "oct": 15000000, "nov": 15000000, "dec": 15000000},
   {Id: 2, delegation: "Can Valero", year: "2020", "jan": .300},
   {Id: 3, delegation: "Son Castelló", year: "2019", "jan": 500.57, "feb": 1.4579},

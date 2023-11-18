@@ -103,16 +103,19 @@
                   <span *ngSwitchCase="'isSelected'" ngClass="small-data">{{element[col.key]}}</span>
                   <span *ngSwitchCase="'text'" ngClass="small-data">{{element[col.key]}}</span>
 
-                  <input *ngSwitchCase="'number'" [type]="col.type" [(ngModel)]="element[col.key]" ngClass="small-data-input" [style.width.px]='70'/>
-                  <container_element [ngSwitch]="col.key">
-                    <mat-checkbox
+                  <div class="jan-checkbox">
+                    <container_element [ngSwitch]="col.key">
+                    <input
+                    type = "checkbox"
                     [checked]="checked"
                     [disabled]="disabled"
                     [(ngModel)]="isChecked"
                     matTooltip="Copy me!"
                     matTooltipPosition="after"
-                    (change)="copyCnaeMonthValue(element)" *ngSwitchCase="'jan'"></mat-checkbox>
-                  </container_element>
+                    (change)="copyCnaeMonthValue(element)" *ngSwitchCase="'jan'" />
+                    </container_element>
+                    <input *ngSwitchCase="'number'" [type]="col.type" [(ngModel)]="element[col.key]" ngClass="small-data-input" [style.width.px]='70'/>
+                  </div>
                 </div>
             </mat-cell>
           </ng-container>

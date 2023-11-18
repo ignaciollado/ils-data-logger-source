@@ -66,6 +66,7 @@ import { SelectLanguageComponent } from './Components/select-language/select-lan
 import { ModalComponent } from './Components/modal/modal.component';
 import { CnaesComponent } from "./Components/ratios/cnaes/cnaes.component";
 import { BillingComponent } from './Components/ratios/billing/billing.component';
+import { ConsumptionContainerComponent } from "./Components/posts/consumption-container/consumption-container.component";
 import { RatiosContainerComponent } from './Components/ratios/ratios-container/ratios-container.component';
 import { MatDatepickerModule } from "@angular/material/datepicker";
 import { MatMomentDateModule } from "@angular/material-moment-adapter";
@@ -110,8 +111,9 @@ export function tokenGetter() {
     CnaesComponent,
     BillingComponent,
     RatiosContainerComponent,
+    ConsumptionContainerComponent,
     ObjectivesComponent,
-    ConfirmDialogComponent
+    ConfirmDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -127,7 +129,7 @@ export function tokenGetter() {
         disallowedRoutes: ["http://example.com/examplebadroute/"],
       },
     }),
-    
+
     BrowserAnimationsModule,
     MatTableModule,
     CdkTableModule,

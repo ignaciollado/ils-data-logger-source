@@ -1,15 +1,11 @@
-
-  <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="start">
-
-    <mat-tab label="{{'energy' | translate}}">
-      <div class="container-form">
-        <h1>{{'energyConsumption' | translate}}</h1>
-        <form
-          *ngIf="energyForm"
-          [formGroup]="energyForm"
-          (ngSubmit)="saveForm()">
-          <mat-card [class.mat-elevation-z8]="isElevated">
-            <section>
+<div class="container-form">
+  <h1>{{'energyConsumption' | translate}}</h1>
+  <form
+    *ngIf="energyForm"
+    [formGroup]="energyForm"
+    (ngSubmit)="saveForm()">
+    <mat-card [class.mat-elevation-z8]="isElevated">
+      <section>
             <mat-form-field [style.width.px]=425>
               <mat-label>{{'delegation' | translate}}</mat-label>
               <mat-select [formControl]="delegation" panelClass="panel-{{delegation.value}}">
@@ -19,9 +15,9 @@
               </mat-select>
               <mat-error *ngIf="delegation.hasError('required')">{{'delegation' | translate}} <strong>{{'isRequired' | translate}}</strong></mat-error>
             </mat-form-field>
-            </section>
+      </section>
 
-            <section>
+      <section>
             <mat-form-field [style.width.px]=425>
               <mat-label>{{'year' | translate}}</mat-label>
               <mat-select [formControl]="yearEnergy">
@@ -34,9 +30,9 @@
                 <mat-option value="2025">2025</mat-option>
               </mat-select>
             </mat-form-field>
-            </section>
+      </section>
 
-            <section>
+      <section>
             <mat-form-field [style.width.px]=425>
               <mat-label>{{'energyType' | translate}}</mat-label>
               <mat-select [formControl]="energy">
@@ -46,20 +42,20 @@
               </mat-select>
               <mat-error *ngIf="energy.hasError('required')">{{'energyType' | translate}} <strong>{{'isRequired' | translate}}</strong></mat-error>
             </mat-form-field>
-            </section>
+      </section>
 
-            <button mat-raised-button color="primary" type="submit" [disabled]="!energyForm.valid">ADD</button>
-          </mat-card>
-        </form>
-        <div style="margin-left: auto; margin-right: auto"><span id="postFeedback"></span></div>
-        <article>
-          <div></div>
-          <button class="button-remove-rows" mat-button (click)="removeSelectedRows()">Remove selected Rows</button>
-          <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-            <ng-container [matColumnDef]="col.key" *ngFor="let col of columnsSchema">
+      <button mat-raised-button color="primary" type="submit" [disabled]="!energyForm.valid">ADD</button>
+    </mat-card>
+  </form>
+  <div style="margin-left: auto; margin-right: auto"><span id="postFeedback"></span></div>
+  <article>
+    <div></div>
+    <button class="button-remove-rows" mat-button (click)="removeSelectedRows()">Remove selected Rows</button>
+    <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+      <ng-container [matColumnDef]="col.key" *ngFor="let col of columnsSchema">
               <mat-header-cell *matHeaderCellDef [ngSwitch]="col.key">
                   <span *ngSwitchCase="'isSelected'">
-                    <!--   <mat-checkbox
+                    -  <!--  <mat-checkbox
                           (change)="selectAll($event)"
                           [checked]="isAllSelected()"
                           [indeterminate]="!isAllSelected() && isAnySelected()">
@@ -99,25 +95,11 @@
                     <input *ngSwitchCase="'number'" [type]="col.type" [(ngModel)]="element[col.key]" ngClass="small-data-input" [style.width.px]='70'/>
                   </div>
               </mat-cell>
-            </ng-container>
-            <mat-header-row *matHeaderRowDef="columnsDisplayed"></mat-header-row>
-            <mat-row *matRowDef="let row; columns: columnsDisplayed;"></mat-row>
-          </mat-table>
-      </article>
-      </div>
-    </mat-tab>
+      </ng-container>
+      <mat-header-row *matHeaderRowDef="columnsDisplayed"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: columnsDisplayed;"></mat-row>
+    </mat-table>
 
-  <mat-tab label="{{'water' | translate}}">
-    <app-water-form [monthYearDefault]="yearEnergy.value" [delegationDefault]="delegation.value"></app-water-form>
-  </mat-tab>
-
-  <mat-tab label="{{'residue' | translate}}">
-    <app-residue-form [monthYearDefault]="yearEnergy.value" [delegationDefault]="delegation.value"></app-residue-form>
-  </mat-tab>
-
-  <mat-tab label="{{'emissions' | translate}}">
-    <app-emission-form ></app-emission-form>
-  </mat-tab>
-
-  </mat-tab-group>
+  </article>
+</div>
 

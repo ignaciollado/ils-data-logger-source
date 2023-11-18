@@ -24,6 +24,7 @@ import { CnaesComponent } from './Components/ratios/cnaes/cnaes.component';
 import { BillingComponent } from './Components/ratios/billing/billing.component';
 import { RatiosContainerComponent } from './Components/ratios/ratios-container/ratios-container.component';
 import { ObjectivesComponent } from './Components/objectives/objectives.component';
+import { ConsumptionContainerComponent } from './Components/posts/consumption-container/consumption-container.component';
 
 const routes: Routes = [
   {
@@ -58,7 +59,7 @@ const routes: Routes = [
   },
   {
     path: 'consumptions',
-    component: PostFormComponent,
+    component: ConsumptionContainerComponent,
     canActivate: [AuthGuard],
   },
   {
@@ -121,9 +122,9 @@ const routes: Routes = [
     component: ProfileComponent,
     canActivate: [AuthGuard],
   },
-  { 
-    path: '**', 
-    component: DashboardComponent 
+  {
+    path: '**',
+    component: DashboardComponent
 }
 ];
 

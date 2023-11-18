@@ -28,7 +28,10 @@
   -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
   animation: fadein 0.5s, fadeout 0.5s 2.5s;
 }
-
+.button-add-row {
+  background: #1b9e1b;
+  color: #ffffff;
+}
 .button-add-row {
   background: #1b9e1b;
   color: #ffffff;
@@ -73,7 +76,6 @@ outline: none;
 mat-table {
   margin-top: .5rem;
   margin-bottom: 2rem;
-  width: 100%;
 }
 
 .mat-column-year{
@@ -82,6 +84,7 @@ mat-table {
 .mat-column-delegation{
   max-width: 7rem;
 }
+
 .mat-column-jan{
   max-width: 4.5rem;
 }
@@ -121,10 +124,10 @@ mat-table {
 .mat-column-isEdit{
   max-width: 5rem;
 }
+
 mat-header-row{
   background-color: #424242;
 }
-
 mat-header-cell {
   color: white;
   font-size: .5rem;
@@ -133,4 +136,3 @@ mat-header-cell {
 mat-cell{
   background-color: #919191;
 }
-

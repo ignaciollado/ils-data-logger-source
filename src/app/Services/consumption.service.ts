@@ -29,7 +29,7 @@ export interface deleteResponse {
 })
 
 export class ConsumptionService {
-  
+
   private urlAPiMySql:  string;
 
   constructor(private http: HttpClient,
@@ -98,7 +98,7 @@ export class ConsumptionService {
 
   deleteConsumption(consumptionId: number): Observable<deleteResponse> {
     return this.http
-      .delete<deleteResponse>(`${URL_API}consumptionDelete.php?consumptionId=${consumptionId}`)
+      .delete<deleteResponse>(`${URL_API}energyConsumptionDelete.php?consumptionId=${consumptionId}`)
       .pipe(catchError(this.sharedService.handleError));
   }
 
@@ -114,6 +114,6 @@ export class ConsumptionService {
     console.error('An error occurred:', error.error.msg);
     console.error('Backend returned code:', error.status);
     console.error('Complete message was::', error.message);
-  }  
+  }
 
 }

@@ -150,7 +150,6 @@ export class WaterFormComponent {
           this.consumptions = consumptions
           this.dataSource = new MatTableDataSource(this.consumptions)
           this.dataSource.sort = this.waterTbSort
-          console.log (this.dataSource.data)
         },
         (error: HttpErrorResponse) => {
           errorResponse = error.error;
@@ -169,31 +168,26 @@ export class WaterFormComponent {
       this.consumption.companyId = this.userId;
       this.consumption.aspectId = 2; /* Water aspect id : 2 */
       this.consumptionService.createWaterConsumption(this.consumption)
-        .pipe(
-          finalize(async () => {
-            await this.sharedService.managementToast(
-              'postFeedback',
-              responseOK,
-              errorResponse
-            );
-
-            /* if (responseOK) {
-              this.router.navigateByUrl('posts');
-            } */
-          })
-        )
-        .subscribe(
-          () => {
-            responseOK = true;
-            /* this.monthYearDate.reset() */
-            this.yearWater.reset()
-            this.loadConsumption( this.userId);
-          },
-          (error: HttpErrorResponse) => {
-            errorResponse = error.error;
-            this.sharedService.errorLog(errorResponse);
-          }
-        );
+      .pipe(
+        finalize(async () => {
+          await this.sharedService.managementToast(
+            'postFeedback',
+            responseOK,
+            errorResponse
+          );
+        })
+      )
+      .subscribe(
+        () => {
+          responseOK = true;
+          this.yearWater.reset()
+          this.loadConsumption(this.userId);
+        },
+        (error: HttpErrorResponse) => {
+          errorResponse = error.error;
+          this.sharedService.errorLog(errorResponse);
+        }
+      );
     }
   }
 
@@ -203,21 +197,27 @@ export class WaterFormComponent {
 
   deleteWaterConsumption(consumptionId: number): void {
     let errorResponse: any;
-    this.result = confirm('Confirm delete this water consumption.');
-    if (this.result) {
-      this.consumptionService.deleteConsumption(consumptionId).subscribe(
-        (rowsAffected: deleteResponse) => {
-          if (rowsAffected.affected > 0) {
-
-          }
-        },
-        (error: HttpErrorResponse) => {
-          errorResponse = error.error;
-          this.sharedService.errorLog(errorResponse);
-        }
-      )
-      this.loadConsumption(this.userId)
-    }
+    let responseOK: boolean = false;
+    this.consumptionService.deleteConsumption(consumptionId)
+    .pipe(
+      finalize(async () => {
+        await this.sharedService.managementToast(
+          'postFeedback',
+          responseOK,
+          errorResponse
+        );
+      })
+    )
+    .subscribe(
+      () => {
+        responseOK = true;
+        this.loadConsumption(this.userId);
+      },
+      (error: HttpErrorResponse) => {
+        errorResponse = error.error;
+        this.sharedService.errorLog(errorResponse);
+      }
+    );
   }
 
   saveWaterForm(): void {

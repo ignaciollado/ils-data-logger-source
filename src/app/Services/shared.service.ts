@@ -23,7 +23,7 @@ export class SharedService {
     if (toastMsg) {
       if (validRequest) {
         toastMsg.className = 'show requestOk';
-        toastMsg.textContent = 'Form submitted successfully.';
+        toastMsg.textContent = 'Data submitted successfully.';
         await this.wait(4500);
         toastMsg.className = toastMsg.className.replace('show', '');
       } else {

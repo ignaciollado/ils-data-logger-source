@@ -8,9 +8,11 @@ mysqli_query($conn, "SET NAMES 'utf8'");
 
 $consumptionId = mysqli_real_escape_string($conn, $_GET["consumptionId"]);
 
-$query = "DELETE FROM ils_consumption WHERE consumptionId = ". $consumptionId;
+$sql = "DELETE FROM ils_consumption WHERE consumptionId = ". $consumptionId;
 
-mysqli_query($conn, $query);
+echo $sql;
+
+mysqli_query($conn, $sql);
 
 if(mysqli_affected_rows($conn) == 0){
     echo http_response_code(404);

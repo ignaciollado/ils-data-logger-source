@@ -8,8 +8,22 @@ mysqli_query($conn, "SET NAMES 'utf8'");
 $consumptionId = $_GET['consumptionId'];
 $postedData = file_get_contents("php://input");
 $request = json_decode($postedData, TRUE);
-var_dump($request);
-$sql = "UPDATE ils_consumption SET () VALUES() WHERE consumptionId = '" .$consumptionId. "'";
+
+$sql = "UPDATE `ils_consumption` SET
+`01`='".$request['jan']."',
+`02`='".$request['feb']."',
+`03`='".$request['mar']."',
+`04`='".$request['apr']."',
+`05`='".$request['may']."',
+`06`='".$request['jun']."',
+`07`='".$request['jul']."',
+`08`='".$request['aug']."',
+`09`='".$request['sep']."',
+`10`='".$request['oct']."',
+`11`='".$request['nov']."',
+`12`='".$request['dec']."'
+WHERE consumptionId = " .$consumptionId;
+
 $result = mysqli_query($conn, $sql);
 
 if ( $result ) {

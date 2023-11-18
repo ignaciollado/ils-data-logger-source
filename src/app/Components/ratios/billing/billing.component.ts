@@ -188,6 +188,7 @@ export class BillingComponent {
           if (rowsAffected.affected > 0) {
 
           }
+          this.loadBillings(this.userId)
         },
         (error: HttpErrorResponse) => {
           errorResponse = error.error;

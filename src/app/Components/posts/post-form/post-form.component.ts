@@ -234,7 +234,6 @@ export class PostFormComponent implements OnInit {
           this.consumptions = consumptions
           this.dataSource = new MatTableDataSource(this.consumptions);
           this.dataSource.sort = this.energyTbSort;
-          console.log (this.dataSource.data)
         },
         (error: HttpErrorResponse) => {
           errorResponse = error.error;
@@ -299,9 +298,8 @@ export class PostFormComponent implements OnInit {
         .subscribe(
           () => {
             responseOK = true;
-            /* this.energy.reset() */
-            console.log (this.yearEnergy.value, this.yearEnergy.value.substring(-4))
-            this.yearEnergy.reset()
+            this.energy.reset()
+            /* this.yearEnergy.reset() */
             this.loadConsumption(this.userId);
           },
           (error: HttpErrorResponse) => {
@@ -314,22 +312,28 @@ export class PostFormComponent implements OnInit {
 
   public deleteEnergyConsumption(consumptionId: number): void {
     let errorResponse: any;
+    let responseOK: boolean = false;
 
-    this.result = confirm('Confirm delete this energy');
-    if (this.result) {
-      this.consumptionService.deleteConsumption(consumptionId).subscribe (
-        (rowsAffected: deleteResponse) => {
-          if (rowsAffected.affected > 0) {
-
+      this.consumptionService.deleteConsumption(consumptionId)
+        .pipe(
+          finalize(async () => {
+            await this.sharedService.managementToast(
+              'postFeedback',
+              responseOK,
+              errorResponse
+            );
+          })
+        )
+        .subscribe(
+          () => {
+            responseOK = true;
+            this.loadConsumption(this.userId);
+          },
+          (error: HttpErrorResponse) => {
+            errorResponse = error.error;
+            this.sharedService.errorLog(errorResponse);
           }
-        },
-        (error: HttpErrorResponse) => {
-          errorResponse = error.error;
-          this.sharedService.errorLog(errorResponse);
-        }
-      )
-      this.loadConsumption(this.userId)
-    }
+        );
   }
 
   public saveForm(): void {

@@ -93,8 +93,8 @@ export class CnaesComponent {
 
   isGridView: boolean = false
   columnsDisplayed: string[] = CnaeColumns.map((col) => col.key)
-  dataSource: any = CNAES_DATA
-  //dataSource = new MatTableDataSource<CnaeDataDTO>()
+  //dataSource: any = CNAES_DATA
+  dataSource = new MatTableDataSource<CnaeDataDTO>()
   columnsSchema: any = CnaeColumns
 
   valid: any = {}

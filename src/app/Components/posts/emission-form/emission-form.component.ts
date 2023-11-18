@@ -8,12 +8,11 @@ import {
   Validators,
 } from '@angular/forms';
 
-import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE} from '@angular/material/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import {DateAdapter, MAT_DATE_LOCALE} from '@angular/material/core';
+import { ActivatedRoute } from '@angular/router';
 import { finalize } from 'rxjs/operators';
 import { ConsumptionDTO, emissionColumns } from 'src/app/Models/consumption.dto';
 import { DelegationDTO } from 'src/app/Models/delegation.dto';
-import { LocalStorageService } from 'src/app/Services/local-storage.service';
 import { ConsumptionService } from 'src/app/Services/consumption.service';
 import { SharedService } from 'src/app/Services/shared.service';
 import { deleteResponse } from 'src/app/Services/category.service';
@@ -26,11 +25,11 @@ import { MatDialog } from '@angular/material/dialog'
 import { ConfirmDialogComponent } from 'src/app/confirm-dialog/confirm-dialog.component'
 
 const EMISSION_DATA = [
-  {Id: 1, delegation: "Mock data", year: "2019", residueES: "Combustión no peligrosos (kg)", "jan": 15000000, "feb": 15000000, "mar": 15000000, "apr": 15000000, "may": 15000000
-  , "jun": 15000000, "jul": 15000000, "aug": 15000000, "sep": 15000000, "oct": 15000000, "nov": 15000000, "dec": 15000000},
-  {Id: 2, delegation: "Mock data", year: "2020", residueES: "Construcción y demolición (obra) (kg)", "jan": .300},
-  {Id: 3, delegation: "Mock data", year: "2019", residueES: "Productos alimentarios (kg)", "jan": 500.57, "feb": 1.4579},
-  {Id: 4, delegation: "Mock data", year: "2020", residueES: "Urbano Mezclado (kg)", "jan": 1.2550}
+  {Id: 1, delegation: "Mock data", year: "2019", "jan": 15000000, "janScope1": 10000000, "janScope2": 5000000,"feb": "15000000 10000000 5000000", "mar": "15000000 10000000 5000000", "apr": "15000000 10000000 5000000", "may": "15000000 10000000 5000000"
+  , "jun": "15000000 10000000 5000000", "jul": "15000000 10000000 5000000", "aug": "15000000 10000000 5000000", "sep": "15000000 10000000 5000000", "oct": "15000000 10000000 5000000", "nov": "15000000 10000000 5000000", "dec": "15000000 10000000 5000000"},
+  {Id: 2, delegation: "Mock data", year: "2020", "jan": "15000000 10000000 5000000"},
+  {Id: 3, delegation: "Mock data", year: "2019", "jan": "15000000 10000000 5000000", "feb": "15000000 10000000 5000000"},
+  {Id: 4, delegation: "Mock data", year: "2020", "jan": "15000000 10000000 5000000"}
 ];
 
 @Component({
@@ -372,20 +371,20 @@ export class EmissionFormComponent {
     return false
   }
 
-  public isAllSelected():boolean {
+/*   public isAllSelected():boolean {
     return this.dataSource.every((item: any) => item.isSelected);
   }
-
-  public isAnySelected():boolean {
+ */
+/*   public isAnySelected():boolean {
     return this.dataSource.some((item: any) => item.isSelected);
-  }
+  } */
 
-  public selectAll(event):void {
+/*   public selectAll(event):void {
     this.dataSource = this.dataSource.map((item: any) => ({
       ...item,
       isSelected: event.checked,
     }));
-  }
+  } */
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;

@@ -146,8 +146,8 @@ export class ObjectivesComponent {
 
   isGridView: boolean = false
   columnsDisplayed : string[] = ObjectiveColumns.map((col) => col.key)
-  dataSource: any = OBJECTIVES_DATA
-  //dataSource = new MatTableDataSource<ObjectiveDTO>()
+  //dataSource: any = OBJECTIVES_DATA
+  dataSource = new MatTableDataSource<ObjectiveDTO>()
   columnsSchema: any = ObjectiveColumns
   valid: any = {}
 
@@ -368,20 +368,20 @@ export class ObjectivesComponent {
     return false
   }
 
-  public isAllSelected():boolean {
+/*   public isAllSelected():boolean {
     return this.dataSource.every((item: any) => item.isSelected);
-  }
+  } */
 
-  public isAnySelected():boolean {
+/*   public isAnySelected():boolean {
     return this.dataSource.some((item: any) => item.isSelected);
-  }
+  } */
 
-  public selectAll(event):void {
+/*   public selectAll(event):void {
     this.dataSource = this.dataSource.map((item: any) => ({
       ...item,
       isSelected: event.checked,
     }));
-  }
+  } */
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;

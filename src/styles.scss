@@ -3,10 +3,10 @@
 @use '@angular/material' as mat;
 
 @include mat.core;
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100;700&display=swap');
 
-
-html, body { height: 95%; }
-body { margin: .25rem auto;  }
+html, body { height: 100%; font-family: Raleway, "Times New Roman", Times, serif;}
+body { margin: 0 auto;  }
 
 .container-form {
     display: flex;

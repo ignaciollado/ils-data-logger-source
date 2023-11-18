@@ -292,16 +292,21 @@ export const emissionColumns = [
     type: "text",
     label: "Year"
   },
-  {
-    key: "residueES",
-    type: "text",
-    label: "Residue type"
-  },
 
   {
     key: "jan",
     type: "number",
     label: "January"
+  },
+  {
+    key: "janScope1",
+    type: "number",
+    label: "Scope1"
+  },
+  {
+    key: "janScope2",
+    type: "number",
+    label: "Scope2"
   },
   {
     key: "feb",

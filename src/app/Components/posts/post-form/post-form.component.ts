@@ -41,18 +41,6 @@ const ENERGIES_DATA = [
   selector: 'app-post-form',
   templateUrl: './post-form.component.html',
   styleUrls: ['./post-form.component.scss'],
-/*   encapsulation: ViewEncapsulation.None,
-  animations: [
-    trigger( 'fadeInOut',[
-      state(
-        'void',
-        style({
-          opacity: 0.2
-        })
-      ),
-      transition('void <-> *', animate(1500))
-    ])
-  ], */
 })
 
 export class PostFormComponent implements OnInit {
@@ -94,8 +82,8 @@ export class PostFormComponent implements OnInit {
 
   isGridView: boolean = false
   columnsDisplayed: string[] = energyColumns.map((col) => col.key);
-  dataSource: any = ENERGIES_DATA
-    /* dataSource = new MatTableDataSource<ConsumptionDTO>() */
+  //dataSource: any = ENERGIES_DATA
+  dataSource = new MatTableDataSource<ConsumptionDTO>()
   columnsSchema: any = energyColumns;
 
   valid: any = {}

@@ -26,11 +26,11 @@ import { MatDialog } from '@angular/material/dialog'
 import { ConfirmDialogComponent } from 'src/app/confirm-dialog/confirm-dialog.component'
 
 const WATER_DATA = [
-  {Id: 1, delegation: "Son Castelló", year: "2019", "jan": 15000001, "feb": 15000002, "mar": 15000000, "apr": 15000000, "may": 15000000
+  {Id: 1, delegation: "Mock Data", year: "2019", "jan": 15000001, "feb": 15000002, "mar": 15000000, "apr": 15000000, "may": 15000000
   , "jun": 15000000, "jul": 15000000, "aug": 15000000, "sep": 15000000, "oct": 15000000, "nov": 15000000, "dec": 15000000},
   {Id: 2, delegation: "Can Valero", year: "2020", "jan": .300},
-  {Id: 3, delegation: "Son Castelló", year: "2019", "jan": 500.57, "feb": 1.4579},
-  {Id: 4, delegation: "Son Castelló", year: "2020", "jan": 1.2550}
+  {Id: 3, delegation: "Mock Data", year: "2019", "jan": 500.57, "feb": 1.4579},
+  {Id: 4, delegation: "Mock Data", year: "2020", "jan": 1.2550}
 ];
 
 @Component({
@@ -77,8 +77,8 @@ export class WaterFormComponent {
 
   isGridView: boolean = false
   columnsDisplayed: string[] = waterColumns.map((col) => col.key);
-  dataSource: any = WATER_DATA
-  //dataSource = new MatTableDataSource<ConsumptionDTO>()
+  //dataSource: any = WATER_DATA
+  dataSource = new MatTableDataSource<ConsumptionDTO>()
   columnsSchema: any = waterColumns;
   valid: any = {}
 /*   columnsDisplayed = ['delegation', 'year', 'water', 'enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'setiembre', 'octubre', 'noviembre', 'diciembre', 'ACTIONS'];

@@ -78,8 +78,8 @@ export class ResidueFormComponent {
 
   isGridView: boolean = false
   columnsDisplayed: string[] = residueColumns.map((col) => col.key);
-  dataSource: any = RESIDUES_DATA
-  //dataSource = new MatTableDataSource<ConsumptionDTO>();
+  //dataSource: any = RESIDUES_DATA
+  dataSource = new MatTableDataSource<ConsumptionDTO>();
   columnsSchema: any = residueColumns;
   /* columnsDisplayed = ['delegation', 'year', 'residue', 'enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'setiembre', 'octubre', 'noviembre', 'diciembre', 'ACTIONS']; */
   valid: any = {}
@@ -398,20 +398,20 @@ export class ResidueFormComponent {
     return false
   }
 
-  public isAllSelected():boolean {
+/*   public isAllSelected():boolean {
     return this.dataSource.every((item: any) => item.isSelected);
   }
-
-  public isAnySelected():boolean {
+ */
+/*   public isAnySelected():boolean {
     return this.dataSource.some((item: any) => item.isSelected);
-  }
+  } */
 
-  public selectAll(event):void {
+/*   public selectAll(event):void {
     this.dataSource = this.dataSource.map((item: any) => ({
       ...item,
       isSelected: event.checked,
     }));
-  }
+  } */
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;

@@ -77,41 +77,49 @@ input[type=number] {
 mat-table {
   margin-top: .5rem;
   margin-bottom: 2rem;
-  width: 100%;
-}
 
+}
+.mat-column-isSelected{
+  max-width: 4rem;
+}
 .mat-column-year{
   max-width: 2.7rem;
 }
 .mat-column-delegation{
-  max-width: 7rem;
+  max-width: 4rem;
 }
-.mat-column-jan{
-  max-width: 4.5rem;
+.mat-column-enviromentalDataName{
+  max-width: 10rem;
+}
+.mat-column-theRatioType{
+  max-width: 5rem;
+}
+/* .mat-column-jan{
+  max-width: 4rem;
 }
 .mat-column-feb{
-  max-width: 4.5rem;
+  max-width: 4rem;
 }
 .mat-column-mar{
-  max-width: 4.5rem;
+  max-width: 4rem;
 }
 .mat-column-apr{
-  max-width: 4.5rem;
+  max-width: 4rem;
 }
 .mat-column-may{
-  max-width: 4.5rem;
+  max-width: 4rem;
 }
 .mat-column-jun{
-  max-width: 4.5rem;
+  max-width: 4rem;
 }
 .mat-column-jul{
-  max-width: 4.5rem;
+  max-width: 4rem;
 }
 .mat-column-aug{
-  max-width: 4.5rem;
+  max-width: 4rem;
 }
 .mat-column-sep{
-  max-width: 4.5rem;
+  max-width: 4rem;
 }
 .mat-column-oct{
   max-width: 4.5rem;
@@ -123,8 +131,8 @@ mat-table {
   max-width: 4.5rem;
 }
 .mat-column-isEdit{
-width: 24rem;
-}
+width: 1rem;
+} */
 mat-header-row{
   background-color: #424242;
 

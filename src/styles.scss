@@ -6,7 +6,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100;700&display=swap');
 
 html, body { height: 100%; font-family: Raleway, "Times New Roman", Times, serif;}
-body { margin: 0 auto;  }
+body { margin: 0 auto;  max-width: 99%;}
 
 .container-form {
     display: flex;

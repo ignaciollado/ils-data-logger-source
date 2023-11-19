@@ -19,8 +19,7 @@ import { DelegationDTO } from 'src/app/Models/delegation.dto';
 import { EnergyService } from 'src/app/Services/energy.service';
 import { ConsumptionService } from 'src/app/Services/consumption.service';
 import { SharedService } from 'src/app/Services/shared.service';
-import { deleteResponse } from 'src/app/Services/consumption.service';
-import { animate, state, style, transition, trigger } from '@angular/animations';
+
 import { DelegationService } from 'src/app/Services/delegation.service';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { HeaderMenusService } from 'src/app/Services/header-menus.service';
@@ -29,6 +28,7 @@ import { MatSort } from '@angular/material/sort';
 
 import { MatDialog } from '@angular/material/dialog'
 import { ConfirmDialogComponent } from 'src/app/confirm-dialog/confirm-dialog.component'
+import { MatPaginator } from '@angular/material/paginator';
 
 const ENERGIES_DATA = [
   {Id: 1, delegation: "Mock data", year: "2019", energyES: "Fuel (kg)", "jan": 15000000, "feb": 15000000, "mar": 15000000, "apr": 15000000, "may": 15000000
@@ -91,6 +91,7 @@ export class PostFormComponent implements OnInit {
   ; */
 
   @ViewChild('energyTbSort') energyTbSort = new MatSort();
+  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
 
   ngAfterViewInit() {
     this.dataSource.sort = this.energyTbSort;
@@ -234,6 +235,7 @@ export class PostFormComponent implements OnInit {
           this.consumptions = consumptions
           this.dataSource = new MatTableDataSource(this.consumptions);
           this.dataSource.sort = this.energyTbSort;
+          this.dataSource.paginator = this.paginator;
         },
         (error: HttpErrorResponse) => {
           errorResponse = error.error;

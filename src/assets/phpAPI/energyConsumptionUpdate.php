@@ -25,16 +25,12 @@ $sql = "UPDATE `ils_consumption` SET
 WHERE consumptionId = " .$consumptionId;
 
 $result = mysqli_query($conn, $sql);
-
-if ( $result ) {
-    while( $consumption = mysqli_fetch_row($result) )
-    {
-        $vec = $consumption;
-    }
-    $cad = json_encode($vec);
-}
-
 mysqli_close($conn);
-echo $cad;
-header('Content-Type: application/json');
+
+if ($result) {
+  header('Content-Type: application/json');
+  echo  http_response_code(200);
+} else  {
+  echo http_response_code(401);
+}
 ?>

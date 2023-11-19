@@ -78,14 +78,16 @@ mat-table {
   margin-bottom: 2rem;
   width: 100%;
 }
-
+.mat-column-isSelected{
+  max-width: 4rem;
+}
 .mat-column-year{
   max-width: 2.7rem;
 }
 .mat-column-delegation{
   max-width: 7rem;
 }
-.mat-column-jan{
+/* .mat-column-jan{
   max-width: 4.5rem;
 }
 .mat-column-feb{
@@ -123,7 +125,7 @@ mat-table {
 }
 .mat-column-isEdit{
   width: 24rem;
-  }
+  } */
 mat-header-row{
   background-color: #424242;
 }

@@ -52,11 +52,18 @@ mat-table {
   width: 100%;
 }
 
+.mat-column-isSelected{
+  max-width: 4rem;
+}
+
 .mat-column-year{
   max-width: 2.7rem;
 }
 .mat-column-delegation{
   max-width: 7rem;
+}
+.mat-column-cnaeUnitSelected{
+  max-width: 4.5rem;
 }
 .mat-column-jan{
   max-width: 4.5rem;
@@ -95,7 +102,7 @@ mat-table {
   max-width: 4.5rem;
 }
 .mat-column-isEdit{
-  width: 24rem;
+  width: 10rem;
   }
 mat-header-row{
   background-color: #424242;

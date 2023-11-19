@@ -75,32 +75,31 @@
                   [indeterminate]="!isAllSelected() && isAnySelected()">
               </mat-checkbox> -->
           </span>
-
           <span *ngSwitchDefault>{{ col.label }}</span>
       </mat-header-cell>
       <mat-cell *matCellDef="let element">
           <div [ngSwitch]="col.type" *ngIf="!element.isEdit">
-              <ng-container *ngSwitchCase="'isSelected'">
+            <ng-container *ngSwitchCase="'isSelected'">
                 <mat-checkbox
                   (change)="element.isSelected = $event.checked"
                   [checked]="element.isSelected">
                 </mat-checkbox>
-              </ng-container>
-            <div class="btn-edit" *ngSwitchCase="'isEdit'">
+            </ng-container>
+            <ng-container *ngSwitchCase="'isEdit'">
               <button mat-icon-button (click)="element.isEdit = !element.isEdit"
-              class="material-icons app-toolbar-menu save-button"
-              matTooltip="Edit" color="primary"><i class="fa-solid fa-pencil fa-xs" style="color: #365446;"></i>
-            </button>
-            <button mat-icon-button class="material-icons app-toolbar-menu delete-button" (click)="removeRow(element.Id)"
-              matTooltip="Delete" color="warn"><i class="fa-solid fa-trash fa-xs" style="color: #365446;"></i>
-            </button>
-            </div>
-            <span *ngSwitchCase="'janScope1'" ngClass="small-data">
-              {{element[col.key]}}
-            </span>
-            <!-- <span *ngSwitchDefault ngClass="small-data">
+                class="material-icons app-toolbar-menu save-button"
+                matTooltip="Edit"><i class="fa-solid fa-pencil fa-xs" style="color: #365446;"></i>
+              </button>
+              <button mat-icon-button class="material-icons app-toolbar-menu delete-button" (click)="removeRow(element.Id)"
+                matTooltip="Delete"><i class="fa-solid fa-trash fa-xs" style="color: #365446;"></i>
+              </button>
+            </ng-container>
+          <!--   <ng-container *ngSwitchCase="'number'" ngClass="small-data-input">
               {{ element[col.key] }}
-            </span> -->
+            </ng-container> -->
+           <ng-container *ngSwitchDefault >
+             <span ngClass="small-data">{{ element[col.key] }}</span>
+            </ng-container>
           </div>
 
           <div [ngSwitch]="col.type" *ngIf="element.isEdit">
@@ -115,8 +114,8 @@
               {{element[col.key]}}
             </span>
             <input *ngSwitchCase="'number'" [type]="col.type" [(ngModel)]="element[col.key]" ngClass="small-data-input" [style.width.px]='60'/>
-            <input *ngSwitchCase="'number'" [type]="col.type" [(ngModel)]="element[col.key]" ngClass="small-data-input" [style.width.px]='50'/>
-            <input *ngSwitchCase="'number'" [type]="col.type" [(ngModel)]="element[col.key]" ngClass="small-data-input" [style.width.px]='50'/>
+         <!--    <input *ngSwitchCase="'number'" [type]="col.type" [(ngModel)]="element[col.key]" ngClass="small-data-input" [style.width.px]='50'/>
+            <input *ngSwitchCase="'number'" [type]="col.type" [(ngModel)]="element[col.key]" ngClass="small-data-input" [style.width.px]='50'/> -->
           </div>
       </mat-cell>
     </ng-container>

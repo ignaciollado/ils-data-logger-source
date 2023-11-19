@@ -10,7 +10,6 @@ $consumptionId = mysqli_real_escape_string($conn, $_GET["consumptionId"]);
 
 $sql = "DELETE FROM ils_consumption WHERE consumptionId = ". $consumptionId;
 
-echo $sql;
 
 mysqli_query($conn, $sql);
 

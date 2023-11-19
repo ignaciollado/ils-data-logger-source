@@ -81,7 +81,7 @@
               class="material-icons app-toolbar-menu save-button"
               matTooltip="Edit" color="primary"><i class="fa-solid fa-pencil fa-xs" style="color: #365446;"></i>
             </button>
-            <button mat-icon-button class="material-icons app-toolbar-menu delete-button" (click)="removeRow(element.Id)"
+            <button mat-icon-button class="material-icons app-toolbar-menu delete-button" (click)="removeRow(element.consumptionId)"
               matTooltip="Delete" color="warn"><i class="fa-solid fa-trash fa-xs" style="color: #365446;"></i>
             </button>
             </div>
@@ -90,7 +90,7 @@
             </span>
           </div>
 
-          <div [ngSwitch]="col.type" *ngIf="element.isEdit">
+          <ng-template [ngSwitch]="col.type" *ngIf="element.isEdit">
             <div class="btn-edit" *ngSwitchCase="'isEdit'">
               <button mat-button (click)="editRow(element)" [disabled]="valid[element.Id] === false">Done</button>
             </div>
@@ -103,7 +103,7 @@
             </span>
 
             <input *ngSwitchCase="'number'" [type]="col.type" [(ngModel)]="element[col.key]" ngClass="small-data-input" [style.width.px]='70'/>
-          </div>
+          </ng-template>
       </mat-cell>
     </ng-container>
 

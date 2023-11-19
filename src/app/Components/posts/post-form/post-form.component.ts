@@ -312,7 +312,7 @@ export class PostFormComponent implements OnInit {
     }
   }
 
-  public deleteEnergyConsumption(consumptionId: number): void {
+ /*  public deleteEnergyConsumption(consumptionId: number): void {
     let errorResponse: any;
     let responseOK: boolean = false;
 
@@ -336,7 +336,7 @@ export class PostFormComponent implements OnInit {
             this.sharedService.errorLog(errorResponse);
           }
         );
-  }
+  } */
 
   public saveForm(): void {
 
@@ -443,7 +443,6 @@ export class PostFormComponent implements OnInit {
   }
 
   public removeRow(id: any) {
-   /*  this.dataSource = this.dataSource.filter((u:any) => u.id !== id); */
    this.consumptionService.deleteConsumption(id).subscribe(() => {
     this.dataSource.data = this.dataSource.data.filter(
       (u: ConsumptionDTO) => u.consumptionId !== id

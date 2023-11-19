@@ -195,7 +195,7 @@ export class WaterFormComponent {
 
   }
 
-  deleteWaterConsumption(consumptionId: number): void {
+/*   deleteWaterConsumption(consumptionId: number): void {
     let errorResponse: any;
     let responseOK: boolean = false;
     this.consumptionService.deleteConsumption(consumptionId)
@@ -219,7 +219,7 @@ export class WaterFormComponent {
       }
     );
   }
-
+ */
   saveWaterForm(): void {
     this.isValidForm = false;
     if (this.waterForm.invalid) {

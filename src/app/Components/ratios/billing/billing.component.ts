@@ -179,7 +179,7 @@ export class BillingComponent {
     }
   }
 
-  deleteBilling(billingId: number): void {
+/*   deleteBilling(billingId: number): void {
     let errorResponse: any;
     this.result = confirm('Confirm delete this billing.');
     if (this.result) {
@@ -197,45 +197,11 @@ export class BillingComponent {
       )
       this.loadBillings(this.userId)
     }
-  }
+  } */
 
   public applyFilter(value: Event):void {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
-  }
-
-  public copyCnaeMonthValue( resource: string ) {
-    this.genCnae.setValue( resource )
-    this.febCnae.setValue( resource )
-    this.marCnae.setValue( resource )
-    this.aprCnae.setValue( resource )
-
-    this.mayCnae.setValue( resource )
-    this.junCnae.setValue( resource )
-    this.julCnae.setValue( resource )
-    this.augCnae.setValue( resource )
-
-    this.sepCnae.setValue( resource )
-    this.octCnae.setValue( resource )
-    this.novCnae.setValue( resource )
-    this.decCnae.setValue( resource )
-  }
-
-  public copyBillingMonthValue( resource: string ) {
-    this.genBill.setValue( resource )
-    this.febBill.setValue( resource )
-    this.marBill.setValue( resource )
-    this.aprBill.setValue( resource )
-
-    this.mayBill.setValue( resource )
-    this.junBill.setValue( resource )
-    this.julBill.setValue( resource )
-    this.augBill.setValue( resource )
-
-    this.sepBill.setValue( resource )
-    this.octBill.setValue( resource )
-    this.novBill.setValue( resource )
-    this.decBill.setValue( resource )
   }
 
   public addRow() {
@@ -282,7 +248,6 @@ export class BillingComponent {
     row.isEdit = false
 
   }
-
   public removeRow(id: any) {
    /*  this.dataSource = this.dataSource.filter((u:any) => u.id !== id); */
    this.billingService.deleteBilling(id).subscribe(() => {
@@ -291,7 +256,6 @@ export class BillingComponent {
     );
   });
   }
-
   public removeSelectedRows() {
     /* this.dataSource = this.dataSource.filter((u: any) => !u.isSelected); */
 

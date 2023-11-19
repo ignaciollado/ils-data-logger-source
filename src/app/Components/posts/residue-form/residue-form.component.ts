@@ -239,7 +239,7 @@ export class ResidueFormComponent {
 
   }
 
-  deleteResidue(consumptionId: number): void {
+ /*  deleteResidue(consumptionId: number): void {
 
     let errorResponse: any;
     this.result = confirm('Confirm delete this residue.');
@@ -258,7 +258,7 @@ export class ResidueFormComponent {
       this.loadConsumption(this.userId)
     }
   }
-
+ */
   saveResidueForm(): void {
 
     this.isValidForm = false;
@@ -324,12 +324,12 @@ export class ResidueFormComponent {
       aspectES: '',
       unit: '',
       pci: 1,
-      isEdit: true,
-      isSelected: false,
       fromDate: new Date(),
       toDate: new Date(),
       created_at: new Date(),
-      objective: ''
+      objective: '',
+      isEdit: true,
+      isSelected: false,
     };
     this.dataSource.data = [newRow, ...this.dataSource.data]
   }

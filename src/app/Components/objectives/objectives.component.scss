@@ -28,6 +28,7 @@
   -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
   animation: fadein 0.5s, fadeout 0.5s 2.5s;
 }
+
 .button-add-row {
   background: #1b9e1b;
   color: #ffffff;
@@ -62,6 +63,7 @@ input[type=number] {
 .jan-checkbox{
   display: grid;
   grid-template-columns: 20% 80%;
+  gap: .2rem;
 }
 
 .small-data {
@@ -77,49 +79,58 @@ input[type=number] {
 mat-table {
   margin-top: .5rem;
   margin-bottom: 2rem;
+  width: 100%;
+}
 
+.mat-mdc-table {
+  white-space: nowrap;
 }
-.mat-column-isSelected{
-  max-width: 4rem;
+
+mat-header-row{
+  background-color: #424242;
 }
+
+mat-header-cell {
+  color: white;
+  font-size: .5rem;
+}
+
+mat-cell{
+  background-color: #919191;
+}
+
 .mat-column-year{
   max-width: 2.7rem;
 }
 .mat-column-delegation{
-  max-width: 4rem;
-}
-.mat-column-enviromentalDataName{
-  max-width: 10rem;
-}
-.mat-column-theRatioType{
-  max-width: 5rem;
+  padding-right: 2rem;
 }
 /* .mat-column-jan{
-  max-width: 4rem;
+  max-width: 4.5rem;
 }
 .mat-column-feb{
-  max-width: 4rem;
+  max-width: 4.5rem;
 }
 .mat-column-mar{
-  max-width: 4rem;
+  max-width: 4.5rem;
 }
 .mat-column-apr{
-  max-width: 4rem;
+  max-width: 4.5rem;
 }
 .mat-column-may{
-  max-width: 4rem;
+  max-width: 4.5rem;
 }
 .mat-column-jun{
-  max-width: 4rem;
+  max-width: 4.5rem;
 }
 .mat-column-jul{
-  max-width: 4rem;
+  max-width: 4.5rem;
 }
 .mat-column-aug{
-  max-width: 4rem;
+  max-width: 4.5rem;
 }
 .mat-column-sep{
-  max-width: 4rem;
+  max-width: 4.5rem;
 }
 .mat-column-oct{
   max-width: 4.5rem;
@@ -129,31 +140,7 @@ mat-table {
 }
 .mat-column-dec{
   max-width: 4.5rem;
-}
-.mat-column-isEdit{
-width: 1rem;
 } */
-mat-header-row{
-  background-color: #424242;
-
+.mat-column-isEdit{
+  padding-right: 6rem;
 }
-
-mat-header-cell {
-  color: white;
-  font-size: .5rem;
-  padding-left: 0;
-  margin-left: 0;
-}
-
-mat-cell{
-  background-color: #919191;
-  padding-left: 0;
-  margin-left: 0;
-}
-
-mat-row {
-
-}
-
-
-

@@ -109,7 +109,6 @@ export const energyColumns = [
     type: 'isSelected',
     label: '',
   },
-
   {
       key: "delegation",
       type: "text",
@@ -361,12 +360,12 @@ export const emissionColumns = [
   {
     key: "mayScope1",
     type: 'number',
-    label: "Scope 1"
+    label: "-"
   },
   {
     key: "mayScope2",
     type: 'number',
-    label: "Scope 2"
+    label: "-"
   },
   {
     key: "jun",

@@ -52,58 +52,10 @@ mat-table {
   width: 100%;
 }
 
-.mat-column-isSelected{
-  width: 4rem;
+.mat-mdc-table {
+  white-space: nowrap;
 }
 
-.mat-column-year{
-  max-width: 2.7rem;
-}
-.mat-column-delegation{
-  max-width: 7rem;
-}
-.mat-column-cnaeUnitSelected{
-  max-width: 4.5rem;
-}
-.mat-column-jan{
-  max-width:4rem;
-}
-.mat-column-feb{
-  max-width:4rem;
-}
-.mat-column-mar{
-  max-width:4rem;
-}
-.mat-column-apr{
-  max-width:4rem;
-}
-.mat-column-may{
-  max-width:4rem;
-}
-.mat-column-jun{
-  max-width:4rem;
-}
-.mat-column-jul{
-  max-width:4rem;
-}
-.mat-column-aug{
-  max-width:4rem;
-}
-.mat-column-sep{
-  max-width:4rem;
-}
-.mat-column-oct{
-  max-width:4rem;
-}
-.mat-column-nov{
-  max-width:4rem;
-}
-.mat-column-dec{
-  max-width: 4rem;
-}
-.mat-column-isEdit{
-  width: 15rem;
-  }
 mat-header-row{
   background-color: #424242;
 }
@@ -116,6 +68,53 @@ mat-header-cell {
 mat-cell{
   background-color: #919191;
 }
+
+.mat-column-year{
+  max-width: 2.7rem;
+}
+.mat-column-delegation{
+  padding-right: 2rem;
+}
+/* .mat-column-jan{
+  max-width: 4.5rem;
+}
+.mat-column-feb{
+  max-width: 4.5rem;
+}
+.mat-column-mar{
+  max-width: 4.5rem;
+}
+.mat-column-apr{
+  max-width: 4.5rem;
+}
+.mat-column-may{
+  max-width: 4.5rem;
+}
+.mat-column-jun{
+  max-width: 4.5rem;
+}
+.mat-column-jul{
+  max-width: 4.5rem;
+}
+.mat-column-aug{
+  max-width: 4.5rem;
+}
+.mat-column-sep{
+  max-width: 4.5rem;
+}
+.mat-column-oct{
+  max-width: 4.5rem;
+}
+.mat-column-nov{
+  max-width: 4.5rem;
+}
+.mat-column-dec{
+  max-width: 4.5rem;
+} */
+.mat-column-isEdit{
+  padding-right: 6rem;
+}
+
 
 
 

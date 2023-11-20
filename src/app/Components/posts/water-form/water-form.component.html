@@ -38,7 +38,7 @@
   </form>
   <div style="margin-left: auto; margin-right: auto"><span id="postFeedback"></span></div>
 
-  <ng-container *ngIf="dataSource else noDataFoundYet">
+  <article *ngIf="dataSource else noDataFoundYet">
     <div></div>
     <button class="button-remove-rows" mat-button (click)="removeSelectedRows()">Remove selected Rows</button>
     <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
@@ -87,7 +87,7 @@
                 {{element[col.key]}}
               </span>
 
-              <input *ngSwitchCase="'number'" [type]="col.type" [(ngModel)]="element[col.key]" ngClass="small-data-input" [style.width.px]='70'/>
+              <input *ngSwitchCase="'number'" [type]="col.type" [(ngModel)]="element[col.key]" ngClass="small-data-input" [style.width.px]='50'/>
             </div>
         </mat-cell>
       </ng-container>
@@ -95,7 +95,7 @@
       <mat-row *matRowDef="let row; columns: columnsDisplayed;"></mat-row>
     </mat-table>
     <div class="loader" *ngIf="!dataSource">No records found yet...</div>
-  </ng-container>
+  </article>
   <ng-template #noDataFoundYet>
     <span class="loader">No data found yet...</span>
   </ng-template>

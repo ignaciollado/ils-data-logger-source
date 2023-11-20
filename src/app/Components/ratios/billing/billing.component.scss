@@ -79,13 +79,30 @@ mat-table {
   width: 100%;
 }
 
+.mat-mdc-table {
+  white-space: nowrap;
+}
+
+mat-header-row{
+  background-color: #424242;
+}
+
+mat-header-cell {
+  color: white;
+  font-size: .5rem;
+}
+
+mat-cell{
+  background-color: #919191;
+}
+
 .mat-column-year{
   max-width: 2.7rem;
 }
 .mat-column-delegation{
-  max-width: 7rem;
+  padding-right: 2rem;
 }
-.mat-column-jan{
+/* .mat-column-jan{
   max-width: 4.5rem;
 }
 .mat-column-feb{
@@ -120,20 +137,7 @@ mat-table {
 }
 .mat-column-dec{
   max-width: 4.5rem;
-}
+} */
 .mat-column-isEdit{
-  width: 12rem;
-  }
-mat-header-row{
-  background-color: #424242;
+  padding-right: 6rem;
 }
-
-mat-header-cell {
-  color: white;
-  font-size: .5rem;
-}
-
-mat-cell{
-  background-color: #919191;
-}
-

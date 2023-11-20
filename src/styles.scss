@@ -5,8 +5,8 @@
 @include mat.core;
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100;700&display=swap');
 
-html, body { height: 100%; font-family: Raleway, "Times New Roman", Times, serif;}
-body { margin: 0 auto;  max-width: 99%;}
+html, body { height: 100%; margin: 0 auto;  max-width: 99%; font-family: Raleway, "Times New Roman", Times, serif;}
+body { }
 
 .container-form {
     display: flex;

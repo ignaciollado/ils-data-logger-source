@@ -59,7 +59,7 @@
     </form>
     <div style="margin-left: auto; margin-right: auto"><span id="postFeedback"></span></div>
 
-    <ng-container *ngIf="dataSource else noDataFoundYet">
+    <article *ngIf="dataSource else noDataFoundYet">
         <div></div>
         <button class="button-remove-rows" mat-button (click)="removeSelectedRows()">Remove selected Rows</button>
         <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
@@ -105,16 +105,16 @@
 
                   <div class="jan-checkbox">
                     <container_element [ngSwitch]="col.key">
-                    <input
+                    <input *ngSwitchCase="'jan'"
                     type = "checkbox"
                     [checked]="checked"
                     [disabled]="disabled"
                     [(ngModel)]="isChecked"
                     matTooltip="Copy me!"
                     matTooltipPosition="after"
-                    (change)="copyCnaeMonthValue(element)" *ngSwitchCase="'jan'" />
+                    (change)="copyCnaeMonthValue(element)"/>
                     </container_element>
-                    <input *ngSwitchCase="'number'" [type]="col.type" [(ngModel)]="element[col.key]" ngClass="small-data-input" [style.width.px]='70'/>
+                    <input *ngSwitchCase="'number'" [type]="col.type" [(ngModel)]="element[col.key]" ngClass="small-data-input" [style.width.px]='43'/>
                   </div>
                 </div>
             </mat-cell>
@@ -123,9 +123,9 @@
           <mat-header-row *matHeaderRowDef="columnsDisplayed"></mat-header-row>
           <mat-row *matRowDef="let row; columns: columnsDisplayed;"></mat-row>
         </mat-table>
-      </ng-container>
+    </article>
 
-      <ng-template #noDataFoundYet>
-        <span class="loader">No data found yet...</span>
-      </ng-template>
+    <ng-template #noDataFoundYet>
+      <span class="loader">No data found yet...</span>
+    </ng-template>
 </div>

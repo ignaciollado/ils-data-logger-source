@@ -62,10 +62,10 @@
   <div style="margin-left: auto; margin-right: auto"><span id="postFeedback"></span></div>
 
 
-<ng-container *ngIf="dataSource else noDataFoundYet">
+<article >
   <div></div>
   <button class="button-remove-rows" mat-button (click)="removeSelectedRows()">Remove selected Rows</button>
-  <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+  <mat-table [dataSource]="dataSource" class="mat-elevation-z8" *ngIf="dataSource else noDataFoundYet">
     <ng-container [matColumnDef]="col.key" *ngFor="let col of columnsSchema">
       <mat-header-cell *matHeaderCellDef [ngSwitch]="col.key">
           <span *ngSwitchCase="'isSelected'">
@@ -75,7 +75,45 @@
                   [indeterminate]="!isAllSelected() && isAnySelected()">
               </mat-checkbox> -->
           </span>
-          <span *ngSwitchDefault>{{ col.label }}</span>
+          <ng-container [ngSwitch]="col.key">
+            <span *ngSwitchCase="'jan'">
+              {{ col.label }}
+            </span>
+            <span *ngSwitchCase="'feb'">
+              {{ col.label }}
+            </span>
+            <span *ngSwitchCase="'mar'">
+              {{ col.label }}
+            </span>
+            <span *ngSwitchCase="'apr'">
+              {{ col.label }}
+            </span>
+            <span *ngSwitchCase="'may'">
+              {{ col.label }}
+            </span>
+            <span *ngSwitchCase="'jun'">
+              {{ col.label }}
+            </span>
+            <span *ngSwitchCase="'jul'">
+              {{ col.label }}
+            </span>
+            <span *ngSwitchCase="'aug'">
+              {{ col.label }}
+            </span>
+            <span *ngSwitchCase="'sep'">
+              {{ col.label }}
+            </span>
+            <span *ngSwitchCase="'oct'">
+              {{ col.label }}
+            </span>
+            <span *ngSwitchCase="'nov'">
+              {{ col.label }}
+            </span>
+            <span *ngSwitchCase="'dec'">
+              {{ col.label }}
+            </span>
+          </ng-container>
+          <!-- <span *ngSwitchDefault>{{ col.label }}</span> -->
       </mat-header-cell>
       <mat-cell *matCellDef="let element">
           <div [ngSwitch]="col.type" *ngIf="!element.isEdit">
@@ -94,28 +132,29 @@
                 matTooltip="Delete"><i class="fa-solid fa-trash fa-xs" style="color: #365446;"></i>
               </button>
             </ng-container>
-          <!--   <ng-container *ngSwitchCase="'number'" ngClass="small-data-input">
-              {{ element[col.key] }}
-            </ng-container> -->
-           <ng-container *ngSwitchDefault >
-             <span ngClass="small-data">{{ element[col.key] }}</span>
-            </ng-container>
           </div>
+          <ng-container [ngSwitch]="col.key">
+            <span *ngSwitchCase="'delegation'" ngClass="small-data">{{ element[col.key] }}</span>
+            <span *ngSwitchCase="'year'" ngClass="small-data">{{ element[col.key] }}</span>
+            <span *ngSwitchCase="'jan'" ngClass="small-data">{{ element[col.key] }}</span>
+            <span *ngSwitchCase="'feb'" ngClass="small-data">{{ element[col.key] }}</span>
+            <span *ngSwitchCase="'mar'" ngClass="small-data">{{ element[col.key] }}</span>
+            <span *ngSwitchCase="'apr'" ngClass="small-data">{{ element[col.key] }}</span>
+            <span *ngSwitchCase="'may'" ngClass="small-data">{{ element[col.key] }}</span>
+            <span *ngSwitchCase="'jun'" ngClass="small-data">{{ element[col.key] }}</span>
+            <span *ngSwitchCase="'jul'" ngClass="small-data">{{ element[col.key] }}</span>
+            <span *ngSwitchCase="'aug'" ngClass="small-data">{{ element[col.key] }}</span>
+            <span *ngSwitchCase="'sep'" ngClass="small-data">{{ element[col.key] }}</span>
+            <span *ngSwitchCase="'oct'" ngClass="small-data">{{ element[col.key] }}</span>
+            <span *ngSwitchCase="'nov'" ngClass="small-data">{{ element[col.key] }}</span>
+            <span *ngSwitchCase="'dec'" ngClass="small-data">{{ element[col.key] }}</span>
+          </ng-container>
 
           <div [ngSwitch]="col.type" *ngIf="element.isEdit">
             <div class="btn-edit" *ngSwitchCase="'isEdit'">
-              <button mat-button (click)="editRow(element)" [disabled]="valid[element.Id] === false">Done</button>
+              <button mat-button (click)="editRow(element)" [disabled]="valid[element.Id] === false"><i class="fa-solid fa-check fa-xs" style="color: #5ce500;"></i></button>
             </div>
-            <span *ngSwitchCase="'isSelected'" ngClass="small-data">
-              {{element[col.key]}}
-            </span>
-
-            <span *ngSwitchCase="'text'" ngClass="small-data">
-              {{element[col.key]}}
-            </span>
-            <input *ngSwitchCase="'number'" [type]="col.type" [(ngModel)]="element[col.key]" ngClass="small-data-input" [style.width.px]='60'/>
-         <!--    <input *ngSwitchCase="'number'" [type]="col.type" [(ngModel)]="element[col.key]" ngClass="small-data-input" [style.width.px]='50'/>
-            <input *ngSwitchCase="'number'" [type]="col.type" [(ngModel)]="element[col.key]" ngClass="small-data-input" [style.width.px]='50'/> -->
+            <input *ngSwitchCase="'number'" [type]="col.type" [(ngModel)]="element[col.key]" ngClass="small-data-input" [style.width.px]='50'/><br>
           </div>
       </mat-cell>
     </ng-container>
@@ -124,7 +163,7 @@
     <mat-row *matRowDef="let row; columns: columnsDisplayed;"></mat-row>
   </mat-table>
   <div class="loader" *ngIf="!dataSource">No records found yet...</div>
-</ng-container>
+</article>
 <ng-template #noDataFoundYet>
   <span class="loader">No data found yet...</span>
 </ng-template>

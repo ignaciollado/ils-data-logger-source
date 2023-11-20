@@ -24,12 +24,12 @@ import { MatDialog } from '@angular/material/dialog';
 import { ConfirmDialogComponent } from 'src/app/confirm-dialog/confirm-dialog.component';
 
 const BILLING_DATA = [
-  {Id: 1, delegation: "Son Castelló", year: "2019", "jan": 15000000, "feb": 15000000, "mar": 15000000, "apr": 15000000, "may": 15000000
-  , "jun": 15000000, "jul": 15000000, "aug": 15000000, "sep": 15000000, "oct": 15000000, "nov": 15000000, "dec": 15000000},
-  {Id: 2, delegation: "Can Valero", year: "2020", "jan": 10000000.300},
-  {Id: 3, delegation: "Son Castelló", year: "2019", "jan": 10000500.57, "feb": 10222222.4579},
-  {Id: 4, delegation: "Son Castelló", year: "2020", "jan": 20500000.2550},
-  {Id: 5, delegation: "Son Castelló", year: "2023", "jan": 30000000.2550}
+  {Id: 1, delegation: "Son Castelló", year: "2019", "jan": 10000000, "feb": 10000000, "mar": 10000000, "apr": 10000000, "may": 10000000
+  , "jun": 10000000, "jul": 10000000, "aug": 10000000, "sep": 10000000, "oct": 10000000, "nov": 10000000, "dec": 10000000},
+  {Id: 2, delegation: "Can Valero", year: "2020", "jan": 1},
+  {Id: 3, delegation: "Son Castelló", year: "2019", "jan": 1, "feb": 1},
+  {Id: 4, delegation: "Son Castelló", year: "2020", "jan": 1},
+  {Id: 5, delegation: "Son Castelló", year: "2023", "jan": 1}
 ];
 
 
@@ -62,32 +62,6 @@ export class BillingComponent {
   isValidForm: boolean | null
   isElevated: boolean = true
   result: boolean = false
-
-  genCnae: UntypedFormControl
-  febCnae: UntypedFormControl
-  marCnae: UntypedFormControl
-  aprCnae: UntypedFormControl
-  mayCnae: UntypedFormControl
-  junCnae: UntypedFormControl
-  julCnae: UntypedFormControl
-  augCnae: UntypedFormControl
-  sepCnae: UntypedFormControl
-  octCnae: UntypedFormControl
-  novCnae: UntypedFormControl
-  decCnae: UntypedFormControl
-
-  genBill: UntypedFormControl
-  febBill: UntypedFormControl
-  marBill: UntypedFormControl
-  aprBill: UntypedFormControl
-  mayBill: UntypedFormControl
-  junBill: UntypedFormControl
-  julBill: UntypedFormControl
-  augBill: UntypedFormControl
-  sepBill: UntypedFormControl
-  octBill: UntypedFormControl
-  novBill: UntypedFormControl
-  decBill: UntypedFormControl
 
   private isUpdateMode: boolean;
   private validRequest: boolean;

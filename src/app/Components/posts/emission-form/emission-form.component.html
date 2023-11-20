@@ -136,8 +136,9 @@
           <ng-container [ngSwitch]="col.key">
             <span *ngSwitchCase="'delegation'" ngClass="small-data">{{ element[col.key] }}</span>
             <span *ngSwitchCase="'year'" ngClass="small-data">{{ element[col.key] }}</span>
-            <span *ngSwitchCase="'jan'" ngClass="small-data">{{ element[col.key] }}</span>
-            <span *ngSwitchCase="'feb'" ngClass="small-data">{{ element[col.key] }}</span>
+            <input *ngSwitchCase="'jan'" [type]="col.type" [(ngModel)]="element[col.key]" ngClass="small-data-input" [style.width.px]='50'/>
+           <!--  <span *ngSwitchCase="'jan'" ngClass="small-data">{{ element[col.key] }}</span> -->
+           <!--  <span *ngSwitchCase="'feb'" ngClass="small-data">{{ element[col.key] }}</span>
             <span *ngSwitchCase="'mar'" ngClass="small-data">{{ element[col.key] }}</span>
             <span *ngSwitchCase="'apr'" ngClass="small-data">{{ element[col.key] }}</span>
             <span *ngSwitchCase="'may'" ngClass="small-data">{{ element[col.key] }}</span>
@@ -147,14 +148,14 @@
             <span *ngSwitchCase="'sep'" ngClass="small-data">{{ element[col.key] }}</span>
             <span *ngSwitchCase="'oct'" ngClass="small-data">{{ element[col.key] }}</span>
             <span *ngSwitchCase="'nov'" ngClass="small-data">{{ element[col.key] }}</span>
-            <span *ngSwitchCase="'dec'" ngClass="small-data">{{ element[col.key] }}</span>
+            <span *ngSwitchCase="'dec'" ngClass="small-data">{{ element[col.key] }}</span> -->
           </ng-container>
 
           <div [ngSwitch]="col.type" *ngIf="element.isEdit">
             <div class="btn-edit" *ngSwitchCase="'isEdit'">
               <button mat-button (click)="editRow(element)" [disabled]="valid[element.Id] === false"><i class="fa-solid fa-check fa-xs" style="color: #5ce500;"></i></button>
             </div>
-            <input *ngSwitchCase="'number'" [type]="col.type" [(ngModel)]="element[col.key]" ngClass="small-data-input" [style.width.px]='50'/><br>
+            <input *ngSwitchCase="'number'" [type]="col.type" [(ngModel)]="element[col.key]" ngClass="small-data-input" [style.width.px]='50'/>**<br>
           </div>
       </mat-cell>
     </ng-container>

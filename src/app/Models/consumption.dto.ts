@@ -314,12 +314,12 @@ export const emissionColumns = [
   },
   {
     key: "febScope1",
-    type: 'number',
+    type: 'text',
     label: "Scope 1"
   },
   {
     key: "febScope2",
-    type: 'number',
+    type: 'text',
     label: "Scope 2"
   },
   {
@@ -329,12 +329,12 @@ export const emissionColumns = [
   },
   {
     key: "marScope1",
-    type: 'number',
+    type: 'text',
     label: "Scope 1"
   },
   {
     key: "marScope2",
-    type: 'number',
+    type: 'text',
     label: "Scope 2"
   },
   {
@@ -344,12 +344,12 @@ export const emissionColumns = [
   },
   {
     key: "aprScope1",
-    type: 'number',
+    type: 'text',
     label: "Scope 1"
   },
   {
     key: "aprScope2",
-    type: 'number',
+    type: 'text',
     label: "Scope 2"
   },
   {
@@ -359,12 +359,12 @@ export const emissionColumns = [
   },
   {
     key: "mayScope1",
-    type: 'number',
+    type: 'text',
     label: "-"
   },
   {
     key: "mayScope2",
-    type: 'number',
+    type: 'text',
     label: "-"
   },
   {
@@ -374,12 +374,12 @@ export const emissionColumns = [
   },
   {
     key: "junScope1",
-    type: 'number',
+    type: 'text',
     label: "Scope 1"
   },
   {
     key: "junScope2",
-    type: 'number',
+    type: 'text',
     label: "Scope 2"
   },
   {
@@ -389,12 +389,12 @@ export const emissionColumns = [
   },
   {
     key: "julScope1",
-    type: 'number',
+    type: 'text',
     label: "Scope 1"
   },
   {
     key: "julScope2",
-    type: 'number',
+    type: 'text',
     label: "Scope 2"
   },
   {
@@ -404,12 +404,12 @@ export const emissionColumns = [
   },
   {
     key: "augScope1",
-    type: 'number',
+    type: 'text',
     label: "Scope 1"
   },
   {
     key: "augScope2",
-    type: 'number',
+    type: 'text',
     label: "Scope 2"
   },
   {
@@ -419,12 +419,12 @@ export const emissionColumns = [
   },
   {
     key: "sepScope1",
-    type: 'number',
+    type: 'text',
     label: "Scope 1"
   },
   {
     key: "sepScope2",
-    type: 'number',
+    type: 'text',
     label: "Scope 2"
   },
   {
@@ -434,12 +434,12 @@ export const emissionColumns = [
   },
   {
     key: "octScope1",
-    type: 'number',
+    type: 'text',
     label: "Scope 1"
   },
   {
     key: "octScope2",
-    type: 'number',
+    type: 'text',
     label: "Scope 2"
   },
   {
@@ -449,12 +449,12 @@ export const emissionColumns = [
   },
   {
     key: "novScope1",
-    type: 'number',
+    type: 'text',
     label: "Scope 1"
   },
   {
     key: "novScope2",
-    type: 'number',
+    type: 'text',
     label: "Scope 2"
   },
   {
@@ -464,12 +464,12 @@ export const emissionColumns = [
   },
   {
     key: "decScope1",
-    type: 'number',
+    type: 'text',
     label: "Scope 1"
   },
   {
     key: "decScope2",
-    type: 'number',
+    type: 'text',
     label: "Scope 2"
   },
   {

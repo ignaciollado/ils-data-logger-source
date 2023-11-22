@@ -283,156 +283,74 @@ export const emissionColumns = [
   },
   {
     key: "delegation",
-    type: 'text',
+    type: 'label',
     label: "Emplaçament"
   },
   {
     key: "year",
-    type: 'text',
+    type: 'label',
     label: "Year"
   },
-
   {
     key: "jan",
     type: 'number',
     label: "January"
   },
+ 
   {
-    key: "janScope1",
-    type: 'text',
-    label: ""
-  },
-  {
-    key: "janScope2",
-    type: 'text',
-    label: ""
-  },
-   {
     key: "feb",
     type: 'number',
     label: "February"
   },
-  {
-    key: "febScope1",
-    type: 'text',
-    label: "Scope 1"
-  },
-  {
-    key: "febScope2",
-    type: 'text',
-    label: "Scope 2"
-  },
+  
   {
     key: "mar",
     type: 'number',
     label: "March"
   },
-  {
-    key: "marScope1",
-    type: 'text',
-    label: "Scope 1"
-  },
-  {
-    key: "marScope2",
-    type: 'text',
-    label: "Scope 2"
-  },
+ 
   {
     key: "apr",
     type: 'number',
     label: "April"
   },
-  {
-    key: "aprScope1",
-    type: 'text',
-    label: "Scope 1"
-  },
-  {
-    key: "aprScope2",
-    type: 'text',
-    label: "Scope 2"
-  },
+  
   {
     key: "may",
     type: 'number',
     label: "May"
   },
-  {
-    key: "mayScope1",
-    type: 'text',
-    label: "-"
-  },
-  {
-    key: "mayScope2",
-    type: 'text',
-    label: "-"
-  },
+ 
   {
     key: "jun",
     type: 'number',
     label: "Juny"
   },
-  {
-    key: "junScope1",
-    type: 'text',
-    label: "Scope 1"
-  },
-  {
-    key: "junScope2",
-    type: 'text',
-    label: "Scope 2"
-  },
+  
   {
     key: "jul",
     type: 'number',
     label: "July"
   },
-  {
-    key: "julScope1",
-    type: 'text',
-    label: "Scope 1"
-  },
-  {
-    key: "julScope2",
-    type: 'text',
-    label: "Scope 2"
-  },
+  
   {
     key: "aug",
     type: 'number',
     label: "August"
   },
-  {
-    key: "augScope1",
-    type: 'text',
-    label: "Scope 1"
-  },
-  {
-    key: "augScope2",
-    type: 'text',
-    label: "Scope 2"
-  },
+  
   {
     key: "sep",
     type: 'number',
     label: "September"
   },
-  {
-    key: "sepScope1",
-    type: 'text',
-    label: "Scope 1"
-  },
-  {
-    key: "sepScope2",
-    type: 'text',
-    label: "Scope 2"
-  },
+  
   {
     key: "oct",
     type: 'number',
     label: "October"
   },
-  {
+  /* {
     key: "octScope1",
     type: 'text',
     label: "Scope 1"
@@ -441,13 +359,13 @@ export const emissionColumns = [
     key: "octScope2",
     type: 'text',
     label: "Scope 2"
-  },
+  }, */
   {
     key: "nov",
     type: 'number',
     label: "November"
   },
-  {
+ /*  {
     key: "novScope1",
     type: 'text',
     label: "Scope 1"
@@ -456,13 +374,13 @@ export const emissionColumns = [
     key: "novScope2",
     type: 'text',
     label: "Scope 2"
-  },
+  }, */
   {
     key: "dec",
     type: 'number',
     label: "December"
   },
-  {
+ /*  {
     key: "decScope1",
     type: 'text',
     label: "Scope 1"
@@ -471,7 +389,7 @@ export const emissionColumns = [
     key: "decScope2",
     type: 'text',
     label: "Scope 2"
-  },
+  }, */
   {
     key: "isEdit",
     type: "isEdit",

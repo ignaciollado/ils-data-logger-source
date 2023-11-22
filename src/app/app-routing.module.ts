@@ -6,25 +6,20 @@ import { DashboardComponent } from './Components/dashboard/dashboard.component';
 import { HomeComponent } from './Components/home/home.component';
 import { LoginComponent } from './Components/login/login.component';
 import { PostFormComponent } from './Components/posts/post-form/post-form.component';
-import { PostsListComponent } from './Components/posts/posts-list/posts-list.component';
 import { ProfileComponent } from './Components/profile/profile.component';
 import { RegisterComponent } from './Components/register/register.component';
 import { AuthGuard } from './Guards/auth.guard';
-
-
 import { DelegationFormComponent } from './Components/profile/delegation-form/delegation-form.component';
 import { AspectListComponent } from './Components/aspects/aspect-list/aspect-list.component';
 import { EnergyListComponent } from './Components/energies/energy-list/energy-list.component';
 import { ResidueListComponent } from './Components/residues/residue-list/residue-list.component';
 import { AspectFormComponent } from './Components/aspects/aspect-form/aspect-form.component';
 import { EnergyFormComponent } from './Components/energies/energy-form/energy-form.component';
-import { ResidueFormComponent } from './Components/posts/residue-form/residue-form.component';
 import { ResidueAdminFormComponent } from './Components/residues/residue-admin-form/residue-admin-form.component';
-import { CnaesComponent } from './Components/ratios/cnaes/cnaes.component';
-import { BillingComponent } from './Components/ratios/billing/billing.component';
 import { RatiosContainerComponent } from './Components/ratios/ratios-container/ratios-container.component';
 import { ObjectivesComponent } from './Components/objectives/objectives.component';
 import { ConsumptionContainerComponent } from './Components/posts/consumption-container/consumption-container.component';
+import { GlobalRegulationQuestionnaireComponent } from './Components/global-regulation-questionnaire/global-regulation-questionnaire.component';
 
 const routes: Routes = [
   {
@@ -120,6 +115,11 @@ const routes: Routes = [
   {
     path: 'profile',
     component: ProfileComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'global-questionnaire',
+    component: GlobalRegulationQuestionnaireComponent,
     canActivate: [AuthGuard],
   },
   {

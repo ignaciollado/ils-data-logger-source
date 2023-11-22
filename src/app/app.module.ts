@@ -74,6 +74,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { ObjectivesComponent } from './Components/objectives/objectives.component';
 import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
+import { GlobalRegulationQuestionnaireComponent } from './Components/global-regulation-questionnaire/global-regulation-questionnaire.component';
 
 export function tokenGetter() {
   return sessionStorage.getItem("access_token");
@@ -114,6 +115,7 @@ export function tokenGetter() {
     ConsumptionContainerComponent,
     ObjectivesComponent,
     ConfirmDialogComponent,
+    GlobalRegulationQuestionnaireComponent,
   ],
   imports: [
     BrowserModule,

@@ -100,6 +100,10 @@ export class HeaderComponent implements OnInit {
     this.router.navigateByUrl('adminRatios');
   }
 
+  globalQuestionnaire(): void {
+    this.router.navigateByUrl('global-questionnaire');
+  }
+
   myObjectives(): void {
     this.router.navigateByUrl('myObjectives');
   }

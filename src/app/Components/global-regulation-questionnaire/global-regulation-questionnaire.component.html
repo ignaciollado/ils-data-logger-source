@@ -1,0 +1,33 @@
+<div class="form-container">
+    <h1>global-regulation-questionnaire!</h1>
+
+    <ol>
+    <div *ngFor="let question of questionList">
+
+        <li><h4 matTooltip="{{question.questionTooltipES}}"
+            matTooltipClass="example-tooltip-uppercase">{{question.questionTextES}}:</h4>
+            <ng-container [ngSwitch]="question.type">
+                <ng-container *ngSwitchCase="'radio'">
+                    <mat-radio-group aria-label="Select an option">
+                        <ng-container  *ngFor="let item of question.answers; index as i">
+                          <small>{{item | json}}</small><br>      
+                        </ng-container>
+                        <mat-radio-button value="1">Option 1</mat-radio-button>
+                        <mat-radio-button value="2">Option 2</mat-radio-button>
+                    </mat-radio-group>
+                </ng-container>
+                <ng-container *ngSwitchCase="'checkbox'">
+                    <section class="example-section" [formGroup]="">
+                        <ng-container *ngFor="let item of question.answers; index as i">
+                            <small>{{item | json}}</small><br>
+                        </ng-container>
+                        <p><mat-checkbox value="pepperoni">Pepperoni</mat-checkbox></p>
+                        <p><mat-checkbox value="extracheese">Extra Cheese</mat-checkbox></p>
+                        <p><mat-checkbox value="mushroom">Mushroom</mat-checkbox></p>
+                    </section>
+                </ng-container>
+            </ng-container>
+        </li> 
+    </div>
+    </ol>
+</div>

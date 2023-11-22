@@ -51,7 +51,7 @@
                     [indeterminate]="!isAllSelected() && isAnySelected()">
                 </mat-checkbox> -->
             </span>
-            <span *ngSwitchDefault>{{ col.label }}</span>
+            <span *ngSwitchDefault>{{col.label}}</span>
         </mat-header-cell>
         <mat-cell *matCellDef="let element">
             <div [ngSwitch]="col.type" *ngIf="!element.isEdit">

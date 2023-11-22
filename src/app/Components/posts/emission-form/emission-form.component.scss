@@ -75,19 +75,33 @@ input[type=number] {
   font-size: .6rem;
 }
 
-.small-data-input {
+.containerEmission{
+  display: grid;
+  grid-template-rows: 100%;
+}
+
+.co2 {
+  color: aquamarine;
+}
+.inputCo2 {
   font-size: .5rem;
   background-color: aquamarine;
   border: 1px solid black!important;
 }
 
-.small-data-scope1 {
+.scopeOne {
+  color: rgb(248, 190, 1);
+}
+.inputScopeOne {
   font-size: .5rem;
   background-color: rgb(248, 190, 1);
   border: 1px solid black!important;
 }
 
-.small-data-scope2 {
+.scopeTwo {
+  color: rgb(248, 100, 1);
+}
+.inputScopeTwo {
   font-size: .5rem;
   background-color: rgb(248, 100, 1);
   border: 1px solid black!important;
@@ -96,7 +110,6 @@ input[type=number] {
 .input-column{
   display: grid;
   grid-template-columns: 50px;
-  border: 1px solid green;
 }
 
 mat-table {
@@ -123,7 +136,6 @@ mat-header-cell {
 mat-cell {
   background-color: #919191;
   max-width: 5rem;
-  border: 1px solid green;
   text-align: left;
   padding-left: 0;
 }
@@ -134,9 +146,9 @@ mat-cell {
 .mat-column-delegation{
   width: 5rem;
 }
-/*.mat-column-year{
-  padding-right: 2rem;
-} */
+.mat-column-year{
+  width: 2rem;
+}
 .mat-column-jan{
   width: 4rem;
 }

@@ -82,7 +82,7 @@
                       </button>
                     </div>
                     <span *ngSwitchDefault ngClass="small-data">
-                      {{ element[col.key] }}
+                      {{element[col.key]}}
                     </span>
                   </div>
 
@@ -93,7 +93,7 @@
                     <span *ngSwitchCase="'isSelected'" ngClass="small-data">{{element[col.key]}}</span>
                     <span *ngSwitchCase="'text'" ngClass="small-data">{{element[col.key]}}</span>
 
-                    <input *ngSwitchCase="'number'" [type]="col.type" [(ngModel)]="element[col.key]" ngClass="small-data-input" [style.width.px]='70'/>
+                    <input *ngSwitchCase="'number'" [type]="col.type" [(ngModel)]="element[col.key]" ngClass="small-data-input" [style.width.px]='50'/>
                   </div>
               </mat-cell>
       </ng-container>

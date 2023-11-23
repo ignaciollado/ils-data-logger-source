@@ -3,6 +3,7 @@ import { EnvironmentalAuditsService } from 'src/app/Services/environmental-audit
 import { QuestionDTO } from 'src/app/Models/question.dto';
 import { TooltipPosition } from '@angular/material/tooltip';
 
+
 @Component({
   selector: 'app-global-regulation-questionnaire',
   templateUrl: './global-regulation-questionnaire.component.html',
@@ -10,9 +11,8 @@ import { TooltipPosition } from '@angular/material/tooltip';
 })
 export class GlobalRegulationQuestionnaireComponent {
 questionList: QuestionDTO[]
-positionOptions: TooltipPosition[] = ['after', 'before', 'above', 'below', 'left', 'right'];
-position = this.positionOptions[5]
-
+positionOptions: TooltipPosition[] = ['below', 'above', 'left', 'right'];
+position =  this.positionOptions[3];
 constructor (
   private enviromentalAuditService: EnvironmentalAuditsService,
 ) {

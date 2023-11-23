@@ -4,15 +4,16 @@
     <ol>
     <div *ngFor="let question of questionList">
 
-        <li><h4 matTooltip="{{question.questionTooltipES}}"
+       <!--  <li><h4 matTooltip="{{question.questionTooltipES}}"
             matTooltipClass="example-tooltip-uppercase">{{question.questionTextES}}:</h4>
             <ng-container [ngSwitch]="question.type">
-                <!-- OPTION RADIO -->
+                
                 <ng-container *ngSwitchCase="'radio'">
                     <mat-radio-group aria-label="Select an option">
                         <ng-container  *ngFor="let item of question.answers">
                           <mat-radio-button 
-                            
+                          [matTooltip]="tooltipTpl"
+                          [matTooltipPosition]="position.value" 
                             value="{{item['answerText']}}">
                                 {{item['answerText']}}
                             </mat-radio-button>
@@ -28,10 +29,10 @@
                         
                         </ng-container>
                     </mat-radio-group>
-                </ng-container>
+                </ng-container> -->
 
-                <!-- CHECKBOX -->
-                <ng-container *ngSwitchCase="'checkbox'">
+             
+<!--                 <ng-container *ngSwitchCase="'checkbox'">
                     <section class="example-section" [formGroup]="">
                         <ng-container *ngFor="let item of question.answers">
                             <p><mat-checkbox matTooltip="{{item['answerTooltip']}}{{item['answerImage_1']}}{{item['answerImage_2']}}" value="{{item['answerText']}}">{{item['answerText']}}</mat-checkbox></p>
@@ -39,7 +40,7 @@
                     </section>
                 </ng-container>
             </ng-container>
-        </li> 
+        </li>  -->
     </div>
     </ol>
 </div>

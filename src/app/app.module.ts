@@ -1,4 +1,5 @@
 import { JwtModule } from "@auth0/angular-jwt";
+
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -31,7 +32,7 @@ import {MatRadioModule} from "@angular/material/radio";
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import {MatCardModule} from '@angular/material/card';
 import {MatGridListModule} from '@angular/material/grid-list';
-import {MatTooltipModule} from '@angular/material/tooltip';
+import {MatTooltipModule, TooltipPosition} from '@angular/material/tooltip';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatFormFieldModule} from '@angular/material/form-field';
@@ -48,7 +49,10 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatSortModule} from '@angular/material/sort';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatChipsModule} from '@angular/material/chips';
+import { MatDatepickerModule } from "@angular/material/datepicker";
 
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 import {DialogModule} from '@angular/cdk/dialog';
 
@@ -69,10 +73,6 @@ import { CnaesComponent } from "./Components/ratios/cnaes/cnaes.component";
 import { BillingComponent } from './Components/ratios/billing/billing.component';
 import { ConsumptionContainerComponent } from "./Components/posts/consumption-container/consumption-container.component";
 import { RatiosContainerComponent } from './Components/ratios/ratios-container/ratios-container.component';
-import { MatDatepickerModule } from "@angular/material/datepicker";
-import { MatMomentDateModule } from "@angular/material-moment-adapter";
-import { MatExpansionModule } from '@angular/material/expansion';
-import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { ObjectivesComponent } from './Components/objectives/objectives.component';
 import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
 import { GlobalRegulationQuestionnaireComponent } from './Components/global-regulation-questionnaire/global-regulation-questionnaire.component';
@@ -84,18 +84,22 @@ export function tokenGetter() {
 @NgModule({
   declarations: [
     AppComponent,
+    FooterComponent,
+    FormatDatePipe,
+    FormatQuantityPipe,
+    RatiosContainerComponent,
+    ConsumptionContainerComponent,
+    ConfirmDialogComponent,
+    GlobalRegulationQuestionnaireComponent,
     RegisterComponent,
     LoginComponent,
     HeaderComponent,
-    FooterComponent,
     HomeComponent,
     ProfileComponent,
     PostsListComponent,
     PostFormComponent,
     CategoryFormComponent,
     CategoriesListComponent,
-    FormatDatePipe,
-    FormatQuantityPipe,
     DashboardComponent,
     DelegationListComponent,
     DelegationFormComponent,
@@ -112,11 +116,7 @@ export function tokenGetter() {
     ModalComponent,
     CnaesComponent,
     BillingComponent,
-    RatiosContainerComponent,
-    ConsumptionContainerComponent,
     ObjectivesComponent,
-    ConfirmDialogComponent,
-    GlobalRegulationQuestionnaireComponent,
   ],
   imports: [
     BrowserModule,
@@ -140,6 +140,7 @@ export function tokenGetter() {
     MatCardModule,
     MatGridListModule,
     MatTooltipModule,
+
     MatProgressSpinnerModule,
     MatToolbarModule,
     MatFormFieldModule,
@@ -149,7 +150,7 @@ export function tokenGetter() {
     MatButtonModule,
     MatNativeDateModule,
     MatDatepickerModule,
-    MatMomentDateModule,
+
     MatTabsModule,
     MatMenuModule,
     MatSortModule,

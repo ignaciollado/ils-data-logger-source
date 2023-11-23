@@ -22,17 +22,7 @@ import { catchError } from 'rxjs/operators';
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
-  animations: [
-    trigger( 'fadeInOut',[
-      state(
-        'void',
-        style({
-          opacity: 0.2
-        })
-      ),
-      transition('void <-> *', animate(1500))
-    ])
-  ]
+
 })
 
 export class LoginComponent implements OnInit {

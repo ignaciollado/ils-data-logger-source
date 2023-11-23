@@ -14,6 +14,7 @@ export class GlobalRegulationQuestionnaireComponent {
 questionList: QuestionDTO[]
 positionOptions: TooltipPosition[] = ['below', 'above', 'left', 'right'];
 position =  this.positionOptions[3];
+
 constructor (
   private enviromentalAuditService: EnvironmentalAuditsService,
 ) {

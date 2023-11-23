@@ -10,24 +10,33 @@
                 <!-- OPTION RADIO -->
                 <ng-container *ngSwitchCase="'radio'">
                     <mat-radio-group aria-label="Select an option">
-                        <ng-container  *ngFor="let item of question.answers; index as i">
-                          <small>{{item | json}}</small><br>
-                          <mat-radio-button value="1">{{item['yes'][0]}}</mat-radio-button>
+                        <ng-container  *ngFor="let item of question.answers">
+                          <mat-radio-button 
+                            [mtxTooltip]="tooltipTpl"
+                            [mtxTooltipPosition]="position.value"
+                            value="{{item['answerText']}}">
+                                {{item['answerText']}}
+                            </mat-radio-button>
+                        
+                          <ng-template #tooltipTpl>
+                            <div>This is a template!</div>
+                            <div>Ceci est un modèle!</div>
+                            <div>{{item['answerTooltip']}}</div>
+                            <div>{{item['answerImage_1']}}</div>
+                            <div class="text-right">{{item['answerImage_2']}}</div>
+                          </ng-template>
+                        
+                        
                         </ng-container>
-                        <!-- <mat-radio-button value="1">Option 1</mat-radio-button> -->
-                        <mat-radio-button value="2">Option 2</mat-radio-button>
                     </mat-radio-group>
                 </ng-container>
 
                 <!-- CHECKBOX -->
                 <ng-container *ngSwitchCase="'checkbox'">
                     <section class="example-section" [formGroup]="">
-                        <ng-container *ngFor="let item of question.answers; index as i">
-                            <small>{{item | json}}</small><br>
+                        <ng-container *ngFor="let item of question.answers">
+                            <p><mat-checkbox matTooltip="{{item['answerTooltip']}}{{item['answerImage_1']}}{{item['answerImage_2']}}" value="{{item['answerText']}}">{{item['answerText']}}</mat-checkbox></p>
                         </ng-container>
-                        <p><mat-checkbox value="pepperoni">Pepperoni</mat-checkbox></p>
-                        <p><mat-checkbox value="extracheese">Extra Cheese</mat-checkbox></p>
-                        <p><mat-checkbox value="mushroom">Mushroom</mat-checkbox></p>
                     </section>
                 </ng-container>
             </ng-container>

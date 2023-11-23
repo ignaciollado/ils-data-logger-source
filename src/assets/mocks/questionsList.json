@@ -10,12 +10,12 @@
         "answers": 
         [
                 {"answerText": "Sí",
-                 "tooltip": "1",
+                 "answerTooltip": "1",
                  "regulation": "ATM_48, ATM_48, ATM_19, ATM_20, ATM_21, ATM_22, ATM_23, ATM_24, ATM_27, ATM_42, ATM_44", 
                  "image_1": "", 
                  "image_2": ""}, 
                  {"answerText": "No",
-                 "tooltip": "",
+                 "answerTooltip": "",
                  "regulation": "", 
                  "image_1": "", 
                  "image_2": ""}
@@ -32,15 +32,15 @@
         "answers": 
         [
                 {"answerText": "Sí",
-                 "tooltip": "",
+                 "answerTooltip": "Tooltip de SÍ realizan ...",
                  "regulation": "ATM_32", 
-                 "image_1": "", 
-                 "image_2": ""}, 
+                 "image_1": "imagen_1.jpg", 
+                 "image_2": "imagen_2.jpg"}, 
                  {"answerText": "No",
-                 "tooltip": "",
+                 "answerTooltip": "Tooltip de NO realizan ...",
                  "regulation": "", 
-                 "image_1": "", 
-                 "image_2": ""}
+                 "image_1": "imagen_1.jpg", 
+                 "image_2": "imagen_2.jpg"}
         ]
     },
     {

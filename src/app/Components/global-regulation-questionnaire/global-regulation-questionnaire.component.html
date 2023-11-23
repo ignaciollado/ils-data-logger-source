@@ -12,17 +12,15 @@
                     <mat-radio-group aria-label="Select an option">
                         <ng-container  *ngFor="let item of question.answers">
                           <mat-radio-button 
-                          matTooltip="{{item['answerTooltip']}}"
-                          [matTooltipPosition]="position" 
+                          [mtxTooltip]="tooltipTpl"
+                          [mtxTooltipPosition]="position" 
                             value="{{item['answerText']}}">
                                 {{item['answerText']}}
                             </mat-radio-button>
                         
-                          <ng-template #tooltipTpl>
-                            <div>This is a template!</div>
-                            <div>Ceci est un modèle!</div>
+                          <ng-template #tooltipTpl class="radio-tooltip">
                             <div>{{item['answerTooltip']}}</div>
-                            <div>{{item['answerImage_1']}}</div>
+                            <img src="{{item['answerImage_2']}}" alt='esta es la imagen del tooltip' title="esta es la imagen del tooltip" class='image-tooltip' />
                             <div class="text-right">{{item['answerImage_2']}}</div>
                           </ng-template>
                         

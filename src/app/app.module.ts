@@ -50,9 +50,9 @@ import {MatSortModule} from '@angular/material/sort';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatChipsModule} from '@angular/material/chips';
 import { MatDatepickerModule } from "@angular/material/datepicker";
-
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MtxTooltipModule } from '@ng-matero/extensions/tooltip';
 
 import {DialogModule} from '@angular/cdk/dialog';
 
@@ -161,6 +161,7 @@ export function tokenGetter() {
     MatRadioModule,
     MatExpansionModule,
     MatSlideToggleModule,
+    MtxTooltipModule,
     MatDialogModule
   ],
   providers: [

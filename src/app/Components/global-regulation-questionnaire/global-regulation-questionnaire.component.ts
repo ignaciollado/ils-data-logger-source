@@ -24,7 +24,7 @@ private loadQuestions(): void {
   this.enviromentalAuditService.getQuestionList()
     .subscribe( (questions:QuestionDTO[]) => {
       this.questionList = questions
-      console.log (this.questionList )
+      console.log (this.questionList[0].answers, this.questionList[0].answers.length)
     })
 }
 }

@@ -8,21 +8,37 @@
 	"questionTooltipCA": "",
 	"link": "https://...",
         "answers": [
-                {"yes": [false,"1","ATM_48, ATM_48, ATM_19, ATM_20, ATM_21, ATM_22, ATM_23, ATM_24, ATM_27, ATM_42, ATM_44", "", ""]}, 
-		{"no": [false,"","", "", ""]}
+                {"answer": "yes",
+                 "tooltip": "1",
+                 "regulation": "ATM_48, ATM_48, ATM_19, ATM_20, ATM_21, ATM_22, ATM_23, ATM_24, ATM_27, ATM_42, ATM_44", 
+                 "image_1": "", 
+                 "image_2": ""}, 
+                 {"answer": "no",
+                 "tooltip": "",
+                 "regulation": "", 
+                 "image_1": "", 
+                 "image_2": ""}, 
                 ]
     },
     {
         "key": "2",
-        "type": "checkbox",
+        "type": "radio",
         "questionTextES": "¿Realizan actividades en las que se manejen compuestos orgánicos volátiles (COVs)?",
         "questionTextCA": "",
         "questionTooltipES": "Los COVs, son  compuestos ligeros, con menos de 12 átomos de carbono, y grupos funcionales diversos. Hay más de un millar de compuestos que pueden considerarse COV, pero los más abundantes son: metano, etano, propano, n-butano, n-pentano, benceno, tolueno, xileno y etileno. Ejm solventes de pintura y de laca, repelentes de polillas, aromatizantes del aire, materiales empleados en maderas, sustancias en aerosol, disolventes de grasa, productos de uso automotor y disolventes para la industria de lavado en seco.... Si estas incluido  dentro de alguna de estas actividades que aparecen en este listado y superas los umbrales de consumo del ANEXO 2 ( imagen adjunta) responde que si a esta pregunta. Si no superas las cantidades reponde que no, porque no es de aplicación para tu industria. <strong>1. Recubrimiento con adhesivos</strong> Toda actividad en la que se aplique a una superficie un adhesivo, con excepción del recubrimiento con adhesivos y el laminado junto con actividades de imprenta. <strong>2. Actividades de recubrimiento</strong> Toda actividad en la que se aplique una o varias veces una película continua de recubrimiento sobre: a) Vehículos, según se recoge a continuación: 1º. Coches nuevos, los definidos en el Real Decreto 2028/ 1986, de 6 de junio, sobre homologación de tipos de vehículos, remolques, semiremolques y sus partes o piezas, como vehículos de la categoría M1 y de la categoría N1, en la medida en que se recubran en la misma instalación que los vehículos M1. 2º. Cabinas de camiones, definidas como el habitáculo del conductor y todo el espacio integrado para el equipo técnico de los vehículos de categorías N2 y N3 en el Real Decreto 2028/ 1986. 3º. Furgonetas y camiones, definidos como vehículos de las categorías N1, N2 y N3, pero sin incluir las cabinas de camiones, en el Real Decreto 2028/ 1986. 4º. Autobuses, definidos como vehículos de las categorías M2 y M3 en el Real Decreto 2028/ 1986. 5º. Remolques, tal y como se finen en las categorías O1, O2, O3 y O4 del Real Decreto 2028/ 1986. b) Superficies metálicas y de plástico incluidas las superficies de aviones, barcos, trenes, etc. c) Superficies de madera. d) Superficies de tejidos, telas, película y papel. e) Cuero. No se incluyen los recubrimientos de sustratos con metales mediante técnicas de atomización química y electroforesis. Si la actividad de recubrimiento incluye una fase en que se imprime el mismo artículo, dicha fase de impresión se considera como parte de la actividad de recubrimiento. No obstante, no se incluyen las actividades de impresión que funcionen como actividades independientes, pero se podrán incluir en este Real Decreto siempre y cuando la actividad de impresión entre dentro de su ámbito. <strong>3. Recubrimiento de bobinas</strong> Toda actividad en la que se recubra con una película o un recubrimiento laminado, en un proceso continuo, acero, acero inoxidable, acero recubierto, aleaciones de cobre o tiras de aluminio en forma de bobina. <strong>4. Limpieza en seco</strong> Toda actividad industrial o comercial en el que se utilicen compuestos orgánicos volátiles en una instalación para eliminar la suciedad de las prendas de vestir, mobiliario y bienes de consumo similares, con excepción de la eliminación manual de manchas en la industria de tejidos y prendas de vestir. <strong>5. Fabricación de calzado</strong> Cualquier actividad de producción de calzado completo o de partes del mismo. <strong>6. Fabricación de recubrimiento, barnices, tintas y adhesivos</strong> La fabricación de los mencionados productos finales, y de sus productos intermedios cuando se haga en la misma instalación, mediante mezcla de pigmentos, resinas y materiales adhesivos con disolventes orgánicos u otros medios, con inclusión de actividades de dispersión y predispersión, ajustes de viscosidad y del tinte y operaciones de envasado del producto final en su recipiente. <strong>7. Fabricación de productos farmacéuticos</strong> Síntesis química, fermentación, extracción, formulación y terminación de productos farmacéuticos y sus productos intermedios cuando se lleven a cabo en el mismo sitio. <strong>8. Imprenta</strong> Actividad de reproducción de texto o imágenes en el que, mediante el uso de un portador de imagen, se transfiere tinta a cualquier tipo de superficie. Quedan incluidas las técnicas seleccionadas de barnizado, recubrimiento y laminación. Sin embargo, sólo están sujetos al presente Real Decreto los subprocesos siguientes: a) Flexografía: actividad de impresión que utiliza un portador de imagen de caucho o fotopolímeros elásticos en que las tintas de imprenta están por encima de las zonas de no impresión, utilizando tintas líquidas que se secan por evaporación. b) Offset de bobinas por secado al calor: actividad de impresión de bobinas que utilizan un portador de imagen donde las áreas de impresión y de no impresión están en el mismo plano, y entendiéndose por 'de bobinas' que el material que se va a imprimir se introduce en la máquina a partir de un carrete y no de hojas separadas. El área de no impresión se trata para atraer agua y así rechazar la tinta. La zona de impresión se trata para recibir y transmitir la tinta a la superficie que se desea imprimir. La evaporación se realiza en un horno donde se utiliza aire caliente para calentar el material impreso. c) Laminación asociada a una actividad de impresión: la adhesión de dos o más materiales flexibles para producir laminados. d) Grabado de publicaciones: rotograbado utilizado para imprimir papel destinado a revistas, folletos, catálogos o productos similares, con tintas a base de tolueno. e) Rotograbado: actividad de impresión que utiliza un portador cilíndrico de imagen donde el área de impresión está por debajo del área de no impresión, utilizando tintas líquidas que se secan por evaporación. Los huecos se rellenan con tinta y el excedente se elimina del área de no impresión antes de que la superficie que se va a imprimir entre en contacto con el cilindro y levante la tinta de los huecos. f) Impresión serigráfica rotativa: actividad de impresión de bobinas donde la tinta se hace llegar a la superficie que se a va a imprimir pasándola a través de un portador de imagen poroso, donde el área de impresión está abierta, y el área de no impresión está cerrada, utilizando tintas líquidas que se secan sólo por evaporación. 'De bobinas' significa que el material que se va a imprimir llega a la máquina a partir de un carrete y no de hojas separadas. g) Barnizado: actividad por el que se aplica a un material flexible un barniz o un recubrimiento adhesivo con el fin de sellar posteriormente el material del envase. <strong>9. Conversión de caucho natural o sintético</strong> Mezclado, triturado, homogeneización, calandrado, extrusión y vulcanizado de caucho sintético o natural y operaciones auxiliares para convertir el caucho sintético o natural en un producto terminado. <strong>10. Limpieza de superficies</strong> Toda actividad, salvo la limpieza en seco, con disolventes orgánicos para eliminar la suciedad de las superficies de materiales, con inclusión del desengrasado. Una actividad de limpieza que consista en más de una fase, antes o después de cualquier otra fase de tratamiento debe considerarse como una única actividad de limpieza de superficies. Esta actividad se refiere a la limpieza de la superficie del producto y no a la limpieza del equipo. <strong>11. Actividades de extracción de aceite vegetal y de refinado de grasa y aceite vegetal</strong> Toda actividad de extracción de aceite vegetal de semillas y otras materias vegetales, procesado de residuos secos para producir piensos animales, purificación de grasas y aceites vegetales obtenidos de semillas, materia vegetal o materia animal. <strong>12. Renovación del acabado de vehículos</strong> Toda actividad industrial o comercial de recubrimiento y actividades conexas de desengrasado mediante las que se efectúe: a) El recubrimiento de un vehículo de carretera según se define en el Real Decreto 2028/ 1986, o de una parte de aquél, realizados como parte de la reparación, conservación o decoración del vehículo fuera de las instalaciones de fabricación, o b) El recubrimiento original del vehículo de carretera, o de una parte de aquél, con materiales del tipo de renovación del acabado, cuando se realice fuera de la línea de fabricación original, o c) El recubrimiento de remolques (incluidos los semirremolques) (categoría O) . Toda actividad industrial o comercial de recubrimiento y actividades conexas de desengrasado mediante las que se efectúe: a) El recubrimiento original del vehículo de carretera, o de una parte de aquél, con materiales del tipo de renovación del acabado, cuando se realice fuera de la línea de fabricación original, o c) El recubrimiento de remolques (incluidos los semirremolques) (categoría O). <strong>13. Recubrimiento de alambre en bobinas</strong> Todo recubrimiento de conductores metálicos utilizados para bobinar transformadores, motores, etc. <strong>14. Impregnación de fibras de madera</strong> Toda actividad que suponga impregnar la madera de conservantes. <li><strong>15. Laminación de madera y plástico</strong> Toda actividad de pegado de madera y plástico para producir laminados.",
 	"questionTooltipCA": "",
 	"link": "https://...",
         "answers": [
-                {"yes": [false,"ATM_32,", "", "", ""]}, 
-                {"no":  [false,"", "", "", ""]}
+                {"answer": "yes",
+                 "tooltip": "",
+                 "regulation": "ATM_32", 
+                 "image_1": "", 
+                 "image_2": ""}, 
+                 {"answer": "no",
+                 "tooltip": "",
+                 "regulation": "", 
+                 "image_1": "", 
+                 "image_2": ""}
                 ]
     },
     {
@@ -34,11 +50,39 @@
 	"questionTooltipCA": "",
 	"link": "https://...",
         "answers": [
-		{"Residuos PELIGROSOS": [false,"RES_2,RES_3,RES_4,RES_5,RES_16,RES_18,RES_19,RES_60,RES_61","Se trata de residuos con una composición o propiedades que lo hace peligroso para las personas o el medioambiente. Ejemplos, <strong>SI</strong> es residuo peligrosos los fluorescentes, baterías, aceite mineral, etc.. y <strong>NO</strong> es un residuo peligroso, el papel/cartón, el vidrio…", "P4_IMAGE1", ""]},
-		{"Residuos NO PELIGROSOS": [false," RES_2, RES_3, RES_4, RES_5,RES_16,RES_19,RES_60,RES_61,RES_18,RES_19,RES_32,RES_33","Se considera residuos no peligrosos aquellos que no contienen sustancias peligrosas para las personas o el medio ambiente. Ejemplo <strong>SI</strong> es un residuo no peligroso el papel/carton, los envases y  <strong>NO</strong> son residuos no peligrosos las baterías, filtro de aceite de motor, aceite mineral , fluorescentes..", "", ""]},
-		{"Aceites Industriales Usados": [false,"RES_2,RES_3,RES_4,RES_5,RES_16,RES_18,RES_19,RES_25,RES_60,RES_61","", "", ""]},
-		{"Residuos de Pilas, Baterías y Acumuladores": [false,"RES_2,RES_3,RES_4,RES_5,RES_16,RES_18,RES_19,RES_60,RES_61,RES_42,RES_43,RES_44","", "", ""]},
-		{"Residuos de Aparatos Eléctricos y Electrónicos (RAEE)": [false,"RES_2,RES_3,RES_4,RES_5,RES_16,RES_18,RES_19,RES_60,RES_61,RES_52,RES_53,RES_54,RES_55","Se incluyen todos los aparatos eléctricos y electrónicos que pasan a ser residuos, incluidos todos los componentes, subconjuntos y consumibles que forman parte del producto en el momento en que se rechaza", "P4_IMAGE2", ""]},
+                {"answerText": "Residuos PELIGROSOS",
+                "answerTooltip": "Se trata de residuos con una composición o propiedades que lo hace peligroso para las personas o el medioambiente. Ejemplos, <strong>SI</strong> es residuo peligrosos los fluorescentes, baterías, aceite mineral, etc.. y <strong>NO</strong> es un residuo peligroso, el papel/cartón, el vidrio…",
+                "answerRegulation": ["RES_2,RES_3,RES_4,RES_5,RES_16,RES_18,RES_19,RES_60,RES_61"], 
+                "answerImage_1": "P4_IMAGE1", 
+                "answerImage_2": ""},
+
+                {"answerText": "Residuos NO PELIGROSOS",
+                "answerTooltip": "Se considera residuos no peligrosos aquellos que no contienen sustancias peligrosas para las personas o el medio ambiente. Ejemplo <strong>SI</strong> es un residuo no peligroso el papel/carton, los envases y  <strong>NO</strong> son residuos no peligrosos las baterías, filtro de aceite de motor, aceite mineral , fluorescentes..",
+                "answerRegulation": ["RES_2, RES_3, RES_4, RES_5,RES_16,RES_19,RES_60,RES_61,RES_18,RES_19,RES_32,RES_33"], 
+                "answerImage_1": "",
+                "answerImage_2": ""},
+
+                {"answerText": "Aceites Industriales Usados",
+                "answerTooltip": "",
+                "answerRegulation": ["RES_2,RES_3,RES_4,RES_5,RES_16,RES_18,RES_19,RES_25,RES_60,RES_61"], 
+                "answerImage_1": "",
+                "answerImage_2": ""},
+
+                {"answerText": "Residuos de Pilas, Baterías y Acumuladores",
+                "answerTooltip": "",
+                "answerRegulation": ["RES_2,RES_3,RES_4,RES_5,RES_16,RES_18,RES_19,RES_60,RES_61,RES_42,RES_43,RES_44"], 
+                "answerImage_1": "",
+                "answerImage_2": ""},
+
+                {"answerText": "Residuos de Aparatos Eléctricos y Electrónicos (RAEE)",
+                "answerTooltip": "",
+                "answerRegulation": ["RES_2,RES_3,RES_4,RES_5,RES_16,RES_18,RES_19,RES_60,RES_61,RES_42,RES_43,RES_44"], 
+                "answerImage_1": "",
+                "answerImage_2": ""},
+
+	
+		
+		{"": [false,"RES_2,RES_3,RES_4,RES_5,RES_16,RES_18,RES_19,RES_60,RES_61,RES_52,RES_53,RES_54,RES_55","Se incluyen todos los aparatos eléctricos y electrónicos que pasan a ser residuos, incluidos todos los componentes, subconjuntos y consumibles que forman parte del producto en el momento en que se rechaza", "P4_IMAGE2", ""]},
 		{"Residuos Envases Usados Comerciales": [false,"RES_2,RES_3,RES_4,RES_5,RES_16,RES_18,RES_19,RES_60,RES_61","Es aquel envase que, sin tener la consideración de doméstico, está destinado al uso y consumo propio del ejercicio de la actividad comercial (al por mayor y al por menor), de los servicios de restauración y bares, de las oficinas y de los mercados, así como del resto del sector servicios.", "", ""]},
 		{"Residuos de Envases Usados Industriales": [false,"RES_2,RES_3,RES_4,RES_5,RES_16,RES_18,RES_19,RES_60,RES_61,RES_32,RES_33,RES_35","Es aquel envase destinado al uso y consumo propio del ejercicio de la actividad económica de las industrias, explotaciones agrícolas, ganaderas, forestales o acuícolas, con exclusión de los envases que tengan la consideración de comerciales y domésticos. Ejemplo <strong>SI</strong> se consideran envases industriales los films, bolsas, sacos, cubos, bidones, palets o cajas de madera o cartón que la industria utiliza para el desarrollo de su actividad.", "", ""]},
 		{"Residuos de Construcción y Demolición": [false,"RES_2,RES_3,RES_4,RES_5,RES_16,RES_18,RES_19,RES_60,RES_61,RES_38,RES_39","", "", ""]},
@@ -78,9 +122,8 @@
     "questionTooltip": "Se refiere al almacenamiento de productos químicos con pictograma de peligrosidad siempre y cuando se supere el umbral de almacenamiento de la Tabla I. Relación de peligros y cantidades para la aplicación del Reglamento ( columna 5). Ejemplos, líquidos inflamables, óxido de etileno en recipientes fijos, almacenamiento de cloro, almacenamiento de amoniaco anhidro, almacenamiento de gases en recipientes a presión móviles,almacenamiento de líquidos corrosivos en recipientes fijos, almacenamiento de líquidos tóxicos en recipientes fijos , Almacenamiento de fertilizantes a base de nitrato amónico con alto contenido en nitrógeno,  Almacenamiento de peróxidos orgánicos y de materias autorreactivas, Almacenamiento en recipientes móviles, .Asimismo, no será de aplicación a los almacenamientos de productos con reglamentaciones específicas. ",
     "link": "https://...",
     "answers": [
-                {"No": [false, "", "", "", ""]}, 
-                {"Sí": [false,"SIND_22,SIND_23,SIND_24,SIND_25,SIND_26,SIND_27,SIND_28,SIND_29,SIND_30,SIND_31,SIND_32,SIND_33,SIND_37,SIND_38", "", "", ""]}
-               
+                {"yes": [false,"SIND_22,SIND_23,SIND_24,SIND_25,SIND_26,SIND_27,SIND_28,SIND_29,SIND_30,SIND_31,SIND_32,SIND_33,SIND_37,SIND_38", "", "", ""]},
+                {"no": [false, "", "", "", ""]}
                 ]
    }
 ]

@@ -21,6 +21,7 @@
                  "image_2": ""}
         ]
     },
+
     {
         "key": "2",
         "type": "radio",
@@ -43,6 +44,7 @@
                  "image_2": "imagen_2.jpg"}
         ]
     },
+
     {
         "key": "4",
         "type": "checkbox",

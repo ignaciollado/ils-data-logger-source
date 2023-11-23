@@ -1,10 +1,10 @@
 <div class="form-container">
-    <h1>global-regulation-questionnaire!</h1>
+    <h1>identificación de requisitos legales idi: CUESTIONARIO PRELIMINAR</h1>
 
     <ol>
     <div *ngFor="let question of questionList">
 
-       <li><h4 matTooltip="{{question.questionTooltipES}}"
+        <li><h4 matTooltip="{{question.questionTooltipES}}"
             matTooltipClass="example-tooltip-uppercase">{{question.questionTextES}}:</h4>
             <ng-container [ngSwitch]="question.type">
                 

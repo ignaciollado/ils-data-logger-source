@@ -12,8 +12,7 @@
                     <mat-radio-group aria-label="Select an option">
                         <ng-container  *ngFor="let item of question.answers">
                           <mat-radio-button 
-                            [mtxTooltip]="tooltipTpl"
-                            [mtxTooltipPosition]="position.value"
+                            
                             value="{{item['answerText']}}">
                                 {{item['answerText']}}
                             </mat-radio-button>

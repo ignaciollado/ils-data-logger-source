@@ -49,6 +49,7 @@ import {MatSortModule} from '@angular/material/sort';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatChipsModule} from '@angular/material/chips';
 
+
 import {DialogModule} from '@angular/cdk/dialog';
 
 import { DelegationListComponent } from './Components/profile/delegation-list/delegation-list.component';

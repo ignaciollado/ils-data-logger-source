@@ -55,11 +55,12 @@ openDialog(enterAnimationDuration: string, exitAnimationDuration: string, questi
   dialogConfig.autoFocus = true;
   dialogConfig.position = {
     'top': '2rem',
-    'left': '2rem'
-};
-dialogConfig.data = {
-  questionText: questionText, toolTipText: toolTipText, questionDoc: questionDoc
-};
+    'right': '5rem'
+  };
+  dialogConfig.width='100%',
+  dialogConfig.data = {
+    questionText: questionText, toolTipText: toolTipText, questionDoc: questionDoc
+  };
   this.dialog.open(ConfirmDialogComponent, dialogConfig);
 }
 

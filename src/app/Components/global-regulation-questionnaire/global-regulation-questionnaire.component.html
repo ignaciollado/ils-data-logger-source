@@ -33,13 +33,14 @@
     </div> -->
     </ol>
 
-    <mat-accordion *ngFor="let question of questionList">
-        {{initialVector}}
-
-        <mat-expansion-panel hideToggle>
+    <mat-accordion *ngFor="let vectors of questionList">
+        {{vectors}}
+        <!-- <mat-expansion-panel *ngFor="let questions of vectors">
+        </mat-expansion-panel> -->
+      <!--   <mat-expansion-panel hideToggle>
             <mat-expansion-panel-header>
                 <mat-panel-title>
-                    VECTOR {{question.vector}}
+                    VECTOR {{vectors.vector}}
                 </mat-panel-title>
             </mat-expansion-panel-header>
             <li>
@@ -69,7 +70,7 @@
                     </ng-container>
                 </ng-container>
             </li>  
-        </mat-expansion-panel>
+        </mat-expansion-panel> -->
        
     </mat-accordion>
       

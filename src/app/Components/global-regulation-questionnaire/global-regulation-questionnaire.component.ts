@@ -23,7 +23,7 @@ export class GlobalRegulationQuestionnaireComponent {
 questionList: QuestionDTO[]
 positionOptions: TooltipPosition[] = ['below', 'above', 'left', 'right'];
 position =  this.positionOptions[0];
-panelOpenState: boolean = false;
+panelOpenState: boolean = true;
 initialVector: number = 0
 constructor (
   private enviromentalAuditService: EnvironmentalAuditsService,
@@ -38,7 +38,7 @@ private loadQuestions(): void {
   this.enviromentalAuditService.getQuestionList()
     .subscribe( (questions:QuestionDTO[]) => {
       this.questionList = questions
-      console.log (this.questionList[3].answers)
+      console.log (this.questionList)
     })
 }
 

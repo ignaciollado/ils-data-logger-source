@@ -1,9 +1,13 @@
 export class QuestionDTO {
+  vector:    string;
+  questions: Question[];
+}
+
+export interface Question {
   key:               string;
   type:              string;
-  vector:            string;
   questionTextES:    string;
-  questionDoc:     string;
+  questionDoc:       string;
   questionTextCA:    string;
   questionTooltipES: string;
   questionTooltipCA: string;

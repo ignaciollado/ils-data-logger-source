@@ -5,8 +5,7 @@
     <div *ngFor="let question of questionList">
 
         <li><h4 
-            [mtxTooltip]="tooltipQuestion"
-            [mtxTooltipPosition]="position">{{question.questionTextES}}:<i class="fa-solid fa-circle-question"></i></h4>
+            >{{question.questionTextES}}:<button mat-raised-button (click)="openDialog('300ms', '300ms', question.questionTooltipES, question.questionImage)"><i class="fa-solid fa-circle-question" ></i></button></h4>
             <ng-container [ngSwitch]="question.type">
                 <ng-template #tooltipQuestion class="tooltip-question-content"> 
                     <img mat-card-image src="../../../assets/answers_images/{{question.questionImage}}">
@@ -48,4 +47,3 @@
         </li>  
     </div>
     </ol>
-

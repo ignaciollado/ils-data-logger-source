@@ -1,14 +1,15 @@
 export class QuestionDTO {
-  key:             string;
-  type:            string;
-  questionTextES:  string;
-  questionImage:   string;
-  questionTextCA:  string;
-  questionTextEN:  string;
-  questionTooltip: string;
-  link:            string;
-  answers:         Answer[];
+  key:               string;
+  type:              string;
+  questionTextES:    string;
+  questionImage:     string;
+  questionTextCA:    string;
+  questionTooltipES: string;
+  questionTooltipCA: string;
+  link:              string;
+  answers:           Answer[];
 }
+
 export interface Answer {
   answerText:       string;
   answerTooltip:    string;

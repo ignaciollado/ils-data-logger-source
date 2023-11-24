@@ -1,10 +1,17 @@
 import { Component } from '@angular/core';
 import { EnvironmentalAuditsService } from 'src/app/Services/environmental-audits.service';
 import { QuestionDTO } from 'src/app/Models/question.dto';
-
 import { TooltipPosition } from '@angular/material/tooltip';
-import { MtxDialog } from '@ng-matero/extensions/dialog';
-import { DrawerPosition, MtxDrawer, MtxDrawerRef } from '@ng-matero/extensions/drawer';
+import {
+  MatDialog,
+  MatDialogRef,
+  MatDialogActions,
+  MatDialogClose,
+  MatDialogTitle,
+  MatDialogContent,
+} from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
+import { ConfirmDialogComponent } from 'src/app/confirm-dialog/confirm-dialog.component'
 
 @Component({
   selector: 'app-global-regulation-questionnaire',
@@ -16,17 +23,17 @@ export class GlobalRegulationQuestionnaireComponent {
 questionList: QuestionDTO[]
 positionOptions: TooltipPosition[] = ['below', 'above', 'left', 'right'];
 position =  this.positionOptions[0];
-mtxDialog: MtxDialog;
-positionDrawer: DrawerPosition = 'right';
+
 width = '300px';
 height = '300px';
 hasBackdrop = true;
 disableClose = false;
 closeOnNavigation = true;
-  drawer: MtxDrawer;
+
 
 constructor (
   private enviromentalAuditService: EnvironmentalAuditsService,
+  public dialog: MatDialog
 ) {}
 
 ngOnInit() {
@@ -41,5 +48,26 @@ private loadQuestions(): void {
     })
 }
 
+openDialog(enterAnimationDuration: string, exitAnimationDuration: string, toolTipText: string, questionImage: string): void {
+  /* this.dialog
+      .open(ConfirmDialogComponent)
+      .afterClosed()
+      .subscribe((confirm) => {
+        if (confirm) {
+          this.objectiveService.deleteObjectives(users).subscribe(() => {
+            this.dataSource.data = this.dataSource.data.filter(
+              (u: ObjectiveDTO) => !u.isSelected
+            );
+          });
+        }
+      }); */
+
+  this.dialog.open(ConfirmDialogComponent, {
+    data: { toolTipText: toolTipText, questionImage: questionImage },
+    width: '250px',
+    enterAnimationDuration,
+    exitAnimationDuration,
+  });
 }
 
+}

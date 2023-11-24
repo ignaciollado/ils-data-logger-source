@@ -3,18 +3,13 @@
 
     <ol>
     <div *ngFor="let question of questionList">
+        <div *ngFor="let vector of question.vector">
+        <span>--{{vector}}--</span>
+        </div>
         <mat-progress-bar mode="determinate" value="40"></mat-progress-bar>
-
         <li><h4 
-            >{{question.questionTextES}}:<button mat-raised-button (click)="openDialog('300ms', '300ms', question.questionTooltipES, question.questionImage)"><i class="fa-solid fa-circle-question" ></i></button></h4>
+            >{{question.questionTextES}}:<button mat-raised-button (click)="openDialog('300ms', '300ms', question.questionTextES, question.questionTooltipES, question.questionDoc)"><i class="fa-solid fa-circle-question" ></i></button></h4>
             <ng-container [ngSwitch]="question.type">
-                <ng-template #tooltipQuestion class="tooltip-question-content"> 
-                    <img mat-card-image src="../../../assets/answers_images/{{question.questionImage}}">
-                    <div class="text-content">
-                        {{question['questionTooltipES']}}
-                    </div> 
-                </ng-template>
-
                 <ng-container *ngSwitchCase="'radio'">
                     <mat-radio-group aria-label="Select an option">
                         <ng-container  *ngFor="let item of question.answers">
@@ -36,7 +31,6 @@
                     </mat-radio-group>
                 </ng-container> 
 
-             
                 <ng-container *ngSwitchCase="'checkbox'">
                     <section class="example-section" [formGroup]="">
                         <ng-container *ngFor="let item of question.answers">

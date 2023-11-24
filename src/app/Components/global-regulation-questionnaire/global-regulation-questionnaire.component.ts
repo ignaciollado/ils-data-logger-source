@@ -8,9 +8,9 @@ import {
   MatDialogActions,
   MatDialogClose,
   MatDialogTitle,
-  MatDialogContent,
+  MatDialogContent, MatDialogConfig
 } from '@angular/material/dialog';
-import { MatButtonModule } from '@angular/material/button';
+
 import { ConfirmDialogComponent } from 'src/app/confirm-dialog/confirm-dialog.component'
 
 @Component({
@@ -48,26 +48,19 @@ private loadQuestions(): void {
     })
 }
 
-openDialog(enterAnimationDuration: string, exitAnimationDuration: string, toolTipText: string, questionImage: string): void {
-  /* this.dialog
-      .open(ConfirmDialogComponent)
-      .afterClosed()
-      .subscribe((confirm) => {
-        if (confirm) {
-          this.objectiveService.deleteObjectives(users).subscribe(() => {
-            this.dataSource.data = this.dataSource.data.filter(
-              (u: ObjectiveDTO) => !u.isSelected
-            );
-          });
-        }
-      }); */
+openDialog(enterAnimationDuration: string, exitAnimationDuration: string, questionText: string, toolTipText: string, questionDoc: string): void {
+  const dialogConfig = new MatDialogConfig();
 
-  this.dialog.open(ConfirmDialogComponent, {
-    data: { toolTipText: toolTipText, questionImage: questionImage },
-    width: '250px',
-    enterAnimationDuration,
-    exitAnimationDuration,
-  });
+  dialogConfig.disableClose = true;
+  dialogConfig.autoFocus = true;
+  dialogConfig.position = {
+    'top': '2rem',
+    'left': '2rem'
+};
+dialogConfig.data = {
+  questionText: questionText, toolTipText: toolTipText, questionDoc: questionDoc
+};
+  this.dialog.open(ConfirmDialogComponent, dialogConfig);
 }
 
 }

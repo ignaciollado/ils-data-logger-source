@@ -3,7 +3,7 @@ export class QuestionDTO {
   type:              string;
   vector:            string;
   questionTextES:    string;
-  questionImage:     string;
+  questionDoc:     string;
   questionTextCA:    string;
   questionTooltipES: string;
   questionTooltipCA: string;

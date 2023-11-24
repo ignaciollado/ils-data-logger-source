@@ -13,13 +13,11 @@ import { TooltipPosition } from '@angular/material/tooltip';
 export class GlobalRegulationQuestionnaireComponent {
 questionList: QuestionDTO[]
 positionOptions: TooltipPosition[] = ['below', 'above', 'left', 'right'];
-position =  this.positionOptions[3];
+position =  this.positionOptions[0];
 
 constructor (
   private enviromentalAuditService: EnvironmentalAuditsService,
-) {
-
-}
+) {}
 
 ngOnInit() {
   this.loadQuestions()
@@ -29,7 +27,7 @@ private loadQuestions(): void {
   this.enviromentalAuditService.getQuestionList()
     .subscribe( (questions:QuestionDTO[]) => {
       this.questionList = questions
-      console.log (this.questionList[0].answers, this.questionList[0].answers.length)
+      console.log (this.questionList[3].answers)
     })
 }
 }

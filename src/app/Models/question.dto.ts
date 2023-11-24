@@ -1,30 +1,18 @@
 export class QuestionDTO {
-  key:               string;
-  type:              string;
-  questionTextES:    string;
-  questionTextCA:    string;
-  questionTooltipES: string;
-  questionTooltipCA: string;
-  link:              string;
-  answers:           { [key: string]: Array<boolean | string> }[];
-
-  constructor(
-    key: string,
-    type: string,
-    questionTextES: string,
-    questionTextCA: string,
-    questionTooltipES: string,
-    questionTooltipCA: string,
-    link: string,
-    answers: string[]
-  ) {
-    this.key = key
-    this.type = type
-    this.questionTextES = questionTextES
-    this.questionTextCA = questionTextCA
-    this.questionTooltipES = questionTooltipES
-    this.questionTooltipCA = questionTooltipCA
-    this.link = link
-    this.answers = []
-  }
+  key:             string;
+  type:            string;
+  questionTextES:  string;
+  questionImage:   string;
+  questionTextCA:  string;
+  questionTextEN:  string;
+  questionTooltip: string;
+  link:            string;
+  answers:         Answer[];
+}
+export interface Answer {
+  answerText:       string;
+  answerTooltip:    string;
+  answerRegulation: string[];
+  answerImage_1:    string;
+  answerImage_2:    string;
 }

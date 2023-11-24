@@ -4,7 +4,7 @@
     <ol>
     <div *ngFor="let question of questionList">
       
-        <span>--{{question.vector}}--</span>
+        <!-- <span>--{{question.vector}}--</span> -->
 
         <mat-progress-bar mode="determinate" value="40"></mat-progress-bar>
         <li><h4>{{question.questionTextES}}:<button mat-flat-button (click)="openDialog('300ms', '300ms', question.questionTextES, question.questionTooltipES, question.questionDoc)"><i class="fa-solid fa-circle-info" style="color: #1f5618;"></i></button></h4>

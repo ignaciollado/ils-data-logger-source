@@ -1,4 +1,23 @@
-.radio-tooltip{
-  background-color: aquamarine;
-  color: black;
+
+.text-content {
+  display: grid;
+  grid-template-columns: auto auto;
+  border: 1px black solid;
+  padding: .3rem;
+  font-size: .6rem;
+  line-height: .6rem;
+  max-height: 40px;
+}
+
+img{
+  width: 150px;
+  height: auto;
+}
+
+.image-answer-tooltip {
+  background-color: rgb(2, 0, 128);
+  color: white;
+  padding: .5rem;
+  border: 1px black solid;
+  border-radius: 5px;
 }

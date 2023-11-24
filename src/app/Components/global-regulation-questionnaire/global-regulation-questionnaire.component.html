@@ -1,4 +1,4 @@
-<div class="form-container">
+
     <h1>identificación de requisitos legales idi: CUESTIONARIO PRELIMINAR</h1>
 
     <ol>
@@ -6,13 +6,14 @@
 
         <li><h4 
             [mtxTooltip]="tooltipQuestion"
-            [mtxTooltipPosition]="position">{{question.questionTextES}}:</h4>
+            [mtxTooltipPosition]="position">{{question.questionTextES}}:<i class="fa-solid fa-circle-question"></i></h4>
             <ng-container [ngSwitch]="question.type">
-                <ng-template #tooltipQuestion class="radio-tooltip"> 
-                    <img src='../../../assets/answers_images/{{question.questionImage}}' alt='' width="50" height="60" title="" class='image-tooltip' />
-                    <div class="radio-tooltip">{{question['answerImage_2']}}</div>
+                <ng-template #tooltipQuestion class="tooltip-question-content"> 
+                    <img mat-card-image src="../../../assets/answers_images/{{question.questionImage}}">
+                    <div class="text-content">
+                        {{question['questionTooltipES']}}
+                    </div> 
                 </ng-template>
-
 
                 <ng-container *ngSwitchCase="'radio'">
                     <mat-radio-group aria-label="Select an option">
@@ -26,7 +27,7 @@
                         
                           <ng-template #tooltipRadio class="radio-tooltip">
                             <div>{{item['answerTooltip']}}</div>
-                            <img src="../../../assets/images/P4_IMAGE2.jpeg" width="50" height="60" alt='esta es la imagen del tooltip' title="esta es la imagen del tooltip" class='image-tooltip' />
+                            <img src="../../../assets/images/P4_IMAGE2.jpeg" width="50" height="60" alt='esta es la imagen del tooltip' title="esta es la imagen del tooltip" class='image-answer-tooltip' />
                             <div class="text-right">{{item['answerImage_2']}}</div>
                           </ng-template>
                         
@@ -47,4 +48,4 @@
         </li>  
     </div>
     </ol>
-</div>
+

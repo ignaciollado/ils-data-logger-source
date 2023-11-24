@@ -53,6 +53,7 @@ import { MatDatepickerModule } from "@angular/material/datepicker";
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MtxTooltipModule } from '@ng-matero/extensions/tooltip';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
 
 import {DialogModule} from '@angular/cdk/dialog';
 
@@ -162,6 +163,7 @@ export function tokenGetter() {
     MatExpansionModule,
     MatSlideToggleModule,
     MtxTooltipModule,
+    MatProgressBarModule,
     MatDialogModule
   ],
   providers: [

@@ -3,6 +3,7 @@
 
     <ol>
     <div *ngFor="let question of questionList">
+        <mat-progress-bar mode="determinate" value="40"></mat-progress-bar>
 
         <li><h4 
             >{{question.questionTextES}}:<button mat-raised-button (click)="openDialog('300ms', '300ms', question.questionTooltipES, question.questionImage)"><i class="fa-solid fa-circle-question" ></i></button></h4>

@@ -1,6 +1,7 @@
 export class QuestionDTO {
   key:               string;
   type:              string;
+  vector:            string;
   questionTextES:    string;
   questionImage:     string;
   questionTextCA:    string;

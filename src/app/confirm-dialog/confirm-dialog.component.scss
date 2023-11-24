@@ -1,13 +1,14 @@
-.delete-button {
-    color: red;
-}
 img{
     width: 100px;
     height: auto;
 }
 
-mat-dialog-content{
+.mdc-dialog__container{
+    width: 800px!important;
+}
+
+/* mat-dialog-content{
     display: grid;
     gap: 1rem;
-    grid-template-rows: 600px 600px;
-}
+    grid-template-rows: auto  auto;
+} */

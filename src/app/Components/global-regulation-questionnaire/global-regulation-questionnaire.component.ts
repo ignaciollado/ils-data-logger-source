@@ -23,14 +23,8 @@ export class GlobalRegulationQuestionnaireComponent {
 questionList: QuestionDTO[]
 positionOptions: TooltipPosition[] = ['below', 'above', 'left', 'right'];
 position =  this.positionOptions[0];
-
-width = '300px';
-height = '300px';
-hasBackdrop = true;
-disableClose = false;
-closeOnNavigation = true;
-
-
+panelOpenState: boolean = false;
+initialVector: number = 0
 constructor (
   private enviromentalAuditService: EnvironmentalAuditsService,
   public dialog: MatDialog

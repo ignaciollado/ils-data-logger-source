@@ -1,26 +1,26 @@
 export class ObjectiveDTO {
-  Id!: number
+  Id?: number
   companyId: string
   companyDelegationId: number
-  aspectId!: number
-  energyId!: number
-  residueId!: number
+  aspectId?: number
+  energyId?: number
+  residueId?: number
   theRatioType: string
   isSelected: boolean
   isEdit: boolean
   year: string
-  jan: number
-  feb: number
-  mar: number
-  apr: number
-  may: number
-  jun: number
-  jul: number
-  aug: number
-  sep: number
-  oct: number
-  nov: number
-  dec: number
+  jan?: number
+  feb?: number
+  mar?: number
+  apr?: number
+  may?: number
+  jun?: number
+  jul?: number
+  aug?: number
+  sep?: number
+  oct?: number
+  nov?: number
+  dec?: number
 
 constructor(
   Id: number,
@@ -32,7 +32,6 @@ constructor(
   theRatioType: string,
   isSelected: boolean,
   isEdit: boolean,
-
   year: string,
   jan: number,
   feb: number,
@@ -55,7 +54,6 @@ constructor(
   this.residueId = residueId,
   this.isSelected = isSelected,
   this.isEdit = isEdit,
-
   this.theRatioType = theRatioType,
   this.year = year,
   this.jan = jan,

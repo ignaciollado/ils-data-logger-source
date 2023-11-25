@@ -57,8 +57,10 @@ getCheckBox(answer:string, questionNumber:string, regulation: string, e:any){
 openDialog(enterAnimationDuration: string, exitAnimationDuration: string, questionText: string, toolTipText: string, questionDoc: string): void {
   const dialogConfig = new MatDialogConfig();
 
-  dialogConfig.disableClose = true;
-  dialogConfig.autoFocus = true;
+  dialogConfig.disableClose = true
+  dialogConfig.autoFocus = true
+  dialogConfig.panelClass = "dialog-customization"
+  dialogConfig.backdropClass = "popupBackdropClass"
   dialogConfig.position = {
     'top': '2rem',
     'right': '5rem'

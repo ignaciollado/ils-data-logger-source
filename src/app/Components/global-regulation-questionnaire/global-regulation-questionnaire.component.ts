@@ -41,8 +41,17 @@ private loadQuestions(): void {
     })
 }
 
-getInputValue(item:string, questionNumber:string){
-  console.log(item, questionNumber)
+getRadio(answer:string, questionNumber:string, regulation: string, e:any){
+  this.enviromentalAuditService.createGlobalAnswer(answer, questionNumber, regulation)
+    .subscribe()
+}
+
+getCheckBox(answer:string, questionNumber:string, regulation: string, e:any){
+  if ( e.checked ) {
+    this.enviromentalAuditService.updateGlobalAnswer(answer, questionNumber)
+    .subscribe()
+  }
+
 }
 
 openDialog(enterAnimationDuration: string, exitAnimationDuration: string, questionText: string, toolTipText: string, questionDoc: string): void {

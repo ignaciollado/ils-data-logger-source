@@ -38,8 +38,11 @@ private loadQuestions(): void {
   this.enviromentalAuditService.getQuestionList()
     .subscribe( (questions:QuestionDTO[]) => {
       this.questionList = questions
-      console.log (this.questionList)
     })
+}
+
+getInputValue(item:string, questionNumber:string){
+  console.log(item, questionNumber)
 }
 
 openDialog(enterAnimationDuration: string, exitAnimationDuration: string, questionText: string, toolTipText: string, questionDoc: string): void {

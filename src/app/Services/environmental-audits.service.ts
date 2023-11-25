@@ -6,14 +6,14 @@ import { Observable } from 'rxjs';
 import { SharedService } from './shared.service';
 
 const URL_MOCKS = '../../assets/mocks/questionsList.json'
-
+const URL_API = '../../assets/phpAPI/'
 @Injectable({
   providedIn: 'root'
 })
 export class EnvironmentalAuditsService {
   private urlAPiMock:  string;
 
-  constructor( private http: HttpClient, private sharedService: SharedService ) { 
+  constructor( private http: HttpClient, private sharedService: SharedService ) {
     this.urlAPiMock = '../../assets/mocks/'
   }
 
@@ -21,6 +21,16 @@ export class EnvironmentalAuditsService {
     return this.http
       .get<QuestionDTO[]>(`${this.urlAPiMock}questionsList.json`)
       .pipe(catchError(this.sharedService.handleError))
+  }
 
+  createGlobalAnswer(waterConsumption: QuestionDTO): Observable<QuestionDTO> {
+    return this.http
+      .post<QuestionDTO>(`${URL_API}waterConsumptionCreate.php`, waterConsumption)
+      .pipe(catchError(this.sharedService.handleError));
+  }
+
+  updateGlobalAnswer(consumptionId: string, consumption: QuestionDTO): Observable<QuestionDTO> {
+    return this.http
+      .put<QuestionDTO>(`${URL_API}energyConsumptionUpdate.php?consumptionId=${consumptionId}`, consumption)
   }
 }

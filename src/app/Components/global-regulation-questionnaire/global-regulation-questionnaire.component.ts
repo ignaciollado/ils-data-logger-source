@@ -24,7 +24,10 @@ questionList: QuestionDTO[]
 positionOptions: TooltipPosition[] = ['below', 'above', 'left', 'right'];
 position =  this.positionOptions[0];
 panelOpenState: boolean = true;
-initialVector: number = 0
+vectorProgress: number[] = []
+totalVectorQuestions: number[] = []
+totalVectorAnswers: number[] = [0]
+
 constructor (
   private enviromentalAuditService: EnvironmentalAuditsService,
   public dialog: MatDialog
@@ -38,12 +41,19 @@ private loadQuestions(): void {
   this.enviromentalAuditService.getQuestionList()
     .subscribe( (questions:QuestionDTO[]) => {
       this.questionList = questions
+      questions.map( (item:any) => {
+        this.totalVectorQuestions.push(item['questions'].length)
+      })
     })
 }
 
-getRadio(answer:string, questionNumber:string, regulation: string, e:any){
-  this.enviromentalAuditService.createGlobalAnswer(answer, questionNumber, regulation)
-    .subscribe()
+getRadio(answer:string, questionNumber:string, regulation: string, e:any, i: number, totalVectorQuestions: number){
+  this.totalVectorAnswers[i] = this.totalVectorAnswers[i] + 1
+  this.vectorProgress[i] = this.vectorProgress[i] + 1
+  console.log (i, totalVectorQuestions, this.totalVectorAnswers[i])
+  // this.enviromentalAuditService.createGlobalAnswer(answer, questionNumber, regulation)
+  //  .subscribe()
+
 }
 
 getCheckBox(answer:string, questionNumber:string, regulation: string, e:any){

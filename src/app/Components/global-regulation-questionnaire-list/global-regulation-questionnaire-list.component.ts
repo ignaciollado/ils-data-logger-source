@@ -2,6 +2,7 @@ import { Component } from '@angular/core'
 import { EnvironmentalAuditsService } from 'src/app/Services/environmental-audits.service'
 import { QuestionDTO } from 'src/app/Models/question.dto'
 import { JwtHelperService } from '@auth0/angular-jwt'
+import { AnswerDTO } from 'src/app/Models/answer.dto'
 
 @Component({
   selector: 'app-global-regulation-questionnaire-list',
@@ -10,7 +11,7 @@ import { JwtHelperService } from '@auth0/angular-jwt'
 })
 export class GlobalRegulationQuestionnaireListComponent {
   private userId: string | null
-  answers!: QuestionDTO[]
+  answers!: AnswerDTO[]
 
   constructor (
     private enviromentalAuditService: EnvironmentalAuditsService,
@@ -26,7 +27,7 @@ export class GlobalRegulationQuestionnaireListComponent {
   loadAnswers( userId: string){
 
       this.enviromentalAuditService.getAllAnswersByCompany(userId)
-        .subscribe( (answers:QuestionDTO[]) => {
+        .subscribe( (answers:AnswerDTO[]) => {
           this.answers = answers
           console.log (this.answers)
         }

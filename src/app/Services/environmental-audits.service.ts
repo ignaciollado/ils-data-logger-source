@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { QuestionDTO } from '../Models/question.dto';
+import { AnswerDTO } from '../Models/answer.dto';
 import { catchError } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { SharedService } from './shared.service';
@@ -35,8 +36,8 @@ export class EnvironmentalAuditsService {
       .put<QuestionDTO>(`${URL_API}globalAnswerUpdate.php?consumptionId=${answerId}`, answer)
   }
 
-  getAllAnswersByCompany(companyId:any): Observable<QuestionDTO[]> {
+  getAllAnswersByCompany(companyId:any): Observable<AnswerDTO[]> {
     return this.http
-     .get<QuestionDTO[]>(`${URL_API}questionaireAnswersGetByCompanyId.php?companyId=${companyId}`)
+     .get<AnswerDTO[]>(`${URL_API}questionaireAnswersGetByCompanyId.php?companyId=${companyId}`)
   }
 }

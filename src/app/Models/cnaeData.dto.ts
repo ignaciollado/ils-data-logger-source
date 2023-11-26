@@ -7,19 +7,19 @@ export class CnaeDataDTO {
     isEdit: boolean
     isSelected: boolean
     year: string
-    jan: number
-    feb: number
-    mar: number
-    apr: number
-    may: number
-    jun: number
-    jul: number
-    aug: number
-    sep: number
-    oct: number
-    nov: number
-    dec: number
-    
+    jan?: number
+    feb?: number
+    mar?: number
+    apr?: number
+    may?: number
+    jun?: number
+    jul?: number
+    aug?: number
+    sep?: number
+    oct?: number
+    nov?: number
+    dec?: number
+
   constructor (
     Id: number,
     companyId: number,

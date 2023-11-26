@@ -188,7 +188,7 @@ export class BillingComponent {
       companyId: +this.userId,
       companyDelegationId: this.delegation.value,
       year: this.yearBilling.value,
-      jan: '0',
+      /* jan: '0',
       feb: '0',
       mar: '0',
       apr: '0',
@@ -199,7 +199,7 @@ export class BillingComponent {
       sep: '0',
       oct: '0',
       nov: '0',
-      dec: '0',
+      dec: '0', */
       isEdit: true,
       isSelected: false,
     };

@@ -201,7 +201,7 @@ export class CnaesComponent {
       companyDelegationId: this.delegation.value,
       cnaeUnitSelected: this.currentActivityIndicator,
       year: this.yearCnae.value,
-      jan: 0,
+      /* jan: 0,
       feb: 0,
       mar: 0,
       apr: 0,
@@ -212,7 +212,7 @@ export class CnaesComponent {
       sep: 0,
       oct: 0,
       nov: 0,
-      dec: 0,
+      dec: 0, */
       isEdit: true,
       isSelected: false,
     };

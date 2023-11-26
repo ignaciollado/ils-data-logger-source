@@ -20,6 +20,7 @@ import { RatiosContainerComponent } from './Components/ratios/ratios-container/r
 import { ObjectivesComponent } from './Components/objectives/objectives.component';
 import { ConsumptionContainerComponent } from './Components/posts/consumption-container/consumption-container.component';
 import { GlobalRegulationQuestionnaireComponent } from './Components/global-regulation-questionnaire/global-regulation-questionnaire.component';
+import { GlobalRegulationQuestionnaireListComponent } from './Components/global-regulation-questionnaire-list/global-regulation-questionnaire-list.component';
 
 const routes: Routes = [
   {
@@ -120,6 +121,11 @@ const routes: Routes = [
   {
     path: 'global-questionnaire',
     component: GlobalRegulationQuestionnaireComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'global-questionnaire-list',
+    component: GlobalRegulationQuestionnaireListComponent,
     canActivate: [AuthGuard],
   },
   {

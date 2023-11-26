@@ -1,0 +1,8 @@
+<p>global-regulation-questionnaire-list works!</p>
+
+<ng-container *ngFor="let answer of answers">
+  {{answer}}
+</ng-container>
+
+
+<span *ngIf="!answers" class="loader">No data found yet...</span>

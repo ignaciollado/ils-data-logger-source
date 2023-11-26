@@ -56,10 +56,13 @@
       <button mat-button (click)="adminEnergies()" [ngClass]="'has-to-be-shown'">{{'energies' | translate}}</button>
       <button mat-button (click)="adminResidues()" [ngClass]="'has-to-be-shown'">{{'residues' | translate}}</button>
     </mat-menu>
-    <button mat-button (click)="globalQuestionnaire()" [ngClass]="'has-to-be-shown'">{{'globalQuestionaire' | translate}}</button>
-   <!--  <button mat-button (click)="adminAspects()" [ngClass]="'has-to-be-shown'">{{'aspects' | translate}}</button>
-    <button mat-button (click)="adminEnergies()" [ngClass]="'has-to-be-shown'">{{'energies' | translate}}</button>
-    <button mat-button (click)="adminResidues()" [ngClass]="'has-to-be-shown'">{{'residues' | translate}}</button> -->
+
+    <button mat-button [matMenuTriggerFor]="requisitosLegalesMenu">Questionarios</button>
+    <mat-menu #requisitosLegalesMenu="matMenu" yPosition="above">
+      <button mat-button (click)="globalQuestionnaire()" [ngClass]="'has-to-be-shown'">{{'globalQuestionaire' | translate}}</button>
+      <button mat-button (click)="globalQuestionnaireList()" [ngClass]="'has-to-be-shown'">{{'globalQuestionaireList' | translate}}</button>
+    </mat-menu>
+
     <button mat-button (click)="logout()" [ngClass]="'has-to-be-shown'">{{'logout' | translate}}</button>
     <app-select-language></app-select-language>
   </mat-toolbar>

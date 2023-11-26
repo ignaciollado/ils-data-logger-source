@@ -34,4 +34,9 @@ export class EnvironmentalAuditsService {
     return this.http
       .put<QuestionDTO>(`${URL_API}globalAnswerUpdate.php?consumptionId=${answerId}`, answer)
   }
+
+  getAllAnswersByCompany(companyId:any): Observable<QuestionDTO[]> {
+    return this.http
+     .get<QuestionDTO[]>(`${URL_API}questionaireAnswersGetByCompanyId.php?companyId=${companyId}`)
+  }
 }

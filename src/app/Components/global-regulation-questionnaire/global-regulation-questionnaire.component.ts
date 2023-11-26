@@ -51,15 +51,15 @@ getRadio(answer:string, questionNumber:string, regulation: string, e:any, i: num
   this.totalVectorAnswers[i] = this.totalVectorAnswers[i] + 1
   this.vectorProgress[i] = this.vectorProgress[i] + 1
   console.log (i, totalVectorQuestions, this.totalVectorAnswers[i])
-  // this.enviromentalAuditService.createGlobalAnswer(answer, questionNumber, regulation)
-  //  .subscribe()
+  this.enviromentalAuditService.createGlobalAnswer(answer, questionNumber, regulation)
+    .subscribe()
 
 }
 
 getCheckBox(answer:string, questionNumber:string, regulation: string, e:any){
   if ( e.checked ) {
     this.enviromentalAuditService.updateGlobalAnswer(answer, questionNumber)
-    .subscribe()
+      .subscribe()
   }
 
 }

@@ -34,10 +34,12 @@
     </ol>
 
     <mat-accordion *ngFor="let vectors of questionList; index as i">
-         <mat-expansion-panel >
+         <mat-expansion-panel>
             <mat-expansion-panel-header>
                 <mat-panel-title>
-                    Vector: {{vectors.vector}} total answers: {{totalVectorAnswers[i]}} total questions: {{totalVectorQuestions[i]}}
+                  <span>Vector: {{vectors.vector}}</span>
+                  <span>Total answers: {{totalVectorAnswers[i]}}</span>
+                  <span>Total questions: {{totalVectorQuestions[i]}}</span>
                 </mat-panel-title>
                 <mat-progress-bar mode="determinate" value="{{vectorProgress[i]}}"></mat-progress-bar>
             </mat-expansion-panel-header>

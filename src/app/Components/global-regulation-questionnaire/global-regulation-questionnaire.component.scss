@@ -14,6 +14,20 @@ img{
   height: auto;
 }
 
+mat-expansion-panel{
+  padding-top: .2rem;
+  padding-bottom: .2rem;
+  margin-bottom: 1rem;
+}
+
+mat-panel-title{
+  display: grid;
+  grid-template-rows: 100%;
+  font-size: .6rem;
+}
+
 mat-progress-bar{
   width: 50%;
 }
+
+

@@ -24,7 +24,7 @@ export class EnvironmentalAuditsService {
   }
 
   createGlobalAnswer(answer:string, questionNumber:string, regulation: string): Observable<QuestionDTO> {
-    console.log(answer, questionNumber, regulation)
+    console.log(answer, questionNumber, regulation[0], regulation[1], regulation[2], regulation.length)
     return this.http
       .post<QuestionDTO>(`${URL_API}globalAnswerCreate.php`, {answer, questionNumber, regulation})
       .pipe(catchError(this.sharedService.handleError));

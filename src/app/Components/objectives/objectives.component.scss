@@ -97,11 +97,23 @@ mat-cell{
   background-color: #919191;
 }
 
-.mat-column-year{
-  max-width: 2.7rem;
-}
 .mat-column-delegation{
-  padding-right: 2rem;
+  width: 100%;
+  white-space: normal;
+}
+
+.mat-column-year{
+  max-width: 3rem;
+}
+
+.mat-column-enviromentalDataName{
+  width: 14rem;
+  white-space: normal;
+}
+
+.mat-column-theRatioType{
+  width: 5rem;
+  white-space: normal;
 }
 /* .mat-column-jan{
   max-width: 4.5rem;
@@ -140,5 +152,5 @@ mat-cell{
   max-width: 4.5rem;
 } */
 .mat-column-isEdit{
-  padding-right: 6rem;
+  padding-right: 4rem;
 }

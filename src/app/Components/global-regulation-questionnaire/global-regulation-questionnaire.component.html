@@ -6,7 +6,7 @@
          <mat-expansion-panel>
             <mat-expansion-panel-header>
                 <mat-panel-title>
-                  <span>Vector: {{vectors.vector}}</span>
+                  <span>Vector: {{vectors.vectorName}}</span>
                   <span>Total answers: {{totalVectorAnswers[i]}}</span>
                   <span>Total questions: {{totalVectorQuestions[i]}}</span>
                 </mat-panel-title>
@@ -15,7 +15,7 @@
             <ol>
             <li *ngFor="let question of vectors.questions">
                 <h4>{{question.questionTextES}}:<button mat-flat-button (click)="openDialog('300ms', '300ms', question.questionTextES, question.questionTooltipES, question.questionDoc)"><i class="fa-solid fa-circle-info" style="color: #1f5618;"></i></button></h4>
-                <ng-container [ngSwitch]="question.type">
+                <ng-container [ngSwitch]="question.questionType">
                     <ng-container *ngSwitchCase="'radio'">
                       <mat-radio-group aria-label="Select an option">
                         <ng-container  *ngFor="let item of question.answers">

@@ -1,11 +1,14 @@
 export class AnswerDTO {
-  vector:    string;
+  id: number
+  componyId: number
+  updated_at: Date
   answers: Answer[];
 }
 
 export interface Answer {
-  key:               string;
-  answers:           Answer[];
+  vector:   number
+  key:      string;
+  answers:  Answer[];
 }
 
 export interface Answer {

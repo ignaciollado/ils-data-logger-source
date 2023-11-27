@@ -89,16 +89,27 @@ mat-header-cell {
   color: white;
   font-size: .5rem;
 }
+.mat-header-cell{
+  width: 12rem;
+}
 
 mat-cell{
   background-color: #919191;
 }
 
 .mat-column-year{
-  max-width: 2.7rem;
+  max-width: 3rem;
 }
 .mat-column-delegation{
-  padding-right: 2rem;
+  width: 100%;
+  padding-right: 1rem;
+  white-space: normal;
+}
+
+.mat-column-energyES{
+  width: 14rem;
+  padding-right: 1rem;
+  white-space: normal;
 }
 /* .mat-column-jan{
   max-width: 4.5rem;
@@ -137,5 +148,5 @@ mat-cell{
   max-width: 4.5rem;
 } */
 .mat-column-isEdit{
-  padding-right: 6rem;
+  padding-right: 4rem;
 }

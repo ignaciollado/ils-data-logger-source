@@ -1,14 +1,15 @@
 export class QuestionDTO {
-  vector:    string;
-  questions: Question[];
+  vectorId:           string
+  vectorName:         string
+  questions:          Question[]
 }
 
 export interface Question {
-  key:               string;
-  type:              string;
+  questionNumber:    string;
+  questionType:      string;
   questionTextES:    string;
-  questionDoc:       string;
   questionTextCA:    string;
+  questionDoc:       string;
   questionTooltipES: string;
   questionTooltipCA: string;
   link:              string;
@@ -16,9 +17,9 @@ export interface Question {
 }
 
 export interface Answer {
-  answerText:       string;
-  answerTooltip:    string;
-  answerRegulation: string[];
-  answerImage_1:    string;
-  answerImage_2:    string;
+  answerText:        string;
+  answerTooltip:     string;
+  answerRegulation:  string[];
+  answerImage_1:     string;
+  answerImage_2:     string;
 }

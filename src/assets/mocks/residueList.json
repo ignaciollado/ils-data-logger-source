@@ -1,0 +1,98 @@
+[
+  {
+    "key": "01",
+    "chapter": "RESIDUOS DE LA PROSPECCIÓN, EXTRACCIÓN DE MINAS Y CANTERAS Y TRATAMIENTOS FÍSICOS Y QUÍMICOS DE MINERALES",
+    "family": 
+          [
+            {
+              "familyId": "0101",
+              "familyName": "Residuos de la extracción de minerales",
+              "familyItems":
+                [
+                  {
+                    "familyItemId": "010101",
+                    "familyItemName": "Residuos de la extracción de minerales metálicos"
+                  },
+                  {
+                    "familyItemId": "010102",
+                    "familyItemName": "Residuos de la extracción de minerales no metálicos"
+                  }
+                ]
+            },
+            {
+              "familyId": "0103",
+              "familyName": "Residuos de la transformación física y química de minerales metálicos",
+              "familyItems":
+                [
+                  {
+                    "familyItemId": "010304",
+                    "familyItemName": "Estériles que generan ácido procedentes de la transformación de minerales sulfurados"
+                  },
+                  {
+                    "familyItemId": "010305",
+                    "familyItemName": "Otros estériles que contienen sustancias peligrosas"
+                  },
+                  {
+                    "familyItemId": "010306",
+                    "familyItemName": "Estériles distintos de los mencionados en los códigos 01 03 04 y 01 03 05"
+                  },
+                  {
+                    "familyItemId": "010307",
+                    "familyItemName": "Otros residuos que contienen sustancias peligrosas procedentes de la transformación física y química de minerales metálicos"
+                  },
+                  {
+                    "familyItemId": "010308",
+                    "familyItemName": "Residuos de polvo y arenilla distintos de los mencionados en el código 01 03 07"
+                  },
+                  {
+                    "familyItemId": "010309",
+                    "familyItemName": "Lodos rojos procedentes de la producción de alúmina distintos de los mencionados en el código 01 03 10"
+                  },
+                  {
+                    "familyItemId": "010310",
+                    "familyItemName": "Lodos rojos procedentes de la producción de alúmina que contienen sustancias peligrosas distintos de los residuos mencionados en el código 01 03 07"
+                  },
+                  {
+                    "familyItemId": "010399",
+                    "familyItemName": "Residuos no especificados en otra categoría"
+                  }
+                ]
+            },
+            {
+              "familyId": "0104",
+              "familyName": "Residuos de la transformación física y química de minerales no metálicos",
+              "familyItems":
+                [
+
+                ]
+            },
+            {
+              "familyId": "0105",
+              "familyName": "Lodos y otros residuos de perforaciones",
+              "familyItems":
+                [
+
+                ]
+            }
+          ]
+  },
+
+  {
+    "key": "02",
+    "chapter": "RESIDUOS DE LA AGRICULTURA, HORTICULTURA, ACUICULTURA, SILVICULTURA, CAZA Y PESCA; RESIDUOS DE LA PREPARACIÓN Y ELABORACIÓN DE ALIMENTOS",
+    "family": 
+          [
+            
+          ]
+  },
+
+  {
+    "key": "03",
+    "chapter": "RESIDUOS DE LA TRANSFORMACIÓN DE LA MADERA Y DE LA PRODUCCIÓN DE TABLEROS Y MUEBLES, PASTA DE PAPEL, PAPEL Y CARTÓN",
+    "family": 
+          [
+            
+          ]
+  }
+
+]

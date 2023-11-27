@@ -95,7 +95,7 @@ export const ObjectiveColumns = [
       {
         key: "enviromentalDataName",
         type: "text",
-        label: "Enviromental Data"
+        label: "Consumption"
       },
       {
         key: "theRatioType",

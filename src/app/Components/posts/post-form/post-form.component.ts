@@ -82,8 +82,8 @@ export class PostFormComponent implements OnInit {
 
   isGridView: boolean = false
   columnsDisplayed: string[] = energyColumns.map((col) => col.key);
-  dataSource: any = ENERGIES_DATA
-  //dataSource = new MatTableDataSource<ConsumptionDTO>()
+  //dataSource: any = ENERGIES_DATA
+  dataSource = new MatTableDataSource<ConsumptionDTO>()
   columnsSchema: any = energyColumns;
 
   valid: any = {}

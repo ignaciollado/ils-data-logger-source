@@ -25,14 +25,14 @@ export class GlobalRegulationQuestionnaireListComponent {
   }
 
   loadAnswers( userId: string){
-
       this.enviromentalAuditService.getAllAnswersByCompany(userId)
         .subscribe( (answers:AnswerDTO[]) => {
           this.answers = answers
-          console.log (this.answers)
+          answers.map((item:any) => {
+            console.log(item.id, item.companyId, item.respuestas)
+          })
         }
         )
-
   }
 
 }

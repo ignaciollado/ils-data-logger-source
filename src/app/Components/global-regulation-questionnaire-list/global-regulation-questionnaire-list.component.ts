@@ -29,7 +29,13 @@ export class GlobalRegulationQuestionnaireListComponent {
         .subscribe( (answers:AnswerDTO[]) => {
           this.answers = answers
           answers.map((item:any) => {
-            console.log(item.id, item.companyId, item.respuestas)
+            console.log(item.id, item.companyId)
+            item.answers.map((answersItem:any) =>{
+              console.log(answersItem.vectorId, answersItem.vectorName)
+              answersItem.questions.map((questionItem:any)=>{
+                console.log(questionItem.questionTextES)
+              })
+            })
           })
         }
         )

@@ -1,17 +1,27 @@
 export class AnswerDTO {
   id: number
-  componyId: number
+  companyId: number
   updated_at: Date
   answers: Answer[];
 }
 
 export interface Answer {
-  vector:   number
-  key:      string;
-  answers:  Answer[];
+  questionNumber:    string;
+  questionType:      string;
+  questionTextES:    string;
+  questionTextCA:    string;
+  questionDoc:       string;
+  questionTooltipES: string;
+  questionTooltipCA: string;
+  link:              string;
+  answers:           AnswerItem[];
 }
 
-export interface Answer {
-  answerText:       string;
-  selected:         boolean;
+export interface AnswerItem {
+  answered:          Boolean;
+  answerText:        string;
+  answerTooltip:     string;
+  answerRegulation:  string[];
+  answerImage_1:     string;
+  answerImage_2:     string;
 }

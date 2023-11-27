@@ -1,5 +1,12 @@
-[
 
+
+[
+{
+  "id": 1,
+  "companyId": 284,
+  "updated_at": "",
+  "answers": 
+    [
         {
           "vectorId": "1",
           "vectorName": "nombre del vector 1",
@@ -454,4 +461,14 @@
                   }
               ]
         }
+    ]    
+},
+{
+
+},
+{
+
+}
 ]
+
+

@@ -2,7 +2,7 @@ export class AnswerDTO {
   id: number
   companyId: number
   updated_at: Date
-  questionaires: Questionaire[];
+  questionaire: Questionaire[];
 }
 
 export interface Questionaire {

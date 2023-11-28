@@ -4,8 +4,8 @@
 {
   "id": 1,
   "companyId": 284,
-  "updated_at": "",
-  "answers": 
+  "updated_at": "29/11/2023",
+  "questionaire": 
     [
         {
           "vectorId": "1",
@@ -476,16 +476,16 @@
 {
   "id": 2,
   "companyId": 285,
-  "updated_at": "",
-  "answers": 
+  "updated_at": "28/11/2023",
+  "questionaire": 
     [
     ]
 },
 {
   "id": 3,
   "companyId": 286,
-  "updated_at": "",
-  "answers": 
+  "updated_at": "27/11/2023",
+  "questionaire": 
     [
     ]
 }

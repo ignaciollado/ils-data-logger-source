@@ -11,7 +11,7 @@ import { Answer } from 'src/app/Models/question.dto'
 })
 export class GlobalRegulationQuestionnaireListComponent {
   private userId: string | null
-  answers!: AnswerDTO[]
+  userQuestionaires!: AnswerDTO[]
 
   constructor (
     private enviromentalAuditService: EnvironmentalAuditsService,
@@ -41,13 +41,14 @@ export class GlobalRegulationQuestionnaireListComponent {
         ) */
 
         this.enviromentalAuditService.getMockAnswers( this.userId )
-          .subscribe( (userAnswers: AnswerDTO[]) => {
-            this.answers = userAnswers
-            this.answers.map( (userAnswers:any) => {
-                console.log ( userAnswers.id )
-                userAnswers.map( (answer:any) => {
-                  console.log (answer.answered)
-                })
+          .subscribe( (userQuestionaires: AnswerDTO[]) => {
+            this.userQuestionaires = userQuestionaires
+            this.userQuestionaires.map( (userAnswers:any) => {
+               
+              console.log (userAnswers.questionaire)
+              /* userAnswers.map( (answer:any) => {
+                  console.log (answer)
+                }) */
 
             }) 
           })

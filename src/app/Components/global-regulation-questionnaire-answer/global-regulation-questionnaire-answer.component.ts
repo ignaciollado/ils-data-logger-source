@@ -38,9 +38,9 @@ export class GlobalRegulationQuestionnaireAnswerComponent {
 
             const userQuestionnaires = questionnaires // = ['spray', 'elite', 'exuberant', 'destruction', 'present'];
 
-            const result = userQuestionnaires.filter((word) => word.id > 1);
+            this.userQuestionnairebyID = userQuestionnaires.filter((word) => (word.id >= questionnaireID && word.id <= questionnaireID));
 
-            console.log(result);
+            console.log(this.userQuestionnairebyID);
 
 
             })

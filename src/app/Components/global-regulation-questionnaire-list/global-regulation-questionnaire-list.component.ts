@@ -46,9 +46,9 @@ export class GlobalRegulationQuestionnaireListComponent {
             this.userQuestionaires.map( (userAnswers:any) => {
                
               console.log (userAnswers.questionaire)
-              /* userAnswers.map( (answer:any) => {
-                  console.log (answer)
-                }) */
+              userAnswers.questionaire.map( (item:any) => {
+                  console.log (item)
+                })
 
             }) 
           })

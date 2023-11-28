@@ -5,12 +5,12 @@
   "id": 1,
   "companyId": 284,
   "updated_at": "29/11/2023",
-  "questionaire": 
+  "userQuestionaire": 
     [
         {
           "vectorId": "1",
           "vectorName": "nombre del vector 1",
-          "questions":
+          "questionaireAnswers":
                 [
                 {
                     "key": "1",
@@ -183,7 +183,7 @@
         {
           "vectorId": "2",
           "vectorName": "nombre del vector 2",
-          "questions": 
+          "questionaireAnswers": 
               [
                 {
                     "key": "4",
@@ -247,7 +247,7 @@
         {
           "vectorId": "3",
           "vectorName": "nombre del vector 3",
-          "questions": 
+          "questionaireAnswers": 
               [
                   {
                     "key": "6",
@@ -477,7 +477,7 @@
   "id": 2,
   "companyId": 285,
   "updated_at": "28/11/2023",
-  "questionaire": 
+  "userQuestionaire": 
     [
     ]
 },
@@ -485,7 +485,7 @@
   "id": 3,
   "companyId": 286,
   "updated_at": "27/11/2023",
-  "questionaire": 
+  "userQuestionaire": 
     [
     ]
 }

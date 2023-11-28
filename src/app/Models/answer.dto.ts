@@ -2,16 +2,16 @@ export class AnswerDTO {
   id: number
   companyId: number
   updated_at: Date
-  questionaire: Questionaire[];
+  userQuestionaire: userQuestionaire[];
 }
 
-export interface Questionaire {
+export interface userQuestionaire {
   vectorId:          number;
   vectorName:        string;
-  answers:           Answers[];
+  questionaireAnswers: QuestionaireAnswers[];
 }
 
-export interface Answers {
+export interface QuestionaireAnswers {
   key:               number;
   type:              string;
   answered:          Boolean;
@@ -21,10 +21,10 @@ export interface Answers {
   questionTooltipES: string;
   questionTooltipCA: string;
   link:              string;
-  questionaireAnswers: QuestionaireAnswers[];
+  answer: Answer[];
 }
 
-export interface QuestionaireAnswers {
+export interface Answer {
   answerText:     string;
   answerTooltip:  string;
   regulation:     string;

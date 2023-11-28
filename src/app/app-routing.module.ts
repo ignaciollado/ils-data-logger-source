@@ -130,7 +130,7 @@ const routes: Routes = [
     canActivate: [AuthGuard],
   },
   {
-    path: 'questionnaire-detail',
+    path: 'questionnaire-detail/:id',
     title: 'Detalle del cuestionario',
     component: GlobalRegulationQuestionnaireAnswerComponent,
     canActivate: [AuthGuard],

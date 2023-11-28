@@ -41,17 +41,18 @@ export class GlobalRegulationQuestionnaireListComponent {
         ) */
 
         this.enviromentalAuditService.getMockAnswers( this.userId )
-          .subscribe( (userQuestionaires: AnswerDTO[]) => {
-            this.userQuestionaires = userQuestionaires
-            this.userQuestionaires.map( (userAnswers:any) => {
-               
-              console.log (userAnswers.questionaire)
-              userAnswers.questionaire.map( (item:any) => {
-                  console.log (item)
+          .subscribe( (questionaires: AnswerDTO[]) => {
+            this.userQuestionaires = questionaires
+              this.userQuestionaires.map( (userAnswers:any) => {
+                userAnswers.userQuestionaire.map( (item:any) => {
+                  item.questionaireAnswers.map( (subItem:any) => {
+                    subItem.answers.map( (subItemsub:any) => {
+                      console.log (subItem.questionTextES, subItemsub.answerText)
+                    })
+                  })
                 })
-
-            }) 
-          })
+              }) 
+            })
   }
 
 }

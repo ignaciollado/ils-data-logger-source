@@ -2,26 +2,32 @@ export class AnswerDTO {
   id: number
   companyId: number
   updated_at: Date
-  answers: Answer[];
+  questionaires: Questionaire[];
 }
 
-export interface Answer {
-  questionNumber:    string;
-  questionType:      string;
+export interface Questionaire {
+  vectorId:          number;
+  vectorName:        string;
+  answers:           Answers[];
+}
+
+export interface Answers {
+  key:               number;
+  type:              string;
+  answered:          Boolean;
   questionTextES:    string;
-  questionTextCA:    string;
   questionDoc:       string;
+  questionTextCA:    string;
   questionTooltipES: string;
   questionTooltipCA: string;
   link:              string;
-  answers:           AnswerItem[];
+  questionaireAnswers: QuestionaireAnswers[];
 }
 
-export interface AnswerItem {
-  answered:          Boolean;
-  answerText:        string;
-  answerTooltip:     string;
-  answerRegulation:  string[];
-  answerImage_1:     string;
-  answerImage_2:     string;
+export interface QuestionaireAnswers {
+  answerText:     string;
+  answerTooltip:  string;
+  regulation:     string;
+  image_1:        string;
+  image_2:        string;
 }

@@ -40,4 +40,11 @@ export class EnvironmentalAuditsService {
     return this.http
      .get<AnswerDTO[]>(`${URL_API}questionaireAnswersGetByCompanyId.php?companyId=${companyId}`)
   }
+
+  getMockAnswers(userId: string): Observable<AnswerDTO[]> {
+    return this.http
+      .get<AnswerDTO[]>(`${this.urlAPiMock}answersList.json`)
+      .pipe(catchError(this.sharedService.handleError))
+
+  }
 }

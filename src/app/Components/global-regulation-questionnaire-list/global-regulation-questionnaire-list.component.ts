@@ -1,8 +1,8 @@
 import { Component } from '@angular/core'
 import { EnvironmentalAuditsService } from 'src/app/Services/environmental-audits.service'
-import { QuestionDTO } from 'src/app/Models/question.dto'
 import { JwtHelperService } from '@auth0/angular-jwt'
 import { AnswerDTO } from 'src/app/Models/answer.dto'
+import { Answer } from 'src/app/Models/question.dto'
 
 @Component({
   selector: 'app-global-regulation-questionnaire-list',
@@ -25,7 +25,7 @@ export class GlobalRegulationQuestionnaireListComponent {
   }
 
   loadAnswers( userId: string){
-      this.enviromentalAuditService.getAllAnswersByCompany(userId)
+/*       this.enviromentalAuditService.getAllAnswersByCompany(userId)
         .subscribe( (answers:AnswerDTO[]) => {
           this.answers = answers
           answers.map((item:any) => {
@@ -38,7 +38,19 @@ export class GlobalRegulationQuestionnaireListComponent {
             })
           })
         }
-        )
+        ) */
+
+        this.enviromentalAuditService.getMockAnswers( this.userId )
+          .subscribe( (userAnswers: AnswerDTO[]) => {
+            this.answers = userAnswers
+            this.answers.map( (userAnswers:any) => {
+                console.log ( userAnswers.id )
+                userAnswers.map( (answer:any) => {
+                  console.log (answer.answered)
+                })
+
+            }) 
+          })
   }
 
 }

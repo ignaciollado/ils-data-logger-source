@@ -15,6 +15,7 @@
                 {
                     "key": "1",
                     "type": "radio",
+                    "answered": true,
                     "questionTextES": "¿Su actividad se encuentra sujeta al comercio de derechos de emisión?",
                     "questionDoc" : "",
                     "questionTextCA": "",
@@ -40,6 +41,7 @@
                 {
                     "key": "2",
                     "type": "radio",
+                    "answered": true,
                     "questionTextES": "¿Realizan actividades en las que se manejen compuestos orgánicos volátiles (COVs)?",
                     "questionDoc" : "P2_ANEXO2.pdf",
                     "questionTextCA": "",
@@ -64,6 +66,7 @@
                 {
                     "key": "3",
                     "type": "checkbox",
+                    "answered": true,
                     "questionTextES": "Indique los tipos de residuos y/o subproductos que produce:",
                     "questionDoc" : "",
                     "questionTextCA": "",
@@ -185,6 +188,7 @@
                 {
                     "key": "4",
                     "type": "radio",
+                    "answered": true,
                     "questionTextES": "¿El establecimiento se encuentra afectado por las medidas de control de los riesgos inherentes a los accidentes graves en los que intervengan sustancias peligrosas (SEVESO)?",
                     "questionDoc" : "P4_IMAGE1.jpg",
                     "questionTextCA": "",
@@ -216,6 +220,7 @@
                 {
                 "key": "5",
                 "type": "radio",
+                "answered": true,
                 "questionTextES": "¿Se realizan actividades de expedición, carga, descarga y transporte de las mercancías peligrosas ?",
                 "questionDoc" : "P6_TABLA1.jpg",
                 "questionTextCA": "",
@@ -247,6 +252,7 @@
                   {
                     "key": "6",
                     "type": "radio",
+                    "answered": true,
                     "questionTextES": "¿Su actividad se encuentra sujeta al comercio de derechos de emisión?",
                     "questionDoc" : "",
                     "questionTextCA": "",
@@ -271,6 +277,7 @@
                   {
                     "key": "7",
                     "type": "radio",
+                    "answered": true,
                     "questionTextES": "¿Realizan actividades en las que se manejen compuestos orgánicos volátiles (COVs)?",
                     "questionDoc" : "P2_ANEXO2.pdf",
                     "questionTextCA": "",
@@ -294,6 +301,7 @@
                   {
                     "key": "8",
                     "type": "checkbox",
+                    "answered": true,
                     "questionTextES": "Indique los tipos de residuos y/o subproductos que produce:",
                     "questionDoc" : "",
                     "questionTextCA": "",
@@ -408,6 +416,7 @@
                   {
                     "key": "9",
                     "type": "radio",
+                    "answered": true,
                     "questionTextES": "¿El establecimiento se encuentra afectado por las medidas de control de los riesgos inherentes a los accidentes graves en los que intervengan sustancias peligrosas (SEVESO)?",
                     "questionDoc" : "P4_IMAGE1.jpg",
                     "questionTextCA": "",
@@ -438,6 +447,7 @@
                   {
                 "key": "10",
                 "type": "radio",
+                "answered": true,
                 "questionTextES": "¿Se realizan actividades de expedición, carga, descarga y transporte de las mercancías peligrosas ?",
                 "questionDoc" : "P6_TABLA1.jpg",
                 "questionTextCA": "",
@@ -464,10 +474,20 @@
     ]    
 },
 {
-
+  "id": 2,
+  "companyId": 285,
+  "updated_at": "",
+  "answers": 
+    [
+    ]
 },
 {
-
+  "id": 3,
+  "companyId": 286,
+  "updated_at": "",
+  "answers": 
+    [
+    ]
 }
 ]
 

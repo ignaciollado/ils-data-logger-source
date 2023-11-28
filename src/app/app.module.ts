@@ -77,6 +77,7 @@ import { ObjectivesComponent } from './Components/objectives/objectives.componen
 import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
 import { GlobalRegulationQuestionnaireComponent } from './Components/global-regulation-questionnaire/global-regulation-questionnaire.component';
 import { GlobalRegulationQuestionnaireListComponent } from './Components/global-regulation-questionnaire-list/global-regulation-questionnaire-list.component';
+import { GlobalRegulationQuestionnaireAnswerComponent } from './Components/global-regulation-questionnaire-answer/global-regulation-questionnaire-answer.component';
 
 export function tokenGetter() {
   return sessionStorage.getItem("access_token");
@@ -119,6 +120,7 @@ export function tokenGetter() {
     BillingComponent,
     ObjectivesComponent,
     GlobalRegulationQuestionnaireListComponent,
+    GlobalRegulationQuestionnaireAnswerComponent,
   ],
   imports: [
     BrowserModule,

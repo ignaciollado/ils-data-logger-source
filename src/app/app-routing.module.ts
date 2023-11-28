@@ -21,6 +21,7 @@ import { ObjectivesComponent } from './Components/objectives/objectives.componen
 import { ConsumptionContainerComponent } from './Components/posts/consumption-container/consumption-container.component';
 import { GlobalRegulationQuestionnaireComponent } from './Components/global-regulation-questionnaire/global-regulation-questionnaire.component';
 import { GlobalRegulationQuestionnaireListComponent } from './Components/global-regulation-questionnaire-list/global-regulation-questionnaire-list.component';
+import { GlobalRegulationQuestionnaireAnswerComponent } from './Components/global-regulation-questionnaire-answer/global-regulation-questionnaire-answer.component';
 
 const routes: Routes = [
   {
@@ -126,6 +127,12 @@ const routes: Routes = [
   {
     path: 'global-questionnaire-list',
     component: GlobalRegulationQuestionnaireListComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'questionnaire-detail',
+    title: 'Detalle del cuestionario',
+    component: GlobalRegulationQuestionnaireAnswerComponent,
     canActivate: [AuthGuard],
   },
   {

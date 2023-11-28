@@ -1,7 +1,18 @@
-<p>global-regulation-questionnaire-list works!</p>
+<h2>Answered questionaires list:</h2>
 
 <ng-container *ngFor="let questionaire of userQuestionaires">
-  {{questionaire}}
+  <strong>Num. <a [routerLink]="['/questionnaire-detail', questionaire.id]" routerLinkActive="active" ariaCurrentWhenActive="page">{{questionaire.id}}</a>
+    </strong> / <strong>Contestado el: {{questionaire.updated_at}}</strong>
+  <div *ngFor="let userItem of questionaire.userQuestionaire">
+   <strong>Vector: {{userItem.vectorName}}</strong>
+    <div *ngFor="let questionaireAnswer of userItem.questionaireAnswers">
+      <span>Contestada: {{questionaireAnswer.answered}}</span>
+      <div *ngFor="let answer of questionaireAnswer.answer">
+        {{answer.answerText}}  {{answer.regulation}}
+      </div>
+    </div>
+  </div>
+
 </ng-container>
 
 

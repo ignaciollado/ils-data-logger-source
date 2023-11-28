@@ -9,7 +9,7 @@
     [
         {
           "vectorId": "1",
-          "vectorName": "nombre del vector 1",
+          "vectorName": "Seguridad Industrial",
           "questionaireAnswers":
                 [
                 {
@@ -182,7 +182,7 @@
         },
         {
           "vectorId": "2",
-          "vectorName": "nombre del vector 2",
+          "vectorName": "AGUAS> VERTIDO Y CAPTACION POZO",
           "questionaireAnswers": 
               [
                 {
@@ -246,7 +246,7 @@
         },
         {
           "vectorId": "3",
-          "vectorName": "nombre del vector 3",
+          "vectorName": "MEDIO AMBIENTE>LICENCIAS Y NORM GRAL - Legislación Básica y de Interés General en Medio Ambiente",
           "questionaireAnswers": 
               [
                   {

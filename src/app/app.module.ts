@@ -27,32 +27,32 @@ import { FormatQuantityPipe } from "./Pipes/format-quantity.pipe";
 import { DashboardComponent } from './Components/dashboard/dashboard.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import {MatCheckboxModule} from '@angular/material/checkbox';
-import {MatRadioModule} from "@angular/material/radio";
-import {MatButtonToggleModule} from '@angular/material/button-toggle';
-import {MatCardModule} from '@angular/material/card';
-import {MatGridListModule} from '@angular/material/grid-list';
-import {MatTooltipModule} from '@angular/material/tooltip';
-import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
-import {MatToolbarModule} from '@angular/material/toolbar';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatInputModule} from '@angular/material/input';
-import {MatSelectModule} from '@angular/material/select';
-import {MatIconModule} from '@angular/material/icon';
-import {MatButtonModule} from '@angular/material/button';
-import {MatNativeDateModule} from '@angular/material/core';
-import {MatTabsModule} from '@angular/material/tabs';
-import {MatMenuModule} from '@angular/material/menu';
-import {MatTableModule} from '@angular/material/table';
-import {CdkTableModule} from '@angular/cdk/table';
-import {MatPaginatorModule} from '@angular/material/paginator';
-import {MatSortModule} from '@angular/material/sort';
-import {MatDialogModule} from '@angular/material/dialog';
-import {MatChipsModule} from '@angular/material/chips';
+import { MatCheckboxModule} from '@angular/material/checkbox';
+import { MatRadioModule} from "@angular/material/radio";
+import { MatButtonToggleModule} from '@angular/material/button-toggle';
+import { MatCardModule} from '@angular/material/card';
+import { MatGridListModule} from '@angular/material/grid-list';
+import { MatTooltipModule} from '@angular/material/tooltip';
+import { MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { MatToolbarModule} from '@angular/material/toolbar';
+import { MatFormFieldModule} from '@angular/material/form-field';
+import { MatInputModule} from '@angular/material/input';
+import { MatSelectModule} from '@angular/material/select';
+import { MatIconModule} from '@angular/material/icon';
+import { MatButtonModule} from '@angular/material/button';
+import { MatNativeDateModule} from '@angular/material/core';
+import { MatTabsModule} from '@angular/material/tabs';
+import { MatMenuModule} from '@angular/material/menu';
+import { MatTableModule} from '@angular/material/table';
+import { CdkTableModule} from '@angular/cdk/table';
+import { MatPaginatorModule} from '@angular/material/paginator';
+import { MatSortModule} from '@angular/material/sort';
+import { MatDialogModule} from '@angular/material/dialog';
+import { MatChipsModule} from '@angular/material/chips';
 import { MatDatepickerModule } from "@angular/material/datepicker";
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
-import {MatProgressBarModule} from '@angular/material/progress-bar';
+import { MatProgressBarModule} from '@angular/material/progress-bar';
 
 import {DialogModule} from '@angular/cdk/dialog';
 
@@ -78,6 +78,7 @@ import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.componen
 import { GlobalRegulationQuestionnaireComponent } from './Components/global-regulation-questionnaire/global-regulation-questionnaire.component';
 import { GlobalRegulationQuestionnaireListComponent } from './Components/global-regulation-questionnaire-list/global-regulation-questionnaire-list.component';
 import { GlobalRegulationQuestionnaireAnswerComponent } from './Components/global-regulation-questionnaire-answer/global-regulation-questionnaire-answer.component';
+import { FileUploadComponent } from './file-upload/file-upload.component';
 
 export function tokenGetter() {
   return sessionStorage.getItem("access_token");
@@ -121,6 +122,7 @@ export function tokenGetter() {
     ObjectivesComponent,
     GlobalRegulationQuestionnaireListComponent,
     GlobalRegulationQuestionnaireAnswerComponent,
+    FileUploadComponent,
   ],
   imports: [
     BrowserModule,

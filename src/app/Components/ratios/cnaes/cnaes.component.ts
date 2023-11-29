@@ -17,9 +17,9 @@ import { deleteResponse } from 'src/app/Services/category.service';
 import { DelegationService } from 'src/app/Services/delegation.service';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 
-import { MatDatepicker } from '@angular/material/datepicker';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { MatTableDataSource } from '@angular/material/table';
+import { MatPaginator } from '@angular/material/paginator';
 
 import { MatDialog } from '@angular/material/dialog'
 import { ConfirmDialogComponent } from 'src/app/confirm-dialog/confirm-dialog.component'
@@ -99,6 +99,7 @@ export class CnaesComponent {
 
   valid: any = {}
   @ViewChild('personTbSort') personTbSort = new MatSort();
+  @ViewChild('paginator') cnaePaginator: MatPaginator;
 
   ngAfterViewInit() {
     this.dataSource.sort = this.personTbSort;
@@ -224,15 +225,16 @@ export class CnaesComponent {
       this.cnaesDataService.createCnaeData(row).subscribe((newObjective: CnaeDataDTO) => {
         row.Id = newObjective.Id
         row.isEdit = false
-        this.loadCnaeData( this.userId )
+        /* this.loadCnaeData( this.userId ) */
       });
     } else {
       this.cnaesDataService.updateCnaeData(row.Id, row).subscribe(() => {
         row.isEdit = false
-        this.loadCnaeData( this.userId )
+        /* this.loadCnaeData( this.userId ) */
       })
     }
     row.isEdit = false
+    this.loadCnaeData( this.userId )
 
   }
 

@@ -30,8 +30,8 @@
   </mat-table>
 
 <div *ngIf="isGridView" >
-    <button mat-mini-fab color="primary" matTooltip="Add an residue" aria-label="Add residue" (click)="createResidue()">
-      <mat-icon>add</mat-icon>
+    <button mat-mini-fab matTooltip="Add" aria-label="Add residue" (click)="createResidue()">
+      <i class="fa-solid fa-plus fa-xs" style="color: #365446;"></i>
     </button>
     <div *ngFor="let residue of residues" class="card">
       <h3>Denominación: <strong>{{ residue.nameES }}</strong></h3>
@@ -42,16 +42,16 @@
         aria-label="Button that displays a tooltip and updates this residue" (click)="updateResidue(+residue.residueId)">
           <mat-icon>edit</mat-icon>
         </button> -->
-        <button mat-icon-button color="warn" matTooltip="Permanently delete this residue"
+        <button mat-icon-button matTooltip="Permanently delete this residue"
         aria-label="Permanently deletes this residue" (click)="deleteResidue(+residue.residueId)">
-          <mat-icon>delete</mat-icon>
+        <i class="fa-solid fa-trash fa-xs" style="color: #365446;"></i>
         </button>
       </div>
     </div>
   <!-- </div> -->
 </div>
 
-  <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+  <mat-paginator #paginator [pageSizeOptions]="[5, 10, 20]"
                  showFirstLastButtons
                  aria-label="Select page of residue items">
   </mat-paginator>

@@ -98,22 +98,24 @@ mat-cell{
 }
 
 .mat-column-delegation{
-  width: 100%;
-  white-space: normal;
+  white-space: break-spaces;
+  padding-left: 0;
 }
 
 .mat-column-year{
-  max-width: 3rem;
+  width: 4rem;
 }
 
 .mat-column-enviromentalDataName{
-  width: 14rem;
-  white-space: normal;
+  white-space: break-spaces;
+  padding-left: 0;
+  width: 20rem;
 }
 
 .mat-column-theRatioType{
-  width: 5rem;
-  white-space: normal;
+  white-space: break-spaces;
+  padding-left: 0;
+  width: 15rem;
 }
 /* .mat-column-jan{
   max-width: 4.5rem;

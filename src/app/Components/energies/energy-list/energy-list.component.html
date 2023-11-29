@@ -27,7 +27,7 @@
 
 
   <ng-container matColumnDef="ACTIONS">
-    <mat-header-cell *matHeaderCellDef> ACTIONS <button mat-mini-fab color="primary" matTooltip="Add an energy" aria-label="Add energy" (click)="createEnergy()">
+    <mat-header-cell *matHeaderCellDef> ACTIONS <button mat-mini-fab matTooltip="Add an energy" aria-label="Add energy" (click)="createEnergy()">
       <i class="fa-solid fa-plus fa-xs" style="color: #365446;"></i>
     </button></mat-header-cell>
     <mat-cell *matCellDef="let energy">
@@ -35,7 +35,7 @@
       aria-label="Update this energy" (click)="updateEnergy(energy.energyId)">
         <mat-icon>edit</mat-icon>
       </button> -->
-      <button mat-icon-button color="warn" matTooltip="Permanently delete this energy"
+      <button mat-icon-button matTooltip="Permanently delete this energy"
       aria-label="Permanently deletes this energy" (click)="deleteEnergy(energy.energyId)">
       <i class="fa-solid fa-trash fa-xs" style="color: #365446;"></i>
       </button>

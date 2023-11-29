@@ -1,4 +1,4 @@
-import { Component } from '@angular/core'
+import { Component, ViewChild } from '@angular/core'
 import { UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms'
 
 import { DelegationService } from 'src/app/Services/delegation.service'
@@ -14,11 +14,12 @@ import { SharedService } from 'src/app/Services/shared.service'
 import { UserService } from 'src/app/Services/user.service'
 import { UserDTO } from 'src/app/Models/user.dto'
 import { MatTableDataSource } from '@angular/material/table'
+import { MatPaginator } from '@angular/material/paginator';
 
 import { MatDialog } from '@angular/material/dialog'
 import { ConfirmDialogComponent } from 'src/app/confirm-dialog/confirm-dialog.component'
 
-import { DateAdapter, MAT_DATE_LOCALE } from '@angular/material/core'
+import { DateAdapter } from '@angular/material/core'
 import { ResidueDTO } from 'src/app/Models/residue.dto'
 import { EnvironmentalDTO } from 'src/app/Models/environmental.dto'
 
@@ -27,7 +28,9 @@ import { EnvironmentalDTO } from 'src/app/Models/environmental.dto'
   , "jun": 15000000, "jul": 15000000, "aug": 15000000, "sep": 15000000, "oct": 15000000, "nov": 15000000, "dec": 15000000},
   {Id: 2, delegation: "Mock Data", year: "2020", enviromentalDataName: "Fuel (kg)", "theRatioType": "Billing", "jan": .300},
   {Id: 3, delegation: "Mock Data", year: "2019", enviromentalDataName: "Gas butano (kg)", "theRatioType": "Tonelada*", "jan": 500.57, "feb": 1.4579},
-  {Id: 4, delegation: "Mock Data", year: "2020", enviromentalDataName: "Gas Natural (kWh)", "theRatioType": "Tonelada*", "jan": 1.2550}
+  {Id: 4, delegation: "Mock Data", year: "2020", enviromentalDataName: "Gas Natural (kWh)", "theRatioType": "Tonelada*", "jan": 1.2550},
+  {Id: 5, delegation: "Mock Data", year: "2019", enviromentalDataName: "Gas butano (kg)", "theRatioType": "Tonelada*", "jan": 500.57, "feb": 1.4579},
+  {Id: 6, delegation: "Mock Data", year: "2020", enviromentalDataName: "Gas Natural (kWh)", "theRatioType": "Tonelada*", "jan": 1.2550}
 ];
 
 /* const COLUMNS_SCHEMA = [
@@ -155,6 +158,8 @@ export class ObjectivesComponent {
   disabled = false;
   isChecked = false;
 
+  @ViewChild('paginator') paginator: MatPaginator;
+
   constructor (
     private delegationService: DelegationService,
     private jwtHelper: JwtHelperService,
@@ -205,6 +210,7 @@ export class ObjectivesComponent {
   private loadObjectives( userId: string ): void {
     this.objectiveService.getAllObjectivesByCompany(userId).subscribe((res: ObjectiveDTO[]) => {
       this.dataSource.data = res;
+      this.dataSource.paginator = this.paginator;
     });
   }
   private loadEnvironmentalData(): void {
@@ -311,16 +317,16 @@ export class ObjectivesComponent {
       this.objectiveService.createObjective(row).subscribe((newObjective: ObjectiveDTO) => {
         row.Id = newObjective.Id
         row.isEdit = false
-        this.loadObjectives( this.userId )
+       /*  this.loadObjectives( this.userId ) */
       });
     } else {
       this.objectiveService.updateObjective(row.Id, row).subscribe(() => {
         row.isEdit = false
-        this.loadObjectives( this.userId )
+        /* this.loadObjectives( this.userId ) */
       })
     }
     row.isEdit = false
-
+    this.loadObjectives( this.userId )
   }
 
   public removeRow(id: any) {
@@ -331,6 +337,7 @@ export class ObjectivesComponent {
     );
   });
   }
+
   public removeSelectedRows() {
     /* this.dataSource = this.dataSource.filter((u: any) => !u.isSelected); */
 
@@ -361,6 +368,7 @@ export class ObjectivesComponent {
         }
       }) */
   }
+
   disableSubmit(id: number) {
     if (this.valid[id]) {
       return Object.values(this.valid[id]).some((item) => item === false)

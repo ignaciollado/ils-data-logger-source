@@ -373,7 +373,6 @@ export class PostFormComponent implements OnInit {
       this.objective.addValidators(Validators.required)
   }
 
-
   public addRow() {
 
     /*  const newRow = {"delegation": this.delegation.value, "year": this.yearObjective.value, "energyES": this.energy.value, "objectiveType": this.objectiveType.value, isEdit: true} */
@@ -439,7 +438,6 @@ export class PostFormComponent implements OnInit {
       })
     }
     row.isEdit = false
-
   }
 
   public removeRow(id: any) {

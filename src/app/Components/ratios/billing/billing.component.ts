@@ -19,6 +19,8 @@ import { deleteResponse } from 'src/app/Services/category.service';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { MatTableDataSource } from '@angular/material/table';
+import { MatPaginator } from '@angular/material/paginator';
+
 import { MatSort } from '@angular/material/sort';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmDialogComponent } from 'src/app/confirm-dialog/confirm-dialog.component';
@@ -80,6 +82,7 @@ export class BillingComponent {
   valid: any = {}
 
   @ViewChild('billingTbSort') billingTbSort = new MatSort();
+  @ViewChild('paginator') billingPaginator: MatPaginator;
 
   ngAfterViewInit() {
     this.dataSource.sort = this.billingTbSort;
@@ -211,17 +214,18 @@ export class BillingComponent {
       this.billingService.createBilling(row).subscribe((newObjective: BillingDTO) => {
         row.Id = newObjective.Id
         row.isEdit = false
-        this.loadBillings( this.userId )
+       /*  this.loadBillings( this.userId ) */
       });
     } else {
       this.billingService.updateBilling(row.Id, row).subscribe(() => {
         row.isEdit = false
-        this.loadBillings( this.userId )
+        /* this.loadBillings( this.userId ) */
       })
     }
     row.isEdit = false
-
+    this.loadBillings( this.userId )
   }
+
   public removeRow(id: any) {
    /*  this.dataSource = this.dataSource.filter((u:any) => u.id !== id); */
    this.billingService.deleteBilling(id).subscribe(() => {
@@ -230,6 +234,7 @@ export class BillingComponent {
     );
   });
   }
+  
   public removeSelectedRows() {
     /* this.dataSource = this.dataSource.filter((u: any) => !u.isSelected); */
 

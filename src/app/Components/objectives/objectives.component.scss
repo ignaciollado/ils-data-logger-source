@@ -97,13 +97,20 @@ mat-cell{
   background-color: #919191;
 }
 
+.mat-column-isSelected {
+  max-width: 4rem;
+  padding-left: 0;
+}
+
 .mat-column-delegation{
+  max-width: 5rem;
   white-space: break-spaces;
   padding-left: 0;
 }
 
 .mat-column-year{
-  width: 4rem;
+ max-width: 4rem;
+ padding-left: 0;
 }
 
 .mat-column-enviromentalDataName{
@@ -115,44 +122,44 @@ mat-cell{
 .mat-column-theRatioType{
   white-space: break-spaces;
   padding-left: 0;
-  width: 15rem;
+  max-width: 15rem;
 }
-/* .mat-column-jan{
-  max-width: 4.5rem;
+.mat-column-jan{
+  max-width: 5.5rem;
 }
 .mat-column-feb{
-  max-width: 4.5rem;
+  max-width: 5.5rem;
 }
 .mat-column-mar{
-  max-width: 4.5rem;
+  max-width: 5.5rem;
 }
 .mat-column-apr{
-  max-width: 4.5rem;
+  max-width: 5.5rem;
 }
 .mat-column-may{
-  max-width: 4.5rem;
+  max-width: 5.5rem;
 }
 .mat-column-jun{
-  max-width: 4.5rem;
+  max-width: 5.5rem;
 }
 .mat-column-jul{
-  max-width: 4.5rem;
+  max-width: 5.5rem;
 }
 .mat-column-aug{
-  max-width: 4.5rem;
+  max-width: 5.5rem;
 }
 .mat-column-sep{
-  max-width: 4.5rem;
+  max-width: 5.5rem;
 }
 .mat-column-oct{
-  max-width: 4.5rem;
+  max-width: 5.5rem;
 }
 .mat-column-nov{
-  max-width: 4.5rem;
+  max-width: 5.5rem;
 }
 .mat-column-dec{
-  max-width: 4.5rem;
-} */
+  max-width: 5.5rem;
+} 
 .mat-column-isEdit{
-  padding-right: 4rem;
+  padding-right: 0;
 }

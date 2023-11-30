@@ -148,9 +148,10 @@ export class ObjectivesComponent {
   currentActivityIndicator: string = "Not selected"
 
   isGridView: boolean = false
-  columnsDisplayed : string[] = ObjectiveColumns.map((col) => col.key)
-  dataSource: any = OBJECTIVES_DATA
-  //dataSource = new MatTableDataSource<ObjectiveDTO>()
+  //columnsDisplayed : string[] = ObjectiveColumns.map((col) => col.key)
+  columnsDisplayed: string[] = ['isSelected', 'delegation', 'year', 'enviromentalDataName', 'theRatioType', 'jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec', 'isEdit'];
+  //dataSource: any = OBJECTIVES_DATA
+  dataSource = new MatTableDataSource<ObjectiveDTO>()
   columnsSchema: any = ObjectiveColumns
   valid: any = {}
 

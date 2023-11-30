@@ -61,8 +61,8 @@ input[type=number] {
 
 .jan-checkbox{
   display: grid;
-  grid-template-columns: 20% 80%;
-  gap: .2rem;
+  grid-template-columns: 80% 20%;
+/*   gap: .2rem; */
 }
 
 .small-data {
@@ -78,7 +78,7 @@ input[type=number] {
 mat-table {
   margin-top: .5rem;
   margin-bottom: 2rem;
-  width: 100%;
+  width: 50%;
   max-height: 500px;
   overflow: auto;
   white-space: nowrap;
@@ -115,14 +115,14 @@ mat-cell{
 
 .mat-column-enviromentalDataName{
   white-space: break-spaces;
-  padding-left: 0;
-  width: 20rem;
+  padding-right: 2rem;
+  max-width: 24rem;
 }
 
 .mat-column-theRatioType{
   white-space: break-spaces;
   padding-left: 0;
-  max-width: 15rem;
+  max-width: 4rem;
 }
 .mat-column-jan{
   max-width: 5.5rem;
@@ -161,5 +161,5 @@ mat-cell{
   max-width: 5.5rem;
 } 
 .mat-column-isEdit{
-  padding-right: 0;
+  padding-right: 4rem;
 }

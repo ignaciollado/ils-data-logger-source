@@ -60,9 +60,8 @@
     <div style="margin-left: auto; margin-right: auto"><span id="postFeedback"></span></div>
 
     <article *ngIf="dataSource">
-        <div></div>
         <button class="button-remove-rows" mat-button (click)="removeSelectedRows()">Remove selected Rows</button>
-        <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
           <ng-container [matColumnDef]="col.key" *ngFor="let col of columnsSchema">
             <mat-header-cell *matHeaderCellDef [ngSwitch]="col.key">
                 <span *ngSwitchCase="'isSelected'">
@@ -104,6 +103,7 @@
                   <span *ngSwitchCase="'text'" ngClass="small-data">{{element[col.key]}}</span>
 
                   <div class="jan-checkbox">
+                    <input *ngSwitchCase="'number'" [type]="col.type" [(ngModel)]="element[col.key]" ngClass="small-data-input" [style.width.px]='50'/>
                     <container_element [ngSwitch]="col.key">
                     <input *ngSwitchCase="'jan'"
                     type = "checkbox"
@@ -114,7 +114,6 @@
                     matTooltipPosition="after"
                     (change)="copyCnaeMonthValue(element)"/>
                     </container_element>
-                    <input *ngSwitchCase="'number'" [type]="col.type" [(ngModel)]="element[col.key]" ngClass="small-data-input" [style.width.px]='50'/>
                   </div>
                 </div>
             </mat-cell>
@@ -122,9 +121,53 @@
 
           <mat-header-row *matHeaderRowDef="columnsDisplayed"></mat-header-row>
           <mat-row *matRowDef="let row; columns: columnsDisplayed;"></mat-row>
-        </mat-table>
+        </table>
         <mat-paginator #paginator [pageSizeOptions]="[5, 10, 15]"  showFirstLastButtons></mat-paginator>
     </article>
     <app-file-upload></app-file-upload>
     <span *ngIf="!dataSource" class="loader">No data found yet...</span>
+
+
+   <!--  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    
+
+      <ng-container matColumnDef="isSelected">
+        <th mat-header-cell *matHeaderCellDef> No. </th>
+        <td mat-cell *matCellDef="let element"> {{element.isSelected}} </td>
+      </ng-container>
+    
+
+      <ng-container matColumnDef="delegation">
+        <th mat-header-cell *matHeaderCellDef> delegation </th>
+        <td mat-cell *matCellDef="let element"> {{element.delegation}} </td>
+      </ng-container>
+    
+      <ng-container matColumnDef="year">
+        <th mat-header-cell *matHeaderCellDef> year </th>
+        <td mat-cell *matCellDef="let element"> {{element.year}} </td>
+      </ng-container>
+    
+      <ng-container matColumnDef="enviromentalDataName">
+        <th mat-header-cell *matHeaderCellDef> enviromentalDataName </th>
+        <td mat-cell *matCellDef="let element"> {{element.enviromentalDataName}} </td>
+      </ng-container>
+      
+      <ng-container matColumnDef="theRatioType">
+        <th mat-header-cell *matHeaderCellDef> theRatioType </th>
+        <td mat-cell *matCellDef="let element"> {{element.theRatioType}} </td>
+      </ng-container> 
+
+
+
+
+
+
+
+
+      <tr mat-header-row *matHeaderRowDef="columnsDisplayed"></tr>
+      <tr mat-row *matRowDef="let row; columns: columnsDisplayed;"></tr>
+    </table> -->
+    
+    
+
 </div>

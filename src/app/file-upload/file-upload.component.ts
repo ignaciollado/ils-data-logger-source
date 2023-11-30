@@ -20,14 +20,12 @@ export class FileUploadComponent {
 
 	    };
 
-	 
-
 	    fileReader.readAsArrayBuffer(file);
   }
 
   parseExcel(arrayBuffer: any): void {
     const workbook = new ExcelJS.Workbook();
-    
+    document.getElementById("importedData").innerHTML = ""
     workbook.xlsx.load(arrayBuffer).then((workbook) => {
     
     const worksheet = workbook.getWorksheet(1);

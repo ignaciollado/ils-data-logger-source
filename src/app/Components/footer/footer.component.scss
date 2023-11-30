@@ -1,8 +1,12 @@
 footer{
-
     background-color:#365446;
+    color: #fff;
     padding: 1rem;
     text-align: center;
-    margin-top: 4rem;
-
+    margin-top: 6rem;
+    /* position: fixed; */
+    /* left: 0; */
+    bottom: 0;
+    width: 100%;
+    z-index: -1;
 }

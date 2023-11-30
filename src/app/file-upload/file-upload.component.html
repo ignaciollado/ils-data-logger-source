@@ -1,6 +1,6 @@
-<h1>Import Excel File</h1>
+<h1>Select excel file to import:</h1>
 
-<input type="file" (change)="onFileChange($event)">
+<input mat-button type="file" (change)="onFileChange($event)" accept=".xls,.xlsx,.xlsb">
 
 
 <div class='imported-data' id="importedData">

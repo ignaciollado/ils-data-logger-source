@@ -45,7 +45,7 @@
               {"answerText": "Residuos de Aparatos Eléctricos y Electrónicos (RAEE)",
                 "answerTooltip": "Se incluyen todos los aparatos eléctricos y electrónicos que pasan a ser residuos, incluidos todos los componentes, subconjuntos y consumibles que forman parte del producto en el momento en que se rechaza.",
                 "regulation": ["RES_11","RES_53","RES_55"],
-                "answerImage_1": "PRES_IMAGE2",
+                "answerImage_1": "PRES_IMAGE2.jpg",
                 "answerImage_2": ""},
 
               {"answerText": "Residuos Envases Usados Comerciales o industriales",
@@ -179,13 +179,13 @@
               "link": "https://...",
               "answers":
               [
-                      {"answerText": "YES",
+                      {"answerText": "Sí",
                       "answerTooltip": "",
                       "regulation": ["ATM_48","ATM_19","ATM_20","ATM_21","ATM_22","ATM_23","ATM_24","ATM_27"],
                       "answerImage_1": "",
                       "answerImage_2": ""},
 
-                      {"answerText": " NO",
+                      {"answerText": " No",
                       "answerTooltip": "",
                       "regulation": [""],
                       "answerImage_1": "",
@@ -206,7 +206,7 @@
               "link": "https://...",
               "answers":
               [
-                      {"answerText": "SI",
+                      {"answerText": "Sí",
                        "answerTooltip": "",
                        "regulation": ["ATM_32"],
                        "answerdoc1": "",

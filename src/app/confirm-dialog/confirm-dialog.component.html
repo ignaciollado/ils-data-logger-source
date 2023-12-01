@@ -1,10 +1,18 @@
 <h2 mat-dialog-title>{{data.questionText}}</h2>
 <mat-dialog-content>
     <div [innerHTML]="data.toolTipText"></div>
-    <ul>
-        <li *ngIf="data.doc1"><a href="../../../assets/answers_images/{{data.doc1}}" target="_self">Ver documento</a></li>
-        <li *ngIf="data.doc2"><a href="../../../assets/answers_images/{{data.doc2}}" target="_self">Ver documento</a></li>
-    </ul>
+    <ng-container *ngIf="'pdf'">
+        <ul>
+            <li *ngIf="data.doc1"><a href="../../../assets/answers_images/{{data.doc1}}" target="_self">Ver documento</a></li>
+            <li *ngIf="data.doc2"><a href="../../../assets/answers_images/{{data.doc2}}" target="_self">Ver documento</a></li>
+        </ul>
+    </ng-container>
+
+    <ng-container>
+        <img src='../../../assets/answers_images/{{data.doc1}}' alt=''/>
+        <img src='../../../assets/answers_images/{{data.doc2}}' alt=''/>
+    </ng-container>
+
 </mat-dialog-content>
 <mat-dialog-actions>
     <button mat-button color="primary" [mat-dialog-close]>Close</button>

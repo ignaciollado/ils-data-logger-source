@@ -11,10 +11,7 @@ mysqli_query($conn, "SET NAMES 'utf8'");
 $postedData = file_get_contents("php://input");
 $request = json_decode($postedData, TRUE);
 
-$fromDate = $request['yearEmission']."-01-01";
-$toDate =   $request['yearEmission']."-12-31";
-
-/* $sql = "INSERT INTO ils_consumption(companyId, companyDelegationId, aspectId,
+$sql = "INSERT INTO ils_consumption(companyId, companyDelegationId, aspectId,
  quantity, year, scopeOne, scopeTwo, fromDate, toDate) VALUES ("
 .$request['companyId'].","
 .$request['delegation'].","
@@ -22,45 +19,10 @@ $toDate =   $request['yearEmission']."-12-31";
 .$request['quantityEmission'].",'"
 .$request['yearEmission']."',"
 .$request['scopeone'].","
-.$request['scopetwo'].","
+.$request['scopetwo'].")"; 
 
-."STR_TO_DATE('".$fromDate."', '%Y-%m-%d'), STR_TO_DATE('".$toDate."', '%Y-%m-%d'))"; */
+echo $sql;
 
-/* CONTAR CUANTOS REGISTROS HAY */
-$sqlCount = "SELECT *
-FROM `ils_consumption` 
-WHERE  companyId=". $request['companyId']." 
-AND companyDelegationId =". $request['delegation']." 
-AND aspectId =". $request['aspectId']." 
-AND year ='". $request['yearEmission']."'";
-
-if ($result=mysqli_query($conn,$sqlCount))
-{
-  $rowcount=mysqli_num_rows($result);
-  if ($rowcount > 0) {
-    $sql = "UPDATE `ils_consumption`
-            SET quantity = ".$request['quantityEmission'].', objective = '.$request['objective'].",
-            scopeOne = '".$request['scopeone']."',
-            scopetwo = '".$request['scopetwo']."'
-
-            WHERE  companyId=". $request['companyId']." 
-            AND companyDelegationId =". $request['delegation']." 
-            AND aspectId =". $request['aspectId']." 
-            AND year ='". $request['yearEmission']."'"; 
-  } else {
-    $sql = "INSERT INTO ils_consumption(companyId, companyDelegationId, aspectId,
-      quantity, objective, year, scopeOne, scopeTwo, fromDate, toDate) VALUES ("
-      .$request['companyId'].","
-      .$request['delegation'].","
-      .$request['aspectId'].","
-      .$request['quantityEmission'].","
-      .$request['objective'].",'"
-      .$request['yearEmission']."',"
-      .$request['scopeone'].","
-      .$request['scopetwo'].","
-      ."STR_TO_DATE('".$fromDate."', '%Y-%m-%d'), STR_TO_DATE('".$toDate."', '%Y-%m-%d'))";
-  }
-}
 mysqli_free_result($result);
 
 $result = mysqli_query($conn, $sql);

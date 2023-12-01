@@ -109,7 +109,7 @@ export class WaterFormComponent {
     this.isValidForm = null
     this.consumptionId = this.activatedRoute.snapshot.paramMap.get('id')
     this.userId = this.jwtHelper.decodeToken().id_ils
-    this.consumption = new ConsumptionDTO(0, 0, this._adapter.today(), this._adapter.today(), '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 0, '', '', 0);
+    this.consumption = new ConsumptionDTO(0, 0, this._adapter.today(), this._adapter.today(), '', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '', '', '', '', '', '', 0, '', '', 0);
     this.isUpdateMode = false;
     this.validRequest = false;
 
@@ -249,7 +249,7 @@ export class WaterFormComponent {
       delegation: this.delegation.value,
       aspectId: 2,
       year: this.yearWater.value,
-      jan: '0',
+      /* jan: '0',
       feb: '0',
       mar: '0',
       apr: '0',
@@ -260,7 +260,7 @@ export class WaterFormComponent {
       sep: '0',
       oct: '0',
       nov: '0',
-      dec: '0',
+      dec: '0', */
       quantity: 0,
       energy: 0,
       residueId: 0,

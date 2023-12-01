@@ -59,11 +59,7 @@ input[type=number] {
   outline: none;
 }
 
-.jan-checkbox{
-  display: grid;
-  grid-template-columns: 20% 80%;
-  gap: .2rem;
-}
+
 
 .small-data-text {
   font-size: .5rem;
@@ -149,7 +145,17 @@ mat-cell {
 .mat-column-year{
   width: 2rem;
 }
-.mat-column-jan{
+.mat-column-emissions{
+  width: 4rem;
+}
+.mat-column-scopeOne{
+  width: 4rem;
+}
+.mat-column-ScopeTwo{
+  width: 4rem;
+}
+
+/* .mat-column-jan{
   width: 4rem;
 }
 .mat-column-feb{
@@ -184,7 +190,7 @@ mat-cell {
 }
 .mat-column-dec{
   width: 4rem;
-}
+} */
 .mat-column-isEdit{
   padding-right: 6rem;
 }

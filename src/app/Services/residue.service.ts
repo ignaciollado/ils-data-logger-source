@@ -4,6 +4,7 @@ import { ResidueDTO } from '../Models/residue.dto';
 import { Observable, forkJoin } from 'rxjs';
 import { SharedService } from './shared.service';
 import { catchError } from 'rxjs/operators';
+import { ResidueLERDTO } from '../Models/residueLER.dto';
 
 const URL_API = '../../assets/phpAPI/'
 const URL_API_SRV = "https://jwt.idi.es/public/index.php"
@@ -27,12 +28,15 @@ export interface deleteResponse {
   providedIn: 'root'
 })
 export class ResidueService {
-  private urlApi: string;
-  private urlAPiMySql:  string;
+  private urlApi: string
+  private urlAPiMySql:  string
+  private urlAPiMock: string
 
   constructor(private http: HttpClient, private sharedService: SharedService) {  
-    this.urlApi = '../../assets/mocks/fuels.json';
-    this.urlAPiMySql = '../../assets/phpAPI/'}
+    this.urlApi = '../../assets/mocks/fuels.json'
+    this.urlAPiMySql = '../../assets/phpAPI/'
+    this.urlAPiMock = '../../assets/mocks/'
+  }
 
   getAllResidues(): Observable<ResidueDTO[]> {
     return this.http
@@ -60,6 +64,13 @@ export class ResidueService {
     return this.http
       .delete<deleteResponse>(`${URL_API}residueDelete.php?residueId=${residueId}`)
       .pipe(catchError(this.sharedService.handleError));
+  }
+
+  getResiduesLER(): Observable<ResidueLERDTO[]> {
+    return this.http
+      .get<ResidueLERDTO[]>(`${this.urlAPiMock}residueList.json`)
+      .pipe(catchError(this.sharedService.handleError))
+
   }
 
   errorLog(error: HttpErrorResponse): void {

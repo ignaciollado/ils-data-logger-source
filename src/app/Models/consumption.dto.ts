@@ -14,18 +14,18 @@ export class ConsumptionDTO {
   year:string
   isEdit: boolean
   isSelected: boolean
-  jan: string
-  feb: string
-  mar: string
-  apr: string
-  may: string
-  jun: string
-  jul: string
-  aug: string
-  sep: string
-  oct: string
-  nov: string
-  dec: string
+  jan?: number
+  feb?: number
+  mar?: number
+  apr?: number
+  may?: number
+  jun?: number
+  jul?: number
+  aug?: number
+  sep?: number
+  oct?: number
+  nov?: number
+  dec?: number
 
   energy!: number
   residueId!: number
@@ -51,18 +51,18 @@ constructor(
   isEdit: boolean,
   isSelected: boolean,
   year: string,
-  jan: string,
-  feb: string,
-  mar: string,
-  apr: string,
-  may: string,
-  jun: string,
-  jul: string,
-  aug: string,
-  sep: string,
-  oct: string,
-  nov: string,
-  dec: string,
+  jan: number,
+  feb: number,
+  mar: number,
+  apr: number,
+  may: number,
+  jun: number,
+  jul: number,
+  aug: number,
+  sep: number,
+  oct: number,
+  nov: number,
+  dec: number,
   energyES: string,
   energyCA: string,
   residueES: string,
@@ -292,6 +292,22 @@ export const emissionColumns = [
     label: "Year"
   },
   {
+    key: "quantity",
+    type: "number",
+    label: "Emissions"
+  },
+  { 
+    key:"scopeOne",
+    type: "number",
+    label: "Scope one",
+  },
+  { 
+    key:"scopeTwo",
+    type: "number",
+    label: "Scope two",
+  },
+  
+  /* { 
     key: "jan",
     type: 'number',
     label: "January"
@@ -349,7 +365,7 @@ export const emissionColumns = [
     key: "oct",
     type: 'number',
     label: "October"
-  },
+  }, */
   /* {
     key: "octScope1",
     type: 'text',
@@ -360,11 +376,11 @@ export const emissionColumns = [
     type: 'text',
     label: "Scope 2"
   }, */
-  {
+ /*  {
     key: "nov",
     type: 'number',
     label: "November"
-  },
+  }, */
  /*  {
     key: "novScope1",
     type: 'text',
@@ -375,11 +391,11 @@ export const emissionColumns = [
     type: 'text',
     label: "Scope 2"
   }, */
-  {
+ /*  {
     key: "dec",
     type: 'number',
     label: "December"
-  },
+  }, */
  /*  {
     key: "decScope1",
     type: 'text',

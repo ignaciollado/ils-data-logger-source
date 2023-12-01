@@ -33,37 +33,41 @@
     background: #1b9e1b;
     color: #ffffff;
   }
-  .button-add-row {
+
+.button-add-row {
     background: #1b9e1b;
     color: #ffffff;
   }
-  .button-remove-rows {
+
+.button-remove-rows {
     background: red;
     color: #ffffff;
     margin-right: 5px;
   }
-  .button-remove {
+
+.button-remove {
     color: red;
   }
+  
 .btn-edit{
     display: grid;
     grid-template-columns: 50% 50%;
   }
 
   /* Chrome, Safari, Edge, Opera */
-  input::-webkit-outer-spin-button,
-  input::-webkit-inner-spin-button {
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
   }
 
-  input[type=number] {
+input[type=number] {
     appearance: textfield;
     border: none transparent;
   outline: none;
   }
 
-  .small-data {
+.small-data {
     font-size: .6rem;
   }
 

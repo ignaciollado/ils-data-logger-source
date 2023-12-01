@@ -48,7 +48,7 @@
 
     "residueType": "Tipo de residuo",
     "residue": "Residuo",
-    "residueConsumption": "Generación de residuos",
+    "residueConsumption": "Generación de residuos (kg)",
     "residueDestination": "Destino del residuo (%)",
     "reuse": "Reutilización",
     "recycling": "Reciclado",

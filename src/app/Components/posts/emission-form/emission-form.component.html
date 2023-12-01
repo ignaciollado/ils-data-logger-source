@@ -34,18 +34,18 @@
         </mat-form-field>
       </section>
 
-    <!--   <section>
+      <section>
         <mat-form-field [style.width.px]=425>
           <mat-label>{{'quantityCO2e' | translate}}</mat-label>
           <input matInput type="number" [formControl]="quantityEmission" />
           <mat-error *ngIf="quantityEmission.hasError('required')">{{'quantity' | translate}} <strong>{{'isRequired' | translate}}</strong></mat-error>
         </mat-form-field>
-      </section> -->
+      </section> 
 
-    <!--   <section>
+      <section>
         <mat-form-field [style.width]='20'>
           <mat-label>{{"scopeOne" | translate}}</mat-label>
-          <input matInput type="number" [formControl]="scopeone" />
+          <input matInput type="number" [formControl]="scopeone" (change)="calculateScopeTwo()"/>
           <mat-error *ngIf="scopeone.hasError('required')">{{"scopeOne" | translate}} <strong>{{'isRequired' | translate}}</strong></mat-error>
         </mat-form-field>
 
@@ -54,7 +54,7 @@
           <input matInput type="number" [formControl]="scopetwo" />
           <mat-error *ngIf="scopetwo.hasError('required')">{{'scopeTwo' | translate}} <strong>{{'isRequired' | translate}}</strong></mat-error>
         </mat-form-field>
-      </section> -->
+      </section>
 
       <button mat-raised-button color="primary" type="submit" [disabled]="!emissionForm.valid">ADD</button>
     </mat-card>
@@ -95,12 +95,9 @@
                 matTooltip="Delete" color="warn"><i class="fa-solid fa-trash fa-xs" style="color: #365446;"></i>
               </button>
             </div>
-            
-            <div class="containerEmission">
-              <span *ngSwitchDefault ngClass="small-data">{{element[col.key].split('#')[0]}}</span>
-              <span *ngSwitchDefault ngClass="small-data">{{element[col.key].split('#')[1]}}</span>
-              <span *ngSwitchDefault ngClass="small-data">{{element[col.key].split('#')[2]}}</span>
-            </div>
+            <span *ngSwitchDefault ngClass="small-data">{{element[col.key].split('#')[0]}}</span>
+            <span *ngSwitchDefault ngClass="small-data">{{element[col.key].split('#')[1]}}</span>
+            <span *ngSwitchDefault ngClass="small-data">{{element[col.key].split('#')[2]}}</span>
           </div>
   
           <div [ngSwitch]="col.type" *ngIf="element.isEdit">
@@ -109,12 +106,10 @@
             </div>
             <span *ngSwitchCase="'isSelected'" ngClass="small-data">{{element[col.key]}}</span>
             <span *ngSwitchCase="'label'" ngClass="small-data">{{element[col.key]}}</span>
-            <span *ngSwitchCase="'number'">
-              <input title="CO2" *ngSwitchCase="'number'" [type]="'text'" [id]="'co2_'+col.key" [value]="element[col.key].split('#')[0]" (change)="getCO2(col.key, element, $event)" ngClass="small-data inputCo2" [style.width.px]='50'/>
-              <input title="Alcance 1" *ngSwitchCase="'number'" [type]="'text'" [id]="'scope1_'+col.key" [value]="element[col.key].split('#')[1]" (change)="getScopeOne(col.key, element, $event)" ngClass="small-data inputScopeOne" [style.width.px]='50'/>
-              <input title="Alcance 2" *ngSwitchCase="'number'" [type]="'text'" [id]="'scope2_'+col.key" [value]="element[col.key].split('#')[2]" (blur)="getScopeTwo(col.key, element, $event)" ngClass="small-data inputScopeTwo" [style.width.px]='50'/>
-              <input *ngSwitchCase="'number'" [type]="'hidden'" [(ngModel)]="element[col.key]" ngClass="small-data" [style.width.px]='50'/>
-            </span>
+            <input *ngSwitchCase="'number'" [type]="col.type" [(ngModel)]="element[col.key]" ngClass="small-data inputCo2" [style.width.px]='50'/>
+            <!-- <input title="Alcance 1" *ngSwitchCase="'number'" [type]="'text'" [id]="'scope1_'+col.key" [value]="element[col.key].split('#')[1]" (change)="getScopeOne(col.key, element, $event)" ngClass="small-data inputScopeOne" [style.width.px]='50'/>
+            <input title="Alcance 2" *ngSwitchCase="'number'" [type]="'text'" [id]="'scope2_'+col.key" [value]="element[col.key].split('#')[2]" (blur)="getScopeTwo(col.key, element, $event)" ngClass="small-data inputScopeTwo" [style.width.px]='50'/> -->
+            <!-- <input *ngSwitchCase="'number'" [type]="'hidden'" [(ngModel)]="element[col.key]" ngClass="small-data" [style.width.px]='50'/> -->
           </div>
       </mat-cell>
       </ng-container>

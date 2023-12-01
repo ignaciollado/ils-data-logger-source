@@ -26,6 +26,7 @@ import { MatSort } from '@angular/material/sort';
 
 import { MatDialog } from '@angular/material/dialog'
 import { ConfirmDialogComponent } from 'src/app/confirm-dialog/confirm-dialog.component'
+import { ResidueLERDTO } from 'src/app/Models/residueLER.dto';
 
 const RESIDUES_DATA = [
   {Id: 1, delegation: "Son Castelló", year: "2019", residueES: "Combustión no peligrosos (kg)", "jan": 15000000, "feb": 15000000, "mar": 15000000, "apr": 15000000, "may": 15000000
@@ -39,7 +40,6 @@ const RESIDUES_DATA = [
   selector: 'app-residue-form',
   templateUrl: './residue-form.component.html',
   styleUrls: ['./residue-form.component.scss'],
-
 })
 
 export class ResidueFormComponent {
@@ -73,7 +73,7 @@ export class ResidueFormComponent {
   private userId: string | null;
 
   delegations!: DelegationDTO[];
-  residues!: ResidueDTO[];
+  residues!: ResidueLERDTO[];
   consumptions!: ConsumptionDTO[];
 
   isGridView: boolean = false
@@ -110,29 +110,17 @@ export class ResidueFormComponent {
     this.consumptionId = this.activatedRoute.snapshot.paramMap.get('id');
     this.userId = this.jwtHelper.decodeToken().id_ils
 
-    this.consumption = new ConsumptionDTO(0, 0, this._adapter.today(), this._adapter.today(), '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 0, '', '', 0);
+    this.consumption = new ConsumptionDTO(0, 0, this._adapter.today(), this._adapter.today(), '', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '', '', '', '', '', '', 0, '', '', 0);
     this.isUpdateMode = false;
     this.validRequest = false;
     this.delegation = new UntypedFormControl('', [ Validators.required ])
     this.residue = new UntypedFormControl('', [ Validators.required ])
-   /*  this.reuse = new UntypedFormControl('', [ Validators.min(0), Validators.max(100) ])
-    this.recycling = new UntypedFormControl('', [ Validators.min(0), Validators.max(100) ])
-    this.incineration = new UntypedFormControl('', [ Validators.min(0), Validators.max(100) ])
-    this.dump = new UntypedFormControl('', [ Validators.min(0), Validators.max(100) ])
-    this.compost = new UntypedFormControl('', [ Validators.min(0), Validators.max(100) ]) */
-
     this.companyId = new UntypedFormControl(this.userId, [ Validators.required ])
     this.yearResidue = new UntypedFormControl('', [ Validators.required ])
 
     this.residueForm = this.formBuilder.group({
-
       delegation: this.delegation,
       residue: this.residue,
-     /*  reuse: this.reuse,
-      recycling: this.recycling,
-      incineration: this.incineration,
-      dump: this.dump,
-      compost: this.compost, */
       yearResidue: this.yearResidue,
     })
 
@@ -160,18 +148,20 @@ export class ResidueFormComponent {
   }
 
   private loadResidues(): void {
-    let errorResponse: any;
-    if (this.userId) {
-      this.residueService.getAllResidues().subscribe(
-        (residues: ResidueDTO[]) => {
-          this.residues = residues;
-        },
-        (error: HttpErrorResponse) => {
-          errorResponse = error.error;
-          this.sharedService.errorLog(errorResponse);
-        }
-      );
-    }
+    let errorResponse: any; 
+    this.residueService.getResiduesLER()
+    .subscribe(
+      (residues: ResidueLERDTO[]) => {
+        this.residues = residues;
+        residues.map( (item:any) => {
+          item.chapters.map( (subItem:any) => console.log(subItem.chapterItems) )
+        } )
+      },
+      (error: HttpErrorResponse) => {
+        errorResponse = error.error;
+        this.sharedService.errorLog(errorResponse);
+      } 
+    )
   }
 
   private loadConsumption(userId: string): void {
@@ -295,7 +285,7 @@ export class ResidueFormComponent {
       aspectId: 3,
       residueId: this.residue.value,
       year: this.yearResidue.value,
-      jan: '0',
+      /* jan: '0',
       feb: '0',
       mar: '0',
       apr: '0',
@@ -306,7 +296,7 @@ export class ResidueFormComponent {
       sep: '0',
       oct: '0',
       nov: '0',
-      dec: '0',
+      dec: '0', */
       quantity: 0,
       energy: this.residue.value,
       scopeOne: 0,

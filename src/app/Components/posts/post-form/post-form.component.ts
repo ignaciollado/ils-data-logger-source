@@ -141,7 +141,7 @@ export class PostFormComponent implements OnInit {
     this.consumptionId = this.activatedRoute.snapshot.paramMap.get('id')
     this.userId = this.jwtHelper.decodeToken().id_ils
 
-    this.consumption = new ConsumptionDTO(0, 0, this._adapter.today(), this._adapter.today(), '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 0, '', '', 0);
+   /*  this.consumption = new ConsumptionDTO(0, 0, this._adapter.today(), this._adapter.today(), '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 0, '', '', 0); */
     this.isUpdateMode = false;
     this.validRequest = false;
     this.delegation = new UntypedFormControl('', [ Validators.required ]);
@@ -384,7 +384,7 @@ export class PostFormComponent implements OnInit {
       delegation: this.delegation.value,
       aspectId: 1,
       year: this.yearEnergy.value,
-      jan: '0',
+      /* jan: '0',
       feb: '0',
       mar: '0',
       apr: '0',
@@ -395,7 +395,7 @@ export class PostFormComponent implements OnInit {
       sep: '0',
       oct: '0',
       nov: '0',
-      dec: '0',
+      dec: '0', */
       quantity: 0,
       energy: this.energy.value,
       residueId: 0,

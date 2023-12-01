@@ -24,7 +24,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatDialog } from '@angular/material/dialog'
 import { ConfirmDialogComponent } from 'src/app/confirm-dialog/confirm-dialog.component'
 
-const EMISSION_DATA = [
+/* const EMISSION_DATA = [
   {Id: 1, delegation: "Mock data 1", year: "2019", "jan": '8#12#15', "feb": '150000000#10000000#5000000', "mar": '15#10#5', "apr": '15000000#122222#333333', "may": '55000000#122222#333333',
    "jun": '16000000#122222#333333', "jul": '15000000#122222#333333', "aug": '15000000#122222#333333', "sep": '15000000#122222#333333', "oct": '15000000#122222#333333', "nov": '15000000#122222#333333', "dec": '15000000#122222#333333'},
    {Id: 2, delegation: "Mock data 1", year: "2020", "jan": '1111111#122222#333333', "feb": '16000000#122222#333333', "mar": '15000000#122222#333333', "apr": '15000000#122222#333333', "may": '55000000#122222#333333',
@@ -41,7 +41,19 @@ const EMISSION_DATA = [
    "jun": '16000000#122222#333333', "jul": '15000000#122222#333333', "aug": '15000000#122222#333333', "sep": '15000000#122222#333333', "oct": '15000000#122222#333333', "nov": '15000000#122222#333333', "dec": '15000000#122222#333333'},
    {Id: 9, delegation: "Mock data 4", year: "2020", "jan": '1111111#122222#333333', "feb": '16000000#122222#333333', "mar": '15000000#122222#333333', "apr": '15000000#122222#333333', "may": '55000000#122222#333333',
    "jun": '16000000#122222#333333', "jul": '15000000#122222#333333', "aug": '15000000#122222#333333', "sep": '15000000#122222#333333', "oct": '15000000#122222#333333', "nov": '15000000#122222#333333', "dec": '15000000#122222#333333'},
+]; */
+
+const EMISSION_DATA = [
+   {Id: 1, delegation: "Mock data 1", year: "2019", quantity: '100.25', scopeOne: '99.25', scopeTwo: '10.75'},
+   {Id: 2, delegation: "Mock data 1", year: "2020", quantity: '100.25', scopeOne: '99.25', scopeTwo: '10.75'},
+   {Id: 3, delegation: "Mock data 2", year: "2020", quantity: '100.25', scopeOne: '99.25', scopeTwo: '10.75'},
+   {Id: 4, delegation: "Mock data 2", year: "2021", quantity: '100.25', scopeOne: '99.25', scopeTwo: '10.75'},
+   {Id: 6, delegation: "Mock data 3", year: "2020", quantity: '100.25', scopeOne: '99.25', scopeTwo: '10.75'},
+   {Id: 7, delegation: "Mock data 3", year: "2021", quantity: '100.25', scopeOne: '99.25', scopeTwo: '10.75'},
+   {Id: 8, delegation: "Mock data 4", year: "2019", quantity: '100.25', scopeOne: '99.25', scopeTwo: '10.75'},
+   {Id: 9, delegation: "Mock data 4", year: "2020", quantity: '100.25', scopeOne: '99.25', scopeTwo: '10.75'},
 ];
+
 
 @Component({
   selector: 'app-emission-form',
@@ -106,15 +118,15 @@ export class EmissionFormComponent {
     this.consumptionId = this.activatedRoute.snapshot.paramMap.get('id');
     this.userId = this.jwtHelper.decodeToken().id_ils
 
-    this.consumption = new ConsumptionDTO(0, 0, this._adapter.today(), this._adapter.today(), '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 0, '', '', 0);
+    this.consumption = new ConsumptionDTO(0, 0, this._adapter.today(), this._adapter.today(), '', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '', '', '', '', '', '', 0, '', '', 0);
     this.isUpdateMode = false;
     this.validRequest = false;
     this.delegation = new UntypedFormControl('', [ Validators.required ]);
     this.companyId = new UntypedFormControl(this.userId, [ Validators.required ]);
     this.yearEmission = new UntypedFormControl('', [ Validators.required ]);
     this.quantityEmission = new UntypedFormControl('', [ Validators.required, Validators.min(1)]);
-    this.scopeone = new UntypedFormControl({value: '', disabled: true}, [ Validators.required ]);
-    this.scopetwo = new UntypedFormControl({value: '', disabled: true}, [ Validators.required ]);
+    this.scopeone = new UntypedFormControl({value: '', disabled: false}, [ Validators.required ]);
+    this.scopetwo = new UntypedFormControl({value: '', disabled: false}, [ Validators.required ]);
 
     this.emissionForm = this.formBuilder.group({
       delegation: this.delegation,
@@ -228,6 +240,10 @@ export class EmissionFormComponent {
     console.log (scopeTwo[colKey].split("#"), e.explicitOriginalTarget.value, tempScopeTwo[0], tempScopeTwo[1], tempScopeTwo[2] )
   }
 
+  public calculateScopeTwo() {
+    this.scopetwo.setValue( this.quantityEmission.value - this.scopeone.value )
+  }
+
 /*   deleteEmissionConsumption(consumptionId: number) {
 
     let errorResponse: any;
@@ -297,18 +313,7 @@ export class EmissionFormComponent {
       aspectId: 5,
       residueId: 0,
       year: this.yearEmission.value,
-      jan: '0',
-      feb: '0',
-      mar: '0',
-      apr: '0',
-      may: '0',
-      jun: '0',
-      jul: '0',
-      aug: '0',
-      sep: '0',
-      oct: '0',
-      nov: '0',
-      dec: '0',
+      
       quantity: this.quantityEmission.value,
       energy: 0,
       scopeOne: this.scopeone.value,
@@ -339,7 +344,7 @@ export class EmissionFormComponent {
   public editRow(row: ConsumptionDTO) {
     console.log (row)
     if (row.consumptionId === '0') {
-      this.consumptionService.createResidueConsumption(row).subscribe((newResidue: ConsumptionDTO) => {
+      this.consumptionService.createEmissionConsumption(row).subscribe((newResidue: ConsumptionDTO) => {
         row.consumptionId = newResidue.consumptionId
         row.isEdit = false
         this.loadConsumption( this.userId )

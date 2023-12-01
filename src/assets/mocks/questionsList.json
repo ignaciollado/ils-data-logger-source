@@ -172,7 +172,7 @@
               "type": "radio",
               "questionTextES": "¿Su actividad se encuentra sujeta al comercio de derechos de emisión?",
               "questionTextCA": "",
-              "questionDoc1" : "PATM1_ANEXO1.pdf",
+              "questionDoc1" : "PATM_1_ANEXO1.pdf",
               "questionDoc2" : "",
               "questionTooltipES": "Determinadas actividades industriales ya sea por la actividad o por la magnitud de la misma están obligadas a declarar de forma anual sus emisiones de efecto invernadero y participar en el mercado de comercio de emisiones de acuerdo al Protocolo de Kyoto ( mercado regulado). Los sistemas de comercio de emisiones son instrumentos de mercado establecidos con el objetivo de reducir  las emisiones de gases de efecto invernadero (GEI), en los que se define un límite superior (techo) de emisiones de GEI que pueden ser emitidas por los participantes en el sistema.Busca en el siguiente recuadro si tu actividad está dentro del ANEXO 1",
               "questionTooltipCA": "",

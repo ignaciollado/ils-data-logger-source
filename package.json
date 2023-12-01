@@ -25,6 +25,7 @@
     "@ngx-translate/http-loader": "^7.0.0",
     "chart.js": "^4.3.0",
     "exceljs": "^4.4.0",
+    "ngx-mat-select-search": "^7.0.5",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.13.0"

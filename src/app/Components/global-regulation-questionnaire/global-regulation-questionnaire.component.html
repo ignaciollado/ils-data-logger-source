@@ -4,7 +4,7 @@
          <mat-expansion-panel>
             <mat-expansion-panel-header>
                 <mat-panel-title>
-                  <span>Vector: {{vectors.vectorName}}</span>
+                  <span color="warn">Vector: {{vectors.vectorName}}</span>
                   <span>Total answers: {{totalVectorAnswers[i]}}</span>
                   <span>Total questions: {{totalVectorQuestions[i]}}</span>
                 </mat-panel-title>
@@ -12,25 +12,26 @@
             </mat-expansion-panel-header>
             <ol>
             <li *ngFor="let question of vectors.questions">
-                <h4>{{question.questionTextES}}:<button mat-flat-button (click)="openDialog('300ms', '300ms', question.questionTextES, question.questionTooltipES, question.questionDoc)"><i class="fa-solid fa-circle-info" style="color: #1f5618;"></i></button></h4>
-                <ng-container [ngSwitch]="question.questionType">
+                <h4>{{question.questionTextES}}:<button mat-flat-button (click)="openDialog('300ms', '300ms', question.questionTextES, question.questionTooltipES, question.questionDoc1, question.questionDoc2)"><i class="fa-solid fa-circle-info" style="color: #1f5618;"></i></button></h4>
+                <ng-container [ngSwitch]="question.type">
                     <ng-container *ngSwitchCase="'radio'">
                       <mat-radio-group aria-label="Select an option">
                         <ng-container  *ngFor="let item of question.answers">
-                            <mat-radio-button (change)="getRadio(item['answerText'], question['key'], item['regulation'], $event, i, totalVectorQuestions[i])"
+                            <mat-radio-button (change)="getRadio(item['answerText'], question['key'], item['answerRegulation'], $event, i, totalVectorQuestions[i])"
                                 value="{{item['answerText']}}">
                                 {{item['answerText']}}
                             </mat-radio-button>
-                            <button *ngIf="item['answerTooltip']" mat-button (click)="openDialog('300ms', '300ms', item['answerTooltip'], item['answerImage_1'], item['answerImage_2'])"><i class="fa-solid fa-circle-info" style="color: #673ab7;"></i></button>
+                            <button *ngIf="item['answerTooltip']" mat-button (click)="openDialog('300ms', '300ms', item['answerTooltip'], '', item['answerImage_1'], item['answerImage_2'])"><i class="fa-solid fa-circle-info" style="color: #673ab7;"></i></button>
                         </ng-container>
                       </mat-radio-group>
                     </ng-container>
+                    
                     <ng-container *ngSwitchCase="'checkbox'">
                       <section class="example-section" [formGroup]="">
                         <ng-container *ngFor="let item of question.answers">
                             <p>
-                                <mat-checkbox value="{{item['answerText']}}" (change)="getCheckBox(item['answerText'], question['key'], item['regulation'], $event)">{{item['answerText']}}</mat-checkbox>
-                                <button *ngIf="item['answerTooltip']" mat-button (click)="openDialog('300ms', '300ms', item['answerTooltip'], item['answerImage_1'], item['answerImage_2'])"><i class="fa-solid fa-circle-info" style="color: #673ab7;"></i></button>
+                                <mat-checkbox value="{{item['answerText']}}" (change)="getCheckBox(item['answerText'], question['key'], item['answerRegulation'], $event)">{{item['answerText']}}</mat-checkbox>
+                                <button *ngIf="item['answerTooltip']" mat-button (click)="openDialog('300ms', '300ms', item['answerTooltip'], '', item['answerImage_1'], item['answerImage_2'])"><i class="fa-solid fa-circle-info" style="color: #673ab7;"></i></button>
                             </p>
                         </ng-container>
                       </section>

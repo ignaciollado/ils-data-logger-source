@@ -2,6 +2,7 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, Inject, Input, ViewChild } from '@angular/core';
 import {
+  FormControl,
   UntypedFormBuilder,
   UntypedFormControl,
   UntypedFormGroup,
@@ -10,7 +11,7 @@ import {
 
 import {DateAdapter, MAT_DATE_LOCALE} from '@angular/material/core';
 
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { finalize } from 'rxjs/operators';
 import { ConsumptionDTO, residueColumns } from 'src/app/Models/consumption.dto';
 import { DelegationDTO } from 'src/app/Models/delegation.dto';
@@ -48,13 +49,8 @@ export class ResidueFormComponent {
   delegation: UntypedFormControl
   companyId: UntypedFormControl
   residue: UntypedFormControl
- /*  reuse: UntypedFormControl
-  recycling: UntypedFormControl
-  incineration: UntypedFormControl
-  dump: UntypedFormControl
-  compost: UntypedFormControl */
+  residueFilter: FormControl
   yearResidue: UntypedFormControl
-
   residueForm: UntypedFormGroup
 
   isValidForm: boolean | null
@@ -63,9 +59,10 @@ export class ResidueFormComponent {
   consumptionFields: string[] = []
   result: boolean = false
 
-  @Input() monthYearDefault: string;
+/*   @Input() monthYearDefault: string;
   @Input() delegationDefault: string;
-
+  @Input() placeholderLabel = 'Find ...';
+ */
 
   private isUpdateMode: boolean;
   private validRequest: boolean;
@@ -121,6 +118,7 @@ export class ResidueFormComponent {
     this.residueForm = this.formBuilder.group({
       delegation: this.delegation,
       residue: this.residue,
+      residueFilter: this.residueFilter,
       yearResidue: this.yearResidue,
     })
 
@@ -153,9 +151,6 @@ export class ResidueFormComponent {
     .subscribe(
       (residues: ResidueLERDTO[]) => {
         this.residues = residues;
-        residues.map( (item:any) => {
-          item.chapters.map( (subItem:any) => console.log(subItem.chapterItems) )
-        } )
       },
       (error: HttpErrorResponse) => {
         errorResponse = error.error;
@@ -225,6 +220,11 @@ export class ResidueFormComponent {
     }
   }
 
+
+  public filterResidues(e: any){
+    console.log ("Searching for:", this.residueFilter.value, e)
+  }
+
   private editResidue(): void {
 
   }
@@ -249,7 +249,7 @@ export class ResidueFormComponent {
     }
   }
  */
-  saveResidueForm(): void {
+  public saveResidueForm(): void {
 
     this.isValidForm = false;
     if (this.residueForm.invalid) {

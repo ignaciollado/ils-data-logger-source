@@ -47,7 +47,7 @@ private loadQuestions(): void {
     })
 }
 
-getRadio(answer:string, questionNumber:string, regulation: string, e:any, i: number, totalVectorQuestions: number){
+getRadio(answer:string, questionNumber:string, regulation: string[], e:any, i: number, totalVectorQuestions: number){
   this.totalVectorAnswers[i] = this.totalVectorAnswers[i] + 1
   this.vectorProgress[i] = this.vectorProgress[i] + 1
   console.log (i, totalVectorQuestions, this.totalVectorAnswers[i])
@@ -56,15 +56,15 @@ getRadio(answer:string, questionNumber:string, regulation: string, e:any, i: num
 
 }
 
-getCheckBox(answer:string, questionNumber:string, regulation: string, e:any){
+getCheckBox(answer:string, questionNumber:string, regulation: string[], e:any){
   if ( e.checked ) {
-    this.enviromentalAuditService.updateGlobalAnswer(answer, questionNumber)
+    this.enviromentalAuditService.updateGlobalAnswer(answer, questionNumber, regulation)
       .subscribe()
   }
 
 }
 
-openDialog(enterAnimationDuration: string, exitAnimationDuration: string, questionText: string, toolTipText: string, questionDoc: string): void {
+openDialog(enterAnimationDuration: string, exitAnimationDuration: string, questionText: string, toolTipText: string, doc1: string, doc2: string): void {
   const dialogConfig = new MatDialogConfig();
 
   dialogConfig.disableClose = true
@@ -77,7 +77,7 @@ openDialog(enterAnimationDuration: string, exitAnimationDuration: string, questi
   };
   dialogConfig.width='100%',
   dialogConfig.data = {
-    questionText: questionText, toolTipText: toolTipText, questionDoc: questionDoc
+    questionText: questionText, toolTipText: toolTipText, doc1: doc1, doc2: doc2
   };
   this.dialog.open(ConfirmDialogComponent, dialogConfig);
 }

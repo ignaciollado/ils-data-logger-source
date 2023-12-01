@@ -1,7 +1,9 @@
 <h2 mat-dialog-title>{{data.questionText}}</h2>
 <mat-dialog-content>
     <div [innerHTML]="data.toolTipText"></div>
-    <a *ngIf="data.questionDoc" href="../../../assets/answers_images/{{data.questionDoc}}" target="_self">Ver documento</a>
+    <a *ngIf="data.doc1" href="../../../assets/answers_images/{{data.doc1}}" target="_self">Ver documento</a>
+    <a *ngIf="data.doc2" href="../../../assets/answers_images/{{data.doc2}}" target="_self">Ver documento</a>
+
 </mat-dialog-content>
 <mat-dialog-actions>
     <button mat-button color="primary" [mat-dialog-close]>Close</button>

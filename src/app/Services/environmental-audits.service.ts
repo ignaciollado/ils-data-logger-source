@@ -24,14 +24,14 @@ export class EnvironmentalAuditsService {
       .pipe(catchError(this.sharedService.handleError))
   }
 
-  createGlobalAnswer(answer:string, questionNumber:string, regulation: string): Observable<QuestionDTO> {
+  createGlobalAnswer(answer:string, questionNumber:string, regulation: string[]): Observable<QuestionDTO> {
     console.log(answer, questionNumber, regulation[0], regulation[1], regulation[2], regulation.length)
     return this.http
       .post<QuestionDTO>(`${URL_API}globalAnswerCreate.php`, {answer, questionNumber, regulation})
       .pipe(catchError(this.sharedService.handleError));
   }
 
-  updateGlobalAnswer(answerId: string, answer: string): Observable<QuestionDTO> {
+  updateGlobalAnswer(answerId: string, answer: string, regulation: string[]): Observable<QuestionDTO> {
     return this.http
       .put<QuestionDTO>(`${URL_API}globalAnswerUpdate.php?consumptionId=${answerId}`, answer)
   }

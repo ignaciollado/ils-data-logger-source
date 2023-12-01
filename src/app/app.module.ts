@@ -79,6 +79,7 @@ import { GlobalRegulationQuestionnaireComponent } from './Components/global-regu
 import { GlobalRegulationQuestionnaireListComponent } from './Components/global-regulation-questionnaire-list/global-regulation-questionnaire-list.component';
 import { GlobalRegulationQuestionnaireAnswerComponent } from './Components/global-regulation-questionnaire-answer/global-regulation-questionnaire-answer.component';
 import { FileUploadComponent } from './file-upload/file-upload.component';
+import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
 
 export function tokenGetter() {
   return sessionStorage.getItem("access_token");
@@ -168,7 +169,8 @@ export function tokenGetter() {
     MatExpansionModule,
     MatSlideToggleModule,
     MatProgressBarModule,
-    MatDialogModule
+    MatDialogModule,
+    NgxMatSelectSearchModule,
   ],
   providers: [
     {

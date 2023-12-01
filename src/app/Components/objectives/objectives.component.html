@@ -90,6 +90,9 @@
                       matTooltip="Delete" color="warn"><i class="fa-solid fa-trash fa-xs" style="color: #365446;"></i>
                     </button>
                   </div>
+                  <span *ngSwitchCase="'number'" ngClass="small-data">
+                    {{ element[col.key] | number }}
+                  </span>
                   <span *ngSwitchDefault ngClass="small-data">
                     {{ element[col.key] }}
                   </span>
@@ -128,11 +131,11 @@
     <span *ngIf="!dataSource" class="loader">No data found yet...</span>
 
 
-   <!--  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+<!--     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
     
 
       <ng-container matColumnDef="isSelected">
-        <th mat-header-cell *matHeaderCellDef> No. </th>
+        <th mat-header-cell *matHeaderCellDef> isSelected </th>
         <td mat-cell *matCellDef="let element"> {{element.isSelected}} </td>
       </ng-container>
     
@@ -157,17 +160,72 @@
         <td mat-cell *matCellDef="let element"> {{element.theRatioType}} </td>
       </ng-container> 
 
+      <ng-container matColumnDef="jan">
+        <th mat-header-cell *matHeaderCellDef> jan </th>
+        <td mat-cell *matCellDef="let element"> {{element.jan}} </td>
+      </ng-container> 
 
+      <ng-container matColumnDef="feb">
+        <th mat-header-cell *matHeaderCellDef> feb </th>
+        <td mat-cell *matCellDef="let element"> {{element.feb}} </td>
+      </ng-container> 
 
+      <ng-container matColumnDef="mar">
+        <th mat-header-cell *matHeaderCellDef> mar </th>
+        <td mat-cell *matCellDef="let element"> {{element.mar}} </td>
+      </ng-container>
+      
+      <ng-container matColumnDef="apr">
+        <th mat-header-cell *matHeaderCellDef> apr </th>
+        <td mat-cell *matCellDef="let element"> {{element.apr}} </td>
+      </ng-container>
 
+      <ng-container matColumnDef="may">
+        <th mat-header-cell *matHeaderCellDef> may </th>
+        <td mat-cell *matCellDef="let element"> {{element.may}} </td>
+      </ng-container>
 
+      <ng-container matColumnDef="jun">
+        <th mat-header-cell *matHeaderCellDef> jun </th>
+        <td mat-cell *matCellDef="let element"> {{element.jun}} </td>
+      </ng-container>
 
+      <ng-container matColumnDef="jul">
+        <th mat-header-cell *matHeaderCellDef> jul </th>
+        <td mat-cell *matCellDef="let element"> {{element.jul}} </td>
+      </ng-container>
 
+      <ng-container matColumnDef="aug">
+        <th mat-header-cell *matHeaderCellDef> aug </th>
+        <td mat-cell *matCellDef="let element"> {{element.aug}} </td>
+      </ng-container>
+      
+      <ng-container matColumnDef="sep">
+        <th mat-header-cell *matHeaderCellDef> sep </th>
+        <td mat-cell *matCellDef="let element"> {{element.sep}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="oct">
+        <th mat-header-cell *matHeaderCellDef> oct </th>
+        <td mat-cell *matCellDef="let element"> {{element.oct}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="nov">
+        <th mat-header-cell *matHeaderCellDef> nov </th>
+        <td mat-cell *matCellDef="let element"> {{element.nov}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="dec">
+        <th mat-header-cell *matHeaderCellDef> dec </th>
+        <td mat-cell *matCellDef="let element"> {{element.dec}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="isEdit">
+        <th mat-header-cell *matHeaderCellDef> isEdit </th>
+        <td mat-cell *matCellDef="let element"> {{element.isEdit}} </td>
+      </ng-container> 
 
       <tr mat-header-row *matHeaderRowDef="columnsDisplayed"></tr>
       <tr mat-row *matRowDef="let row; columns: columnsDisplayed;"></tr>
     </table> -->
-    
-    
-
 </div>

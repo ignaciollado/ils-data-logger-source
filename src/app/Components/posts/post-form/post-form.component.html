@@ -49,8 +49,8 @@
   </form>
   <div style="margin-left: auto; margin-right: auto"><span id="postFeedback"></span></div>
 
-  <article *ngIf="dataSource else noDataFoundYet">
-    <div></div>
+ <!--  <article *ngIf="dataSource else noDataFoundYet"> -->
+    <!-- <div></div> -->
     <button class="button-remove-rows" mat-button (click)="removeSelectedRows()">Remove selected Rows</button>
     <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
       <ng-container [matColumnDef]="col.key" *ngFor="let col of columnsSchema">
@@ -100,7 +100,7 @@
       <mat-header-row *matHeaderRowDef="columnsDisplayed"></mat-header-row>
       <mat-row *matRowDef="let row; columns: columnsDisplayed;"></mat-row>
     </mat-table>
-  </article>
+  <!-- </article> -->
 
   <ng-template #noDataFoundYet>
     <span class="loader">No data found yet...</span>

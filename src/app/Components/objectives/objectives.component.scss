@@ -75,12 +75,10 @@ input[type=number] {
   border: 1px solid black!important;
 }
 
-mat-table {
+table {
   margin-top: .5rem;
   margin-bottom: 2rem;
-  width: 50%;
-  max-height: 500px;
-  overflow: auto;
+  width: 100%;
   white-space: nowrap;
 }
 
@@ -128,7 +126,7 @@ mat-cell{
   word-wrap:break-word;
   padding-left: 0;
 }
-.mat-column-jan{
+/* .mat-column-jan{
   max-width: 5.5rem;
 }
 .mat-column-feb{
@@ -163,7 +161,7 @@ mat-cell{
 }
 .mat-column-dec{
   max-width: 5.5rem;
-} 
+}  */
 .mat-column-isEdit{
   padding-right: 4rem;
 }

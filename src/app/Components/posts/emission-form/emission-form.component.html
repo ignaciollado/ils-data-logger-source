@@ -63,7 +63,6 @@
 
 
   <article *ngIf="dataSource else noDataFoundYet">
-    <div></div>
     <button class="button-remove-rows" mat-button (click)="removeSelectedRows()">Remove selected Rows</button>
     <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
       <ng-container [matColumnDef]="col.key" *ngFor="let col of columnsSchema">

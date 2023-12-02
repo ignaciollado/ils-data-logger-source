@@ -44,8 +44,8 @@
       <p>Form Status: {{ billingForm.status }}</p> -->
 
 
-      <article>
-        <div></div>
+      <!-- <article> -->
+        <!-- <div></div> -->
         <button class="button-remove-rows" mat-button (click)="removeSelectedRows()">Remove selected Rows</button>
         <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
           <ng-container [matColumnDef]="col.key" *ngFor="let col of columnsSchema">
@@ -105,7 +105,7 @@
           <mat-row *matRowDef="let row; columns: columnsDisplayed;"></mat-row>
         </mat-table>
         <mat-paginator #billingPaginator [pageSizeOptions]="[5, 10, 15]"  showFirstLastButtons></mat-paginator>
-      </article>
+      <!-- </article> -->
       <app-file-upload></app-file-upload>
   </div>
 

@@ -58,10 +58,10 @@
       </mat-card>
     </form>
     <div style="margin-left: auto; margin-right: auto"><span id="postFeedback"></span></div>
+    <button class="button-remove-rows" mat-button (click)="removeSelectedRows()">Remove selected Rows</button>
 
-    <article *ngIf="dataSource">
-        <button class="button-remove-rows" mat-button (click)="removeSelectedRows()">Remove selected Rows</button>
-        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <!-- <section *ngIf="dataSource" class="table-container mat-elevation-z8" tabindex="0"> -->
+        <table mat-table [dataSource]="dataSource" class="table-container mat-elevation-z8" tabindex="0">
           <ng-container [matColumnDef]="col.key" *ngFor="let col of columnsSchema">
             <mat-header-cell *matHeaderCellDef [ngSwitch]="col.key">
                 <span *ngSwitchCase="'isSelected'">
@@ -122,11 +122,11 @@
             </mat-cell>
           </ng-container>
 
-          <mat-header-row *matHeaderRowDef="columnsDisplayed"></mat-header-row>
+          <mat-header-row *matHeaderRowDef="columnsDisplayed; sticky: true"></mat-header-row>
           <mat-row *matRowDef="let row; columns: columnsDisplayed;"></mat-row>
         </table>
         <mat-paginator #paginator [pageSizeOptions]="[5, 10, 15]"  showFirstLastButtons></mat-paginator>
-    </article>
+      <!-- </section> -->
     <app-file-upload></app-file-upload>
     <span *ngIf="!dataSource" class="loader">No data found yet...</span>
 

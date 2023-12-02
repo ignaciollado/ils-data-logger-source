@@ -1,6 +1,8 @@
 
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component, Inject, Input, ViewChild } from '@angular/core';
+import { Component, Inject, ViewChild, AfterViewInit, OnDestroy, OnInit } from '@angular/core';
+import { ReplaySubject, Subject } from 'rxjs';
+import { take, takeUntil } from 'rxjs/operators';
 import {
   FormControl,
   UntypedFormBuilder,
@@ -28,6 +30,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatDialog } from '@angular/material/dialog'
 import { ConfirmDialogComponent } from 'src/app/confirm-dialog/confirm-dialog.component'
 import { ResidueLERDTO } from 'src/app/Models/residueLER.dto';
+import { MatSelect } from '@angular/material/select';
 
 const RESIDUES_DATA = [
   {Id: 1, delegation: "Son Castelló", year: "2019", residueES: "Combustión no peligrosos (kg)", "jan": 15000000, "feb": 15000000, "mar": 15000000, "apr": 15000000, "may": 15000000
@@ -49,7 +52,7 @@ export class ResidueFormComponent {
   delegation: UntypedFormControl
   companyId: UntypedFormControl
   residue: UntypedFormControl
-  residueFilter: FormControl
+  residueFilter: FormControl<string> = new FormControl<string>('');
   yearResidue: UntypedFormControl
   residueForm: UntypedFormGroup
 
@@ -58,11 +61,6 @@ export class ResidueFormComponent {
   theRatioTypeSelected: boolean = false
   consumptionFields: string[] = []
   result: boolean = false
-
-/*   @Input() monthYearDefault: string;
-  @Input() delegationDefault: string;
-  @Input() placeholderLabel = 'Find ...';
- */
 
   private isUpdateMode: boolean;
   private validRequest: boolean;
@@ -86,6 +84,14 @@ export class ResidueFormComponent {
   ngAfterViewInit() {
     this.dataSource.sort = this.residueTbSort;
   }
+
+    /** list of banks filtered by search keyword */
+    public filteredBanks: ReplaySubject<ResidueLERDTO[]> = new ReplaySubject<ResidueLERDTO[]>(1);
+
+    @ViewChild('singleSelect', { static: true }) singleSelect: MatSelect;
+  
+    /** Subject that emits when the component has been destroyed. */
+    protected _onDestroy = new Subject<void>();
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -127,6 +133,16 @@ export class ResidueFormComponent {
   }
 
   ngOnInit() {
+    // load the initial bank list
+    /* this.filteredBanks.next(this.residues.slice()); */
+
+    // listen for search field value changes
+    this.residueFilter.valueChanges
+      .pipe(takeUntil(this._onDestroy))
+      .subscribe(() => {
+        this.filterBanks();
+    });
+
     this.loadConsumption( this.userId )
   }
 
@@ -151,6 +167,7 @@ export class ResidueFormComponent {
     .subscribe(
       (residues: ResidueLERDTO[]) => {
         this.residues = residues;
+        this.filteredBanks.next(this.residues.slice());
       },
       (error: HttpErrorResponse) => {
         errorResponse = error.error;
@@ -176,6 +193,41 @@ export class ResidueFormComponent {
       );
 
     }
+  }
+
+  protected filterBanks() {
+     this.residues.map( item => {
+      item.chapters.map( subItem=> {
+        subItem.chapterItems.map( subSubItem=> {
+          console.log(subSubItem.chapterItemName)
+        })
+      })
+    }) 
+
+    if (!this.residues.map( item => {
+      item.chapters.map( subItem=> {
+        subItem.chapterItems.map( subSubItem=> {
+          subSubItem.chapterItemName
+        })
+      })
+    })) {
+      return;
+    }
+    // get the search keyword
+    let search = this.residueFilter.value;
+    console.log (search)
+    if (!search) {
+      this.filteredBanks.next(this.residues.slice());
+      return;
+    } else {
+      search = search.toLowerCase();
+    }
+    // filter the banks
+    this.filteredBanks.next(
+      this.residues.filter(bank => bank.chapterTitle.toLowerCase().indexOf(search) > -1)
+    );
+
+
   }
 
   private createResidueConsumption(): void {
@@ -218,11 +270,6 @@ export class ResidueFormComponent {
           }
         );
     }
-  }
-
-
-  public filterResidues(e: any){
-    console.log ("Searching for:", this.residueFilter.value, e)
   }
 
   private editResidue(): void {

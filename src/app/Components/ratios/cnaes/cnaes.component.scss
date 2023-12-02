@@ -69,12 +69,20 @@ mat-cell{
 }
 
 .mat-column-year{
-  max-width: 2.7rem;
-}
-.mat-column-delegation{
-  white-space: break-spaces;
-  padding-left: 0;
-}
+  .mat-column-delegation{
+    width :50px;
+    max-width:6rem;
+    word-wrap:break-word;
+    padding-left: 0;
+  }
+  
+  .mat-column-year{
+    width :50px;
+    max-width:3.5rem;
+    word-wrap:break-word;
+   padding-left: 0;
+  }
+  
 /* .mat-column-jan{
   max-width: 4.5rem;
 }

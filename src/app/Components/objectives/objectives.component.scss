@@ -103,26 +103,30 @@ mat-cell{
 }
 
 .mat-column-delegation{
-  max-width: 6rem;
-  white-space: break-spaces;
+  width :50px;
+  max-width:6rem;
+  word-wrap:break-word;
   padding-left: 0;
 }
 
 .mat-column-year{
- max-width: 3.5rem;
+  width :50px;
+  max-width:3.5rem;
+  word-wrap:break-word;
  padding-left: 0;
 }
 
 .mat-column-enviromentalDataName{
-  white-space: break-spaces;
-  padding-right: 2rem;
-  max-width: 24rem;
+  width :50px;
+  max-width:24rem;
+  word-wrap:break-word;
 }
 
 .mat-column-theRatioType{
-  white-space: break-spaces;
+  width :50px;
+  max-width:4rem;
+  word-wrap:break-word;
   padding-left: 0;
-  max-width: 4rem;
 }
 .mat-column-jan{
   max-width: 5.5rem;

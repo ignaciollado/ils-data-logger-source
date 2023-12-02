@@ -101,15 +101,19 @@ input[type=number] {
   }
   
   .mat-column-delegation{
-    max-width: 6rem;
-    white-space: break-spaces;
+    width :50px;
+    max-width:6rem;
+    word-wrap:break-word;
     padding-left: 0;
   }
   
   .mat-column-year{
-   max-width: 3.5rem;
+    width :50px;
+    max-width:3.5rem;
+    word-wrap:break-word;
    padding-left: 0;
   }
+  
   .mat-column-residueES{
     padding-right: 8rem;
   }

@@ -97,13 +97,18 @@ mat-cell{
   background-color: #919191;
 }
 
-.mat-column-year{
-  max-width: 3rem;
-}
 .mat-column-delegation{
-  width: 100%;
-  padding-right: 1rem;
-  white-space: normal;
+  width :50px;
+  max-width:6rem;
+  word-wrap:break-word;
+  padding-left: 0;
+}
+
+.mat-column-year{
+  width :50px;
+  max-width:3.5rem;
+  word-wrap:break-word;
+ padding-left: 0;
 }
 
 .mat-column-energyES{

@@ -59,8 +59,6 @@ input[type=number] {
   outline: none;
 }
 
-
-
 .small-data-text {
   font-size: .5rem;
   background-color: rgb(1, 219, 248);
@@ -140,10 +138,17 @@ mat-cell {
   padding-right: 1.25rem;
 }
 .mat-column-delegation{
-  width: 5rem;
+  width :50px;
+  max-width:6rem;
+  word-wrap:break-word;
+  padding-left: 0;
 }
+
 .mat-column-year{
-  width: 2rem;
+  width :50px;
+  max-width:3.5rem;
+  word-wrap:break-word;
+ padding-left: 0;
 }
 .mat-column-emissions{
   width: 4rem;

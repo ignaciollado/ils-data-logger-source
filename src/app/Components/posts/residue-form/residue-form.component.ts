@@ -29,7 +29,7 @@ import { MatSort } from '@angular/material/sort';
 
 import { MatDialog } from '@angular/material/dialog'
 import { ConfirmDialogComponent } from 'src/app/confirm-dialog/confirm-dialog.component'
-import { ResidueLERDTO } from 'src/app/Models/residueLER.dto';
+import { ChapterItem, ResidueLERDTO } from 'src/app/Models/residueLER.dto';
 import { MatSelect } from '@angular/material/select';
 
 const RESIDUES_DATA = [
@@ -69,6 +69,7 @@ export class ResidueFormComponent {
 
   delegations!: DelegationDTO[];
   residues!: ResidueLERDTO[];
+  residuesItem: ChapterItem[] = [];
   consumptions!: ConsumptionDTO[];
 
   isGridView: boolean = false
@@ -167,7 +168,14 @@ export class ResidueFormComponent {
     .subscribe(
       (residues: ResidueLERDTO[]) => {
         this.residues = residues;
-        this.filteredBanks.next(this.residues.slice());
+        this.residues.map( item => {
+          item.chapters.map( subItem=> {
+            subItem.chapterItems.map( (subSubItem: ChapterItem)=> {
+              this.residuesItem = [...this.residuesItem, subSubItem]
+            })
+          })
+        })
+
       },
       (error: HttpErrorResponse) => {
         errorResponse = error.error;
@@ -196,28 +204,18 @@ export class ResidueFormComponent {
   }
 
   protected filterBanks() {
-     this.residues.map( item => {
-      item.chapters.map( subItem=> {
-        subItem.chapterItems.map( subSubItem=> {
-          console.log(subSubItem.chapterItemName)
-        })
-      })
+     this.residuesItem.map( (item: ChapterItem) => {
+      
     }) 
 
-    if (!this.residues.map( item => {
-      item.chapters.map( subItem=> {
-        subItem.chapterItems.map( subSubItem=> {
-          subSubItem.chapterItemName
-        })
-      })
-    })) {
+    if (!this.residuesItem) {
       return;
     }
     // get the search keyword
     let search = this.residueFilter.value;
-    console.log (search)
+    console.log (search, this.residuesItem)
     if (!search) {
-      this.filteredBanks.next(this.residues.slice());
+      this.residuesItem.filter(item=> item.chapterItemName===search);
       return;
     } else {
       search = search.toLowerCase();

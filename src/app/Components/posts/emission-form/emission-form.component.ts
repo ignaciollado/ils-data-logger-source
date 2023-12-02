@@ -359,11 +359,11 @@ export class EmissionFormComponent {
 
   }
 
-  public removeRow(id: any) {
+  public removeRow(item: any) {
    /*  this.dataSource = this.dataSource.filter((u:any) => u.id !== id); */
-   this.consumptionService.deleteConsumption(id).subscribe(() => {
+   this.consumptionService.deleteConsumption(item.consumptionId).subscribe(() => {
     this.dataSource.data = this.dataSource.data.filter(
-      (u: ConsumptionDTO) => u.consumptionId !== id
+      (u: ConsumptionDTO) => u.consumptionId !== item.consumptionId
     );
   });
   }

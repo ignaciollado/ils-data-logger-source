@@ -47,6 +47,7 @@
     "energyConsumption": "Consum d'energia",
 
     "residueType": "Tipus de residu",
+    "searchResidue": "cerca residu...",
     "residue": "Residu",
     "residueConsumption": "Generació de residus  (kg)",
     "residueDestination": "Destinació del residu (%)",

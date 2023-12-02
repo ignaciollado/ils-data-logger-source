@@ -1,6 +1,6 @@
 
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component, Inject, ViewChild, AfterViewInit, OnDestroy, OnInit } from '@angular/core';
+import { Component, Inject, ViewChild, AfterViewInit, OnDestroy, OnInit, Input } from '@angular/core';
 import { ReplaySubject, Subject } from 'rxjs';
 import { take, takeUntil } from 'rxjs/operators';
 import {
@@ -40,6 +40,49 @@ const RESIDUES_DATA = [
   {Id: 4, delegation: "Son Castelló", year: "2020", residueES: "Urbano Mezclado (kg)", "jan": 1.2550}
 ];
 
+/* const RESIDUELIST_DATA = [
+  {
+    "chapterItemId": "010101",
+    "chapterItemName": "Residuos de la extracción de minerales metálicos"
+  },
+  {
+    "chapterItemId": "010102",
+    "chapterItemName": "Residuos de la extracción de minerales no metálicos"
+  },
+  {
+    "chapterItemId": "010304",
+    "chapterItemName": "Estériles que generan ácido procedentes de la transformación de minerales sulfurados"
+  },
+  {
+    "chapterItemId": "010305",
+    "chapterItemName": "Otros estériles que contienen sustancias peligrosas"
+  },
+  {
+    "chapterItemId": "010306",
+    "chapterItemName": "Estériles distintos de los mencionados en los códigos 01 03 04 y 01 03 05"
+  },
+  {
+    "chapterItemId": "010307",
+    "chapterItemName": "Otros residuos que contienen sustancias peligrosas procedentes de la transformación física y química de minerales metálicos"
+  },
+  {
+    "chapterItemId": "010308",
+    "chapterItemName": "Residuos de polvo y arenilla distintos de los mencionados en el código 01 03 07"
+  },
+  {
+    "chapterItemId": "010309",
+    "chapterItemName": "Lodos rojos procedentes de la producción de alúmina distintos de los mencionados en el código 01 03 10"
+  },
+  {
+    "chapterItemId": "010310",
+    "chapterItemName": "Lodos rojos procedentes de la producción de alúmina que contienen sustancias peligrosas distintos de los residuos mencionados en el código 01 03 07"
+  },
+  {
+    "chapterItemId": "010399",
+    "chapterItemName": "Residuos no especificados en otra categoría"
+  }
+] */
+
 @Component({
   selector: 'app-residue-form',
   templateUrl: './residue-form.component.html',
@@ -64,6 +107,7 @@ export class ResidueFormComponent {
 
   private isUpdateMode: boolean;
   private validRequest: boolean;
+  public isSearching: boolean = false
   private consumptionId: string | null;
   private userId: string | null;
 
@@ -87,13 +131,13 @@ export class ResidueFormComponent {
   }
 
     /** list of banks filtered by search keyword */
-    public filteredBanks: ReplaySubject<ResidueLERDTO[]> = new ReplaySubject<ResidueLERDTO[]>(1);
+    public filteredResidues: ReplaySubject<ChapterItem[]> = new ReplaySubject<ChapterItem[]>(1);
 
     @ViewChild('singleSelect', { static: true }) singleSelect: MatSelect;
   
     /** Subject that emits when the component has been destroyed. */
     protected _onDestroy = new Subject<void>();
-
+    @Input() searching = false;
   constructor(
     private activatedRoute: ActivatedRoute,
     private consumptionService: ConsumptionService,
@@ -130,18 +174,16 @@ export class ResidueFormComponent {
     })
 
     this.loadDelegations();
-    this.loadResidues();
   }
 
   ngOnInit() {
-    // load the initial bank list
-    /* this.filteredBanks.next(this.residues.slice()); */
-
+    this.loadResidues()
     // listen for search field value changes
     this.residueFilter.valueChanges
       .pipe(takeUntil(this._onDestroy))
       .subscribe(() => {
-        this.filterBanks();
+        this.isSearching = true
+        this.filterResidues();
     });
 
     this.loadConsumption( this.userId )
@@ -174,6 +216,7 @@ export class ResidueFormComponent {
               this.residuesItem = [...this.residuesItem, subSubItem]
             })
           })
+          this.residuesItem
         })
 
       },
@@ -203,29 +246,28 @@ export class ResidueFormComponent {
     }
   }
 
-  protected filterBanks() {
-     this.residuesItem.map( (item: ChapterItem) => {
-      
-    }) 
-
+  protected filterResidues() {
     if (!this.residuesItem) {
       return;
     }
-    // get the search keyword
     let search = this.residueFilter.value;
-    console.log (search, this.residuesItem)
-    if (!search) {
-      this.residuesItem.filter(item=> item.chapterItemName===search);
+    if (search !== "") {
+      this.residuesItem.filter((item: ChapterItem) => {
+        item.chapterItemName.startsWith('Otros')
+      });
+      /* console.log (search.toLowerCase(), this.residuesItem.filter((item:ChapterItem)=> item.chapterItemName.toLowerCase().startsWith(search.toLowerCase()))) */
+      this.residuesItem = this.residuesItem.filter((item:ChapterItem)=> item.chapterItemName.toLowerCase().includes(search.toLowerCase()))
+      /* console.log (this.residuesItem)  */
       return;
     } else {
-      search = search.toLowerCase();
+      this.loadResidues()
     }
+    this.isSearching = false
     // filter the banks
-    this.filteredBanks.next(
-      this.residues.filter(bank => bank.chapterTitle.toLowerCase().indexOf(search) > -1)
+    this.filteredResidues.next(
+      this.residuesItem.filter(bank => bank.chapterItemName.toLowerCase().includes(search))
     );
-
-
+   
   }
 
   private createResidueConsumption(): void {

@@ -100,11 +100,15 @@ input[type=number] {
     background-color: #919191;
   }
   
-  .mat-column-year{
-    max-width: 2.7rem;
-  }
   .mat-column-delegation{
-    padding-right: 2rem;
+    max-width: 6rem;
+    white-space: break-spaces;
+    padding-left: 0;
+  }
+  
+  .mat-column-year{
+   max-width: 3.5rem;
+   padding-left: 0;
   }
   .mat-column-residueES{
     padding-right: 8rem;

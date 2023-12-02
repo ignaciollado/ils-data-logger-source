@@ -12,16 +12,14 @@ $postedData = file_get_contents("php://input");
 $request = json_decode($postedData, TRUE);
 
 $sql = "INSERT INTO ils_consumption(companyId, companyDelegationId, aspectId,
- quantity, year, scopeOne, scopeTwo, fromDate, toDate) VALUES ("
+ quantity, year, scopeOne, scopeTwo) VALUES ("
 .$request['companyId'].","
 .$request['delegation'].","
 .$request['aspectId'].","
 .$request['quantityEmission'].",'"
 .$request['yearEmission']."',"
 .$request['scopeone'].","
-.$request['scopetwo'].")"; 
-
-echo $sql;
+.$request['scopetwo'].")";
 
 mysqli_free_result($result);
 

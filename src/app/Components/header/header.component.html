@@ -34,12 +34,12 @@
       <mat-menu #adminMenu="matMenu" yPosition="above">
         <button mat-button (click)="adminAspects()" [ngClass]="'has-to-be-shown'">{{'aspects' | translate}}</button>
         <button mat-button (click)="adminEnergies()" [ngClass]="'has-to-be-shown'">{{'energies' | translate}}</button>
-        <!-- <button mat-button (click)="adminResidues()" [ngClass]="'has-to-be-shown'">{{'residues' | translate}}</button> -->
+        <button mat-button (click)="adminResidues()" [ngClass]="'has-to-be-shown'">{{'createUser' | translate}}</button>
       </mat-menu>
       <button mat-button [matMenuTriggerFor]="requisitosLegalesMenu"><mat-icon>person</mat-icon>Questionarios</button>
     <mat-menu #requisitosLegalesMenu="matMenu" yPosition="above">
-      <button mat-button (click)="globalQuestionnaire()" [ngClass]="'has-to-be-shown'"><mat-icon>person</mat-icon>{{'globalQuestionaire' | translate}}</button>
-      <button mat-button (click)="globalQuestionnaireList()" [ngClass]="'has-to-be-shown'"><mat-icon>person</mat-icon>{{'globalQuestionaireList' | translate}}</button>
+      <button mat-button (click)="globalQuestionnaire()" [ngClass]="'has-to-be-shown'">{{'globalQuestionaire' | translate}}</button>
+      <button mat-button (click)="globalQuestionnaireList()" [ngClass]="'has-to-be-shown'">{{'globalQuestionaireList' | translate}}</button>
     </mat-menu>
       <button mat-menu-item (click)="logout()"><mat-icon>logout</mat-icon><span>{{'logout' | translate}}</span></button>
     </div>
@@ -59,12 +59,12 @@
     <mat-menu #adminMenu="matMenu" yPosition="above">
       <button mat-button (click)="adminAspects()" [ngClass]="'has-to-be-shown'">{{'aspects' | translate}}</button>
       <button mat-button (click)="adminEnergies()" [ngClass]="'has-to-be-shown'">{{'energies' | translate}}</button>
-      <!-- <button mat-button (click)="adminResidues()" [ngClass]="'has-to-be-shown'">{{'residues' | translate}}</button> -->
+      <button mat-button (click)="adminResidues()" [ngClass]="'has-to-be-shown'"><i class="fa-solid fa-user"></i>{{'createUser' | translate}}</button>
     </mat-menu>
     <button mat-button [matMenuTriggerFor]="requisitosLegalesMenu">Questionarios</button>
     <mat-menu #requisitosLegalesMenu="matMenu" yPosition="above">
-      <button mat-button (click)="globalQuestionnaire()" [ngClass]="'has-to-be-shown'">{{'globalQuestionaire' | translate}}</button>
-      <button mat-button (click)="globalQuestionnaireList()" [ngClass]="'has-to-be-shown'">{{'globalQuestionaireList' | translate}}</button>
+      <button mat-button (click)="globalQuestionnaire()" [ngClass]="'has-to-be-shown'"><i class="fa-solid fa-square-poll-horizontal"></i>{{'globalQuestionaire' | translate}}</button>
+      <button mat-button (click)="globalQuestionnaireList()" [ngClass]="'has-to-be-shown'"><i class="fa-solid fa-square-poll-horizontal"></i>{{'globalQuestionaireList' | translate}}</button>
     </mat-menu>
 
     <button mat-button (click)="logout()" [ngClass]="'has-to-be-shown'">{{'logout' | translate}}</button>

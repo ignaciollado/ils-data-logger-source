@@ -60,9 +60,10 @@ input[type=number] {
 }
 
 .small-data-text {
-  font-size: .5rem;
-  background-color: rgb(1, 219, 248);
-  border: 1px solid rgb(168, 165, 165);
+  font-size: .6rem;
+  background-color: #fff;
+  border: 2px solid #679da9!important;
+  border-radius: .2rem;
 }
 
 .small-data {
@@ -109,13 +110,24 @@ input[type=number] {
 mat-table {
   margin-top: .5rem;
   margin-bottom: 2rem;
-  width: 100%;
+  margin-left: auto!important;
+  margin-right: auto!important;
+  /* width: 100%; */
   max-height: 500px;
   overflow: auto;
 }
 
 mat-header-row{
   background-color: #424242;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+mat-row {
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
 }
 
 mat-header-cell {
@@ -151,13 +163,13 @@ mat-cell {
  padding-left: 0;
 }
 .mat-column-emissions{
-  width: 4rem;
+  width: 5rem;
 }
 .mat-column-scopeOne{
   width: 4rem;
 }
 .mat-column-ScopeTwo{
-  width: 4rem;
+  width: 6rem;
 }
 
 /* .mat-column-jan{

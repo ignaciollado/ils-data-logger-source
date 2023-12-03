@@ -46,7 +46,7 @@
     "energyType": "Consumo de",
     "energyConsumption": "Consumo de energía",
 
-    "residueType": "Tipo de residuo",
+    "residueType": "Residuo generado",
     "searchResidue": "Buscar residuo...",
     "residue": "Residuo",
     "residueConsumption": "Generación de residuos (kg)",

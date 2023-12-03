@@ -62,7 +62,7 @@
   <div style="margin-left: auto; margin-right: auto"><span id="postFeedback"></span></div>
 
 
-  <article *ngIf="dataSource else noDataFoundYet">
+  <!-- <article *ngIf="dataSource else noDataFoundYet"> -->
     <button class="button-remove-rows" mat-button (click)="removeSelectedRows()">Remove selected Rows</button>
     <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
       <ng-container [matColumnDef]="col.key" *ngFor="let col of columnsSchema">
@@ -94,9 +94,15 @@
                 matTooltip="Delete" color="warn"><i class="fa-solid fa-trash fa-xs" style="color: #365446;"></i>
               </button>
             </div>
-            <span *ngSwitchDefault ngClass="small-data">{{element[col.key].split('#')[0]}}</span>
+            <!-- <span *ngSwitchDefault ngClass="small-data">{{element[col.key].split('#')[0]}}</span>
             <span *ngSwitchDefault ngClass="small-data">{{element[col.key].split('#')[1]}}</span>
-            <span *ngSwitchDefault ngClass="small-data">{{element[col.key].split('#')[2]}}</span>
+            <span *ngSwitchDefault ngClass="small-data">{{element[col.key].split('#')[2]}}</span> -->
+            <span *ngSwitchCase="'number'" ngClass="small-data">
+              {{ element[col.key] | number }}
+            </span>
+            <span *ngSwitchDefault ngClass="small-data">
+              {{ element[col.key] }}
+            </span>
           </div>
   
           <div [ngSwitch]="col.type" *ngIf="element.isEdit">
@@ -105,7 +111,7 @@
             </div>
             <span *ngSwitchCase="'isSelected'" ngClass="small-data">{{element[col.key]}}</span>
             <span *ngSwitchCase="'label'" ngClass="small-data">{{element[col.key]}}</span>
-            <input *ngSwitchCase="'number'" [type]="col.type" [(ngModel)]="element[col.key]" ngClass="small-data inputCo2" [style.width.px]='50'/>
+            <input *ngSwitchCase="'number'" [type]="col.type" [(ngModel)]="element[col.key]" ngClass="small-data-text" [style.width.px]='50'/>
             <!-- <input title="Alcance 1" *ngSwitchCase="'number'" [type]="'text'" [id]="'scope1_'+col.key" [value]="element[col.key].split('#')[1]" (change)="getScopeOne(col.key, element, $event)" ngClass="small-data inputScopeOne" [style.width.px]='50'/>
             <input title="Alcance 2" *ngSwitchCase="'number'" [type]="'text'" [id]="'scope2_'+col.key" [value]="element[col.key].split('#')[2]" (blur)="getScopeTwo(col.key, element, $event)" ngClass="small-data inputScopeTwo" [style.width.px]='50'/> -->
             <!-- <input *ngSwitchCase="'number'" [type]="'hidden'" [(ngModel)]="element[col.key]" ngClass="small-data" [style.width.px]='50'/> -->
@@ -116,7 +122,7 @@
       <mat-header-row *matHeaderRowDef="columnsDisplayed"></mat-header-row>
       <mat-row *matRowDef="let row; columns: columnsDisplayed;"></mat-row>
     </mat-table>
-</article>
+<!-- </article> -->
 
 <ng-template #noDataFoundYet>
   <span class="loader">No data found yet...</span>

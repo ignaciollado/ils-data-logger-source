@@ -70,6 +70,9 @@
                 matTooltip="Delete" color="warn"><i class="fa-solid fa-trash fa-xs" style="color: #365446;"></i>
               </button>
               </div>
+              <span *ngSwitchCase="'number'" ngClass="small-data">
+                {{ element[col.key] | number }}
+              </span>
               <span *ngSwitchDefault ngClass="small-data">
                 {{ element[col.key] }}
               </span>

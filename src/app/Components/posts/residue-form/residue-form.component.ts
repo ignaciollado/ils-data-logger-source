@@ -252,12 +252,7 @@ export class ResidueFormComponent {
     }
     let search = this.residueFilter.value;
     if (search !== "") {
-      this.residuesItem.filter((item: ChapterItem) => {
-        item.chapterItemName.startsWith('Otros')
-      });
-      /* console.log (search.toLowerCase(), this.residuesItem.filter((item:ChapterItem)=> item.chapterItemName.toLowerCase().startsWith(search.toLowerCase()))) */
       this.residuesItem = this.residuesItem.filter((item:ChapterItem)=> item.chapterItemName.toLowerCase().includes(search.toLowerCase()))
-      /* console.log (this.residuesItem)  */
       return;
     } else {
       this.loadResidues()
@@ -271,10 +266,10 @@ export class ResidueFormComponent {
   }
 
   private createResidueConsumption(): void {
-    let errorResponse: any;
-    let responseOK: boolean = false;
+    let errorResponse: any
+    let responseOK: boolean = false
     if (this.userId) {
-      this.consumption.companyId = this.userId;
+      this.consumption.companyId = this.userId
       this.consumption.aspectId = 3; /* Residues aspect id : 3 */
       this.consumptionService.createResidueConsumption(this.consumption)
         .pipe(
@@ -364,7 +359,7 @@ export class ResidueFormComponent {
   public addRow() {
     /*  const newRow = {"delegation": this.delegation.value, "year": this.yearObjective.value, "energyES": this.energy.value, "objectiveType": this.objectiveType.value, isEdit: true} */
     /*  this.dataSource = [...this.dataSource, newRow];  */
-
+    
     const newRow: ConsumptionDTO = {
       consumptionId: '0',
       companyId: this.userId,
@@ -428,11 +423,11 @@ export class ResidueFormComponent {
 
   }
 
-  public removeRow(id: any) {
+  public removeRow(element: any) {
    /*  this.dataSource = this.dataSource.filter((u:any) => u.id !== id); */
-   this.consumptionService.deleteConsumption(id).subscribe(() => {
+   this.consumptionService.deleteConsumption(element.consumptionId).subscribe(() => {
     this.dataSource.data = this.dataSource.data.filter(
-      (u: ConsumptionDTO) => u.consumptionId !== id
+      (u: ConsumptionDTO) => u.consumptionId !== element.consumptionId
     );
   });
   }

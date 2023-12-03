@@ -69,8 +69,9 @@ outline: none;
 
 .small-data-input {
   font-size: .6rem;
-  background-color: aquamarine;
-  border: 1px solid black;
+  background-color: #fff;
+  border: 2px solid #679da9!important;
+  border-radius: .2rem;
 }
 
 mat-table {

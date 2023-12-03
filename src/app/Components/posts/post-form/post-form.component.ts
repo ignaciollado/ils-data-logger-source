@@ -398,7 +398,7 @@ export class PostFormComponent implements OnInit {
       dec: '0', */
       quantity: 0,
       energy: this.energy.value,
-      residueId: 0,
+      residueId: '',
       scopeOne: 0,
       scopeTwo: 0,
       reuse: 0,

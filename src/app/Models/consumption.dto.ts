@@ -1,14 +1,14 @@
 import { UntypedFormBuilder } from "@angular/forms";
-import { EnergyDTO } from "./energy.dto";
+import { ChapterItem } from "./residueLER.dto";
 
 export class ConsumptionDTO {
-  consumptionId!: string
+  consumptionId?: string
   companyId: string
   delegation: number
-  quantity!: number
-  fromDate!: Date
-  toDate!: Date
-  created_at!: Date
+  quantity?: number
+  fromDate?: Date
+  toDate?: Date
+  created_at?: Date
   objective: string
   aspectId: number
   year:string
@@ -27,26 +27,27 @@ export class ConsumptionDTO {
   nov?: number
   dec?: number
 
-  energy!: number
-  residueId!: number
-  scopeOne!: number
-  scopeTwo!: number
-  reuse!:number
-  recycling!:number
-  incineration!:number
-  dump!:number
-  compost!:number
-  energyES!: string
-  energyCA!: string
-  residueES!: string
-  residueCA!: string
-  aspectES!: string
-  aspectCA!: string
-  unit: string
-  pci: number
+  energy?: number
+  residueId?: string
+  scopeOne?: number
+  scopeTwo?: number
+  reuse?: number
+  recycling?: number
+  incineration?: number
+  dump?: number
+  compost?: number
+  energyES?: string
+  energyCA?: string
+  residueES?: string
+  residueCA?: string
+  aspectES?: string
+  aspectCA?: string
+  pci?: number /* eliminar cuando se hayan modificado las gráficas */
+  unit?: string /* eliminar cuando se hayan modificado las gráficas */
 
 constructor(
   aspectId: number,
+  residueId: string, /* el código LER del residue es una cadena */
   delegation: number,
   isEdit: boolean,
   isSelected: boolean,
@@ -71,12 +72,12 @@ constructor(
   aspectCA: string,
   quantity: number,
   companyId: string,
-  unit: string,
-  pci: number
+
 ) {
   this.companyId = companyId,
   this.delegation = delegation,
   this.aspectId = aspectId,
+  this.residueId = residueId,
   this.year = year,
   this.energyES = energyES,
   this.energyCA = energyCA,
@@ -84,8 +85,7 @@ constructor(
   this.residueCA = residueCA,
   this.aspectES = aspectES,
   this.aspectCA = aspectCA,
-  this.unit = unit,
-  this.pci = pci,
+  this.quantity = quantity,
   this.jan = jan,
   this.feb = feb,
   this.mar = mar,

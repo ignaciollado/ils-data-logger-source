@@ -88,8 +88,8 @@ export class EmissionFormComponent {
 
   isGridView: boolean = false
   columnsDisplayed: string[] = emissionColumns.map((col) => col.key);
-  dataSource: any = EMISSION_DATA
-  //dataSource = new MatTableDataSource<ConsumptionDTO>();
+  //dataSource: any = EMISSION_DATA
+  dataSource = new MatTableDataSource<ConsumptionDTO>();
   columnsSchema: any = emissionColumns; 
   /* columnsDisplayed = ['Id', 'delegation', 'year', 'jan', 'feb', 'mar', 'apr', 'ACTIONS'];  */
   valid: any = {}
@@ -118,7 +118,7 @@ export class EmissionFormComponent {
     this.consumptionId = this.activatedRoute.snapshot.paramMap.get('id');
     this.userId = this.jwtHelper.decodeToken().id_ils
 
-    this.consumption = new ConsumptionDTO(0, 0, this._adapter.today(), this._adapter.today(), '', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '', '', '', '', '', '', 0, '', '', 0);
+    this.consumption = new ConsumptionDTO(0, '', this._adapter.today(), this._adapter.today(), false, '', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '', '', '', '', '', '', 0, '');
     this.isUpdateMode = false;
     this.validRequest = false;
     this.delegation = new UntypedFormControl('', [ Validators.required ]);
@@ -311,7 +311,7 @@ export class EmissionFormComponent {
       companyId: this.userId,
       delegation: this.delegation.value,
       aspectId: 5,
-      residueId: 0,
+      residueId: '',
       year: this.yearEmission.value,
       
       quantity: this.quantityEmission.value,

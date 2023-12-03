@@ -70,7 +70,6 @@ export class ResidueService {
     return this.http
       .get<ResidueLERDTO[]>(`${this.urlAPiMock}residueList.json`)
       .pipe(catchError(this.sharedService.handleError))
-
   }
 
   errorLog(error: HttpErrorResponse): void {

@@ -158,7 +158,7 @@ export class ResidueFormComponent {
     this.consumptionId = this.activatedRoute.snapshot.paramMap.get('id');
     this.userId = this.jwtHelper.decodeToken().id_ils
 
-    this.consumption = new ConsumptionDTO(0, 0, this._adapter.today(), this._adapter.today(), '', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '', '', '', '', '', '', 0, '', '', 0);
+    this.consumption = new ConsumptionDTO(0, '', this._adapter.today(), this._adapter.today(), false, '', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '', '', '', '', '', '', 0, '');
     this.isUpdateMode = false;
     this.validRequest = false;
     this.delegation = new UntypedFormControl('', [ Validators.required ])
@@ -231,9 +231,28 @@ export class ResidueFormComponent {
     let errorResponse: any;
     if (this.userId) {
 
-        this.consumptionService.getAllConsumptionsByCompanyAndAspect(this.userId, 3).subscribe(
+        this.consumptionService.getAllResiduesByCompany(userId, 3).subscribe(
         (consumptions: ConsumptionDTO[]) => {
           this.consumptions = consumptions
+/*           console.log ( consumptions ) */
+          this.consumptions.map( (consumption:ConsumptionDTO) => {
+            console.log ('residuo:', consumption.consumptionId,
+
+           this.residueService.getResiduesLER()
+            .subscribe(
+              (residues: ResidueLERDTO[]) => {
+                this.residues = residues;
+                this.residues.map( item => {
+                   item.chapters.map( subItem=> {
+                    subItem.chapterItems.filter( (subSubItem: ChapterItem)=> {
+                      subSubItem.chapterItemId === consumption.consumptionId
+                    })
+                  })
+                  this.residuesItem
+                })
+              }))  
+         
+          })
           this.dataSource = new MatTableDataSource(this.consumptions)
           this.dataSource.sort = this.residueTbSort
         },

@@ -67,6 +67,12 @@ export class ConsumptionService {
     .get<ConsumptionDTO>(`${URL_API}energyConsumptionGetByConsumptionId.php?consumptionId=${consumptionId}`)
   }
 
+  getAllResiduesByCompany(companyId:any, aspectId?: number): Observable<ConsumptionDTO[]> {
+    return this.http
+     /* .get<ConsumptionDTO[]>(`${URL_API_SRV}/api/get-all-company-aspect-consumptions/${companyId}/${aspectId}`, httpOptions) */
+     .get<ConsumptionDTO[]>(`${URL_API}residueConsumptionGetByCompanyId.php?companyId=${companyId}&aspectId=${aspectId}`, httpOptions)
+  }
+
   createEnergyConsumption(energyConsumption: ConsumptionDTO): Observable<ConsumptionDTO> {
     return this.http
       .post<ConsumptionDTO>(`${URL_API}energyConsumptionCreate.php`, energyConsumption)

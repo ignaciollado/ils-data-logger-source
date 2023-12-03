@@ -234,23 +234,22 @@ export class ResidueFormComponent {
         this.consumptionService.getAllResiduesByCompany(userId, 3).subscribe(
         (consumptions: ConsumptionDTO[]) => {
           this.consumptions = consumptions
-/*           console.log ( consumptions ) */
           this.consumptions.map( (consumption:ConsumptionDTO) => {
-            console.log ('residuo:', consumption.consumptionId,
-
            this.residueService.getResiduesLER()
             .subscribe(
               (residues: ResidueLERDTO[]) => {
                 this.residues = residues;
                 this.residues.map( item => {
                    item.chapters.map( subItem=> {
-                    subItem.chapterItems.filter( (subSubItem: ChapterItem)=> {
-                      subSubItem.chapterItemId === consumption.consumptionId
+                   subItem.chapterItems.map( (subSubItem: ChapterItem)=> {
+                     if (subSubItem.chapterItemId === consumption.residueId) {
+                      consumption.residueES = subSubItem.chapterItemName
+                     }
                     })
                   })
                   this.residuesItem
                 })
-              }))  
+              })
          
           })
           this.dataSource = new MatTableDataSource(this.consumptions)

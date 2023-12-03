@@ -104,19 +104,21 @@ input[type=number] {
   .mat-column-delegation{
     width :50px;
     max-width:6rem;
-    word-wrap:break-word;
+    word-wrap: break-word;
     padding-left: 0;
   }
   
   .mat-column-year{
-    width :50px;
-    max-width:3.5rem;
-    word-wrap:break-word;
+    width : 50px;
+    max-width: 3.5rem;
+    word-wrap: break-word;
    padding-left: 0;
   }
   
   .mat-column-residueES{
-    padding-right: 8rem;
+    white-space: normal;
+    max-width: 8rem;
+    padding-left: 0;
   }
   /* .mat-column-jan{
     max-width: 4.5rem;

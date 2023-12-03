@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core'
-import { UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms'
+import { FormControl, UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms'
 
 import { DelegationService } from 'src/app/Services/delegation.service'
 import { DelegationDTO } from 'src/app/Models/delegation.dto'
@@ -22,6 +22,10 @@ import { ConfirmDialogComponent } from 'src/app/confirm-dialog/confirm-dialog.co
 import { DateAdapter } from '@angular/material/core'
 import { ResidueDTO } from 'src/app/Models/residue.dto'
 import { EnvironmentalDTO } from 'src/app/Models/environmental.dto'
+import { ChapterItem, ResidueLERDTO } from 'src/app/Models/residueLER.dto'
+import { ReplaySubject, Subject, takeUntil } from 'rxjs'
+import { MatSelect } from '@angular/material/select'
+import { ResidueService } from 'src/app/Services/residue.service'
 
  const OBJECTIVES_DATA = [
   {Id: 1, delegation: "Mock Data", year: "2019", enviromentalDataName: "Fuel (kg)", "theRatioType": "Billing", "jan": 15000000, "feb": 15000000, "mar": 15000000, "apr": 15000000, "may": 15000000
@@ -138,13 +142,17 @@ export class ObjectivesComponent {
   delegations!: DelegationDTO[]
   objectives!: ObjectiveDTO[]
   energies!: EnergyDTO[]
-  residues!: ResidueDTO[]
-  environmentalDataList: EnvironmentalDTO[] = []
+  residues!: ResidueLERDTO[]
+  residuesItem: ChapterItem[] = [];
+
+  residueFilter: FormControl<string> = new FormControl<string>('');
+  environmentalDataList: any[] = []
   yearObjective: UntypedFormControl
   objectiveType: UntypedFormControl
   userFields: string[] = []
 
   private userId: string | null
+  public isSearching: boolean = false
   currentActivityIndicator: string = "Not selected"
 
   isGridView: boolean = false
@@ -160,12 +168,21 @@ export class ObjectivesComponent {
   isChecked = false;
 
   @ViewChild('paginator') paginator: MatPaginator;
+   
+   /** list of residues filtered by search keyword */
+   public filteredResidues: ReplaySubject<ChapterItem[]> = new ReplaySubject<ChapterItem[]>(1);
 
+   @ViewChild('singleSelect', { static: true }) singleSelect: MatSelect;
+
+  /** Subject that emits when the component has been destroyed. */
+    protected _onDestroy = new Subject<void>();
+ 
   constructor (
     private delegationService: DelegationService,
     private jwtHelper: JwtHelperService,
     private sharedService: SharedService,
     private objectiveService: ObjectiveService,
+    private residueService: ResidueService,
     private formBuilder: UntypedFormBuilder,
     private userService: UserService,
     public dialog: MatDialog,
@@ -191,8 +208,16 @@ export class ObjectivesComponent {
   }
 
   ngOnInit() {
+    this.loadResidues()
+    this.residueFilter.valueChanges
+    .pipe(takeUntil(this._onDestroy))
+    .subscribe(() => {
+      this.isSearching = true
+      this.filterResidues();
+  });
     this.loadObjectives( this.userId )
   }
+
   private loadDelegations(): void {
     let errorResponse: any;
     if (this.userId) {
@@ -211,14 +236,17 @@ export class ObjectivesComponent {
   private loadObjectives( userId: string ): void {
     this.objectiveService.getAllObjectivesByCompany(userId).subscribe((res: ObjectiveDTO[]) => {
       this.dataSource.data = res;
-      this.dataSource.paginator = this.paginator;
+      /* this.dataSource.paginator = this.paginator; */
     });
   }
+
   private loadEnvironmentalData(): void {
     this.objectiveService.getAllEnvironmentalData().subscribe((res: any) => {
       this.environmentalDataList = res
+      this.loadResidues()
     });
   }
+
   private getCurrentIndicator( companyId: string ){
     let errorResponse: any;
     if (this.userId) {
@@ -318,16 +346,15 @@ export class ObjectivesComponent {
       this.objectiveService.createObjective(row).subscribe((newObjective: ObjectiveDTO) => {
         row.Id = newObjective.Id
         row.isEdit = false
-       /*  this.loadObjectives( this.userId ) */
+        this.loadObjectives( this.userId )
       });
     } else {
       this.objectiveService.updateObjective(row.Id, row).subscribe(() => {
         row.isEdit = false
-        /* this.loadObjectives( this.userId ) */
+        this.loadObjectives( this.userId )
       })
     }
     row.isEdit = false
-    this.loadObjectives( this.userId )
   }
 
   public removeRow(id: any) {
@@ -391,6 +418,49 @@ export class ObjectivesComponent {
       isSelected: event.checked,
     }));
   } */
+
+  private loadResidues(): void {
+    let errorResponse: any; 
+    this.residueService.getResiduesLER()
+    .subscribe(
+      (residues: ResidueLERDTO[]) => {
+        this.residues = residues
+        this.residues.map( item => {
+          item.chapters.map( subItem=> {
+            subItem.chapterItems.map( (subSubItem: ChapterItem)=> {
+              this.environmentalDataList = [...this.environmentalDataList, subSubItem]
+            })
+          })
+         /*  this.environmentalDataList = this.residuesItem */
+          this.environmentalDataList
+        })
+
+      },
+      (error: HttpErrorResponse) => {
+        errorResponse = error.error;
+        this.sharedService.errorLog(errorResponse);
+      } 
+    )
+  }
+
+  protected filterResidues() {
+    if (!this.environmentalDataList) {
+      return;
+    }
+    let search = this.residueFilter.value;
+    if (search !== "") {
+      this.environmentalDataList = this.environmentalDataList.filter((item:ChapterItem)=> item.chapterItemName.toLowerCase().includes(search.toLowerCase()))
+      return;
+    } else {
+      this.loadResidues()
+    }
+    this.isSearching = false
+    // filter the banks
+    this.filteredResidues.next(
+      this.environmentalDataList.filter(bank => bank.chapterItemName.toLowerCase().includes(search))
+    );
+   
+  }
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;

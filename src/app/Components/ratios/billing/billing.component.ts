@@ -19,7 +19,7 @@ import { deleteResponse } from 'src/app/Services/category.service';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { MatTableDataSource } from '@angular/material/table';
-import { MatPaginator } from '@angular/material/paginator';
+import { MatPaginator, MatPaginatorModule  } from '@angular/material/paginator';
 
 import { MatSort } from '@angular/material/sort';
 import { MatDialog } from '@angular/material/dialog';
@@ -81,12 +81,13 @@ export class BillingComponent {
 
   valid: any = {}
 
-  @ViewChild('billingTbSort') billingTbSort = new MatSort();
-  @ViewChild('paginator') billingPaginator: MatPaginator;
+/*   @ViewChild(MatSort) billingTbSort = {} as MatSort;
+  @ViewChild(MatPaginator) paginator = {} as MatPaginator; */
 
-  ngAfterViewInit() {
+/*   ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.billingTbSort;
-  }
+} */
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -111,7 +112,7 @@ export class BillingComponent {
     this.isUpdateMode = false;
     this.validRequest = false;
 
-    this.delegation = new UntypedFormControl( '', [ Validators.required ] );
+    this.delegation = new UntypedFormControl('', [ Validators.required ]);
     this.yearBilling = new UntypedFormControl('', [ Validators.required ]);
 
     this.billingForm = this.formBuilder.group({
@@ -146,7 +147,6 @@ export class BillingComponent {
       this.billingService.getBillingsByCompany(userId).subscribe(
         (billings: BillingDTO[]) => {
           this.dataSource.data = billings;
-          this.dataSource.sort = this.billingTbSort
         },
         (error: HttpErrorResponse) => {
           errorResponse = error.error;
@@ -203,7 +203,7 @@ export class BillingComponent {
       oct: '0',
       nov: '0',
       dec: '0', */
-      isEdit: true,
+      isEdit: false,
       isSelected: false,
     };
     this.dataSource.data = [newRow, ...this.dataSource.data]
@@ -214,16 +214,15 @@ export class BillingComponent {
       this.billingService.createBilling(row).subscribe((newObjective: BillingDTO) => {
         row.Id = newObjective.Id
         row.isEdit = false
-       /*  this.loadBillings( this.userId ) */
+        this.loadBillings( this.userId )
       });
     } else {
       this.billingService.updateBilling(row.Id, row).subscribe(() => {
         row.isEdit = false
-        /* this.loadBillings( this.userId ) */
+        this.loadBillings( this.userId )
       })
     }
     row.isEdit = false
-    this.loadBillings( this.userId )
   }
 
   public removeRow(id: any) {

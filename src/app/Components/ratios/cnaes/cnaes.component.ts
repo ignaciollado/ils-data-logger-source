@@ -98,12 +98,12 @@ export class CnaesComponent {
   columnsSchema: any = CnaeColumns
 
   valid: any = {}
-  @ViewChild('personTbSort') personTbSort = new MatSort();
-  @ViewChild('paginator') cnaePaginator: MatPaginator;
+/*   @ViewChild('personTbSort') personTbSort = new MatSort();
+  @ViewChild('paginator') cnaePaginator: MatPaginator; */
 
-  ngAfterViewInit() {
+/*   ngAfterViewInit() {
     this.dataSource.sort = this.personTbSort;
-  }
+  } */
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -165,7 +165,6 @@ export class CnaesComponent {
     if (this.userId) {
         this.cnaesDataService.getCnaesDataByCompany(userId).subscribe((item: CnaeDataDTO[]) => {
           this.dataSource.data = item
-          this.dataSource.sort = this.personTbSort
         },
         (error: HttpErrorResponse) => {
           errorResponse = error.error;
@@ -225,17 +224,15 @@ export class CnaesComponent {
       this.cnaesDataService.createCnaeData(row).subscribe((newObjective: CnaeDataDTO) => {
         row.Id = newObjective.Id
         row.isEdit = false
-        /* this.loadCnaeData( this.userId ) */
+        this.loadCnaeData( this.userId )
       });
     } else {
       this.cnaesDataService.updateCnaeData(row.Id, row).subscribe(() => {
         row.isEdit = false
-        /* this.loadCnaeData( this.userId ) */
+        this.loadCnaeData( this.userId )
       })
     }
     row.isEdit = false
-    this.loadCnaeData( this.userId )
-
   }
 
   public removeRow(id: any) {

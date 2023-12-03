@@ -130,7 +130,7 @@ export class ResidueFormComponent {
     this.dataSource.sort = this.residueTbSort;
   }
 
-    /** list of banks filtered by search keyword */
+    /** list of residues filtered by search keyword */
     public filteredResidues: ReplaySubject<ChapterItem[]> = new ReplaySubject<ChapterItem[]>(1);
 
     @ViewChild('singleSelect', { static: true }) singleSelect: MatSelect;
@@ -138,6 +138,7 @@ export class ResidueFormComponent {
     /** Subject that emits when the component has been destroyed. */
     protected _onDestroy = new Subject<void>();
     @Input() searching = false;
+    
   constructor(
     private activatedRoute: ActivatedRoute,
     private consumptionService: ConsumptionService,

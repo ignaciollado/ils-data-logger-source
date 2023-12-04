@@ -41,7 +41,7 @@
                 <mat-option>
                   <ngx-mat-select-search 
                   [formControl]="residueFilter"
-                  placeholderLabel="{{'searchResidue' | translate}}"
+                  placeholderLabel="{{'search' | translate}}"
                   noEntriesFoundLabel = "no matching residue found!"
                   [clearSearchInput] = false
                   [searching] = "isSearching"
@@ -102,7 +102,7 @@
                     </button>
                   </div>
                   <span *ngSwitchCase="'number'" ngClass="small-data">
-                    {{ element[col.key] | number }}
+                    {{ element[col.key] | number: '1.2-3' }}
                   </span>
                   <span *ngSwitchDefault ngClass="small-data">
                     {{ element[col.key] }}

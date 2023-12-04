@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core'
+import { Component, ViewChild, LOCALE_ID } from '@angular/core'
 import { FormControl, UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms'
 
 import { DelegationService } from 'src/app/Services/delegation.service'
@@ -203,12 +203,12 @@ export class ObjectivesComponent {
     })
 
     this.loadDelegations()
-    this.loadEnvironmentalData()
     this.getCurrentIndicator( this.userId )
   }
 
   ngOnInit() {
-    this.loadResidues()
+    this.loadEnvironmentalData()
+    /* this.loadResidues() */
     this.residueFilter.valueChanges
     .pipe(takeUntil(this._onDestroy))
     .subscribe(() => {
@@ -431,8 +431,8 @@ export class ObjectivesComponent {
               this.environmentalDataList = [...this.environmentalDataList, subSubItem]
             })
           })
-         /*  this.environmentalDataList = this.residuesItem */
-          this.environmentalDataList
+        console.log ( this.environmentalDataList )
+        this.environmentalDataList
         })
 
       },
@@ -452,7 +452,7 @@ export class ObjectivesComponent {
       this.environmentalDataList = this.environmentalDataList.filter((item:ChapterItem)=> item.chapterItemName.toLowerCase().includes(search.toLowerCase()))
       return;
     } else {
-      this.loadResidues()
+      this.loadEnvironmentalData()
     }
     this.isSearching = false
     // filter the banks

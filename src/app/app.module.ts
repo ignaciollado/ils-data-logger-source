@@ -1,7 +1,7 @@
 import { JwtModule } from "@auth0/angular-jwt";
 
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { NgModule } from '@angular/core';
+import { NgModule, LOCALE_ID } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
@@ -177,6 +177,10 @@ export function tokenGetter() {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptorService,
       multi: true,
+    },
+    {
+      provide: LOCALE_ID,
+      useValue: 'es'
     }
   ],
   bootstrap: [AppComponent],

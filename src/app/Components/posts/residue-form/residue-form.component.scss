@@ -71,41 +71,42 @@ input[type=number] {
     font-size: .6rem;
   }
 
-  .small-data-input {
+.small-data-input {
     font-size: .6rem;
     background-color: #fff;
     border: 2px solid #679da9!important;
     border-radius: .2rem;
   }
 
-  mat-table {
+mat-table {
     margin-top: .5rem;
     margin-bottom: 2rem;
     width: 100%;
   }
   
-  .mat-mdc-table {
+.mat-mdc-table {
     white-space: nowrap;
   }
   
-  mat-header-row{
+mat-header-row{
     background-color: #424242;
   }
   
-  mat-header-cell {
+mat-header-cell {
     color: white;
     font-size: .5rem;
   }
   
-  mat-cell{
+mat-cell{
     background-color: #919191;
   }
   
-  .mat-column-delegation{
+.mat-column-delegation{
     width :50px;
     max-width:6rem;
     word-wrap: break-word;
     padding-left: 0;
+    padding-right: 1rem;
   }
   
   .mat-column-year{

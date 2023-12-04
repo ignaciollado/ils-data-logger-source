@@ -77,7 +77,7 @@
                     </button>
                   </div>
                   <span *ngSwitchCase="'number'" ngClass="small-data">
-                    {{ element[col.key] | number }}
+                    {{ element[col.key] | currency: '€': 'symbol-narrow': '1.2-3' }}
                   </span>
                   <span *ngSwitchDefault ngClass="small-data">
                     {{ element[col.key] }}

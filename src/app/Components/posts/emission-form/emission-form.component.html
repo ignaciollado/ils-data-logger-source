@@ -98,7 +98,7 @@
             <span *ngSwitchDefault ngClass="small-data">{{element[col.key].split('#')[1]}}</span>
             <span *ngSwitchDefault ngClass="small-data">{{element[col.key].split('#')[2]}}</span> -->
             <span *ngSwitchCase="'number'" ngClass="small-data">
-              {{ element[col.key] | number }}
+              {{ element[col.key] | number: '1.2-3' }}
             </span>
             <span *ngSwitchDefault ngClass="small-data">
               {{ element[col.key] }}

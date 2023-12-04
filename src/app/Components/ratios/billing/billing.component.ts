@@ -1,5 +1,7 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, Inject, ViewChild } from '@angular/core';
+import { registerLocaleData } from '@angular/common';
+import localeEs from '@angular/common/locales/es';
 import {
   UntypedFormBuilder,
   UntypedFormControl,
@@ -24,6 +26,8 @@ import { MatPaginator, MatPaginatorModule  } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmDialogComponent } from 'src/app/confirm-dialog/confirm-dialog.component';
+
+registerLocaleData(localeEs, 'es')
 
 const BILLING_DATA = [
   {Id: 1, delegation: "Son Castelló", year: "2019", "jan": 10000000, "feb": 10000000, "mar": 10000000, "apr": 10000000, "may": 10000000
@@ -75,8 +79,8 @@ export class BillingComponent {
 
   isGridView: boolean = false
   columnsDisplayed: string[] = BillingColumns.map((col) => col.key);
-  //dataSource: any = BILLING_DATA
-  dataSource = new MatTableDataSource<BillingDTO>()
+  dataSource: any = BILLING_DATA
+  //dataSource = new MatTableDataSource<BillingDTO>()
   columnsSchema: any = BillingColumns;
 
   valid: any = {}
@@ -203,7 +207,7 @@ export class BillingComponent {
       oct: '0',
       nov: '0',
       dec: '0', */
-      isEdit: false,
+      isEdit: true,
       isSelected: false,
     };
     this.dataSource.data = [newRow, ...this.dataSource.data]

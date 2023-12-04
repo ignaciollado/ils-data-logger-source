@@ -50,6 +50,7 @@ private URL_MOCKS: string = '../../assets/mocks/consumptions.json'
      /* .get<ObjectiveDTO[]>(`${URL_API_SRV}/api/get-all-company-aspect-Objectives/${companyId}/${aspectId}`, httpOptions) */
      .get<ObjectiveDTO[]>(`${this.URL_API}objectiveGetByCompanyId.php?companyId=${companyId}&aspectId=${aspectId}`, httpOptions)
   }
+  
   getAllObjectivesByCompany(companyId:string): Observable<ObjectiveDTO[]> {
     if (companyId) {
       console.log ("logged in")

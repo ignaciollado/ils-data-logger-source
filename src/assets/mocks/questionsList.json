@@ -1,11 +1,10 @@
 [
-    
   {
     "vectorId": "1",
     "vectorName": "Residuos",
     "vectorGeneralRegulation":["RES_3,RES_4,RES_5,RES_18,RES_19,RES_60,RES_61"],
     "questions":
-        [
+      [
         {
         "key": "1",
         "type": "checkbox",
@@ -111,17 +110,17 @@
         },
 
         {
-      "key": "3",
-      "type": "radio",
-      "questionTextES": "¿Se envasan productos para su puesta en el mercado nacional o se importan y/o adquieren en otros países en la UE productos envasados para su puesta en el mercado nacional que no tengan designado Representante Autorizado por el envasador con sede fuera de España (productores de producto)?",
-      "questionTextCA": "",
-      "questionDoc1" : "",
-      "questionDoc2" : "",
-      "questionTooltipES": "Los productores de producto que ponen envases en el mercado español, ya sean domésticos, comerciales o industriales, tienen la obligación de inscribirse en dicho registro y declarar en él los envases puestos en el mercado desde el año 2021 en adelante.<br><strong>Productor de producto:</strong> envasadores o s agentes económicos dedicados a la importación o adquisición en otros Estados miembros de la Unión Europea de productos envasados para su puesta en el mercado. Cuando los productos envasados puestos en el mercado mediante marcas de distribución, no se identifique al productor de producto, ejercerá como tal el titular de la marca de distribución con sede en España bajo  cual se comercialice el producto. En el caso de aquellos productos envasados por encargo de un tercero que actúa como responsable de su puesta en el mercado, ejercerá este último como productor de producto. Cuando a través de las plataformas de comercio electrónico se introduzcan en el mercado productos envasados procedentes de fuera de España y el productor no haya designado representante autorizado de conformidad con lo dispuesto en el <a href='https://www.boe.es/eli/es/rd/2022/12/27/1055' target='_blanc'>artículo 17.2 del RD 1055/2022</a>, dicha plataforma actuará, subsidiariamente, como productor de producto a efectos de las obligaciones financieras y de información, así como organizativas cuando proceda, reguladas en este real decreto, respecto de esos envases.",
-      "questionTooltipCA": "",
-      "link": "https://...",
-      "answers":
-      [
+        "key": "3",
+        "type": "radio",
+        "questionTextES": "¿Se envasan productos para su puesta en el mercado nacional o se importan y/o adquieren en otros países en la UE productos envasados para su puesta en el mercado nacional que no tengan designado Representante Autorizado por el envasador con sede fuera de España (productores de producto)?",
+        "questionTextCA": "",
+        "questionDoc1" : "",
+        "questionDoc2" : "",
+        "questionTooltipES": "Los productores de producto que ponen envases en el mercado español, ya sean domésticos, comerciales o industriales, tienen la obligación de inscribirse en dicho registro y declarar en él los envases puestos en el mercado desde el año 2021 en adelante.<br><strong>Productor de producto:</strong> envasadores o s agentes económicos dedicados a la importación o adquisición en otros Estados miembros de la Unión Europea de productos envasados para su puesta en el mercado. Cuando los productos envasados puestos en el mercado mediante marcas de distribución, no se identifique al productor de producto, ejercerá como tal el titular de la marca de distribución con sede en España bajo  cual se comercialice el producto. En el caso de aquellos productos envasados por encargo de un tercero que actúa como responsable de su puesta en el mercado, ejercerá este último como productor de producto. Cuando a través de las plataformas de comercio electrónico se introduzcan en el mercado productos envasados procedentes de fuera de España y el productor no haya designado representante autorizado de conformidad con lo dispuesto en el <a href='https://www.boe.es/eli/es/rd/2022/12/27/1055' target='_blanc'>artículo 17.2 del RD 1055/2022</a>, dicha plataforma actuará, subsidiariamente, como productor de producto a efectos de las obligaciones financieras y de información, así como organizativas cuando proceda, reguladas en este real decreto, respecto de esos envases.",
+        "questionTooltipCA": "",
+        "link": "https://...",
+        "answers":
+        [
               {"answerText": "Sí",
                "answerTooltip": "",
                "regulation": ["RES_32","RES_33"],
@@ -133,20 +132,20 @@
                "regulation": [""],
                "answerdoc1": "",
                "answerdoc2": ""}
-      ]
+        ]
         },
 
         {
-      "key": "4",
-      "type": "radio",
-      "questionTextES": " ¿Realiza algún traslado de residuos como operador, transportista, gestor, negociante?",
-      "questionTextCA": "Se aplica si realizas traslados de residuos entre comunidades autónomas  para su valorización o eliminación, incluidos los traslados que se producen a instalaciones que realizan operaciones de tratamiento intermedio y de almacenamiento. No tienen la consideración de traslado de residuos las siguientes actividades de transporte destinadas al acopio inicial de residuos: a) El transporte de residuos que realizan las empresas de instalación o mantenimiento, desde el lugar en que se han producido estos residuos hasta sus propias instalaciones, siempre que sean residuos generados como consecuencia de su actividad. b) En el ámbito de la logística inversa, el transporte desde los hogares particulares hasta los comercios o hasta las plataformas de la distribución; y el transporte desde los comercios hasta las plataformas de distribución. c) El transporte de los residuos por parte de los particulares a los puntos de recogida establecidos por las entidades locales, gestores de residuos autorizados o cualesquiera de los puntos de recogida indicados en la normativa aplicable.",
-      "questionDoc" : "",
-      "questionTooltipES": "",
-      "questionTooltipCA": "",
-      "link": "https://...",
-      "answers":
-      [
+        "key": "4",
+        "type": "radio",
+        "questionTextES": " ¿Realiza algún traslado de residuos como operador, transportista, gestor, negociante?",
+        "questionTextCA": "Se aplica si realizas traslados de residuos entre comunidades autónomas  para su valorización o eliminación, incluidos los traslados que se producen a instalaciones que realizan operaciones de tratamiento intermedio y de almacenamiento. No tienen la consideración de traslado de residuos las siguientes actividades de transporte destinadas al acopio inicial de residuos: a) El transporte de residuos que realizan las empresas de instalación o mantenimiento, desde el lugar en que se han producido estos residuos hasta sus propias instalaciones, siempre que sean residuos generados como consecuencia de su actividad. b) En el ámbito de la logística inversa, el transporte desde los hogares particulares hasta los comercios o hasta las plataformas de la distribución; y el transporte desde los comercios hasta las plataformas de distribución. c) El transporte de los residuos por parte de los particulares a los puntos de recogida establecidos por las entidades locales, gestores de residuos autorizados o cualesquiera de los puntos de recogida indicados en la normativa aplicable.",
+        "questionDoc" : "",
+        "questionTooltipES": "",
+        "questionTooltipCA": "",
+        "link": "https://...",
+        "answers":
+        [
               {"answerText": "Sí",
                "answerTooltip": "",
                "regulation": ["RES59"],
@@ -157,10 +156,247 @@
                "regulation": [""],
                "image_1": "",
                "image_2": ""}
-      ]
-        }
         ]
-  }, 
+        }
+      ]
+  },
+
+  {
+    "vectorId": "2",
+    "vectorName": "Seguridad Industrial",
+    "Vectorgeneralregulation":["SIND_1,SIND_2,SIND_4"],
+    "questions":
+      [
+      {
+        "key": "1",
+        "type": "radio",
+        "questionTextES": "¿La industria se encuentra sujeta a las medidas de control de los riesgos inherentes a los accidentes graves en los que intervengan sustancias peligrosas (SEVESO)?",
+        "questionTextCA": "",
+        "questionDoc1" : "PSIND_1 ANEXO1",
+        "questionDoc2" : "",
+        "questionTooltipES": "Se consideran incluidos en el ámbito de aplicación del <a href='https://www.boe.es/eli/es/rd/2015/09/21/840' target='_blank'>RD 840/2015</a> las industrias en los que estén presentes sustancias peligrosas en cantidades iguales o superiores a las especificadas en la columna 2 de las partes 1 y 2 del <a href='../../../assets/answers_images/PSIND_1 ANEXO1.pdf' target='_blanc'>ANEXO I</a> del citado Real Decreto <strong>(Ver tipo de sustancias y cantidades de la columna 2 en l a imagen adjunta).</strong><br>Se encuentran <strong>excluidos</strong> del ámbito de aplicación del <a href='https://www.boe.es/eli/es/rd/2015/09/21/840' target='_blank'>RD 840/2015</a>: <ul><li>Los peligros creados por las radiaciones ionizantes originadas por sustancias</li><li>El transporte de mercancías peligrosas por carretera, ferrocarril, vía navegable interior y marítima o aérea y el almacenamiento temporal intermedio directamente relacionado con él; así como a las actividades de carga y descarga y al traslado desde y hacia otro tipo de transporte con destino a muelles, embarcaderos o instalaciones logísticas ferroviarias o terminales ferroviarias fuera de los establecimientos contemplados en este real decreto</li><li>El transporte de sustancias peligrosas por canalizaciones, incluidas las estaciones de bombeo, que se encuentren fuera de los establecimientos a que se refiere este real decreto;</li><li>La explotación de minerales en minas, canteras y mediante perforación; en concreto a las actividades de exploración, extracción y tratamiento de los mismos;</li><li>La exploración y explotación mar adentro (off-shore) de minerales, incluidos los hidrocarburos;</li><li>El almacenamiento de gas en emplazamientos subterráneos mar adentro, tanto en aquellos dedicados específicamente al almacenamiento, como en los que también se lleven a cabo actividades de exploración y extracción de minerales, incluidos los hidrocarburos.</li><li>Los vertederos de residuos, incluyendo el almacenamiento subterráneo de los mismos.</li></ul><u>CLASIFICACIÓN ESTABLECIMIENTOS</u><ul><li><strong>Establecimiento de nivel inferior:</strong> un establecimiento en el que haya presentes sustancias peligrosas en cantidades iguales o superiores a las especificadas en la columna 2 de la parte 1 o de la parte 2 del <a href='../../../assets/answers_images/PSIND_1 ANEXO1.pdf' target='_blanc'>ANEXO I</a>, pero inferiores a las cantidades especificadas en la columna 3 de la parte 1 o de la parte 2 del <a href='../../../assets/answers_images/PSIND_1 ANEXO1.pdf' target='_blanc'>ANEXO I</a>. Todo ello empleando, cuando sea aplicable, la regla de la suma de la nota 4 del <a href='../../../assets/answers_images/PSIND_1 ANEXO1.pdf' target='_blanc'>ANEXO I</a>.</li><li><strong>Establecimiento de nivel superior:</strong> un establecimiento en el que haya presentes sustancias peligrosas en cantidades iguales o superiores a las especificadas en la columna 3 de la parte 1 o de la parte 2 del <a href='../../../assets/answers_images/PSIND_1 ANEXO1.pdf' target='_blanc'>ANEXO I</a>. Todo ello empleando, cuando sea aplicable, la regla de la suma de la nota 4 del <a href='../../../assets/answers_images/PSIND_1 ANEXO1.pdf' target='_blanc'>ANEXO I</a>.</li></ul>",
+        "questionTooltipCA": "",
+        "link": "https://...",
+        "answers":
+        [
+        {"answerText": "Sí",
+        "answerTooltip": "",
+        "regulation": ["SIND_35","SIND_36"],
+        "answerImage_1": "",
+        "answerImage_2": ""},
+        {"answerText": " No",
+        "answerTooltip": "",
+        "regulation": [""],
+        "answerImage_1": "",
+        "answerImage_2": ""}  
+        ]
+      },
+      {
+        "key": "2",
+        "type": "radio",
+        "questionTextES": "¿Se realizan actividades de expedición, carga, descarga y transporte de las mercancías peligrosas ?",
+        "questionTextCA": "",
+        "questionDoc1" : "PSIND_2 ANEXO 1APQ.pdf",
+        "questionDoc2" : "",
+        "questionTooltipES": "Se refiere al almacenamiento de productos químicos con pictograma de peligrosidad siempre y cuando <strong>se supere el umbral de almacenamiento de la Tabla I</strong>. Relación de peligros y cantidades para la aplicación del Reglamento ( columna 5).<br><strong>Ejemplos</strong>, líquidos inflamables, óxido de etileno en recipientes fijos, almacenamiento de cloro, almacenamiento de amoniaco anhidro, almacenamiento de gases en recipientes a presión móviles,almacenamiento de líquidos corrosivos en recipientes fijos, almacenamiento de líquidos tóxicos en recipientes fijos , Almacenamiento de fertilizantes a base de nitrato amónico con alto contenido en nitrógeno,  Almacenamiento de peróxidos orgánicos y de materias autorreactivas, Almacenamiento en recipientes móviles, . Asimismo, <strong>NO</strong> será de aplicación a los almacenamientos de productos con reglamentaciones específicas.",
+        "questionTooltipCA": "",
+        "link": "https://...",
+        "answers":
+        [
+        {"answerText": "Sí",
+        "answerTooltip": "",
+        "regulation": ["QMC_25", "BOE-A-2017-8755-consolidado"],
+        "answerdoc1": "",
+        "answerdoc2": ""},
+        {"answerText": "No",
+        "answerTooltip": "",
+        "regulation": [""],
+        "answerdoc1": "",
+        "answerdoc2": ""}
+        ]
+      },
+      {
+        "key": "3",
+        "type": "radio",
+        "questionTextES": " ¿Disponen de instalaciones frigoríficas?",
+        "questionTextCA": "",
+        "questionDoc1" : "PSIND_3 apéndice 1",
+        "questionDoc2" : "",
+        "questionTooltipES": "",
+        "questionTooltipCA": "",
+        "link": "https://...",
+        "answers":
+        [
+        {"answerText": "Sí",
+        "answerTooltip": "",
+        "regulation": ["SIND_6","SIND_7"],
+        "image_1": "",
+        "image_2": ""},
+        {"answerText": "No",
+        "answerTooltip": "",
+        "regulation": [""],
+        "image_1": "",
+        "image_2": ""}
+        ]
+      },
+      {
+        "key": "4",
+        "type": "checkbox",
+        "questionTextES": " ¿Disponen de aparatos elevadores? Se pueden seleccionar varias opciones",
+        "questionTextCA": "",
+        "questionDoc1" : "",
+        "questionDoc2" : "",
+        "questionTooltipES": "",
+        "questionTooltipCA": "",
+        "link": "https://...",
+        "answers":
+        [
+        {"answerText": "No",
+        "answerTooltip": "",
+        "regulation": [""],
+        "image_1": "",
+        "image_2": ""},
+        {"answerText": "Ascensores",
+        "answerTooltip": "",
+        "regulation": ["SIND_16","SIND_17","SIND_20"],
+        "image_1": "",
+        "image_2": ""},
+        {"answerText": "Carretillas automotoras",
+        "answerTooltip": "",
+        "regulation": ["SIND_20","SIND_39"],
+        "image_1": "",
+        "image_2": ""},
+        {"answerText": "Grúas torre desmontables",
+        "answerTooltip": "",
+        "regulation": ["SIND_20","SIND_18","SIND_12"],
+        "image_1": "",
+        "image_2": ""}
+        ]
+      },
+      {
+        "key": "5",
+        "type": "radio",
+        "questionTextES": "¿Dispone de equipos a presión con una presión máxima admisible superior a 0.5 bares?",
+        "questionTextCA": "",
+        "questionDoc1" : "",
+        "questionDoc2" : "",
+        "questionTooltipES": "Equipo a presión son los recipientes, las tuberías, los accesorios de seguridad y los accesorios a presión que está diseñado y fabricado para contener fluidos a presión superior a 0.5 bar.<br>Ejemplos: botellas a presión, compresores, calderas de vapor, caldera proceso, depósito criogénico etc....<br><br><strong>NO SE DEBEN INCLUIR EN ESTA PREGUNTA LOS SIGUIENTES EQUIPOS:</strong><ul><li>las redes de tuberías de suministro o distribución de agua fría o combustibles líquidos o gaseosos, así como las redes de agua contra incendios y las de conducción de agua motriz de las centrales hidroeléctricas.</li><li>Equipos a presión que disponen de reglamentación de seguridad específica, tales como:<ol><li>Instalaciones térmicas para confort térmico de las personas en edificios (RITE).</li><li>Instalaciones frigoríficas (RSIF).</li><li>Instalaciones de protección contra incendios.</li></ol></li></ul>",
+        "questionTooltipCA": "",
+        "link": "https://...",
+        "answers":
+        [
+        {"answerText": "Sí",
+        "answerTooltip": "",
+        "regulation": ["SIND_1 AP Consolidado"],
+        "image_1": "",
+        "image_2": ""},
+        {"answerText": "No",
+        "answerTooltip": "",
+        "regulation": [""],
+        "image_1": "",
+        "image_2": ""}
+        ]
+      }
+      ]
+  },
+
+  {
+    "vectorId": "3",
+    "vectorName": "Aguas",
+    "vectorGeneralRegulation":["AGU_8"],
+    "questions":
+    [
+      {
+        "key": "2",
+        "type": "radio",
+        "questionTextES": "¿Dispone de pozo de abastecimiento de agua?",
+        "questionTextCA": "",
+        "questionDoc1" : "",
+        "questionDoc2" : "",
+        "questionTooltipES": "Pozo de agua se refiere a la captación de aguas subterraneas (acuífero, manto de agua), agua extraída mediante bombeo. No se refiere a sistema de almacenamiento de agua ( aljibes, depósitos de agua), ni a pozos destinados a vertidos (Ciego/negro) .",
+        "questionTooltipCA": "",
+        "link": "https://...",
+        "answers":
+        [
+          {"answerText": "Sí",
+            "answerTooltip": "",
+            "regulation": ["AGU_8"],
+            "answerImage_1": "",
+            "answerImage_2": ""},
+
+          {"answerText": "No",
+            "answerTooltip": "",
+            "regulation": [""],
+            "answerImage_1": "",
+            "answerImage_2": ""} 
+        ]
+      },
+      {
+        "key": "3",
+        "type": "radio",
+        "questionTextES": "¿Hacen reutilización de aguas en su actividad?",
+        "questionTextCA": "",
+        "questionDoc1" : "",
+        "questionDoc2" : "",
+        "questionTooltipES": "Se entiende por reutilización de las aguas depuradas a la utilización para un nuevo uso privativo, antes de su devolución al dominio público hidráulico o marítimo-terrestre, de las aguas que, habiendo sido utilizadas por quien las derivó, se han sometido a un tratamiento que permite adecuar su calidad al uso al que se van a destinar. Las aguas sometidas a este tratamiento se denominan aguas regeneradas . En usos industriales <strong>no</strong> tendrá consideración de reutilización de aguas la recirculación de estas dentro de los procesos industriales de la propia actividad. <strong>Si</strong> es reutilización el uso de pluviales para riego",
+        "questionTooltipCA": "",
+        "link": "https://...",
+        "answers":
+        [
+          {"answerText": "Sí",
+            "answerTooltip": "",
+            "regulation": ["AGU_5"],
+            "answerdoc1": "",
+            "answerdoc2": ""},
+          {"answerText": "No",
+            "answerTooltip": "",
+            "regulation": [""],
+            "answerdoc1": "",
+            "answerdoc2": ""}
+        ]
+      },
+      {
+        "key": "1",
+        "type": "checkbox",
+        "questionTextES": "¿ Realiza vertidos de aguas residuales? Indique a dónde vierte., puede seleccionar mas de una opcion",
+        "questionTextCA": "",
+        "questionDoc1" : "",
+        "questionDoc2" : "",
+        "questionTooltipES": "",
+        "questionTooltipCA": "",
+        "link": "https://...",
+        "answers":
+        [
+          {"answerText": "No",
+          "answerTooltip": "",
+          "regulation": [""],
+          "image_1": "",
+          "image_2": ""},
+          {"answerText": "Alcantarillado",
+            "answerTooltip": "Vertido que está conectado al alcantarillado municipal",
+            "regulation": ["AGU_7"],
+            "image_1": "",
+            "image_2": ""},
+          {"answerText": "Fosa séptica",
+            "answerTooltip": "Sistema de almacenaje para verter aguas residuales",
+            "regulation": ["AGU_7"],
+            "image_1": "",
+            "image_2": ""},
+          {"answerText": "Cauce público( torrente)",
+            "answerTooltip": "Cualquier vertido que no vaya a alcantarillado o al mar. <strong>Sí</strong> es el vertido de pluviales, por ejemplo de un parking  al torrente cercano. <strong>No</strong> es ni el vertido al mar de lo varaderos, ni el vertido propio al alcantarillado público.",
+            "regulation": ["AGU_7"],
+            "image_1": "",
+            "image_2": ""},
+          {"answerText": "Mar",
+            "answerTooltip": "Incluye los vertidos al mar  canalizados de pluviales  o de otras aguas de una instalación. No incluye la aguas de escorrentía",
+            "regulation": ["AGU_7"],
+            "image_1": "",
+            "image_2": ""}
+        ]
+      }
+    ]
+  },
+
   {
     "vectorId": "4",
     "vectorName": "Atmósfera",
@@ -244,5 +480,5 @@
               ]
           }
         ]
-   }
+  }
 ]

@@ -97,16 +97,16 @@ mat-cell{
 }
 
 .mat-column-delegation{
-  width :50px;
-  max-width:6rem;
-  word-wrap:break-word;
+  width: 50px;
+  min-width: 6rem;
+  word-wrap: break-word;
   padding-left: 0;
 }
 
 .mat-column-year{
-  width :50px;
-  max-width:3rem;
-  word-wrap:break-word;
+  width: 50px;
+  max-width: 3rem;
+  word-wrap: break-word;
   padding-left: 0;
 }
 

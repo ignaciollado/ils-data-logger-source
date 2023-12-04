@@ -73,7 +73,45 @@
               "chapterName": "Residuos de la transformación física y química de minerales no metálicos",
               "chapterItems":
                 [
-
+                  {
+                    "chapterItemId": "010407*",
+                    "chapterItemName": "Residuos que contienen sustancias peligrosas procedentes de la transformación física y química de minerales no metálicos",
+                    "aspect": 3
+                                  },
+                 {
+                    "chapterItemId": "010408",
+                    "chapterItemName": "Residuos de grava y rocas trituradas distintos de los mencionados en el código 010407",
+                    "aspect": 3
+                                     },
+                 {
+                    "chapterItemId": "010409",
+                    "chapterItemName": "Residuos de arena y arcillas"
+                                     },
+                 {
+                    "chapterItemId": "010410",
+                    "chapterItemName": "Residuos de polvo y arenilla distintos de los mencionados en el código 010407",
+                    "aspect": 3
+                                     },
+                 {
+                    "chapterItemId": "010411",
+                    "chapterItemName": "Residuos de la transformación de potasa y sal gema distintos de los mencionados en el código 010407",
+                    "aspect": 3
+                                     },
+                 {
+                    "chapterItemId": "010412",
+                    "chapterItemName": "Estériles y otros residuos del lavado y limpieza de minerales, distintos de los mencionados en los códigos010407 y 010411",
+                    "aspect": 3
+                                     },
+                 {
+                    "chapterItemId": "010413",
+                    "chapterItemName": "Residuos del corte y serrado de piedra distintos de los mencionados en el código 010407",
+                    "aspect": 3
+                                     },
+                 {
+                    "chapterItemId": "010499",  
+                    "chapterItemName": "Residuos no especificados en otra categoría",
+                    "aspect": 3
+                 }
                 ]
             },
             {
@@ -81,7 +119,40 @@
               "chapterName": "Lodos y otros residuos de perforaciones",
               "chapterItems":
                 [
-
+                {
+                    "chapterItemId": "010504",
+                    "chapterItemName": "Lodos y residuos de perforaciones que contienen agua dulce",
+                    "aspect": 3
+                 },
+                 {
+                    "chapterItemId": "010505*",
+                    "chapterItemName": "Lodos y residuos de perforaciones que contienen hidrocarburos",
+                    "aspect": 3
+                 },
+                 {
+                    "chapterItemId": "010506*",
+                    
+                    "chapterItemName": "Lodos y otros residuos de perforaciones que contienen sustancias peligrosas",
+                    "aspect": 3
+                 },
+                 {
+                    "chapterItemId": "010507",
+                    
+                    "chapterItemName": "Lodos y otros residuos de perforaciones que contienen barita distintos de los mencionados en los códigos010505 y 010506",
+                    "aspect": 3
+                 },
+                 {
+                    "chapterItemId": "010508",
+                    
+                    "chapterItemName": "Lodos y otros residuos de perforaciones que contienen cloruros distintos de los mencionados en los códigos 010505 y 010506",
+                    "aspect": 3
+                  },
+                 {
+                    "chapterItemId": "010599",
+                    
+                    "chapterItemName": "Residuos no especificados en otra categoría",
+                    "aspect": 3
+                  }
                 ]
             }
           ]

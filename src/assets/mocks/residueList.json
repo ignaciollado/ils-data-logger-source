@@ -11,11 +11,13 @@
                 [
                   {
                     "chapterItemId": "010101",
-                    "chapterItemName": "Residuos de la extracción de minerales metálicos"
+                    "chapterItemName": "Residuos de la extracción de minerales metálicos",
+                    "aspect": 3
                   },
                   {
                     "chapterItemId": "010102",
-                    "chapterItemName": "Residuos de la extracción de minerales no metálicos"
+                    "chapterItemName": "Residuos de la extracción de minerales no metálicos",
+                    "aspect": 3
                   }
                 ]
             },
@@ -26,35 +28,43 @@
                 [
                   {
                     "chapterItemId": "010304",
-                    "chapterItemName": "Estériles que generan ácido procedentes de la transformación de minerales sulfurados"
+                    "chapterItemName": "Estériles que generan ácido procedentes de la transformación de minerales sulfurados",
+                    "aspect": 3
                   },
                   {
                     "chapterItemId": "010305",
-                    "chapterItemName": "Otros estériles que contienen sustancias peligrosas"
+                    "chapterItemName": "Otros estériles que contienen sustancias peligrosas",
+                    "aspect": 3
                   },
                   {
                     "chapterItemId": "010306",
-                    "chapterItemName": "Estériles distintos de los mencionados en los códigos 01 03 04 y 01 03 05"
+                    "chapterItemName": "Estériles distintos de los mencionados en los códigos 01 03 04 y 01 03 05",
+                    "aspect": 3
                   },
                   {
                     "chapterItemId": "010307",
-                    "chapterItemName": "Otros residuos que contienen sustancias peligrosas procedentes de la transformación física y química de minerales metálicos"
+                    "chapterItemName": "Otros residuos que contienen sustancias peligrosas procedentes de la transformación física y química de minerales metálicos",
+                    "aspect": 3
                   },
                   {
                     "chapterItemId": "010308",
-                    "chapterItemName": "Residuos de polvo y arenilla distintos de los mencionados en el código 01 03 07"
+                    "chapterItemName": "Residuos de polvo y arenilla distintos de los mencionados en el código 01 03 07",
+                    "aspect": 3
                   },
                   {
                     "chapterItemId": "010309",
-                    "chapterItemName": "Lodos rojos procedentes de la producción de alúmina distintos de los mencionados en el código 01 03 10"
+                    "chapterItemName": "Lodos rojos procedentes de la producción de alúmina distintos de los mencionados en el código 01 03 10",
+                    "aspect": 3
                   },
                   {
                     "chapterItemId": "010310",
-                    "chapterItemName": "Lodos rojos procedentes de la producción de alúmina que contienen sustancias peligrosas distintos de los residuos mencionados en el código 01 03 07"
+                    "chapterItemName": "Lodos rojos procedentes de la producción de alúmina que contienen sustancias peligrosas distintos de los residuos mencionados en el código 01 03 07",
+                    "aspect": 3
                   },
                   {
                     "chapterItemId": "010399",
-                    "chapterItemName": "Residuos no especificados en otra categoría"
+                    "chapterItemName": "Residuos no especificados en otra categoría",
+                    "aspect": 3
                   }
                 ]
             },

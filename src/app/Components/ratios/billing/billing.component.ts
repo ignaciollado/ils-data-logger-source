@@ -79,8 +79,8 @@ export class BillingComponent {
 
   isGridView: boolean = false
   columnsDisplayed: string[] = BillingColumns.map((col) => col.key);
-  dataSource: any = BILLING_DATA
-  //dataSource = new MatTableDataSource<BillingDTO>()
+  //dataSource: any = BILLING_DATA
+  dataSource = new MatTableDataSource<BillingDTO>()
   columnsSchema: any = BillingColumns;
 
   valid: any = {}

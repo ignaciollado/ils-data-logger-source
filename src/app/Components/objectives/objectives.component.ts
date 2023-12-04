@@ -208,7 +208,6 @@ export class ObjectivesComponent {
 
   ngOnInit() {
     this.loadEnvironmentalData()
-    /* this.loadResidues() */
     this.residueFilter.valueChanges
     .pipe(takeUntil(this._onDestroy))
     .subscribe(() => {
@@ -431,7 +430,6 @@ export class ObjectivesComponent {
               this.environmentalDataList = [...this.environmentalDataList, subSubItem]
             })
           })
-        console.log ( this.environmentalDataList )
         this.environmentalDataList
         })
 

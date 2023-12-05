@@ -1,7 +1,12 @@
 import { Component } from '@angular/core';
 import { EnvironmentalAuditsService } from 'src/app/Services/environmental-audits.service';
 import { QuestionDTO } from 'src/app/Models/question.dto';
-import { TooltipPosition } from '@angular/material/tooltip';
+import {
+  UntypedFormBuilder,
+  UntypedFormControl,
+  UntypedFormGroup,
+  Validators,
+} from '@angular/forms';
 import {
   MatDialog,
   MatDialogRef,
@@ -20,18 +25,29 @@ import { ConfirmDialogComponent } from 'src/app/confirm-dialog/confirm-dialog.co
 })
 
 export class GlobalRegulationQuestionnaireComponent {
+
+theRadioType: UntypedFormControl
+theChecboxType: UntypedFormControl
+questionListForm: UntypedFormGroup
+
 questionList: QuestionDTO[]
-positionOptions: TooltipPosition[] = ['below', 'above', 'left', 'right'];
-position =  this.positionOptions[0];
 panelOpenState: boolean = true;
 vectorProgress: number[] = []
 totalVectorQuestions: number[] = []
 totalVectorAnswers: number[] = [0]
 
+
 constructor (
+  private formBuilder: UntypedFormBuilder,
   private enviromentalAuditService: EnvironmentalAuditsService,
   public dialog: MatDialog
-) {}
+) {
+
+  this.questionListForm = this.formBuilder.group({
+    theRadioType: this.theRadioType,
+    theChecboxType: this.theChecboxType,
+  })
+}
 
 ngOnInit() {
   this.loadQuestions()
@@ -80,6 +96,10 @@ openDialog(enterAnimationDuration: string, exitAnimationDuration: string, questi
     questionText: questionText, toolTipText: toolTipText, doc1: doc1, doc2: doc2
   };
   this.dialog.open(ConfirmDialogComponent, dialogConfig);
+}
+
+saveQuestionForm(){
+  console.log (this.questionListForm.value)
 }
 
 }

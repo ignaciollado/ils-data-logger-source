@@ -1,5 +1,8 @@
 
     <h1>Identificación de requisitos legales idi: CUESTIONARIO PRELIMINAR</h1>
+    <form  *ngIf="questionList"
+    [formGroup]="questionListForm"
+    (ngSubmit)="saveQuestionForm()">
     <mat-accordion *ngFor="let vectors of questionList; index as i">
          <mat-expansion-panel>
             <mat-expansion-panel-header>
@@ -41,5 +44,10 @@
         </ol>
         </mat-expansion-panel>
     </mat-accordion>
-    <button>Enviar</button>
+    <div class="button-row">
+      <button mat-raised-button color="primary">Enviar</button>
+      <button mat-raised-button>Limpiar</button>
+    </div>
+    
+  </form>
     <span *ngIf="!questionList" class="loader">Loading data...</span>

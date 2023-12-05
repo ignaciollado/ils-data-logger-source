@@ -8,12 +8,12 @@ mysqli_query($conn, "SET NAMES 'utf8'");
 $companyId = $_GET['companyId'];
 $aspectId = $_GET['aspectId'];
 
-$sql = "SELECT ils_objective.Id, ils_objective.companyId, ils_objective.aspectId, 
-(CASE ils_objective.aspectId WHEN 1 THEN ils_objective.energyId ELSE ils_objective.residueId END) as enviromentalData,  
+$sql = "SELECT ils_objective.Id, ils_objective.companyId, ils_objective.aspectId, chapterItemId,
+ 
 (CASE ils_objective.aspectId 
- 	WHEN 1 THEN ils_energy.nameES  
+ 	WHEN 1 THEN chapterItemId 
  	WHEN 2 THEN 'Water'  
- 	WHEN 3 THEN ils_residue.nameES 
+ 	WHEN 3 THEN chapterItemId
  	WHEN 5 THEN 'CO2e Emissions' 
  ELSE '--' 
  END) as enviromentalDataName,

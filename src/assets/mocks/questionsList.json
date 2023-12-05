@@ -1,7 +1,8 @@
 [
+
   {
     "vectorId": "1",
-    "vectorName": "Residuos",
+    "vectorName": "RESIDUOS",
     "vectorGeneralRegulation":["RES_3,RES_4,RES_5,RES_18,RES_19,RES_60,RES_61"],
     "questions":
       [
@@ -110,6 +111,31 @@
         },
 
         {
+          "key": "2",
+          "type": "radio",
+          "questionTextES": "¿Realiza algún tipo de operación relacionada con la gestión de residuos (recogida, transporte, valorización, eliminación, o incineración así como actuaciones realizadas en calidad de negociante o agente) ? ",
+          "questionTextCA": "",
+          "questionDoc1" : "",
+          "questionDoc2" : "",
+          "questionTooltipES": "Indique en su caso las operaciones que realiza. <strong>- Gestor de residuos:</strong> la persona física o jurídica, pública o privada, registrada mediante autorización o comunicación que realice cualquiera de las operaciones que componen la gestión de los residuos, sea o no el productor de los mismos. <strong>- Negociante:</strong> toda persona física o jurídica que actúe por cuenta propia en la compra y posterior venta de residuos, incluidas aquellas que no tomen posesión física de los residuos. <strong>- Agente</strong>: toda persona física o jurídica que organice la valorización o la eliminación de residuos por encargo de terceros, incluidas aquellas que no tomen posesión física de los residuos",
+          "questionTooltipCA": "",
+          "link": "https://...",
+          "answers":
+          [
+                  {"answerText": "Sí",
+                   "answerTooltip": "",
+                   "regulation": ["RES_2","RES_12","RES_45","RES_59"],
+                   "image_1": "",
+                   "image_2": ""},
+                   {"answerText": "No",
+                   "answerTooltip": "",
+                   "regulation": [""],
+                   "image_1": "",
+                   "image_2": ""}
+          ]
+        },
+
+        {
         "key": "3",
         "type": "radio",
         "questionTextES": "¿Se envasan productos para su puesta en el mercado nacional o se importan y/o adquieren en otros países en la UE productos envasados para su puesta en el mercado nacional que no tengan designado Representante Autorizado por el envasador con sede fuera de España (productores de producto)?",
@@ -163,7 +189,7 @@
 
   {
     "vectorId": "2",
-    "vectorName": "Seguridad Industrial",
+    "vectorName": "SEGURIDAD INDUSTRIAL",
     "Vectorgeneralregulation":["SIND_1,SIND_2,SIND_4"],
     "questions":
       [
@@ -302,10 +328,49 @@
 
   {
     "vectorId": "3",
-    "vectorName": "Aguas",
+    "vectorName": "AGUAS",
     "vectorGeneralRegulation":["AGU_8"],
     "questions":
     [
+      {
+        "key": "1",
+        "type": "checkbox",
+        "questionTextES": "¿ Realiza vertidos de aguas residuales? Indique a dónde vierte., puede seleccionar mas de una opcion",
+        "questionTextCA": "",
+        "questionDoc1" : "",
+        "questionDoc2" : "",
+        "questionTooltipES": "",
+        "questionTooltipCA": "",
+        "link": "https://...",
+        "answers":
+        [
+          {"answerText": "No",
+          "answerTooltip": "",
+          "regulation": [""],
+          "image_1": "",
+          "image_2": ""},
+          {"answerText": "Alcantarillado",
+            "answerTooltip": "Vertido que está conectado al alcantarillado municipal",
+            "regulation": ["AGU_7"],
+            "image_1": "",
+            "image_2": ""},
+          {"answerText": "Fosa séptica",
+            "answerTooltip": "Sistema de almacenaje para verter aguas residuales",
+            "regulation": ["AGU_7"],
+            "image_1": "",
+            "image_2": ""},
+          {"answerText": "Cauce público( torrente)",
+            "answerTooltip": "Cualquier vertido que no vaya a alcantarillado o al mar. <strong>Sí</strong> es el vertido de pluviales, por ejemplo de un parking  al torrente cercano. <strong>No</strong> es ni el vertido al mar de lo varaderos, ni el vertido propio al alcantarillado público.",
+            "regulation": ["AGU_7"],
+            "image_1": "",
+            "image_2": ""},
+          {"answerText": "Mar",
+            "answerTooltip": "Incluye los vertidos al mar  canalizados de pluviales  o de otras aguas de una instalación. No incluye la aguas de escorrentía",
+            "regulation": ["AGU_7"],
+            "image_1": "",
+            "image_2": ""}
+        ]
+      },
       {
         "key": "2",
         "type": "radio",
@@ -354,52 +419,13 @@
             "answerdoc1": "",
             "answerdoc2": ""}
         ]
-      },
-      {
-        "key": "1",
-        "type": "checkbox",
-        "questionTextES": "¿ Realiza vertidos de aguas residuales? Indique a dónde vierte., puede seleccionar mas de una opcion",
-        "questionTextCA": "",
-        "questionDoc1" : "",
-        "questionDoc2" : "",
-        "questionTooltipES": "",
-        "questionTooltipCA": "",
-        "link": "https://...",
-        "answers":
-        [
-          {"answerText": "No",
-          "answerTooltip": "",
-          "regulation": [""],
-          "image_1": "",
-          "image_2": ""},
-          {"answerText": "Alcantarillado",
-            "answerTooltip": "Vertido que está conectado al alcantarillado municipal",
-            "regulation": ["AGU_7"],
-            "image_1": "",
-            "image_2": ""},
-          {"answerText": "Fosa séptica",
-            "answerTooltip": "Sistema de almacenaje para verter aguas residuales",
-            "regulation": ["AGU_7"],
-            "image_1": "",
-            "image_2": ""},
-          {"answerText": "Cauce público( torrente)",
-            "answerTooltip": "Cualquier vertido que no vaya a alcantarillado o al mar. <strong>Sí</strong> es el vertido de pluviales, por ejemplo de un parking  al torrente cercano. <strong>No</strong> es ni el vertido al mar de lo varaderos, ni el vertido propio al alcantarillado público.",
-            "regulation": ["AGU_7"],
-            "image_1": "",
-            "image_2": ""},
-          {"answerText": "Mar",
-            "answerTooltip": "Incluye los vertidos al mar  canalizados de pluviales  o de otras aguas de una instalación. No incluye la aguas de escorrentía",
-            "regulation": ["AGU_7"],
-            "image_1": "",
-            "image_2": ""}
-        ]
       }
     ]
   },
 
   {
     "vectorId": "4",
-    "vectorName": "Atmósfera",
+    "vectorName": "ATMÓSFERA",
     "vectorGeneralRegulation":["ATM_47","ATM_5","ATM_9","ATM_12"],
     "questions":
         [
@@ -478,7 +504,244 @@
                        "image_1": "",
                        "image_2": ""}
               ]
+          },
+          {
+            "key": "4",
+            "type": "radio",
+            "questionTextES": "¿Realizan actividades catalogadas como potencialmente contaminadoras de la atmósfera (incluidas en el Catálogo APCAS)?",
+            "questionTextCA": "",
+            "questionDoc1" : "PATM_4_ANEXO",
+            "questionDoc2" : "",
+            "questionTooltipES": "Se consideran Actividades Potencialmente Contaminadoras de la Atmósfera (APCA en adelante), aquellas que por su propia naturaleza, ubicación o por los procesos tecnológicos utilizados constituyan una fuente de contaminación cuyas características pueden requerir que sean sometidas a un régimen de control y seguimiento más estricto, como por ejemplo: calderas del sector industrial de potencia térmica nominal igual o superior a 250 kWt,  consumo de disolvente superior a 5 t/año, etc..",
+            "questionTooltipCA": "",
+            "link": "https://...",
+            "answers":
+            [
+                    {"answerText": "Sí",
+                     "answerTooltip": "",
+                     "regulation": ["ATM_1","ATM_11"],
+                     "image_1": "",
+                     "image_2": ""},
+                     {"answerText": "No",
+                     "answerTooltip": "",
+                     "regulation": [""],
+                     "image_1": "",
+                     "image_2": ""}
+            ]
+          },
+          {
+          "key": "5",
+          "type": "radio",
+          "questionTextES": "Disponen de equipos o aparatos que contengan GASES FLUORADOS de EFECTO INVERNADERO Y/O AGOTAMIENTO DE LA CAPA OZONO?",
+          "questionTextCA": "",
+          "questionDoc1" : "",
+          "questionDoc2" : "",
+          "questionTooltipES": "Los gases fluorados de efecto invernadero (GFEI) son una familia de gases artificiales utilizados en diversas aplicaciones industriales, principalmente como sustitutos de las sustancias que agotan la capa de ozono (como R-22, R410-A,R134A, R143, R404, R407,HFC 227EA, etc) y  con un efecto de calentamiento de hasta 23.000 veces superior al del CO2. Estos gases se utilizan en diversos sectores y aplicaciones, por ejemplo, como refrigerantes en equipos de refrigeración, aire acondicionado y bombas de calor,agentes espumantes, etc.",
+          "questionTooltipCA": "",
+          "link": "https://...",
+          "answers":
+          [
+                  {"answerText": "Sí",
+                   "answerTooltip": "",
+                   "regulation": ["ATM_18,ATM_23,ATM_39,ATM_40,ATM_42,ATM_44"],
+                   "image_1": "",
+                   "image_2": ""},
+                   {"answerText": "No",
+                   "answerTooltip": "",
+                   "regulation": [""],
+                   "image_1": "",
+                   "image_2": ""}
+          ]      
+          },
+          {
+          "key": "6",
+          "type": "radio",
+          "questionTextES": "La industria dispone de algún vehículo que gestione directamente por ejemplo: vehículos de transporte, vehículos comerciales, etc.",
+          "questionTextCA": "",
+          "questionDoc1" : "",
+          "questionDoc2" : "",
+          "questionTooltipES": "",
+          "questionTooltipCA": "",
+          "link": "https://...",
+          "answers":
+          [
+                  {"answerText": "Sí",
+                   "answerTooltip": "",
+                   "regulation": ["ATM_48,ATM_49"],
+                   "image_1": "",
+                   "image_2": ""},
+                   {"answerText": "No",
+                   "answerTooltip": "",
+                   "regulation": [""],
+                   "image_1": "",
+                   "image_2": ""}
+          ]
+          },
+          {
+          "key": "7",
+          "type": "radio",
+          "questionTextES": "La industria dispone de aparcamiento de más de 40 plazas",
+          "questionTextCA": "",
+          "questionDoc1" : "",
+          "questionDoc2" : "",
+          "questionTooltipES": "",
+          "questionTooltipCA": "",
+          "link": "https://...",
+          "answers":
+          [
+                  {"answerText": "Sí",
+                   "answerTooltip": "",
+                   "regulation": [""],
+                   "image_1": "",
+                   "image_2": ""},
+                   {"answerText": "No",
+                   "answerTooltip": "",
+                   "regulation": [""],
+                   "image_1": "",
+                   "image_2": ""}
+          ]
           }
         ]
+  },
+
+  {
+    "vectorId": "5",
+    "vectorName": "SUSTANCIAS Y PREPARADOS QUÍMICOS",
+    "Vectorgeneralregulation":[""],
+    "questions":
+    [
+    {
+        "key": "1",
+        "type": "radio",
+        "questionTextES": "¿Se realizan actividades de expedición, carga, descarga y transporte de las mercancías peligrosas POR CARRETERA?",
+       "questionTextCA": "",
+       "questionDoc1" : "",
+        "questionDoc2" : "",
+        "questionTooltipES": "Este requisito aplica a todas aquellas EMPRESAS cuya actividad esté relacionada con el <strong>TRANSPORTE DE MERCANCÍAS PELIGROSAS POR CARRETERA</strong>, en su condición de: <strong>- EXPEDIDOR</strong> de las mercancías <strong>- Transportista:</strong> <strong>-Cargador-descargador:</strong> Una mercancia peligrosa es todo producto que lleve un pictograma de peligrosidad como gasoil, gasolina. <strong>Si</strong> aplica si se dispone de un tanque de combustible propio flota de vehículos, hay una carga y descarga por parte del personal propio para los camiones por ejemplo. <strong>No</strong> aplicaría si tengo un tanque de gasoil para caldera y sólo lo maneja el proveedor para la carga y descarga.",
+        "questionTooltipCA": "",
+        "link": "https://...",
+        "answers":
+        [
+                {"answerText": "YES",
+                "answerTooltip": "",
+                "regulation": ["QMC_13,QMC_14,QMC_22"],
+                "answerImage_1": "",
+                "answerImage_2": ""},
+
+                {"answerText": " NO",
+                "answerTooltip": "",
+                "regulation": [""],
+                "answerImage_1": "",
+                "answerImage_2": ""}
+
+              
+        ]
+    },
+    
+    {
+        "key": "2",
+        "type": "radio",
+        "questionTextES": "¿ Utilizan y/o comercializan sustancias y/o preparados peligrosos?",
+        "questionTextCA": "",
+        "questionDoc1" : "",
+        "questionDoc2" : "",
+        "questionTooltipES": "Este Reglamento será de aplicación a los preparados que contengan al menos una sustancia peligrosa. Se considerarán peligrosas las sustancias y los preparados siguientes: <strong>a. Explosivos:</strong> las sustancias y preparados sólidos, líquidos, pastosos o gelatinosos que, incluso en ausencia del oxígeno del aire, pueden reaccionar de forma exotérmica con rápida formación de gases y que, en condiciones de ensayo determinadas, detonan, deflagran rápidamente o, bajo el efecto del calor, en caso de confinamiento parcial, explosionan. <strong>b. Comburentes:</strong> las sustancias y preparados que, en contacto con otras sustancias, en especial con sustancias inflamables, producen una reacción fuertemente exotérmica. <strong>c. Extremadamente inflamables:</strong> las sustancias y preparados líquidos que tengan un punto de inflamación extremadamente bajo y un punto de ebullición bajo, y las sustancias y preparados gaseosos que, a temperatura y presión ambientes, sean inflamables en contacto con el aire. d<strong>. Fácilmente inflamables:</strong> Las sustancias y preparados que pueden calentarse y finalmente inflamarse en contacto con el aire a temperatura ambiente sin aporte de energía, o Las sustancias y preparados sólidos que pueden inflamarse fácilmente tras un breve contacto con una fuente de inflamación y que siguen quemándose o consumiéndose una vez retirada dicha fuente, o Las sustancias y preparados en estado líquido cuyo punto de inflamación es muy bajo, o Las sustancias y preparados que, en contacto con agua o con aire húmedo, desprenden gases extremadamente inflamables en cantidades peligrosas. <strong>e. Inflamables:</strong> las sustancias y preparados líquidos cuyo punto de inflamación es bajo. <strong>f. Muy tóxicos:</strong> las sustancias y preparados que, por inhalación, ingestión o penetración cutánea en muy pequeña cantidad, pueden provocar la muerte o efectos agudos o crónicos para la salud. <strong>g. Tóxicos:</strong> las sustancias y preparados que, por inhalación, ingestión o penetración cutánea en pequeñas cantidades, provocan la muerte o efectos agudos o crónicos para la salud. <strong>h. Nocivos:</strong> las sustancias y preparados que, por inhalación, ingestión o penetración cutánea, pueden provocar la muerte o efectos agudos o crónicos para la salud. <strong>i. Corrosivos:</strong> las sustancias y preparados que, en contacto con tejidos vivos, pueden ejercer una acción destructiva de los mismos. <strong>j. Irritantes:</strong> las sustancias y preparados no corrosivos que, por contacto breve, prolongado o repetido con la piel o las mucosas, pueden provocar una reacción inflamatoria. <strong>k. Sensibilizantes:</strong> las sustancias y preparados que, por inhalación o penetración cutánea, pueden ocasionar una reacción de hipersensibilización, de forma que una exposición posterior a esa sustancia o preparado dé lugar a efectos nocivos característicos. <strong>l. Carcinogénicos:</strong> las sustancias y preparados que, por inhalación, ingestión o penetración cutánea, pueden producir cáncer o aumentar su frecuencia. <strong>m. Mutagénicos:</strong> las sustancias y preparados que, por inhalación, ingestión o penetración cutánea, pueden producir defectos genéticos hereditarios o aumentar su frecuencia. <strong>n. Tóxicos para la reproducción:</strong> las sustancias o preparados que, por inhalación, ingestión o penetración cutánea, pueden producir efectos nocivos no hereditarios en la descendencia, o aumentar la frecuencia de éstos, o afectar de forma negativa a la función o a la capacidad reproductora masculina o femenina. <strong>ñ. Peligrosos para el medio ambiente</strong>: las sustancias o preparados que, en caso de contacto con el medio ambiente, constituirían o podrían constituir un peligro inmediato o futuro para uno o más componentes del medio ambiente. No se considera peligroso</strong> Los medicamentos de uso humano o veterinario. Los productos cosméticos. Los productos alimenticios. Los alimentos para animales. Los preparados que contienen sustancias radiactivas. Los productos sanitarios que sean invasivos o se apliquen en contacto directo con el cuerpo humano, siempre que su legislación específica establezca para esas sustancias o preparados peligrosos, normas de clasificación y etiquetado que garanticen el mismo nivel de información y de protección que el presente reglamento..",
+        "questionTooltipCA": "",
+        "link": "https://...",
+        "answers":
+        [
+                {"answerText": "SI",
+                 "answerTooltip": "",
+                 "regulation": ["QMC_5","QMC_12","QMC_16","QMC_18","QMC_19","QMC_21","QMC_25","QMC_2"],
+
+                 "answerdoc1": "",
+                 "answerdoc2": ""},
+
+                 {"answerText": "No",
+                 "answerTooltip": "",
+                 "regulation": [""],
+                 "answerdoc1": "",
+                 "answerdoc2": ""}
+        ]
+    },
+
+    {
+        "key": "3",
+        "type": "radio",
+        "questionTextES": "Indique si disponen de instalaciones o lleva a cabo alguna actividad relacionada con explosivos, artículos pirotécnicos y/o cartuchería:",
+        "questionTextCA": "",
+        "questionDoc1" : "",
+        "questionDoc2" : "",
+        "questionTooltipES": "",
+        "questionTooltipCA": "",
+        "link": "https://...",
+        "answers":
+        [
+                {"answerText": "Sí",
+                 "answerTooltip": "",
+                 "regulation": ["QMC_1","QMC_9"],
+                 "image_1": "",
+                 "image_2": ""},
+                 {"answerText": "No",
+                 "answerTooltip": "",
+                 "regulation": [""],
+                 "image_1": "",
+                 "image_2": ""}
+        ]
+    },
+
+    {
+        "key": "4",
+        "type": "radio",
+        "questionTextES": "¿Se fabrican, comercializan o utilizan o manejan biocidas?",
+        "questionTextCA": "",
+        "questionDoc1" : "",
+        "questionDoc2" : "",
+        "questionTooltipES": "Los productos biocidas son mezclas que contienen una o más sustancias activas que sirven para repeler, neutralizar o destruir organismos nocivos, como desinfectantes como lejía o hipoclorito sódico, conservantes, plaguicidas… Esta pregunta debe se repondida con un <strong>SI</strong> si fabricas, almacenas, comercializas o prestas servicios profesionales con BIOCIDAS",
+        "questionTooltipCA": "",
+        "link": "https://...",
+        "answers":
+        [
+                {"answerText": "Si",
+                 "answerTooltip": "",
+                 "regulation": ["QMC_24"],
+                 "image_1": "",
+                 "image_2": ""},
+                 {"answerText": "No",
+                 "answerTooltip": "",
+                 "regulation": [""],
+                 "image_1": "",
+                 "image_2": ""}
+                 
+
+        ]
+    },
+
+    {
+        "key": "5",
+        "type": "radio",
+        "questionTextES": "¿Se utilizan o manejan productos fitosanitarios? ",
+        "questionTextCA": "",
+        "questionDoc1" : "",
+        "questionDoc2" : "",
+        "questionTooltipES": "Los productos fitosanitarios son mezclas químicas que contienen una o varias sustancias activas y otros ingredientes, y cuyo objetivo es proteger los vegetales y sus productos de organismos nocivos. También se consideran productos fitosanitarios a las sustancias que destruyen las plantas, regulan o inhiben la germinación. Se repondera <strong>SI</strong>  a esta pregunta si  realizadas cualqier actividad fitosanitaria, agrícola o forestal o si se hace uso de fitosanitarios de manera no profesional",
+        "questionTooltipCA": "",
+        "link": "https://...",
+        "answers":
+        [
+                {"answerText": "Sí",
+                 "answerTooltip": "",
+                 "regulation": ["QMC_10"],
+                 "image_1": "",
+                 "image_2": ""},
+                 {"answerText": "No",
+                 "answerTooltip": "",
+                 "regulation": [""],
+                 "image_1": "",
+                 "image_2": ""}
+        ]
+    }
+  ]
   }
+
 ]

@@ -20,12 +20,12 @@ import { MatDialog } from '@angular/material/dialog'
 import { ConfirmDialogComponent } from 'src/app/confirm-dialog/confirm-dialog.component'
 
 import { DateAdapter } from '@angular/material/core'
-import { ResidueDTO } from 'src/app/Models/residue.dto'
-import { EnvironmentalDTO } from 'src/app/Models/environmental.dto'
+
 import { ChapterItem, ResidueLERDTO } from 'src/app/Models/residueLER.dto'
 import { ReplaySubject, Subject, takeUntil } from 'rxjs'
 import { MatSelect } from '@angular/material/select'
 import { ResidueService } from 'src/app/Services/residue.service'
+import { EnergyService } from 'src/app/Services/energy.service'
 
  const OBJECTIVES_DATA = [
   {Id: 1, delegation: "Mock Data", year: "2019", enviromentalDataName: "Fuel (kg)", "theRatioType": "Billing", "jan": 15000000, "feb": 15000000, "mar": 15000000, "apr": 15000000, "may": 15000000
@@ -182,6 +182,7 @@ export class ObjectivesComponent {
     private jwtHelper: JwtHelperService,
     private sharedService: SharedService,
     private objectiveService: ObjectiveService,
+    private energyService: EnergyService,
     private residueService: ResidueService,
     private formBuilder: UntypedFormBuilder,
     private userService: UserService,
@@ -235,6 +236,34 @@ export class ObjectivesComponent {
   private loadObjectives( userId: string ): void {
     this.objectiveService.getAllObjectivesByCompany(userId).subscribe((res: ObjectiveDTO[]) => {
       this.dataSource.data = res;
+      this.dataSource.data. map ( (objective: ObjectiveDTO) => {
+
+        if (objective.aspectId==1) { /* Energies */
+          this.energyService.getAllEnergies().subscribe((energies: EnergyDTO[]) => {
+            energies.map ( (itemEnergy: EnergyDTO) => {
+              if (itemEnergy.energyId==objective.chapterItemId) {
+                objective.enviromentalDataName = itemEnergy.nameES
+              }
+            })
+          })
+        }
+
+        if (objective.aspectId==3) { /* Residues */
+        this.residueService.getResiduesLER().subscribe((residuesLER: ResidueLERDTO[]) => {
+          residuesLER.map( item => {
+            item.chapters.map( subItem=> {
+              subItem.chapterItems.map( (subSubItem: ChapterItem)=> {
+                if (subSubItem.chapterItemId == objective.chapterItemId) {
+                  objective.enviromentalDataName = subSubItem.chapterItemName
+                }
+
+              })
+            })
+          this.environmentalDataList
+          })
+        })
+        }
+      })
       /* this.dataSource.paginator = this.paginator; */
     });
   }
@@ -242,7 +271,7 @@ export class ObjectivesComponent {
   private loadEnvironmentalData(): void {
     this.objectiveService.getAllEnvironmentalData().subscribe((res: any) => {
       this.environmentalDataList = res
-      this.loadResidues()
+      this.addResiduesList()
     });
   }
 
@@ -268,7 +297,6 @@ export class ObjectivesComponent {
   }
 
   public copyCnaeMonthValue( resource: ObjectiveDTO ) {
-    console.log (this.isChecked)
     if (this.isChecked) {
       resource.dec = resource.nov = resource.oct = resource.sep = resource.aug = resource.jul = resource.jun = resource.may = resource.apr = resource.mar = resource.feb = resource.jan
     } else {
@@ -291,26 +319,26 @@ export class ObjectivesComponent {
   }
 
   public addRow() {
-    let environmentalDataEnergy: number = 0
-    let environmentalDataResidue: number = 0
+    let environmentalDataEnergy: string = '0'
+    /* let environmentalDataResidue: number = 0 */
     /*  const newRow = {"delegation": this.delegation.value, "year": this.yearObjective.value, "energyES": this.energy.value, "objectiveType": this.objectiveType.value, isEdit: true} */
     /*  this.dataSource = [...this.dataSource, newRow];  */
 
     if (this.environmentalData.value.aspect == 1) {
-      environmentalDataEnergy = this.environmentalData.value.idEnv
-      environmentalDataResidue = 0
+      environmentalDataEnergy = this.environmentalData.value.chapterItemId
+      /* environmentalDataResidue = 0 */
     }
     if (this.environmentalData.value.aspect == 2) {
-      environmentalDataEnergy = 0
-      environmentalDataResidue = 0
+      environmentalDataEnergy = '999999'
+      /* environmentalDataResidue = 0 */
     }
     if (this.environmentalData.value.aspect == 3) {
-      environmentalDataEnergy = 0
-      environmentalDataResidue = this.environmentalData.value.idEnv
+      environmentalDataEnergy = this.environmentalData.value.chapterItemId
+      /* environmentalDataResidue = 0 */
     }
     if (this.environmentalData.value.aspect == 5) {
-      environmentalDataEnergy = 0
-      environmentalDataResidue = 0
+      environmentalDataEnergy = '888888'
+      /* environmentalDataResidue = 0 */
     }
     const newRow: ObjectiveDTO = {
       Id: 0,
@@ -318,8 +346,8 @@ export class ObjectivesComponent {
       companyDelegationId: this.delegation.value,
       aspectId: this.environmentalData.value.aspect,
       theRatioType: this.objectiveType.value,
-      energyId: environmentalDataEnergy,
-      residueId: environmentalDataResidue,
+      chapterItemId: environmentalDataEnergy,
+      /* residueId: environmentalDataResidue, */
       year: this.yearObjective.value,
      /*  jan: 0,
       feb: 0,
@@ -340,7 +368,7 @@ export class ObjectivesComponent {
   }
 
   editRow(row: ObjectiveDTO) {
-    console.log (row)
+
     if (row.Id == 0) {
       this.objectiveService.createObjective(row).subscribe((newObjective: ObjectiveDTO) => {
         row.Id = newObjective.Id
@@ -418,7 +446,7 @@ export class ObjectivesComponent {
     }));
   } */
 
-  private loadResidues(): void {
+  private addResiduesList(): void {
     let errorResponse: any; 
     this.residueService.getResiduesLER()
     .subscribe(

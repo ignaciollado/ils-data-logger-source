@@ -12,10 +12,10 @@ $postedData = file_get_contents("php://input");
 $request = json_decode($postedData, TRUE);
 
 $sql = "INSERT INTO ils_objective(companyId, companyDelegationId, aspectId,
- theRatioType, energyId, residueId, year, 
+ theRatioType, chapterItemId, year, 
  `01`, `02`, `03`, `04`, `05`, `06`, `07`, `08`, `09`, `10`, `11`, `12`) VALUES ("
 .$request['companyId'].",".$request['companyDelegationId'].",".$request['aspectId'].",'"
-.$request['theRatioType']."',".$request['energyId'].",".$request['residueId'].",'".$request['year']."',"
+.$request['theRatioType']."','".$request['chapterItemId']."','".$request['year']."',"
 .$request['jan'].","
 .$request['feb'].","
 .$request['mar'].","

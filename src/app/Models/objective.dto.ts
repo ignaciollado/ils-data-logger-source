@@ -3,8 +3,8 @@ export class ObjectiveDTO {
   companyId: string
   companyDelegationId: number
   aspectId?: number
-  energyId?: number
-  residueId?: number
+  chapterItemId?: string
+  enviromentalDataName?: string
   theRatioType: string
   isSelected: boolean
   isEdit: boolean
@@ -27,8 +27,8 @@ constructor(
   companyId: string,
   companyDelegationId: number,
   aspectId: number,
-  energyId: number,
-  residueId: number,
+  chapterItemId: string,
+  enviromentalDataName: string,
   theRatioType: string,
   isSelected: boolean,
   isEdit: boolean,
@@ -49,9 +49,9 @@ constructor(
   this.Id = Id,
   this.companyId = companyId,
   this.companyDelegationId = companyDelegationId,
-  this.energyId = energyId,
+  this.chapterItemId = chapterItemId,
+  this.enviromentalDataName = enviromentalDataName,
   this.aspectId = aspectId,
-  this.residueId = residueId,
   this.isSelected = isSelected,
   this.isEdit = isEdit,
   this.theRatioType = theRatioType,
@@ -95,7 +95,7 @@ export const ObjectiveColumns = [
       {
         key: "enviromentalDataName",
         type: "text",
-        label: "Consumption"
+        label: "Environmental data"
       },
       {
         key: "theRatioType",

@@ -68,7 +68,6 @@ private loadQuestions(): void {
         'vectorQuestions': new FormControl(this.questionList[0].questions)
       })
       this.questionListForm = this.formBuilder.group({
-        ...this.questionListForm.controls,
         'vectorId' : new FormControl(this.questionList[1].vectorId, Validators.required),
         'vectorName': new FormControl(this.questionList[1].vectorName, Validators.required),
         'vectorgeneralregulation': new FormControl(this.questionList[1].vectorGeneralRegulation, Validators.required),

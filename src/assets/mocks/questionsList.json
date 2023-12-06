@@ -428,7 +428,7 @@
     "vectorName": "ATMÓSFERA",
     "vectorGeneralRegulation":["ATM_47","ATM_5","ATM_9","ATM_12"],
     "questions":
-        [
+      [
           {
               "key": "1",
               "type": "radio",
@@ -601,7 +601,7 @@
                    "image_2": ""}
           ]
           }
-        ]
+      ]
   },
 
   {
@@ -741,7 +741,7 @@
                  "image_2": ""}
         ]
     }
-  ]
+    ]
   }
 
 ]

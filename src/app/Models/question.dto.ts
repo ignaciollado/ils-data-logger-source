@@ -6,7 +6,7 @@ export class QuestionDTO {
 }
 
 export interface Question {
-  questionNumber:     string;
+  key:                string;
   type:               string;
   questionTextES:     string;
   questionTextCA:     string;

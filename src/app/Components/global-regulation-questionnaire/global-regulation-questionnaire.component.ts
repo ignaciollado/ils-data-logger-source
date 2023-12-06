@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import { EnvironmentalAuditsService } from 'src/app/Services/environmental-audits.service';
-import { QuestionDTO } from 'src/app/Models/question.dto';
+import { Question, QuestionDTO } from 'src/app/Models/question.dto';
 import {
   UntypedFormBuilder,
   UntypedFormControl,
   UntypedFormGroup,
-  Validators, FormArray
+  Validators, FormArray, FormGroup, FormControl
 } from '@angular/forms';
 import {
   MatDialog,
@@ -17,6 +17,7 @@ import {
 } from '@angular/material/dialog';
 
 import { ConfirmDialogComponent } from 'src/app/confirm-dialog/confirm-dialog.component'
+import { AnswerDTO } from 'src/app/Models/answer.dto';
 
 @Component({
   selector: 'app-global-regulation-questionnaire',
@@ -28,7 +29,7 @@ export class GlobalRegulationQuestionnaireComponent {
 
 theRadioType: UntypedFormControl
 theChecboxType: UntypedFormControl
-questionListForm: UntypedFormGroup
+questionListForm: FormGroup
 
 questionList: QuestionDTO[]
 panelOpenState: boolean = true;
@@ -36,6 +37,7 @@ vectorProgress: number[] = []
 totalVectorQuestions: number[] = []
 totalVectorAnswers: number[] = [0]
 
+submitted = false;
 
 constructor (
   private formBuilder: UntypedFormBuilder,
@@ -43,13 +45,12 @@ constructor (
   public dialog: MatDialog
 ) {
 
-  this.questionListForm = this.formBuilder.group({
-    theRadioType: this.theRadioType,
-    theChecboxType: this.theChecboxType,
-  })
 }
 
 ngOnInit() {
+  this.questionListForm = this.formBuilder.group({
+    
+});
   this.loadQuestions()
 }
 
@@ -57,10 +58,12 @@ private loadQuestions(): void {
   this.enviromentalAuditService.getQuestionList()
     .subscribe( (questions:QuestionDTO[]) => {
       this.questionList = questions
-      questions.map( (item:any) => {
-        this.totalVectorQuestions.push(item['questions'].length)
+      this.questionListForm = this.formBuilder.group(this.questionList);
+      questions.map( (vector:QuestionDTO) => {
+        this.totalVectorQuestions.push(vector['questions'].length)
       })
     })
+
 }
 
 getRadio(answer:string, questionNumber:string, regulation: string[], e:any, i: number, totalVectorQuestions: number){
@@ -101,5 +104,7 @@ openDialog(enterAnimationDuration: string, exitAnimationDuration: string, questi
 saveQuestionForm(){
   console.log (this.questionListForm.value)
 }
+
+
 
 }

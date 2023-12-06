@@ -1,7 +1,7 @@
 
-    <h1>Identificación de requisitos legales idi: CUESTIONARIO PRELIMINAR</h1>
-    <h2>https://jasonwatmore.com/post/2022/12/23/angular-14-dynamic-reactive-forms-example</h2>
-    <form  *ngIf="questionList"
+  <h1>Identificación de requisitos legales idi: CUESTIONARIO PRELIMINAR</h1>
+  
+  <form  *ngIf="questionList"
     [formGroup]="questionListForm"
     (ngSubmit)="saveQuestionForm()">
     <mat-accordion *ngFor="let vectors of questionList; index as i">
@@ -51,7 +51,27 @@
       <button mat-raised-button>Limpiar</button>
     </div>
     <p>Status: {{ questionListForm.status }}</p>
-    <p>Value: {{ questionListForm.value }}</p>
+  
 
   </form>
-    <span *ngIf="!questionList" class="loader">Loading data...</span>
+
+  <form novalidate [formGroup]="questionListForm">
+    
+  <!--  <mat-accordion *ngFor=" let vectors of questionListForm.controls[0]; index as j">
+      --{{j}} {{vectors[j]}}--
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <span color="warn">Vector: {{vectors[j]}}</span>
+            <span>Total answered: {{totalVectorAnswers[j+1]}}</span>
+            <span>Total questions: {{totalVectorQuestions[j+1]}}</span>
+          </mat-panel-title>
+          <mat-progress-bar mode="determinate" value="{{vectorProgress[j+1]}}"></mat-progress-bar>
+      </mat-expansion-panel-header>      
+      </mat-expansion-panel>  
+    </mat-accordion>  -->
+   <!--  <input type="text" *ngFor="let key of questionListForm; index as j" formControlName="{{ key }}"> -->
+  </form>
+
+
+  <span *ngIf="!questionList" class="loader">Loading data...</span>

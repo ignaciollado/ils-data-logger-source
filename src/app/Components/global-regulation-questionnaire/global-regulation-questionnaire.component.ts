@@ -5,7 +5,7 @@ import {
   UntypedFormBuilder,
   UntypedFormControl,
   UntypedFormGroup,
-  Validators, FormArray, FormGroup, FormControl
+  Validators, FormArray, FormGroup, FormControl, ReactiveFormsModule, FormBuilder 
 } from '@angular/forms';
 import {
   MatDialog,
@@ -29,7 +29,7 @@ export class GlobalRegulationQuestionnaireComponent {
 
 theRadioType: UntypedFormControl
 theChecboxType: UntypedFormControl
-questionListForm: FormGroup
+questionListForm: FormGroup = this.formBuilder.group({});
 
 questionList: QuestionDTO[]
 panelOpenState: boolean = true;
@@ -40,7 +40,7 @@ totalVectorAnswers: number[] = [0]
 submitted = false;
 
 constructor (
-  private formBuilder: UntypedFormBuilder,
+  private formBuilder: FormBuilder,
   private enviromentalAuditService: EnvironmentalAuditsService,
   public dialog: MatDialog
 ) {
@@ -58,13 +58,33 @@ private loadQuestions(): void {
   this.enviromentalAuditService.getQuestionList()
     .subscribe( (questions:QuestionDTO[]) => {
       this.questionList = questions
-      this.questionListForm = this.formBuilder.group(this.questionList);
-      questions.map( (vector:QuestionDTO) => {
+
+/*      this.questionList.map ((vectors: QuestionDTO) => {
+      console.log ("vector: ", vectors) */
+      this.questionListForm = this.formBuilder.group({
+        'vectorId' : new FormControl(this.questionList[0].vectorId, Validators.required),
+        'vectorName': new FormControl(this.questionList[0].vectorName, Validators.required),
+        'vectorgeneralregulation': new FormControl(this.questionList[0].vectorGeneralRegulation, Validators.required),
+        'vectorQuestions': new FormControl(this.questionList[0].questions)
+      })
+      this.questionListForm = this.formBuilder.group({
+        ...this.questionListForm.controls,
+        'vectorId' : new FormControl(this.questionList[1].vectorId, Validators.required),
+        'vectorName': new FormControl(this.questionList[1].vectorName, Validators.required),
+        'vectorgeneralregulation': new FormControl(this.questionList[1].vectorGeneralRegulation, Validators.required),
+        'vectorQuestions': new FormControl(this.questionList[1].questions)
+      })
+      /* this.questionListForm.addControl(
+        control.name,
+        this.formBuilder.control(control.value)
+      ); */
+    /*  })  */
+    questions.map( (vector:QuestionDTO) => {
         this.totalVectorQuestions.push(vector['questions'].length)
       })
     })
-
 }
+
 
 getRadio(answer:string, questionNumber:string, regulation: string[], e:any, i: number, totalVectorQuestions: number){
   this.totalVectorAnswers[i] = this.totalVectorAnswers[i] + 1

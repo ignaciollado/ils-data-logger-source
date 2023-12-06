@@ -1,7 +1,7 @@
 export class QuestionDTO {
   vectorId:           string
   vectorName:         string
-  vectorgeneralregulation: string[]
+  vectorGeneralRegulation: string[]
   questions:          Question[]
 }
 

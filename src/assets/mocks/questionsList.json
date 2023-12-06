@@ -3,7 +3,7 @@
   {
     "vectorId": "1",
     "vectorName": "RESIDUOS",
-    "vectorGeneralRegulation":["RES_3,RES_4,RES_5,RES_18,RES_19,RES_60,RES_61"],
+    "vectorGeneralRegulation":["RES_3","RES_4","RES_5","RES_18","RES_19","RES_60","RES_61"],
     "questions":
       [
         {
@@ -190,7 +190,7 @@
   {
     "vectorId": "2",
     "vectorName": "SEGURIDAD INDUSTRIAL",
-    "Vectorgeneralregulation":["SIND_1,SIND_2,SIND_4"],
+    "Vectorgeneralregulation":["SIND_1","SIND_2","SIND_4"],
     "questions":
       [
       {

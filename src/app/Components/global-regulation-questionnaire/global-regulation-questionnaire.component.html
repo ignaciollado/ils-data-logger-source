@@ -1,4 +1,3 @@
-
   <h1>Identificación de requisitos legales idi: CUESTIONARIO PRELIMINAR</h1>
   
   <form  *ngIf="questionList"
@@ -55,22 +54,29 @@
 
   </form>
 
-  <form novalidate [formGroup]="questionListForm">
+  <form [formGroup]="questionListFormTest"
+                    (ngSubmit)="saveQuestionFormTest()">
     
-  <!--  <mat-accordion *ngFor=" let vectors of questionListForm.controls[0]; index as j">
-      --{{j}} {{vectors[j]}}--
-      <mat-expansion-panel>
+    <mat-accordion *ngFor=" let vectors of questionList; index as j">
+      <mat-expansion-panel> 
         <mat-expansion-panel-header>
           <mat-panel-title>
-            <span color="warn">Vector: {{vectors[j]}}</span>
-            <span>Total answered: {{totalVectorAnswers[j+1]}}</span>
-            <span>Total questions: {{totalVectorQuestions[j+1]}}</span>
+            <span color="warn">Vector: {{vectors.vectorName}}</span>
+            <span>Total answered: {{totalVectorAnswers[j]}}</span>
+            <span>Total questions: {{totalVectorQuestions[j]}}</span>
           </mat-panel-title>
           <mat-progress-bar mode="determinate" value="{{vectorProgress[j+1]}}"></mat-progress-bar>
-      </mat-expansion-panel-header>      
+      </mat-expansion-panel-header> 
+      <ol>
+        <li></li>
+      </ol> 
       </mat-expansion-panel>  
-    </mat-accordion>  -->
-   <!--  <input type="text" *ngFor="let key of questionListForm; index as j" formControlName="{{ key }}"> -->
+    </mat-accordion>
+   
+   <div class="button-row">
+    <button mat-raised-button color="primary">Enviar</button>
+    <button mat-raised-button>Limpiar</button>
+  </div>
   </form>
 
 

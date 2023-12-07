@@ -190,7 +190,7 @@
   {
     "vectorId": "2",
     "vectorName": "SEGURIDAD INDUSTRIAL",
-    "Vectorgeneralregulation":["SIND_1","SIND_2","SIND_4"],
+    "vectorGeneralRegulation":["SIND_1","SIND_2","SIND_4"],
     "questions":
       [
       {
@@ -607,7 +607,7 @@
   {
     "vectorId": "5",
     "vectorName": "SUSTANCIAS Y PREPARADOS QUÍMICOS",
-    "Vectorgeneralregulation":[""],
+    "vectorgeneralregulation":[""],
     "questions":
     [
     {

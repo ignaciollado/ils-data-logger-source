@@ -27,9 +27,13 @@ import { AnswerDTO } from 'src/app/Models/answer.dto';
 
 export class GlobalRegulationQuestionnaireComponent {
 
-theRadioType: UntypedFormControl
-theChecboxType: UntypedFormControl
+vectorId: UntypedFormControl
+vectorName: UntypedFormControl
+vectorGeneralRegulation: UntypedFormControl
+questions: UntypedFormControl
+
 questionListForm: FormGroup = this.formBuilder.group({});
+questionListFormTest: FormGroup = this.formBuilder.group({})
 
 questionList: QuestionDTO[]
 panelOpenState: boolean = true;
@@ -37,20 +41,20 @@ vectorProgress: number[] = []
 totalVectorQuestions: number[] = []
 totalVectorAnswers: number[] = [0]
 
-submitted = false;
-
 constructor (
   private formBuilder: FormBuilder,
   private enviromentalAuditService: EnvironmentalAuditsService,
   public dialog: MatDialog
 ) {
-
+  this.vectorId = new UntypedFormControl();
+  this.vectorName = new UntypedFormControl();
+  this.vectorGeneralRegulation = new UntypedFormControl();
+  this.questions = new UntypedFormControl();
+  
+  this.questionListFormTest = this.formBuilder.group({})
 }
 
 ngOnInit() {
-  this.questionListForm = this.formBuilder.group({
-    
-});
   this.loadQuestions()
 }
 
@@ -58,27 +62,19 @@ private loadQuestions(): void {
   this.enviromentalAuditService.getQuestionList()
     .subscribe( (questions:QuestionDTO[]) => {
       this.questionList = questions
-
-/*      this.questionList.map ((vectors: QuestionDTO) => {
-      console.log ("vector: ", vectors) */
-      this.questionListForm = this.formBuilder.group({
-        'vectorId' : new FormControl(this.questionList[0].vectorId, Validators.required),
-        'vectorName': new FormControl(this.questionList[0].vectorName, Validators.required),
-        'vectorgeneralregulation': new FormControl(this.questionList[0].vectorGeneralRegulation, Validators.required),
-        'vectorQuestions': new FormControl(this.questionList[0].questions)
+      questions.map((vector: QuestionDTO) => {
+        this.questionListFormTest.addControl( 'vector_'+vector.vectorId, this.formBuilder.control(vector.vectorId));
+        this.questionListFormTest.addControl( 'vector_'+vector.vectorId+'_Name', this.formBuilder.control(vector.vectorName));
+        this.questionListFormTest.addControl( 'vector_'+vector.vectorId+'_GeneralRegulation', this.formBuilder.control(vector.vectorGeneralRegulation));
+        this.questionListFormTest.addControl( 'vector_'+vector.vectorId+'_Questions', this.formBuilder.control(vector.questions));
+        this.questionListFormTest.addControl( 'vector_'+vector.vectorId+'_TotalQuestions', this.formBuilder.control(vector.questions.length));
+        vector.questions.map((question:Question) => {
+            /* console.log(question.key, question.type, question.questionTextES, question.questionTooltipES, question.questionDoc1, question.questionDoc2) */
+            this.questionListFormTest.addControl( 'vector_'+vector.vectorId+'_Question'+question.key, this.formBuilder.control(question.questionTextES));
+        })
       })
-      this.questionListForm = this.formBuilder.group({
-        'vectorId' : new FormControl(this.questionList[1].vectorId, Validators.required),
-        'vectorName': new FormControl(this.questionList[1].vectorName, Validators.required),
-        'vectorgeneralregulation': new FormControl(this.questionList[1].vectorGeneralRegulation, Validators.required),
-        'vectorQuestions': new FormControl(this.questionList[1].questions)
-      })
-      /* this.questionListForm.addControl(
-        control.name,
-        this.formBuilder.control(control.value)
-      ); */
-    /*  })  */
-    questions.map( (vector:QuestionDTO) => {
+     
+      questions.map( (vector:QuestionDTO) => {
         this.totalVectorQuestions.push(vector['questions'].length)
       })
     })
@@ -124,6 +120,10 @@ saveQuestionForm(){
   console.log (this.questionListForm.value)
 }
 
+saveQuestionFormTest(){
+  /* console.log (this.questionListFormTest.value) */
+  console.log (this.questionListFormTest.value['questions'])
+}
 
 
 }

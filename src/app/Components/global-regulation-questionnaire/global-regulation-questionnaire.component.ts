@@ -2,10 +2,8 @@ import { Component } from '@angular/core';
 import { EnvironmentalAuditsService } from 'src/app/Services/environmental-audits.service';
 import { Question, QuestionDTO } from 'src/app/Models/question.dto';
 import {
-  UntypedFormBuilder,
-  UntypedFormControl,
-  UntypedFormGroup,
-  Validators, FormArray, FormGroup, FormControl, ReactiveFormsModule, FormBuilder 
+    UntypedFormControl,
+    FormGroup, FormBuilder 
 } from '@angular/forms';
 import {
   MatDialog,
@@ -62,17 +60,6 @@ private loadQuestions(): void {
   this.enviromentalAuditService.getQuestionList()
     .subscribe( (questions:QuestionDTO[]) => {
       this.questionList = questions
-/*       questions.map((vector: QuestionDTO) => {
-        this.questionListFormTest.addControl( 'vector_'+vector.vectorId, this.formBuilder.control(vector.vectorId));
-        this.questionListFormTest.addControl( 'vector_'+vector.vectorId+'_Name', this.formBuilder.control(vector.vectorName));
-        this.questionListFormTest.addControl( 'vector_'+vector.vectorId+'_GeneralRegulation', this.formBuilder.control(vector.vectorGeneralRegulation));
-        this.questionListFormTest.addControl( 'vector_'+vector.vectorId+'_Questions', this.formBuilder.control(vector.questions));
-        this.questionListFormTest.addControl( 'vector_'+vector.vectorId+'_TotalQuestions', this.formBuilder.control(vector.questions.length));
-        vector.questions.map((question:Question) => {
-            console.log(question.key, question.type, question.questionTextES, question.questionTooltipES, question.questionDoc1, question.questionDoc2)
-            this.questionListFormTest.addControl( 'vector_'+vector.vectorId+'_Question'+question.key, this.formBuilder.control(question.questionTextES));
-        })
-      }) */
       questions.map( (vector:QuestionDTO) => {
         this.totalVectorQuestions.push(vector['questions'].length)
       })
@@ -121,25 +108,36 @@ saveQuestionForm(){
 
 saveQuestionFormTest(){
 
- /*  console.log (document.getElementById('theQuestionnaire')) */
+ console.log (document.getElementById('theQuestionnaire')) 
 
   let vector_1_Question1 = document.getElementsByName('vector_1_Question1') 
   let vector_1_Question2 = document.getElementsByName('vector_1_Question2') 
   let vector_1_Question3 = document.getElementsByName('vector_1_Question3') 
   let vector_1_Question4 = document.getElementsByName('vector_1_Question4')
 
-  vector_1_Question1.forEach((node: HTMLElement, index) => {
+  vector_1_Question1.forEach((node: HTMLInputElement, index) => {
     
-      console.log (node, node.childNodes)
+      console.log(node.id, node.name, node.value, node.type, node.checked)
 
   })
-/*   vector_1_Question2.forEach((node: HTMLElement, index) => {
+
+  vector_1_Question2.forEach((node: HTMLInputElement, index) => {
     
-    console.log (node, node.attributes)
-  
-}) */
-/*   console.log (vector_1_Question3)
-  console.log (vector_1_Question4) */
+    console.log(node.id, node.name, node.value, node.type, node.checked)
+
+})
+
+vector_1_Question3.forEach((node: HTMLInputElement, index) => {
+    
+  console.log(node.id, node.name, node.value, node.type, node.checked)
+
+})
+
+vector_1_Question4.forEach((node: HTMLInputElement, index) => {
+    
+  console.log(node.id, node.name, node.value, node.type, node.checked)
+
+})
 
 }
 

@@ -80,7 +80,7 @@
                   <ng-container  *ngFor="let item of question.answers; index as m">
                       <mat-radio-button 
                           (change)="getRadio(item['answerText'], question['key'], item['answerRegulation'], $event, j, totalVectorQuestions[j])"
-                          value="{{item['answerTex']}}"
+                          value="{{item['answerText']}}"
                           id="vector_{{j+1}}_Question{{k+1}}_Answer{{m+1}}"
                           >
                           {{item['answerText']}}

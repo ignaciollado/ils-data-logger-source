@@ -114,30 +114,127 @@ saveQuestionFormTest(){
   let vector_1_Question2 = document.getElementsByName('vector_1_Question2') 
   let vector_1_Question3 = document.getElementsByName('vector_1_Question3') 
   let vector_1_Question4 = document.getElementsByName('vector_1_Question4')
+  let vector_1_Regulation1 = document.getElementsByName('vector_1_Regulation1') 
+  let vector_1_Regulation2 = document.getElementsByName('vector_1_Regulation2') 
+  let vector_1_Regulation3 = document.getElementsByName('vector_1_Regulation3') 
+  let vector_1_Regulation4 = document.getElementsByName('vector_1_Regulation4')
 
+  let vector_2_Question1 = document.getElementsByName('vector_2_Question1') 
+  let vector_2_Question2 = document.getElementsByName('vector_2_Question2') 
+  let vector_2_Question3 = document.getElementsByName('vector_2_Question3') 
+  let vector_2_Question4 = document.getElementsByName('vector_2_Question4')
+  let vector_2_Question5 = document.getElementsByName('vector_2_Question5')
+
+  let vector_3_Question1 = document.getElementsByName('vector_3_Question1') 
+  let vector_3_Question2 = document.getElementsByName('vector_3_Question2') 
+  let vector_3_Question3 = document.getElementsByName('vector_3_Question3') 
+
+  let vector_4_Question1 = document.getElementsByName('vector_4_Question1') 
+  let vector_4_Question2 = document.getElementsByName('vector_4_Question2') 
+  let vector_4_Question3 = document.getElementsByName('vector_4_Question3') 
+  let vector_4_Question4 = document.getElementsByName('vector_4_Question4')
+  let vector_4_Question5 = document.getElementsByName('vector_4_Question5')
+  let vector_4_Question6 = document.getElementsByName('vector_4_Question6')
+  let vector_4_Question7 = document.getElementsByName('vector_4_Question7')
+
+  let vector_5_Question1 = document.getElementsByName('vector_5_Question1') 
+  let vector_5_Question2 = document.getElementsByName('vector_5_Question2') 
+  let vector_5_Question3 = document.getElementsByName('vector_5_Question3') 
+  let vector_5_Question4 = document.getElementsByName('vector_5_Question4')
+  let vector_5_Question5 = document.getElementsByName('vector_5_Question5')
+
+
+  
   vector_1_Question1.forEach((node: HTMLInputElement, index) => {
-    
-      console.log(node.id, node.name, node.value, node.type, node.checked)
-
+    console.log(node.id, node.value, node.type, node.checked)
+  })
+  vector_1_Question2.forEach((node: HTMLInputElement, index) => {
+    console.log(node.id, node.value, node.type, node.checked)
+  })
+  vector_1_Question3.forEach((node: HTMLInputElement, index) => {
+    console.log(node.id, node.value, node.type, node.checked)
+  })
+  vector_1_Question4.forEach((node: HTMLInputElement, index) => {
+    console.log(node.id, node.value, node.type, node.checked)
   })
 
-  vector_1_Question2.forEach((node: HTMLInputElement, index) => {
-    
-    console.log(node.id, node.name, node.value, node.type, node.checked)
+ /*  vector_1_Regulation1.forEach((node: HTMLInputElement, index) => {
+    console.log(node.name, node.value, node.type)
+  })
+  vector_1_Regulation2.forEach((node: HTMLInputElement, index) => {
+        console.log(node.name, node.value, node.type)
+  })
+  vector_1_Regulation3.forEach((node: HTMLInputElement, index) => {
+        console.log(node.name, node.value, node.type)
+  })
+  vector_1_Regulation4.forEach((node: HTMLInputElement, index) => {
+        console.log(node.name, node.value, node.type)
+  }) */
 
-})
+  vector_2_Question1.forEach((node: HTMLInputElement, index) => {
+    console.log(node.id, node.value, node.type, node.checked)
+  })
+  vector_2_Question2.forEach((node: HTMLInputElement, index) => {
+    console.log(node.id, node.value, node.type, node.checked)
+  })
+  vector_2_Question3.forEach((node: HTMLInputElement, index) => {
+    console.log(node.id, node.value, node.type, node.checked)
+  })
+  vector_2_Question4.forEach((node: HTMLInputElement, index) => {
+    console.log(node.id, node.value, node.type, node.checked)
+  })
+  vector_2_Question5.forEach((node: HTMLInputElement, index) => {
+    console.log(node.id, node.value, node.type, node.checked)
+  })
 
-vector_1_Question3.forEach((node: HTMLInputElement, index) => {
-    
-  console.log(node.id, node.name, node.value, node.type, node.checked)
+  vector_3_Question1.forEach((node: HTMLInputElement, index) => {
+    console.log(node.id, node.value, node.type, node.checked)
+  })
+  vector_3_Question2.forEach((node: HTMLInputElement, index) => {
+    console.log(node.id, node.value, node.type, node.checked)
+  })
+  vector_3_Question3.forEach((node: HTMLInputElement, index) => {
+    console.log(node.id, node.value, node.type, node.checked)
+  })
 
-})
+  vector_4_Question1.forEach((node: HTMLInputElement, index) => {
+    console.log(node.id, node.value, node.type, node.checked)
+  })
+  vector_4_Question2.forEach((node: HTMLInputElement, index) => {
+    console.log(node.id, node.value, node.type, node.checked)
+  })
+  vector_4_Question3.forEach((node: HTMLInputElement, index) => {
+    console.log(node.id, node.value, node.type, node.checked)
+  })
+  vector_4_Question4.forEach((node: HTMLInputElement, index) => {
+    console.log(node.id, node.value, node.type, node.checked)
+  })
+  vector_4_Question5.forEach((node: HTMLInputElement, index) => {
+    console.log(node.id, node.value, node.type, node.checked)
+  })
+  vector_4_Question6.forEach((node: HTMLInputElement, index) => {
+    console.log(node.id, node.value, node.type, node.checked)
+  })
+  vector_4_Question7.forEach((node: HTMLInputElement, index) => {
+    console.log(node.id, node.value, node.type, node.checked)
+  })
 
-vector_1_Question4.forEach((node: HTMLInputElement, index) => {
-    
-  console.log(node.id, node.name, node.value, node.type, node.checked)
+  vector_5_Question1.forEach((node: HTMLInputElement, index) => {
+    console.log(node.id, node.value, node.type, node.checked)
+  })
+  vector_5_Question2.forEach((node: HTMLInputElement, index) => {
+    console.log(node.id, node.value, node.type, node.checked)
+  })
+  vector_5_Question3.forEach((node: HTMLInputElement, index) => {
+    console.log(node.id, node.value, node.type, node.checked)
+  })
+  vector_5_Question4.forEach((node: HTMLInputElement, index) => {
+    console.log(node.id, node.value, node.type, node.checked)
+  })
+  vector_5_Question5.forEach((node: HTMLInputElement, index) => {
+    console.log(node.id, node.value, node.type, node.checked)
+  })
 
-})
 
 }
 

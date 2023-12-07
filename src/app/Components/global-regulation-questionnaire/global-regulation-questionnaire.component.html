@@ -62,10 +62,6 @@
         <mat-expansion-panel-header>
           <mat-panel-title>
             <span color="warn">Vector: {{vectors.vectorName}}</span>
-<!--             <input type='hidden' formControlName="vector_{{j+1}}">
-            <input type='hidden' formControlName="vector_{{j+1}}_Name">
-            <input type='hidden' formControlName="vector_{{j+1}}_GeneralRegulation">
-            <input type='hidden' formControlName="vector_{{j+1}}_Questions"> -->
             <span>Total answered: {{totalVectorAnswers[j]}}</span>
             <span>Total questions: {{totalVectorQuestions[j]}}</span>
           </mat-panel-title>
@@ -78,13 +74,18 @@
               <ng-container *ngSwitchCase="'radio'">
                 <mat-radio-group aria-label="Select an option" name="vector_{{j+1}}_Question{{k+1}}">
                   <ng-container  *ngFor="let item of question.answers; index as m">
+                    <!-- (change)="getRadio(item['answerText'], question['key'], item['answerRegulation'], $event, j, totalVectorQuestions[j])" -->
                       <mat-radio-button 
-                          (change)="getRadio(item['answerText'], question['key'], item['answerRegulation'], $event, j, totalVectorQuestions[j])"
+                          (change) = "saveQuestionFormTest()"
                           value="{{item['answerText']}}"
                           id="vector_{{j+1}}_Question{{k+1}}_Answer{{m+1}}"
                           >
                           {{item['answerText']}}
                       </mat-radio-button>
+                      <!-- <input type="text"
+                          value="{{item['regulation']}}"
+                          name="vector_{{j+1}}_Question{{k+1}}_Regulation{{m+1}}"
+                      > -->
                       <button *ngIf="item['answerTooltip']" mat-button (click)="openDialog('300ms', '300ms', item['answerText'], item['answerTooltip'], item['answerImage_1'], item['answerImage_2'])"><i class="fa-solid fa-circle-info" style="color: #673ab7;"></i></button>
                   </ng-container>
                 </mat-radio-group>
@@ -94,14 +95,19 @@
                 <section class="example-section" [formGroup]="">
                   <ng-container *ngFor="let item of question.answers; index as n">
                       <p>  
-                        <mat-checkbox  
-                          (change)="getCheckBox(item['answerText'], question['key'], item['answerRegulation'], $event)"
+                        <!-- (change)="getCheckBox(item['answerText'], question['key'], item['answerRegulation'], $event)" -->
+                        <mat-checkbox
+                          (change) = "saveQuestionFormTest()"
                           value="{{item['answerText']}}"
                           name="vector_{{j+1}}_Question{{k+1}}"
                           id="vector_{{j+1}}_Question{{k+1}}_Answer{{n+1}}"
                           >
                           {{item['answerText']}}
                         </mat-checkbox>
+                       <!--  <input type="text"
+                        value="{{item['regulation']}}"
+                        name="vector_{{j+1}}_Regulation{{k+1}}"
+                    > -->
                         <button *ngIf="item['answerTooltip']" mat-button (click)="openDialog('300ms', '300ms', item['answerText'], item['answerTooltip'], item['answerImage_1'], item['answerImage_2'])"><i class="fa-solid fa-circle-info" style="color: #673ab7;"></i></button>
                       </p>
                   </ng-container>

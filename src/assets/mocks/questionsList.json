@@ -210,7 +210,7 @@
         "regulation": ["SIND_35","SIND_36"],
         "answerImage_1": "",
         "answerImage_2": ""},
-        {"answerText": " No",
+        {"answerText": "No",
         "answerTooltip": "",
         "regulation": [""],
         "answerImage_1": "",
@@ -447,7 +447,7 @@
                       "answerImage_1": "",
                       "answerImage_2": ""},
 
-                      {"answerText": " No",
+                      {"answerText": "No",
                       "answerTooltip": "",
                       "regulation": [""],
                       "answerImage_1": "",
@@ -622,13 +622,13 @@
         "link": "https://...",
         "answers":
         [
-                {"answerText": "YES",
+                {"answerText": "Sí",
                 "answerTooltip": "",
-                "regulation": ["QMC_13,QMC_14,QMC_22"],
+                "regulation": ["QMC_13","QMC_14","QMC_22"],
                 "answerImage_1": "",
                 "answerImage_2": ""},
 
-                {"answerText": " NO",
+                {"answerText": "No",
                 "answerTooltip": "",
                 "regulation": [""],
                 "answerImage_1": "",
@@ -650,7 +650,7 @@
         "link": "https://...",
         "answers":
         [
-                {"answerText": "SI",
+                {"answerText": "Sí",
                  "answerTooltip": "",
                  "regulation": ["QMC_5","QMC_12","QMC_16","QMC_18","QMC_19","QMC_21","QMC_25","QMC_2"],
 
@@ -702,7 +702,7 @@
         "link": "https://...",
         "answers":
         [
-                {"answerText": "Si",
+                {"answerText": "Sí",
                  "answerTooltip": "",
                  "regulation": ["QMC_24"],
                  "image_1": "",

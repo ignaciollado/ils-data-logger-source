@@ -274,7 +274,6 @@ this.totalVectorAnswers = []
     vector_2_Question5_reg = node.id+'#'+node.value+'#'+node.checked
     vector_2_Question5_answers.push(node.checked)
   })
-
   if (vector_2_Question1_answers.some((someItem: boolean) => someItem === true) ) {
     vector2Progress1 = (100/this.totalVectorQuestions[1])
   }
@@ -296,8 +295,8 @@ this.totalVectorAnswers = []
   if (vector_2_Question4_answers.some((someItem: boolean) => someItem === true) ) {
     vector2Progress4 = (100/this.totalVectorQuestions[1])
   }
-  if (vector_2_Question5_answers.every((everyItem: boolean) => everyItem === false) ) {
-    vector2Progress5 = 0
+  if (vector_2_Question4_answers.every((everyItem: boolean) => everyItem === false) ) {
+    vector2Progress4 = 0
   }
   if (vector_2_Question5_answers.some((someItem: boolean) => someItem === true) ) {
     vector2Progress5 = (100/this.totalVectorQuestions[1])
@@ -305,9 +304,8 @@ this.totalVectorAnswers = []
   if (vector_2_Question5_answers.every((everyItem: boolean) => everyItem === false) ) {
     vector2Progress5 = 0
   }
-  console.log (this.vectorProgress[1], (vector2Progress1 + vector2Progress2 + vector2Progress3 + vector2Progress4 + vector2Progress5))
   this.vectorProgress[1] = vector2Progress1 + vector2Progress2 + vector2Progress3 + vector2Progress4 + vector2Progress5
-  console.log (this.vectorProgress)
+
 
   vector_3_Question1.forEach((node: HTMLInputElement, index) => {
     /* console.log(node.id, node.value, node.checked) */

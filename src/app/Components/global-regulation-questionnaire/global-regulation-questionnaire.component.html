@@ -8,9 +8,9 @@
       <mat-expansion-panel> 
         <mat-expansion-panel-header>
           <mat-panel-title>
-            <span>Vector: {{vectors.vectorName}}</span>
+            <span>{{vectors.vectorName}}</span>
            <!--  <span>Total answered: {{totalVectorAnswers[j]}}</span> -->
-            <span>Total questions: {{totalVectorQuestions[j]}}</span>
+            <span>{{'totalQuestions' | translate}}: {{totalVectorQuestions[j]}}</span>
           </mat-panel-title>
           <mat-progress-bar mode="determinate" value="{{vectorProgress[j]}}"></mat-progress-bar>
       </mat-expansion-panel-header> 
@@ -61,7 +61,7 @@
     <button mat-raised-button>Limpiar</button>
   </div>
   </form>
-  <div id="results-panel"></div>
+  <div id="results-panel" class="no-display"></div>
  </div>
 <span *ngIf="!questionList" class="loader">Loading questionnaire...</span>
 </div>

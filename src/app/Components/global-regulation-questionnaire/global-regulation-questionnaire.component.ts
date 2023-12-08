@@ -87,6 +87,7 @@ openDialog(enterAnimationDuration: string, exitAnimationDuration: string, questi
 saveQuestionForm(){
 
 /*  console.log (document.getElementById('theQuestionnaire'))  */
+  let results: string
   let vector1Progress1: number, vector1Progress2: number, vector1Progress3: number, vector1Progress4: number = 0
   let vector2Progress1: number, vector2Progress2: number, vector2Progress3: number, vector2Progress4: number, vector2Progress5: number = 0
   let vector3Progress1: number, vector3Progress2: number, vector3Progress3: number = 0
@@ -461,11 +462,21 @@ this.totalVectorAnswers = []
   this.vectorProgress[4] = vector5Progress1 + vector5Progress2 + vector5Progress3 + vector5Progress4 + vector5Progress5
 
   let resultsPanel = document.getElementById('results-panel') 
-  resultsPanel.innerHTML = "<span>"+vector_1_Question1_reg.toString()+" "+vector_1_Question2_reg.toString()+" "+vector_1_Question3_reg.toString()+" "+vector_1_Question4_reg.toString()+"</span>"
-  resultsPanel.innerHTML += "<span>"+vector_2_Question1_reg.toString()+" "+vector_2_Question2_reg.toString()+" "+vector_2_Question3_reg.toString()+" "+vector_2_Question4_reg.toString()+" "+vector_2_Question5_reg.toString()+"</span>"
-  resultsPanel.innerHTML += "<span>"+vector_3_Question1_reg.toString()+" "+vector_3_Question2_reg.toString()+" "+vector_3_Question3_reg.toString()+"</span>"
-  resultsPanel.innerHTML += "<span>"+vector_4_Question1_reg.toString()+" "+vector_4_Question2_reg.toString()+" "+vector_4_Question3_reg.toString()+" "+vector_4_Question4_reg.toString()+" "+vector_4_Question5_reg.toString()+" "+vector_4_Question6_reg.toString()+" "+vector_4_Question7_reg.toString()+"</span>"
-  resultsPanel.innerHTML += "<span>"+vector_5_Question1_reg.toString()+" "+vector_5_Question2_reg.toString()+" "+vector_5_Question3_reg.toString()+" "+vector_5_Question4_reg.toString()+" "+vector_5_Question5_reg.toString()+"</span>"
+  
+  results = vector_1_Question1_reg+" "+vector_1_Question2_reg+" "+vector_1_Question3_reg+" "+vector_1_Question4_reg
+  results += vector_2_Question1_reg+" "+vector_2_Question2_reg+" "+vector_2_Question3_reg+" "+vector_2_Question4_reg+" "+vector_2_Question5_reg
+  results += vector_3_Question1_reg+" "+vector_3_Question2_reg+" "+vector_3_Question3_reg
+  results += vector_4_Question1_reg+" "+vector_4_Question2_reg+" "+vector_4_Question3_reg+" "+vector_4_Question4_reg+" "+vector_4_Question5_reg+" "+vector_4_Question6_reg+" "+vector_4_Question7_reg
+  results += vector_5_Question1_reg+" "+vector_5_Question2_reg+" "+vector_5_Question3_reg+" "+vector_5_Question4_reg+" "+vector_5_Question5_reg
+
+  resultsPanel.innerHTML = "<div>"+this.vectorProgress[0]+" %</div>"
+  resultsPanel.innerHTML += "<div>"+this.vectorProgress[1]+" %</div>"
+  resultsPanel.innerHTML += "<div>"+this.vectorProgress[2]+" %</div>"
+  resultsPanel.innerHTML += "<div>"+this.vectorProgress[3]+" %</div>"
+  resultsPanel.innerHTML += "<div>"+this.vectorProgress[4]+" %</div>"
+  
+  resultsPanel.classList.remove('no-display')
+  console.log (JSON.stringify(results))
 }
 
 }

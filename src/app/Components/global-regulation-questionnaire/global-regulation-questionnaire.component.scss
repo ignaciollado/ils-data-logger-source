@@ -11,12 +11,19 @@
 }
 
 #results-panel{
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
   font-size: .5rem;
   letter-spacing: .1rem;
   border-radius: .5rem;
   padding: .5rem;
   color: rgb(10, 10, 10);
   background-color: rgb(177, 177, 177);
+}
+
+.no-display {
+  display: none;
 }
 
 .loader {

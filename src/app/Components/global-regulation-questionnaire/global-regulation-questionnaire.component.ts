@@ -463,11 +463,11 @@ this.totalVectorAnswers = []
 
   let resultsPanel = document.getElementById('results-panel') 
   
-  results = vector_1_Question1_reg+" "+vector_1_Question2_reg+" "+vector_1_Question3_reg+" "+vector_1_Question4_reg
-  results += vector_2_Question1_reg+" "+vector_2_Question2_reg+" "+vector_2_Question3_reg+" "+vector_2_Question4_reg+" "+vector_2_Question5_reg
-  results += vector_3_Question1_reg+" "+vector_3_Question2_reg+" "+vector_3_Question3_reg
-  results += vector_4_Question1_reg+" "+vector_4_Question2_reg+" "+vector_4_Question3_reg+" "+vector_4_Question4_reg+" "+vector_4_Question5_reg+" "+vector_4_Question6_reg+" "+vector_4_Question7_reg
-  results += vector_5_Question1_reg+" "+vector_5_Question2_reg+" "+vector_5_Question3_reg+" "+vector_5_Question4_reg+" "+vector_5_Question5_reg
+  results = vector_1_Question1_reg+" "+vector_1_Question2_reg+" "+vector_1_Question3_reg+" "+vector_1_Question4_reg+"\n"
+  results += vector_2_Question1_reg+" "+vector_2_Question2_reg+" "+vector_2_Question3_reg+" "+vector_2_Question4_reg+" "+vector_2_Question5_reg+"\n"
+  results += vector_3_Question1_reg+" "+vector_3_Question2_reg+" "+vector_3_Question3_reg+"\n"
+  results += vector_4_Question1_reg+" "+vector_4_Question2_reg+" "+vector_4_Question3_reg+" "+vector_4_Question4_reg+" "+vector_4_Question5_reg+" "+vector_4_Question6_reg+" "+vector_4_Question7_reg+"\n"
+  results += vector_5_Question1_reg+" "+vector_5_Question2_reg+" "+vector_5_Question3_reg+" "+vector_5_Question4_reg+" "+vector_5_Question5_reg+"\n"
 
   resultsPanel.innerHTML = "<div>"+this.vectorProgress[0]+" %</div>"
   resultsPanel.innerHTML += "<div>"+this.vectorProgress[1]+" %</div>"

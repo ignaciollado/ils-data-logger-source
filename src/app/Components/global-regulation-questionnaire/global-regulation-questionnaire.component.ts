@@ -250,27 +250,22 @@ this.totalVectorAnswers = []
 
 /* VECTOR 2 */
   vector_2_Question1.forEach((node: HTMLInputElement, index) => {
-    //console.log (node.id, node.value, node.checked)
     vector_2_Question1_reg = node.id+'#'+node.value+'#'+node.checked
     vector_2_Question1_answers.push(node.checked)
   })
   vector_2_Question2.forEach((node: HTMLInputElement, index) => {
-    //console.log (node.id, node.value, node.checked)
     vector_2_Question2_reg = node.id+'#'+node.value+'#'+node.checked
     vector_2_Question2_answers.push(node.checked)
   })
   vector_2_Question3.forEach((node: HTMLInputElement, index) => {
-    //console.log (node.id, node.value, node.checked)
     vector_2_Question3_reg = node.id+'#'+node.value+'#'+node.checked
     vector_2_Question3_answers.push(node.checked)
   })
   vector_2_Question4.forEach((node: HTMLInputElement, index) => {
-    //console.log (node.id, node.value, node.checked)
     vector_2_Question4_reg = node.id+'#'+node.value+'#'+node.checked
     vector_2_Question4_answers.push(node.checked)
   })
   vector_2_Question5.forEach((node: HTMLInputElement, index) => {
-    //console.log (node.id, node.value, node.checked)
     vector_2_Question5_reg = node.id+'#'+node.value+'#'+node.checked
     vector_2_Question5_answers.push(node.checked)
   })
@@ -306,56 +301,164 @@ this.totalVectorAnswers = []
   }
   this.vectorProgress[1] = vector2Progress1 + vector2Progress2 + vector2Progress3 + vector2Progress4 + vector2Progress5
 
-
+/* VECTOR 3 */
   vector_3_Question1.forEach((node: HTMLInputElement, index) => {
-    /* console.log(node.id, node.value, node.checked) */
+    vector_3_Question1_reg = node.id+'#'+node.value+'#'+node.checked
+    vector_3_Question1_answers.push(node.checked)
   })
   vector_3_Question2.forEach((node: HTMLInputElement, index) => {
-    /* console.log(node.id, node.value, node.checked) */
+    vector_3_Question2_reg = node.id+'#'+node.value+'#'+node.checked
+    vector_3_Question2_answers.push(node.checked)
   })
   vector_3_Question3.forEach((node: HTMLInputElement, index) => {
-    /* console.log(node.id, node.value, node.checked) */
+    vector_3_Question3_reg = node.id+'#'+node.value+'#'+node.checked
+    vector_3_Question3_answers.push(node.checked)
   })
+  if (vector_3_Question1_answers.some((someItem: boolean) => someItem === true) ) {
+    vector3Progress1 = (100/this.totalVectorQuestions[2])
+  }
+  if (vector_3_Question1_answers.every((everyItem: boolean) => everyItem === false) ) {
+    vector3Progress1 = 0
+  }
+  if (vector_3_Question2_answers.some((someItem: boolean) => someItem === true) ) {
+    vector3Progress2 = (100/this.totalVectorQuestions[2])
+  }
+  if (vector_3_Question2_answers.every((everyItem: boolean) => everyItem === false) ) {
+    vector3Progress2 = 0
+  }
+  if (vector_3_Question3_answers.some((someItem: boolean) => someItem === true) ) {
+    vector3Progress3 = (100/this.totalVectorQuestions[2])
+  }
+  if (vector_3_Question3_answers.every((everyItem: boolean) => everyItem === false) ) {
+    vector3Progress3 = 0
+  }
+  this.vectorProgress[2] = vector3Progress1 + vector3Progress2 + vector3Progress3
 
+
+/* VECTOR 4 */
   vector_4_Question1.forEach((node: HTMLInputElement, index) => {
-    /* console.log(node.id, node.value, node.checked) */
+    vector_4_Question1_reg = node.id+'#'+node.value+'#'+node.checked
+    vector_4_Question1_answers.push(node.checked)
   })
   vector_4_Question2.forEach((node: HTMLInputElement, index) => {
-    /* console.log(node.id, node.value, node.checked) */
+    vector_4_Question2_reg = node.id+'#'+node.value+'#'+node.checked
+    vector_4_Question2_answers.push(node.checked)
   })
   vector_4_Question3.forEach((node: HTMLInputElement, index) => {
-    /* console.log(node.id, node.value, node.checked) */
+    vector_4_Question3_reg = node.id+'#'+node.value+'#'+node.checked
+    vector_4_Question3_answers.push(node.checked)
   })
   vector_4_Question4.forEach((node: HTMLInputElement, index) => {
-    /* console.log(node.id, node.value, node.checked) */
+    vector_4_Question4_reg = node.id+'#'+node.value+'#'+node.checked
+    vector_4_Question4_answers.push(node.checked)
   })
   vector_4_Question5.forEach((node: HTMLInputElement, index) => {
-    /* console.log(node.id, node.value, node.checked) */
+    vector_4_Question5_reg = node.id+'#'+node.value+'#'+node.checked
+    vector_4_Question5_answers.push(node.checked)
   })
   vector_4_Question6.forEach((node: HTMLInputElement, index) => {
-    /* console.log(node.id, node.value, node.checked) */
+    vector_4_Question6_reg = node.id+'#'+node.value+'#'+node.checked
+    vector_4_Question6_answers.push(node.checked)
   })
   vector_4_Question7.forEach((node: HTMLInputElement, index) => {
-    /* console.log(node.id, node.value, node.checked) */
+    vector_4_Question7_reg = node.id+'#'+node.value+'#'+node.checked
+    vector_4_Question7_answers.push(node.checked)
   })
-
+  if (vector_4_Question1_answers.some((someItem: boolean) => someItem === true) ) {
+    vector4Progress1 = (100/this.totalVectorQuestions[3])
+  }
+  if (vector_4_Question1_answers.every((everyItem: boolean) => everyItem === false) ) {
+    vector4Progress1 = 0
+  }
+  if (vector_4_Question2_answers.some((someItem: boolean) => someItem === true) ) {
+    vector4Progress2 = (100/this.totalVectorQuestions[3])
+  }
+  if (vector_4_Question2_answers.every((everyItem: boolean) => everyItem === false) ) {
+    vector4Progress2 = 0
+  }
+  if (vector_4_Question3_answers.some((someItem: boolean) => someItem === true) ) {
+    vector4Progress3 = (100/this.totalVectorQuestions[3])
+  }
+  if (vector_4_Question3_answers.every((everyItem: boolean) => everyItem === false) ) {
+    vector4Progress3 = 0
+  }
+  if (vector_4_Question4_answers.some((someItem: boolean) => someItem === true) ) {
+    vector4Progress4 = (100/this.totalVectorQuestions[3])
+  }
+  if (vector_4_Question4_answers.every((everyItem: boolean) => everyItem === false) ) {
+    vector4Progress4 = 0
+  }
+  if (vector_4_Question5_answers.some((someItem: boolean) => someItem === true) ) {
+    vector4Progress5 = (100/this.totalVectorQuestions[3])
+  }
+  if (vector_4_Question5_answers.every((everyItem: boolean) => everyItem === false) ) {
+    vector4Progress5 = 0
+  }
+  if (vector_4_Question6_answers.some((someItem: boolean) => someItem === true) ) {
+    vector4Progress6 = (100/this.totalVectorQuestions[3])
+  }
+  if (vector_4_Question6_answers.every((everyItem: boolean) => everyItem === false) ) {
+    vector4Progress6 = 0
+  }
+  if (vector_4_Question7_answers.some((someItem: boolean) => someItem === true) ) {
+    vector4Progress7 = (100/this.totalVectorQuestions[3])
+  }
+  if (vector_4_Question7_answers.every((everyItem: boolean) => everyItem === false) ) {
+    vector4Progress7 = 0
+  }
+  this.vectorProgress[3] = vector4Progress1 + vector4Progress2 + vector4Progress3 + vector4Progress4 + vector4Progress5 + vector4Progress6 + vector4Progress7
+/* VECTOR 5 */
   vector_5_Question1.forEach((node: HTMLInputElement, index) => {
-    /* console.log(node.id, node.value, node.checked) */
+    vector_5_Question1_reg = node.id+'#'+node.value+'#'+node.checked
+    vector_5_Question1_answers.push(node.checked)
   })
   vector_5_Question2.forEach((node: HTMLInputElement, index) => {
-    /* console.log(node.id, node.value, node.checked) */
+    vector_5_Question2_reg = node.id+'#'+node.value+'#'+node.checked
+    vector_5_Question2_answers.push(node.checked)
   })
   vector_5_Question3.forEach((node: HTMLInputElement, index) => {
-    /* console.log(node.id, node.value, node.checked) */
+    vector_5_Question3_reg = node.id+'#'+node.value+'#'+node.checked
+    vector_5_Question3_answers.push(node.checked)
   })
   vector_5_Question4.forEach((node: HTMLInputElement, index) => {
-    /* console.log(node.id, node.value, node.checked) */
+    vector_5_Question4_reg = node.id+'#'+node.value+'#'+node.checked
+    vector_5_Question4_answers.push(node.checked)
   })
   vector_5_Question5.forEach((node: HTMLInputElement, index) => {
-    /* console.log(node.id, node.value, node.checked) */
+    vector_5_Question5_reg = node.id+'#'+node.value+'#'+node.checked
+    vector_5_Question5_answers.push(node.checked)
   })
-
-
+  if (vector_5_Question1_answers.some((someItem: boolean) => someItem === true) ) {
+    vector5Progress1 = (100/this.totalVectorQuestions[4])
+  }
+  if (vector_5_Question1_answers.every((everyItem: boolean) => everyItem === false) ) {
+    vector5Progress1 = 0
+  }
+  if (vector_5_Question2_answers.some((someItem: boolean) => someItem === true) ) {
+    vector5Progress2 = (100/this.totalVectorQuestions[4])
+  }
+  if (vector_5_Question2_answers.every((everyItem: boolean) => everyItem === false) ) {
+    vector5Progress2 = 0
+  }
+  if (vector_5_Question3_answers.some((someItem: boolean) => someItem === true) ) {
+    vector5Progress3 = (100/this.totalVectorQuestions[4])
+  }
+  if (vector_5_Question3_answers.every((everyItem: boolean) => everyItem === false) ) {
+    vector5Progress3 = 0
+  }
+  if (vector_5_Question4_answers.some((someItem: boolean) => someItem === true) ) {
+    vector5Progress4 = (100/this.totalVectorQuestions[4])
+  }
+  if (vector_5_Question4_answers.every((everyItem: boolean) => everyItem === false) ) {
+    vector5Progress4 = 0
+  }
+  if (vector_5_Question5_answers.some((someItem: boolean) => someItem === true) ) {
+    vector5Progress5 = (100/this.totalVectorQuestions[4])
+  }
+  if (vector_5_Question5_answers.every((everyItem: boolean) => everyItem === false) ) {
+    vector5Progress5 = 0
+  }
+  this.vectorProgress[4] = vector5Progress1 + vector5Progress2 + vector5Progress3 + vector5Progress4 + vector5Progress5
 }
 
 

@@ -1,5 +1,6 @@
 <div class="container-form">
  <h1>Identificación de requisitos legales idi: CUESTIONARIO PRELIMINAR</h1>
+ <div class="questions-container">
   <form *ngIf="questionList" id="theQuestionnaire" [formGroup]="questionListFormTest"
                     (ngSubmit)="saveQuestionForm()">
     
@@ -60,7 +61,7 @@
     <button mat-raised-button>Limpiar</button>
   </div>
   </form>
- 
-  <span *ngIf="!questionList" class="loader">Loading questionnaire...</span>
   <div class="results"></div>
+ </div>
+<span *ngIf="!questionList" class="loader">Loading questionnaire...</span>
 </div>

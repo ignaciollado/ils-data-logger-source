@@ -99,10 +99,10 @@ saveQuestionForm(){
   let vector_1_Question2 = document.getElementsByName('vector_1_Question2') 
   let vector_1_Question3 = document.getElementsByName('vector_1_Question3') 
   let vector_1_Question4 = document.getElementsByName('vector_1_Question4')
-  let vector_1_Question1_reg : string
-  let vector_1_Question2_reg : string
-  let vector_1_Question3_reg : string
-  let vector_1_Question4_reg : string
+  let vector_1_Question1_reg : string [] = []
+  let vector_1_Question2_reg : string [] = []
+  let vector_1_Question3_reg : string [] = []
+  let vector_1_Question4_reg : string [] = []
   let vector_1_Question1_answers: boolean [] = []
   let vector_1_Question2_answers: boolean [] = []
   let vector_1_Question3_answers: boolean [] = []
@@ -113,11 +113,11 @@ saveQuestionForm(){
   let vector_2_Question3 = document.getElementsByName('vector_2_Question3') 
   let vector_2_Question4 = document.getElementsByName('vector_2_Question4')
   let vector_2_Question5 = document.getElementsByName('vector_2_Question5')
-  let vector_2_Question1_reg : string
-  let vector_2_Question2_reg : string
-  let vector_2_Question3_reg : string
-  let vector_2_Question4_reg : string
-  let vector_2_Question5_reg : string
+  let vector_2_Question1_reg : string [] = []
+  let vector_2_Question2_reg : string [] = []
+  let vector_2_Question3_reg : string [] = []
+  let vector_2_Question4_reg : string [] = []
+  let vector_2_Question5_reg : string [] = []
   let vector_2_Question1_answers: boolean [] = []
   let vector_2_Question2_answers: boolean [] = []
   let vector_2_Question3_answers: boolean [] = []
@@ -127,9 +127,9 @@ saveQuestionForm(){
   let vector_3_Question1 = document.getElementsByName('vector_3_Question1') 
   let vector_3_Question2 = document.getElementsByName('vector_3_Question2') 
   let vector_3_Question3 = document.getElementsByName('vector_3_Question3') 
-  let vector_3_Question1_reg : string
-  let vector_3_Question2_reg : string
-  let vector_3_Question3_reg : string
+  let vector_3_Question1_reg : string [] = []
+  let vector_3_Question2_reg : string [] = []
+  let vector_3_Question3_reg : string [] = []
   let vector_3_Question1_answers: boolean [] = []
   let vector_3_Question2_answers: boolean [] = []
   let vector_3_Question3_answers: boolean [] = []
@@ -141,13 +141,13 @@ saveQuestionForm(){
   let vector_4_Question5 = document.getElementsByName('vector_4_Question5')
   let vector_4_Question6 = document.getElementsByName('vector_4_Question6')
   let vector_4_Question7 = document.getElementsByName('vector_4_Question7')
-  let vector_4_Question1_reg : string
-  let vector_4_Question2_reg : string
-  let vector_4_Question3_reg : string
-  let vector_4_Question4_reg : string
-  let vector_4_Question5_reg : string
-  let vector_4_Question6_reg : string
-  let vector_4_Question7_reg : string
+  let vector_4_Question1_reg : string [] = []
+  let vector_4_Question2_reg : string [] = []
+  let vector_4_Question3_reg : string [] = []
+  let vector_4_Question4_reg : string [] = []
+  let vector_4_Question5_reg : string [] = []
+  let vector_4_Question6_reg : string [] = []
+  let vector_4_Question7_reg : string [] = []
   let vector_4_Question1_answers: boolean [] = []
   let vector_4_Question2_answers: boolean [] = []
   let vector_4_Question3_answers: boolean [] = []
@@ -161,11 +161,11 @@ saveQuestionForm(){
   let vector_5_Question3 = document.getElementsByName('vector_5_Question3') 
   let vector_5_Question4 = document.getElementsByName('vector_5_Question4')
   let vector_5_Question5 = document.getElementsByName('vector_5_Question5')
-  let vector_5_Question1_reg : string
-  let vector_5_Question2_reg : string
-  let vector_5_Question3_reg : string
-  let vector_5_Question4_reg : string
-  let vector_5_Question5_reg : string
+  let vector_5_Question1_reg : string [] = []
+  let vector_5_Question2_reg : string [] = []
+  let vector_5_Question3_reg : string [] = []
+  let vector_5_Question4_reg : string [] = []
+  let vector_5_Question5_reg : string [] = []
   let vector_5_Question1_answers: boolean [] = []
   let vector_5_Question2_answers: boolean [] = []
   let vector_5_Question3_answers: boolean [] = []
@@ -177,11 +177,11 @@ saveQuestionForm(){
   let vector_6_Question3 = document.getElementsByName('vector_6_Question3') 
   let vector_6_Question4 = document.getElementsByName('vector_6_Question4')
   let vector_6_Question5 = document.getElementsByName('vector_6_Question5')
-  let vector_6_Question1_reg : string
-  let vector_6_Question2_reg : string
-  let vector_6_Question3_reg : string
-  let vector_6_Question4_reg : string
-  let vector_6_Question5_reg : string
+  let vector_6_Question1_reg : string [] = []
+  let vector_6_Question2_reg : string [] = []
+  let vector_6_Question3_reg : string [] = []
+  let vector_6_Question4_reg : string [] = []
+  let vector_6_Question5_reg : string [] = []
   let vector_6_Question1_answers: boolean [] = []
   let vector_6_Question2_answers: boolean [] = []
   let vector_6_Question3_answers: boolean [] = []
@@ -193,11 +193,11 @@ saveQuestionForm(){
   let vector_7_Question3 = document.getElementsByName('vector_7_Question3') 
   let vector_7_Question4 = document.getElementsByName('vector_7_Question4')
   let vector_7_Question5 = document.getElementsByName('vector_7_Question5')
-  let vector_7_Question1_reg : string
-  let vector_7_Question2_reg : string
-  let vector_7_Question3_reg : string
-  let vector_7_Question4_reg : string
-  let vector_7_Question5_reg : string
+  let vector_7_Question1_reg : string [] = []
+  let vector_7_Question2_reg : string [] = []
+  let vector_7_Question3_reg : string [] = []
+  let vector_7_Question4_reg : string [] = []
+  let vector_7_Question5_reg : string [] = []
   let vector_7_Question1_answers: boolean [] = []
   let vector_7_Question2_answers: boolean [] = []
   let vector_7_Question3_answers: boolean [] = []
@@ -207,19 +207,19 @@ saveQuestionForm(){
 this.totalVectorAnswers = []
 /* VECTOR 1 */
   vector_1_Question1.forEach((node: HTMLInputElement) => {
-    vector_1_Question1_reg = `${node.id,node.value,node.checked}`
+    vector_1_Question1_reg.push(node.id+'#'+node.value+'#'+node.checked)
     vector_1_Question1_answers.push(node.checked)
   })
   vector_1_Question2.forEach((node: HTMLInputElement) => {
-    vector_1_Question2_reg = `${node.id,node.value,node.checked}`
+    vector_1_Question2_reg.push(node.id+'#'+node.value+'#'+node.checked)
     vector_1_Question2_answers.push(node.checked)
   })
   vector_1_Question3.forEach((node: HTMLInputElement) => {
-    vector_1_Question3_reg = `${node.id,node.value,node.checked}`
+    vector_1_Question3_reg.push(node.id+'#'+node.value+'#'+node.checked)
     vector_1_Question3_answers.push(node.checked)
   })
   vector_1_Question4.forEach((node: HTMLInputElement) => {
-    vector_1_Question4_reg = `${node.id,node.value,node.checked}`
+    vector_1_Question4_reg.push(node.id+'#'+node.value+'#'+node.checked)
     vector_1_Question4_answers.push(node.checked)
   })
   if (vector_1_Question1_answers.some((someItem: boolean) => someItem === true) ) {
@@ -250,23 +250,23 @@ this.totalVectorAnswers = []
 
 /* VECTOR 2 */
   vector_2_Question1.forEach((node: HTMLInputElement, index) => {
-    vector_2_Question1_reg = node.id+'#'+node.value+'#'+node.checked
+    vector_2_Question1_reg.push(node.id+'#'+node.value+'#'+node.checked)
     vector_2_Question1_answers.push(node.checked)
   })
   vector_2_Question2.forEach((node: HTMLInputElement, index) => {
-    vector_2_Question2_reg = node.id+'#'+node.value+'#'+node.checked
+    vector_2_Question2_reg.push(node.id+'#'+node.value+'#'+node.checked)
     vector_2_Question2_answers.push(node.checked)
   })
   vector_2_Question3.forEach((node: HTMLInputElement, index) => {
-    vector_2_Question3_reg = node.id+'#'+node.value+'#'+node.checked
+    vector_2_Question3_reg.push(node.id+'#'+node.value+'#'+node.checked)
     vector_2_Question3_answers.push(node.checked)
   })
   vector_2_Question4.forEach((node: HTMLInputElement, index) => {
-    vector_2_Question4_reg = node.id+'#'+node.value+'#'+node.checked
+    vector_2_Question4_reg.push(node.id+'#'+node.value+'#'+node.checked)
     vector_2_Question4_answers.push(node.checked)
   })
   vector_2_Question5.forEach((node: HTMLInputElement, index) => {
-    vector_2_Question5_reg = node.id+'#'+node.value+'#'+node.checked
+    vector_2_Question5_reg.push(node.id+'#'+node.value+'#'+node.checked)
     vector_2_Question5_answers.push(node.checked)
   })
   if (vector_2_Question1_answers.some((someItem: boolean) => someItem === true) ) {
@@ -303,15 +303,15 @@ this.totalVectorAnswers = []
 
 /* VECTOR 3 */
   vector_3_Question1.forEach((node: HTMLInputElement, index) => {
-    vector_3_Question1_reg = node.id+'#'+node.value+'#'+node.checked
+    vector_3_Question1_reg.push(node.id+'#'+node.value+'#'+node.checked)
     vector_3_Question1_answers.push(node.checked)
   })
   vector_3_Question2.forEach((node: HTMLInputElement, index) => {
-    vector_3_Question2_reg = node.id+'#'+node.value+'#'+node.checked
+    vector_3_Question2_reg.push(node.id+'#'+node.value+'#'+node.checked)
     vector_3_Question2_answers.push(node.checked)
   })
   vector_3_Question3.forEach((node: HTMLInputElement, index) => {
-    vector_3_Question3_reg = node.id+'#'+node.value+'#'+node.checked
+    vector_3_Question3_reg.push(node.id+'#'+node.value+'#'+node.checked)
     vector_3_Question3_answers.push(node.checked)
   })
   if (vector_3_Question1_answers.some((someItem: boolean) => someItem === true) ) {
@@ -337,31 +337,31 @@ this.totalVectorAnswers = []
 
 /* VECTOR 4 */
   vector_4_Question1.forEach((node: HTMLInputElement, index) => {
-    vector_4_Question1_reg = node.id+'#'+node.value+'#'+node.checked
+    vector_4_Question1_reg.push(node.id+'#'+node.value+'#'+node.checked)
     vector_4_Question1_answers.push(node.checked)
   })
   vector_4_Question2.forEach((node: HTMLInputElement, index) => {
-    vector_4_Question2_reg = node.id+'#'+node.value+'#'+node.checked
+    vector_4_Question2_reg.push(node.id+'#'+node.value+'#'+node.checked)
     vector_4_Question2_answers.push(node.checked)
   })
   vector_4_Question3.forEach((node: HTMLInputElement, index) => {
-    vector_4_Question3_reg = node.id+'#'+node.value+'#'+node.checked
+    vector_4_Question3_reg.push(node.id+'#'+node.value+'#'+node.checked)
     vector_4_Question3_answers.push(node.checked)
   })
   vector_4_Question4.forEach((node: HTMLInputElement, index) => {
-    vector_4_Question4_reg = node.id+'#'+node.value+'#'+node.checked
+    vector_4_Question4_reg.push(node.id+'#'+node.value+'#'+node.checked)
     vector_4_Question4_answers.push(node.checked)
   })
   vector_4_Question5.forEach((node: HTMLInputElement, index) => {
-    vector_4_Question5_reg = node.id+'#'+node.value+'#'+node.checked
+    vector_4_Question5_reg.push(node.id+'#'+node.value+'#'+node.checked)
     vector_4_Question5_answers.push(node.checked)
   })
   vector_4_Question6.forEach((node: HTMLInputElement, index) => {
-    vector_4_Question6_reg = node.id+'#'+node.value+'#'+node.checked
+    vector_4_Question6_reg.push(node.id+'#'+node.value+'#'+node.checked)
     vector_4_Question6_answers.push(node.checked)
   })
   vector_4_Question7.forEach((node: HTMLInputElement, index) => {
-    vector_4_Question7_reg = node.id+'#'+node.value+'#'+node.checked
+    vector_4_Question7_reg.push(node.id+'#'+node.value+'#'+node.checked)
     vector_4_Question7_answers.push(node.checked)
   })
   if (vector_4_Question1_answers.some((someItem: boolean) => someItem === true) ) {
@@ -409,23 +409,23 @@ this.totalVectorAnswers = []
   this.vectorProgress[3] = vector4Progress1 + vector4Progress2 + vector4Progress3 + vector4Progress4 + vector4Progress5 + vector4Progress6 + vector4Progress7
 /* VECTOR 5 */
   vector_5_Question1.forEach((node: HTMLInputElement, index) => {
-    vector_5_Question1_reg = node.id+'#'+node.value+'#'+node.checked
+    vector_5_Question1_reg.push(node.id+'#'+node.value+'#'+node.checked)
     vector_5_Question1_answers.push(node.checked)
   })
   vector_5_Question2.forEach((node: HTMLInputElement, index) => {
-    vector_5_Question2_reg = node.id+'#'+node.value+'#'+node.checked
+    vector_5_Question2_reg.push(node.id+'#'+node.value+'#'+node.checked)
     vector_5_Question2_answers.push(node.checked)
   })
   vector_5_Question3.forEach((node: HTMLInputElement, index) => {
-    vector_5_Question3_reg = node.id+'#'+node.value+'#'+node.checked
+    vector_5_Question3_reg.push(node.id+'#'+node.value+'#'+node.checked)
     vector_5_Question3_answers.push(node.checked)
   })
   vector_5_Question4.forEach((node: HTMLInputElement, index) => {
-    vector_5_Question4_reg = node.id+'#'+node.value+'#'+node.checked
+    vector_5_Question4_reg.push(node.id+'#'+node.value+'#'+node.checked)
     vector_5_Question4_answers.push(node.checked)
   })
   vector_5_Question5.forEach((node: HTMLInputElement, index) => {
-    vector_5_Question5_reg = node.id+'#'+node.value+'#'+node.checked
+    vector_5_Question5_reg.push(node.id+'#'+node.value+'#'+node.checked)
     vector_5_Question5_answers.push(node.checked)
   })
   if (vector_5_Question1_answers.some((someItem: boolean) => someItem === true) ) {
@@ -459,7 +459,13 @@ this.totalVectorAnswers = []
     vector5Progress5 = 0
   }
   this.vectorProgress[4] = vector5Progress1 + vector5Progress2 + vector5Progress3 + vector5Progress4 + vector5Progress5
-}
 
+  let resultsPanel = document.getElementById('results-panel') 
+  resultsPanel.innerHTML = "<span>"+vector_1_Question1_reg.toString()+" "+vector_1_Question2_reg.toString()+" "+vector_1_Question3_reg.toString()+" "+vector_1_Question4_reg.toString()+"</span>"
+  resultsPanel.innerHTML += "<span>"+vector_2_Question1_reg.toString()+" "+vector_2_Question2_reg.toString()+" "+vector_2_Question3_reg.toString()+" "+vector_2_Question4_reg.toString()+" "+vector_2_Question5_reg.toString()+"</span>"
+  resultsPanel.innerHTML += "<span>"+vector_3_Question1_reg.toString()+" "+vector_3_Question2_reg.toString()+" "+vector_3_Question3_reg.toString()+"</span>"
+  resultsPanel.innerHTML += "<span>"+vector_4_Question1_reg.toString()+" "+vector_4_Question2_reg.toString()+" "+vector_4_Question3_reg.toString()+" "+vector_4_Question4_reg.toString()+" "+vector_4_Question5_reg.toString()+" "+vector_4_Question6_reg.toString()+" "+vector_4_Question7_reg.toString()+"</span>"
+  resultsPanel.innerHTML += "<span>"+vector_5_Question1_reg.toString()+" "+vector_5_Question2_reg.toString()+" "+vector_5_Question3_reg.toString()+" "+vector_5_Question4_reg.toString()+" "+vector_5_Question5_reg.toString()+"</span>"
+}
 
 }

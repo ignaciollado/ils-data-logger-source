@@ -4,6 +4,21 @@
   margin-right: 6rem;
 }
 
+.questions-container{
+  display: grid;
+  grid-template-columns: 70% 30%;
+  gap: 1rem;
+}
+
+#results-panel{
+  font-size: .5rem;
+  letter-spacing: .1rem;
+  border-radius: .5rem;
+  padding: .5rem;
+  color: rgb(10, 10, 10);
+  background-color: rgb(177, 177, 177);
+}
+
 .loader {
   width: 100%;
   text-align: center;

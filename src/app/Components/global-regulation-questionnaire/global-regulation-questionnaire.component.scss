@@ -1,11 +1,25 @@
+.container-form{
+  margin-top: 2rem;
+  margin-left: 6rem;
+  margin-right: 6rem;
+}
+
 .loader {
   width: 100%;
   text-align: center;
+  margin: auto;
+  width: 50%;
+  border: 3px solid green;
+  padding: 15rem;
 }
 
-.button-row button,
-.button-row a {
-  margin-right: 8px;
+mat-accordion{
+  margin-top: .3rem;
+}
+
+.button-row  {
+  text-align: right;
+  padding: 1rem;
 }
 
 .text-content {

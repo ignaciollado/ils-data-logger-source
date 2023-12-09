@@ -1,9 +1,10 @@
+<div class="container-form">
 <h2>Answered questionaires list:</h2>
 <div class='card-container'>
 
 <mat-card class="example-card" *ngFor="let questionaire of userQuestionaires">
   <mat-card-header>
-    <mat-card-title>Num. {{questionaire.id}}</mat-card-title>
+    <mat-card-title>Num. {{questionaire.questionnaireId}}</mat-card-title>
     <mat-card-subtitle>Tipo: cuestionario glenérico</mat-card-subtitle>
   </mat-card-header>
   <mat-card-content>
@@ -19,3 +20,4 @@
 </div>
 
 <span *ngIf="!userQuestionaires" class="loader">No data found yet...</span>
+</div>

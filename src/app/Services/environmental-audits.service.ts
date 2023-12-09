@@ -41,9 +41,9 @@ export class EnvironmentalAuditsService {
      .get<AnswerDTO[]>(`${URL_API}questionnaireAnswersGetByCompanyId.php?companyId=${companyId}`)
   }
 
-  getQuestionnaireByID(questionnaireID:number): Observable<AnswerDTO[]> {
+  getQuestionnaireByID(questionnaireID: number): Observable<AnswerDTO[]> {
     return this.http
-     .get<AnswerDTO[]>(`${URL_API}questionnaireByID.php?companyId=${questionnaireID}`)
+     .get<AnswerDTO[]>(`${URL_API}questionnaireByID.php?questionnaireID=${questionnaireID}`)
   }
 
   getMockAnswers(userId: string): Observable<AnswerDTO[]> {

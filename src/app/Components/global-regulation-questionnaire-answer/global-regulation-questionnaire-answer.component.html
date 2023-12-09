@@ -1,18 +1,22 @@
 <h2>Questionnaire detail:</h2>
 
-<ng-container *ngFor="let questionaire of userQuestionnairebyID">
-  <div *ngFor="let userItem of questionaire.userQuestionaire">
-   <strong>Vector: {{userItem.vectorName}}</strong>
-    <div *ngFor="let questionaireAnswer of userItem.questionaireAnswers">
-      <span>Contestada: {{questionaireAnswer.answered}}</span>
-      <div *ngFor="let answer of questionaireAnswer.answer">
-        {{answer.answerText}}  {{answer.regulation}}
-      </div>
-    </div>
-  </div>
+<div class="container-form">
 
-</ng-container>
+<div *ngIf="userQuestionnaire">
 
-
+<mat-card class="example-card" *ngFor="let userItem of userQuestionnaire">
+  <mat-card-header>
+    <mat-card-title-group>
+      <mat-card-title> <strong>Questionnaire: {{userItem.questionnaireId}}</strong></mat-card-title>
+      <mat-card-subtitle><strong>Data answered: {{userItem.updated_at}}</strong></mat-card-subtitle>
+      <img mat-card-sm-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" >
+    </mat-card-title-group>
+  </mat-card-header>
+  <mat-card-content [innerHTML]="userItem.userAnswers">
+   
+  </mat-card-content>
+</mat-card>
+</div>
 <span *ngIf="!userQuestionnaire" class="loader">No data found yet...</span>
 
+</div>

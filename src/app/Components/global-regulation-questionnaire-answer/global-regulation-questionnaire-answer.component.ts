@@ -30,17 +30,18 @@ export class GlobalRegulationQuestionnaireAnswerComponent {
   }
 
   loadQuestionnaire( questionnaireID: number){
-        this.enviromentalAuditService.getMockAnswers( this.userId )
+        this.enviromentalAuditService.getQuestionnaireByID( questionnaireID )
           .subscribe( (questionnaires: AnswerDTO[]) => {
             this.userQuestionnaire = questionnaires
-            this.userQuestionnairebyID = this.userQuestionnaire.filter((item:AnswerDTO)=>{ item.id === questionnaireID })
+            console.log (this.userQuestionnaire)
+           /*  this.userQuestionnairebyID = this.userQuestionnaire.filter((item:AnswerDTO)=>{ item.id === questionnaireID })
             console.log (this.userQuestionnairebyID)
 
             const userQuestionnaires = questionnaires // = ['spray', 'elite', 'exuberant', 'destruction', 'present'];
 
             this.userQuestionnairebyID = userQuestionnaires.filter((word) => (word.id >= questionnaireID && word.id <= questionnaireID));
 
-            console.log(this.userQuestionnairebyID);
+            console.log(this.userQuestionnairebyID); */
 
 
             })

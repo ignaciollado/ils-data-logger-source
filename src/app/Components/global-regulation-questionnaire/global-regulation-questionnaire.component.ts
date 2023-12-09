@@ -69,7 +69,7 @@ private loadQuestions(): void {
 openDialog(enterAnimationDuration: string, exitAnimationDuration: string, questionText: string, toolTipText: string, doc1: string, doc2: string): void {
   const dialogConfig = new MatDialogConfig();
 
-  dialogConfig.disableClose = true
+  dialogConfig.disableClose = false
   dialogConfig.autoFocus = true
   dialogConfig.panelClass = "dialog-customization"
   dialogConfig.backdropClass = "popupBackdropClass"
@@ -461,22 +461,34 @@ this.totalVectorAnswers = []
   }
   this.vectorProgress[4] = vector5Progress1 + vector5Progress2 + vector5Progress3 + vector5Progress4 + vector5Progress5
 
-  let resultsPanel = document.getElementById('results-panel') 
-  
-  results =  vector_1_Question1_reg+" "+vector_1_Question2_reg+" "+vector_1_Question3_reg+" "+vector_1_Question4_reg+"\n"
-  results += vector_2_Question1_reg+" "+vector_2_Question2_reg+" "+vector_2_Question3_reg+" "+vector_2_Question4_reg+" "+vector_2_Question5_reg+"\n"
-  results += vector_3_Question1_reg+" "+vector_3_Question2_reg+" "+vector_3_Question3_reg+"\n"
-  results += vector_4_Question1_reg+" "+vector_4_Question2_reg+" "+vector_4_Question3_reg+" "+vector_4_Question4_reg+" "+vector_4_Question5_reg+" "+vector_4_Question6_reg+" "+vector_4_Question7_reg+"\n"
-  results += vector_5_Question1_reg+" "+vector_5_Question2_reg+" "+vector_5_Question3_reg+" "+vector_5_Question4_reg+" "+vector_5_Question5_reg+"\n"
+  let resultsVector1 = document.getElementById('results-vector1')
+  let resultsVector2 = document.getElementById('results-vector2')
+  let resultsVector3 = document.getElementById('results-vector3')
+  let resultsVector4 = document.getElementById('results-vector4')
+  let resultsVector5 = document.getElementById('results-vector5')
 
-  resultsPanel.innerHTML = "<div>"+this.vectorProgress[0]+" %</div>"
-  resultsPanel.innerHTML += "<div>"+this.vectorProgress[1]+" %</div>"
-  resultsPanel.innerHTML += "<div>"+this.vectorProgress[2]+" %</div>"
-  resultsPanel.innerHTML += "<div>"+this.vectorProgress[3]+" %</div>"
-  resultsPanel.innerHTML += "<div>"+this.vectorProgress[4]+" %</div>"
+  let progressPanel = document.getElementById('progress-panel')
+
   
-  resultsPanel.classList.remove('no-display')
-  console.log (JSON.stringify(results))
+  resultsVector1.innerHTML =  "<div class='vector-div'>"+vector_1_Question1_reg+" "+vector_1_Question2_reg+" "+vector_1_Question3_reg+" "+vector_1_Question4_reg+"</div>"
+  resultsVector2.innerHTML = "<div class='vector-div'>"+vector_2_Question1_reg+" "+vector_2_Question2_reg+" "+vector_2_Question3_reg+" "+vector_2_Question4_reg+" "+vector_2_Question5_reg+"</div>"
+  resultsVector3.innerHTML = "<div class='vector-div'>"+vector_3_Question1_reg+" "+vector_3_Question2_reg+" "+vector_3_Question3_reg+"</div>"
+  resultsVector4.innerHTML = "<div class='vector-div'>"+vector_4_Question1_reg+" "+vector_4_Question2_reg+" "+vector_4_Question3_reg+" "+vector_4_Question4_reg+" "+vector_4_Question5_reg+" "+vector_4_Question6_reg+" "+vector_4_Question7_reg+"</div>"
+  resultsVector5.innerHTML = "<div class='vector-div'>"+vector_5_Question1_reg+" "+vector_5_Question2_reg+" "+vector_5_Question3_reg+" "+vector_5_Question4_reg+" "+vector_5_Question5_reg+"</div>"
+  
+
+  progressPanel.innerHTML = "<div>"+this.vectorProgress[0]+" %</div>"
+  progressPanel.innerHTML += "<div>"+this.vectorProgress[1]+" %</div>"
+  progressPanel.innerHTML += "<div>"+this.vectorProgress[2]+" %</div>"
+  progressPanel.innerHTML += "<div>"+this.vectorProgress[3]+" %</div>"
+  progressPanel.innerHTML += "<div>"+this.vectorProgress[4]+" %</div>"
+  
+  progressPanel.classList.remove('no-display')
+  resultsVector1.classList.remove('no-display')
+  resultsVector2.classList.remove('no-display')
+  resultsVector3.classList.remove('no-display')
+  resultsVector4.classList.remove('no-display')
+  resultsVector5.classList.remove('no-display')
 }
 
 }

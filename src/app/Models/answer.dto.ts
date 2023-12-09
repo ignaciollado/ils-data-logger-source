@@ -1,8 +1,13 @@
 export class AnswerDTO {
   id: number
   companyId: number
+  questionnaireId: number
+  vectorId: string
+  questionId: string
+  questionAnswer: string
+  regulationToApply: string
+  mustBeApplied: boolean
   updated_at: Date
-  userQuestionaire: userQuestionaire[];
 }
 
 export interface userQuestionaire {

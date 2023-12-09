@@ -36,7 +36,7 @@ export class EnvironmentalAuditsService {
       .put<QuestionDTO>(`${URL_API}globalAnswerUpdate.php?consumptionId=${answerId}`, answer)
   }
 
-  getAllAnswersByCompany(companyId:any): Observable<AnswerDTO[]> {
+  getGlobalAnswersByCompany(companyId:any): Observable<AnswerDTO[]> {
     return this.http
      .get<AnswerDTO[]>(`${URL_API}questionnaireAnswersGetByCompanyId.php?companyId=${companyId}`)
   }

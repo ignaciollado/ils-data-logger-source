@@ -26,7 +26,7 @@ export class GlobalRegulationQuestionnaireListComponent {
 
   loadAnswers( userId: string){
     
-        this.enviromentalAuditService.getMockAnswers( this.userId )
+        this.enviromentalAuditService.getGlobalAnswersByCompany( this.userId )
           .subscribe( (questionaires: AnswerDTO[]) => {
             this.userQuestionaires = questionaires
               this.userQuestionaires.map( (userAnswers:any) => {

@@ -29,7 +29,7 @@ export class GlobalRegulationQuestionnaireListComponent {
         this.enviromentalAuditService.getGlobalAnswersByCompany( this.userId )
           .subscribe( (questionaires: AnswerDTO[]) => {
             this.userQuestionaires = questionaires
-              this.userQuestionaires.map( (userAnswers:any) => {
+/*               this.userQuestionaires.map( (userAnswers:any) => {
                 userAnswers.userQuestionaire.map( (item:any) => {
                   item.questionaireAnswers.map( (subItem:any) => {
                     subItem.answers.map( (subItemsub:any) => {
@@ -37,7 +37,7 @@ export class GlobalRegulationQuestionnaireListComponent {
                     })
                   })
                 })
-              }) 
+              })  */
             })
   }
 

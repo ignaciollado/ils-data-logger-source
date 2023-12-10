@@ -1,9 +1,10 @@
 export class AnswerDTO {
   id: number
   companyId: number
-  questionnaireId: number
+  companyQuestionnaireId: number
   updated_at: Date
-  userAnswers: userQuestionaire[];
+  userAnswers: userQuestionaire[]
+  completed: boolean
 }
 
 export interface userQuestionaire {

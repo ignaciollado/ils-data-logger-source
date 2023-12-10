@@ -4,8 +4,8 @@
 
 <mat-card class="example-card" *ngFor="let questionaire of userQuestionaires">
   <mat-card-header>
-    <mat-card-title>Num. {{questionaire.questionnaireId}}</mat-card-title>
-    <mat-card-subtitle>Tipo: cuestionario glenérico</mat-card-subtitle>
+    <mat-card-title>Num. {{questionaire.companyQuestionnaireId}}</mat-card-title>
+    <mat-card-subtitle>State: {{questionaire.completed}}</mat-card-subtitle>
   </mat-card-header>
   <mat-card-content>
     <p>Fecha contestado:</p>

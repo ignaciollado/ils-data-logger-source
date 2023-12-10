@@ -11,16 +11,13 @@ text-align: center;
   display: grid;
   grid-template-columns: auto auto;
   gap: 1rem
-  
 }
 
 .vector-div{
-/*   position: -webkit-sticky;
-  position: sticky;
-  top: 0; */
   border-radius: .5rem;
   font-size: .5rem;
   letter-spacing: .1rem;
+  word-break: break-all;
   padding: .5rem;
   color: rgb(10, 10, 10);
   background-color: rgb(177, 177, 177);
@@ -28,9 +25,6 @@ text-align: center;
 }
 
 #progress-panel{
-/*   position: -webkit-sticky;
-  position: sticky;
-  top: 0; */
   font-size: .5rem;
   letter-spacing: .1rem;
   border-radius: .5rem;

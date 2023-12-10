@@ -11,9 +11,7 @@ $sql = "SELECT *
 
 FROM globalQuestionaire
 
-WHERE questionnaireId =".$questionnaireID;
-
-$sql .= " ORDER BY questionnaireId DESC ";
+WHERE id =".$questionnaireID;
 
 $result = mysqli_query($conn, $sql);
 

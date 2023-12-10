@@ -9,6 +9,7 @@
         <mat-expansion-panel-header>
           <mat-panel-title>
             <span>{{vectors.vectorName}}</span>
+           
            <!--  <span>Total answered: {{totalVectorAnswers[j]}}</span> -->
             <span>{{'totalQuestions' | translate}}: {{totalVectorQuestions[j]}}</span>
           </mat-panel-title>
@@ -22,7 +23,7 @@
                 <mat-radio-group aria-label="Select an option" name="vector_{{j+1}}_Question{{k+1}}">
                   <ng-container  *ngFor="let item of question.answers; index as m">
                       <mat-radio-button 
-                          (change) = "saveQuestionForm()"
+                          (change) = "saveAnswer()"
                           value="{{item['regulation']}}"
                           id="vector_{{j+1}}_Question{{k+1}}_Answer{{m+1}}"
                           >
@@ -38,7 +39,7 @@
                   <ng-container *ngFor="let item of question.answers; index as n">
                       <p>  
                         <mat-checkbox
-                          (change) = "saveQuestionForm()"
+                          (change) = "saveAnswer()"
                           value="{{item['regulation']}}"
                           name="vector_{{j+1}}_Question{{k+1}}"
                           id="vector_{{j+1}}_Question{{k+1}}_Answer{{n+1}}"

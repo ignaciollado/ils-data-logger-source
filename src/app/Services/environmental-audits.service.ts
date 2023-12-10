@@ -24,10 +24,10 @@ export class EnvironmentalAuditsService {
       .pipe(catchError(this.sharedService.handleError))
   }
 
-  createGlobalAnswer(answer:string, questionNumber:string, regulation: string[]): Observable<QuestionDTO> {
-    console.log(answer, questionNumber, regulation[0], regulation[1], regulation[2], regulation.length)
+  createGlobalAnswer(resultsQuestionnaire: string[], companyId: string, completed: boolean): Observable<string[]> {
+    console.log (resultsQuestionnaire, companyId)
     return this.http
-      .post<QuestionDTO>(`${URL_API}globalAnswerCreate.php`, {answer, questionNumber, regulation})
+      .post<string[]>(`${URL_API}questionnaireAnswerCreate.php?companyId=${companyId}&completed=${completed}`, resultsQuestionnaire)
       .pipe(catchError(this.sharedService.handleError));
   }
 

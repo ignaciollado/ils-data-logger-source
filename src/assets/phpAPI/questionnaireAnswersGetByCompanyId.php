@@ -13,7 +13,7 @@ FROM globalQuestionaire
 
 WHERE companyId =".$companyId;
 
-$sql .= " ORDER BY questionnaireId DESC ";
+$sql .= " ORDER BY companyQuestionnaireId DESC ";
 
 $result = mysqli_query($conn, $sql);
 

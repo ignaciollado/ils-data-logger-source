@@ -11,7 +11,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class GlobalRegulationQuestionnaireAnswerComponent {
   private userId: string | null
-  userQuestionnaire: AnswerDTO[] = []
+  userQuestionnaires: AnswerDTO[] = []
   userQuestionnairebyID: AnswerDTO[] = []
 
 
@@ -32,8 +32,13 @@ export class GlobalRegulationQuestionnaireAnswerComponent {
   loadQuestionnaire( questionnaireID: number){
         this.enviromentalAuditService.getQuestionnaireByID( questionnaireID )
           .subscribe( (questionnaires: AnswerDTO[]) => {
-            this.userQuestionnaire = questionnaires
-            console.log (this.userQuestionnaire)
+            this.userQuestionnaires = questionnaires
+
+            this.userQuestionnaires.map( (item:AnswerDTO) => {
+              item.userAnswers.replace("false","<span class='false'>false</span>")
+              item.userAnswers.replace("true","<span class='true'>true</span>")
+            })
+
            /*  this.userQuestionnairebyID = this.userQuestionnaire.filter((item:AnswerDTO)=>{ item.id === questionnaireID })
             console.log (this.userQuestionnairebyID)
 

@@ -3,7 +3,7 @@ export class AnswerDTO {
   companyId: number
   companyQuestionnaireId: number
   updated_at: Date
-  userAnswers: userQuestionaire[]
+  userAnswers: string
   completed: boolean
 }
 

@@ -25,19 +25,9 @@ export class GlobalRegulationQuestionnaireListComponent {
   }
 
   loadAnswers( userId: string){
-    
-        this.enviromentalAuditService.getGlobalAnswersByCompany( this.userId )
+        this.enviromentalAuditService.getGlobalAnswersByCompany( userId )
           .subscribe( (questionaires: AnswerDTO[]) => {
             this.userQuestionaires = questionaires
-/*               this.userQuestionaires.map( (userAnswers:any) => {
-                userAnswers.userQuestionaire.map( (item:any) => {
-                  item.questionaireAnswers.map( (subItem:any) => {
-                    subItem.answers.map( (subItemsub:any) => {
-                      console.log (subItem.questionTextES, subItemsub.answerText)
-                    })
-                  })
-                })
-              })  */
             })
   }
 

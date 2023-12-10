@@ -508,103 +508,103 @@ saveQuestionForm() {
 
 /* VECTOR 1 */
 this.vector_1_Question1.forEach((node: HTMLInputElement) => {
-  this.vector_1_Question1_reg.push(node.id+'#'+node.value+'#'+node.checked)
+  this.vector_1_Question1_reg.push(node.id+'#'+node.value+'# '+node.checked+' ')
   /* this.vector_1_Question1_answers.push(node.checked) */
 })
 this.vector_1_Question2.forEach((node: HTMLInputElement) => {
-  this.vector_1_Question2_reg.push(node.id+'#'+node.value+'#'+node.checked)
+  this.vector_1_Question2_reg.push(node.id+'#'+node.value+'# '+node.checked+' ')
   /* this.vector_1_Question2_answers.push(node.checked) */
 })
 this.vector_1_Question3.forEach((node: HTMLInputElement) => {
-  this.vector_1_Question3_reg.push(node.id+'#'+node.value+'#'+node.checked)
+  this.vector_1_Question3_reg.push(node.id+'#'+node.value+'# '+node.checked+' ')
   /* this.vector_1_Question3_answers.push(node.checked) */
 })
 this.vector_1_Question4.forEach((node: HTMLInputElement) => {
-  this.vector_1_Question4_reg.push(node.id+'#'+node.value+'#'+node.checked)
+  this.vector_1_Question4_reg.push(node.id+'#'+node.value+'# '+node.checked+' ')
   /* this.vector_1_Question4_answers.push(node.checked) */
 })
 /* VECTOR 2 */
 this.vector_2_Question1.forEach((node: HTMLInputElement, index) => {
-  this.vector_2_Question1_reg.push(node.id+'#'+node.value+'#'+node.checked)
+  this.vector_2_Question1_reg.push(node.id+'#'+node.value+'# '+node.checked+' ')
   /* this.vector_2_Question1_answers.push(node.checked) */
 })
 this.vector_2_Question2.forEach((node: HTMLInputElement, index) => {
-  this.vector_2_Question2_reg.push(node.id+'#'+node.value+'#'+node.checked)
+  this.vector_2_Question2_reg.push(node.id+'#'+node.value+'# '+node.checked+' ')
   /* this.vector_2_Question2_answers.push(node.checked) */
 })
 this.vector_2_Question3.forEach((node: HTMLInputElement, index) => {
-  this.vector_2_Question3_reg.push(node.id+'#'+node.value+'#'+node.checked)
+  this.vector_2_Question3_reg.push(node.id+'#'+node.value+'# '+node.checked+' ')
  /*  this.vector_2_Question3_answers.push(node.checked) */
 })
 this.vector_2_Question4.forEach((node: HTMLInputElement, index) => {
-  this.vector_2_Question4_reg.push(node.id+'#'+node.value+'#'+node.checked)
+  this.vector_2_Question4_reg.push(node.id+'#'+node.value+'# '+node.checked+' ')
   /* this.vector_2_Question4_answers.push(node.checked) */
 })
 this.vector_2_Question5.forEach((node: HTMLInputElement, index) => {
-  this.vector_2_Question5_reg.push(node.id+'#'+node.value+'#'+node.checked)
+  this.vector_2_Question5_reg.push(node.id+'#'+node.value+'# '+node.checked+' ')
   /* this.vector_2_Question5_answers.push(node.checked) */
 })
 /* VECTOR 3 */
 this.vector_3_Question1.forEach((node: HTMLInputElement, index) => {
-  this.vector_3_Question1_reg.push(node.id+'#'+node.value+'#'+node.checked)
+  this.vector_3_Question1_reg.push(node.id+'#'+node.value+'# '+node.checked+' ')
   /* this.vector_3_Question1_answers.push(node.checked) */
 })
 this.vector_3_Question2.forEach((node: HTMLInputElement, index) => {
-  this.vector_3_Question2_reg.push(node.id+'#'+node.value+'#'+node.checked)
+  this.vector_3_Question2_reg.push(node.id+'#'+node.value+'# '+node.checked+' ')
   /* this.vector_3_Question2_answers.push(node.checked) */
 })
 this.vector_3_Question3.forEach((node: HTMLInputElement, index) => {
-  this.vector_3_Question3_reg.push(node.id+'#'+node.value+'#'+node.checked)
+  this.vector_3_Question3_reg.push(node.id+'#'+node.value+'# '+node.checked+' ')
   /* this.vector_3_Question3_answers.push(node.checked) */
 })
 /* VECTOR 4 */
 this.vector_4_Question1.forEach((node: HTMLInputElement, index) => {
-  this.vector_4_Question1_reg.push(node.id+'#'+node.value+'#'+node.checked)
+  this.vector_4_Question1_reg.push(node.id+'#'+node.value+'# '+node.checked+' ')
   /* this.vector_4_Question1_answers.push(node.checked) */
 })
 this.vector_4_Question2.forEach((node: HTMLInputElement, index) => {
-  this.vector_4_Question2_reg.push(node.id+'#'+node.value+'#'+node.checked)
+  this.vector_4_Question2_reg.push(node.id+'#'+node.value+'# '+node.checked+' ')
   /* this.vector_4_Question2_answers.push(node.checked) */
 })
 this.vector_4_Question3.forEach((node: HTMLInputElement, index) => {
-  this.vector_4_Question3_reg.push(node.id+'#'+node.value+'#'+node.checked)
+  this.vector_4_Question3_reg.push(node.id+'#'+node.value+'# '+node.checked+' ')
   /* this.vector_4_Question3_answers.push(node.checked) */
 })
 this.vector_4_Question4.forEach((node: HTMLInputElement, index) => {
-  this.vector_4_Question4_reg.push(node.id+'#'+node.value+'#'+node.checked)
+  this.vector_4_Question4_reg.push(node.id+'#'+node.value+'# '+node.checked+' ')
   /* this.vector_4_Question4_answers.push(node.checked) */
 })
 this.vector_4_Question5.forEach((node: HTMLInputElement, index) => {
-  this.vector_4_Question5_reg.push(node.id+'#'+node.value+'#'+node.checked)
+  this.vector_4_Question5_reg.push(node.id+'#'+node.value+'# '+node.checked+' ')
   /* this.vector_4_Question5_answers.push(node.checked) */
 })
 this.vector_4_Question6.forEach((node: HTMLInputElement, index) => {
-  this.vector_4_Question6_reg.push(node.id+'#'+node.value+'#'+node.checked)
+  this.vector_4_Question6_reg.push(node.id+'#'+node.value+'# '+node.checked+' ')
   /* this.vector_4_Question6_answers.push(node.checked) */
 })
 this.vector_4_Question7.forEach((node: HTMLInputElement, index) => {
-  this.vector_4_Question7_reg.push(node.id+'#'+node.value+'#'+node.checked)
+  this.vector_4_Question7_reg.push(node.id+'#'+node.value+'# '+node.checked+' ')
   /* this.vector_4_Question7_answers.push(node.checked) */
 })
 /* VECTOR 5 */
 this.vector_5_Question1.forEach((node: HTMLInputElement, index) => {
-  this.vector_5_Question1_reg.push(node.id+'#'+node.value+'#'+node.checked)
+  this.vector_5_Question1_reg.push(node.id+'#'+node.value+'# '+node.checked+' ')
   /* this.vector_5_Question1_answers.push(node.checked) */
 })
 this.vector_5_Question2.forEach((node: HTMLInputElement, index) => {
-  this.vector_5_Question2_reg.push(node.id+'#'+node.value+'#'+node.checked)
+  this.vector_5_Question2_reg.push(node.id+'#'+node.value+'# '+node.checked+' ')
   /* this.vector_5_Question2_answers.push(node.checked) */
 })
 this.vector_5_Question3.forEach((node: HTMLInputElement, index) => {
-  this.vector_5_Question3_reg.push(node.id+'#'+node.value+'#'+node.checked)
+  this.vector_5_Question3_reg.push(node.id+'#'+node.value+'# '+node.checked+' ')
   /* this.vector_5_Question3_answers.push(node.checked) */
 })
 this.vector_5_Question4.forEach((node: HTMLInputElement, index) => {
-  this.vector_5_Question4_reg.push(node.id+'#'+node.value+'#'+node.checked)
+  this.vector_5_Question4_reg.push(node.id+'#'+node.value+'# '+node.checked+' ')
   /* this.vector_5_Question4_answers.push(node.checked) */
 })
 this.vector_5_Question5.forEach((node: HTMLInputElement, index) => {
-  this.vector_5_Question5_reg.push(node.id+'#'+node.value+'#'+node.checked)
+  this.vector_5_Question5_reg.push(node.id+'#'+node.value+'# '+node.checked+' ')
   /* this.vector_5_Question5_answers.push(node.checked) */
 })
 

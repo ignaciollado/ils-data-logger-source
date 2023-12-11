@@ -1,21 +1,21 @@
 <div class="container-form">
-<h2>Answered questionaires list:</h2>
+<h2>Answered questionnaires list:</h2>
 
 <div class='card-container' *ngIf="userQuestionaires">
-  <mat-card *ngFor="let questionaire of userQuestionaires">
+  <mat-card *ngFor="let questionnaire of userQuestionaires">
     <mat-card-header>
-      <mat-card-title>Num. {{questionaire.companyQuestionnaireId}}</mat-card-title>
+      <mat-card-title>Num. {{questionnaire.companyQuestionnaireId}}</mat-card-title>
       <mat-card-subtitle> <p>Fecha contestado:</p>
-        <strong>{{questionaire.updated_at | date :'short'}}</strong>
+        <strong>{{questionnaire.updated_at | date :'short'}}</strong>
   </mat-card-subtitle>
+  {{questionnaire.completed}}
     </mat-card-header>
-    <mat-card-content *ngFor="let item of questionaire.completed ">
-      <div>{{item.vectorName}}</div>
-      <div>{{item.vectorGeneralRegulation}}</div>
-      <div>{{item.totalAnswered}}</div> 
+    <mat-card-content *ngFor="let item of questionnaireTemp">
+      <div>{{item}}</div>
+     
     </mat-card-content>
     <mat-card-actions class="button-row">
-      <button mat-button color="primary"><a [routerLink]="['/questionnaire-detail', questionaire.id]" routerLinkActive="active" ariaCurrentWhenActive="page">VIEW</a></button>
+      <button mat-button color="primary"><a [routerLink]="['/questionnaire-detail', questionnaire.id]" routerLinkActive="active" ariaCurrentWhenActive="page">VIEW</a></button>
       <button mat-button color="warn">DELETE</button>
     </mat-card-actions>
   </mat-card>

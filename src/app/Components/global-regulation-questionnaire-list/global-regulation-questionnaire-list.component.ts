@@ -14,6 +14,7 @@ import { vectorDetail } from 'src/app/Models/question.dto'
 export class GlobalRegulationQuestionnaireListComponent {
   private userId: string | null
   userQuestionaires!: AnswerDTO[]
+  questionnaireTemp: any[]
 
   constructor (
     private enviromentalAuditService: EnvironmentalAuditsService,
@@ -30,10 +31,10 @@ export class GlobalRegulationQuestionnaireListComponent {
         this.enviromentalAuditService.getGlobalAnswersByCompany( userId )
           .subscribe( (questionaires: AnswerDTO[]) => {
             this.userQuestionaires = questionaires
-            this.userQuestionaires.map((completed:any) => {
-                console.log (completed)
+            this.userQuestionaires.map((questionnaire:any) => {
+                this.questionnaireTemp = JSON.parse(questionnaire.completed)
             })
+            console.log (this.questionnaireTemp)
             })
   }
-
 }

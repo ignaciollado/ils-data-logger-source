@@ -5,11 +5,14 @@
   <mat-card *ngFor="let questionaire of userQuestionaires">
     <mat-card-header>
       <mat-card-title>Num. {{questionaire.companyQuestionnaireId}}</mat-card-title>
-      <mat-card-subtitle>Completed: {{questionaire.completed}}</mat-card-subtitle>
+      <mat-card-subtitle> <p>Fecha contestado:</p>
+        <strong>{{questionaire.updated_at | date :'short'}}</strong>
+  </mat-card-subtitle>
     </mat-card-header>
-    <mat-card-content>
-      <p>Fecha contestado:</p>
-      <strong>{{questionaire.updated_at | date :'short'}}</strong>
+    <mat-card-content *ngFor="let item of questionaire.completed ">
+      <div>{{item.vectorName}}</div>
+      <div>{{item.vectorGeneralRegulation}}</div>
+      <div>{{item.totalAnswered}}</div> 
     </mat-card-content>
     <mat-card-actions class="button-row">
       <button mat-button color="primary"><a [routerLink]="['/questionnaire-detail', questionaire.id]" routerLinkActive="active" ariaCurrentWhenActive="page">VIEW</a></button>

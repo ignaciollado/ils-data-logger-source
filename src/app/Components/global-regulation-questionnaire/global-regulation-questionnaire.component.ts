@@ -17,6 +17,8 @@ import {
 import { ConfirmDialogComponent } from 'src/app/confirm-dialog/confirm-dialog.component'
 import { AnswerDTO } from 'src/app/Models/answer.dto';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { MatRadioButton, MatRadioChange } from '@angular/material/radio';
+import { MatCheckboxChange } from '@angular/material/checkbox';
 
 @Component({
   selector: 'app-global-regulation-questionnaire',
@@ -35,7 +37,6 @@ vectorGeneralRegulation: UntypedFormControl
 questions: UntypedFormControl
 
 questionListForm: FormGroup = this.formBuilder.group({});
-questionListFormTest: FormGroup = this.formBuilder.group({})
 
 questionList: QuestionDTO[]
 panelOpenState: boolean = true;
@@ -157,7 +158,7 @@ constructor (
   this.vectorName = new UntypedFormControl();
   this.vectorGeneralRegulation = new UntypedFormControl();
   this.questions = new UntypedFormControl();
-  this.questionListFormTest = this.formBuilder.group({})
+  this.questionListForm = this.formBuilder.group({})
 }
 
 ngOnInit() {
@@ -192,8 +193,9 @@ openDialog(enterAnimationDuration: string, exitAnimationDuration: string, questi
   this.dialog.open(ConfirmDialogComponent, dialogConfig);
 }
 
-saveAnswer() {
+saveAnswer(e: any) {
 /*  console.log (document.getElementById('theQuestionnaire'))  */
+
   let results: string
   let vector1Progress1: number, vector1Progress2: number, vector1Progress3: number, vector1Progress4: number = 0
   let vector2Progress1: number, vector2Progress2: number, vector2Progress3: number, vector2Progress4: number, vector2Progress5: number = 0
@@ -231,19 +233,15 @@ saveAnswer() {
 this.totalVectorAnswers = []
 /* VECTOR 1 */
   this.vector_1_Question1.forEach((node: HTMLInputElement) => {
-    //this.vector_1_Question1_reg.push(node.id+'#'+node.value+'#'+node.checked)
     this.vector_1_Question1_answers.push(node.checked)
   })
   this.vector_1_Question2.forEach((node: HTMLInputElement) => {
-    //this.vector_1_Question2_reg.push(node.id+'#'+node.value+'#'+node.checked)
     this.vector_1_Question2_answers.push(node.checked)
   })
   this.vector_1_Question3.forEach((node: HTMLInputElement) => {
-    //this.vector_1_Question3_reg.push(node.id+'#'+node.value+'#'+node.checked)
     this.vector_1_Question3_answers.push(node.checked)
   })
   this.vector_1_Question4.forEach((node: HTMLInputElement) => {
-    //this.vector_1_Question4_reg.push(node.id+'#'+node.value+'#'+node.checked)
     this.vector_1_Question4_answers.push(node.checked)
   })
   if (this.vector_1_Question1_answers.some((someItem: boolean) => someItem === true) ) {
@@ -274,23 +272,18 @@ this.totalVectorAnswers = []
 
 /* VECTOR 2 */
   this.vector_2_Question1.forEach((node: HTMLInputElement, index) => {
-    //this.vector_2_Question1_reg.push(node.id+'#'+node.value+'#'+node.checked)
     this.vector_2_Question1_answers.push(node.checked)
   })
   this.vector_2_Question2.forEach((node: HTMLInputElement, index) => {
-    //this.vector_2_Question2_reg.push(node.id+'#'+node.value+'#'+node.checked)
     this.vector_2_Question2_answers.push(node.checked)
   })
   this.vector_2_Question3.forEach((node: HTMLInputElement, index) => {
-    //this.vector_2_Question3_reg.push(node.id+'#'+node.value+'#'+node.checked)
     this.vector_2_Question3_answers.push(node.checked)
   })
   this.vector_2_Question4.forEach((node: HTMLInputElement, index) => {
-    //this.vector_2_Question4_reg.push(node.id+'#'+node.value+'#'+node.checked)
     this.vector_2_Question4_answers.push(node.checked)
   })
   this.vector_2_Question5.forEach((node: HTMLInputElement, index) => {
-    //this.vector_2_Question5_reg.push(node.id+'#'+node.value+'#'+node.checked)
     this.vector_2_Question5_answers.push(node.checked)
   })
   if (this.vector_2_Question1_answers.some((someItem: boolean) => someItem === true) ) {
@@ -327,15 +320,12 @@ this.totalVectorAnswers = []
 
 /* VECTOR 3 */
   this.vector_3_Question1.forEach((node: HTMLInputElement, index) => {
-    //this.vector_3_Question1_reg.push(node.id+'#'+node.value+'#'+node.checked)
     this.vector_3_Question1_answers.push(node.checked)
   })
   this.vector_3_Question2.forEach((node: HTMLInputElement, index) => {
-    //this.vector_3_Question2_reg.push(node.id+'#'+node.value+'#'+node.checked)
     this.vector_3_Question2_answers.push(node.checked)
   })
   this.vector_3_Question3.forEach((node: HTMLInputElement, index) => {
-    //this.vector_3_Question3_reg.push(node.id+'#'+node.value+'#'+node.checked)
     this.vector_3_Question3_answers.push(node.checked)
   })
   if (this.vector_3_Question1_answers.some((someItem: boolean) => someItem === true) ) {
@@ -360,27 +350,21 @@ this.totalVectorAnswers = []
 
 /* VECTOR 4 */
   this.vector_4_Question1.forEach((node: HTMLInputElement, index) => {
-    //this.vector_4_Question1_reg.push(node.id+'#'+node.value+'#'+node.checked)
     this.vector_4_Question1_answers.push(node.checked)
   })
   this.vector_4_Question2.forEach((node: HTMLInputElement, index) => {
-    //this.vector_4_Question2_reg.push(node.id+'#'+node.value+'#'+node.checked)
     this.vector_4_Question2_answers.push(node.checked)
   })
   this.vector_4_Question3.forEach((node: HTMLInputElement, index) => {
-    //this.vector_4_Question3_reg.push(node.id+'#'+node.value+'#'+node.checked)
     this.vector_4_Question3_answers.push(node.checked)
   })
   this.vector_4_Question4.forEach((node: HTMLInputElement, index) => {
-    //this.vector_4_Question4_reg.push(node.id+'#'+node.value+'#'+node.checked)
     this.vector_4_Question4_answers.push(node.checked)
   })
   this.vector_4_Question5.forEach((node: HTMLInputElement, index) => {
-    //this.vector_4_Question5_reg.push(node.id+'#'+node.value+'#'+node.checked)
     this.vector_4_Question5_answers.push(node.checked)
   })
   this.vector_4_Question6.forEach((node: HTMLInputElement, index) => {
-    //this.vector_4_Question6_reg.push(node.id+'#'+node.value+'#'+node.checked)
     this.vector_4_Question6_answers.push(node.checked)
   })
   this.vector_4_Question7.forEach((node: HTMLInputElement, index) => {
@@ -432,23 +416,18 @@ this.totalVectorAnswers = []
   this.vectorProgress[3] = vector4Progress1 + vector4Progress2 + vector4Progress3 + vector4Progress4 + vector4Progress5 + vector4Progress6 + vector4Progress7
 /* VECTOR 5 */
   this.vector_5_Question1.forEach((node: HTMLInputElement, index) => {
-    //this.vector_5_Question1_reg.push(node.id+'#'+node.value+'#'+node.checked)
     this.vector_5_Question1_answers.push(node.checked)
   })
   this.vector_5_Question2.forEach((node: HTMLInputElement, index) => {
-    //this.vector_5_Question2_reg.push(node.id+'#'+node.value+'#'+node.checked)
     this.vector_5_Question2_answers.push(node.checked)
   })
   this.vector_5_Question3.forEach((node: HTMLInputElement, index) => {
-    //this.vector_5_Question3_reg.push(node.id+'#'+node.value+'#'+node.checked)
     this.vector_5_Question3_answers.push(node.checked)
   })
   this.vector_5_Question4.forEach((node: HTMLInputElement, index) => {
-    //this.vector_5_Question4_reg.push(node.id+'#'+node.value+'#'+node.checked)
     this.vector_5_Question4_answers.push(node.checked)
   })
   this.vector_5_Question5.forEach((node: HTMLInputElement, index) => {
-    //this.vector_5_Question5_reg.push(node.id+'#'+node.value+'#'+node.checked)
     this.vector_5_Question5_answers.push(node.checked)
   })
   if (this.vector_5_Question1_answers.some((someItem: boolean) => someItem === true) ) {
@@ -495,6 +474,10 @@ this.totalVectorAnswers = []
 
 }
 
+/* saveAnswerCheckBox(e: MatCheckboxChange){
+  console.log(e.checked, e.source.value, e.source.id, e.source.name)
+} */
+
 saveQuestionForm() {
 
   let resultsQuestionnaire: string[] = []
@@ -505,114 +488,212 @@ saveQuestionForm() {
   let resultsVector3 = document.getElementById('results-vector3')
   let resultsVector4 = document.getElementById('results-vector4')
   let resultsVector5 = document.getElementById('results-vector5')
+  let resultsVector6 = document.getElementById('results-vector6')
+  let resultsVector7 = document.getElementById('results-vector7')
 
+  this.vector_1_Question1_reg = [] 
+  this.vector_1_Question2_reg = []
+  this.vector_1_Question3_reg = []
+  this.vector_1_Question4_reg = []
+  this.vector_2_Question1_reg = [] 
+  this.vector_2_Question2_reg = []
+  this.vector_2_Question3_reg = []
+  this.vector_2_Question4_reg = []
+  this.vector_2_Question5_reg = []
+  this.vector_3_Question1_reg = []
+  this.vector_3_Question2_reg = []
+  this.vector_3_Question3_reg = []
+  this.vector_4_Question1_reg = [] 
+  this.vector_4_Question2_reg = []
+  this.vector_4_Question3_reg = []
+  this.vector_4_Question4_reg = []
+  this.vector_4_Question5_reg = []
+  this.vector_4_Question6_reg = []
+  this.vector_4_Question7_reg = []
+  this.vector_5_Question1_reg = []
+  this.vector_5_Question2_reg = []
+  this.vector_5_Question3_reg = []
+  this.vector_5_Question4_reg = []
+  this.vector_5_Question5_reg = []
 /* VECTOR 1 */
-this.vector_1_Question1.forEach((node: HTMLInputElement) => {
-  this.vector_1_Question1_reg.push(node.id+'#'+node.value+'# '+node.checked+' ')
-  /* this.vector_1_Question1_answers.push(node.checked) */
-})
-this.vector_1_Question2.forEach((node: HTMLInputElement) => {
-  this.vector_1_Question2_reg.push(node.id+'#'+node.value+'# '+node.checked+' ')
-  /* this.vector_1_Question2_answers.push(node.checked) */
-})
-this.vector_1_Question3.forEach((node: HTMLInputElement) => {
-  this.vector_1_Question3_reg.push(node.id+'#'+node.value+'# '+node.checked+' ')
-  /* this.vector_1_Question3_answers.push(node.checked) */
-})
-this.vector_1_Question4.forEach((node: HTMLInputElement) => {
-  this.vector_1_Question4_reg.push(node.id+'#'+node.value+'# '+node.checked+' ')
-  /* this.vector_1_Question4_answers.push(node.checked) */
-})
+if (this.vector_1_Question1) {
+  this.vector_1_Question1.forEach((node: HTMLInputElement) => {
+    if (node.value && node.checked) {
+      this.vector_1_Question1_reg.push(node.id+'#'+node.value+'#'+node.checked+'<br>')
+    }
+  })
+}
+if (this.vector_1_Question2) {
+  this.vector_1_Question2.forEach((node: HTMLInputElement) => {
+  if (node.value && node.checked) {
+    this.vector_1_Question2_reg.push(node.id+'#'+node.value+'#'+node.checked+'<br>')
+  }
+  })
+}
+if (this.vector_1_Question3) {
+  this.vector_1_Question3.forEach((node: HTMLInputElement) => {
+  if (node.value && node.checked) {
+    this.vector_1_Question3_reg.push(node.id+'#'+node.value+'#'+node.checked+'<br>')
+  }
+  })
+}
+if (this.vector_1_Question4) {
+  this.vector_1_Question4.forEach((node: HTMLInputElement) => {
+  if (node.value && node.checked) {
+    this.vector_1_Question4_reg.push(node.id+'#'+node.value+'#'+node.checked+'<br>')
+  }
+  })
+}
 /* VECTOR 2 */
-this.vector_2_Question1.forEach((node: HTMLInputElement, index) => {
-  this.vector_2_Question1_reg.push(node.id+'#'+node.value+'# '+node.checked+' ')
-  /* this.vector_2_Question1_answers.push(node.checked) */
-})
-this.vector_2_Question2.forEach((node: HTMLInputElement, index) => {
-  this.vector_2_Question2_reg.push(node.id+'#'+node.value+'# '+node.checked+' ')
-  /* this.vector_2_Question2_answers.push(node.checked) */
-})
-this.vector_2_Question3.forEach((node: HTMLInputElement, index) => {
-  this.vector_2_Question3_reg.push(node.id+'#'+node.value+'# '+node.checked+' ')
- /*  this.vector_2_Question3_answers.push(node.checked) */
-})
-this.vector_2_Question4.forEach((node: HTMLInputElement, index) => {
-  this.vector_2_Question4_reg.push(node.id+'#'+node.value+'# '+node.checked+' ')
-  /* this.vector_2_Question4_answers.push(node.checked) */
-})
-this.vector_2_Question5.forEach((node: HTMLInputElement, index) => {
-  this.vector_2_Question5_reg.push(node.id+'#'+node.value+'# '+node.checked+' ')
-  /* this.vector_2_Question5_answers.push(node.checked) */
-})
+if (this.vector_2_Question1){
+  this.vector_2_Question1.forEach((node: HTMLInputElement, index) => {
+  if (node.value && node.checked) {
+    this.vector_2_Question1_reg.push(node.id+'#'+node.value+'#'+node.checked+'<br>')
+  }
+  })
+}
+if (this.vector_2_Question2){
+  this.vector_2_Question2.forEach((node: HTMLInputElement, index) => {
+  if (node.value && node.checked) {
+    this.vector_2_Question2_reg.push(node.id+'#'+node.value+'#'+node.checked+'<br>')
+  }
+  })
+}
+if (this.vector_2_Question3){
+  this.vector_2_Question3.forEach((node: HTMLInputElement, index) => {
+  if (node.value && node.checked) {
+    this.vector_2_Question3_reg.push(node.id+'#'+node.value+'#'+node.checked+'<br>')
+  }
+  })
+}
+if (this.vector_2_Question4){
+  this.vector_2_Question4.forEach((node: HTMLInputElement, index) => {
+  if (node.value && node.checked) {
+    this.vector_2_Question4_reg.push(node.id+'#'+node.value+'#'+node.checked+'<br>')
+  }
+  })
+}
+if (this.vector_2_Question5){
+  this.vector_2_Question5.forEach((node: HTMLInputElement, index) => {
+  if (node.value && node.checked) {
+    this.vector_2_Question5_reg.push(node.id+'#'+node.value+'#'+node.checked+'<br>')
+  }
+  })
+}
 /* VECTOR 3 */
-this.vector_3_Question1.forEach((node: HTMLInputElement, index) => {
-  this.vector_3_Question1_reg.push(node.id+'#'+node.value+'# '+node.checked+' ')
-  /* this.vector_3_Question1_answers.push(node.checked) */
-})
-this.vector_3_Question2.forEach((node: HTMLInputElement, index) => {
-  this.vector_3_Question2_reg.push(node.id+'#'+node.value+'# '+node.checked+' ')
-  /* this.vector_3_Question2_answers.push(node.checked) */
-})
-this.vector_3_Question3.forEach((node: HTMLInputElement, index) => {
-  this.vector_3_Question3_reg.push(node.id+'#'+node.value+'# '+node.checked+' ')
-  /* this.vector_3_Question3_answers.push(node.checked) */
-})
+if (this.vector_3_Question1){
+  this.vector_3_Question1.forEach((node: HTMLInputElement, index) => {
+  if (node.value && node.checked) {
+    this.vector_3_Question1_reg.push(node.id+'#'+node.value+'#'+node.checked+'<br>')
+  }
+  })
+}
+if (this.vector_3_Question2){
+  this.vector_3_Question2.forEach((node: HTMLInputElement, index) => {
+  if (node.value && node.checked) {
+    this.vector_3_Question2_reg.push(node.id+'#'+node.value+'#'+node.checked+'<br>')
+  }
+  })
+}
+if (this.vector_3_Question3){
+  this.vector_3_Question3.forEach((node: HTMLInputElement, index) => {
+  if (node.value && node.checked) {
+    this.vector_3_Question3_reg.push(node.id+'#'+node.value+'#'+node.checked+'<br>')
+  }
+  })
+}
 /* VECTOR 4 */
-this.vector_4_Question1.forEach((node: HTMLInputElement, index) => {
-  this.vector_4_Question1_reg.push(node.id+'#'+node.value+'# '+node.checked+' ')
-  /* this.vector_4_Question1_answers.push(node.checked) */
-})
-this.vector_4_Question2.forEach((node: HTMLInputElement, index) => {
-  this.vector_4_Question2_reg.push(node.id+'#'+node.value+'# '+node.checked+' ')
-  /* this.vector_4_Question2_answers.push(node.checked) */
-})
-this.vector_4_Question3.forEach((node: HTMLInputElement, index) => {
-  this.vector_4_Question3_reg.push(node.id+'#'+node.value+'# '+node.checked+' ')
-  /* this.vector_4_Question3_answers.push(node.checked) */
-})
-this.vector_4_Question4.forEach((node: HTMLInputElement, index) => {
-  this.vector_4_Question4_reg.push(node.id+'#'+node.value+'# '+node.checked+' ')
-  /* this.vector_4_Question4_answers.push(node.checked) */
-})
-this.vector_4_Question5.forEach((node: HTMLInputElement, index) => {
-  this.vector_4_Question5_reg.push(node.id+'#'+node.value+'# '+node.checked+' ')
-  /* this.vector_4_Question5_answers.push(node.checked) */
-})
-this.vector_4_Question6.forEach((node: HTMLInputElement, index) => {
-  this.vector_4_Question6_reg.push(node.id+'#'+node.value+'# '+node.checked+' ')
-  /* this.vector_4_Question6_answers.push(node.checked) */
-})
-this.vector_4_Question7.forEach((node: HTMLInputElement, index) => {
-  this.vector_4_Question7_reg.push(node.id+'#'+node.value+'# '+node.checked+' ')
-  /* this.vector_4_Question7_answers.push(node.checked) */
-})
+if (this.vector_4_Question1){
+  this.vector_4_Question1.forEach((node: HTMLInputElement, index) => {
+  if (node.value && node.checked) {
+    this.vector_4_Question1_reg.push(node.id+'#'+node.value+'#'+node.checked+'<br>')
+  }
+  })
+}
+if (this.vector_4_Question2){
+  this.vector_4_Question2.forEach((node: HTMLInputElement, index) => {
+  if (node.value && node.checked) {
+    this.vector_4_Question2_reg.push(node.id+'#'+node.value+'#'+node.checked+'<br>')
+  }
+  })
+}
+if (this.vector_4_Question3){
+  this.vector_4_Question3.forEach((node: HTMLInputElement, index) => {
+  if (node.value && node.checked) {
+    this.vector_4_Question3_reg.push(node.id+'#'+node.value+'#'+node.checked+'<br>')
+  }
+  })
+}
+if (this.vector_4_Question4){
+  this.vector_4_Question4.forEach((node: HTMLInputElement, index) => {
+  if (node.value && node.checked) {
+    this.vector_4_Question4_reg.push(node.id+'#'+node.value+'#'+node.checked+'<br>')
+  }
+  })
+}
+if (this.vector_4_Question5){
+  this.vector_4_Question5.forEach((node: HTMLInputElement, index) => {
+  if (node.value && node.checked) {
+    this.vector_4_Question5_reg.push(node.id+'#'+node.value+'#'+node.checked+'<br>')
+  }
+  })
+}
+if (this.vector_4_Question6){
+  this.vector_4_Question6.forEach((node: HTMLInputElement, index) => {
+  if (node.value && node.checked) {
+    this.vector_4_Question6_reg.push(node.id+'#'+node.value+'#'+node.checked+'<br>')
+  }
+  })
+}
+if (this.vector_4_Question7){
+  this.vector_4_Question7.forEach((node: HTMLInputElement, index) => {
+  if (node.value && node.checked) {
+    this.vector_4_Question7_reg.push(node.id+'#'+node.value+'#'+node.checked+'<br>')
+  }
+  })
+}
 /* VECTOR 5 */
-this.vector_5_Question1.forEach((node: HTMLInputElement, index) => {
-  this.vector_5_Question1_reg.push(node.id+'#'+node.value+'# '+node.checked+' ')
-  /* this.vector_5_Question1_answers.push(node.checked) */
-})
-this.vector_5_Question2.forEach((node: HTMLInputElement, index) => {
-  this.vector_5_Question2_reg.push(node.id+'#'+node.value+'# '+node.checked+' ')
-  /* this.vector_5_Question2_answers.push(node.checked) */
-})
-this.vector_5_Question3.forEach((node: HTMLInputElement, index) => {
-  this.vector_5_Question3_reg.push(node.id+'#'+node.value+'# '+node.checked+' ')
-  /* this.vector_5_Question3_answers.push(node.checked) */
-})
-this.vector_5_Question4.forEach((node: HTMLInputElement, index) => {
-  this.vector_5_Question4_reg.push(node.id+'#'+node.value+'# '+node.checked+' ')
-  /* this.vector_5_Question4_answers.push(node.checked) */
-})
-this.vector_5_Question5.forEach((node: HTMLInputElement, index) => {
-  this.vector_5_Question5_reg.push(node.id+'#'+node.value+'# '+node.checked+' ')
-  /* this.vector_5_Question5_answers.push(node.checked) */
-})
+if (this.vector_5_Question1){
+  this.vector_5_Question1.forEach((node: HTMLInputElement, index) => {
+  if (node.value && node.checked) {
+    this.vector_5_Question1_reg.push(node.id+'#'+node.value+'#'+node.checked+'<br>')
+  }
+  })
+}
+if (this.vector_5_Question2){
+  this.vector_5_Question2.forEach((node: HTMLInputElement, index) => {
+  if (node.value && node.checked) {
+    this.vector_5_Question2_reg.push(node.id+'#'+node.value+'#'+node.checked+'<br>')
+  }
+  })
+}
+if (this.vector_5_Question3){
+  this.vector_5_Question3.forEach((node: HTMLInputElement, index) => {
+  if (node.value && node.checked) {
+    this.vector_5_Question3_reg.push(node.id+'#'+node.value+'#'+node.checked+'<br>')
+  }
+  })
+}
+if (this.vector_5_Question4){
+  this.vector_5_Question4.forEach((node: HTMLInputElement, index) => {
+  if (node.value && node.checked) {
+    this.vector_5_Question4_reg.push(node.id+'#'+node.value+'#'+node.checked+'<br>')
+  }
+  })
+}
+if (this.vector_5_Question5){
+  this.vector_5_Question5.forEach((node: HTMLInputElement, index) => {
+  if (node.value && node.checked) {
+    this.vector_5_Question5_reg.push(node.id+'#'+node.value+'#'+node.checked+'<br>')
+  }
+  })
+}
 
-resultsVector1.innerHTML = "<div class='vector-div'>"+this.vector_1_Question1_reg+" "+this.vector_1_Question2_reg+" "+this.vector_1_Question3_reg+" "+this.vector_1_Question4_reg+"</div>"
-resultsVector2.innerHTML = "<div class='vector-div'>"+this.vector_2_Question1_reg+" "+this.vector_2_Question2_reg+" "+this.vector_2_Question3_reg+" "+this.vector_2_Question4_reg+" "+this.vector_2_Question5_reg+"</div>"
-resultsVector3.innerHTML = "<div class='vector-div'>"+this.vector_3_Question1_reg+" "+this.vector_3_Question2_reg+" "+this.vector_3_Question3_reg+"</div>"
-resultsVector4.innerHTML = "<div class='vector-div'>"+this.vector_4_Question1_reg+" "+this.vector_4_Question2_reg+" "+this.vector_4_Question3_reg+" "+this.vector_4_Question4_reg+" "+this.vector_4_Question5_reg+" "+this.vector_4_Question6_reg+" "+this.vector_4_Question7_reg+"</div>"
-resultsVector5.innerHTML = "<div class='vector-div'>"+this.vector_5_Question1_reg+" "+this.vector_5_Question2_reg+" "+this.vector_5_Question3_reg+" "+this.vector_5_Question4_reg+" "+this.vector_5_Question5_reg+"</div>"
+resultsVector1.innerHTML = this.vector_1_Question1_reg+" "+this.vector_1_Question2_reg+" "+this.vector_1_Question3_reg+" "+this.vector_1_Question4_reg
+resultsVector2.innerHTML = this.vector_2_Question1_reg+" "+this.vector_2_Question2_reg+" "+this.vector_2_Question3_reg+" "+this.vector_2_Question4_reg+" "+this.vector_2_Question5_reg
+resultsVector3.innerHTML = this.vector_3_Question1_reg+" "+this.vector_3_Question2_reg+" "+this.vector_3_Question3_reg
+resultsVector4.innerHTML = this.vector_4_Question1_reg+" "+this.vector_4_Question2_reg+" "+this.vector_4_Question3_reg+" "+this.vector_4_Question4_reg+" "+this.vector_4_Question5_reg+" "+this.vector_4_Question6_reg+" "+this.vector_4_Question7_reg
+resultsVector5.innerHTML = this.vector_5_Question1_reg+" "+this.vector_5_Question2_reg+" "+this.vector_5_Question3_reg+" "+this.vector_5_Question4_reg+" "+this.vector_5_Question5_reg
 
 resultsVector1.classList.remove('no-display')
 resultsVector2.classList.remove('no-display')

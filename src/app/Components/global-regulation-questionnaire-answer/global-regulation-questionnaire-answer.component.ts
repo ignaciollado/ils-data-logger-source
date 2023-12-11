@@ -33,12 +33,12 @@ export class GlobalRegulationQuestionnaireAnswerComponent {
         this.enviromentalAuditService.getQuestionnaireByID( questionnaireID )
           .subscribe( (questionnaires: AnswerDTO[]) => {
             this.userQuestionnaires = questionnaires
-
+            console.log (this.userQuestionnaires)
             this.userQuestionnaires.map( (item:AnswerDTO) => {
-              item.userAnswers.replace("false","<span class='false'>false</span>")
-              item.userAnswers.replace("true","<span class='true'>true</span>")
+              item.userAnswers.replace("false","<span class='is-false'>false</span>")
+              item.userAnswers.replace("true","<span class='is-true'>true</span>")
             })
-
+            console.log (this.userQuestionnaires)
            /*  this.userQuestionnairebyID = this.userQuestionnaire.filter((item:AnswerDTO)=>{ item.id === questionnaireID })
             console.log (this.userQuestionnairebyID)
 

@@ -1,7 +1,7 @@
 <div class="container-form">
  <h1>Identificación de requisitos legales IDI<br>CUESTIONARIO PRELIMINAR</h1>
  <div class="questions-container">
-  <form *ngIf="questionList" id="theQuestionnaire" [formGroup]="questionListFormTest"
+  <form *ngIf="questionList" id="theQuestionnaire" [formGroup]="questionListForm"
                     (ngSubmit)="saveQuestionForm()">
     
     <mat-accordion *ngFor=" let vectors of questionList; index as j">
@@ -20,12 +20,13 @@
           <h4>{{question.questionTextES}}:<button mat-flat-button (click)="openDialog('300ms', '300ms', question.questionTextES, question.questionTooltipES, question.questionDoc1, question.questionDoc2)"><i *ngIf="question.questionTooltipES" class="fa-solid fa-circle-info" style="color: #1f5618;"></i></button></h4>
           <ng-container [ngSwitch]="question.type">
               <ng-container *ngSwitchCase="'radio'">
-                <mat-radio-group aria-label="Select an option" name="vector_{{j+1}}_Question{{k+1}}">
+                <mat-radio-group aria-label="Select an answer" name="vector_{{j+1}}_Question{{k+1}}">
                   <ng-container  *ngFor="let item of question.answers; index as m">
                       <mat-radio-button 
-                          (change) = "saveAnswer()"
+                          (change) = "saveAnswer($event)"
                           value="{{item['regulation']}}"
                           id="vector_{{j+1}}_Question{{k+1}}_Answer{{m+1}}"
+                          name="vector_{{j+1}}_Question{{k+1}}_Answer{{m+1}}"
                           >
                           {{item['answerText']}}
                       </mat-radio-button>
@@ -39,7 +40,7 @@
                   <ng-container *ngFor="let item of question.answers; index as n">
                       <p>  
                         <mat-checkbox
-                          (change) = "saveAnswer()"
+                          (change) = "saveAnswer($event)"
                           value="{{item['regulation']}}"
                           name="vector_{{j+1}}_Question{{k+1}}"
                           id="vector_{{j+1}}_Question{{k+1}}_Answer{{n+1}}"
@@ -63,11 +64,11 @@
   </div>
   </form>
   <div>
-    <div id="results-vector1"  class="vector-div no-display"></div>
-    <div id="results-vector2"  class="vector-div no-display"></div>
-    <div id="results-vector3"  class="vector-div no-display"></div>
-    <div id="results-vector4"  class="vector-div no-display"></div>
-    <div id="results-vector5"  class="vector-div no-display"></div>
+    <div id="results-vector1" class="vector-div no-display"></div>
+    <div id="results-vector2" class="vector-div no-display"></div>
+    <div id="results-vector3" class="vector-div no-display"></div>
+    <div id="results-vector4" class="vector-div no-display"></div>
+    <div id="results-vector5" class="vector-div no-display"></div>
     <div id="progress-panel" class=" no-display"></div>
   </div>
   

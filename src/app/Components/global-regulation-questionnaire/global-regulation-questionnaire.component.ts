@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { EnvironmentalAuditsService } from 'src/app/Services/environmental-audits.service';
-import { Question, QuestionDTO } from 'src/app/Models/question.dto';
+import { Question, QuestionDTO, vectorDetail } from 'src/app/Models/question.dto';
 import {
     UntypedFormControl,
     FormGroup, FormBuilder 
@@ -20,17 +20,19 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 import { MatRadioButton, MatRadioChange } from '@angular/material/radio';
 import { MatCheckboxChange } from '@angular/material/checkbox';
 
+
+
 @Component({
   selector: 'app-global-regulation-questionnaire',
   templateUrl: './global-regulation-questionnaire.component.html',
   styleUrls: ['./global-regulation-questionnaire.component.scss']
 })
 
-
-
 export class GlobalRegulationQuestionnaireComponent {
 
-private userId: string | null;
+private userId: string | null
+questionnaireVectorState: vectorDetail [] = []
+vectorStateItem: vectorDetail = {vectorId: '', vectorName: '', vectorGeneralRegulation: [], totalQuestions: 0, totalAnswered: 0}
 vectorId: UntypedFormControl
 vectorName: UntypedFormControl
 vectorGeneralRegulation: UntypedFormControl
@@ -171,6 +173,8 @@ private loadQuestions(): void {
       this.questionList = questions
       questions.map( (vector:QuestionDTO) => {
         this.totalVectorQuestions.push(vector['questions'].length)
+         this.vectorStateItem = {vectorId: vector.vectorId, vectorName:  vector.vectorName, vectorGeneralRegulation: vector.vectorGeneralRegulation, totalQuestions: vector.questions.length, totalAnswered: 0}
+          this.questionnaireVectorState = [...this.questionnaireVectorState, this.vectorStateItem]
       })
     })
 }
@@ -194,9 +198,7 @@ openDialog(enterAnimationDuration: string, exitAnimationDuration: string, questi
 }
 
 saveAnswer(e: any) {
-/*  console.log (document.getElementById('theQuestionnaire'))  */
-
-  let results: string
+  
   let vector1Progress1: number, vector1Progress2: number, vector1Progress3: number, vector1Progress4: number = 0
   let vector2Progress1: number, vector2Progress2: number, vector2Progress3: number, vector2Progress4: number, vector2Progress5: number = 0
   let vector3Progress1: number, vector3Progress2: number, vector3Progress3: number = 0
@@ -230,6 +232,31 @@ saveAnswer(e: any) {
   this.vector_5_Question4 = document.getElementsByName('vector_5_Question4')
   this.vector_5_Question5 = document.getElementsByName('vector_5_Question5')
 
+  this.vector_1_Question1_answers = []
+  this.vector_1_Question2_answers = []
+  this.vector_1_Question3_answers = []
+  this.vector_1_Question4_answers = []
+  this.vector_2_Question1_answers = []
+  this.vector_2_Question2_answers = []
+  this.vector_2_Question3_answers = []
+  this.vector_2_Question4_answers = []
+  this.vector_2_Question5_answers = []
+  this.vector_3_Question1_answers = []
+  this.vector_3_Question2_answers = []
+  this.vector_3_Question3_answers = []
+  this.vector_4_Question1_answers = []
+  this.vector_4_Question2_answers = []
+  this.vector_4_Question3_answers = []
+  this.vector_4_Question4_answers = []
+  this.vector_4_Question5_answers = []
+  this.vector_4_Question6_answers = []
+  this.vector_4_Question7_answers = []
+  this.vector_5_Question1_answers = []
+  this.vector_5_Question2_answers = []
+  this.vector_5_Question3_answers = []
+  this.vector_5_Question4_answers = []
+  this.vector_5_Question5_answers = []
+
 this.totalVectorAnswers = []
 /* VECTOR 1 */
   this.vector_1_Question1.forEach((node: HTMLInputElement) => {
@@ -244,6 +271,7 @@ this.totalVectorAnswers = []
   this.vector_1_Question4.forEach((node: HTMLInputElement) => {
     this.vector_1_Question4_answers.push(node.checked)
   })
+
   if (this.vector_1_Question1_answers.some((someItem: boolean) => someItem === true) ) {
     vector1Progress1 = (100/this.totalVectorQuestions[0])
   }
@@ -269,6 +297,11 @@ this.totalVectorAnswers = []
     vector1Progress4 = 0
   }
   this.vectorProgress[0] = vector1Progress1 + vector1Progress2 + vector1Progress3 + vector1Progress4
+  this.questionnaireVectorState.map(item=> {
+    if(item.vectorId === '1') {
+        item.totalAnswered = this.vectorProgress[0]
+    }
+  })
 
 /* VECTOR 2 */
   this.vector_2_Question1.forEach((node: HTMLInputElement, index) => {
@@ -317,6 +350,11 @@ this.totalVectorAnswers = []
     vector2Progress5 = 0
   }
   this.vectorProgress[1] = vector2Progress1 + vector2Progress2 + vector2Progress3 + vector2Progress4 + vector2Progress5
+  this.questionnaireVectorState.map(item=> {
+    if(item.vectorId === '2') {
+        item.totalAnswered = this.vectorProgress[1]
+    }
+  })
 
 /* VECTOR 3 */
   this.vector_3_Question1.forEach((node: HTMLInputElement, index) => {
@@ -347,7 +385,11 @@ this.totalVectorAnswers = []
     vector3Progress3 = 0
   }
   this.vectorProgress[2] = vector3Progress1 + vector3Progress2 + vector3Progress3
-
+  this.questionnaireVectorState.map(item=> {
+    if(item.vectorId === '3') {
+        item.totalAnswered = this.vectorProgress[2]
+    }
+  })
 /* VECTOR 4 */
   this.vector_4_Question1.forEach((node: HTMLInputElement, index) => {
     this.vector_4_Question1_answers.push(node.checked)
@@ -414,6 +456,12 @@ this.totalVectorAnswers = []
     vector4Progress7 = 0
   }
   this.vectorProgress[3] = vector4Progress1 + vector4Progress2 + vector4Progress3 + vector4Progress4 + vector4Progress5 + vector4Progress6 + vector4Progress7
+  this.questionnaireVectorState.map(item=> {
+    if(item.vectorId === '4') {
+        item.totalAnswered = this.vectorProgress[3]
+    }
+  })
+
 /* VECTOR 5 */
   this.vector_5_Question1.forEach((node: HTMLInputElement, index) => {
     this.vector_5_Question1_answers.push(node.checked)
@@ -461,25 +509,20 @@ this.totalVectorAnswers = []
     vector5Progress5 = 0
   }
   this.vectorProgress[4] = vector5Progress1 + vector5Progress2 + vector5Progress3 + vector5Progress4 + vector5Progress5
+  this.questionnaireVectorState.map(item=> {
+    if(item.vectorId === '5') {
+        item.totalAnswered = this.vectorProgress[4]
+    }
+  })
 
   let progressPanel = document.getElementById('progress-panel')
 
-  progressPanel.innerHTML = "<div>"+this.vectorProgress[0]+" %</div>"
-  progressPanel.innerHTML += "<div>"+this.vectorProgress[1]+" %</div>"
-  progressPanel.innerHTML += "<div>"+this.vectorProgress[2]+" %</div>"
-  progressPanel.innerHTML += "<div>"+this.vectorProgress[3]+" %</div>"
-  progressPanel.innerHTML += "<div>"+this.vectorProgress[4]+" %</div>"
+  progressPanel.innerHTML = JSON.stringify(this.questionnaireVectorState)
   
   progressPanel.classList.remove('no-display')
-
 }
 
-/* saveAnswerCheckBox(e: MatCheckboxChange){
-  console.log(e.checked, e.source.value, e.source.id, e.source.name)
-} */
-
 saveQuestionForm() {
-
   let resultsQuestionnaire: string[] = []
   let completed: boolean = false
 
@@ -491,11 +534,11 @@ saveQuestionForm() {
   let resultsVector6 = document.getElementById('results-vector6')
   let resultsVector7 = document.getElementById('results-vector7')
 
-  this.vector_1_Question1_reg = [] 
+  this.vector_1_Question1_reg = []
   this.vector_1_Question2_reg = []
   this.vector_1_Question3_reg = []
   this.vector_1_Question4_reg = []
-  this.vector_2_Question1_reg = [] 
+  this.vector_2_Question1_reg = []
   this.vector_2_Question2_reg = []
   this.vector_2_Question3_reg = []
   this.vector_2_Question4_reg = []
@@ -503,7 +546,7 @@ saveQuestionForm() {
   this.vector_3_Question1_reg = []
   this.vector_3_Question2_reg = []
   this.vector_3_Question3_reg = []
-  this.vector_4_Question1_reg = [] 
+  this.vector_4_Question1_reg = []
   this.vector_4_Question2_reg = []
   this.vector_4_Question3_reg = []
   this.vector_4_Question4_reg = []
@@ -707,9 +750,9 @@ resultsQuestionnaire.push(resultsVector3.innerHTML)
 resultsQuestionnaire.push(resultsVector4.innerHTML)
 resultsQuestionnaire.push(resultsVector5.innerHTML)
 
+console.log(this.questionnaireVectorState)
 
-
-this.enviromentalAuditService.createGlobalAnswer(resultsQuestionnaire, this.userId, completed)
+this.enviromentalAuditService.createGlobalAnswer(resultsQuestionnaire, this.userId, this.questionnaireVectorState)
 .subscribe()
 }
 }

@@ -25,3 +25,11 @@ export interface Answer {
   answerImage_1:      string;
   answerImage_2:      string;
 }
+
+export interface vectorDetail {
+  vectorId: string;
+  vectorName: string;
+  vectorGeneralRegulation: string[];
+  totalQuestions: number;
+  totalAnswered: number;
+}

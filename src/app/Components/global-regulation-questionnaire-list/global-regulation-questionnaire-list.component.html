@@ -11,11 +11,10 @@
         <span>Fecha contestado: {{questionnaire.updated_at | date :'short'}}</span>
       </mat-card-subtitle>
     </mat-card-header>
-    <mat-card-content *ngFor="let item of questionnaireTemp">
-      <div><strong>{{item.vectorName}}</strong></div>
-      <!-- <div><span>General regulation:</span> <strong>{{item.vectorGeneralRegulation}}</strong></div> -->
-      <div><span>Total questions:</span> <strong>{{item.totalQuestions}}</strong></div>
-      <div><span>Total answered:</span> <strong>{{item.totalAnswered | number: '1.2-2'}} %</strong></div>
+    <mat-card-content *ngFor="let item of questionnaireTemp; index as j">
+      <div><strong>{{item[j].vectorName}}</strong></div>
+      <div><span>Total questions:</span> <strong>{{item[j].totalQuestions}}</strong></div>
+      <div><span>Total answered:</span> <strong>{{item[j].totalAnswered | number: '1.2-2'}} %</strong></div>
       <mat-divider></mat-divider>
     </mat-card-content>
     <mat-card-actions class="button-row">

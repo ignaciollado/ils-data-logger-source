@@ -11,8 +11,10 @@
   {{questionnaire.completed}}
     </mat-card-header>
     <mat-card-content *ngFor="let item of questionnaireTemp">
-      <div>{{item}}</div>
-     
+      <div>{{item.vectorName}}</div>
+      <div>{{item.vectorGeneralRegulation}}</div>
+      <div>{{item.totalQuestions}}</div>
+      <div>{{item.totalAnswered}}</div>
     </mat-card-content>
     <mat-card-actions class="button-row">
       <button mat-button color="primary"><a [routerLink]="['/questionnaire-detail', questionnaire.id]" routerLinkActive="active" ariaCurrentWhenActive="page">VIEW</a></button>

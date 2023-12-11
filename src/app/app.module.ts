@@ -53,6 +53,7 @@ import { MatDatepickerModule } from "@angular/material/datepicker";
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatProgressBarModule} from '@angular/material/progress-bar';
+import {MatDividerModule} from '@angular/material/divider';
 
 import {DialogModule} from '@angular/cdk/dialog';
 
@@ -170,6 +171,7 @@ export function tokenGetter() {
     MatSlideToggleModule,
     MatProgressBarModule,
     MatDialogModule,
+    MatDividerModule,
     NgxMatSelectSearchModule,
   ],
   providers: [

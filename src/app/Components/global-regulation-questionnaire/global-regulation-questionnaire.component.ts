@@ -524,7 +524,6 @@ this.totalVectorAnswers = []
 
 saveQuestionForm() {
   let resultsQuestionnaire: string[] = []
-  let completed: boolean = false
 
   let resultsVector1 = document.getElementById('results-vector1')
   let resultsVector2 = document.getElementById('results-vector2')
@@ -749,8 +748,6 @@ resultsQuestionnaire.push(resultsVector2.innerHTML)
 resultsQuestionnaire.push(resultsVector3.innerHTML)
 resultsQuestionnaire.push(resultsVector4.innerHTML)
 resultsQuestionnaire.push(resultsVector5.innerHTML)
-
-console.log(this.questionnaireVectorState)
 
 this.enviromentalAuditService.createGlobalAnswer(resultsQuestionnaire, this.userId, this.questionnaireVectorState)
 .subscribe()

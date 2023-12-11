@@ -22,9 +22,11 @@ $userAnswers .= $request['4'];
 $sql = "INSERT INTO globalQuestionaire(companyId, userAnswers, completed) 
 VALUES ("
 .$companyId.",'"
-.$userAnswers."',"
+.$userAnswers."','"
 .$completed
-.")";
+."')";
+
+echo $sql;
 
 mysqli_free_result($result);
 

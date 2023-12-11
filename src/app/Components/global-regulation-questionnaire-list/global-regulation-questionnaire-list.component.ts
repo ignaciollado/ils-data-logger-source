@@ -3,6 +3,8 @@ import { EnvironmentalAuditsService } from 'src/app/Services/environmental-audit
 import { JwtHelperService } from '@auth0/angular-jwt'
 import { AnswerDTO } from 'src/app/Models/answer.dto'
 
+import { vectorDetail } from 'src/app/Models/question.dto'
+
 
 @Component({
   selector: 'app-global-regulation-questionnaire-list',
@@ -28,6 +30,9 @@ export class GlobalRegulationQuestionnaireListComponent {
         this.enviromentalAuditService.getGlobalAnswersByCompany( userId )
           .subscribe( (questionaires: AnswerDTO[]) => {
             this.userQuestionaires = questionaires
+            this.userQuestionaires.map((completed:any) => {
+                console.log (completed)
+            })
             })
   }
 

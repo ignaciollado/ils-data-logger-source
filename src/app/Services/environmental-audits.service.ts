@@ -25,9 +25,8 @@ export class EnvironmentalAuditsService {
   }
 
   createGlobalAnswer(resultsQuestionnaire: string[], companyId: string, completed: vectorDetail[]): Observable<string[]> {
-    console.log(resultsQuestionnaire, companyId, completed)
     return this.http
-      .post<string[]>(`${URL_API}questionnaireAnswerCreate.php?companyId=${companyId}&completed=${completed}`, resultsQuestionnaire)
+      .post<string[]>(`${URL_API}questionnaireAnswerCreate.php?companyId=${companyId}&completed=${JSON.stringify(completed)}`, resultsQuestionnaire)
       .pipe(catchError(this.sharedService.handleError));
   }
 

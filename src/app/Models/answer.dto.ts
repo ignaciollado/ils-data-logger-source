@@ -1,10 +1,11 @@
+import { vectorDetail } from "./question.dto"
 export class AnswerDTO {
   id: number
   companyId: number
   companyQuestionnaireId: number
   updated_at: Date
   userAnswers: string
-  completed: boolean
+  completed: vectorDetail[]
 }
 
 export interface userQuestionaire {

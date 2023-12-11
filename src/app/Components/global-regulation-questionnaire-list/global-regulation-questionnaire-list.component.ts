@@ -33,8 +33,8 @@ export class GlobalRegulationQuestionnaireListComponent {
             this.userQuestionaires = questionaires
             this.userQuestionaires.map((questionnaire:any) => {
                 this.questionnaireTemp = JSON.parse(questionnaire.completed)
+                console.log (this.questionnaireTemp)
             })
-            console.log (this.questionnaireTemp)
             })
   }
 }

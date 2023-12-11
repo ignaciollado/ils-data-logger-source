@@ -5,16 +5,15 @@
   <mat-card *ngFor="let questionnaire of userQuestionaires">
     <mat-card-header>
       <mat-card-title>
-        <span>Num. </span><strong>{{questionnaire.companyQuestionnaireId}}</strong>
+        <span>Questionnaire num. </span><strong>{{questionnaire.companyQuestionnaireId}}</strong>
       </mat-card-title>
       <mat-card-subtitle>
-        <p>Fecha contestado:</p>
-        {{questionnaire.updated_at | date :'short'}}
+        <span>Fecha contestado: {{questionnaire.updated_at | date :'short'}}</span>
       </mat-card-subtitle>
     </mat-card-header>
     <mat-card-content *ngFor="let item of questionnaireTemp">
       <div><strong>{{item.vectorName}}</strong></div>
-      <div><span>General regulation:</span> <strong>{{item.vectorGeneralRegulation}}</strong></div>
+      <!-- <div><span>General regulation:</span> <strong>{{item.vectorGeneralRegulation}}</strong></div> -->
       <div><span>Total questions:</span> <strong>{{item.totalQuestions}}</strong></div>
       <div><span>Total answered:</span> <strong>{{item.totalAnswered | number: '1.2-2'}} %</strong></div>
       <mat-divider></mat-divider>

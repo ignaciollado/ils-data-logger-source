@@ -5,10 +5,10 @@
   <mat-card *ngFor="let questionnaire of userQuestionnaires">
     <mat-card-header>
       <mat-card-title>
-        <div>Emplazamiento: {{questionnaire.companyDelegationName}}</div>
+        {{questionnaire.companyDelegationName}}
       </mat-card-title>
       <mat-card-subtitle>
-        <div>Questionnaire num. <strong>{{questionnaire.companyQuestionnaireId}}</strong></div>
+        <div>Ref. <strong>{{questionnaire.companyQuestionnaireId}}</strong></div>
         <span>Fecha contestado: {{questionnaire.updated_at| date :'short'}}</span>
       </mat-card-subtitle>
     </mat-card-header>

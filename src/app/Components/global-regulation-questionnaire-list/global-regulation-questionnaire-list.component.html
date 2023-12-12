@@ -19,7 +19,7 @@
     </mat-card-content>
     <mat-card-actions class="button-row">
       <button mat-button color="primary"><a [routerLink]="['/questionnaire-detail', questionnaire.id]" routerLinkActive="active" ariaCurrentWhenActive="page">VIEW</a></button>
-      <button mat-button color="warn">DELETE</button>
+      <button mat-button color="warn" (click)="deleteUserQuestionnaire(questionnaire.id)">DELETE</button>
     </mat-card-actions>
   </mat-card>
 </div>

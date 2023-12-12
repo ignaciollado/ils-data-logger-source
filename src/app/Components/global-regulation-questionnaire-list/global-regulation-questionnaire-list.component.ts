@@ -34,5 +34,11 @@ export class GlobalRegulationQuestionnaireListComponent {
           console.log(JSON.parse(questionnaire[0]))
         })
         })
-      }
+  }
+
+  deleteUserQuestionnaire(questionaireId: number) {
+    this.enviromentalAuditService.deleteGlobalAnswer(questionaireId).subscribe(() => {
+      this.loadAnswers( this.userId )
+    });
+  }
 }

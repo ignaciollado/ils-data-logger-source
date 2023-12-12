@@ -15,7 +15,10 @@
     <mat-card-content *ngFor="let completedItem of questionnaire.completed">
         <div><strong>{{completedItem.vectorName}}</strong></div>
         <div><span>Total questions:</span> <strong>{{completedItem.totalQuestions}}</strong></div>
-        <div><span>Total answered:</span> <strong>{{completedItem.totalAnswers | number: '1.2-2'}} %</strong></div>
+        <div>
+          <span>Total answered:</span> <strong>{{completedItem.totalAnswers | number: '1.2-2'}} %</strong>
+          <mat-progress-bar mode="determinate" value="{{completedItem.totalAnswers}}"></mat-progress-bar>
+        </div>
       <mat-divider></mat-divider>
     </mat-card-content>
     <mat-card-actions class="button-row">

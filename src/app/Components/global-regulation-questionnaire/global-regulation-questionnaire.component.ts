@@ -622,25 +622,25 @@ this.vector_6_Question4.forEach((node: HTMLInputElement, index) => {
 })
 
 if (this.vector_6_Question1_answers.some((someItem: boolean) => someItem === true) ) {
-  vector6Progress1 = (100/this.totalVectorQuestions[4])
+  vector6Progress1 = (100/this.totalVectorQuestions[5])
 }
 if (this.vector_6_Question1_answers.every((everyItem: boolean) => everyItem === false) ) {
   vector6Progress1 = 0
 }
 if (this.vector_6_Question2_answers.some((someItem: boolean) => someItem === true) ) {
-  vector6Progress2 = (100/this.totalVectorQuestions[4])
+  vector6Progress2 = (100/this.totalVectorQuestions[5])
 }
 if (this.vector_6_Question2_answers.every((everyItem: boolean) => everyItem === false) ) {
   vector6Progress2 = 0
 }
 if (this.vector_6_Question3_answers.some((someItem: boolean) => someItem === true) ) {
-  vector6Progress3 = (100/this.totalVectorQuestions[4])
+  vector6Progress3 = (100/this.totalVectorQuestions[5])
 }
 if (this.vector_6_Question3_answers.every((everyItem: boolean) => everyItem === false) ) {
   vector6Progress3 = 0
 }
 if (this.vector_6_Question4_answers.some((someItem: boolean) => someItem === true) ) {
-  vector6Progress4 = (100/this.totalVectorQuestions[4])
+  vector6Progress4 = (100/this.totalVectorQuestions[5])
 }
 if (this.vector_6_Question4_answers.every((everyItem: boolean) => everyItem === false) ) {
   vector6Progress4 = 0
@@ -657,7 +657,7 @@ this.questionnaireVectorState.map(item=> {
 
   progressPanel.innerHTML = JSON.stringify(this.questionnaireVectorState)
   
-  progressPanel.classList.remove('no-display')
+  //progressPanel.classList.remove('no-display')
 }
 
 saveQuestionForm() {

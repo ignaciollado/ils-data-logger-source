@@ -8,6 +8,11 @@ import { SharedService } from './shared.service';
 
 const URL_MOCKS = '../../assets/mocks/questionsList.json'
 const URL_API = '../../assets/phpAPI/'
+
+export interface deleteResponse {
+  affected: number;
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -33,6 +38,12 @@ export class EnvironmentalAuditsService {
   updateGlobalAnswer(answerId: string, answer: string, regulation: string[]): Observable<QuestionDTO> {
     return this.http
       .put<QuestionDTO>(`${URL_API}globalAnswerUpdate.php?consumptionId=${answerId}`, answer)
+  }
+
+  deleteGlobalAnswer(questionnaireId: number) : Observable<deleteResponse> {
+    return this.http
+      .delete<deleteResponse>(`${URL_API}questionnaireAnswerDelete.php?questionnaireId=${questionnaireId}`)
+      .pipe(catchError(this.sharedService.handleError));
   }
 
   getGlobalAnswersByCompany(companyId:any): Observable<AnswerDTO[]> {

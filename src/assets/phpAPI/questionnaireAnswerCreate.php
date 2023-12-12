@@ -20,16 +20,16 @@ $userAnswers .= $request['1'];
 $userAnswers .= $request['2'];
 $userAnswers .= $request['3'];
 $userAnswers .= $request['4'];
+$userAnswers .= $request['5'];
+
 
 $sql = "INSERT INTO globalQuestionaire(companyId, companyQuestionnaireId, userAnswers, completed) 
 VALUES ("
-.$companyId.",'"
+.$companyId.","
 .$companyQuestionnaireId.",'"
 .$userAnswers."','"
 .$completed
 ."')";
-
-echo $sql;
 
 mysqli_free_result($result);
 

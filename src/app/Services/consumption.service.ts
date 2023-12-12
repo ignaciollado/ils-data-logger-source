@@ -9,7 +9,6 @@ const URL_API = '../../assets/phpAPI/'
 const URL_API_SRV = "https://jwt.idi.es/public/index.php"
 const URL_MOCKS = '../../assets/mocks/consumptions.json'
 
-
 const httpOptions = {
   headers: new HttpHeaders({
     'Content-Type': 'text/plain' /* la única forma de evitar errores de CORS ha sido añadiendo esta cabecera */

@@ -3,8 +3,7 @@ import { EnvironmentalAuditsService } from 'src/app/Services/environmental-audit
 import { JwtHelperService } from '@auth0/angular-jwt'
 import { AnswerDTO } from 'src/app/Models/answer.dto'
 
-import { vectorDetail } from 'src/app/Models/question.dto'
-
+import { vectorStateDetail } from 'src/app/Models/question.dto'
 
 @Component({
   selector: 'app-global-regulation-questionnaire-list',
@@ -14,7 +13,7 @@ import { vectorDetail } from 'src/app/Models/question.dto'
 export class GlobalRegulationQuestionnaireListComponent {
   private userId: string | null
   userQuestionaires!: AnswerDTO[]
-  questionnaireTemp: any[] = []
+  questionnaireTemp: vectorStateDetail[] = []
 
   constructor (
     private enviromentalAuditService: EnvironmentalAuditsService,
@@ -31,10 +30,9 @@ export class GlobalRegulationQuestionnaireListComponent {
     this.enviromentalAuditService.getGlobalAnswersByCompany( userId )
       .subscribe( (questionaires: AnswerDTO[]) => {
         this.userQuestionaires = questionaires
-        this.userQuestionaires.map((questionnaire:any) => {
-            this.questionnaireTemp.push(JSON.parse(questionnaire.completed))
+        this.userQuestionaires.map(( questionnaire:AnswerDTO ) => {
+          console.log(JSON.parse(questionnaire[0]))
         })
-        console.log (this.questionnaireTemp)
-      })
-  }
+        })
+      }
 }

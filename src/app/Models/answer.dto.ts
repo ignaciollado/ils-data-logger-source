@@ -1,11 +1,11 @@
-import { vectorDetail } from "./question.dto"
+import { vectorStateDetail } from "./question.dto"
 export class AnswerDTO {
   id: number
   companyId: number
   companyQuestionnaireId: number
-  updated_at: Date
   userAnswers: string
-  completed: vectorDetail[]
+  completed: vectorStateDetail[]
+  updated_at: Date
 }
 
 export interface userQuestionaire {
@@ -18,7 +18,7 @@ export interface userQuestionaire {
 export interface QuestionaireAnswers {
   key:               number;
   type:              string;
-  answered:          Boolean;
+  answered:          boolean;
   questionTextES:    string;
   questionDoc:       string;
   questionTextCA:    string;

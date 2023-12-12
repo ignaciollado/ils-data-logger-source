@@ -322,6 +322,150 @@
         "image_1": "",
         "image_2": ""}
         ]
+      },
+      { 
+        "key": "6",
+        "type": "radio",
+        "questionTextES": "¿Dispone de instalaciones eléctricas de baja tensión?",
+        "questionTextCA": "",
+        "questionDoc1" : "",
+        "questionDoc2" : "",
+        "questionTooltipES": "Instalaciones eléctricas aquella que contiene electricidad para uso propio , es decir, contrato inferior de 1000V de corriente alterna. <strong>Ejemplos</strong> donde <strong>si</strong> aplica ,es la instalacion elécctrica del emplazamiento. <strong>Ejemplos</strong> donde <strong>no</strong> aplicaa es un centro de alt tensión.",
+        "questionTooltipCA": "",
+        "link": "https://...",
+        "answers":
+        [
+                {"answerText": "Sí",
+                 "answerTooltip": "",
+                 "regulation": ["SIND_3 BT consolidado"],
+                 "image_1": "",
+                 "image_2": ""},
+                 {"answerText": "No",
+                 "answerTooltip": "",
+                 "regulation": [""],
+                 "image_1": "",
+                 "image_2": ""}
+        ]
+      },
+      {
+        "key": "7",
+        "type": "radio",
+        "questionTextES": "¿Dispone de centrales eléctricas, subestaciones o centros de transformación de alta tensión?",
+        "questionTextCA": "",
+        "questionDoc1" : "",
+        "questionDoc2" : "",
+        "questionTooltipES": "Instalaciones eléctricas de alta tensión, entendiéndose como tales las de corriente alterna trifásica de frecuencia de servicio inferior a 100 Hz, cuya tensión nominal eficaz entre fases sea superior a 1 kV.",
+        "questionTooltipCA": "",
+        "link": "https://...",
+        "answers":
+        [
+                {"answerText": "Sí",
+                 "answerTooltip": "",
+                 "regulation": ["SIND_4 CT consolidado"],
+                 "image_1": "",
+                 "image_2": ""},
+                 {"answerText": "No",
+                 "answerTooltip": "",
+                 "regulation": [""],
+                 "image_1": "",
+                 "image_2": ""}
+        ]
+      },
+      {
+        "key": "8",
+        "type": "radio",
+        "questionTextES": "¿Dispone de instalaciones o aparatos de gases combustibles (gas natural, butano, propano..)?",
+        "questionTextCA": "",
+        "questionDoc1" : "",
+        "questionDoc2" : "",
+        "questionTooltipES": "",
+        "questionTooltipCA": "",
+        "link": "https://...",
+        "answers":
+        [
+                {"answerText": "Sí",
+                 "answerTooltip": "",
+                 "regulation": ["SIND_11 Ins gasesosas consolidado"],
+                 "image_1": "",
+                 "image_2": ""},
+                 {"answerText": "No",
+                 "answerTooltip": "",
+                 "regulation": [""],
+                 "image_1": "",
+                 "image_2": ""}
+        ]
+      },
+      {
+        "key": "9",
+        "type": "radio",
+        "questionTextES": "¿Dispone de instalaciones de almacenamiento y distribución de los productos carburantes y combustibles líquidos? ",
+        "questionTextCA": "",
+        "questionDoc1" : "",
+        "questionDoc2" : "",
+        "questionTooltipES": "Ejemplos de  instalaciones de almacenamiento y distribucion de productos carburantes y combustibles liquidos Depósitos de gasoil o gasolina, surtidores combustibles",
+        "questionTooltipCA": "",
+        "link": "https://...",
+        "answers":
+        [
+                {"answerText": "Sí",
+                 "answerTooltip": "",
+                 "regulation": ["SIND_5 IPLiq consolidado"],
+                 "image_1": "",
+                 "image_2": ""},
+                 {"answerText": "No",
+                 "answerTooltip": "",
+                 "regulation": [""],
+                 "image_1": "",
+                 "image_2": ""}
+        ]
+      },
+      {
+        "key": "10",
+        "type": "radio",
+        "questionTextES": "¿Dispone de cargador de vehiculos electricos?",
+        "questionTextCA": "",
+        "questionDoc1" : "",
+        "questionDoc2" : "",
+        "questionTooltipES": "",
+        "questionTooltipCA": "",
+        "link": "https://...",
+        "answers":
+        [
+                {"answerText": "Sí",
+                 "answerTooltip": "",
+                 "regulation": ["ENER_4"],
+                 "image_1": "",
+                 "image_2": ""},
+                 {"answerText": "No",
+                 "answerTooltip": "",
+                 "regulation": [""],
+                 "image_1": "",
+                 "image_2": ""}
+        ]
+      },
+      {
+        "key": "11",
+        "type": "radio",
+        "questionTextES": "¿Dispone de instalaciones térmicas fijas de climatización (calefacción, refrigeración y ventilación) y/o de producción de agua caliente sanitaria destinadas a la demanda de bienestar térmico e higiene de las personas",
+        "questionTextCA": "",
+        "questionDoc1" : "",
+        "questionDoc2" : "",
+        "questionTooltipES": "Algunos ejemplos: Bombas de calor, split aire acondicionado, rooftop a/a, enfriadoras,  aerotermia, geotermia, caldera para calefacción y/o caldera para agua caliente sanitaria, No aplica cámaras frigoríficas ni caldera para proceso productivo",
+        "questionTooltipCA": "",
+        "link": "https://...",
+        "answers":
+        [
+                {"answerText": "Sí",
+                 "answerTooltip": "",
+                 "regulation": ["SIND_7 RITE Consolidado"],
+                 "image_1": "",
+                 "image_2": ""},
+                 {"answerText": "No",
+                 "answerTooltip": "",
+                 "regulation": [""],
+                 "image_1": "",
+                 "image_2": ""}
+        ]
       }
       ]
   },
@@ -741,6 +885,114 @@
                  "image_2": ""}
         ]
     }
+    ]
+  },
+  {
+    
+    "vectorId": "6",
+    "vectorName": "MEDIOAMBIENTE GENERAL",
+    "Vectorgeneralregulation":[""],
+    "questions":
+    [
+      {
+        "key": "1",
+        "type": "radio",
+        "questionTextES": "",
+        "questionTextCA": "",
+        "questionDoc1" : "PMA_1",
+        "questionDoc2" : "¿Su actividad se engloba en alguna de las siguientes actividades contempladas en este link?",
+        "questionTooltipES": "Si se incluye su actividad en alguna del siguiente listado que se adjunta,  por favor responda que <strong>SI</strong> a la pregunta, en caso contrario responda que <strong>NO</strong> .", 
+        "questionTooltipCA": "",
+        "link": "https://...",
+        "answers":
+        [
+                {"answerText": "YES",
+                "answerTooltip": "",
+                "regulation": ["MA_0","MA_1","MA_4","MA_5","MA_6","MA_11"],
+                "answerImage_1": "",
+                "answerImage_2": ""},
+
+                {"answerText": " NO",
+                "answerTooltip": "",
+                "regulation": [""],
+                "answerImage_1": "",
+                "answerImage_2": ""}
+        ]
+      },
+      {
+        "key": "2",
+        "type": "radio",
+        "questionTextES": "¿Dispone de instalaciones con riesgo de proliferación y dispersión de LEGIONELLA? ",
+        "questionTextCA": "",
+        "questionDoc1" : "",
+        "questionDoc2" : "",
+        "questionTooltipES": "La Legionella es una bacteria presente en todo el mundo, perteneciente a la familia Legionellaceae, que normalmente forma parte de la flora bacteriana de aguas superficiales, como lagos, ríos y estanques. Se trata de una bacteria muy resistente en su hábitat natural, capaz de sobrevivir en condiciones físico-químicas muy variadas. Aunque en su medio natural suele encontrarse en bajas concentraciones, a temperaturas de 20 a 45 grados se multiplica con rapidez -su temperatura óptima de crecimiento es de 35 a 37 grados. Ejemplos de instalaciones con riesgo de proliferacion de legionella: - Sistemas de agua caliente sanitaria con acumulador y circuito de retorno - Sistemas de instalación interior de agua fría de consumo humano (tuberías, depósitos, aljibes), cisternas o depósitos móviles y agua caliente sanitaria sin circuito de retorno. - Sistemas de riego por aspersión en el medio urbano. - Sistemas de agua contra incendios - Fuentes ornamentales - Centrales humidificadoras industriales. - Equipos de enfriamiento evaporativo que pulvericen agua - Humectadores. - Torres de refrigeración - Condensadores evaporativos.- Elementos de refrigeración por aerosolización, al aire libre. - Otros aparatos que acumulen agua y puedan producir aerosoles",
+        "questionTooltipCA": "",
+        "link": "https://...",
+        "answers":
+        [
+                {"answerText": "SI",
+                 "answerTooltip": "",
+                 "regulation": ["LEGIO_1","LEGIO_2"],
+                 "answerdoc1": "",
+                 "answerdoc2": ""},
+
+                 {"answerText": "No",
+                 "answerTooltip": "",
+                 "regulation": [""],
+                 "answerdoc1": "",
+                 "answerdoc2": ""}
+        ]
+      },
+      {
+        "key": "3",
+        "type": "radio",
+        "questionTextES": "¿Realiza alguna de las siguientes actividades, las cuales son fuentes emisoras de ruido? ",
+        "questionTextCA": "",
+        "questionDoc1" : "",
+        "questionDoc2" : "",
+        "questionTooltipES": "Por ejemplo , actividades de obras en vía pública, máquinas de uso al aire libre (como plataformas elevadoras, carretillas elevadoras, sierras, etc), grupos electrógenos, etc…",
+        "questionTooltipCA": "",
+        "link": "https://...",
+        "answers":
+        [
+                {"answerText": "Sí",
+                 "answerTooltip": "",
+                 "regulation": ["RUI_1"],
+                 "image_1": "",
+                 "image_2": ""},
+                 {"answerText": "No",
+                 "answerTooltip": "",
+                 "regulation": [""],
+                 "image_1": "",
+                 "image_2": ""}
+        ]
+      },
+      {
+        "key": "4",
+        "type": "radio",
+        "questionTextES": "¿Dispone de alumbrado exterior, tales como: ornamental, vigilancia y seguridad nocturna, señales y anuncios luminosos, festivo y navideño, entre otros?",
+        "questionTextCA": "",
+        "questionDoc1" : "",
+        "questionDoc2" : "",
+        "questionTooltipES": "",
+        "questionTooltipCA": "",
+        "link": "https://...",
+        "answers":
+        [
+                {"answerText": "SI",
+                 "answerTooltip": "",
+                 "regulation": ["RUI_5"],
+                 "image_1": "",
+                 "image_2": ""},
+                 {"answerText": "NO",
+                 "answerTooltip": "",
+                 "regulation": [""],
+                 "image_1": "",
+                 "image_2": ""}
+                
+        ]
+      }
     ]
   }
 

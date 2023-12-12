@@ -13,15 +13,18 @@ $request = json_decode($postedData, TRUE);
 $companyId = $_GET['companyId'];
 $completed = $_GET['completed'];
 
+$companyQuestionnaireId = time();
+
 $userAnswers = $request['0'];
 $userAnswers .= $request['1'];
 $userAnswers .= $request['2'];
 $userAnswers .= $request['3'];
 $userAnswers .= $request['4'];
 
-$sql = "INSERT INTO globalQuestionaire(companyId, userAnswers, completed) 
+$sql = "INSERT INTO globalQuestionaire(companyId, companyQuestionnaireId, userAnswers, completed) 
 VALUES ("
 .$companyId.",'"
+.$companyQuestionnaireId.",'"
 .$userAnswers."','"
 .$completed
 ."')";

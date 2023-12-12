@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { QuestionDTO, vectorDetail } from '../Models/question.dto';
+import { QuestionDTO, vectorStateDetail } from '../Models/question.dto';
 import { AnswerDTO } from '../Models/answer.dto';
 import { catchError } from 'rxjs/operators';
 import { Observable } from 'rxjs';
@@ -24,7 +24,7 @@ export class EnvironmentalAuditsService {
       .pipe(catchError(this.sharedService.handleError))
   }
 
-  createGlobalAnswer(resultsQuestionnaire: string[], companyId: string, completed: vectorDetail[]): Observable<string[]> {
+  createGlobalAnswer(resultsQuestionnaire: string[], companyId: string, completed: vectorStateDetail[]): Observable<string[]> {
     return this.http
       .post<string[]>(`${URL_API}questionnaireAnswerCreate.php?companyId=${companyId}&completed=${JSON.stringify(completed)}`, resultsQuestionnaire)
       .pipe(catchError(this.sharedService.handleError));

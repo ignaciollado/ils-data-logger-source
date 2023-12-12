@@ -26,10 +26,10 @@ export interface Answer {
   answerImage_2:      string;
 }
 
-export interface vectorDetail {
+export interface vectorStateDetail {
   vectorId: string;
   vectorName: string;
   vectorGeneralRegulation: string[];
   totalQuestions: number;
-  totalAnswered: number;
+  totalAnswers: number;
 }

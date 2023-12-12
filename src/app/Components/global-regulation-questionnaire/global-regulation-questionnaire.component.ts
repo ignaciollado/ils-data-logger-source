@@ -37,7 +37,7 @@ export class GlobalRegulationQuestionnaireComponent {
 
 private userId: string | null
 questionnaireVectorState: vectorStateDetail [] = []
-vectorStateItem: vectorStateDetail = {vectorId: '', vectorName: '', vectorGeneralRegulation: [], totalQuestions: 0, totalAnswers: 0}
+vectorStateItem: vectorStateDetail = {vectorId: 0, vectorName: '', vectorGeneralRegulation: [], totalQuestions: 0, totalAnswers: 0}
 vectorId: UntypedFormControl
 vectorName: UntypedFormControl
 vectorGeneralRegulation: UntypedFormControl
@@ -197,7 +197,7 @@ private loadQuestions(): void {
       this.questionList = questions
       questions.map( (vector:QuestionDTO) => {
         this.totalVectorQuestions.push(vector['questions'].length)
-         this.vectorStateItem = {vectorId: vector.vectorId, vectorName:  vector.vectorName, vectorGeneralRegulation: vector.vectorGeneralRegulation, totalQuestions: vector.questions.length, totalAnswers: 0}
+         this.vectorStateItem = {vectorId: +vector.vectorId, vectorName:  vector.vectorName, vectorGeneralRegulation: vector.vectorGeneralRegulation, totalQuestions: vector.questions.length, totalAnswers: 0}
           this.questionnaireVectorState = [...this.questionnaireVectorState, this.vectorStateItem]
       })
     })
@@ -366,7 +366,7 @@ this.totalVectorAnswers = []
   }
   this.vectorProgress[0] = vector1Progress1 + vector1Progress2 + vector1Progress3 + vector1Progress4
   this.questionnaireVectorState.map(item=> {
-    if(item.vectorId === '1') {
+    if(item.vectorId === 1) {
         item.totalAnswers = this.vectorProgress[0]
     }
   })
@@ -475,7 +475,7 @@ this.totalVectorAnswers = []
 
   this.vectorProgress[1] = vector2Progress1 + vector2Progress2 + vector2Progress3 + vector2Progress4 + vector2Progress5 + vector2Progress6 + vector2Progress7 + vector2Progress8 + vector2Progress9 + vector2Progress10 + vector2Progress11
   this.questionnaireVectorState.map(item=> {
-    if(item.vectorId === '2') {
+    if(item.vectorId === 2) {
         item.totalAnswers = this.vectorProgress[1]
     }
   })
@@ -510,7 +510,7 @@ this.totalVectorAnswers = []
   }
   this.vectorProgress[2] = vector3Progress1 + vector3Progress2 + vector3Progress3
   this.questionnaireVectorState.map(item=> {
-    if(item.vectorId === '3') {
+    if(item.vectorId === 3) {
         item.totalAnswers = this.vectorProgress[2]
     }
   })
@@ -581,7 +581,7 @@ this.totalVectorAnswers = []
   }
   this.vectorProgress[3] = vector4Progress1 + vector4Progress2 + vector4Progress3 + vector4Progress4 + vector4Progress5 + vector4Progress6 + vector4Progress7
   this.questionnaireVectorState.map(item=> {
-    if(item.vectorId === '4') {
+    if(item.vectorId === 4) {
         item.totalAnswers = this.vectorProgress[3]
     }
   })
@@ -634,7 +634,7 @@ this.totalVectorAnswers = []
   }
   this.vectorProgress[4] = vector5Progress1 + vector5Progress2 + vector5Progress3 + vector5Progress4 + vector5Progress5
   this.questionnaireVectorState.map(item=> {
-    if(item.vectorId === '5') {
+    if(item.vectorId === 5) {
         item.totalAnswers = this.vectorProgress[4]
     }
   })
@@ -680,7 +680,7 @@ if (this.vector_6_Question4_answers.every((everyItem: boolean) => everyItem === 
 
 this.vectorProgress[5] = vector6Progress1 + vector6Progress2 + vector6Progress3 + vector6Progress4
 this.questionnaireVectorState.map(item=> {
-  if(item.vectorId === '6') {
+  if(item.vectorId === 6) {
       item.totalAnswers = this.vectorProgress[5]
   }
 })  

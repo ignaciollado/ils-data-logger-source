@@ -27,7 +27,7 @@ export interface Answer {
 }
 
 export interface vectorStateDetail {
-  vectorId: string;
+  vectorId: number;
   vectorName: string;
   vectorGeneralRegulation: string[];
   totalQuestions: number;

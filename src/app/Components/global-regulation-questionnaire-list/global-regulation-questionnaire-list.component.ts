@@ -30,11 +30,11 @@ export class GlobalRegulationQuestionnaireListComponent {
     this.enviromentalAuditService.getGlobalAnswersByCompany( userId )
       .subscribe( (questionaires: AnswerDTO[]) => {
         this.userQuestionnaires = questionaires
-        console.log (this.userQuestionnaires)
-        /* this.userQuestionnnaires.map(( questionnaire:AnswerDTO ) => {
-          console.log(JSON.parse(questionnaire[0]))
-        }) */
+        this.userQuestionnaires.map(( questionnaire:any ) => {
+          questionnaire.completed = JSON.parse(questionnaire.completed)
+        }) 
         })
+        
   }
 
   deleteUserQuestionnaire(questionaireId: number) {

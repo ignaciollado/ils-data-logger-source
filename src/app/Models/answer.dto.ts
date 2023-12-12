@@ -3,6 +3,7 @@ export class AnswerDTO {
   id: number
   companyId: number
   companyQuestionnaireId: number
+  companyDelegationName: string
   userAnswers: string
   completed: vectorStateDetail[]
   updated_at: Date

@@ -12,7 +12,7 @@ import { vectorStateDetail } from 'src/app/Models/question.dto'
 })
 export class GlobalRegulationQuestionnaireListComponent {
   private userId: string | null
-  userQuestionaires!: AnswerDTO[]
+  userQuestionnaires!: AnswerDTO[]
   questionnaireTemp: vectorStateDetail[] = []
 
   constructor (
@@ -23,22 +23,23 @@ export class GlobalRegulationQuestionnaireListComponent {
   }
 
   ngOnInit() {
-    this.loadAnswers( this.userId )
+    this.loadUserQuestionnaires( this.userId )
   }
 
-  loadAnswers( userId: string){
+  loadUserQuestionnaires( userId: string){
     this.enviromentalAuditService.getGlobalAnswersByCompany( userId )
       .subscribe( (questionaires: AnswerDTO[]) => {
-        this.userQuestionaires = questionaires
-        this.userQuestionaires.map(( questionnaire:AnswerDTO ) => {
+        this.userQuestionnaires = questionaires
+        console.log (this.userQuestionnaires)
+        /* this.userQuestionnnaires.map(( questionnaire:AnswerDTO ) => {
           console.log(JSON.parse(questionnaire[0]))
-        })
+        }) */
         })
   }
 
   deleteUserQuestionnaire(questionaireId: number) {
     this.enviromentalAuditService.deleteGlobalAnswer(questionaireId).subscribe(() => {
-      this.loadAnswers( this.userId )
+      this.loadUserQuestionnaires( this.userId )
     });
   }
 }

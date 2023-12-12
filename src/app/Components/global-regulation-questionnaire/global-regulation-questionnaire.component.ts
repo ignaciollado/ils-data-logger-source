@@ -3,7 +3,7 @@ import { EnvironmentalAuditsService } from 'src/app/Services/environmental-audit
 import { Question, QuestionDTO, vectorStateDetail } from 'src/app/Models/question.dto';
 import {
     UntypedFormControl,
-    FormGroup, FormBuilder 
+    FormGroup, FormBuilder, Validators 
 } from '@angular/forms';
 import {
   MatDialog,
@@ -19,6 +19,11 @@ import { AnswerDTO } from 'src/app/Models/answer.dto';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { MatRadioButton, MatRadioChange } from '@angular/material/radio';
 import { MatCheckboxChange } from '@angular/material/checkbox';
+import { Router } from '@angular/router';
+import { DelegationService } from 'src/app/Services/delegation.service';
+import { DelegationDTO } from 'src/app/Models/delegation.dto';
+import { SharedService } from 'src/app/Services/shared.service';
+import { HttpErrorResponse } from '@angular/common/http';
 
 
 
@@ -37,6 +42,7 @@ vectorId: UntypedFormControl
 vectorName: UntypedFormControl
 vectorGeneralRegulation: UntypedFormControl
 questions: UntypedFormControl
+delegation: UntypedFormControl
 
 questionListForm: FormGroup = this.formBuilder.group({});
 
@@ -45,6 +51,8 @@ panelOpenState: boolean = true;
 vectorProgress: number[] = [0,0,0,0,0,0,0]
 totalVectorQuestions: number[] = []
 totalVectorAnswers: number[] = [0]
+
+delegations!: DelegationDTO[];
 
 vector_1_Question1: NodeListOf<HTMLElement> 
 vector_1_Question2: NodeListOf<HTMLElement> 
@@ -160,17 +168,26 @@ constructor (
   private formBuilder: FormBuilder,
   private jwtHelper: JwtHelperService,
   private enviromentalAuditService: EnvironmentalAuditsService,
-  public dialog: MatDialog
+  public dialog: MatDialog,
+  private router: Router,
+  private delegationService: DelegationService,
+  private sharedService: SharedService,
 ) {
   this.userId = this.jwtHelper.decodeToken().id_ils
   this.vectorId = new UntypedFormControl();
   this.vectorName = new UntypedFormControl();
   this.vectorGeneralRegulation = new UntypedFormControl();
   this.questions = new UntypedFormControl();
-  this.questionListForm = this.formBuilder.group({})
+
+  this.delegation = new UntypedFormControl('', [ Validators.required ]);
+
+  this.questionListForm = this.formBuilder.group({
+    delegation: this.delegation,
+  })
 }
 
 ngOnInit() {
+  this.loadDelegations(this.userId)
   this.loadQuestions()
 }
 
@@ -184,6 +201,21 @@ private loadQuestions(): void {
           this.questionnaireVectorState = [...this.questionnaireVectorState, this.vectorStateItem]
       })
     })
+}
+
+private loadDelegations(userId: string): void {
+  let errorResponse: any;
+  if (userId) {
+    this.delegationService.getAllDelegationsByCompanyIdFromMySQL(userId).subscribe(
+      (delegations: DelegationDTO[]) => {
+        this.delegations = delegations;
+      },
+      (error: HttpErrorResponse) => {
+        errorResponse = error.error;
+        this.sharedService.errorLog(errorResponse);
+      }
+    );
+  }
 }
 
 openDialog(enterAnimationDuration: string, exitAnimationDuration: string, questionText: string, toolTipText: string, doc1: string, doc2: string): void {
@@ -976,7 +1008,12 @@ resultsQuestionnaire.push(resultsVector4.innerHTML)
 resultsQuestionnaire.push(resultsVector5.innerHTML)
 resultsQuestionnaire.push(resultsVector6.innerHTML)
 
-this.enviromentalAuditService.createGlobalAnswer(resultsQuestionnaire, this.userId, this.questionnaireVectorState)
-.subscribe()
+this.enviromentalAuditService.createGlobalAnswer(resultsQuestionnaire, this.userId, this.delegation.value, this.questionnaireVectorState)
+  .subscribe((item) => {
+    console.log("Navegar hacia detalle del cuestionario")
+    this.router.navigateByUrl('/questionnaire-detail')
+  }
+)
+
 }
 }

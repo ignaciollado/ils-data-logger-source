@@ -1,14 +1,15 @@
 <div class="container-form">
 <h2>Answered questionnaires list:</h2>
 
-<div class='card-container' *ngIf="userQuestionaires">
-  <mat-card *ngFor="let questionnaire of userQuestionaires">
+<div class='card-container' *ngIf="userQuestionnaires">
+  <mat-card *ngFor="let questionnaire of userQuestionnaires">
     <mat-card-header>
       <mat-card-title>
-        <span>Questionnaire num. </span><strong>{{questionnaire.companyQuestionnaireId}}</strong>
+        <div>Emplazamiento: {{questionnaire.companyDelegationName}}</div>
       </mat-card-title>
       <mat-card-subtitle>
-        <span>Fecha contestado: {{questionnaire.updated_at | date :'short'}}</span>
+        <div>Questionnaire num. <strong>{{questionnaire.companyQuestionnaireId}}</strong></div>
+        <span>Fecha contestado: {{questionnaire.updated_at| date :'short'}}</span>
       </mat-card-subtitle>
     </mat-card-header>
     <mat-card-content *ngFor="let item of questionnaireTemp; index as j">
@@ -23,6 +24,7 @@
     </mat-card-actions>
   </mat-card>
 </div>
-</div>
 
-<span *ngIf="!userQuestionaires" class="loader">No data found yet...</span>
+
+<span *ngIf="!userQuestionnaires" class="loader">No data found yet...</span>
+</div>

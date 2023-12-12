@@ -4,7 +4,7 @@ header('Access-Control-Allow-Origin: *');
 header("Access-Control-Allow-Methods: PUT, GET, POST, DELETE");
 header('Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept');
 
-require_once 'conectar_a_bbdd_pre_datalogger.php';
+require_once 'conectar_a_bbdd_pindust.php';
 
 mysqli_query($conn, "SET NAMES 'utf8'");
 $postedData = file_get_contents("php://input");
@@ -15,6 +15,8 @@ $completed = $_GET['completed'];
 
 $companyQuestionnaireId = time();
 
+$companyDelegationId = $_GET['delegation'];
+
 $userAnswers = $request['0'];
 $userAnswers .= $request['1'];
 $userAnswers .= $request['2'];
@@ -23,10 +25,11 @@ $userAnswers .= $request['4'];
 $userAnswers .= $request['5'];
 
 
-$sql = "INSERT INTO globalQuestionaire(companyId, companyQuestionnaireId, userAnswers, completed) 
+$sql = "INSERT INTO globalQuestionaire(companyId, companyQuestionnaireId, companyDelegationId, userAnswers, completed) 
 VALUES ("
 .$companyId.","
-.$companyQuestionnaireId.",'"
+.$companyQuestionnaireId.","
+.$companyDelegationId.",'"
 .$userAnswers."','"
 .$completed
 ."')";

@@ -12,10 +12,13 @@
         <span>Fecha contestado: {{questionnaire.updated_at| date :'short'}}</span>
       </mat-card-subtitle>
     </mat-card-header>
-    <mat-card-content *ngFor="let item of questionnaireTemp; index as j">
-      <div><strong>{{item[j].vectorName}}</strong></div>
-      <div><span>Total questions:</span> <strong>{{item[j].totalQuestions}}</strong></div>
-      <div><span>Total answered:</span> <strong>{{item[j].totalAnswers | number: '1.2-2'}} %</strong></div>
+    <mat-card-content *ngFor="let completedItem of questionnaire.completed">
+     {{completedItem.vectorName}}
+        <div><strong>{{completedItem.vectorName}}</strong></div>
+        <div><span>Total questions:</span> <strong>{{completedItem.totalQuestions}}</strong></div>
+        <div><span>Total answered:</span> <strong>{{completedItem.totalAnswers | number: '1.2-2'}} %</strong></div>
+     
+     
       <mat-divider></mat-divider>
     </mat-card-content>
     <mat-card-actions class="button-row">

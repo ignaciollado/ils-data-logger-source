@@ -1068,6 +1068,8 @@ resultsVector6.innerHTML = '{"vectorId":6,"regulations":[{"regulation":[{"q1":['
 
 
 resultsVector1.innerText = resultsVector1.innerText.replaceAll(",,",",")
+resultsVector1.innerText = resultsVector1.innerText.replaceAll(",]},","]},")
+
 resultsQuestionnaire.push(resultsVector1.innerText)
 resultsVector2.innerText = resultsVector2.innerText.replaceAll(",,",",")
 resultsQuestionnaire.push(resultsVector2.innerHTML)

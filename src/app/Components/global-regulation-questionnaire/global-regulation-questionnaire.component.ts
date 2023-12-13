@@ -1021,12 +1021,12 @@ if (this.vector_6_Question4){
   })
 }
 
-resultsVector1.innerHTML = "[{vectorId:1,regulation:["+ this.vector_1_Question1_reg+","+this.vector_1_Question2_reg+","+this.vector_1_Question3_reg+","+this.vector_1_Question4_reg+"]}"
-resultsVector2.innerHTML = "{vectorId:2,regulation:["+ this.vector_2_Question1_reg+","+this.vector_2_Question2_reg+","+this.vector_2_Question3_reg+","+this.vector_2_Question4_reg+","+this.vector_2_Question5_reg+","+this.vector_2_Question6_reg+","+this.vector_2_Question7_reg+","+this.vector_2_Question8_reg+","+this.vector_2_Question9_reg+","+this.vector_2_Question10_reg+","+this.vector_2_Question11_reg+"]}"
-resultsVector3.innerHTML = "{vectorId:3,regulation:["+ this.vector_3_Question1_reg+","+this.vector_3_Question2_reg+","+this.vector_3_Question3_reg+"]}"
-resultsVector4.innerHTML = "{vectorId:4,regulation:["+ this.vector_4_Question1_reg+","+this.vector_4_Question2_reg+","+this.vector_4_Question3_reg+","+this.vector_4_Question4_reg+","+this.vector_4_Question5_reg+","+this.vector_4_Question6_reg+","+this.vector_4_Question7_reg+"]}"
-resultsVector5.innerHTML = "{vectorId:5,regulation:["+ this.vector_5_Question1_reg+","+this.vector_5_Question2_reg+","+this.vector_5_Question3_reg+","+this.vector_5_Question4_reg+","+this.vector_5_Question5_reg+"]}"
-resultsVector6.innerHTML = "{vectorId:6,regulation:["+ this.vector_6_Question1_reg+","+this.vector_6_Question2_reg+","+this.vector_6_Question3_reg+","+this.vector_6_Question4_reg+"]}]"
+resultsVector1.innerHTML = '[{"vectorId":1,"regulation":['+ this.vector_1_Question1_reg+','+this.vector_1_Question2_reg+','+this.vector_1_Question3_reg+','+this.vector_1_Question4_reg+']},'
+resultsVector2.innerHTML = '{"vectorId":2,"regulation":['+ this.vector_2_Question1_reg+','+this.vector_2_Question2_reg+','+this.vector_2_Question3_reg+','+this.vector_2_Question4_reg+','+this.vector_2_Question5_reg+','+this.vector_2_Question6_reg+','+this.vector_2_Question7_reg+','+this.vector_2_Question8_reg+','+this.vector_2_Question9_reg+','+this.vector_2_Question10_reg+','+this.vector_2_Question11_reg+']},'
+resultsVector3.innerHTML = '{"vectorId":3,"regulation":['+ this.vector_3_Question1_reg+','+this.vector_3_Question2_reg+','+this.vector_3_Question3_reg+']},'
+resultsVector4.innerHTML = '{"vectorId":4,"regulation":['+ this.vector_4_Question1_reg+','+this.vector_4_Question2_reg+','+this.vector_4_Question3_reg+','+this.vector_4_Question4_reg+','+this.vector_4_Question5_reg+','+this.vector_4_Question6_reg+','+this.vector_4_Question7_reg+']},'
+resultsVector5.innerHTML = '{"vectorId":5,"regulation":['+ this.vector_5_Question1_reg+','+this.vector_5_Question2_reg+','+this.vector_5_Question3_reg+','+this.vector_5_Question4_reg+','+this.vector_5_Question5_reg+']},'
+resultsVector6.innerHTML = '{"vectorId":6,"regulation":['+ this.vector_6_Question1_reg+','+this.vector_6_Question2_reg+','+this.vector_6_Question3_reg+','+this.vector_6_Question4_reg+']}]'
 
 /* resultsVector1.classList.remove('no-display')
 resultsVector2.classList.remove('no-display')

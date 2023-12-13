@@ -365,6 +365,7 @@ this.totalVectorAnswers = []
     vector1Progress4 = 0
   }
   this.vectorProgress[0] = vector1Progress1 + vector1Progress2 + vector1Progress3 + vector1Progress4
+
   this.questionnaireVectorState.map(item=> {
     if(item.vectorId === 1) {
         item.totalAnswers = this.vectorProgress[0]

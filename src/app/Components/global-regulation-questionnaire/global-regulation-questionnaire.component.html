@@ -69,7 +69,7 @@
     </mat-accordion>
    
    <div class="button-row">
-    <button mat-raised-button color="primary" (click)="openDialog('300ms', '300ms', 'Cuestionario preliminar', 'El cuestionario ha sido guardado correctamente', 'tres', 'cuatro')" [disabled]="questionListForm.valid">Enviar</button>
+    <button mat-raised-button color="primary" (click)="openDialog('300ms', '300ms', 'Cuestionario preliminar', 'El cuestionario ha sido guardado correctamente', 'tres', 'cuatro')" [disabled]="!questionListForm.valid">Enviar</button>
     <button mat-raised-button>Limpiar</button>
   </div>
   </form>

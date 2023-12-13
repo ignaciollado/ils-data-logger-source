@@ -747,40 +747,37 @@ if (this.vector_1_Question1) {
   this.vector_1_Question1.forEach((node: HTMLInputElement) => {
     if (node.value && node.checked) {
       node.value = node.value.replaceAll(',','","')
-      node.value = '"'+node.value+'"'
-      node.value += node.value
-      /* this.vector_1_Question1_reg.push('{['+node.value+']}') */
+      node.value = '"'+node.value+'",'
+      node.value = node.value.replaceAll(",,",",")
+      this.vector_1_Question1_reg.push(node.value)
     }
-    this.vector_1_Question1_reg.push('{['+node.value+']}')
+    console.log (this.vector_1_Question1_reg)
   })
 }
 if (this.vector_1_Question2) {
   this.vector_1_Question2.forEach((node: HTMLInputElement) => {
   if (node.value && node.checked) {
-    /* this.vector_1_Question2_reg.push(node.id+'#'+node.value+'#'+node.checked+'<br>') */
+    node.value = node.value.replaceAll(',','","')
     node.value = '"'+node.value+'"'
-    console.log(node.value)
-    this.vector_1_Question2_reg.push('{['+node.value+']}')
+    this.vector_1_Question2_reg.push(node.value)
   }
   })
 }
 if (this.vector_1_Question3) {
   this.vector_1_Question3.forEach((node: HTMLInputElement) => {
   if (node.value && node.checked) {
-    /* this.vector_1_Question3_reg.push(node.id+'#'+node.value+'#'+node.checked+'<br>') */
+    node.value = node.value.replaceAll(',','","')
     node.value = '"'+node.value+'"'
-    console.log(node.value)
-    this.vector_1_Question3_reg.push('{['+node.value+']}')
+    this.vector_1_Question3_reg.push(node.value)
   }
   })
 }
 if (this.vector_1_Question4) {
   this.vector_1_Question4.forEach((node: HTMLInputElement) => {
   if (node.value && node.checked) {
-    /* this.vector_1_Question4_reg.push(node.id+'#'+node.value+'#'+node.checked+'<br>') */
+    node.value = node.value.replaceAll(',','","')
     node.value = '"'+node.value+'"'
-    console.log(node.value)
-    this.vector_1_Question4_reg.push('{['+node.value+']}')
+    this.vector_1_Question4_reg.push(node.value)
   }
   })
 }
@@ -1036,7 +1033,7 @@ if (this.vector_6_Question4){
   })
 }
 
-resultsVector1.innerHTML = '[{"vectorId":1,"regulations":[{"regulation":[{"q1":'+this.vector_1_Question1_reg+'},{"q2":'+this.vector_1_Question2_reg+'},{"q3":'+this.vector_1_Question3_reg+'},{"q4":'+this.vector_1_Question4_reg+'}]}]}],'
+resultsVector1.innerHTML = '[{"vectorId":1,"regulations":[{"regulation":[{"q1":['+this.vector_1_Question1_reg+']},{"q2":['+this.vector_1_Question2_reg+']},{"q3":['+this.vector_1_Question3_reg+']},{"q4":['+this.vector_1_Question4_reg+']},'
 resultsVector2.innerHTML = '{"vectorId":2,"regulations":[{"regulation":[{"q1":'+this.vector_2_Question1_reg+'},{"q2":'+this.vector_2_Question2_reg+'},{"q3":'+this.vector_2_Question3_reg+'},{"q4":'+this.vector_2_Question4_reg+'},{"q5":'+this.vector_2_Question5_reg+'},{"q6":'+this.vector_2_Question6_reg+'},{"q7":'+this.vector_2_Question7_reg+'},{"q8":'+this.vector_2_Question8_reg+'},{"q9":'+this.vector_2_Question9_reg+'},{"q10":'+this.vector_2_Question10_reg+'},{"q11":'+this.vector_2_Question11_reg+'}]}]},'
 resultsVector3.innerHTML = '{"vectorId":3,"regulations":[{"regulation":[{"q1":'+this.vector_3_Question1_reg+'},{"q2":'+this.vector_3_Question2_reg+'},{"q3":'+this.vector_3_Question3_reg+'}]},'
 resultsVector4.innerHTML = '{"vectorId":4,"regulations":[{"regulation":[{"q1":'+this.vector_4_Question1_reg+'},{"q2":'+this.vector_4_Question2_reg+'},{"q3":'+this.vector_4_Question3_reg+'},{"q4":'+this.vector_4_Question4_reg+'},{"q5":'+this.vector_4_Question5_reg+'},{"q6":'+this.vector_4_Question6_reg+'},{"q7":'+this.vector_4_Question7_reg+'}]}]},'
@@ -1049,7 +1046,9 @@ resultsVector3.classList.remove('no-display')
 resultsVector4.classList.remove('no-display')
 resultsVector5.classList.remove('no-display')
 resultsVector6.classList.remove('no-display') */
+/* console.log (resultsVector1.innerHTML) */
 
+console.log(resultsVector1.innerHTML)
 resultsQuestionnaire.push(resultsVector1.innerHTML)
 /* resultsQuestionnaire.push(resultsVector2.innerHTML)
 resultsQuestionnaire.push(resultsVector3.innerHTML)
@@ -1057,12 +1056,12 @@ resultsQuestionnaire.push(resultsVector4.innerHTML)
 resultsQuestionnaire.push(resultsVector5.innerHTML)
 resultsQuestionnaire.push(resultsVector6.innerHTML)
  */
-this.enviromentalAuditService.createGlobalAnswer(resultsQuestionnaire, this.userId, this.delegation.value, this.questionnaireVectorState)
+
+/* this.enviromentalAuditService.createGlobalAnswer(resultsQuestionnaire, this.userId, this.delegation.value, this.questionnaireVectorState)
   .subscribe((item:any) => {
-    /* console.log("Navegar hacia detalle del cuestionario", "-->",item,"<-->", item.last_id,"<--") */
     this.router.navigateByUrl('/questionnaire-detail/'+`${item.last_id}`)
   }
-)
+) */
 
 }
 }

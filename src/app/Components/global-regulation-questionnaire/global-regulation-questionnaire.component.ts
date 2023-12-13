@@ -758,6 +758,8 @@ if (this.vector_1_Question2) {
   this.vector_1_Question2.forEach((node: HTMLInputElement) => {
   if (node.value && node.checked) {
     /* this.vector_1_Question2_reg.push(node.id+'#'+node.value+'#'+node.checked+'<br>') */
+    node.value = '"'+node.value+'"'
+    console.log(node.value)
     this.vector_1_Question2_reg.push('{['+node.value+']}')
   }
   })
@@ -766,6 +768,8 @@ if (this.vector_1_Question3) {
   this.vector_1_Question3.forEach((node: HTMLInputElement) => {
   if (node.value && node.checked) {
     /* this.vector_1_Question3_reg.push(node.id+'#'+node.value+'#'+node.checked+'<br>') */
+    node.value = '"'+node.value+'"'
+    console.log(node.value)
     this.vector_1_Question3_reg.push('{['+node.value+']}')
   }
   })
@@ -774,6 +778,8 @@ if (this.vector_1_Question4) {
   this.vector_1_Question4.forEach((node: HTMLInputElement) => {
   if (node.value && node.checked) {
     /* this.vector_1_Question4_reg.push(node.id+'#'+node.value+'#'+node.checked+'<br>') */
+    node.value = '"'+node.value+'"'
+    console.log(node.value)
     this.vector_1_Question4_reg.push('{['+node.value+']}')
   }
   })
@@ -809,7 +815,6 @@ if (this.vector_2_Question4){
     /* this.vector_2_Question4_reg.push(node.id+'#'+node.value+'#'+node.checked+'<br>') */
     node.value = node.value.replaceAll(',','","')
     node.value = '"'+node.value+'"'
-    console.log (node.value)
     this.vector_2_Question4_reg.push('{['+node.value+']}')
   }
   })
@@ -878,7 +883,6 @@ if (this.vector_3_Question1){
     /* this.vector_3_Question1_reg.push(node.id+'#'+node.value+'#'+node.checked+'<br>') */
     node.value = node.value.replaceAll(',','","')
     node.value = '"'+node.value+'"'
-    console.log (node.value)
     this.vector_3_Question1_reg.push('{['+node.value+']}')
   }
   })

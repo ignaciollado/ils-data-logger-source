@@ -74,7 +74,7 @@
 
               {"answerText": "Subproductos",
                 "answerTooltip": "Un subproducto es todo aquel bien que se obtiene de manera secundaria dentro del proceso productivo, es decir, que se consigue al mismo tiempo que el producto principal, pero tiene un valor de venta mucho menor que este.",
-                "regulation": ["RES_11","RES_13","RES_14","RES_15","RES_17","RES_21","RES_26","RES_32","RES_33","RES_34","RES_39 "],
+                "regulation": ["RES_11","RES_13","RES_14","RES_15","RES_17","RES_21","RES_26","RES_32","RES_33","RES_34","RES_39"],
                 "answerImage_1": "",
                 "answerImage_2": ""},
 

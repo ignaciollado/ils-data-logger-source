@@ -39,7 +39,7 @@ export class GlobalRegulationQuestionnaireAnswerComponent {
               item.userAnswers = item.userAnswers.replaceAll("[","]")
               item.userAnswers = item.userAnswers.replaceAll("-input","")
               item.userAnswers = item.userAnswers.replaceAll("true<br>","") */
-              console.log ("***",item.userAnswers,"***")
+              console.log ("***",item.userAnswers,"***",JSON.parse(item.userAnswers), "***")
               /* item.userAnswers = item.userAnswers.replaceAll("-input","") */
 /*               item.userAnswers = item.userAnswers.replaceAll("#true<br>","],")
               item.userAnswers = item.userAnswers.replaceAll("#","[") */

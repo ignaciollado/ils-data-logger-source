@@ -1,5 +1,5 @@
 <div class="container-form">
-<h2>Answered questionnaires list:</h2>
+<h2>{{'answeredQuestionnairesList' | translate}}</h2>
 
 <div class='card-container' *ngIf="userQuestionnaires">
   <mat-card *ngFor="let questionnaire of userQuestionnaires">
@@ -22,12 +22,12 @@
       <mat-divider></mat-divider>
     </mat-card-content>
     <mat-card-actions class="button-row">
-      <button mat-button color="primary"><a [routerLink]="['/questionnaire-detail', questionnaire.id]" routerLinkActive="active" ariaCurrentWhenActive="page">VIEW</a></button>
-      <button mat-button color="warn" (click)="deleteUserQuestionnaire(questionnaire.id)">DELETE</button>
+      <button mat-button color="primary" matTooltip="Detail"><a [routerLink]="['/questionnaire-detail', questionnaire.id]" routerLinkActive="active" ariaCurrentWhenActive="page"><i class="fa-solid fa-clipboard-list"></i></a></button>
+      <button mat-button color="warn" matTooltip="Delete" (click)="deleteUserQuestionnaire(questionnaire.id)"><i class="fa-solid fa-trash"></i></button>
     </mat-card-actions>
   </mat-card>
 </div>
 
 
-<span *ngIf="!userQuestionnaires" class="loader">No data found yet...</span>
+<span *ngIf="!userQuestionnaires" class="loader">{{'loadingQuestionnaire' | translate}}</span>
 </div>

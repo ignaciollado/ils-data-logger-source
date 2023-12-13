@@ -80,19 +80,19 @@
 
               {"answerText": "Residuos de industrias extractivas",
                 "answerTooltip": "",
-                "regulation": ["RES_11","ES_33","ES_56"],
+                "regulation": ["RES_11","RES_33","RES_56"],
                 "answerImage_1": "",
                 "answerImage_2": ""},
 
               {"answerText": "Residuos de animalES muertos",
                 "answerTooltip": "",
-                "regulation": ["ES_10"],
+                "regulation": ["RES_10"],
                 "answerImage_1": "",
                 "answerImage_2": ""},
 
               {"answerText": "Residuos amianto",
                 "answerTooltip": "",
-                "regulation": ["RES_32","ES_33","ES_27"],
+                "regulation": ["RES_32","ES_33","RES_27"],
                 "answerImage_1": "",
                 "answerImage_2": ""},
 
@@ -174,7 +174,7 @@
         [
               {"answerText": "Sí",
                "answerTooltip": "",
-               "regulation": ["RES59"],
+               "regulation": ["RES_59"],
                "image_1": "",
                "image_2": ""},
                {"answerText": "No",
@@ -222,7 +222,7 @@
         "type": "radio",
         "questionTextES": "¿Se realizan actividades de expedición, carga, descarga y transporte de las mercancías peligrosas ?",
         "questionTextCA": "",
-        "questionDoc1" : "PSIND_2 ANEXO 1APQ.pdf",
+        "questionDoc1" : "PSIND_2_ANEXO_1APQ.pdf",
         "questionDoc2" : "",
         "questionTooltipES": "Se refiere al almacenamiento de productos químicos con pictograma de peligrosidad siempre y cuando <strong>se supere el umbral de almacenamiento de la Tabla I</strong>. Relación de peligros y cantidades para la aplicación del Reglamento ( columna 5).<br><strong>Ejemplos</strong>, líquidos inflamables, óxido de etileno en recipientes fijos, almacenamiento de cloro, almacenamiento de amoniaco anhidro, almacenamiento de gases en recipientes a presión móviles,almacenamiento de líquidos corrosivos en recipientes fijos, almacenamiento de líquidos tóxicos en recipientes fijos , Almacenamiento de fertilizantes a base de nitrato amónico con alto contenido en nitrógeno,  Almacenamiento de peróxidos orgánicos y de materias autorreactivas, Almacenamiento en recipientes móviles, . Asimismo, <strong>NO</strong> será de aplicación a los almacenamientos de productos con reglamentaciones específicas.",
         "questionTooltipCA": "",
@@ -231,7 +231,7 @@
         [
         {"answerText": "Sí",
         "answerTooltip": "",
-        "regulation": ["QMC_25", "BOE-A-2017-8755-consolidado"],
+        "regulation": ["QMC_25"],
         "answerdoc1": "",
         "answerdoc2": ""},
         {"answerText": "No",
@@ -246,7 +246,7 @@
         "type": "radio",
         "questionTextES": " ¿Disponen de instalaciones frigoríficas?",
         "questionTextCA": "",
-        "questionDoc1" : "PSIND_3 apéndice 1",
+        "questionDoc1" : "PSIND_3_apendice_1",
         "questionDoc2" : "",
         "questionTooltipES": "",
         "questionTooltipCA": "",
@@ -313,7 +313,7 @@
         [
         {"answerText": "Sí",
         "answerTooltip": "",
-        "regulation": ["SIND_1 AP Consolidado"],
+        "regulation": ["SIND_1_AP_Consolidado"], 
         "image_1": "",
         "image_2": ""},
         {"answerText": "No",
@@ -337,7 +337,7 @@
         [
                 {"answerText": "Sí",
                  "answerTooltip": "",
-                 "regulation": ["SIND_3 BT consolidado"],
+                 "regulation": ["SIND_3_BT_consolidado"],
                  "image_1": "",
                  "image_2": ""},
                  {"answerText": "No",
@@ -361,7 +361,7 @@
         [
                 {"answerText": "Sí",
                  "answerTooltip": "",
-                 "regulation": ["SIND_4 CT consolidado"],
+                 "regulation": ["SIND_4_CT_consolidado"], 
                  "image_1": "",
                  "image_2": ""},
                  {"answerText": "No",
@@ -385,7 +385,7 @@
         [
                 {"answerText": "Sí",
                  "answerTooltip": "",
-                 "regulation": ["SIND_11 Ins gasesosas consolidado"],
+                 "regulation": ["SIND_11_Ins_gasesosas consolidado"],
                  "image_1": "",
                  "image_2": ""},
                  {"answerText": "No",
@@ -409,7 +409,7 @@
         [
                 {"answerText": "Sí",
                  "answerTooltip": "",
-                 "regulation": ["SIND_5 IPLiq consolidado"],
+                 "regulation": ["SIND_5_IPLiq_consolidado"],
                  "image_1": "",
                  "image_2": ""},
                  {"answerText": "No",
@@ -457,7 +457,7 @@
         [
                 {"answerText": "Sí",
                  "answerTooltip": "",
-                 "regulation": ["SIND_7 RITE Consolidado"],
+                 "regulation": ["SIND_7_RITE_Consolidado"],
                  "image_1": "",
                  "image_2": ""},
                  {"answerText": "No",
@@ -570,7 +570,7 @@
   {
     "vectorId": "4",
     "vectorName": "ATMÓSFERA",
-    "vectorGeneralRegulation":["ATM_47","ATM_5","ATM_9","ATM_12"],
+    "vectorGeneralRegulation":["ATM_4","ATM_5","ATM_9","ATM_12"],
     "questions":
       [
           {
@@ -897,32 +897,32 @@
       {
         "key": "1",
         "type": "radio",
-        "questionTextES": "",
+        "questionTextES": "¿Su actividad se engloba en alguna de las siguientes actividades contempladas en este link?",
         "questionTextCA": "",
         "questionDoc1" : "PMA_1",
-        "questionDoc2" : "¿Su actividad se engloba en alguna de las siguientes actividades contempladas en este link?",
+        "questionDoc2" : "", 
         "questionTooltipES": "Si se incluye su actividad en alguna del siguiente listado que se adjunta,  por favor responda que <strong>SI</strong> a la pregunta, en caso contrario responda que <strong>NO</strong> .", 
         "questionTooltipCA": "",
         "link": "https://...",
         "answers":
         [
-                {"answerText": "YES",
-                "answerTooltip": "",
-                "regulation": ["MA_0","MA_1","MA_4","MA_5","MA_6","MA_11"],
-                "answerImage_1": "",
-                "answerImage_2": ""},
+          {"answerText": "YES",
+            "answerTooltip": "",
+            "regulation": ["MA_0","MA_1","MA_4","MA_5","MA_6","MA_11"],
+            "answerImage_1": "",
+            "answerImage_2": ""},
 
-                {"answerText": " NO",
-                "answerTooltip": "",
-                "regulation": [""],
-                "answerImage_1": "",
-                "answerImage_2": ""}
+          {"answerText": " NO",
+            "answerTooltip": "",
+            "regulation": [""],
+            "answerImage_1": "",
+            "answerImage_2": ""}
         ]
       },
       {
         "key": "2",
         "type": "radio",
-        "questionTextES": "¿Dispone de instalaciones con riesgo de proliferación y dispersión de LEGIONELLA? ",
+        "questionTextES": "¿Dispone de instalaciones con riesgo de proliferación y dispersión de LEGIONELLA?",
         "questionTextCA": "",
         "questionDoc1" : "",
         "questionDoc2" : "",
@@ -947,7 +947,7 @@
       {
         "key": "3",
         "type": "radio",
-        "questionTextES": "¿Realiza alguna de las siguientes actividades, las cuales son fuentes emisoras de ruido? ",
+        "questionTextES": "¿Realiza alguna de las siguientes actividades, las cuales son fuentes emisoras de ruido?",
         "questionTextCA": "",
         "questionDoc1" : "",
         "questionDoc2" : "",

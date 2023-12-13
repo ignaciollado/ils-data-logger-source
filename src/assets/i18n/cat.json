@@ -85,6 +85,8 @@
     "totalQuestions": "Total preguntes",
     "globalQuestionnaire": "Cuestionario preliminar",
     "globalQuestionnaireList": "Ver cuestionarios",
+    "answeredQuestionnairesList": "Cuestionarios realizados",
+    "loadingQuestionnaire": "Un momento, cargando cuestionarios...",
 
     "copyright": "Creat per l'Institut d'Innovació Empresarial de les Illes Balears",
     "workSession": "Iniciar sessió de treball",

@@ -4,7 +4,7 @@
   <form *ngIf="questionList" id="theQuestionnaire" [formGroup]="questionListForm"
                     (ngSubmit)="saveQuestionForm()">
 
-                    <section>
+                  <section>
                       <mat-form-field [style.width.px]=425>
                         <mat-label>{{'delegation' | translate}}</mat-label>
                         <mat-select [formControl]="delegation" panelClass="panel-{{delegation.value}}">
@@ -69,7 +69,7 @@
     </mat-accordion>
    
    <div class="button-row">
-    <button mat-raised-button color="primary" [disabled]="!questionListForm.valid">Enviar</button>
+    <button mat-raised-button color="primary" (click)="openDialog('300ms', '300ms', 'Cuestionario preliminar', 'El cuestionario ha sido guardado correctamente', 'tres', 'cuatro')" [disabled]="!questionListForm.valid">Enviar</button>
     <button mat-raised-button>Limpiar</button>
   </div>
   </form>
@@ -85,5 +85,5 @@
   </div>
   
  </div>
-<span *ngIf="!questionList" class="loader">Loading questionnaire...</span>
+<span *ngIf="!questionList" class="loader">{{'loadingQuestionnaire' | translate}}</span>
 </div>

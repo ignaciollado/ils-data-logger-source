@@ -35,20 +35,19 @@ export class GlobalRegulationQuestionnaireAnswerComponent {
             this.userQuestionnaires = questionnaires
             console.log (this.userQuestionnaires)
             this.userQuestionnaires.map( (item:AnswerDTO) => {
-              item.userAnswers.replace("false","<span class='is-false'>false</span>")
-              item.userAnswers.replace("true","<span class='is-true'>true</span>")
+             /*  item.userAnswers = item.userAnswers.replaceAll("#","[")
+              item.userAnswers = item.userAnswers.replaceAll("[","]")
+              item.userAnswers = item.userAnswers.replaceAll("-input","")
+              item.userAnswers = item.userAnswers.replaceAll("true<br>","") */
+              console.log ("***",item.userAnswers,"***")
+              /* item.userAnswers = item.userAnswers.replaceAll("-input","") */
+/*               item.userAnswers = item.userAnswers.replaceAll("#true<br>","],")
+              item.userAnswers = item.userAnswers.replaceAll("#","[") */
+/*               item.userAnswers = item.userAnswers.replaceAll(",,","##")
+              item.userAnswers = item.userAnswers.replaceAll(", ","//") */
+             /*  console.log ( ">>>",item.userAnswers, "<<<") */
+       /*        console.log("***", JSON.stringify(item.userAnswers) , "***")     */      
             })
-            console.log (this.userQuestionnaires)
-           /*  this.userQuestionnairebyID = this.userQuestionnaire.filter((item:AnswerDTO)=>{ item.id === questionnaireID })
-            console.log (this.userQuestionnairebyID)
-
-            const userQuestionnaires = questionnaires // = ['spray', 'elite', 'exuberant', 'destruction', 'present'];
-
-            this.userQuestionnairebyID = userQuestionnaires.filter((word) => (word.id >= questionnaireID && word.id <= questionnaireID));
-
-            console.log(this.userQuestionnairebyID); */
-
-
-            })
+          })
   }
 }

@@ -37,11 +37,12 @@ VALUES ("
 mysqli_free_result($result);
 
 $result = mysqli_query($conn, $sql);
+$last_id = mysqli_insert_id($conn);
 
 mysqli_close($conn);
 if ($result) {
   header('Content-Type: application/json');
-  echo  http_response_code(200);
+  echo json_encode(array('last_id'=>$last_id, 'response_code'=>200));
 } else  {
   echo http_response_code(401);
 }

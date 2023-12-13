@@ -746,28 +746,32 @@ saveQuestionForm() {
 if (this.vector_1_Question1) {
   this.vector_1_Question1.forEach((node: HTMLInputElement) => {
     if (node.value && node.checked) {
-      this.vector_1_Question1_reg.push(node.id+'#'+node.value+'#'+node.checked+'<br>')
+      /* this.vector_1_Question1_reg.push(node.id+'#'+node.value+'#'+node.checked+'<br>') */
+      this.vector_1_Question1_reg.push('{['+node.value+']}')
     }
   })
 }
 if (this.vector_1_Question2) {
   this.vector_1_Question2.forEach((node: HTMLInputElement) => {
   if (node.value && node.checked) {
-    this.vector_1_Question2_reg.push(node.id+'#'+node.value+'#'+node.checked+'<br>')
+    /* this.vector_1_Question2_reg.push(node.id+'#'+node.value+'#'+node.checked+'<br>') */
+    this.vector_1_Question2_reg.push('{['+node.value+']}')
   }
   })
 }
 if (this.vector_1_Question3) {
   this.vector_1_Question3.forEach((node: HTMLInputElement) => {
   if (node.value && node.checked) {
-    this.vector_1_Question3_reg.push(node.id+'#'+node.value+'#'+node.checked+'<br>')
+    /* this.vector_1_Question3_reg.push(node.id+'#'+node.value+'#'+node.checked+'<br>') */
+    this.vector_1_Question3_reg.push('{['+node.value+']}')
   }
   })
 }
 if (this.vector_1_Question4) {
   this.vector_1_Question4.forEach((node: HTMLInputElement) => {
   if (node.value && node.checked) {
-    this.vector_1_Question4_reg.push(node.id+'#'+node.value+'#'+node.checked+'<br>')
+    /* this.vector_1_Question4_reg.push(node.id+'#'+node.value+'#'+node.checked+'<br>') */
+    this.vector_1_Question4_reg.push('{['+node.value+']}')
   }
   })
 }
@@ -775,77 +779,88 @@ if (this.vector_1_Question4) {
 if (this.vector_2_Question1){
   this.vector_2_Question1.forEach((node: HTMLInputElement, index) => {
   if (node.value && node.checked) {
-    this.vector_2_Question1_reg.push(node.id+'#'+node.value+'#'+node.checked+'<br>')
+   /*  this.vector_2_Question1_reg.push(node.id+'#'+node.value+'#'+node.checked+'<br>') */
+   this.vector_2_Question1_reg.push('{['+node.value+']}')
   }
   })
 }
 if (this.vector_2_Question2){
   this.vector_2_Question2.forEach((node: HTMLInputElement, index) => {
   if (node.value && node.checked) {
-    this.vector_2_Question2_reg.push(node.id+'#'+node.value+'#'+node.checked+'<br>')
+    /* this.vector_2_Question2_reg.push(node.id+'#'+node.value+'#'+node.checked+'<br>') */
+    this.vector_2_Question2_reg.push('{['+node.value+']}')
   }
   })
 }
 if (this.vector_2_Question3){
   this.vector_2_Question3.forEach((node: HTMLInputElement, index) => {
   if (node.value && node.checked) {
-    this.vector_2_Question3_reg.push(node.id+'#'+node.value+'#'+node.checked+'<br>')
+    /* this.vector_2_Question3_reg.push(node.id+'#'+node.value+'#'+node.checked+'<br>') */
+    this.vector_2_Question3_reg.push('{['+node.value+']}')
   }
   })
 }
 if (this.vector_2_Question4){
   this.vector_2_Question4.forEach((node: HTMLInputElement, index) => {
   if (node.value && node.checked) {
-    this.vector_2_Question4_reg.push(node.id+'#'+node.value+'#'+node.checked+'<br>')
+    /* this.vector_2_Question4_reg.push(node.id+'#'+node.value+'#'+node.checked+'<br>') */
+    this.vector_2_Question4_reg.push('{['+node.value+']}')
   }
   })
 }
 if (this.vector_2_Question5){
   this.vector_2_Question5.forEach((node: HTMLInputElement, index) => {
   if (node.value && node.checked) {
-    this.vector_2_Question5_reg.push(node.id+'#'+node.value+'#'+node.checked+'<br>')
+    /* this.vector_2_Question5_reg.push(node.id+'#'+node.value+'#'+node.checked+'<br>') */
+    this.vector_2_Question5_reg.push('{['+node.value+']}')
   }
   })
 }
 if (this.vector_2_Question6){
   this.vector_2_Question6.forEach((node: HTMLInputElement, index) => {
   if (node.value && node.checked) {
-    this.vector_2_Question6_reg.push(node.id+'#'+node.value+'#'+node.checked+'<br>')
+   /*  this.vector_2_Question6_reg.push(node.id+'#'+node.value+'#'+node.checked+'<br>') */
+   this.vector_2_Question6_reg.push('{['+node.value+']}')
   }
   })
 }
 if (this.vector_2_Question7){
   this.vector_2_Question7.forEach((node: HTMLInputElement, index) => {
   if (node.value && node.checked) {
-    this.vector_2_Question7_reg.push(node.id+'#'+node.value+'#'+node.checked+'<br>')
+    /* this.vector_2_Question7_reg.push(node.id+'#'+node.value+'#'+node.checked+'<br>') */
+    this.vector_2_Question7_reg.push('{['+node.value+']}')
   }
   })
 }
 if (this.vector_2_Question8){
   this.vector_2_Question8.forEach((node: HTMLInputElement, index) => {
   if (node.value && node.checked) {
-    this.vector_2_Question8_reg.push(node.id+'#'+node.value+'#'+node.checked+'<br>')
+    /* this.vector_2_Question8_reg.push(node.id+'#'+node.value+'#'+node.checked+'<br>') */
+    this.vector_2_Question8_reg.push('{['+node.value+']}')
   }
   })
 }
 if (this.vector_2_Question9){
   this.vector_2_Question9.forEach((node: HTMLInputElement, index) => {
   if (node.value && node.checked) {
-    this.vector_2_Question9_reg.push(node.id+'#'+node.value+'#'+node.checked+'<br>')
+    /* this.vector_2_Question9_reg.push(node.id+'#'+node.value+'#'+node.checked+'<br>') */
+    this.vector_2_Question9_reg.push('{['+node.value+']}')
   }
   })
 }
 if (this.vector_2_Question10){
   this.vector_2_Question10.forEach((node: HTMLInputElement, index) => {
   if (node.value && node.checked) {
-    this.vector_2_Question10_reg.push(node.id+'#'+node.value+'#'+node.checked+'<br>')
+    /* this.vector_2_Question10_reg.push(node.id+'#'+node.value+'#'+node.checked+'<br>') */
+    this.vector_2_Question10_reg.push('{['+node.value+']}')
   }
   })
 }
 if (this.vector_2_Question11){
   this.vector_2_Question11.forEach((node: HTMLInputElement, index) => {
   if (node.value && node.checked) {
-    this.vector_2_Question11_reg.push(node.id+'#'+node.value+'#'+node.checked+'<br>')
+    /* this.vector_2_Question11_reg.push(node.id+'#'+node.value+'#'+node.checked+'<br>') */
+    this.vector_2_Question11_reg.push('{['+node.value+']}')
   }
   })
 }
@@ -853,21 +868,24 @@ if (this.vector_2_Question11){
 if (this.vector_3_Question1){
   this.vector_3_Question1.forEach((node: HTMLInputElement, index) => {
   if (node.value && node.checked) {
-    this.vector_3_Question1_reg.push(node.id+'#'+node.value+'#'+node.checked+'<br>')
+    /* this.vector_3_Question1_reg.push(node.id+'#'+node.value+'#'+node.checked+'<br>') */
+    this.vector_3_Question1_reg.push('{['+node.value+']}')
   }
   })
 }
 if (this.vector_3_Question2){
   this.vector_3_Question2.forEach((node: HTMLInputElement, index) => {
   if (node.value && node.checked) {
-    this.vector_3_Question2_reg.push(node.id+'#'+node.value+'#'+node.checked+'<br>')
+    /* this.vector_3_Question2_reg.push(node.id+'#'+node.value+'#'+node.checked+'<br>') */
+    this.vector_3_Question2_reg.push('{['+node.value+']}')
   }
   })
 }
 if (this.vector_3_Question3){
   this.vector_3_Question3.forEach((node: HTMLInputElement, index) => {
   if (node.value && node.checked) {
-    this.vector_3_Question3_reg.push(node.id+'#'+node.value+'#'+node.checked+'<br>')
+    /* this.vector_3_Question3_reg.push(node.id+'#'+node.value+'#'+node.checked+'<br>') */
+    this.vector_3_Question3_reg.push('{['+node.value+']}')
   }
   })
 }
@@ -875,49 +893,56 @@ if (this.vector_3_Question3){
 if (this.vector_4_Question1){
   this.vector_4_Question1.forEach((node: HTMLInputElement, index) => {
   if (node.value && node.checked) {
-    this.vector_4_Question1_reg.push(node.id+'#'+node.value+'#'+node.checked+'<br>')
+    /* this.vector_4_Question1_reg.push(node.id+'#'+node.value+'#'+node.checked+'<br>') */
+    this.vector_4_Question1_reg.push('{['+node.value+']}')
   }
   })
 }
 if (this.vector_4_Question2){
   this.vector_4_Question2.forEach((node: HTMLInputElement, index) => {
   if (node.value && node.checked) {
-    this.vector_4_Question2_reg.push(node.id+'#'+node.value+'#'+node.checked+'<br>')
+    /* this.vector_4_Question2_reg.push(node.id+'#'+node.value+'#'+node.checked+'<br>') */
+    this.vector_4_Question2_reg.push('{['+node.value+']}')
   }
   })
 }
 if (this.vector_4_Question3){
   this.vector_4_Question3.forEach((node: HTMLInputElement, index) => {
   if (node.value && node.checked) {
-    this.vector_4_Question3_reg.push(node.id+'#'+node.value+'#'+node.checked+'<br>')
+    /* this.vector_4_Question3_reg.push(node.id+'#'+node.value+'#'+node.checked+'<br>') */
+    this.vector_4_Question3_reg.push('{['+node.value+']}')
   }
   })
 }
 if (this.vector_4_Question4){
   this.vector_4_Question4.forEach((node: HTMLInputElement, index) => {
   if (node.value && node.checked) {
-    this.vector_4_Question4_reg.push(node.id+'#'+node.value+'#'+node.checked+'<br>')
+    /* this.vector_4_Question4_reg.push(node.id+'#'+node.value+'#'+node.checked+'<br>') */
+    this.vector_4_Question4_reg.push('{['+node.value+']}')
   }
   })
 }
 if (this.vector_4_Question5){
   this.vector_4_Question5.forEach((node: HTMLInputElement, index) => {
   if (node.value && node.checked) {
-    this.vector_4_Question5_reg.push(node.id+'#'+node.value+'#'+node.checked+'<br>')
+    /* this.vector_4_Question5_reg.push(node.id+'#'+node.value+'#'+node.checked+'<br>') */
+    this.vector_4_Question5_reg.push('{['+node.value+']}')
   }
   })
 }
 if (this.vector_4_Question6){
   this.vector_4_Question6.forEach((node: HTMLInputElement, index) => {
   if (node.value && node.checked) {
-    this.vector_4_Question6_reg.push(node.id+'#'+node.value+'#'+node.checked+'<br>')
+    /* this.vector_4_Question6_reg.push(node.id+'#'+node.value+'#'+node.checked+'<br>') */
+    this.vector_4_Question6_reg.push('{['+node.value+']}')
   }
   })
 }
 if (this.vector_4_Question7){
   this.vector_4_Question7.forEach((node: HTMLInputElement, index) => {
   if (node.value && node.checked) {
-    this.vector_4_Question7_reg.push(node.id+'#'+node.value+'#'+node.checked+'<br>')
+    /* this.vector_4_Question7_reg.push(node.id+'#'+node.value+'#'+node.checked+'<br>') */
+    this.vector_4_Question7_reg.push('{['+node.value+']}')
   }
   })
 }
@@ -925,35 +950,40 @@ if (this.vector_4_Question7){
 if (this.vector_5_Question1){
   this.vector_5_Question1.forEach((node: HTMLInputElement, index) => {
   if (node.value && node.checked) {
-    this.vector_5_Question1_reg.push(node.id+'#'+node.value+'#'+node.checked+'<br>')
+    /* this.vector_5_Question1_reg.push(node.id+'#'+node.value+'#'+node.checked+'<br>') */
+    this.vector_5_Question1_reg.push('{['+node.value+']}')
   }
   })
 }
 if (this.vector_5_Question2){
   this.vector_5_Question2.forEach((node: HTMLInputElement, index) => {
   if (node.value && node.checked) {
-    this.vector_5_Question2_reg.push(node.id+'#'+node.value+'#'+node.checked+'<br>')
+    /* this.vector_5_Question2_reg.push(node.id+'#'+node.value+'#'+node.checked+'<br>') */
+    this.vector_5_Question2_reg.push('{['+node.value+']}')
   }
   })
 }
 if (this.vector_5_Question3){
   this.vector_5_Question3.forEach((node: HTMLInputElement, index) => {
   if (node.value && node.checked) {
-    this.vector_5_Question3_reg.push(node.id+'#'+node.value+'#'+node.checked+'<br>')
+    /* this.vector_5_Question3_reg.push(node.id+'#'+node.value+'#'+node.checked+'<br>') */
+    this.vector_5_Question3_reg.push('{['+node.value+']}')
   }
   })
 }
 if (this.vector_5_Question4){
   this.vector_5_Question4.forEach((node: HTMLInputElement, index) => {
   if (node.value && node.checked) {
-    this.vector_5_Question4_reg.push(node.id+'#'+node.value+'#'+node.checked+'<br>')
+    /* this.vector_5_Question4_reg.push(node.id+'#'+node.value+'#'+node.checked+'<br>') */
+    this.vector_5_Question4_reg.push('{['+node.value+']}')
   }
   })
 }
 if (this.vector_5_Question5){
   this.vector_5_Question5.forEach((node: HTMLInputElement, index) => {
   if (node.value && node.checked) {
-    this.vector_5_Question5_reg.push(node.id+'#'+node.value+'#'+node.checked+'<br>')
+    /* this.vector_5_Question5_reg.push(node.id+'#'+node.value+'#'+node.checked+'<br>') */
+    this.vector_5_Question5_reg.push('{['+node.value+']}')
   }
   })
 }
@@ -961,45 +991,49 @@ if (this.vector_5_Question5){
 if (this.vector_6_Question1){
   this.vector_6_Question1.forEach((node: HTMLInputElement, index) => {
   if (node.value && node.checked) {
-    this.vector_6_Question1_reg.push(node.id+'#'+node.value+'#'+node.checked+'<br>')
+    /* this.vector_6_Question1_reg.push(node.id+'#'+node.value+'#'+node.checked+'<br>') */
+    this.vector_6_Question1_reg.push('{['+node.value+']}')
   }
   })
 }
 if (this.vector_6_Question2){
   this.vector_6_Question2.forEach((node: HTMLInputElement, index) => {
   if (node.value && node.checked) {
-    this.vector_6_Question2_reg.push(node.id+'#'+node.value+'#'+node.checked+'<br>')
+    /* this.vector_6_Question2_reg.push(node.id+'#'+node.value+'#'+node.checked+'<br>') */
+    this.vector_6_Question2_reg.push('{['+node.value+']}')
   }
   })
 }
 if (this.vector_6_Question3){
   this.vector_6_Question3.forEach((node: HTMLInputElement, index) => {
   if (node.value && node.checked) {
-    this.vector_6_Question3_reg.push(node.id+'#'+node.value+'#'+node.checked+'<br>')
+    /* this.vector_6_Question3_reg.push(node.id+'#'+node.value+'#'+node.checked+'<br>') */
+    this.vector_6_Question3_reg.push('{['+node.value+']}')
   }
   })
 }
 if (this.vector_6_Question4){
   this.vector_6_Question4.forEach((node: HTMLInputElement, index) => {
   if (node.value && node.checked) {
-    this.vector_6_Question4_reg.push(node.id+'#'+node.value+'#'+node.checked+'<br>')
+    /* this.vector_6_Question4_reg.push(node.id+'#'+node.value+'#'+node.checked+'<br>') */
+    this.vector_6_Question4_reg.push('{['+node.value+']}')
   }
   })
 }
 
-resultsVector1.innerHTML = this.vector_1_Question1_reg+" "+this.vector_1_Question2_reg+" "+this.vector_1_Question3_reg+" "+this.vector_1_Question4_reg
-resultsVector2.innerHTML = this.vector_2_Question1_reg+" "+this.vector_2_Question2_reg+" "+this.vector_2_Question3_reg+" "+this.vector_2_Question4_reg+" "+this.vector_2_Question5_reg+" "+this.vector_2_Question6_reg+" "+this.vector_2_Question7_reg+" "+this.vector_2_Question8_reg+" "+this.vector_2_Question9_reg+" "+this.vector_2_Question10_reg+" "+this.vector_2_Question11_reg
-resultsVector3.innerHTML = this.vector_3_Question1_reg+" "+this.vector_3_Question2_reg+" "+this.vector_3_Question3_reg
-resultsVector4.innerHTML = this.vector_4_Question1_reg+" "+this.vector_4_Question2_reg+" "+this.vector_4_Question3_reg+" "+this.vector_4_Question4_reg+" "+this.vector_4_Question5_reg+" "+this.vector_4_Question6_reg+" "+this.vector_4_Question7_reg
-resultsVector5.innerHTML = this.vector_5_Question1_reg+" "+this.vector_5_Question2_reg+" "+this.vector_5_Question3_reg+" "+this.vector_5_Question4_reg+" "+this.vector_5_Question5_reg
-resultsVector6.innerHTML = this.vector_6_Question1_reg+" "+this.vector_6_Question2_reg+" "+this.vector_6_Question3_reg+" "+this.vector_6_Question4_reg
+resultsVector1.innerHTML = "[{vectorId:1,regulation:["+ this.vector_1_Question1_reg+","+this.vector_1_Question2_reg+","+this.vector_1_Question3_reg+","+this.vector_1_Question4_reg+"]}"
+resultsVector2.innerHTML = "{vectorId:2,regulation:["+ this.vector_2_Question1_reg+","+this.vector_2_Question2_reg+","+this.vector_2_Question3_reg+","+this.vector_2_Question4_reg+","+this.vector_2_Question5_reg+","+this.vector_2_Question6_reg+","+this.vector_2_Question7_reg+","+this.vector_2_Question8_reg+","+this.vector_2_Question9_reg+","+this.vector_2_Question10_reg+","+this.vector_2_Question11_reg+"]}"
+resultsVector3.innerHTML = "{vectorId:3,regulation:["+ this.vector_3_Question1_reg+","+this.vector_3_Question2_reg+","+this.vector_3_Question3_reg+"]}"
+resultsVector4.innerHTML = "{vectorId:4,regulation:["+ this.vector_4_Question1_reg+","+this.vector_4_Question2_reg+","+this.vector_4_Question3_reg+","+this.vector_4_Question4_reg+","+this.vector_4_Question5_reg+","+this.vector_4_Question6_reg+","+this.vector_4_Question7_reg+"]}"
+resultsVector5.innerHTML = "{vectorId:5,regulation:["+ this.vector_5_Question1_reg+","+this.vector_5_Question2_reg+","+this.vector_5_Question3_reg+","+this.vector_5_Question4_reg+","+this.vector_5_Question5_reg+"]}"
+resultsVector6.innerHTML = "{vectorId:6,regulation:["+ this.vector_6_Question1_reg+","+this.vector_6_Question2_reg+","+this.vector_6_Question3_reg+","+this.vector_6_Question4_reg+"]}]"
 
-resultsVector1.classList.remove('no-display')
+/* resultsVector1.classList.remove('no-display')
 resultsVector2.classList.remove('no-display')
 resultsVector3.classList.remove('no-display')
 resultsVector4.classList.remove('no-display')
 resultsVector5.classList.remove('no-display')
-resultsVector6.classList.remove('no-display')
+resultsVector6.classList.remove('no-display') */
 
 resultsQuestionnaire.push(resultsVector1.innerHTML)
 resultsQuestionnaire.push(resultsVector2.innerHTML)
@@ -1009,9 +1043,9 @@ resultsQuestionnaire.push(resultsVector5.innerHTML)
 resultsQuestionnaire.push(resultsVector6.innerHTML)
 
 this.enviromentalAuditService.createGlobalAnswer(resultsQuestionnaire, this.userId, this.delegation.value, this.questionnaireVectorState)
-  .subscribe((item) => {
-    console.log("Navegar hacia detalle del cuestionario")
-    this.router.navigateByUrl('/questionnaire-detail')
+  .subscribe((item:any) => {
+    /* console.log("Navegar hacia detalle del cuestionario", "-->",item,"<-->", item.last_id,"<--") */
+    this.router.navigateByUrl('/questionnaire-detail/'+`${item.last_id}`)
   }
 )
 

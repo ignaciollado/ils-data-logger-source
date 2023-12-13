@@ -1,22 +1,21 @@
-<h2>Questionnaire detail:</h2>
-
 <div class="container-form">
-
-<div *ngIf="userQuestionnaires">
-
-<mat-card class="questionnaire-card" *ngFor="let userQuestionnaire of userQuestionnaires">
-  <mat-card-header>
-    <mat-card-title-group>
-      <mat-card-title> <strong>Questionnaire: {{userQuestionnaire.companyQuestionnaireId}}</strong></mat-card-title>
-      <mat-card-subtitle><strong>Data answered: {{userQuestionnaire.updated_at | date :'short'}}</strong></mat-card-subtitle>
-      <mat-card-subtitle><strong>State: {{userQuestionnaire.completed}}</strong></mat-card-subtitle>
-    </mat-card-title-group>
-  </mat-card-header>
-  <mat-card-content [innerHTML]="userQuestionnaire.userAnswers">
-   
-  </mat-card-content>
-</mat-card>
+  <h1>Listado de Normas Legales/Documentos propios a partir de los Requisitos de Cliente</h1>
+  <h2>Listado de Normas Legales de las que se derivan Requisitos de Cliente, para este Centro</h2>
+  <div *ngIf="userQuestionnaires">
+    <mat-card class="questionnaire-card" *ngFor="let userQuestionnaire of userQuestionnaires">
+      <mat-card-header>
+        <mat-card-title-group>
+          <mat-card-title><strong>Ref.: {{userQuestionnaire.companyQuestionnaireId}}</strong></mat-card-title>
+          <!-- <mat-card-subtitle><strong>Data answered: {{userQuestionnaire.updated_at | date :'short'}}</strong></mat-card-subtitle> -->
+          <!-- <mat-card-subtitle><strong>State: {{userQuestionnaire.completed}}</strong></mat-card-subtitle> -->
+        </mat-card-title-group>
+      </mat-card-header>
+      <mat-card-content [innerHTML]="userQuestionnaire.userAnswers"></mat-card-content>
+      <mat-card-footer>
+        {{userQuestionnaire.updated_at | date :'short'}}
+      </mat-card-footer>
+    </mat-card>
 </div>
-<span *ngIf="!userQuestionnaires" class="loader">No data found yet...</span>
+<span *ngIf="!userQuestionnaires" class="loader">{{'loadingQuestionnaire' | translate}}</span>
 
 </div>

@@ -3,6 +3,7 @@
 
 <div class='card-container' *ngIf="userQuestionnaires">
   <mat-card *ngFor="let questionnaire of userQuestionnaires">
+    <a [routerLink]="['/questionnaire-detail', questionnaire.id]" routerLinkActive="active" ariaCurrentWhenActive="page">
     <mat-card-header>
       <mat-card-title>
         {{questionnaire.companyDelegationName}}
@@ -22,9 +23,10 @@
       <mat-divider></mat-divider>
     </mat-card-content>
     <mat-card-actions class="button-row">
-      <button mat-button color="primary" matTooltip="Detail"><a [routerLink]="['/questionnaire-detail', questionnaire.id]" routerLinkActive="active" ariaCurrentWhenActive="page"><i class="fa-solid fa-clipboard-list"></i></a></button>
+<!--       <button mat-button color="primary" matTooltip="Detail"><a [routerLink]="['/questionnaire-detail', questionnaire.id]" routerLinkActive="active" ariaCurrentWhenActive="page"><i class="fa-solid fa-clipboard-list"></i></a></button> -->
       <button mat-button color="warn" matTooltip="Delete" (click)="deleteUserQuestionnaire(questionnaire.id)"><i class="fa-solid fa-trash"></i></button>
     </mat-card-actions>
+  </a>
   </mat-card>
 </div>
 

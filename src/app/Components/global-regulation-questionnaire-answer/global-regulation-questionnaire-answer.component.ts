@@ -4,6 +4,7 @@ import { JwtHelperService } from '@auth0/angular-jwt'
 import { AnswerDTO } from 'src/app/Models/answer.dto'
 import { ActivatedRoute, Router } from '@angular/router';
 import { answeredQuestionnaire } from 'src/app/Models/answeredQuestionnaire.dto';
+import { regulationsDTO } from 'src/app/Models/regulation.dto';
 
 @Component({
   selector: 'app-global-regulation-questionnaire-answer',
@@ -14,7 +15,7 @@ export class GlobalRegulationQuestionnaireAnswerComponent {
   private userId: string | null
   userQuestionnaires: AnswerDTO[] = []
   userQuestionnaireTemp: answeredQuestionnaire[] = []
-
+  regulations: regulationsDTO[] = []
   constructor (
     private enviromentalAuditService: EnvironmentalAuditsService,
     private jwtHelper: JwtHelperService,
@@ -26,6 +27,7 @@ export class GlobalRegulationQuestionnaireAnswerComponent {
 
   ngOnInit() {
     const questionnaireID = this.route.snapshot.paramMap.get('id');
+    this.loadRegulations()
     this.loadQuestionnaire( +questionnaireID )
   }
 
@@ -41,4 +43,12 @@ export class GlobalRegulationQuestionnaireAnswerComponent {
             })
           })
   }
+
+  loadRegulations(){
+    this.enviromentalAuditService.getRegulations()
+      .subscribe( (regulations: any[]) => {
+        this.regulations = regulations
+        console.log(this.regulations)
+      })
+}
 }

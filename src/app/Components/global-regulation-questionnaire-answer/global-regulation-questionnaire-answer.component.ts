@@ -3,6 +3,7 @@ import { EnvironmentalAuditsService } from 'src/app/Services/environmental-audit
 import { JwtHelperService } from '@auth0/angular-jwt'
 import { AnswerDTO } from 'src/app/Models/answer.dto'
 import { ActivatedRoute, Router } from '@angular/router';
+import { answeredQuestionnaire } from 'src/app/Models/answeredQuestionnaire.dto';
 
 @Component({
   selector: 'app-global-regulation-questionnaire-answer',
@@ -12,8 +13,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class GlobalRegulationQuestionnaireAnswerComponent {
   private userId: string | null
   userQuestionnaires: AnswerDTO[] = []
-  userQuestionnairebyID: AnswerDTO[] = []
-
+  userQuestionnaireTemp: answeredQuestionnaire[] = []
 
   constructor (
     private enviromentalAuditService: EnvironmentalAuditsService,
@@ -33,11 +33,10 @@ export class GlobalRegulationQuestionnaireAnswerComponent {
         this.enviromentalAuditService.getQuestionnaireByID( questionnaireID )
           .subscribe( (questionnaires: AnswerDTO[]) => {
             this.userQuestionnaires = questionnaires
-          /*   console.log (this.userQuestionnaires) */
             this.userQuestionnaires.map( (item:AnswerDTO) => {
-            /*   console.log ("***",JSON.parse(item.userAnswers), "***") */
               JSON.parse(item.userAnswers).map((vectorAnswers:any) => {
-                console.log("->", vectorAnswers)
+                this.userQuestionnaireTemp.push(vectorAnswers)
+                console.log("->", this.userQuestionnaireTemp)
               })
             })
           })

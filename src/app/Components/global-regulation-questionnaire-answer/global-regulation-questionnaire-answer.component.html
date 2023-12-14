@@ -8,7 +8,50 @@
           <mat-card-title><strong>Ref.: {{userQuestionnaire.companyQuestionnaireId}}</strong></mat-card-title>
         </mat-card-title-group>
       </mat-card-header>
-      <mat-card-content [innerHTML]="userQuestionnaire.userAnswers"></mat-card-content>
+      <mat-card-content>
+        <ng-container *ngFor="let regulations  of userQuestionnaireTemp">
+          <strong><span>Vector ID: </span>{{regulations.vectorId}}</strong>
+          <ng-container *ngFor="let item  of regulations.regulations">
+              <ng-container *ngFor="let questions  of item.regulation">
+                <ng-container  *ngFor="let item  of questions.q1">
+                  <li>{{item}}</li>
+                </ng-container>
+                <ng-container  *ngFor="let item  of questions.q2">
+                  <li>{{item}}</li> 
+                </ng-container>
+                <ng-container  *ngFor="let item  of questions.q3">
+                  <li>{{item}}</li>
+                </ng-container>
+                <ng-container  *ngFor="let item  of questions.q4">
+                  <li>{{item}}</li>
+                </ng-container>
+                <ng-container  *ngFor="let item  of questions.q5">
+                  <li>{{item}}</li>
+                </ng-container>
+                <ng-container  *ngFor="let item  of questions.q6">
+                  <li>{{item}}</li>
+                </ng-container>
+                <ng-container  *ngFor="let item  of questions.q7">
+                  <li>{{item}}</li>
+                </ng-container>
+                <ng-container  *ngFor="let item  of questions.q8">
+                  <li>{{item}}</li>
+                </ng-container>
+                <ng-container  *ngFor="let item  of questions.q9">
+                  <li>{{item}}</li>
+                </ng-container>
+                <ng-container  *ngFor="let item  of questions.q10">
+                  <li>{{item}}</li>
+                </ng-container>
+                <ng-container  *ngFor="let item  of questions.q11">
+                  <li>{{item}}</li>
+                </ng-container>
+              </ng-container>  
+          </ng-container>
+          <mat-divider></mat-divider>
+        </ng-container>
+      </mat-card-content>
+
       <mat-card-footer>
         {{userQuestionnaire.updated_at | date :'short'}}
       </mat-card-footer>

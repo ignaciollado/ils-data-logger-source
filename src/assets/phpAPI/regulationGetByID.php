@@ -8,7 +8,7 @@ mysqli_query($conn, "SET NAMES 'utf8'");
 $regID = $_GET['regID'];
 $sql = "SELECT * FROM `textos_normativos_vector` WHERE reg_ID ='".$regID."'";
 
-echo $sql;
+/* echo $sql; */
 
 $result = mysqli_query($conn, $sql);
 

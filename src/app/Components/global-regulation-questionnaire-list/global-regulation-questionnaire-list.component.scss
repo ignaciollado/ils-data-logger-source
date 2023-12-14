@@ -17,6 +17,14 @@
   padding: 4rem;
 }
 
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  opacity: .9;
+}
+
 @media (max-width: 950px) {
   .card-container{
    

@@ -24,16 +24,15 @@ export class GlobalRegulationQuestionnaireAnswerComponent {
     private router: Router
   ) {
     this.userId = this.jwtHelper.decodeToken().id_ils
-    this.loadRegulations()
   }
 
   ngOnInit() {
     const questionnaireID = this.route.snapshot.paramMap.get('id');
+    this.loadRegulations()
     this.loadQuestionnaire( +questionnaireID )
   }
 
   loadQuestionnaire( questionnaireID: number){
-        console.log (this.regulationsList)
         this.enviromentalAuditService.getQuestionnaireByID( questionnaireID )
           .subscribe( (questionnaires: AnswerDTO[]) => {
             this.userQuestionnaires = questionnaires
@@ -44,6 +43,13 @@ export class GlobalRegulationQuestionnaireAnswerComponent {
                       if (questions.q1) {
                         questions.q1.map((q1Reg:any) =>{
                           console.log("q1",q1Reg)
+                          this.regulationsList.map((regulation:any) => {
+                              if (regulation.reg_ID === q1Reg) {
+                                console.log( regulation.reg_ID, q1Reg)
+                                q1Reg += regulation.reg_ID+"/"+regulation.Ambito+"/"+regulation.Titulo+"/"+regulation.link
+                              }
+                          }
+                          )
                         })
                       }
                       if (questions.q2) {
@@ -111,6 +117,7 @@ export class GlobalRegulationQuestionnaireAnswerComponent {
     this.enviromentalAuditService.getRegulations()
       .subscribe( (regulations: any[]) => {
         this.regulationsList = regulations
+        console.log (this.regulationsList)
       })
 }
 }

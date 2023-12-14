@@ -45,8 +45,8 @@ export class GlobalRegulationQuestionnaireAnswerComponent {
                           console.log("q1",q1Reg)
                           this.regulationsList.map((regulation:any) => {
                               if (regulation.reg_ID === q1Reg) {
-                                console.log( regulation.reg_ID, q1Reg)
                                 q1Reg += regulation.reg_ID+"/"+regulation.Ambito+"/"+regulation.Titulo+"/"+regulation.link
+                                console.log( regulation.reg_ID, q1Reg)
                               }
                           }
                           )

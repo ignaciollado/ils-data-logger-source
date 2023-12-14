@@ -33,20 +33,12 @@ export class GlobalRegulationQuestionnaireAnswerComponent {
         this.enviromentalAuditService.getQuestionnaireByID( questionnaireID )
           .subscribe( (questionnaires: AnswerDTO[]) => {
             this.userQuestionnaires = questionnaires
-            console.log (this.userQuestionnaires)
+          /*   console.log (this.userQuestionnaires) */
             this.userQuestionnaires.map( (item:AnswerDTO) => {
-             /*  item.userAnswers = item.userAnswers.replaceAll("#","[")
-              item.userAnswers = item.userAnswers.replaceAll("[","]")
-              item.userAnswers = item.userAnswers.replaceAll("-input","")
-              item.userAnswers = item.userAnswers.replaceAll("true<br>","") */
-              console.log ("***",item.userAnswers,"***",JSON.parse(item.userAnswers), "***")
-              /* item.userAnswers = item.userAnswers.replaceAll("-input","") */
-/*               item.userAnswers = item.userAnswers.replaceAll("#true<br>","],")
-              item.userAnswers = item.userAnswers.replaceAll("#","[") */
-/*               item.userAnswers = item.userAnswers.replaceAll(",,","##")
-              item.userAnswers = item.userAnswers.replaceAll(", ","//") */
-             /*  console.log ( ">>>",item.userAnswers, "<<<") */
-       /*        console.log("***", JSON.stringify(item.userAnswers) , "***")     */      
+            /*   console.log ("***",JSON.parse(item.userAnswers), "***") */
+              JSON.parse(item.userAnswers).map((vectorAnswers:any) => {
+                console.log("->", vectorAnswers)
+              })
             })
           })
   }

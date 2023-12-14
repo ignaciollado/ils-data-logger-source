@@ -58,8 +58,9 @@ export class EnvironmentalAuditsService {
 
   getMockAnswers(userId: string): Observable<AnswerDTO[]> {
     return this.http
-      .get<AnswerDTO[]>(`${this.urlAPiMock}answersList.json`)
+      .get<AnswerDTO[]>(`${this.urlAPiMock}questionnaireCompleted.json`)
       .pipe(catchError(this.sharedService.handleError))
 
   }
+
 }

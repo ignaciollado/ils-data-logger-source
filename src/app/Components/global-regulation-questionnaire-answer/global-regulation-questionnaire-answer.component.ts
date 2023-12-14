@@ -45,10 +45,10 @@ export class GlobalRegulationQuestionnaireAnswerComponent {
                         questions.q1.map((q1Reg:any) =>{
                           this.regulationsList.map((regulation:regulationsDTO) => {
                             console.log (regulation.reg_ID, q1Reg, ((regulation.reg_ID === q1Reg)))
-                             /*  if (regulation.reg_ID == q1Reg) {
+                               if (regulation.reg_ID == q1Reg) {
                                 q1Reg = regulation.reg_ID+"/"+regulation.Ambito+"/"+regulation.Titulo+"/"+regulation.link
                                 console.log( regulation.reg_ID, q1Reg)
-                              } */
+                              }
                           }
                           )
                         })
@@ -57,10 +57,10 @@ export class GlobalRegulationQuestionnaireAnswerComponent {
                         questions.q2.map((q2Reg:any) =>{
                           this.regulationsList.map((regulation:regulationsDTO) => {
                             console.log (regulation.reg_ID, q2Reg, ((regulation.reg_ID === q2Reg)))
-                           /*  if (regulation.reg_ID === q2Reg) {
+                             if (regulation.reg_ID === q2Reg) {
                               q2Reg = regulation.reg_ID+"/"+regulation.Ambito+"/"+regulation.Titulo+"/"+regulation.link
                               console.log( regulation.reg_ID, q2Reg)
-                            } */
+                            }
                         }
                         )
                         })
@@ -69,10 +69,10 @@ export class GlobalRegulationQuestionnaireAnswerComponent {
                         questions.q3.map((q3Reg:any) =>{
                           this.regulationsList.map((regulation:regulationsDTO) => {
                             console.log (regulation.reg_ID, q3Reg, ((regulation.reg_ID === q3Reg)))
-                            /* if (regulation.reg_ID === q3Reg) {
+                             if (regulation.reg_ID === q3Reg) {
                               q3Reg = regulation.reg_ID+"/"+regulation.Ambito+"/"+regulation.Titulo+"/"+regulation.link
                               console.log( regulation.reg_ID, q3Reg)
-                            } */
+                            }
                         }
                         )
                         })
@@ -81,10 +81,10 @@ export class GlobalRegulationQuestionnaireAnswerComponent {
                         questions.q4.map((q4Reg:any) =>{
                           this.regulationsList.map((regulation:regulationsDTO) => {
                             console.log (regulation.reg_ID, q4Reg, ((regulation.reg_ID === q4Reg)))
-                           /*  if (regulation.reg_ID === q4Reg) {
+                             if (regulation.reg_ID === q4Reg) {
                               q4Reg = regulation.reg_ID+"/"+regulation.Ambito+"/"+regulation.Titulo+"/"+regulation.link
                               console.log( regulation.reg_ID, q4Reg)
-                            } */
+                            }
                         }
                         )
                         })
@@ -93,10 +93,10 @@ export class GlobalRegulationQuestionnaireAnswerComponent {
                         questions.q5.map((q5Reg:any) =>{
                           this.regulationsList.map((regulation:regulationsDTO) => {
                             console.log (regulation.reg_ID, q5Reg, ((regulation.reg_ID === q5Reg)))
-                          /*   if (regulation.reg_ID === q5Reg) {
+                             if (regulation.reg_ID === q5Reg) {
                               q5Reg = regulation.reg_ID+"/"+regulation.Ambito+"/"+regulation.Titulo+"/"+regulation.link
                               console.log( regulation.reg_ID, q5Reg)
-                            } */
+                            }
                         }
                         )
                         })
@@ -105,10 +105,10 @@ export class GlobalRegulationQuestionnaireAnswerComponent {
                         questions.q6.map((q6Reg:any) =>{
                           this.regulationsList.map((regulation:regulationsDTO) => {
                             console.log (regulation.reg_ID, q6Reg, ((regulation.reg_ID === q6Reg)))
-                           /*  if (regulation.reg_ID === q6Reg) {
+                             if (regulation.reg_ID === q6Reg) {
                               q6Reg = regulation.reg_ID+"/"+regulation.Ambito+"/"+regulation.Titulo+"/"+regulation.link
                               console.log( regulation.reg_ID, q6Reg)
-                            } */
+                            }
                         }
                         )
                         })
@@ -117,10 +117,10 @@ export class GlobalRegulationQuestionnaireAnswerComponent {
                         questions.q7.map((q7Reg:any) =>{
                           this.regulationsList.map((regulation:regulationsDTO) => {
                             console.log (regulation.reg_ID, q7Reg, ((regulation.reg_ID === q7Reg)))
-                          /*   if (regulation.reg_ID === q7Reg) {
+                             if (regulation.reg_ID === q7Reg) {
                               q7Reg = regulation.reg_ID+"/"+regulation.Ambito+"/"+regulation.Titulo+"/"+regulation.link
                               console.log( regulation.reg_ID, q7Reg)
-                            } */
+                            }
                         }
                         )
                         })
@@ -129,10 +129,10 @@ export class GlobalRegulationQuestionnaireAnswerComponent {
                         questions.q8.map((q8Reg:any) =>{
                           this.regulationsList.map((regulation:regulationsDTO) => {
                             console.log (regulation.reg_ID, q8Reg, ((regulation.reg_ID === q8Reg)))
-                           /*  if (regulation.reg_ID === q8Reg) {
+                             if (regulation.reg_ID === q8Reg) {
                               q8Reg = regulation.reg_ID+"/"+regulation.Ambito+"/"+regulation.Titulo+"/"+regulation.link
                               console.log( regulation.reg_ID, q8Reg)
-                            } */
+                            }
                         }
                         )
                         })
@@ -141,10 +141,10 @@ export class GlobalRegulationQuestionnaireAnswerComponent {
                         questions.q9.map((q9Reg:any) =>{
                           this.regulationsList.map((regulation:regulationsDTO) => {
                             console.log (regulation.reg_ID, q9Reg, ((regulation.reg_ID === q9Reg)))
-                        /*     if (regulation.reg_ID === q9Reg) {
+                             if (regulation.reg_ID === q9Reg) {
                               q9Reg = regulation.reg_ID+"/"+regulation.Ambito+"/"+regulation.Titulo+"/"+regulation.link
                               console.log( regulation.reg_ID, q9Reg)
-                            } */
+                            }
                         }
                         )
                         })
@@ -153,10 +153,10 @@ export class GlobalRegulationQuestionnaireAnswerComponent {
                         questions.q10.map((q10Reg:any) =>{
                           this.regulationsList.map((regulation:regulationsDTO) => {
                             console.log (regulation.reg_ID, q10Reg, ((regulation.reg_ID === q10Reg)))
-                          /*   if (regulation.reg_ID === q10Reg) {
+                             if (regulation.reg_ID === q10Reg) {
                               q10Reg = regulation.reg_ID+"/"+regulation.Ambito+"/"+regulation.Titulo+"/"+regulation.link
                               console.log( regulation.reg_ID, q10Reg)
-                            } */
+                            }
                         }
                         )
                         })
@@ -165,20 +165,17 @@ export class GlobalRegulationQuestionnaireAnswerComponent {
                         questions.q11.map((q11Reg:any) =>{
                           this.regulationsList.map((regulation:regulationsDTO) => {
                             console.log (regulation.reg_ID, q11Reg, ((regulation.reg_ID === q11Reg)))
-                          /*   if (regulation.reg_ID === q11Reg) {
+                             if (regulation.reg_ID === q11Reg) {
                               q11Reg = regulation.reg_ID+"/"+regulation.Ambito+"/"+regulation.Titulo+"/"+regulation.link
                               console.log( regulation.reg_ID, q11Reg)
-                            } */
+                            }
                         }
                         )
                         })
                       }  
                     })
                   })
-
                 this.userQuestionnaireTemp.push(vectorAnswers)
-                
-                
               })
             })
           })

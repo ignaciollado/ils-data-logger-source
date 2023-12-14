@@ -42,57 +42,57 @@ export class GlobalRegulationQuestionnaireAnswerComponent {
                     item.regulation.map( (questions:any) =>{
                       if (questions.q1) {
                         questions.q1.map((q1Reg:any) =>{
-                          console.log("q1",q1Reg)
+                          console.log("q1", this.loadRegulationsByID(q1Reg))
                         })
                       }
                       if (questions.q2) {
                         questions.q2.map((q2Reg:any) =>{
-                          console.log("q2",q2Reg)
+                          console.log("q2", this.loadRegulationsByID(q2Reg))
                         })
                       }
                       if (questions.q3) {
                         questions.q3.map((q3Reg:any) =>{
-                          console.log("q3",q3Reg)
+                          console.log("q3", this.loadRegulationsByID(q3Reg))
                         })
                       }
                       if (questions.q4) {
                         questions.q4.map((q4Reg:any) =>{
-                          console.log("q4",q4Reg)
+                          console.log("q4", this.loadRegulationsByID(q4Reg))
                         })
                       }
                       if (questions.q5) {
                         questions.q5.map((q5Reg:any) =>{
-                          console.log("q5",q5Reg)
+                          console.log("q5", this.loadRegulationsByID(q5Reg))
                         })
                       }
                       if (questions.q6) {
                         questions.q6.map((q6Reg:any) =>{
-                          console.log("q6",q6Reg)
+                          console.log("q6", this.loadRegulationsByID(q6Reg))
                         })
                       }
                       if (questions.q7) {
                         questions.q7.map((q7Reg:any) =>{
-                          console.log("q7",q7Reg)
+                          console.log("q7", this.loadRegulationsByID(q7Reg))
                         })
                       }
                       if (questions.q8) {
                         questions.q8.map((q8Reg:any) =>{
-                          console.log("q8",q8Reg)
+                          console.log("q8", this.loadRegulationsByID(q8Reg))
                         })
                       }
                       if (questions.q9) {  
                         questions.q9.map((q9Reg:any) =>{
-                          console.log("q9",q9Reg)
+                          console.log("q9", this.loadRegulationsByID(q9Reg))
                         })
                       }
                       if (questions.q10) {
                         questions.q10.map((q10Reg:any) =>{
-                          console.log("q10",q10Reg)
+                          console.log("q10", this.loadRegulationsByID(q10Reg))
                         })
                       }
                       if (questions.q11) {
                         questions.q11.map((q11Reg:any) =>{
-                          console.log("q11",q11Reg)
+                          console.log("q11", this.loadRegulationsByID(q11Reg))
                         })
                       }  
                     })
@@ -110,7 +110,12 @@ export class GlobalRegulationQuestionnaireAnswerComponent {
     this.enviromentalAuditService.getRegulations()
       .subscribe( (regulations: any[]) => {
         this.regulations = regulations
-        /* console.log(this.regulations) */
       })
+}
+loadRegulationsByID(regID: string){
+  this.enviromentalAuditService.getRegulationByID(regID)
+    .subscribe( (regulations: any[]) => {
+      this.regulations = regulations
+    })
 }
 }

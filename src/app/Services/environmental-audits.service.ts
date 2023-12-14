@@ -67,5 +67,8 @@ export class EnvironmentalAuditsService {
     return this.http
     .get<AnswerDTO[]>(`${URL_API}regulationsGetAll.php`)
  }
-
+ getRegulationByID(regID: string): Observable<AnswerDTO[]> {
+  return this.http
+  .get<AnswerDTO[]>(`${URL_API}regulationGetByID.php?regID=${regID}`)
+}
 }

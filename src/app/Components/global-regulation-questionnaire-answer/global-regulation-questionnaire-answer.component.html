@@ -11,11 +11,11 @@
       <mat-card-content>
         <ng-container *ngFor="let regulations  of userQuestionnaireTemp; index as j">
           <strong>{{regVector[j].vectorName}}:</strong>
-          <h3><em>Regulación general:</em></h3>
+          <h3>Regulación general:</h3>
           <div class="vector-regulation" *ngIf="regVector[j].regulation" [innerHTML]="regVector[j].regulation"></div>
 
           <ng-container *ngFor="let item of regulations.regulations">
-            <h3><em>Regulación específica:</em></h3>
+            <h3>Regulación específica:</h3>
               <ng-container *ngFor="let questions of item.regulation" >
                 <div class="regulation-data" *ngIf="questions.q1" [innerHTML]="questions.q1"></div>
                 <div class="regulation-data" *ngIf="questions.q2" [innerHTML]="questions.q2"></div>

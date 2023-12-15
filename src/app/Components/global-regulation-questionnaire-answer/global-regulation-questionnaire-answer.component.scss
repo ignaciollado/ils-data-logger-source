@@ -1,7 +1,10 @@
 .regulation-data-table{
   display: grid;
   grid-template-columns: auto auto auto;
+  gap: 1rem;
+  border: 1px solid gold;
 }
+
 .loader {
   width: 100%;
   text-align: center;

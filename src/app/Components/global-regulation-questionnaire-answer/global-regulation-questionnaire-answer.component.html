@@ -9,29 +9,30 @@
         </mat-card-title-group>
       </mat-card-header>
       <mat-card-content>
-        <table>
-        <ng-container *ngFor="let regulations  of userQuestionnaireTemp">
-          <strong>{{regulations.vectorId}}:</strong>
-          
-          <ng-container *ngFor="let item  of regulations.regulations">
-              <ng-container *ngFor="let questions  of item.regulation" >
-                <tr class="regulation-data-row" *ngIf="questions.q1" [innerHTML]="questions.q1"></tr>
-                <tr class="regulation-data-row" *ngIf="questions.q2" [innerHTML]="questions.q2"></tr>
-                <tr class="regulation-data-row" *ngIf="questions.q3" [innerHTML]="questions.q3"></tr>
-                <tr class="regulation-data-row" *ngIf="questions.q4" [innerHTML]="questions.q4"></tr>
-                <tr class="regulation-data-row" *ngIf="questions.q5" [innerHTML]="questions.q5"></tr>
-                <tr class="regulation-data-row" *ngIf="questions.q6" [innerHTML]="questions.q6"></tr>
-                <tr class="regulation-data-row" *ngIf="questions.q7" [innerHTML]="questions.q7"></tr>
-                <tr class="regulation-data-row" *ngIf="questions.q8" [innerHTML]="questions.q8"></tr>
-                <tr class="regulation-data-row" *ngIf="questions.q9" [innerHTML]="questions.q9"></tr>
-                <tr class="regulation-data-row" *ngIf="questions.q10" [innerHTML]="questions.q10"></tr>
-                <tr class="regulation-data-row" *ngIf="questions.q11" [innerHTML]="questions.q11"></tr>
+        <ng-container *ngFor="let regulations  of userQuestionnaireTemp; index as j">
+          <strong>{{regVector[j].vectorName}}:</strong>
+          <h3><em>Regulación general:</em></h3>
+          <div class="general-regulation" [innerHTML]="regVector[j].regulation"></div>
+
+          <ng-container *ngFor="let item of regulations.regulations">
+            <h3><em>Regulación específica:</em></h3>
+              <ng-container *ngFor="let questions of item.regulation" >
+                <div class="regulation-data" *ngIf="questions.q1" [innerHTML]="questions.q1"></div>
+                <div class="regulation-data" *ngIf="questions.q2" [innerHTML]="questions.q2"></div>
+                <div class="regulation-data" *ngIf="questions.q3" [innerHTML]="questions.q3"></div>
+                <div class="regulation-data" *ngIf="questions.q4" [innerHTML]="questions.q4"></div>
+                <div class="regulation-data" *ngIf="questions.q5" [innerHTML]="questions.q5"></div>
+                <div class="regulation-data" *ngIf="questions.q6" [innerHTML]="questions.q6"></div>
+                <div class="regulation-data" *ngIf="questions.q7" [innerHTML]="questions.q7"></div>
+                <div class="regulation-data" *ngIf="questions.q8" [innerHTML]="questions.q8"></div>
+                <div class="regulation-data" *ngIf="questions.q9" [innerHTML]="questions.q9"></div>
+                <div class="regulation-data" *ngIf="questions.q10" [innerHTML]="questions.q10"></div>
+                <div class="regulation-data" *ngIf="questions.q11" [innerHTML]="questions.q11"></div>
               </ng-container>  
           </ng-container>
 
           <mat-divider></mat-divider>
         </ng-container>
-      </table>
       </mat-card-content>
       <mat-card-footer>
         {{userQuestionnaire.updated_at | date :'short'}}
@@ -41,3 +42,4 @@
 <span *ngIf="!userQuestionnaires" class="loader">{{'loadingQuestionnaire' | translate}}</span>
 
 </div>
+

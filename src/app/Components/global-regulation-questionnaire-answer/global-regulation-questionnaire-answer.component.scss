@@ -1,8 +1,19 @@
-.regulation-data-table{
+.regulation-data{
   display: grid;
-  grid-template-columns: auto auto auto;
+  grid-template-columns: 100%;
   gap: 1rem;
-  border: 1px solid gold;
+  border: 1px solid rgb(8, 8, 8);
+  background-color: rgb(197, 197, 197);
+  color: rgb(5, 5, 5);
+  margin-bottom: .5rem;
+}
+.vector-regulation{
+  display: grid;
+  grid-template-columns: 100%;
+  gap: 1rem;
+  border: 1px solid rgb(8, 8, 8);
+  background-color: aquamarine;
+  margin-bottom: .5rem;
 }
 
 .loader {

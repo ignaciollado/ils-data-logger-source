@@ -92,7 +92,7 @@
 
               {"answerText": "Residuos amianto",
                 "answerTooltip": "",
-                "regulation": ["RES_32","ES_33","RES_27"],
+                "regulation": ["RES_32","RES_33","RES_27"],
                 "answerImage_1": "",
                 "answerImage_2": ""},
 

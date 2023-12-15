@@ -4,9 +4,13 @@
   <div *ngIf="userQuestionnaires" >
     <mat-card class="questionnaire-card" *ngFor="let userQuestionnaire of userQuestionnaires">
       <mat-card-header>
-        <mat-card-title-group>
-          <mat-card-title><strong>Ref.: {{userQuestionnaire.companyQuestionnaireId}}</strong></mat-card-title>
-        </mat-card-title-group>
+        <mat-card-title>
+          {{userQuestionnaire.companyDelegationName}}
+        </mat-card-title>
+        <mat-card-subtitle>
+          <div>Ref. <strong>{{userQuestionnaire.companyQuestionnaireId}}</strong></div>
+          <span>Fecha realización: {{userQuestionnaire.updated_at| date :'short'}}</span>
+        </mat-card-subtitle>
       </mat-card-header>
       <mat-card-content>
         <ng-container *ngFor="let regulations  of userQuestionnaireTemp; index as j">
@@ -30,13 +34,8 @@
                 <div class="regulation-data" *ngIf="questions.q11" [innerHTML]="questions.q11"></div>
               </ng-container>  
           </ng-container>
-
-          <mat-divider></mat-divider>
         </ng-container>
       </mat-card-content>
-      <mat-card-footer>
-        {{userQuestionnaire.updated_at | date :'short'}}
-      </mat-card-footer>
     </mat-card>
 </div>
 <span *ngIf="!userQuestionnaires" class="loader">{{'loadingQuestionnaire' | translate}}</span>

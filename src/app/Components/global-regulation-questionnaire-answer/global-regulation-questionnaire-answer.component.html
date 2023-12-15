@@ -14,26 +14,26 @@
       </mat-card-header>
       <mat-card-content>
         <ng-container *ngFor="let regulations  of userQuestionnaireTemp; index as j">
-          <strong>{{regVector[j].vectorName}}:</strong>
-          <div class="vector-regulation">
+          <span class="regulation-data"><strong>{{regVector[j].vectorName}}:</strong></span>
+          <div>
             <h3>Regulación general:</h3>
             <div *ngIf="regVector[j].regulation" [innerHTML]="regVector[j].regulation"></div>
           </div>
 
-          <ng-container class="regulation-data" *ngFor="let item of regulations.regulations">
+          <ng-container *ngFor="let item of regulations.regulations">
             <h3>Regulación específica:</h3>
               <ng-container *ngFor="let questions of item.regulation" >
-                <div class="regulation-data" *ngIf="questions.q1" [innerHTML]="questions.q1"></div>
-                <div class="regulation-data" *ngIf="questions.q2" [innerHTML]="questions.q2"></div>
-                <div class="regulation-data" *ngIf="questions.q3" [innerHTML]="questions.q3"></div>
-                <div class="regulation-data" *ngIf="questions.q4" [innerHTML]="questions.q4"></div>
-                <div class="regulation-data" *ngIf="questions.q5" [innerHTML]="questions.q5"></div>
-                <div class="regulation-data" *ngIf="questions.q6" [innerHTML]="questions.q6"></div>
-                <div class="regulation-data" *ngIf="questions.q7" [innerHTML]="questions.q7"></div>
-                <div class="regulation-data" *ngIf="questions.q8" [innerHTML]="questions.q8"></div>
-                <div class="regulation-data" *ngIf="questions.q9" [innerHTML]="questions.q9"></div>
-                <div class="regulation-data" *ngIf="questions.q10" [innerHTML]="questions.q10"></div>
-                <div class="regulation-data" *ngIf="questions.q11" [innerHTML]="questions.q11"></div>
+                <div *ngIf="questions.q1" [innerHTML]="questions.q1"></div>
+                <div *ngIf="questions.q2" [innerHTML]="questions.q2"></div>
+                <div *ngIf="questions.q3" [innerHTML]="questions.q3"></div>
+                <div *ngIf="questions.q4" [innerHTML]="questions.q4"></div>
+                <div *ngIf="questions.q5" [innerHTML]="questions.q5"></div>
+                <div *ngIf="questions.q6" [innerHTML]="questions.q6"></div>
+                <div *ngIf="questions.q7" [innerHTML]="questions.q7"></div>
+                <div *ngIf="questions.q8" [innerHTML]="questions.q8"></div>
+                <div *ngIf="questions.q9" [innerHTML]="questions.q9"></div>
+                <div *ngIf="questions.q10" [innerHTML]="questions.q10"></div>
+                <div *ngIf="questions.q11" [innerHTML]="questions.q11"></div>
               </ng-container>  
           </ng-container>
         </ng-container>

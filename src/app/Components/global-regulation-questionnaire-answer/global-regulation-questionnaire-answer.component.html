@@ -13,6 +13,7 @@
           <strong><span>Vector ID: </span>{{regulations.vectorId}}</strong>
           <ng-container *ngFor="let item  of regulations.regulations">
               <ng-container *ngFor="let questions  of item.regulation">
+                {{questions.q1}}
                 <ng-container  *ngFor="let item  of questions.q1">
                   <li>{{item}} título ámbito enlace</li>
                 </ng-container>

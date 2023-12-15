@@ -33,3 +33,11 @@ html, body {
   background: #365446;
   color: #fff;
 }
+
+a, a:visited, a:active {
+  color: inherit;
+}
+
+a:hover {
+  color:#365446;
+}

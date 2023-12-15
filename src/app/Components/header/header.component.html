@@ -31,17 +31,14 @@
       <button mat-menu-item (click)="adminRatios()"><i class="fa-solid fa-list-check"></i><span> {{'productionData' | translate}}</span></button>
       <button mat-menu-item (click)="myObjectives()"><i class="fa-solid fa-bullseye"></i><span> {{'myObjectives' | translate}}</span></button>
       <button mat-menu-item (click)="profile()"><i class="fa-solid fa-user"></i><span> {{'profile' | translate}}</span></button>
-      <!-- <button mat-button [matMenuTriggerFor]="adminMenu"><i class="fa-solid fa-gear"></i><span> Admin</span></button> -->
-      <!-- <mat-menu #adminMenu="matMenu" yPosition="above"> -->
+
         <button mat-menu-item (click)="adminAspects()" >{{'aspects' | translate}}</button>
         <button mat-menu-item (click)="adminEnergies()" >{{'energies' | translate}}</button>
         <button mat-menu-item (click)="adminResidues()" >{{'createUser' | translate}}</button>
-      <!-- </mat-menu> -->
-<!--       <button mat-button [matMenuTriggerFor]="requisitosLegalesMenu"><i class="fa-solid fa-clipboard-question"></i><span> Cuestionarios</span></button>
-      <mat-menu #requisitosLegalesMenu="matMenu" yPosition="above"> -->
+
         <button mat-menu-item (click)="globalQuestionnaire()" ><i class="fa-solid fa-square-poll-horizontal"></i> {{'globalQuestionnaire' | translate}}</button>
         <button mat-menu-item (click)="globalQuestionnaireList()" ><i class="fa-solid fa-list"></i> {{'globalQuestionnaireList' | translate}}</button>
-<!--       </mat-menu> -->
+
       <button mat-menu-item (click)="logout()"><i class="fa-solid fa-right-from-bracket"></i> <span>{{'logout' | translate}}</span></button>
     </div>
   </mat-menu>

@@ -69,13 +69,11 @@ export class GlobalRegulationQuestionnaireAnswerComponent {
             this.userQuestionnaires = questionnaires
             this.userQuestionnaires.map((item:AnswerDTO) =>{
               JSON.parse(item.userAnswers).map((vectorAnswers:any) => {
-
-                console.log ((vectorAnswers.vectorId-1), this.regVector[(vectorAnswers.vectorId-1)].regulation)
                 let vRegTemp: string = ""
                 this.regVector[(vectorAnswers.vectorId-1)].regulation.map((vReg:any) =>{
                   this.regulationList.map((regulation:regulationsDTO) => {
                     if (regulation.reg_ID == vReg) {
-                     vRegTemp += "<li><span> "+regulation.Ambito+" </span><span> "+regulation.Titulo+` </span><span> <a href='${regulation.link}' target='_blank'>`+regulation.link+"</a></span></li>"
+                     vRegTemp += "<li><span class='ambito'> "+regulation.Ambito+" </span><span> "+regulation.Titulo+`. </span><br><span><a href='${regulation.link}' target='_blank'>`+regulation.link+`</a> </span><span> [<a href='../regulation/${vReg}' target='_blank'>`+vReg+"</a>] </span></li>"
                    }
                   })
                   console.log (vRegTemp)
@@ -92,7 +90,7 @@ export class GlobalRegulationQuestionnaireAnswerComponent {
                         questions.q1.map((q1Reg:any) =>{
                           this.regulationList.map((regulation:regulationsDTO) => {
                                if (regulation.reg_ID == q1Reg) {
-                                q1Temp += "<div><span> "+regulation.Ambito+" </span><span> "+regulation.Titulo+` </span><span> <a href='${regulation.link}' target='_blank'>`+regulation.link+"</a></span></div>"
+                                q1Temp += "<li><span> "+regulation.Ambito+" </span><span> "+regulation.Titulo+` </span><br<span> <a href='${regulation.link}' target='_blank'>`+regulation.link+"</a></span></li>"
                               }
                           })
                         })
@@ -104,7 +102,7 @@ export class GlobalRegulationQuestionnaireAnswerComponent {
                         questions.q2.map((q2Reg:any) =>{
                           this.regulationList.map((regulation:regulationsDTO) => {
                              if (regulation.reg_ID === q2Reg) {
-                              q2Temp += "<div><span> "+regulation.Ambito+" </span><span> "+regulation.Titulo+` </span><span> <a href='${regulation.link}' target='_blank'>`+regulation.link+"</a></span></div>"
+                              q2Temp += "<li><span> "+regulation.Ambito+" </span><span> "+regulation.Titulo+` </span><br<span> <a href='${regulation.link}' target='_blank'>`+regulation.link+"</a></span></li>"
                             }
                         }
                         )
@@ -117,7 +115,7 @@ export class GlobalRegulationQuestionnaireAnswerComponent {
                         questions.q3.map((q3Reg:any) =>{
                           this.regulationList.map((regulation:regulationsDTO) => {
                              if (regulation.reg_ID === q3Reg) {
-                              q3Temp += "<div><span> "+regulation.Ambito+" </span><span> "+regulation.Titulo+` </span><span> <a href='${regulation.link}' target='_blank'>`+regulation.link+"</a></span></div>"
+                              q3Temp += "<li><span> "+regulation.Ambito+" </span><span> "+regulation.Titulo+` </span><br<span> <a href='${regulation.link}' target='_blank'>`+regulation.link+"</a></span></li>"
                             }
                         }
                         )
@@ -130,7 +128,7 @@ export class GlobalRegulationQuestionnaireAnswerComponent {
                         questions.q4.map((q4Reg:any) =>{
                           this.regulationList.map((regulation:regulationsDTO) => {
                              if (regulation.reg_ID === q4Reg) {
-                              q4Temp += "<div><span> "+regulation.Ambito+" </span><span> "+regulation.Titulo+` </span><span> <a href='${regulation.link}' target='_blank'>`+regulation.link+"</a></span></div>"
+                              q4Temp += "<li><span> "+regulation.Ambito+" </span><span> "+regulation.Titulo+` </span><br<span> <a href='${regulation.link}' target='_blank'>`+regulation.link+"</a></span></li>"
                             }
                         }
                         )
@@ -143,7 +141,7 @@ export class GlobalRegulationQuestionnaireAnswerComponent {
                         questions.q5.map((q5Reg:any) =>{
                           this.regulationList.map((regulation:regulationsDTO) => {
                              if (regulation.reg_ID === q5Reg) {
-                              q5Temp += "<div><span> "+regulation.Ambito+" </span><span> "+regulation.Titulo+` </span><span> <a href='${regulation.link}' target='_blank'>`+regulation.link+"</a></span></div>"
+                              q5Temp += "<li><span> "+regulation.Ambito+" </span><span> "+regulation.Titulo+` </span><br<span> <a href='${regulation.link}' target='_blank'>`+regulation.link+"</a></span></li>"
                             }
                         }
                         )
@@ -156,7 +154,7 @@ export class GlobalRegulationQuestionnaireAnswerComponent {
                         questions.q6.map((q6Reg:any) =>{
                           this.regulationList.map((regulation:regulationsDTO) => {
                              if (regulation.reg_ID === q6Reg) {
-                              q6Temp += "<div><span> "+regulation.Ambito+" </span><span> "+regulation.Titulo+` </span><span> <a href='${regulation.link}' target='_blank'>`+regulation.link+"</a></span></div>"
+                              q6Temp += "<li><span class='ambito'> "+regulation.Ambito+" </span><span> "+regulation.Titulo+` </span><br<span> <a href='${regulation.link}' target='_blank'>`+regulation.link+"</a></span></li>"
                             }
                         }
                         )
@@ -169,7 +167,7 @@ export class GlobalRegulationQuestionnaireAnswerComponent {
                         questions.q7.map((q7Reg:any) =>{
                           this.regulationList.map((regulation:regulationsDTO) => {
                              if (regulation.reg_ID === q7Reg) {
-                              q7Temp += "<div><span> "+regulation.Ambito+" </span><span> "+regulation.Titulo+` </span><span> <a href='${regulation.link}' target='_blank'>`+regulation.link+"</a></span></div>"
+                              q7Temp += "<li><span> "+regulation.Ambito+" </span><span> "+regulation.Titulo+` </span><br<span> <a href='${regulation.link}' target='_blank'>`+regulation.link+"</a></span></li>"
                             }
                         }
                         )
@@ -182,7 +180,7 @@ export class GlobalRegulationQuestionnaireAnswerComponent {
                         questions.q8.map((q8Reg:any) =>{
                           this.regulationList.map((regulation:regulationsDTO) => {
                              if (regulation.reg_ID === q8Reg) {
-                              q8Temp += "<div><span> "+regulation.Ambito+" </span><span> "+regulation.Titulo+` </span><span> <a href='${regulation.link}' target='_blank'>`+regulation.link+"</a></span></div>"
+                              q8Temp += "<li><span> "+regulation.Ambito+" </span><span> "+regulation.Titulo+` </span><br<span> <a href='${regulation.link}' target='_blank'>`+regulation.link+"</a></span></li>"
                             }
                         }
                         )
@@ -195,7 +193,7 @@ export class GlobalRegulationQuestionnaireAnswerComponent {
                         questions.q9.map((q9Reg:any) =>{
                           this.regulationList.map((regulation:regulationsDTO) => {
                              if (regulation.reg_ID === q9Reg) {
-                              q9Temp += "<div><span> "+regulation.Ambito+" </span><span> "+regulation.Titulo+` </span><span> <a href='${regulation.link}' target='_blank'>`+regulation.link+"</a></span></div>"
+                              q9Temp += "<li><span> "+regulation.Ambito+" </span><span> "+regulation.Titulo+` </span><br<span> <a href='${regulation.link}' target='_blank'>`+regulation.link+"</a></span></li>"
                             }
                         }
                         )
@@ -208,7 +206,7 @@ export class GlobalRegulationQuestionnaireAnswerComponent {
                         questions.q10.map((q10Reg:any) =>{
                           this.regulationList.map((regulation:regulationsDTO) => {
                              if (regulation.reg_ID === q10Reg) {
-                              q10Temp += "<div><span> "+regulation.Ambito+" </span><span> "+regulation.Titulo+` </span><span> <a href='${regulation.link}' target='_blank'>`+regulation.link+"</a></span></div>"
+                              q10Temp += "<li><span> "+regulation.Ambito+" </span><span> "+regulation.Titulo+` </span><br<span> <a href='${regulation.link}' target='_blank'>`+regulation.link+"</a></span></li>"
                             }
                         }
                         )
@@ -221,7 +219,7 @@ export class GlobalRegulationQuestionnaireAnswerComponent {
                         questions.q11.map((q11Reg:any) =>{
                           this.regulationList.map((regulation:regulationsDTO) => {
                              if (regulation.reg_ID === q11Reg) {
-                              q11Temp += "<div><span> "+regulation.Ambito+" </span><span> "+regulation.Titulo+` </span><span> <a href='${regulation.link}' target='_blank'>`+regulation.link+"</a></span></div>"
+                              q11Temp += "<li><span> "+regulation.Ambito+" </span><span> "+regulation.Titulo+` </span><br<span> <a href='${regulation.link}' target='_blank'>`+regulation.link+"</a></span></li>"
                             }
                         }
                         )

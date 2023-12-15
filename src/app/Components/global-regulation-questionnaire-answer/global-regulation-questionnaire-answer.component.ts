@@ -24,7 +24,7 @@ export class GlobalRegulationQuestionnaireAnswerComponent {
     {"vectorName":"SEGURIDAD INDUSTRIAL", "regulation":["SIND_1", "SIND_2", "SIND_4"]},
     {"vectorName":"AGUAS", "regulation":["AGU_8"]},
     {"vectorName":"ATMÓSFERA", "regulation":["ATM_4", "ATM_5", "ATM_9", "ATM_12"]},
-    {"vectorName":"SUSTANCIAS Y PREPARADOS", "regulation":["Ninguna"]},
+    {"vectorName":"SUSTANCIAS Y PREPARADOS QUiMICOS", "regulation":["Ninguna"]},
     {"vectorName":"MEDIOAMBIENTE GENERAL", "regulation":["Ninguna"]},
   ]
 
@@ -75,7 +75,7 @@ export class GlobalRegulationQuestionnaireAnswerComponent {
                 this.regVector[(vectorAnswers.vectorId-1)].regulation.map((vReg:any) =>{
                   this.regulationList.map((regulation:regulationsDTO) => {
                     if (regulation.reg_ID == vReg) {
-                     vRegTemp += "<div><span> "+regulation.Ambito+" </span><span> "+regulation.Titulo+` </span><span> <a href='${regulation.link}' target='_blank'>`+regulation.link+"</a></span></div>"
+                     vRegTemp += "<li><span> "+regulation.Ambito+" </span><span> "+regulation.Titulo+` </span><span> <a href='${regulation.link}' target='_blank'>`+regulation.link+"</a></span></li>"
                    }
                   })
                   console.log (vRegTemp)

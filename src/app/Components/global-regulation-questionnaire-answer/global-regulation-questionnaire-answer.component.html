@@ -16,12 +16,12 @@
         <ng-container *ngFor="let regulations  of userQuestionnaireTemp; index as j">
           <span class="regulation-data"><strong>{{regVector[j].vectorName}}:</strong></span>
           <div>
-            <h3>Regulación general:</h3>
+            <h3 class="regulacion-general">Regulación general:</h3>
             <div *ngIf="regVector[j].regulation" [innerHTML]="regVector[j].regulation"></div>
           </div>
 
           <ng-container *ngFor="let item of regulations.regulations">
-            <h3>Regulación específica:</h3>
+            <h3 class="regulacion-especifica">Regulación específica:</h3>
               <ng-container *ngFor="let questions of item.regulation" >
                 <div *ngIf="questions.q1" [innerHTML]="questions.q1"></div>
                 <div *ngIf="questions.q2" [innerHTML]="questions.q2"></div>

@@ -2,7 +2,6 @@
   display: grid;
   grid-template-columns: 100%;
   gap: 1rem;
-  border: 1px solid rgb(8, 8, 8);
   background-color: rgb(197, 197, 197);
   color: rgb(5, 5, 5);
   margin-bottom: .5rem;
@@ -12,15 +11,22 @@
   display: grid;
   grid-template-columns: 100%;
   gap: 1rem;
-  border: 1px solid rgb(8, 8, 8);
   background-color: aquamarine;
   margin-bottom: .5rem;
   padding: .5rem;
 }
 
-h3{
-  background-color: rgb(183, 242, 247);
+.regulacion-general{
+  background-color: rgb(197, 213, 214);
   width: 100%;
+  border: 1px solid rgb(8, 8, 8);
+  padding: .1rem;
+}
+.regulacion-especifica{
+  background-color: rgb(186, 189, 189);
+  width: 100%;
+  border: 1px solid rgb(8, 8, 8);
+  padding: .1rem;
 }
 
 .loader {

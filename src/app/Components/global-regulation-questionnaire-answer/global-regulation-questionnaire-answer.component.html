@@ -12,47 +12,23 @@
         <ng-container *ngFor="let regulations  of userQuestionnaireTemp">
           <strong><span>Vector ID: </span>{{regulations.vectorId}}</strong>
           <ng-container *ngFor="let item  of regulations.regulations">
-              <ng-container *ngFor="let questions  of item.regulation">
-                {{questions.q1}}
-                <ng-container  *ngFor="let item  of questions.q1">
-                  <li>{{item}} título ámbito enlace</li>
-                </ng-container>
-                <ng-container  *ngFor="let item  of questions.q2">
-                  <li>{{item}} título ámbito enlace</li> 
-                </ng-container>
-                <ng-container  *ngFor="let item  of questions.q3">
-                  <li>{{item}} título ámbito enlace</li>
-                </ng-container>
-                <ng-container  *ngFor="let item  of questions.q4">
-                  <li>{{item}} título ámbito enlace</li>
-                </ng-container>
-                <ng-container  *ngFor="let item  of questions.q5">
-                  <li>{{item}} título ámbito enlace</li>
-                </ng-container>
-                <ng-container  *ngFor="let item  of questions.q6">
-                  <li>{{item}} título ámbito enlace</li>
-                </ng-container>
-                <ng-container  *ngFor="let item  of questions.q7">
-                  <li>{{item}} título ámbito enlace</li>
-                </ng-container>
-                <ng-container  *ngFor="let item  of questions.q8">
-                  <li>{{item}} título ámbito enlace</li>
-                </ng-container>
-                <ng-container  *ngFor="let item  of questions.q9">
-                  <li>{{item}} título ámbito enlace</li>
-                </ng-container>
-                <ng-container  *ngFor="let item  of questions.q10">
-                  <li>{{item}} título ámbito enlace</li>
-                </ng-container>
-                <ng-container  *ngFor="let item  of questions.q11">
-                  <li>{{item}} título ámbito enlace</li>
-                </ng-container>
+              <ng-container *ngFor="let questions  of item.regulation" class="regulation-data-table">
+                <li *ngIf="questions.q1" [innerHTML]="questions.q1"></li>
+                <li *ngIf="questions.q2" [innerHTML]="questions.q2"></li>
+                <li *ngIf="questions.q3" [innerHTML]="questions.q3"></li>
+                <li *ngIf="questions.q4" [innerHTML]="questions.q4"></li>
+                <li *ngIf="questions.q5" [innerHTML]="questions.q5"></li>
+                <li *ngIf="questions.q6" [innerHTML]="questions.q6"></li>
+                <li *ngIf="questions.q7" [innerHTML]="questions.q7"></li>
+                <li *ngIf="questions.q8" [innerHTML]="questions.q8"></li>
+                <li *ngIf="questions.q9" [innerHTML]="questions.q9"></li>
+                <li *ngIf="questions.q10" [innerHTML]="questions.q10"></li>
+                <li *ngIf="questions.q11" [innerHTML]="questions.q11"></li>
               </ng-container>  
           </ng-container>
           <mat-divider></mat-divider>
         </ng-container>
       </mat-card-content>
-
       <mat-card-footer>
         {{userQuestionnaire.updated_at | date :'short'}}
       </mat-card-footer>

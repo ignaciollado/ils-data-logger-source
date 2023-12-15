@@ -21,9 +21,9 @@
           </div>
 
 
-          <ng-container class="regulation-data" *ngFor="let item of regulations.regulations">
+          <ng-container *ngFor="let item of regulations.regulations">
             <h3>Regulación específica:</h3>
-            <ng-container *ngFor="let questions of item.regulation" >
+            <div class="regulation-data" *ngFor="let questions of item.regulation" >
               <div *ngIf="questions.q1" [innerHTML]="questions.q1"></div>
               <div *ngIf="questions.q2" [innerHTML]="questions.q2"></div>
               <div *ngIf="questions.q3" [innerHTML]="questions.q3"></div>
@@ -35,7 +35,7 @@
               <div *ngIf="questions.q9" [innerHTML]="questions.q9"></div>
               <div *ngIf="questions.q10" [innerHTML]="questions.q10"></div>
               <div *ngIf="questions.q11" [innerHTML]="questions.q11"></div>
-            </ng-container>  
+            </div>  
           </ng-container>
         </ng-container>
       </mat-card-content>

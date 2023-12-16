@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
@@ -7,6 +7,13 @@ import { CnaeDTO } from '../Models/cnae.dto';
 import { SharedService } from './shared.service';
 
 const URL_MOCKS = '../../assets/mocks/cnaeList.json'
+const URL_API_SRV = "https://jwt.idi.es/public/index.php"
+
+const httpOptions = {
+  headers: new HttpHeaders({
+    'Content-Type': 'text/plain', /* la única forma de evitar errores de CORS ha sido añadiendo esta cabecera */
+  })
+};
 
 @Injectable({
   providedIn: 'root',
@@ -27,7 +34,7 @@ export class UserService {
 
   register(user: UserDTO): Observable<UserDTO> {
     return this.http
-      .post<UserDTO>(this.urlBlogUocApi, user)
+      .post<UserDTO>(`${URL_API_SRV}/api/create-users/`, user, httpOptions)
       .pipe(catchError(this.sharedService.handleError));
   }
 

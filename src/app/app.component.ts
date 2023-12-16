@@ -6,5 +6,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'blog-uoc-project-front';
+  currentYear: number
+  constructor() {
+    this.currentYear  = new Date().getFullYear();
+  }
 }

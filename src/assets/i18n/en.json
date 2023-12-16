@@ -9,6 +9,7 @@
   "name": "Name",
   "ubication": "Ubication",
   "city": "City",
+  "createAccount": "Create account",
   "totalActivityReported": "Total activity reported",
   "sustainabilityIndicatorsCharts": "Indicators Charts",
 
@@ -89,7 +90,8 @@
 
   "copyright": "Creado por el Instituto de Innovación Empresarial de las Islas Baleares",
   "workSession": "Iniciar sesión de trabajo",
-  "password": "Contraseña",
+  "password": "Password",
+  "confirmPassword": "Retype password",
   "isRequired": " este dato es obligatorio",
   "invalidPattern": "formato no válido",
   "charsMin": ", longitud mínima de ",

@@ -2,6 +2,7 @@ import { formatDate } from '@angular/common';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import {
+  FormGroup,
   UntypedFormBuilder,
   UntypedFormControl,
   UntypedFormGroup,
@@ -14,6 +15,7 @@ import { UserDTO } from 'src/app/Models/user.dto';
 import { HeaderMenusService } from 'src/app/Services/header-menus.service';
 import { SharedService } from 'src/app/Services/shared.service';
 import { UserService } from 'src/app/Services/user.service';
+import { MustMatch } from 'src/app/_helpers';
 
 @Component({
   selector: 'app-register',
@@ -26,6 +28,8 @@ export class RegisterComponent implements OnInit {
   name: UntypedFormControl;
   email: UntypedFormControl;
   password: UntypedFormControl;
+  confirmPassword: UntypedFormControl;
+
   domicilio: UntypedFormControl;
   cnae: UntypedFormControl;
 
@@ -66,15 +70,23 @@ export class RegisterComponent implements OnInit {
       Validators.maxLength(25),
     ]);
 
+    this.confirmPassword = new UntypedFormControl(this.registerUser.password, [
+      Validators.required,
+      Validators.minLength(8),
+      Validators.maxLength(25),
+    ]);
+
+
     this.cnae = new UntypedFormControl(this.registerUser.cnae, [ Validators.required ]);
 
     this.registerForm = this.formBuilder.group({
       name: this.name,
       email: this.email,
       password: this.password,
-      domicilio: this.domicilio,
-      cnae: this.cnae
-    });
+      confirmPassword: this.confirmPassword
+    },{
+      validator: MustMatch('password', 'confirmPassword')
+  });
   }
 
   ngOnInit(): void {}
@@ -125,4 +137,9 @@ export class RegisterComponent implements OnInit {
         }
       );
   }
+
+  passwordMatchValidator(g: FormGroup) {
+    return g.get('password').value === g.get('confirmPassword').value
+       ? null : {'mismatch': true};
+ }
 }

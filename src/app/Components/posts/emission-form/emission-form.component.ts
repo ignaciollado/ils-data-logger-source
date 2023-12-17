@@ -369,8 +369,12 @@ export class EmissionFormComponent {
   }
 
   public removeSelectedRows() {
+    
     this.dataSource = this.dataSource.filter((u: any) => !u.isSelected);
-    const residues = this.dataSource.data.filter((u: ConsumptionDTO) => u.isSelected);
+    const residues = this.dataSource.data.filter((u: ConsumptionDTO) => {
+      console.log (u)
+      u.isSelected
+    })
     this.dialog
       .open(ConfirmDialogComponent)
       .afterClosed()

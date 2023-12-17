@@ -35,14 +35,14 @@ export class GlobalRegulationQuestionnaireListComponent {
         this.userQuestionnaires.map(( questionnaire:any ) => {
           questionnaire.completed = JSON.parse(questionnaire.completed)
           questionnaire.completed.map( (vectorStateDetail:any) => {
-            if (vectorStateDetail.totalAnswers === 100)
+            if (parseInt(vectorStateDetail.totalAnswers) === 100)
               {
                 isCompleted = true
               }
               else {
                 isCompleted = false
               }
-            console.log("porcentajes: ", questionnaire.questionaireId, vectorStateDetail.vectorId, vectorStateDetail.totalAnswers, isCompleted)
+            console.log("porcentajes: ", questionnaire.companyQuestionnaireId, vectorStateDetail.vectorId, parseInt(vectorStateDetail.totalAnswers), isCompleted)
           })
         })
 

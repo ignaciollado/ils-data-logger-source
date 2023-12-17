@@ -31,10 +31,11 @@ export class GlobalRegulationQuestionnaireListComponent {
   loadUserQuestionnaires( userId: string){
     this.enviromentalAuditService.getGlobalAnswersByCompany( userId )
       .subscribe( (questionaires: AnswerDTO[]) => {
-        let isCompleted: boolean = false
+     
         this.userQuestionnaires = questionaires
         this.userQuestionnaires.map(( questionnaire:any ) => {
           questionnaire.completed = JSON.parse(questionnaire.completed)
+          let isCompleted: boolean = true
           questionnaire.completed.map( (vectorStateDetail:any) => {
             if (parseInt(vectorStateDetail.totalAnswers) === 100)
               {
@@ -44,10 +45,9 @@ export class GlobalRegulationQuestionnaireListComponent {
                 isCompleted = (isCompleted && false)
               }
             this.questionaireFinalState  
-            console.log("porcentajes: ", questionnaire.companyQuestionnaireId, vectorStateDetail.vectorId, parseInt(vectorStateDetail.totalAnswers), isCompleted)
           })
+          this.questionaireFinalState.push({"questionnaireId":questionnaire.companyQuestionnaireId, "questionnaireCompleted": isCompleted})
         })
-
         })
         
   }

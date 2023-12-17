@@ -83,11 +83,13 @@
   "monthlyPersons": "Personal mes",
 
   "requisitosLegales": "Identificació de requisits legals",
-  "totalQuestions": "Total questions",
   "globalQuestionnaire": "Cuestionario preliminar",
   "globalQuestionnaireList": "Ver cuestionarios",
   "answeredQuestionnairesList": "Cuestionarios realizados",
   "loadingQuestionnaire": "Un momento, cargando cuestionarios...",
+  "dateAnswered": "Date answered",
+  "totalQuestions":"Total questions",
+  "totalAnswers": "Total answered",
 
   "copyright": "Creado por el Instituto de Innovación Empresarial de las Islas Baleares",
   "workSession": "Iniciar sesión de trabajo",

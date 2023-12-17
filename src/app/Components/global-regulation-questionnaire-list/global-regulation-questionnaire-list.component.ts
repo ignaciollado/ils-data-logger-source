@@ -15,6 +15,7 @@ export class GlobalRegulationQuestionnaireListComponent {
   userQuestionnaires!: AnswerDTO[]
   questionnaireTemp: vectorStateDetail[] = []
 
+
   constructor (
     private enviromentalAuditService: EnvironmentalAuditsService,
     private jwtHelper: JwtHelperService,
@@ -29,10 +30,22 @@ export class GlobalRegulationQuestionnaireListComponent {
   loadUserQuestionnaires( userId: string){
     this.enviromentalAuditService.getGlobalAnswersByCompany( userId )
       .subscribe( (questionaires: AnswerDTO[]) => {
+        let isCompleted: boolean = false
         this.userQuestionnaires = questionaires
         this.userQuestionnaires.map(( questionnaire:any ) => {
           questionnaire.completed = JSON.parse(questionnaire.completed)
-        }) 
+          questionnaire.completed.map( (vectorStateDetail:any) => {
+            if (vectorStateDetail.totalAnswers === 100)
+              {
+                isCompleted = true
+              }
+              else {
+                isCompleted = false
+              }
+            console.log("porcentajes: ", questionnaire.questionaireId, vectorStateDetail.vectorId, vectorStateDetail.totalAnswers, isCompleted)
+          })
+        })
+
         })
         
   }

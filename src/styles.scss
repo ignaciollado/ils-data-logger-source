@@ -44,3 +44,31 @@ a, a:visited, a:active {
 a:hover {
   color:#365446;
 }
+
+form {
+  margin-bottom: 2.5rem;
+}
+
+mat-table {
+  margin-top: 1.5rem;
+  margin-bottom: 2rem;
+  width: 100%;
+  max-height: 500px;
+  overflow: auto;
+}
+
+mat-header-row{
+  background-color: #424242;
+}
+
+mat-header-cell {
+  color: #000;
+  font-size: .8rem; 
+}
+.mat-header-cell{
+  /* width: 12rem; */
+}
+
+mat-cell{
+  background-color: #919191;
+}

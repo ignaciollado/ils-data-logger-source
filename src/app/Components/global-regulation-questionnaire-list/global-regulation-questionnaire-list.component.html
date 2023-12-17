@@ -10,14 +10,14 @@
       </mat-card-title>
       <mat-card-subtitle>
         <div>Ref. <strong>{{questionnaire.companyQuestionnaireId}}</strong></div>
-        <span>Fecha contestado: {{questionnaire.updated_at| date :'short'}}</span>
+        <span>{{"dateAnswered" | translate}}: {{questionnaire.updated_at| date :'short'}}</span>
       </mat-card-subtitle>
     </mat-card-header>
     <mat-card-content *ngFor="let completedItem of questionnaire.completed">
         <div><strong>{{completedItem.vectorName}}</strong></div>
-        <div><span>Total questions:</span> <strong>{{completedItem.totalQuestions}}</strong></div>
+        <div><span>{{"totalQuestions" | translate}}:</span> <strong>{{completedItem.totalQuestions}}</strong></div>
         <div>
-          <span>Total answered:</span> <strong>{{completedItem.totalAnswers | number: '1.2-2'}} %</strong>
+          <span>{{"totalAnswers" | translate}}:</span> <strong>{{completedItem.totalAnswers | number: '1.2-2'}} %</strong>
           <mat-progress-bar mode="determinate" value="{{completedItem.totalAnswers}}"></mat-progress-bar>
         </div>
       <mat-divider></mat-divider>

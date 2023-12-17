@@ -64,3 +64,38 @@
   </mat-toolbar>
 </div>
 <!-- <main flex layout="column"></main> -->
+
+
+
+<button class="btn d-lg-none" type="button" matTooltip="View options" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions"><i class="fa-solid fa-bars fa-xs"></i></button>
+
+<div class="offcanvas offcanvas-start show text-bg-dark" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">Backdrop with scrolling</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    <p>Try scrolling the rest of the page to see this option in action.</p>
+    <div *ngIf="showNoAuthSection">
+      <button mat-menu-item (click)="dashboard()"><i class="fa-solid fa-house"></i> {{'home' | translate}}</button>
+      <button mat-menu-item (click)="login()"><i class="fa-solid fa-right-to-bracket"></i> {{'login' | translate}}</button>
+    </div>
+    <div *ngIf="showAuthSection">
+      <button mat-menu-item (click)="home()"><i class="fa-solid fa-house"></i><span> {{'home' | translate}}</span></button>
+      <button mat-menu-item (click)="dashboard()"><i class="fa-solid fa-chart-simple"></i><span> {{'sustainabilityIndicatorsCharts' | translate}}</span></button>
+      <button mat-menu-item (click)="adminConsumptions()"><i class="fa-solid fa-database"></i><span> {{'activityData' | translate}}</span></button>
+      <button mat-menu-item (click)="adminRatios()"><i class="fa-solid fa-list-check"></i><span> {{'productionData' | translate}}</span></button>
+      <button mat-menu-item (click)="myObjectives()"><i class="fa-solid fa-bullseye"></i><span> {{'myObjectives' | translate}}</span></button>
+      <mat-divider></mat-divider>
+      <button mat-menu-item (click)="globalQuestionnaire()" ><i class="fa-solid fa-square-poll-horizontal"></i> {{'globalQuestionnaire' | translate}}</button>
+      <button mat-menu-item (click)="globalQuestionnaireList()" ><i class="fa-solid fa-list"></i> {{'answeredQuestionnairesList' | translate}}</button>
+      <mat-divider></mat-divider>
+      <button mat-menu-item (click)="profile()"><i class="fa-solid fa-user"></i><span> {{'profile' | translate}}</span></button>  
+      <button mat-menu-item (click)="createUser()"><i class="fa-solid fa-user-plus"></i><span> {{'createUser' | translate}}</span></button>
+      <button mat-menu-item (click)="logout()"><i class="fa-solid fa-right-from-bracket"></i><span> {{'logout' | translate}}</span></button>
+    </div>
+    <app-select-language></app-select-language>
+  </div>
+</div>
+
+

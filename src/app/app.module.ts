@@ -54,6 +54,9 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatDividerModule} from '@angular/material/divider';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatListModule } from '@angular/material/list';
+
 
 import {DialogModule} from '@angular/cdk/dialog';
 
@@ -172,6 +175,8 @@ export function tokenGetter() {
     MatProgressBarModule,
     MatDialogModule,
     MatDividerModule,
+    MatSidenavModule,
+    MatListModule,
     NgxMatSelectSearchModule,
   ],
   providers: [

@@ -2,7 +2,7 @@
 <h2>{{'answeredQuestionnairesList' | translate}}</h2>
 
 <div class='card-container' *ngIf="userQuestionnaires">
-  <mat-card *ngFor="let questionnaire of userQuestionnaires; index as j" [ngClass]="{'not-completed' : questionaireFinalState[j].questionnaireCompleted}">
+  <mat-card *ngFor="let questionnaire of userQuestionnaires; index as j" [ngClass]="{'completed' : questionaireFinalState[j].questionnaireCompleted}">
     <!-- <a *ngIf="questionaireFinalState[j].questionnaireCompleted" [routerLink]="['/questionnaire-detail', questionnaire.id]" routerLinkActive="active" ariaCurrentWhenActive="page"> -->
     <mat-card-header>
       <mat-card-title>
@@ -10,6 +10,7 @@
       </mat-card-title>
       <mat-card-subtitle>
         <div>Ref. <strong>{{questionnaire.companyQuestionnaireId}}</strong></div>
+        <div class="state" [ngClass]="{'not-completed' : questionaireFinalState[j].questionnaireCompleted}">{{"completed" | translate}}: {{questionaireFinalState[j].questionnaireCompleted}}</div>
         <span>{{"dateAnswered" | translate}}: {{questionnaire.updated_at| date :'short'}}</span>
       </mat-card-subtitle>
     </mat-card-header>

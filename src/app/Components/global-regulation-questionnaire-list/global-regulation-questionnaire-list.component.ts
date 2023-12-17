@@ -2,6 +2,7 @@ import { Component } from '@angular/core'
 import { EnvironmentalAuditsService } from 'src/app/Services/environmental-audits.service'
 import { JwtHelperService } from '@auth0/angular-jwt'
 import { AnswerDTO } from 'src/app/Models/answer.dto'
+import { questionnaireFinalStateDTO } from 'src/app/Models/answeredQuestionnaire.dto'
 
 import { vectorStateDetail } from 'src/app/Models/question.dto'
 
@@ -14,7 +15,7 @@ export class GlobalRegulationQuestionnaireListComponent {
   private userId: string | null
   userQuestionnaires!: AnswerDTO[]
   questionnaireTemp: vectorStateDetail[] = []
-
+  questionaireFinalState: questionnaireFinalStateDTO[] = []
 
   constructor (
     private enviromentalAuditService: EnvironmentalAuditsService,
@@ -37,11 +38,12 @@ export class GlobalRegulationQuestionnaireListComponent {
           questionnaire.completed.map( (vectorStateDetail:any) => {
             if (parseInt(vectorStateDetail.totalAnswers) === 100)
               {
-                isCompleted = true
+                isCompleted = (isCompleted && true)
               }
               else {
-                isCompleted = false
+                isCompleted = (isCompleted && false)
               }
+            this.questionaireFinalState  
             console.log("porcentajes: ", questionnaire.companyQuestionnaireId, vectorStateDetail.vectorId, parseInt(vectorStateDetail.totalAnswers), isCompleted)
           })
         })

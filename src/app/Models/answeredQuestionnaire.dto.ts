@@ -20,3 +20,8 @@ export interface RegulationRegulation {
   q10?: string[];
   q11?: string[];
 }
+
+export interface questionnaireFinalStateDTO {
+  questionnaireId:         number;
+  questionnaireCompleted:  boolean;
+}

@@ -88,8 +88,8 @@ export class EmissionFormComponent {
 
   isGridView: boolean = false
   columnsDisplayed: string[] = emissionColumns.map((col) => col.key);
-  //dataSource: any = EMISSION_DATA
-  dataSource = new MatTableDataSource<ConsumptionDTO>();
+  dataSource: any = EMISSION_DATA
+  //dataSource = new MatTableDataSource<ConsumptionDTO>();
   columnsSchema: any = emissionColumns; 
   /* columnsDisplayed = ['Id', 'delegation', 'year', 'jan', 'feb', 'mar', 'apr', 'ACTIONS'];  */
   valid: any = {}
@@ -369,8 +369,7 @@ export class EmissionFormComponent {
   }
 
   public removeSelectedRows() {
-    /* this.dataSource = this.dataSource.filter((u: any) => !u.isSelected); */
-
+    this.dataSource = this.dataSource.filter((u: any) => !u.isSelected);
     const residues = this.dataSource.data.filter((u: ConsumptionDTO) => u.isSelected);
     this.dialog
       .open(ConfirmDialogComponent)

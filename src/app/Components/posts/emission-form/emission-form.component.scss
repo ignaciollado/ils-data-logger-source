@@ -132,6 +132,19 @@ mat-cell {
   text-align: left;
 } */
 
+mat-header-row{
+  background-color: #424242;
+}
+
+mat-header-cell {
+  color: white;
+  font-size: .6rem;
+}
+
+mat-cell{
+  background-color: #919191;
+}
+
 .mat-column-delegation{
   word-wrap: break-word;
 }

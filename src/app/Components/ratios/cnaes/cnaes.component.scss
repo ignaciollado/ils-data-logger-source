@@ -69,19 +69,26 @@ mat-cell{
   background-color: #919191;
 }
 
-  .mat-column-delegation{
-    width: 50px;
-    min-width: 6rem;
-    word-wrap: break-word;
-    padding-left: 0;
-  }
-  
-  .mat-column-year{
-    width: 50px;
-    max-width: 3rem;
-    word-wrap: break-word;
-    padding-left: 0;
-  }
+.mat-column-isSelected{
+  /* width :50px;
+  max-width:6rem; */
+  word-wrap:break-word;
+  max-width:3.5rem;
+ /*  padding-left: 0; */
+}
+
+.mat-column-delegation{
+  /* width :50px;
+  max-width:6rem; */
+  word-wrap:break-word;
+ /*  padding-left: 0; */
+}
+
+.mat-column-year{
+  /* width :50px;*/
+  max-width:3rem;
+ /* padding-left: 0; */
+}
   
 /* .mat-column-jan{
   max-width: 4.5rem;
@@ -119,9 +126,9 @@ mat-cell{
 .mat-column-dec{
   max-width: 4.5rem;
 } */
-/* .mat-column-isEdit{
-  padding-right: 6rem;
-} */
+.mat-column-isEdit{
+  padding-right: 3rem;
+} 
 
 
 

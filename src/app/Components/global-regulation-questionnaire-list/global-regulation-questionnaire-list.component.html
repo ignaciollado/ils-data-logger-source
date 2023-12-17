@@ -10,8 +10,8 @@
       </mat-card-title>
       <mat-card-subtitle>
         <div>Ref. <strong>{{questionnaire.companyQuestionnaireId}}</strong></div>
-        <div class="state" [ngClass]="{'not-completed' : questionaireFinalState[j].questionnaireCompleted}">{{"completed" | translate}}: {{questionaireFinalState[j].questionnaireCompleted}}</div>
         <span>{{"dateAnswered" | translate}}: {{questionnaire.updated_at| date :'short'}}</span>
+        <div *ngIf="!questionaireFinalState[j].questionnaireCompleted" class="state not-completed">NO FINALIZADO</div>
       </mat-card-subtitle>
     </mat-card-header>
     <mat-card-content *ngFor="let completedItem of questionnaire.completed">

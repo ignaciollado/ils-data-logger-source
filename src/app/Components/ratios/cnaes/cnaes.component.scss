@@ -47,14 +47,14 @@ outline: none;
   border-radius: .2rem;
 }
 
-mat-table {
+/* mat-table {
   margin-top: .5rem;
   margin-bottom: 2rem;
   width: 100%;
   max-height: 500px;
   overflow: auto;
   white-space: nowrap;
-}
+} */
 
 mat-header-row{
   background-color: #424242;
@@ -62,7 +62,7 @@ mat-header-row{
 
 mat-header-cell {
   color: white;
-  font-size: .5rem;
+  font-size: .6rem;
 }
 
 mat-cell{

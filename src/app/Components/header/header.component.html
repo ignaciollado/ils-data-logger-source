@@ -3,21 +3,14 @@
 
 <!-- NO AUTH REQUIRED -->
 <div *ngIf="showNoAuthSection">
-  <mat-menu #menu="matMenu"><i class="fa-solid fa-bars"></i>
-    <button mat-menu-item (click)="dashboard()"><i class="fa-solid fa-house"></i> <span>{{'home' | translate}}</span></button>
-    <button mat-menu-item (click)="login()"><i class="fa-solid fa-right-to-bracket"></i> <span>{{'login' | translate}}</span></button>
-    <app-select-language></app-select-language>
-  </mat-menu>
-
   <mat-toolbar color="primary" class="toolbar">
-    <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="menu ils data logger" [ngClass]="'not-has-to-be-shown'">
-      <i class="fa-solid fa-bars"></i>
-    </button>
-
-    <button mat-button (click)="dashboard()" [ngClass]="'has-to-be-shown'">{{'home' | translate}}</button>
-    <button mat-button (click)="login()" [ngClass]="'has-to-be-shown'">{{'login' | translate}}</button>
-    <span [ngClass]="'not-has-to-be-shown'">ILS</span>
-    <app-select-language></app-select-language>
+    <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="menu ils data logger" [ngClass]="'not-has-to-be-shown'"><span [ngClass]="'not-has-to-be-shown'">ILS</span></button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item (click)="dashboard()"><i class="fa-solid fa-house"></i> {{'home' | translate}}</button>
+      <button mat-menu-item (click)="login()"><i class="fa-solid fa-right-to-bracket"></i> {{'login' | translate}}</button>
+    </mat-menu>
+    
+   <app-select-language></app-select-language>
   </mat-toolbar>
 </div>
 
@@ -30,16 +23,17 @@
       <button mat-menu-item (click)="adminConsumptions()"><i class="fa-solid fa-database"></i><span> {{'activityData' | translate}}</span></button>
       <button mat-menu-item (click)="adminRatios()"><i class="fa-solid fa-list-check"></i><span> {{'productionData' | translate}}</span></button>
       <button mat-menu-item (click)="myObjectives()"><i class="fa-solid fa-bullseye"></i><span> {{'myObjectives' | translate}}</span></button>
-      <button mat-menu-item (click)="profile()"><i class="fa-solid fa-user"></i><span> {{'profile' | translate}}</span></button>
+      <mat-divider></mat-divider>
 
-        <button mat-menu-item (click)="adminAspects()" >{{'aspects' | translate}}</button>
-        <button mat-menu-item (click)="adminEnergies()" >{{'energies' | translate}}</button>
-        <button mat-menu-item (click)="adminResidues()" >{{'createUser' | translate}}</button>
 
-        <button mat-menu-item (click)="globalQuestionnaire()" ><i class="fa-solid fa-square-poll-horizontal"></i> {{'globalQuestionnaire' | translate}}</button>
-        <button mat-menu-item (click)="globalQuestionnaireList()" ><i class="fa-solid fa-list"></i> {{'globalQuestionnaireList' | translate}}</button>
-
-      <button mat-menu-item (click)="logout()"><i class="fa-solid fa-right-from-bracket"></i> <span>{{'logout' | translate}}</span></button>
+      <button mat-menu-item (click)="globalQuestionnaire()" ><i class="fa-solid fa-square-poll-horizontal"></i> {{'globalQuestionnaire' | translate}}</button>
+      <button mat-menu-item (click)="globalQuestionnaireList()" ><i class="fa-solid fa-list"></i> {{'answeredQuestionnairesList' | translate}}</button>
+      <mat-divider></mat-divider>
+<!--         <button mat-menu-item (click)="adminAspects()" >{{'aspects' | translate}}</button>
+        <button mat-menu-item (click)="adminEnergies()" >{{'energies' | translate}}</button> -->
+      <button mat-menu-item (click)="profile()"><i class="fa-solid fa-user"></i><span> {{'profile' | translate}}</span></button>  
+      <button mat-menu-item (click)="createUser()"><i class="fa-solid fa-user-plus"></i><span> {{'createUser' | translate}}</span></button>
+      <button mat-menu-item (click)="logout()"><i class="fa-solid fa-right-from-bracket"></i><span> {{'logout' | translate}}</span></button>
     </div>
   </mat-menu>
 
@@ -57,16 +51,16 @@
     <mat-menu #adminMenu="matMenu" yPosition="above">
       <button mat-button (click)="adminAspects()" [ngClass]="'has-to-be-shown'">{{'aspects' | translate}}</button>
       <button mat-button (click)="adminEnergies()" [ngClass]="'has-to-be-shown'">{{'energies' | translate}}</button>
-      <button mat-button (click)="adminResidues()" [ngClass]="'has-to-be-shown'"><i class="fa-solid fa-user"></i>{{'createUser' | translate}}</button>
+      <button mat-button (click)="createUser()" [ngClass]="'has-to-be-shown'"><i class="fa-solid fa-user"></i>{{'createUser' | translate}}</button>
     </mat-menu>
     <button mat-button [matMenuTriggerFor]="requisitosLegalesMenu" [ngClass]="'has-to-be-shown'">{{"requisitosLegales" | translate}}</button>
     <mat-menu #requisitosLegalesMenu="matMenu" yPosition="above">
       <button mat-menu-item (click)="globalQuestionnaire()" [ngClass]="'has-to-be-shown'"><i class="fa-solid fa-square-poll-horizontal"></i> {{'globalQuestionnaire' | translate}}</button>
-      <button mat-menu-item (click)="globalQuestionnaireList()" [ngClass]="'has-to-be-shown'"><i class="fa-solid fa-list"></i> {{'globalQuestionnaireList' | translate}}</button>
+      <button mat-menu-item (click)="globalQuestionnaireList()" [ngClass]="'has-to-be-shown'"><i class="fa-solid fa-list"></i> {{'answeredQuestionnairesList' | translate}}</button>
     </mat-menu>
 
     <button mat-button (click)="logout()" [ngClass]="'has-to-be-shown'">{{'logout' | translate}}</button>
-    <app-select-language></app-select-language>
+    <!-- <app-select-language></app-select-language> -->
   </mat-toolbar>
 </div>
 <!-- <main flex layout="column"></main> -->

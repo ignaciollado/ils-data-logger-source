@@ -91,8 +91,8 @@ export class HeaderComponent implements OnInit {
     this.router.navigateByUrl('energies');
   }
 
-  adminResidues(): void {
-    this.router.navigateByUrl('residues');
+  createUser(): void {
+    this.router.navigateByUrl('register');
   }
 
   adminRatios(): void {

@@ -1,9 +1,11 @@
 .has-to-be-shown {
-    display: block;
+    display: none;
 }
 
 .not-has-to-be-shown {
-    display: none;
+  display: block;
+  position: relative;
+  top: -3px;
 }
 
 .logoArea {
@@ -20,15 +22,12 @@ mat-menu {
     justify-content: space-between;
 }
 
-mat-toolbar{
 
-}
-
-@media only screen and (max-width: 950px) {
+/* @media only screen and (max-width: 950px) {
     .has-to-be-shown {
         display: none;
     }
     .not-has-to-be-shown {
         display: block;
     }
-}
+} */

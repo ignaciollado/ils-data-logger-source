@@ -4,13 +4,13 @@
 <!-- NO AUTH REQUIRED -->
 <div *ngIf="showNoAuthSection">
   <mat-toolbar color="primary" class="toolbar">
-    <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="menu ils data logger" [ngClass]="'not-has-to-be-shown'"><span [ngClass]="'not-has-to-be-shown'">ILS</span></button>
-    <mat-menu #menu="matMenu">
-      <button mat-menu-item (click)="dashboard()"><i class="fa-solid fa-house"></i> {{'home' | translate}}</button>
-      <button mat-menu-item (click)="login()"><i class="fa-solid fa-right-to-bracket"></i> {{'login' | translate}}</button>
-    </mat-menu>
+     <!-- <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="menu ils data logger" [ngClass]="'not-has-to-be-shown'"><span [ngClass]="'not-has-to-be-shown'">ILS</span></button>
+     <mat-menu #menu="matMenu">
+       <button mat-menu-item (click)="dashboard()"><i class="fa-solid fa-house"></i> {{'home' | translate}}</button> 
+       <button mat-menu-item (click)="login()"><i class="fa-solid fa-right-to-bracket"></i> {{'login' | translate}}</button> 
+    </mat-menu> -->
     
-   <app-select-language></app-select-language>
+   <!-- <app-select-language></app-select-language> -->
   </mat-toolbar>
 </div>
 
@@ -29,8 +29,7 @@
       <button mat-menu-item (click)="globalQuestionnaire()" ><i class="fa-solid fa-square-poll-horizontal"></i> {{'globalQuestionnaire' | translate}}</button>
       <button mat-menu-item (click)="globalQuestionnaireList()" ><i class="fa-solid fa-list"></i> {{'answeredQuestionnairesList' | translate}}</button>
       <mat-divider></mat-divider>
-<!--         <button mat-menu-item (click)="adminAspects()" >{{'aspects' | translate}}</button>
-        <button mat-menu-item (click)="adminEnergies()" >{{'energies' | translate}}</button> -->
+
       <button mat-menu-item (click)="profile()"><i class="fa-solid fa-user"></i><span> {{'profile' | translate}}</span></button>  
       <button mat-menu-item (click)="createUser()"><i class="fa-solid fa-user-plus"></i><span> {{'createUser' | translate}}</span></button>
       <button mat-menu-item (click)="logout()"><i class="fa-solid fa-right-from-bracket"></i><span> {{'logout' | translate}}</span></button>
@@ -60,26 +59,61 @@
     </mat-menu>
 
     <button mat-button (click)="logout()" [ngClass]="'has-to-be-shown'">{{'logout' | translate}}</button>
-    <!-- <app-select-language></app-select-language> -->
   </mat-toolbar>
 </div>
-<!-- <main flex layout="column"></main> -->
 
 
 
-<button class="btn d-lg-none" type="button" matTooltip="View options" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions"><i class="fa-solid fa-bars fa-xs"></i></button>
+
+<button class="btn d-lg-none" type="button" matTooltip="View options" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions"><i class="fa-solid fa-bars fa-2xl"></i></button>
 
 <div class="offcanvas offcanvas-start show text-bg-dark" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
   <div class="offcanvas-header">
     <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">Backdrop with scrolling</h5>
     <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
   </div>
+
   <div class="offcanvas-body">
     <p>Try scrolling the rest of the page to see this option in action.</p>
-    <div *ngIf="showNoAuthSection">
-      <button mat-menu-item (click)="dashboard()"><i class="fa-solid fa-house"></i> {{'home' | translate}}</button>
-      <button mat-menu-item (click)="login()"><i class="fa-solid fa-right-to-bracket"></i> {{'login' | translate}}</button>
-    </div>
+    <div class="container-fluid" *ngIf="showNoAuthSection">
+      <div class="row flex-nowrap">
+          <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
+              <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
+                  <a href="/" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+                      <span class="fs-5 d-none d-sm-inline">Menu</span>
+                  </a>
+                  <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
+                      <li class="nav-item">
+                          <!-- <a href="#" class="nav-link align-middle px-0" (click)="dashboard()"><i class="fa-solid fa-house"></i> {{'home' | translate}} -->
+                       <!--        <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Home</span> -->
+                            <button  *ngIf="showNoAuthSection" mat-menu-item (click)="dashboard()"><i class="fa-solid fa-house"></i> {{'home' | translate}}</button>
+                          <!-- </a> -->
+                      </li>
+                      <li class="nav-item">
+                          <!-- <a href="#" class="nav-link px-0 align-middle" (click)="login()"><i class="fa-solid fa-right-to-bracket"></i> {{'login' | translate}} -->
+                              <!-- <i class="fs-4 bi-table"></i> <span class="ms-1 d-none d-sm-inline">Orders</span>-->
+                            <button  *ngIf="showNoAuthSection" mat-menu-item (click)="login()"><i class="fa-solid fa-right-to-bracket"></i> {{'login' | translate}}</button>
+                            <!-- </a> -->
+                      </li>
+
+
+
+                  </ul>
+                  <hr>
+
+              </div>
+          </div>
+
+      </div>
+  </div>
+
+
+
+
+
+<!--     <button  *ngIf="showNoAuthSection" mat-menu-item (click)="dashboard()"><i class="fa-solid fa-house"></i> {{'home' | translate}}</button> 
+    <button  *ngIf="showNoAuthSection" mat-menu-item (click)="login()"><i class="fa-solid fa-right-to-bracket"></i> {{'login' | translate}}</button>  -->
+   
     <div *ngIf="showAuthSection">
       <button mat-menu-item (click)="home()"><i class="fa-solid fa-house"></i><span> {{'home' | translate}}</span></button>
       <button mat-menu-item (click)="dashboard()"><i class="fa-solid fa-chart-simple"></i><span> {{'sustainabilityIndicatorsCharts' | translate}}</span></button>
@@ -93,6 +127,63 @@
       <button mat-menu-item (click)="profile()"><i class="fa-solid fa-user"></i><span> {{'profile' | translate}}</span></button>  
       <button mat-menu-item (click)="createUser()"><i class="fa-solid fa-user-plus"></i><span> {{'createUser' | translate}}</span></button>
       <button mat-menu-item (click)="logout()"><i class="fa-solid fa-right-from-bracket"></i><span> {{'logout' | translate}}</span></button>
+    
+    
+      <div class="container-fluid">
+        <div class="row flex-nowrap">
+            <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
+                <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
+                    <a href="/" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+                        <span class="fs-5 d-none d-sm-inline">Menu</span>
+                    </a>
+                    <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link align-middle px-0">
+                                <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Home</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#submenu1" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
+                                <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline">Dashboard</span> </a>
+                            <ul class="collapse show nav flex-column ms-1" id="submenu1" data-bs-parent="#menu">
+                                <li class="w-100">
+                                    <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Item</span> 1 </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Item</span> 2 </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#" class="nav-link px-0 align-middle">
+                                <i class="fs-4 bi-table"></i> <span class="ms-1 d-none d-sm-inline">Orders</span></a>
+                        </li>
+                        <li>
+                            <a href="#submenu2" data-bs-toggle="collapse" class="nav-link px-0 align-middle ">
+                                <i class="fs-4 bi-bootstrap"></i> <span class="ms-1 d-none d-sm-inline">Bootstrap</span></a>
+                            <ul class="collapse nav flex-column ms-1" id="submenu2" data-bs-parent="#menu">
+                                <li class="w-100">
+                                    <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Item</span> 1</a>
+                                </li>
+                                <li>
+                                    <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Item</span> 2</a>
+                                </li>
+                            </ul>
+                        </li>
+  
+                        <li>
+                            <a href="#" class="nav-link px-0 align-middle">
+                                <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline">Customers</span> </a>
+                        </li>
+                    </ul>
+                    <hr>
+  
+                </div>
+            </div>
+  
+        </div>
+    </div>
+    
     </div>
     <app-select-language></app-select-language>
   </div>

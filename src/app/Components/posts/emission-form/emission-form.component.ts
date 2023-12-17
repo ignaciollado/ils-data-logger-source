@@ -21,7 +21,7 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 
-import { MatDialog } from '@angular/material/dialog'
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog'
 import { ConfirmDialogComponent } from 'src/app/confirm-dialog/confirm-dialog.component'
 
 /* const EMISSION_DATA = [
@@ -370,11 +370,12 @@ export class EmissionFormComponent {
 
   public removeSelectedRows() {
     
-    this.dataSource = this.dataSource.filter((u: any) => !u.isSelected);
+    /* this.dataSource = this.dataSource.filter((u: any) => !u.isSelected); */
     const residues = this.dataSource.data.filter((u: ConsumptionDTO) => {
       console.log (u)
       u.isSelected
     })
+    this.openDialog('300ms', '300ms', "¿Eliminar de forma permantente?", "", "", "")
     this.dialog
       .open(ConfirmDialogComponent)
       .afterClosed()
@@ -440,6 +441,24 @@ export class EmissionFormComponent {
     this.objective.addValidators(Validators.required)
     this.scopeone.enable()
     this.scopetwo.enable()
+  }
+
+  openDialog(enterAnimationDuration: string, exitAnimationDuration: string, questionText: string, toolTipText: string, doc1: string, doc2: string): void {
+    const dialogConfig = new MatDialogConfig();
+  
+    dialogConfig.disableClose = false
+    dialogConfig.autoFocus = true
+    dialogConfig.panelClass = "dialog-customization"
+    dialogConfig.backdropClass = "popupBackdropClass"
+    dialogConfig.position = {
+      'top': '2rem',
+      'right': '5rem'
+    };
+    dialogConfig.width='100%',
+    dialogConfig.data = {
+      questionText: questionText, toolTipText: toolTipText, doc1: doc1, doc2: doc2
+    };
+    this.dialog.open(ConfirmDialogComponent, dialogConfig);
   }
 
 }

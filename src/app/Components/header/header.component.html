@@ -2,20 +2,101 @@
 <!-- <img class="logo" src="../../../assets/images/logo_ils.svg" alt="ILS data logger"> -->
 
 <!-- NO AUTH REQUIRED -->
-<!-- <div *ngIf="showNoAuthSection">
-  <mat-toolbar color="primary"> -->
-     <!-- <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="menu ils data logger" [ngClass]="'not-has-to-be-shown'"><span [ngClass]="'not-has-to-be-shown'">ILS</span></button>
-     <mat-menu #menu="matMenu">
+<div *ngIf="showNoAuthSection">
+<!--   <mat-toolbar color="primary">
+    <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="menu ils data logger" [ngClass]="'not-has-to-be-shown'"><span [ngClass]="'not-has-to-be-shown'">ILS</span></button>
+    <mat-menu #menu="matMenu">
        <button mat-menu-item (click)="dashboard()"><i class="fa-solid fa-house"></i> {{'home' | translate}}</button> 
        <button mat-menu-item (click)="login()"><i class="fa-solid fa-right-to-bracket"></i> {{'login' | translate}}</button> 
-    </mat-menu> -->
-    
-   <!-- <app-select-language></app-select-language> -->
-<!--   </mat-toolbar>
-</div> -->
+    </mat-menu>
+  </mat-toolbar> -->
+<!--   <mat-toolbar>
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+      <i class="fa-solid fa-bars fa-xl"></i>
+    </button>
+    <span>My App</span>
+    <span class="example-spacer"></span>
+    <app-select-language></app-select-language>
+  </mat-toolbar> -->
+
+  <mat-toolbar color="primary">
+    <button mat-icon-button (click)="sidenav.toggle()" matTooltip="Menu">
+      <i class="fa-solid fa-bars fa-xl"></i>
+    </button>
+    <span>ConcretePage.com</span>
+    <span class="toolbar-item-spacer"></span>
+    <button mat-icon-button matTooltip="Like">
+        <mat-icon>favorite</mat-icon>
+    </button>
+    <button mat-icon-button matTooltip="Share">
+        <mat-icon>share</mat-icon>
+    </button>
+    <button mat-icon-button matTooltip="Notifications">
+        <mat-icon>notifications</mat-icon>
+    </button>
+    <button mat-icon-button matTooltip="My Account" [matMenuTriggerFor]="userAccountMenu">
+        <mat-icon>account_circle</mat-icon>
+    </button>
+    <mat-menu #userAccountMenu [overlapTrigger]="false" yPosition="below">
+        <button mat-menu-item routerLink="#">
+            <mat-icon>person</mat-icon><span>My Account</span>
+        </button>
+        <button mat-menu-item routerLink="#">
+            <mat-icon>settings</mat-icon><span>Settings</span>
+        </button>
+        <button mat-menu-item routerLink="#">
+            <mat-icon>help</mat-icon><span>Help</span>
+        </button>
+        <mat-divider></mat-divider>
+        <button mat-menu-item routerLink="#">
+            <mat-icon>exit_to_app</mat-icon>Logout
+        </button>
+    </mat-menu>
+</mat-toolbar>
+
+<mat-sidenav-container class="app-container">
+    <mat-sidenav #sidenav mode="side" [class.mat-elevation-z4]="true" class="app-sidenav">
+        <mat-nav-list>
+            <mat-list-item routerLink="#">
+                <mat-icon>dashboard</mat-icon><span>Dashboard</span>
+            </mat-list-item>
+            <mat-expansion-panel [class.mat-elevation-z0]="true">
+                <mat-expansion-panel-header>
+                    Mobile Phone
+                </mat-expansion-panel-header>
+                <mat-nav-list>
+                    <a mat-list-item routerLink="#">
+                        <mat-icon>apple</mat-icon><span>iOS</span>
+                    </a>
+                    <a mat-list-item routerLink="#">
+                        <mat-icon>android</mat-icon><span>Android</span>
+                    </a>
+                </mat-nav-list>
+            </mat-expansion-panel>
+            <mat-expansion-panel [class.mat-elevation-z0]="true">
+                <mat-expansion-panel-header>
+                    Frameworks
+                </mat-expansion-panel-header>
+                <mat-nav-list>
+                    <a mat-list-item routerLink="#">Spring</a>
+                    <a mat-list-item routerLink="#">Hibernate</a>
+                    <a mat-list-item routerLink="#">Struts</a>
+                </mat-nav-list>
+            </mat-expansion-panel>
+        </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <router-outlet>
+            <div class="app-sidenav-content">
+                Components open here
+            </div>
+        </router-outlet>
+    </mat-sidenav-content>
+</mat-sidenav-container> 
+</div>
 
 <!-- AUTH REQUIRED -->
-<div *ngIf="showAuthSection">
+<!-- <div *ngIf="showAuthSection">
   <mat-menu #menu="matMenu">
     <div>
       <button mat-menu-item (click)="home()"><i class="fa-solid fa-house"></i><span> {{'home' | translate}}</span></button>
@@ -38,7 +119,7 @@
 
   <mat-toolbar color="primary" class="toolbar">
     <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="menu ils data logger" [ngClass]="'not-has-to-be-shown'">
-      <i class="fa-solid fa-bars"></i>
+      <i class="fa-solid fa-bars fa-2xl"></i>
     </button>
     <span [ngClass]="'has-to-be-shown'">ILS</span>
     <button mat-button (click)="dashboard()" [ngClass]="'has-to-be-shown'">{{'sustainabilityIndicatorsCharts' | translate}}</button>
@@ -60,9 +141,7 @@
 
     <button mat-button (click)="logout()" [ngClass]="'has-to-be-shown'">{{'logout' | translate}}</button>
   </mat-toolbar>
-</div>
-
-
+</div> -->
 
 
 <button class="btn d-lg-none" type="button" matTooltip="View options" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions"><i class="fa-solid fa-bars fa-2xl"></i></button>
@@ -79,33 +158,19 @@
       <div class="row flex-nowrap">
           <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
               <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
-<!--                   <a href="/" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
-                      <span class="fs-5 d-none d-sm-inline">Menu</span>
-                  </a> -->
                   <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
                       <li class="nav-item">
-                          <!-- <a href="#" class="nav-link align-middle px-0" (click)="dashboard()"><i class="fa-solid fa-house"></i> {{'home' | translate}} -->
-                       <!--        <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Home</span> -->
-                            <button  *ngIf="showNoAuthSection" mat-button (click)="dashboard()"><i class="fa-solid fa-house"></i> {{'home' | translate}}</button>
-                          <!-- </a> -->
+                        <button  *ngIf="showNoAuthSection" mat-button (click)="dashboard()"><i class="fa-solid fa-house"></i> {{'home' | translate}}</button>
                       </li>
                       <li class="nav-item">
-                          <!-- <a href="#" class="nav-link px-0 align-middle" (click)="login()"><i class="fa-solid fa-right-to-bracket"></i> {{'login' | translate}} -->
-                              <!-- <i class="fs-4 bi-table"></i> <span class="ms-1 d-none d-sm-inline">Orders</span>-->
-                            <button  *ngIf="showNoAuthSection" mat-button (click)="login()"><i class="fa-solid fa-right-to-bracket"></i> {{'login' | translate}}</button>
-                            <!-- </a> -->
+                        <button  *ngIf="showNoAuthSection" mat-button (click)="login()"><i class="fa-solid fa-right-to-bracket"></i> {{'login' | translate}}</button>
                       </li>
-
-
-
                   </ul>
                   <hr>
-
               </div>
           </div>
-
       </div>
-  </div>
+ </div>
 
 
 

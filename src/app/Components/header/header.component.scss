@@ -17,44 +17,23 @@
     margin: 1rem;
 }
 
-mat-menu {
-    display: flex;
-    justify-content: space-between;
+.toolbar-item-spacer {
+  flex: 1 1 auto;
 }
 
-mat-toolbar {
-    background: #004a9f;
-    color: white;
-  }
-  
-  mat-sidenav {
-    margin: 16px;
-    width: 200px;
-    border-right: none;
-    background: #002b5c;
-    color: white;
-    border-radius: 10px;
-    padding: 16px;
-    text-align: center;
-  }
-  
-  .content {
-    height: calc(100vh - 98px);
-    border-radius: 10px;
-    margin: 16px;
-    margin-left: 32px;
-  
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  
-    font-size: 2rem;
-    color: lightgray;
-  }
-  
-  mat-sidenav-container {
-    height: calc(100vh - 65px);
-  }
+.app-container {
+  height: 90%;
+  margin: 0;
+}  
+.app-sidenav {
+  width: 230px;
+}
+.app-sidenav-content {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+} 
   
 
 /* @media only screen and (max-width: 950px) {

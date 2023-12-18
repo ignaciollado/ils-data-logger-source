@@ -11,7 +11,9 @@
       <mat-card-subtitle>
         <div>Ref. <strong>{{questionnaire.companyQuestionnaireId}}</strong></div>
         <span *ngIf="questionaireFinalState[j].questionnaireCompleted">{{"dateAnswered" | translate}}: {{questionnaire.updated_at| date :'short'}}</span>
-        <div *ngIf="!questionaireFinalState[j].questionnaireCompleted" class="state not-completed">NO FINALIZADO</div>
+        <div *ngIf="!questionaireFinalState[j].questionnaireCompleted" class="state not-completed">
+          <a [routerLink]="['/questionnaire-detail', questionnaire.id]" routerLinkActive="active" ariaCurrentWhenActive="page">NO FINALIZADO</a>
+        </div>
       </mat-card-subtitle>
     </mat-card-header>
     <mat-card-content *ngFor="let completedItem of questionnaire.completed">

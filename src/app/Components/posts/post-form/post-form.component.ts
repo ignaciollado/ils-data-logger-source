@@ -425,8 +425,21 @@ export class PostFormComponent implements OnInit {
   }
 
   public editRow(row: ConsumptionDTO) {
+    let responseOK: boolean = false;
+    let errorResponse: any;
+
     if (row.consumptionId === '0') {
-      this.consumptionService.createEnergyConsumption(row).subscribe((newConsumption: ConsumptionDTO) => {
+      this.consumptionService.createEnergyConsumption(row)
+      .pipe(
+        finalize(async () => {
+          await this.sharedService.managementToast(
+            'postFeedback',
+            responseOK,
+            errorResponse
+          );
+        })
+      )
+      .subscribe((newConsumption: ConsumptionDTO) => {
         row.consumptionId = newConsumption.consumptionId
         row.isEdit = false
         this.loadConsumption( this.userId )

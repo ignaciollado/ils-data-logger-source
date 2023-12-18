@@ -226,8 +226,11 @@ private loadDelegations(userId: string): void {
 
 loadQuestionnaireResult( questionnaireID: number){
   this.enviromentalAuditService.getQuestionnaireByID( questionnaireID )
-    .subscribe( (answers: AnswerDTO[]) => {
+    .subscribe((answers: AnswerDTO[]) => {
       console.log (answers)
+       answers.map ((answers:any)=>{
+        console.log (JSON.parse(answers.userAnswers))
+      })
     }
     )
 }
@@ -700,10 +703,10 @@ this.questionnaireVectorState.map(item=> {
   }
 })  
 
-  let progressPanel = document.getElementById('progress-panel')
+/*   let progressPanel = document.getElementById('progress-panel')
 
   progressPanel.innerHTML = JSON.stringify(this.questionnaireVectorState)
-  
+   */
   //progressPanel.classList.remove('no-display')
 }
 
@@ -757,7 +760,7 @@ saveQuestionForm() {
   this.vector_6_Question3_reg = []
   this.vector_6_Question4_reg = []
 
-/* VECTOR 1 */
+// VECTOR 1
 if (this.vector_1_Question1) {
   this.vector_1_Question1.forEach((node: HTMLInputElement) => {
     if (node.value && node.checked) {
@@ -795,7 +798,7 @@ if (this.vector_1_Question4) {
   }
   })
 }
-/* VECTOR 2 */
+// VECTOR 2
 if (this.vector_2_Question1){
   this.vector_2_Question1.forEach((node: HTMLInputElement, index) => {
   if (node.value && node.checked) {
@@ -895,8 +898,7 @@ if (this.vector_2_Question11){
   }
   })
 }
-
-/* VECTOR 3 */
+// VECTOR 3
 if (this.vector_3_Question1){
   this.vector_3_Question1.forEach((node: HTMLInputElement, index) => {
   if (node.value && node.checked) {
@@ -924,8 +926,7 @@ if (this.vector_3_Question3){
   }
   })
 }
-
-/* VECTOR 4 */
+// VECTOR 4
 if (this.vector_4_Question1){
   this.vector_4_Question1.forEach((node: HTMLInputElement, index) => {
   if (node.value && node.checked) {
@@ -989,7 +990,7 @@ if (this.vector_4_Question7){
   }
   })
 }
-/* VECTOR 5 */
+// VECTOR 5
 if (this.vector_5_Question1){
   this.vector_5_Question1.forEach((node: HTMLInputElement, index) => {
   if (node.value && node.checked) {
@@ -1035,7 +1036,7 @@ if (this.vector_5_Question5){
   }
   })
 }
-/* VECTOR 6 */
+// VECTOR 6
 if (this.vector_6_Question1){
   this.vector_6_Question1.forEach((node: HTMLInputElement, index) => {
   if (node.value && node.checked) {

@@ -16,7 +16,7 @@
       <section>
         <mat-form-field appearance="outline" [style.width.px]=530>
           <mat-label>NIF</mat-label>
-          <input matInput type="text" readonly [formControl]="nif" />
+          <input matInput type="text"  [readonly]="!isCompany" [formControl]="nif" />
           <mat-error *ngIf="nif.hasError('minlength')" >nif must be at least 5 characters long</mat-error>
           <mat-error *ngIf="nif.hasError('maxlength')" >nif can be max 8 characters long</mat-error>
           <mat-error *ngIf="nif.hasError('required')">nif <strong>is required</strong></mat-error>
@@ -26,7 +26,7 @@
       <section>
         <mat-form-field appearance="outline" [style.width.px]=530>
           <mat-label>{{ 'companyAddress' | translate }}</mat-label>
-          <input matInput type="text" readonly [formControl]="domicilio" />
+          <input matInput type="text" [readonly]="!isCompany" [formControl]="domicilio" />
           <mat-error *ngIf="domicilio.hasError('minlength')" >domicilio must be at least 5 characters long</mat-error>
           <mat-error *ngIf="domicilio.hasError('maxlength')" >domicilio can be max 100 characters long</mat-error>
           <mat-error *ngIf="domicilio.hasError('required')">domicilio <strong>is required</strong></mat-error>
@@ -45,7 +45,7 @@
       <section>
         <mat-form-field appearance="outline" [style.width.px]=530>
           <mat-label>Localidad</mat-label>
-          <input matInput type="text" readonly [formControl]="localidad" />
+          <input matInput type="text"  [readonly]="!isCompany" [formControl]="localidad" />
           <mat-error *ngIf="localidad.hasError('minlength')" >{{'city' | translate}} <strong>{{'charsMin' | translate}}</strong> 8 <strong>{{'characters' | translate}} 8 characters</strong></mat-error>
           <mat-error *ngIf="localidad.hasError('maxlength')" >{{'city' | translate}} <strong>{{'charsMax' | translate}}</strong> 100 <strong>{{'characters' | translate}}</strong></mat-error>
           <mat-error *ngIf="localidad.hasError('required')">{{'city' | translate}} <strong>is required</strong></mat-error>

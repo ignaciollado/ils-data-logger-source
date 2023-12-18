@@ -1,12 +1,13 @@
 <div class="container-form">
- <h1>Identificación de requisitos legales IDI<br>CUESTIONARIO PRELIMINAR</h1>
+ <h1>Identificación de requisitos legales IDI<br>CUESTIONARIO PRELIMINAR <i class="fa-solid fa-circle-info" style="color: #365446;"></i></h1>
  <div class="questions-container">
-  <form *ngIf="questionList" id="theQuestionnaire" [formGroup]="questionListForm"
-                    (ngSubmit)="saveQuestionForm()">
+  <form *ngIf="questionList" [formGroup]="questionListForm"
+  (ngSubmit)="saveQuestionForm()">
+  
 
                 <section>
                   <mat-form-field [style.width.px]=425>
-                    <mat-label>{{'delegation' | translate}}</mat-label>
+                    <mat-label>{{'selectDelegation' | translate}}</mat-label>
                       <mat-select [formControl]="delegation" panelClass="panel-{{delegation.value}}">
                         <mat-option *ngFor="let delegation of delegations" [value]="delegation.companyDelegationId">
                           {{delegation.name}}
@@ -27,7 +28,7 @@
       </mat-expansion-panel-header> 
       <ol>
         <li *ngFor="let question of vectors.questions; index as k">
-          <h4>{{question.questionTextES}}:<button mat-flat-button (click)="openDialog('300ms', '300ms', question.questionTextES, question.questionTooltipES, question.questionDoc1, question.questionDoc2)"><i *ngIf="question.questionTooltipES" class="fa-solid fa-circle-info" style="color: #1f5618;"></i></button></h4>
+          <h4>{{question.questionTextES}}:<button mat-flat-button type="button" (click)="openDialog('300ms', '300ms', question.questionTextES, question.questionTooltipES, question.questionDoc1, question.questionDoc2)"><i *ngIf="question.questionTooltipES" class="fa-solid fa-circle-info" style="color: #1f5618;"></i></button></h4>
           <ng-container [ngSwitch]="question.type">
               <ng-container *ngSwitchCase="'radio'">
                 <mat-radio-group aria-label="Select an answer" name="vector_{{j+1}}_Question{{k+1}}">
@@ -40,7 +41,7 @@
                           >
                           {{item['answerText']}}
                       </mat-radio-button>
-                      <button *ngIf="item['answerTooltip']" mat-button (click)="openDialog('300ms', '300ms', item['answerText'], item['answerTooltip'], item['answerImage_1'], item['answerImage_2'])"><i class="fa-solid fa-circle-info" style="color: #673ab7;"></i></button>
+                      <button type="button" *ngIf="item['answerTooltip']" mat-button (click)="openDialog('300ms', '300ms', item['answerText'], item['answerTooltip'], item['answerImage_1'], item['answerImage_2'])"><i class="fa-solid fa-circle-info" style="color: #673ab7;"></i></button>
                   </ng-container>
                 </mat-radio-group>
               </ng-container>
@@ -56,7 +57,7 @@
                           id="vector_{{j+1}}_Question{{k+1}}_Answer{{n+1}}">
                           {{item['answerText']}}
                         </mat-checkbox>
-                        <button *ngIf="item['answerTooltip']" mat-button (click)="openDialog('300ms', '300ms', item['answerText'], item['answerTooltip'], item['answerImage_1'], item['answerImage_2'])"><i class="fa-solid fa-circle-info" style="color: #673ab7;"></i></button>
+                        <button type="button" *ngIf="item['answerTooltip']" mat-button (click)="openDialog('300ms', '300ms', item['answerText'], item['answerTooltip'], item['answerImage_1'], item['answerImage_2'])"><i class="fa-solid fa-circle-info" style="color: #673ab7;"></i></button>
                       </p>
                   </ng-container>
                 </section>
@@ -68,11 +69,12 @@
     </mat-accordion>
    
    <div class="button-row">
-    <button mat-raised-button color="primary" (click)="openDialog('300ms', '300ms', 'Cuestionario preliminar', 'El cuestionario ha sido guardado correctamente', 'tres', 'cuatro')" [disabled]="!questionListForm.valid">Enviar</button>
-    <button mat-raised-button>Limpiar</button>
-  </div>
+      <button mat-raised-button color="primary" [disabled]="!questionListForm.valid">Enviar</button>
+     <!--  <button mat-raised-button type="button" (click)="saveQuestionForm()" [disabled]="questionListForm.valid">Enviar</button> -->
+    </div>
   </form>
-  <div>
+  <div style="margin-left: auto; margin-right: auto"><span id="postFeedback"></span></div>
+<div>
     <div id="results-vector1" class="vector-div no-display"></div>
     <div id="results-vector2" class="vector-div no-display"></div>
     <div id="results-vector3" class="vector-div no-display"></div>

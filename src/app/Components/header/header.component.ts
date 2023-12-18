@@ -12,6 +12,7 @@ import { HeaderMenusService } from 'src/app/Services/header-menus.service';
 export class HeaderComponent implements OnInit {
   showAuthSection: boolean;
   showNoAuthSection: boolean;
+  isAdmin: boolean = false;
   access_token: string | null;
 
   constructor(
@@ -41,8 +42,8 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
-    this.headerMenusService.headerManagement.subscribe(
+    
+    this.headerMenusService.headerManagement.subscribe (
       (headerInfo: HeaderMenus) => {
         if (headerInfo) {
           this.showAuthSection = headerInfo.showAuthSection;
@@ -50,6 +51,10 @@ export class HeaderComponent implements OnInit {
         }
       }
     );
+
+      if (this.jwtHelper.decodeToken().role === 'admin') {
+        this.isAdmin = true
+      }
 
   }
 

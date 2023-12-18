@@ -82,7 +82,7 @@ export class LoginComponent implements OnInit {
         this.router.navigateByUrl('user/consumption')
       } else {
         const headerInfo: HeaderMenus = { showAuthSection: false, showNoAuthSection: true, };
-        sessionStorage.removeItem('access_token') //this.localStorageService.remove('access_token');
+        sessionStorage.removeItem('access_token')
         this.headerMenusService.headerManagement.next(headerInfo);
         this.router.navigateByUrl('login');
       }
@@ -128,7 +128,7 @@ export class LoginComponent implements OnInit {
                       this.headerMenusService.headerManagement.next(headerInfo);
                       this.delegationService.getTotalDelegationsByCompany(this.jwtHelper.decodeToken().id_ils)
                       .subscribe( item => {
-                        console.log (item.totalDelegations, item.totalDelegations == 0, typeof item.totalDelegations)
+                        /* console.log (item.totalDelegations, item.totalDelegations == 0, typeof item.totalDelegations) */
                         if (item.totalDelegations == 0) {
                           this.router.navigateByUrl('profile')
                         } else {

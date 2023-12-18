@@ -121,17 +121,19 @@ const routes: Routes = [
   },
   {
     path: 'global-questionnaire',
+    title: 'ILS-Auditorías ambientales',
     component: GlobalRegulationQuestionnaireComponent,
     canActivate: [AuthGuard],
   },
   {
     path: 'global-questionnaire-list',
+    title: 'ILS-Auditorías ambientales',
     component: GlobalRegulationQuestionnaireListComponent,
     canActivate: [AuthGuard],
   },
   {
     path: 'questionnaire-detail/:id',
-    title: 'Detalle del cuestionario',
+    title: 'ILS-Auditorías ambientales',
     component: GlobalRegulationQuestionnaireAnswerComponent,
     canActivate: [AuthGuard],
   },

@@ -19,7 +19,7 @@ import { AnswerDTO } from 'src/app/Models/answer.dto';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { MatRadioButton, MatRadioChange } from '@angular/material/radio';
 import { MatCheckboxChange } from '@angular/material/checkbox';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { DelegationService } from 'src/app/Services/delegation.service';
 import { DelegationDTO } from 'src/app/Models/delegation.dto';
 import { SharedService } from 'src/app/Services/shared.service';
@@ -169,10 +169,12 @@ constructor (
   private jwtHelper: JwtHelperService,
   private enviromentalAuditService: EnvironmentalAuditsService,
   public dialog: MatDialog,
+  private route: ActivatedRoute,
   private router: Router,
   private delegationService: DelegationService,
   private sharedService: SharedService,
 ) {
+  const questionnaireID = this.route.snapshot.paramMap.get('id');
   this.userId = this.jwtHelper.decodeToken().id_ils
   this.vectorId = new UntypedFormControl();
   this.vectorName = new UntypedFormControl();

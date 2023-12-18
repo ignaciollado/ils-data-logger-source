@@ -36,6 +36,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 export class GlobalRegulationQuestionnaireComponent {
 
 private userId: string | null
+private questionnaireID: number | null
 questionnaireVectorState: vectorStateDetail [] = []
 vectorStateItem: vectorStateDetail = {vectorId: 0, vectorName: '', vectorGeneralRegulation: [], totalQuestions: 0, totalAnswers: 0}
 vectorId: UntypedFormControl
@@ -174,7 +175,7 @@ constructor (
   private delegationService: DelegationService,
   private sharedService: SharedService,
 ) {
-  const questionnaireID = this.route.snapshot.paramMap.get('id');
+  this.questionnaireID = +this.route.snapshot.paramMap.get('id');
   this.userId = this.jwtHelper.decodeToken().id_ils
   this.vectorId = new UntypedFormControl();
   this.vectorName = new UntypedFormControl();
@@ -202,6 +203,9 @@ private loadQuestions(): void {
          this.vectorStateItem = {vectorId: +vector.vectorId, vectorName:  vector.vectorName, vectorGeneralRegulation: vector.vectorGeneralRegulation, totalQuestions: vector.questions.length, totalAnswers: 0}
           this.questionnaireVectorState = [...this.questionnaireVectorState, this.vectorStateItem]
       })
+      if (this.questionnaireID) {
+        this.loadQuestionnaireResult(this.questionnaireID)
+      }
     })
 }
 
@@ -218,6 +222,14 @@ private loadDelegations(userId: string): void {
       }
     );
   }
+}
+
+loadQuestionnaireResult( questionnaireID: number){
+  this.enviromentalAuditService.getQuestionnaireByID( questionnaireID )
+    .subscribe( (answers: AnswerDTO[]) => {
+      console.log (answers)
+    }
+    )
 }
 
 openDialog(enterAnimationDuration: string, exitAnimationDuration: string, questionText: string, toolTipText: string, doc1: string, doc2: string): void {

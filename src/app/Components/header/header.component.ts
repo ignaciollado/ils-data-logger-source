@@ -55,7 +55,6 @@ export class HeaderComponent implements OnInit {
 
   dashboard(): void {
     this.router.navigateByUrl('dashboard');
-    document.getElementById("offcanvasWithBothOptions").classList.remove("show")
   }
 
   home(): void {
@@ -63,9 +62,8 @@ export class HeaderComponent implements OnInit {
   }
 
   login(): void {
-    const headerInfo: HeaderMenus = { showAuthSection: true, showNoAuthSection: false, };
+    const headerInfo: HeaderMenus = { showAuthSection: false, showNoAuthSection: true, };
     this.headerMenusService.headerManagement.next(headerInfo);
-    document.getElementById("offcanvasWithBothOptions").classList.remove("show")
     this.router.navigateByUrl('login');
   }
 

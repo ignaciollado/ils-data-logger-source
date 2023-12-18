@@ -10,7 +10,7 @@
       </mat-card-title>
       <mat-card-subtitle>
         <div>Ref. <strong>{{questionnaire.companyQuestionnaireId}}</strong></div>
-        <span>{{"dateAnswered" | translate}}: {{questionnaire.updated_at| date :'short'}}</span>
+        <span *ngIf="questionaireFinalState[j].questionnaireCompleted">{{"dateAnswered" | translate}}: {{questionnaire.updated_at| date :'short'}}</span>
         <div *ngIf="!questionaireFinalState[j].questionnaireCompleted" class="state not-completed">NO FINALIZADO</div>
       </mat-card-subtitle>
     </mat-card-header>

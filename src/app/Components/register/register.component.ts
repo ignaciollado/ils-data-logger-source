@@ -115,7 +115,7 @@ export class RegisterComponent implements OnInit {
 
           if (responseOK) {
             this.registerForm.reset();
-            this.router.navigateByUrl('/login/');
+            this.router.navigateByUrl('/login');
           }
         })
       )

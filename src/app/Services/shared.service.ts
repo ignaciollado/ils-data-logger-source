@@ -30,7 +30,7 @@ export class SharedService {
         toastMsg.className = 'show requestKo';
         if (error?.messageDetail) {
           toastMsg.textContent =
-            'Error on form submitted, show logs. Message: ' +
+            'Error on data submitted, show logs. Message: ' +
             error?.message +
             '. Message detail: ' +
             error?.messageDetail +
@@ -38,7 +38,7 @@ export class SharedService {
             error?.statusCode;
         } else {
           toastMsg.textContent =
-            'Error on form submitted, show logs. Message: ' +
+            'Error on data submitted, show logs. Message: ' +
             error?.message +
             '. Status code: ' +
             error?.statusCode;

@@ -12,7 +12,7 @@ import { HeaderMenusService } from 'src/app/Services/header-menus.service';
 export class HeaderComponent implements OnInit {
   showAuthSection: boolean
   showNoAuthSection: boolean
-  isAdmin: boolean = false
+  isCompany: boolean = false
   userId: string = ""
   access_token: string | null
 
@@ -53,8 +53,8 @@ export class HeaderComponent implements OnInit {
       }
     );
       this.userId =  this.jwtHelper.decodeToken().id_ils + " " + this.jwtHelper.decodeToken().name
-      if (this.jwtHelper.decodeToken().role === 'admin') {
-        this.isAdmin = true
+      if (this.jwtHelper.decodeToken().role === 'company') {
+        this.isCompany = true
       }
 
   }

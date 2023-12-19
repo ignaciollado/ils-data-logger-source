@@ -33,6 +33,7 @@ export class LoginComponent implements OnInit {
   value = 'Clear me';
   isElevated = true;
   hide = true;
+  isAdmin: boolean = false
   isLoggedIn: boolean = false;
   isLoginFailed: boolean = false;
   errorMessage: string = '';
@@ -93,7 +94,6 @@ export class LoginComponent implements OnInit {
   loginObservable() {
     let responseOK: boolean = false
     let errorResponse: any
-    let totalDelegations: number
     this.loginUser.email = this.email.value
     this.loginUser.password = this.password.value
 
@@ -111,32 +111,35 @@ export class LoginComponent implements OnInit {
           })
             )
         .subscribe(
-                (item:AuthToken ) => {
-                    console.log ("Welcome to the ILS datalogger.industrialocalsostenible.com created by IDI!!")
-                    responseOK = true;
-                    errorResponse = "login correct"
-                    this.loginUser.user_id = item.user_id /* this.jwtHelper.decodeToken().id_ils */
-                    this.loginUser.access_token = item.access_token
-                    sessionStorage.setItem('user_id', this.loginUser.user_id)
-                    sessionStorage.setItem('access_token', this.loginUser.access_token)
-                    this.sharedService.managementToast( 'loginFeedback', responseOK, errorResponse )
+          (item:AuthToken ) => {
+            console.log ("Welcome to the ILS datalogger.industrialocalsostenible.com created by IDI!!")
+            responseOK = true;
+            errorResponse = "login correct"
+            this.loginUser.user_id = item.user_id /* this.jwtHelper.decodeToken().id_ils */
+            this.loginUser.access_token = item.access_token
+            sessionStorage.setItem('user_id', this.loginUser.user_id)
+            sessionStorage.setItem('access_token', this.loginUser.access_token)
+            this.sharedService.managementToast( 'loginFeedback', responseOK, errorResponse )
 
-                    if (responseOK) {
+            if (this.jwtHelper.decodeToken().role === 'admin') {
+              this.isAdmin = true
+            }
+
+            if (responseOK) {
                       
-                      const headerInfo: HeaderMenus = { showAuthSection: true, showNoAuthSection: false, };
-                      this.router.navigateByUrl('profile');
-                      this.headerMenusService.headerManagement.next(headerInfo);
-                      this.delegationService.getTotalDelegationsByCompany(this.jwtHelper.decodeToken().id_ils)
-                      .subscribe( item => {
-                        /* console.log (item.totalDelegations, item.totalDelegations == 0, typeof item.totalDelegations) */
-                        if (item.totalDelegations == 0) {
-                          this.router.navigateByUrl('profile')
-                        } else {
-                          this.router.navigateByUrl('user/consumption')
-                        }
-                      } )
+              const headerInfo: HeaderMenus = { showAuthSection: true, showNoAuthSection: false, };
+              this.router.navigateByUrl('profile');
+              this.headerMenusService.headerManagement.next(headerInfo);
+              this.delegationService.getTotalDelegationsByCompany(this.jwtHelper.decodeToken().id_ils)
+                .subscribe( item => {
+                  if (item.totalDelegations == 0) {
+                    this.router.navigateByUrl('profile')
+                  } else {
+                    this.router.navigateByUrl('user/consumption')
+                  }
+                } )
 
-                    }
+            }
                 },
                 (error: any) => {
                   responseOK = false;

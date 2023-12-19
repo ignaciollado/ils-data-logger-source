@@ -35,11 +35,11 @@
     </div>
   </mat-menu>
 
-  <mat-toolbar>
+  <mat-toolbar color="primary">
     <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="menu ils data logger" [ngClass]="'not-has-to-be-shown'">
       <i class="fa-solid fa-bars fa-xl"></i>
     </button>
-    <div class="app-state">Current user: {{userId}}</div>
+    <div class="app-state">{{'currentUser' | translate}}: {{userId}}</div>
   </mat-toolbar>
   
 </div>

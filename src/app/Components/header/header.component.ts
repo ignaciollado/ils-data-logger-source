@@ -52,7 +52,7 @@ export class HeaderComponent implements OnInit {
         }
       }
     );
-      this.userId =  this.jwtHelper.decodeToken().id_ils
+      this.userId =  this.jwtHelper.decodeToken().id_ils + " " + this.jwtHelper.decodeToken().name
       if (this.jwtHelper.decodeToken().role === 'admin') {
         this.isAdmin = true
       }

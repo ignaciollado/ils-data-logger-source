@@ -12,6 +12,8 @@ $request = json_decode($postedData, TRUE);
 
 $companyId = $_GET['companyId'];
 $completed = $_GET['completed'];
+$questionnaireSummary = $_GET['questionnaireSummary'];
+
 
 $companyQuestionnaireId = time();
 
@@ -25,14 +27,17 @@ $userAnswers .= $request['4'];
 $userAnswers .= $request['5'];
 
 
-$sql = "INSERT INTO globalQuestionaire(companyId, companyQuestionnaireId, companyDelegationId, userAnswers, completed) 
+$sql = "INSERT INTO globalQuestionaire(companyId, companyQuestionnaireId, companyDelegationId, userAnswers, completed, questionnaireSummary) 
 VALUES ("
 .$companyId.","
 .$companyQuestionnaireId.","
 .$companyDelegationId.",'"
 .$userAnswers."','"
-.$completed
+.$completed."','"
+.$questionnaireSummary
 ."')";
+
+echo $sql;
 
 mysqli_free_result($result);
 

@@ -18,7 +18,7 @@
       <!-- {{hide ? 'visibility_off' : 'visibility'}} -->
       <section>
         <mat-form-field [style.width.px]=327>
-          <mat-label>{{'Password' | translate}}</mat-label>
+          <mat-label>{{'password' | translate}}</mat-label>
           <input matInput [type]="hide ? 'password' : 'text'" [formControl]="password" required />
           <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
             <i class="fa-solid fa-eye fa-xs" style="color: #365446;"></i>

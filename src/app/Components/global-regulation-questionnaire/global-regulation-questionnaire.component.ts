@@ -52,6 +52,7 @@ panelOpenState: boolean = true;
 vectorProgress: number[] = [0,0,0,0,0,0,0]
 totalVectorQuestions: number[] = []
 totalVectorAnswers: number[] = [0]
+questionnaireSummary: string[] = []
 
 delegations!: DelegationDTO[];
 
@@ -704,11 +705,6 @@ this.questionnaireVectorState.map(item=> {
   }
 })  
 
-this.vector_1_Question1.forEach((node: HTMLInputElement) => {
-  console.log (node.id, node.checked)
-})
-
-
 }
 
 saveQuestionForm() {
@@ -1098,7 +1094,25 @@ resultsQuestionnaire.push(resultsVector5.innerHTML)
 resultsVector6.innerText = resultsVector6.innerText.replaceAll(",,",",")
 resultsQuestionnaire.push(resultsVector6.innerHTML)
 
-this.enviromentalAuditService.createGlobalAnswer(resultsQuestionnaire, this.userId, this.delegation.value, this.questionnaireVectorState)
+this.vector_1_Question1.forEach((node: HTMLInputElement) => {
+  console.log (node.id, node.checked)
+  this.questionnaireSummary.push( node.id+"#"+node.checked)
+})
+this.vector_1_Question2.forEach((node: HTMLInputElement) => {
+  console.log (node.id, node.checked)
+  this.questionnaireSummary.push( node.id+"#"+node.checked)
+})
+this.vector_1_Question3.forEach((node: HTMLInputElement) => {
+  console.log (node.id, node.checked)
+  this.questionnaireSummary.push( node.id+"#"+node.checked)
+})
+this.vector_1_Question4.forEach((node: HTMLInputElement) => {
+  console.log (node.id, node.checked)
+  this.questionnaireSummary.push( node.id+"#"+node.checked)
+})
+
+
+this.enviromentalAuditService.createGlobalAnswer(resultsQuestionnaire, this.userId, this.delegation.value, this.questionnaireVectorState, this.questionnaireSummary)
   .subscribe((item:any) => {
     this.router.navigateByUrl('/questionnaire-detail/'+`${item.last_id}`)
   }

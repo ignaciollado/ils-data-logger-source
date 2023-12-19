@@ -10,10 +10,11 @@ import { HeaderMenusService } from 'src/app/Services/header-menus.service';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
-  showAuthSection: boolean;
-  showNoAuthSection: boolean;
-  isAdmin: boolean = false;
-  access_token: string | null;
+  showAuthSection: boolean
+  showNoAuthSection: boolean
+  isAdmin: boolean = false
+  userId: string = ""
+  access_token: string | null
 
   constructor(
     private router: Router,
@@ -51,7 +52,7 @@ export class HeaderComponent implements OnInit {
         }
       }
     );
-
+      this.userId =  this.jwtHelper.decodeToken().id_ils
       if (this.jwtHelper.decodeToken().role === 'admin') {
         this.isAdmin = true
       }

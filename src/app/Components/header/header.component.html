@@ -35,30 +35,13 @@
     </div>
   </mat-menu>
 
-  <mat-toolbar color="primary" class="toolbar">
+  <mat-toolbar>
     <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="menu ils data logger" [ngClass]="'not-has-to-be-shown'">
       <i class="fa-solid fa-bars fa-xl"></i>
     </button>
-    <!-- <span [ngClass]="'has-to-be-shown'">ILS</span>
-    <button mat-button (click)="dashboard()" [ngClass]="'has-to-be-shown'">{{'sustainabilityIndicatorsCharts' | translate}}</button>
-    <button mat-button (click)="adminConsumptions()" [ngClass]="'has-to-be-shown'">{{'activityData' | translate}}</button>
-    <button mat-button (click)="adminRatios()" [ngClass]="'has-to-be-shown'">{{'productionData' | translate}}</button>
-    <button mat-button (click)="myObjectives()" [ngClass]="'has-to-be-shown'">{{'myObjectives' | translate}}</button>
-    <button mat-button (click)="profile()" [ngClass]="'has-to-be-shown'">{{'profile' | translate}}</button>
-    <button mat-button [matMenuTriggerFor]="adminMenu" [ngClass]="'has-to-be-shown'">Admin</button>
-    <mat-menu #adminMenu="matMenu" yPosition="above">
-      <button mat-button (click)="adminAspects()" [ngClass]="'has-to-be-shown'">{{'aspects' | translate}}</button>
-      <button mat-button (click)="adminEnergies()" [ngClass]="'has-to-be-shown'">{{'energies' | translate}}</button>
-      <button mat-button (click)="createUser()" [ngClass]="'has-to-be-shown'"><i class="fa-solid fa-user"></i>{{'createUser' | translate}}</button>
-    </mat-menu>
-    <button mat-button [matMenuTriggerFor]="requisitosLegalesMenu" [ngClass]="'has-to-be-shown'">{{"requisitosLegales" | translate}}</button>
-    <mat-menu #requisitosLegalesMenu="matMenu" yPosition="above">
-      <button mat-menu-item (click)="globalQuestionnaire()" [ngClass]="'has-to-be-shown'"><i class="fa-solid fa-square-poll-horizontal"></i> {{'globalQuestionnaire' | translate}}</button>
-      <button mat-menu-item (click)="globalQuestionnaireList()" [ngClass]="'has-to-be-shown'"><i class="fa-solid fa-list"></i> {{'answeredQuestionnairesList' | translate}}</button>
-    </mat-menu>
-
-    <button mat-button (click)="logout()" [ngClass]="'has-to-be-shown'">{{'logout' | translate}}</button> -->
+    <div class="app-state">Current user: {{userId}}</div>
   </mat-toolbar>
+  
 </div>
 
 

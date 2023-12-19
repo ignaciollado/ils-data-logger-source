@@ -3,8 +3,6 @@
  <div class="questions-container">
   <form *ngIf="questionList" [formGroup]="questionListForm"
   (ngSubmit)="saveQuestionForm()">
-  
-
                 <section>
                   <mat-form-field [style.width.px]=425>
                     <mat-label>{{'selectDelegation' | translate}}</mat-label>

@@ -132,10 +132,14 @@ export class LoginComponent implements OnInit {
               this.headerMenusService.headerManagement.next(headerInfo);
               this.delegationService.getTotalDelegationsByCompany(this.jwtHelper.decodeToken().id_ils)
                 .subscribe( item => {
-                  if (item.totalDelegations == 0) {
+                  if (item.totalDelegations === 0) {
                     this.router.navigateByUrl('profile')
                   } else {
-                    this.router.navigateByUrl('user/consumption')
+                    if (this.jwtHelper.decodeToken().role === 'company') {
+                      this.router.navigateByUrl('/global-questionnaire')
+                    } else {
+                      this.router.navigateByUrl('user/consumption')
+                    }
                   }
                 } )
 

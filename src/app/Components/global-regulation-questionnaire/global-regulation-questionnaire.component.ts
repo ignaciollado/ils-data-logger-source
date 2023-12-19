@@ -227,9 +227,10 @@ private loadDelegations(userId: string): void {
 loadQuestionnaireResult( questionnaireID: number){
   this.enviromentalAuditService.getQuestionnaireByID( questionnaireID )
     .subscribe((answers: AnswerDTO[]) => {
-      console.log (answers)
-       answers.map ((answers:any)=>{
-        console.log (JSON.parse(answers.userAnswers))
+      console.log ("answers", answers,)
+       answers.map ((answersItem:any)=>{
+        console.log ("answersItem.userAnswers", answersItem.companyDelegationId, JSON.parse(answersItem.userAnswers))
+        this.delegation.setValue(answersItem.companyDelegationId)
       })
     }
     )
@@ -703,11 +704,11 @@ this.questionnaireVectorState.map(item=> {
   }
 })  
 
-/*   let progressPanel = document.getElementById('progress-panel')
+this.vector_1_Question1.forEach((node: HTMLInputElement) => {
+  console.log (node.id, node.checked)
+})
 
-  progressPanel.innerHTML = JSON.stringify(this.questionnaireVectorState)
-   */
-  //progressPanel.classList.remove('no-display')
+
 }
 
 saveQuestionForm() {

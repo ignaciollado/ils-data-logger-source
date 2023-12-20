@@ -1096,23 +1096,25 @@ resultsQuestionnaire.push(resultsVector6.innerHTML)
 
 this.vector_1_Question1.forEach((node: HTMLInputElement) => {
   console.log (node.id, node.checked)
-  this.questionnaireSummary.push( node.id+"#"+node.checked)
+  this.questionnaireSummary.push(node.id+"#"+node.checked)
 })
 this.vector_1_Question2.forEach((node: HTMLInputElement) => {
   console.log (node.id, node.checked)
-  this.questionnaireSummary.push( node.id+"#"+node.checked)
+  this.questionnaireSummary.push(node.id+"#"+node.checked)
 })
 this.vector_1_Question3.forEach((node: HTMLInputElement) => {
   console.log (node.id, node.checked)
-  this.questionnaireSummary.push( node.id+"#"+node.checked)
+  this.questionnaireSummary.push(node.id+"#"+node.checked)
 })
 this.vector_1_Question4.forEach((node: HTMLInputElement) => {
   console.log (node.id, node.checked)
-  this.questionnaireSummary.push( node.id+"#"+node.checked)
+  this.questionnaireSummary.push(node.id+"#"+node.checked)
 })
 
+console.log (this.questionnaireSummary)
+resultsQuestionnaire.push (this.questionnaireSummary.toString())
 
-this.enviromentalAuditService.createGlobalAnswer(resultsQuestionnaire, this.userId, this.delegation.value, this.questionnaireVectorState, this.questionnaireSummary)
+this.enviromentalAuditService.createGlobalAnswer(resultsQuestionnaire, this.userId, this.delegation.value, this.questionnaireVectorState)
   .subscribe((item:any) => {
     this.router.navigateByUrl('/questionnaire-detail/'+`${item.last_id}`)
   }

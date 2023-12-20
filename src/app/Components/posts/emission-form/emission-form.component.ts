@@ -124,7 +124,7 @@ export class EmissionFormComponent {
     this.delegation = new UntypedFormControl('', [ Validators.required ]);
     this.companyId = new UntypedFormControl(this.userId, [ Validators.required ]);
     this.yearEmission = new UntypedFormControl('', [ Validators.required ]);
-    this.quantityEmission = new UntypedFormControl('', [ Validators.required, Validators.min(1)]);
+    this.quantityEmission = new UntypedFormControl({value:'', disabled: true}, [ Validators.required, Validators.min(1)]);
     this.scopeone = new UntypedFormControl({value: '', disabled: false}, [ Validators.required ]);
     this.scopetwo = new UntypedFormControl({value: '', disabled: false}, [ Validators.required ]);
 
@@ -240,8 +240,8 @@ export class EmissionFormComponent {
     console.log (scopeTwo[colKey].split("#"), e.explicitOriginalTarget.value, tempScopeTwo[0], tempScopeTwo[1], tempScopeTwo[2] )
   }
 
-  public calculateScopeTwo() {
-    this.scopetwo.setValue( this.quantityEmission.value - this.scopeone.value )
+  public calculatetotalQuantity() {
+    this.quantityEmission.setValue( this.scopetwo.value + this.scopeone.value )
   }
 
 /*   deleteEmissionConsumption(consumptionId: number) {

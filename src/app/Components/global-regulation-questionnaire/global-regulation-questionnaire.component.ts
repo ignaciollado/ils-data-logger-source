@@ -1095,19 +1095,110 @@ resultsVector6.innerText = resultsVector6.innerText.replaceAll(",,",",")
 resultsQuestionnaire.push(resultsVector6.innerHTML)
 
 this.vector_1_Question1.forEach((node: HTMLInputElement) => {
-  console.log (node.id, node.checked)
   this.questionnaireSummary.push(node.id+"#"+node.checked)
 })
 this.vector_1_Question2.forEach((node: HTMLInputElement) => {
-  console.log (node.id, node.checked)
   this.questionnaireSummary.push(node.id+"#"+node.checked)
 })
 this.vector_1_Question3.forEach((node: HTMLInputElement) => {
-  console.log (node.id, node.checked)
   this.questionnaireSummary.push(node.id+"#"+node.checked)
 })
 this.vector_1_Question4.forEach((node: HTMLInputElement) => {
-  console.log (node.id, node.checked)
+  this.questionnaireSummary.push(node.id+"#"+node.checked)
+})
+
+this.vector_2_Question1.forEach((node: HTMLInputElement) => {
+  this.questionnaireSummary.push(node.id+"#"+node.checked)
+})
+this.vector_2_Question2.forEach((node: HTMLInputElement) => {
+  this.questionnaireSummary.push(node.id+"#"+node.checked)
+})
+this.vector_2_Question3.forEach((node: HTMLInputElement) => {
+  this.questionnaireSummary.push(node.id+"#"+node.checked)
+})
+this.vector_2_Question4.forEach((node: HTMLInputElement) => {
+  this.questionnaireSummary.push(node.id+"#"+node.checked)
+})
+this.vector_2_Question5.forEach((node: HTMLInputElement) => {
+  this.questionnaireSummary.push(node.id+"#"+node.checked)
+})
+this.vector_2_Question6.forEach((node: HTMLInputElement) => {
+  this.questionnaireSummary.push(node.id+"#"+node.checked)
+})
+this.vector_2_Question7.forEach((node: HTMLInputElement) => {
+  this.questionnaireSummary.push(node.id+"#"+node.checked)
+})
+this.vector_2_Question8.forEach((node: HTMLInputElement) => {
+  this.questionnaireSummary.push(node.id+"#"+node.checked)
+})
+this.vector_2_Question9.forEach((node: HTMLInputElement) => {
+  this.questionnaireSummary.push(node.id+"#"+node.checked)
+})
+this.vector_2_Question10.forEach((node: HTMLInputElement) => {
+  this.questionnaireSummary.push(node.id+"#"+node.checked)
+})
+this.vector_2_Question11.forEach((node: HTMLInputElement) => {
+  this.questionnaireSummary.push(node.id+"#"+node.checked)
+})
+
+this.vector_3_Question1.forEach((node: HTMLInputElement) => {
+  this.questionnaireSummary.push(node.id+"#"+node.checked)
+})
+this.vector_3_Question2.forEach((node: HTMLInputElement) => {
+  this.questionnaireSummary.push(node.id+"#"+node.checked)
+})
+this.vector_3_Question3.forEach((node: HTMLInputElement) => {
+  this.questionnaireSummary.push(node.id+"#"+node.checked)
+})
+
+this.vector_4_Question1.forEach((node: HTMLInputElement) => {
+  this.questionnaireSummary.push(node.id+"#"+node.checked)
+})
+this.vector_4_Question2.forEach((node: HTMLInputElement) => {
+  this.questionnaireSummary.push(node.id+"#"+node.checked)
+})
+this.vector_4_Question3.forEach((node: HTMLInputElement) => {
+  this.questionnaireSummary.push(node.id+"#"+node.checked)
+})
+this.vector_4_Question4.forEach((node: HTMLInputElement) => {
+  this.questionnaireSummary.push(node.id+"#"+node.checked)
+})
+this.vector_4_Question5.forEach((node: HTMLInputElement) => {
+  this.questionnaireSummary.push(node.id+"#"+node.checked)
+})
+this.vector_4_Question6.forEach((node: HTMLInputElement) => {
+  this.questionnaireSummary.push(node.id+"#"+node.checked)
+})
+this.vector_4_Question7.forEach((node: HTMLInputElement) => {
+  this.questionnaireSummary.push(node.id+"#"+node.checked)
+})
+
+this.vector_5_Question1.forEach((node: HTMLInputElement) => {
+  this.questionnaireSummary.push(node.id+"#"+node.checked)
+})
+this.vector_5_Question2.forEach((node: HTMLInputElement) => {
+  this.questionnaireSummary.push(node.id+"#"+node.checked)
+})
+this.vector_5_Question3.forEach((node: HTMLInputElement) => {
+  this.questionnaireSummary.push(node.id+"#"+node.checked)
+})
+this.vector_5_Question4.forEach((node: HTMLInputElement) => {
+  this.questionnaireSummary.push(node.id+"#"+node.checked)
+})
+this.vector_5_Question5.forEach((node: HTMLInputElement) => {
+  this.questionnaireSummary.push(node.id+"#"+node.checked)
+})
+
+this.vector_6_Question1.forEach((node: HTMLInputElement) => {
+  this.questionnaireSummary.push(node.id+"#"+node.checked)
+})
+this.vector_6_Question2.forEach((node: HTMLInputElement) => {
+  this.questionnaireSummary.push(node.id+"#"+node.checked)
+})
+this.vector_6_Question3.forEach((node: HTMLInputElement) => {
+  this.questionnaireSummary.push(node.id+"#"+node.checked)
+})
+this.vector_6_Question4.forEach((node: HTMLInputElement) => {
   this.questionnaireSummary.push(node.id+"#"+node.checked)
 })
 

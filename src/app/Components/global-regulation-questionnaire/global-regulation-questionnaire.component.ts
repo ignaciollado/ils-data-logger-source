@@ -234,9 +234,9 @@ loadQuestionnaireResult( questionnaireID: number){
           (element:any) => {
 
             if (element.split("#")[1]==="true") {
-              console.log(element.split("#")[0], element.split("#")[1])
+              console.log(element.split("#")[0], element.split("#")[1],  document.getElementById(element.split("#")[0].innerText))
               document.getElementById(element.split("#")[0]).setAttribute("checked", "true")
-              document.getElementById(element.split("#")[0]).setAttribute("title", "true")
+              document.getElementById(element.split("#")[0]).setAttribute("color", "#ff00ff")
 
             }
 

@@ -228,9 +228,21 @@ private loadDelegations(userId: string): void {
 loadQuestionnaireResult( questionnaireID: number){
   this.enviromentalAuditService.getQuestionnaireByID( questionnaireID )
     .subscribe((answers: AnswerDTO[]) => {
-      console.log ("answers", answers,)
+      /* console.log ("answers", answers,) */
        answers.map ((answersItem:any)=>{
-        console.log ("answersItem.userAnswers", answersItem.companyDelegationId, JSON.parse(answersItem.userAnswers))
+        answersItem.questionnaireSummary.split(",").forEach(
+          (element:any) => {
+
+            if (element.split("#")[1]==="true") {
+              console.log(element.split("#")[0], element.split("#")[1])
+              document.getElementById(element.split("#")[0]).setAttribute("checked", "true")
+              document.getElementById(element.split("#")[0]).setAttribute("title", "true")
+
+            }
+
+          }
+        )
+
         this.delegation.setValue(answersItem.companyDelegationId)
       })
     }
@@ -1094,6 +1106,10 @@ resultsQuestionnaire.push(resultsVector5.innerHTML)
 resultsVector6.innerText = resultsVector6.innerText.replaceAll(",,",",")
 resultsQuestionnaire.push(resultsVector6.innerHTML)
 
+/** aquí guardo un string con todos los inputs del formulario y si están o no checked para, luego, 
+ * pintarlo si hiciera falta
+** Hará falta cuando se deje el cuestionario sin completar al 100%
+*/
 this.vector_1_Question1.forEach((node: HTMLInputElement) => {
   this.questionnaireSummary.push(node.id+"#"+node.checked)
 })
@@ -1202,7 +1218,6 @@ this.vector_6_Question4.forEach((node: HTMLInputElement) => {
   this.questionnaireSummary.push(node.id+"#"+node.checked)
 })
 
-console.log (this.questionnaireSummary)
 resultsQuestionnaire.push (this.questionnaireSummary.toString())
 
 this.enviromentalAuditService.createGlobalAnswer(resultsQuestionnaire, this.userId, this.delegation.value, this.questionnaireVectorState)

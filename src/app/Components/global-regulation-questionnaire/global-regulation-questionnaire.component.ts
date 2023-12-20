@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef } from '@angular/core';
 import { EnvironmentalAuditsService } from 'src/app/Services/environmental-audits.service';
 import { Question, QuestionDTO, vectorStateDetail } from 'src/app/Models/question.dto';
 import {
@@ -175,6 +175,7 @@ constructor (
   private router: Router,
   private delegationService: DelegationService,
   private sharedService: SharedService,
+  private elRef:ElementRef
 ) {
   this.questionnaireID = +this.route.snapshot.paramMap.get('id');
   this.userId = this.jwtHelper.decodeToken().id_ils
@@ -228,16 +229,20 @@ private loadDelegations(userId: string): void {
 loadQuestionnaireResult( questionnaireID: number){
   this.enviromentalAuditService.getQuestionnaireByID( questionnaireID )
     .subscribe((answers: AnswerDTO[]) => {
-      /* console.log ("answers", answers,) */
        answers.map ((answersItem:any)=>{
         answersItem.questionnaireSummary.split(",").forEach(
           (element:any) => {
 
             if (element.split("#")[1]==="true") {
-              console.log(element.split("#")[0], element.split("#")[1],  document.getElementById(element.split("#")[0]).innerText)
-              document.getElementById(element.split("#")[0]).setAttribute("checked", "true")
-              document.getElementById(element.split("#")[0]).setAttribute("color", "#ff00ff")
+              console.log(element.split("#")[0], element.split("#")[1], document.getElementById(element.split("#")[0]).innerText)
+              document.getElementById(element.split("#")[0]).setAttribute("[disabled]", "true")
+              document.getElementById(element.split("#")[0]).setAttribute("[checked]", "true")
+              document.getElementById(element.split("#")[0]).setAttribute("title", "this element is disabled")
 
+              document.getElementById("vector_1_Question1_Answer3").setAttribute("[disabled]", "true")
+              document.getElementById("vector_1_Question1_Answer3").setAttribute("[checked]", "true")
+              document.getElementById("vector_1_Question1_Answer3").setAttribute("title", "this element is disabled") 
+              
             }
 
           }

@@ -1,31 +1,23 @@
 import { Component, ElementRef } from '@angular/core';
 import { EnvironmentalAuditsService } from 'src/app/Services/environmental-audits.service';
-import { Question, QuestionDTO, vectorStateDetail } from 'src/app/Models/question.dto';
+import { QuestionDTO, vectorStateDetail } from 'src/app/Models/question.dto';
 import {
     UntypedFormControl,
     FormGroup, FormBuilder, Validators 
 } from '@angular/forms';
 import {
   MatDialog,
-  MatDialogRef,
-  MatDialogActions,
-  MatDialogClose,
-  MatDialogTitle,
-  MatDialogContent, MatDialogConfig
+  MatDialogConfig
 } from '@angular/material/dialog';
 
 import { ConfirmDialogComponent } from 'src/app/confirm-dialog/confirm-dialog.component'
 import { AnswerDTO } from 'src/app/Models/answer.dto';
 import { JwtHelperService } from '@auth0/angular-jwt';
-import { MatRadioButton, MatRadioChange } from '@angular/material/radio';
-import { MatCheckboxChange } from '@angular/material/checkbox';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DelegationService } from 'src/app/Services/delegation.service';
 import { DelegationDTO } from 'src/app/Models/delegation.dto';
 import { SharedService } from 'src/app/Services/shared.service';
 import { HttpErrorResponse } from '@angular/common/http';
-
-
 
 @Component({
   selector: 'app-global-regulation-questionnaire',
@@ -36,7 +28,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 export class GlobalRegulationQuestionnaireComponent {
 
 private userId: string | null
-private questionnaireID: number | null
+questionnaireID: number | null
 questionnaireVectorState: vectorStateDetail [] = []
 vectorStateItem: vectorStateDetail = {vectorId: 0, vectorName: '', vectorGeneralRegulation: [], totalQuestions: 0, totalAnswers: 0}
 vectorId: UntypedFormControl
@@ -175,7 +167,6 @@ constructor (
   private router: Router,
   private delegationService: DelegationService,
   private sharedService: SharedService,
-  private elRef:ElementRef
 ) {
   this.questionnaireID = +this.route.snapshot.paramMap.get('id');
   this.userId = this.jwtHelper.decodeToken().id_ils
@@ -234,15 +225,14 @@ loadQuestionnaireResult( questionnaireID: number){
           (element:any) => {
 
             if (element.split("#")[1]==="true") {
-              console.log(element.split("#")[0], element.split("#")[1], document.getElementById(element.split("#")[0]).innerText)
-              document.getElementById(element.split("#")[0]).setAttribute("[disabled]", "true")
-              document.getElementById(element.split("#")[0]).setAttribute("[checked]", "true")
-              document.getElementById(element.split("#")[0]).setAttribute("title", "this element is disabled")
-
-              document.getElementById("vector_1_Question1_Answer3").setAttribute("[disabled]", "true")
-              document.getElementById("vector_1_Question1_Answer3").setAttribute("[checked]", "true")
-              document.getElementById("vector_1_Question1_Answer3").setAttribute("title", "this element is disabled") 
+              console.log(element.split("#")[0], element.split("#")[1], element.split("#")[0].replaceAll("-input",""))
+              document.getElementById(element.split("#")[0].replaceAll("-input","")).setAttribute("disabled", "true")
+              document.getElementById(element.split("#")[0].replaceAll("-input","")).setAttribute("checked", "true")
+              document.getElementById(element.split("#")[0].replaceAll("-input","")).setAttribute("title", "this element is xxxxxxxxx")
               
+            /*   document.getElementById(element.split("#")[0].replaceAll("-input","")).setAttribute("disabled", "true")
+              document.getElementById(element.split("#")[0].replaceAll("-input","")).setAttribute("checked", "true")
+              document.getElementById(element.split("#")[0].replaceAll("-input","")).setAttribute("title", "this element is yyyyyyyy")  */
             }
 
           }

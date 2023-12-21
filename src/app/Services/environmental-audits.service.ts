@@ -35,9 +35,9 @@ export class EnvironmentalAuditsService {
       .pipe(catchError(this.sharedService.handleError));
   }
 
-  updateGlobalAnswer(answerId: string, answer: string, regulation: string[]): Observable<QuestionDTO> {
+  updateGlobalAnswer(questionnaireID: number, resultsQuestionnaire: string[]): Observable<QuestionDTO> {
     return this.http
-      .put<QuestionDTO>(`${URL_API}globalAnswerUpdate.php?consumptionId=${answerId}`, answer)
+      .put<QuestionDTO>(`${URL_API}questionnaireAnswerUpdate.php?questionnaireID=${questionnaireID}`, resultsQuestionnaire)
   }
 
   deleteGlobalAnswer(questionnaireId: number) : Observable<deleteResponse> {

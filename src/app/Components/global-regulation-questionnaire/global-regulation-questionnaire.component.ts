@@ -1215,10 +1215,24 @@ this.vector_6_Question4.forEach((node: HTMLInputElement) => {
 
 resultsQuestionnaire.push (this.questionnaireSummary.toString())
 
-this.enviromentalAuditService.createGlobalAnswer(resultsQuestionnaire, this.userId, this.delegation.value, this.questionnaireVectorState)
-  .subscribe((item:any) => {
-    this.router.navigateByUrl('/questionnaire-detail/'+`${item.last_id}`)
+let responseOK: boolean = false
+let errorResponse: any
+
+if (this.questionnaireID) {
+  this.enviromentalAuditService.updateGlobalAnswer( this.questionnaireID, resultsQuestionnaire)
+    .subscribe( (item:any) => {
+      this.router.navigateByUrl('/questionnaire-detail/'+`${item.last_id}`)
+    })
+} else {
+
+  this.enviromentalAuditService.createGlobalAnswer(resultsQuestionnaire, this.userId, this.delegation.value, this.questionnaireVectorState)
+    .subscribe((item: any) => {
+      responseOK = true;
+      this.sharedService.managementToast( 'loginFeedback', responseOK, errorResponse )
+      this.router.navigateByUrl('/questionnaire-detail/'+`${item.last_id}`)
   }
 )
+}
+
 }
 }

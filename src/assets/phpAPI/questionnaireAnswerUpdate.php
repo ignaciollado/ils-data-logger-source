@@ -27,7 +27,7 @@ $userAnswers .= $request['5'];
 $questionnaireSummary .= $request['6'];
 
 
-$sql = "INSERT INTO globalQuestionaire(companyId, companyQuestionnaireId, companyDelegationId, userAnswers, completed, questionnaireSummary) 
+$sql = "UPDATE INTO globalQuestionaire(companyId, companyQuestionnaireId, companyDelegationId, userAnswers, completed, questionnaireSummary) 
 VALUES ("
 .$companyId.","
 .$companyQuestionnaireId.","
@@ -36,6 +36,8 @@ VALUES ("
 .$completed."','"
 .$questionnaireSummary
 ."')";
+
+echo $sql;
 
 mysqli_free_result($result);
 

@@ -33,20 +33,19 @@
                 <mat-radio-group aria-label="Select an answer" name="vector_{{j+1}}_Question{{k+1}}">
                   <ng-container  *ngFor="let item of question.answers; index as m">
                     <input type="radio" *ngIf ="questionnaireID" 
-                    (change) = "saveAnswer($event)" 
-                    value="{{item['regulation']}}"
-                    id="vector_{{j+1}}_Question{{k+1}}_Answer{{m+1}}"
-                    name="vector_{{j+1}}_Question{{k+1}}_Answer{{m+1}}"
+                      (change) = "saveAnswer($event)" 
+                      value = "{{item['regulation']}}"
+                      id = "vector_{{j+1}}_Question{{k+1}}_Answer{{m+1}}"
+                      name = "vector_{{j+1}}_Question{{k+1}}_Answer{{m+1}}"
                     >
-                      <mat-radio-button *ngIf ="!questionnaireID"
-                          (change) = "saveAnswer($event)"
-                          value="{{item['regulation']}}"
-                          id="vector_{{j+1}}_Question{{k+1}}_Answer{{m+1}}"
-                          name="vector_{{j+1}}_Question{{k+1}}_Answer{{m+1}}"
-                          >
-                           
-                      </mat-radio-button> {{item['answerText']}}
-                      <button type="button" *ngIf="item['answerTooltip']" mat-button (click)="openDialog('300ms', '300ms', item['answerText'], item['answerTooltip'], item['answerImage_1'], item['answerImage_2'])"><i class="fa-solid fa-circle-info" style="color: #673ab7;"></i></button>
+                    <mat-radio-button *ngIf ="!questionnaireID"
+                      (change) = "saveAnswer($event)"
+                      value = "{{item['regulation']}}"
+                      id = "vector_{{j+1}}_Question{{k+1}}_Answer{{m+1}}"
+                       name = "vector_{{j+1}}_Question{{k+1}}_Answer{{m+1}}"
+                     >
+                    </mat-radio-button> {{item['answerText']}}
+                    <button type="button" *ngIf="item['answerTooltip']" mat-button (click)="openDialog('300ms', '300ms', item['answerText'], item['answerTooltip'], item['answerImage_1'], item['answerImage_2'])"><i class="fa-solid fa-circle-info" style="color: #673ab7;"></i></button>
                   </ng-container>
                 </mat-radio-group>
               </ng-container>

@@ -223,21 +223,10 @@ loadQuestionnaireResult( questionnaireID: number){
        answers.map ((answersItem:any)=>{
         answersItem.questionnaireSummary.split(",").forEach(
           (element:any) => {
-
-            if (element.split("#")[1]==="true") {
               console.log(element.split("#")[0], element.split("#")[1], element.split("#")[0].replaceAll("-input",""))
-              document.getElementById(element.split("#")[0].replaceAll("-input","")).setAttribute("disabled", "true")
-              document.getElementById(element.split("#")[0].replaceAll("-input","")).setAttribute("checked", "true")
-              document.getElementById(element.split("#")[0].replaceAll("-input","")).setAttribute("title", "this element is xxxxxxxxx")
-              
-            /*   document.getElementById(element.split("#")[0].replaceAll("-input","")).setAttribute("disabled", "true")
-              document.getElementById(element.split("#")[0].replaceAll("-input","")).setAttribute("checked", "true")
-              document.getElementById(element.split("#")[0].replaceAll("-input","")).setAttribute("title", "this element is yyyyyyyy")  */
-            }
-
+              document.getElementById(element.split("#")[0].replaceAll("-input","")).setAttribute("checked", element.split("#")[1])
           }
         )
-
         this.delegation.setValue(answersItem.companyDelegationId)
       })
     }

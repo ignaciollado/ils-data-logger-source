@@ -42,7 +42,8 @@
       </mat-card-content>
     </mat-card>
 </div>
-<span *ngIf="!userQuestionnaires" class="loader">{{'loadingQuestionnaire' | translate}}</span>
+<span *ngIf="!userQuestionnaires" class="loader">{{'loadingQuestionnaire' | translate}} 
+  <mat-progress-bar mode="indeterminate" *ngIf="!questionList"></mat-progress-bar></span>
 
 </div>
 

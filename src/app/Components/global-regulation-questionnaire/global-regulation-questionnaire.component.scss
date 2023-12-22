@@ -42,7 +42,7 @@ text-align: center;
   text-align: center;
   margin: auto;
   width: 50%;
-  border: 3px solid green;
+  border: 3px solid #008000;
   padding: 4rem;
 }
 
@@ -91,6 +91,48 @@ mat-progress-bar{
 .warn-title{
   color: antiquewhite;
   background-color: black;
+}
+
+.accordion {
+  display: block;
+  max-width: 800px;
+}
+
+.accordion-item {
+  display: block;
+  border: solid 1px rgb(150, 147, 147);
+}
+
+.accordion-item + .accordion-item {
+  border-top: none;
+}
+
+.accordion-item-header {
+  display: flex;
+  align-content: center;
+  justify-content: space-between;
+}
+
+.accordion-item-description {
+  font-size: 0.85em;
+  color: #202cd6;
+}
+
+.accordion-item-header,
+.accordion-item-body {
+  padding: 10px;
+}
+
+.accordion-item-header:hover {
+  cursor: pointer;
+  background-color: rgb(143, 221, 78);
+}
+
+.accordion-item:first-child {
+  border-radius: 4px 4px 0 0;
+}
+.accordion-item:last-child  {
+  border-radius: 0 0 4px 4px;
 }
 
 @media (max-width: 950px) {

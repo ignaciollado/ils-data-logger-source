@@ -45,8 +45,10 @@ vectorProgress: number[] = [0,0,0,0,0,0,0]
 totalVectorQuestions: number[] = []
 totalVectorAnswers: number[] = [0]
 questionnaireSummary: string[] = []
+introText: string = "getting intro text..."
 
 delegations!: DelegationDTO[];
+selectedIndex: number | undefined;
 
 vector_1_Question1: NodeListOf<HTMLElement> 
 vector_1_Question2: NodeListOf<HTMLElement> 
@@ -183,8 +185,21 @@ constructor (
 }
 
 ngOnInit() {
+  this.loadIntroText()
   this.loadDelegations(this.userId)
   this.loadQuestions()
+}
+
+expansionPanelIndex(index: number) {
+  this.selectedIndex = index;
+}
+
+private loadIntroText(): void {
+  this.enviromentalAuditService.getIntroText()
+    .subscribe( (introText:string) => {
+      this.introText = introText
+      console.log (this.introText)
+    })
 }
 
 private loadQuestions(): void {
@@ -223,8 +238,14 @@ loadQuestionnaireResult( questionnaireID: number){
        answers.map ((answersItem:any)=>{
         answersItem.questionnaireSummary.split(",").forEach(
           (element:any) => {
-              console.log(element.split("#")[0], element.split("#")[1], element.split("#")[0].replaceAll("-input",""))
-              document.getElementById(element.split("#")[0].replaceAll("-input","")).setAttribute("checked", element.split("#")[1])
+              console.log(element.split("#")[0], element.split("#")[1], element.split("#")[0].replaceAll("-input",""), (element.split("#")[1] === true), (element.split("#")[1] == true))
+              if (element.split("#")[1] === true) {
+                document.getElementById(element.split("#")[0].replaceAll("-input","")).setAttribute("checked", "true")
+                document.getElementById(element.split("#")[0].replaceAll("-input","")).setAttribute("title", "aaa " + element.split("#")[1])
+              } else {
+                document.getElementById(element.split("#")[0].replaceAll("-input","")).setAttribute("checked", "false")
+                document.getElementById(element.split("#")[0].replaceAll("-input","")).setAttribute("title", "bbb " + element.split("#")[1])
+              }
           }
         )
         this.delegation.setValue(answersItem.companyDelegationId)

@@ -7,6 +7,8 @@ import { Observable } from 'rxjs';
 import { SharedService } from './shared.service';
 
 const URL_MOCKS = '../../assets/mocks/questionsList.json'
+const URL_MOCKS_INTRO_TEXT = '../../assets/mocks/introTextQuestionnaire.json'
+
 const URL_API = '../../assets/phpAPI/'
 
 export interface deleteResponse {
@@ -17,10 +19,17 @@ export interface deleteResponse {
   providedIn: 'root'
 })
 export class EnvironmentalAuditsService {
-  private urlAPiMock:  string;
+  private urlAPiMock: string;
+  private urlAPiMockIntroText: string;
 
   constructor( private http: HttpClient, private sharedService: SharedService ) {
     this.urlAPiMock = '../../assets/mocks/'
+  }
+
+  getIntroText(): Observable<string> {
+    return this.http
+      .get<string>(`${this.urlAPiMock}introTextQuestionnaire.json`)
+      .pipe(catchError(this.sharedService.handleError))
   }
 
   getQuestionList(): Observable<QuestionDTO[]> {

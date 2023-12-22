@@ -18,13 +18,13 @@
   <mat-menu #menu="matMenu">
     <div>
       <button *ngIf="!isCompany" mat-menu-item (click)="home()"><i class="fa-solid fa-house"></i><span> {{'home' | translate}}</span></button>
+      <mat-divider></mat-divider>
       <button *ngIf="!isCompany" mat-menu-item (click)="dashboard()"><i class="fa-solid fa-chart-simple"></i><span> {{'sustainabilityIndicatorsCharts' | translate}}</span></button>
       <button *ngIf="!isCompany" mat-menu-item (click)="adminConsumptions()"><i class="fa-solid fa-database"></i><span> {{'activityData' | translate}}</span></button>
       <button *ngIf="!isCompany" mat-menu-item (click)="adminRatios()"><i class="fa-solid fa-list-check"></i><span> {{'productionData' | translate}}</span></button>
       <button *ngIf="!isCompany" mat-menu-item (click)="myObjectives()"><i class="fa-solid fa-bullseye"></i><span> {{'myObjectives' | translate}}</span></button>
       <mat-divider *ngIf="!!isCompany"></mat-divider>
-
-
+      <mat-divider></mat-divider>
       <button mat-menu-item (click)="globalQuestionnaire()" ><i class="fa-solid fa-square-poll-horizontal"></i> {{'globalQuestionnaire' | translate}}</button>
       <button mat-menu-item (click)="globalQuestionnaireList()" ><i class="fa-solid fa-list"></i> {{'answeredQuestionnairesList' | translate}}</button>
       <mat-divider></mat-divider>

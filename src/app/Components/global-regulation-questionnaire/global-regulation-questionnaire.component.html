@@ -37,15 +37,17 @@
               <ng-container *ngSwitchCase="'radio'">
                 <mat-radio-group aria-label="Select an answer" name="vector_{{j+1}}_Question{{k+1}}">
                   <ng-container  *ngFor="let item of question.answers; index as m">
-                    <input type="radio" *ngIf ="questionnaireID" 
+<!--                     <input type="radio"  
                       (change) = "saveAnswer($event)" 
                       value = "{{item['regulation']}}"
+                      [checked]="questionaireSummaryAnwers[m]"
                       id = "vector_{{j+1}}_Question{{k+1}}_Answer{{m+1}}"
                       name = "vector_{{j+1}}_Question{{k+1}}_Answer{{m+1}}"
-                    >
-                    <mat-radio-button *ngIf ="!questionnaireID"
+                    > -->{{questionaireSummaryAnwers[m]}} {{m}}
+                    <mat-radio-button 
                       (change) = "saveAnswer($event)"
                       value = "{{item['regulation']}}"
+                      [checked]="questionaireSummaryAnwers[m]"
                       id = "vector_{{j+1}}_Question{{k+1}}_Answer{{m+1}}"
                       name = "vector_{{j+1}}_Question{{k+1}}_Answer{{m+1}}"
                      >
@@ -59,16 +61,18 @@
                 <section class="example-section" [formGroup]="">
                   <ng-container *ngFor="let item of question.answers; index as n">
                       <p>  
-                        <input type="checkbox" *ngIf ="questionnaireID" 
+                        <!-- <input type="checkbox"  
                         (change) = "saveAnswer($event)" 
                         value="{{item['regulation']}}"
                         name="vector_{{j+1}}_Question{{k+1}}"
+                        [checked]="questionaireSummaryAnwers[n]"
                         id="vector_{{j+1}}_Question{{k+1}}_Answer{{n+1}}"
-                        >
-                        <mat-checkbox *ngIf ="!questionnaireID"
+                        > -->{{questionaireSummaryAnwers[n]}} {{n}}
+                        <mat-checkbox 
                           (change) = "saveAnswer($event)"
                           value="{{item['regulation']}}"
                           name="vector_{{j+1}}_Question{{k+1}}"
+                          [checked]="questionaireSummaryAnwers[n]"
                           id="vector_{{j+1}}_Question{{k+1}}_Answer{{n+1}}"
                           
                           >

@@ -45,6 +45,7 @@ vectorProgress: number[] = [0,0,0,0,0,0,0]
 totalVectorQuestions: number[] = []
 totalVectorAnswers: number[] = [0]
 questionnaireSummary: string[] = []
+questionaireSummaryAnwers: boolean[] = []
 introText: string = "getting intro text..."
 
 delegations!: DelegationDTO[];
@@ -198,7 +199,6 @@ private loadIntroText(): void {
   this.enviromentalAuditService.getIntroText()
     .subscribe( (introText:string) => {
       this.introText = introText
-      console.log (this.introText)
     })
 }
 
@@ -238,17 +238,17 @@ loadQuestionnaireResult( questionnaireID: number){
        answers.map ((answersItem:any)=>{
         answersItem.questionnaireSummary.split(",").forEach(
           (element:any) => {
-              console.log(element.split("#")[0], element.split("#")[1], element.split("#")[0].replaceAll("-input",""), (element.split("#")[1] === true), (element.split("#")[1] == true))
-              if (element.split("#")[1] === true) {
+              this.questionaireSummaryAnwers.push(element.split("#")[1])
+              if (element.split("#")[1] === "true") {
                 document.getElementById(element.split("#")[0].replaceAll("-input","")).setAttribute("checked", "true")
-                document.getElementById(element.split("#")[0].replaceAll("-input","")).setAttribute("title", "aaa " + element.split("#")[1])
+                document.getElementById(element.split("#")[0].replaceAll("-input","")).setAttribute("title", "aaa " + Boolean(element.split("#")[1]))
               } else {
-                document.getElementById(element.split("#")[0].replaceAll("-input","")).setAttribute("checked", "false")
-                document.getElementById(element.split("#")[0].replaceAll("-input","")).setAttribute("title", "bbb " + element.split("#")[1])
+                document.getElementById(element.split("#")[0].replaceAll("-input","")).setAttribute("title", "bbb " + Boolean(element.split("#")[1]))
               }
           }
         )
         this.delegation.setValue(answersItem.companyDelegationId)
+        console.log( this.questionaireSummaryAnwers )
       })
     }
     )

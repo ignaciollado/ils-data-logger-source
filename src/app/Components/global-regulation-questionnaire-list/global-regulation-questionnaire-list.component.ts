@@ -31,7 +31,7 @@ export class GlobalRegulationQuestionnaireListComponent {
   loadUserQuestionnaires( userId: string){
     this.enviromentalAuditService.getGlobalAnswersByCompany( userId )
       .subscribe( (questionaires: AnswerDTO[]) => {
-     
+
         this.userQuestionnaires = questionaires
         this.userQuestionnaires.map(( questionnaire:any ) => {
           questionnaire.completed = JSON.parse(questionnaire.completed)
@@ -44,12 +44,12 @@ export class GlobalRegulationQuestionnaireListComponent {
               else {
                 isCompleted = (isCompleted && false)
               }
-            this.questionaireFinalState  
+            this.questionaireFinalState
           })
           this.questionaireFinalState.push({"questionnaireId":questionnaire.companyQuestionnaireId, "questionnaireCompleted": isCompleted})
         })
         })
-        
+
   }
 
   deleteUserQuestionnaire(questionaireId: number) {

@@ -1,7 +1,7 @@
 <div class="container-form">
-  <h1>{{'requisitosLegales' | translate}} IDI<br>{{'globalQuestionnaire' | translate}} 
-    <button mat-flat-button type="button" 
-    (click)="openDialog('300ms', '300ms', 'Nota informativa', introText, '', '')"><i class="fa-solid fa-circle-info fa-2xl" style="color: #ffa437;"></i></button>
+  <h1>{{'requisitosLegales' | translate}} IDI<br>{{'globalQuestionnaire' | translate}}
+    <button mat-flat-button type="button"
+    (click)="openDialog('300ms', '300ms', 'Nota informativa', introText, '', '')"><i class="fa-solid fa-circle-info fa-2xl" style="color: #ff9310;"></i></button>
   </h1>
  <div class="questions-container">
   <form *ngIf="questionList" [formGroup]="questionListForm"
@@ -18,10 +18,10 @@
                       <mat-error *ngIf="delegation.hasError('required')">{{'delegation' | translate}} <strong>{{'isRequired' | translate}}</strong></mat-error>
                   </mat-form-field>
                 </section>
-    
+
     <mat-accordion *ngFor=" let vectors of questionList; index as j">
-      <mat-expansion-panel> 
-        <mat-expansion-panel-header (click)="expansionPanelIndex(j)" [style.background]="selectedIndex == j ? '#989f96' : '#ffffff'">
+      <mat-expansion-panel>
+        <mat-expansion-panel-header (click)="expansionPanelIndex(j)" [style.background]="selectedIndex == j ? '#43584a' : '#989f96'">
           <mat-panel-title>
             <span>{{vectors.vectorName}}</span>
           </mat-panel-title>
@@ -29,7 +29,7 @@
             <span>{{'totalQuestions' | translate}}: {{totalVectorQuestions[j]}}</span>
           </mat-panel-description>
           <mat-progress-bar mode="determinate" value="{{vectorProgress[j]}}" color="warn"></mat-progress-bar>
-      </mat-expansion-panel-header> 
+      </mat-expansion-panel-header>
       <ol>
         <li *ngFor="let question of vectors.questions; index as k">
           <h4>{{question.questionTextES}}:<button mat-flat-button type="button" (click)="openDialog('300ms', '300ms', question.questionTextES, question.questionTooltipES, question.questionDoc1, question.questionDoc2)"><i *ngIf="question.questionTooltipES" class="fa-solid fa-circle-info" style="color: #1f5618;"></i></button></h4>
@@ -37,47 +37,41 @@
               <ng-container *ngSwitchCase="'radio'">
                 <mat-radio-group aria-label="Select an answer" name="vector_{{j+1}}_Question{{k+1}}">
                   <ng-container  *ngFor="let item of question.answers; index as m">
-<!--                     <input type="radio"  
-                      (change) = "saveAnswer($event)" 
-                      value = "{{item['regulation']}}"
-                      [checked]="questionaireSummaryAnwers[m]"
-                      id = "vector_{{j+1}}_Question{{k+1}}_Answer{{m+1}}"
-                      name = "vector_{{j+1}}_Question{{k+1}}_Answer{{m+1}}"
-                    > -->{{questionaireSummaryAnwers[m]}} {{m}}
-                    <mat-radio-button 
+                    <input type ="radio"
                       (change) = "saveAnswer($event)"
                       value = "{{item['regulation']}}"
-                      [checked]="questionaireSummaryAnwers[m]"
                       id = "vector_{{j+1}}_Question{{k+1}}_Answer{{m+1}}"
                       name = "vector_{{j+1}}_Question{{k+1}}_Answer{{m+1}}"
-                     >
-                    </mat-radio-button> {{item['answerText']}}
+                      >
+                    <!-- <mat-radio-button
+                      (change) = "saveAnswer($event)"
+                      value = "{{item['regulation']}}"
+                      id = "vector_{{j+1}}_Question{{k+1}}_Answer{{m+1}}"
+                      name = "vector_{{j+1}}_Question{{k+1}}_Answer{{m+1}}"
+                      > -->{{item['answerText']}}
+                    <!-- </mat-radio-button> -->
                     <button type="button" *ngIf="item['answerTooltip']" mat-button (click)="openDialog('300ms', '300ms', item['answerText'], item['answerTooltip'], item['answerImage_1'], item['answerImage_2'])"><i class="fa-solid fa-circle-info" style="color: #673ab7;"></i></button>
                   </ng-container>
                 </mat-radio-group>
               </ng-container>
-              
+
               <ng-container *ngSwitchCase="'checkbox'">
                 <section class="example-section" [formGroup]="">
                   <ng-container *ngFor="let item of question.answers; index as n">
-                      <p>  
-                        <!-- <input type="checkbox"  
-                        (change) = "saveAnswer($event)" 
-                        value="{{item['regulation']}}"
-                        name="vector_{{j+1}}_Question{{k+1}}"
-                        [checked]="questionaireSummaryAnwers[n]"
-                        id="vector_{{j+1}}_Question{{k+1}}_Answer{{n+1}}"
-                        > -->{{questionaireSummaryAnwers[n]}} {{n}}
-                        <mat-checkbox 
+                      <p>
+                        <input type="checkbox"
+                        (change) = "saveAnswer($event)"
+                        value = "{{item['regulation']}}"
+                        name = "vector_{{j+1}}_Question{{k+1}}"
+                        id = "vector_{{j+1}}_Question{{k+1}}_Answer{{n+1}}"
+                        >
+                        <!-- <mat-checkbox
                           (change) = "saveAnswer($event)"
-                          value="{{item['regulation']}}"
-                          name="vector_{{j+1}}_Question{{k+1}}"
-                          [checked]="questionaireSummaryAnwers[n]"
-                          id="vector_{{j+1}}_Question{{k+1}}_Answer{{n+1}}"
-                          
-                          >
-                         
-                        </mat-checkbox> {{item['answerText']}}
+                          value = "{{item['regulation']}}"
+                          name = "vector_{{j+1}}_Question{{k+1}}"
+                          id = "vector_{{j+1}}_Question{{k+1}}_Answer{{n+1}}"
+                          > -->{{item['answerText']}}
+                       <!--  </mat-checkbox> -->
                         <button type="button" *ngIf="item['answerTooltip']" mat-button (click)="openDialog('300ms', '300ms', item['answerText'], item['answerTooltip'], item['answerImage_1'], item['answerImage_2'])"><i class="fa-solid fa-circle-info" style="color: #673ab7;"></i></button>
                       </p>
                   </ng-container>
@@ -85,19 +79,14 @@
               </ng-container>
           </ng-container>
         </li>
-      </ol> 
-      </mat-expansion-panel>  
+      </ol>
+      </mat-expansion-panel>
     </mat-accordion>
-   
+
    <div class="button-row">
       <button mat-raised-button color="primary" [disabled]="!questionListForm.valid">Enviar</button>
      <!--  <button mat-raised-button type="button" (click)="saveQuestionForm()" [disabled]="questionListForm.valid">Enviar</button> -->
     </div>
-
-
-
-
-
   </form>
   <div style="margin-left: auto; margin-right: auto"><span id="postFeedback"></span></div>
   <div>
@@ -110,7 +99,7 @@
 
     <div id="progress-panel" class=" no-display"></div>
   </div>
-  
+
  </div>
   <span *ngIf="!questionList" class="loader">{{'loadingQuestionnaire' | translate}}
   <mat-progress-bar mode="indeterminate" *ngIf="!questionList"></mat-progress-bar></span>

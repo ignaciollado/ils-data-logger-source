@@ -13,7 +13,7 @@ import { LocalStorageService } from './local-storage.service';
 })
 
 export class AuthInterceptorService implements HttpInterceptor {
-  
+
   access_token: string | null;
 
   constructor() {
@@ -26,7 +26,7 @@ export class AuthInterceptorService implements HttpInterceptor {
   ): Observable<HttpEvent<any>> {
 
    /*  req = req.clone({ withCredentials: true}) */ /* se usa para adjuntar la cookie con las credenciales a las llamadas a la API */
-   
+
     if (this.access_token) {
       req = req.clone({
         setHeaders: {

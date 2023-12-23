@@ -3,7 +3,7 @@ import { EnvironmentalAuditsService } from 'src/app/Services/environmental-audit
 import { QuestionDTO, vectorStateDetail } from 'src/app/Models/question.dto';
 import {
     UntypedFormControl,
-    FormGroup, FormBuilder, Validators 
+    FormGroup, FormBuilder, Validators
 } from '@angular/forms';
 import {
   MatDialog,
@@ -18,6 +18,12 @@ import { DelegationService } from 'src/app/Services/delegation.service';
 import { DelegationDTO } from 'src/app/Models/delegation.dto';
 import { SharedService } from 'src/app/Services/shared.service';
 import { HttpErrorResponse } from '@angular/common/http';
+
+interface answerSelected {
+  id: string;
+  value: boolean;
+
+}
 
 @Component({
   selector: 'app-global-regulation-questionnaire',
@@ -45,15 +51,16 @@ vectorProgress: number[] = [0,0,0,0,0,0,0]
 totalVectorQuestions: number[] = []
 totalVectorAnswers: number[] = [0]
 questionnaireSummary: string[] = []
-questionaireSummaryAnwers: boolean[] = []
+questionaireSummaryAnwers: string[] = []
 introText: string = "getting intro text..."
+x: number = 0
 
 delegations!: DelegationDTO[];
 selectedIndex: number | undefined;
 
-vector_1_Question1: NodeListOf<HTMLElement> 
-vector_1_Question2: NodeListOf<HTMLElement> 
-vector_1_Question3: NodeListOf<HTMLElement> 
+vector_1_Question1: NodeListOf<HTMLElement>
+vector_1_Question2: NodeListOf<HTMLElement>
+vector_1_Question3: NodeListOf<HTMLElement>
 vector_1_Question4: NodeListOf<HTMLElement>
 vector_1_Question1_reg : string [] = []
 vector_1_Question2_reg : string [] = []
@@ -64,12 +71,12 @@ vector_1_Question2_answers: boolean [] = []
 vector_1_Question3_answers: boolean [] = []
 vector_1_Question4_answers: boolean [] = []
 
-vector_2_Question1: NodeListOf<HTMLElement> 
+vector_2_Question1: NodeListOf<HTMLElement>
 vector_2_Question2: NodeListOf<HTMLElement>
 vector_2_Question3: NodeListOf<HTMLElement>
 vector_2_Question4: NodeListOf<HTMLElement>
 vector_2_Question5: NodeListOf<HTMLElement>
-vector_2_Question6: NodeListOf<HTMLElement> 
+vector_2_Question6: NodeListOf<HTMLElement>
 vector_2_Question7: NodeListOf<HTMLElement>
 vector_2_Question8: NodeListOf<HTMLElement>
 vector_2_Question9: NodeListOf<HTMLElement>
@@ -202,6 +209,10 @@ private loadIntroText(): void {
     })
 }
 
+incrementNumber(x: number) {
+  return this.x++
+}
+
 private loadQuestions(): void {
   this.enviromentalAuditService.getQuestionList()
     .subscribe( (questions:QuestionDTO[]) => {
@@ -237,18 +248,19 @@ loadQuestionnaireResult( questionnaireID: number){
     .subscribe((answers: AnswerDTO[]) => {
        answers.map ((answersItem:any)=>{
         answersItem.questionnaireSummary.split(",").forEach(
-          (element:any) => {
-              this.questionaireSummaryAnwers.push(element.split("#")[1])
-              if (element.split("#")[1] === "true") {
-                document.getElementById(element.split("#")[0].replaceAll("-input","")).setAttribute("checked", "true")
-                document.getElementById(element.split("#")[0].replaceAll("-input","")).setAttribute("title", "aaa " + Boolean(element.split("#")[1]))
-              } else {
-                document.getElementById(element.split("#")[0].replaceAll("-input","")).setAttribute("title", "bbb " + Boolean(element.split("#")[1]))
-              }
+          (element:string) => {
+              this.questionaireSummaryAnwers.push( element.split("#")[1] )
           }
         )
         this.delegation.setValue(answersItem.companyDelegationId)
-        console.log( this.questionaireSummaryAnwers )
+        let dom = document.getElementsByTagName("input")
+        console.log( this.questionaireSummaryAnwers, dom )
+        for (var i = 0; i < dom.length; i++) {
+          console.log(dom[i].id, this.questionaireSummaryAnwers[i], this.questionaireSummaryAnwers[i] === "true");
+          if (this.questionaireSummaryAnwers[i] === "true") {
+          document.getElementById(dom[i].id).setAttribute("checked", "true")
+          }
+        }
       })
     }
     )
@@ -273,7 +285,7 @@ openDialog(enterAnimationDuration: string, exitAnimationDuration: string, questi
 }
 
 saveAnswer(e: any) {
-  
+
   let vector1Progress1: number, vector1Progress2: number, vector1Progress3: number, vector1Progress4: number = 0
   let vector2Progress1: number, vector2Progress2: number, vector2Progress3: number, vector2Progress4: number, vector2Progress5: number, vector2Progress6: number, vector2Progress7: number, vector2Progress8: number, vector2Progress9: number, vector2Progress10: number, vector2Progress11: number = 0
   let vector3Progress1: number, vector3Progress2: number, vector3Progress3: number = 0
@@ -720,7 +732,7 @@ this.questionnaireVectorState.map(item=> {
   if(item.vectorId === 6) {
       item.totalAnswers = this.vectorProgress[5]
   }
-})  
+})
 
 }
 
@@ -1111,7 +1123,7 @@ resultsQuestionnaire.push(resultsVector5.innerHTML)
 resultsVector6.innerText = resultsVector6.innerText.replaceAll(",,",",")
 resultsQuestionnaire.push(resultsVector6.innerHTML)
 
-/** aquí guardo un string con todos los inputs del formulario y si están o no checked para, luego, 
+/** aquí guardo un string con todos los inputs del formulario y si están o no checked para, luego,
  * pintarlo si hiciera falta
 ** Hará falta cuando se deje el cuestionario sin completar al 100%
 */

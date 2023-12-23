@@ -31,7 +31,7 @@ export interface deleteResponse {
 export class AspectService {
 
   constructor(private http: HttpClient,
-    private sharedService: SharedService) {} 
+    private sharedService: SharedService) {}
 
   getAllAspects(): Observable<AspectDTO[]> {
     return this.http

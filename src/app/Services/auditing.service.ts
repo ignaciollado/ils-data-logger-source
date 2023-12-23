@@ -29,7 +29,7 @@ export interface deleteResponse {
 })
 
 export class AuditingService {
-  
+
   private urlAPiMySql:  string;
 
   constructor(private http: HttpClient,
@@ -106,6 +106,6 @@ export class AuditingService {
     console.error('An error occurred:', error.error.msg);
     console.error('Backend returned code:', error.status);
     console.error('Complete message was::', error.message);
-  }  
+  }
 
 }

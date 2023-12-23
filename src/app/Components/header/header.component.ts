@@ -43,7 +43,7 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    
+
     this.headerMenusService.headerManagement.subscribe (
       (headerInfo: HeaderMenus) => {
         if (headerInfo) {
@@ -52,7 +52,7 @@ export class HeaderComponent implements OnInit {
         }
       }
     );
-      this.userId =  this.jwtHelper.decodeToken().id_ils + " " + this.jwtHelper.decodeToken().name
+      this.userId =  this.jwtHelper.decodeToken().name
       if (this.jwtHelper.decodeToken().role === 'company') {
         this.isCompany = true
       }

@@ -213,10 +213,6 @@ private loadIntroText(): void {
     })
 }
 
-incrementNumber(x: number) {
-  return this.x++
-}
-
 private loadQuestions(): void {
   this.enviromentalAuditService.getQuestionList()
     .subscribe( (questions:QuestionDTO[]) => {
@@ -231,7 +227,6 @@ private loadQuestions(): void {
       }
     })
 }
-
 private loadDelegations(userId: string): void {
   let errorResponse: any;
   if (userId) {
@@ -246,7 +241,6 @@ private loadDelegations(userId: string): void {
     );
   }
 }
-
 loadQuestionnaireResult( questionnaireID: number){
   this.enviromentalAuditService.getQuestionnaireByID( questionnaireID )
     .subscribe((answers: AnswerDTO[]) => {
@@ -288,7 +282,6 @@ openDialog(enterAnimationDuration: string, exitAnimationDuration: string, questi
   };
   this.dialog.open(ConfirmDialogComponent, dialogConfig);
 }
-
 saveAnswer(e: any) {
 
   let vector1Progress1: number, vector1Progress2: number, vector1Progress3: number, vector1Progress4: number = 0
@@ -740,7 +733,6 @@ this.questionnaireVectorState.map(item=> {
 })
 
 }
-
 saveQuestionForm() {
   let resultsQuestionnaire: string[] = []
 
@@ -1251,12 +1243,17 @@ if (this.questionnaireID) {
       this.router.navigateByUrl('/questionnaire-detail/'+`${item.last_id}`)
     })
 } else {
-
+  let totalRealizado: number = 0
+  this.questionnaireVectorState.map( porcentaje=> totalRealizado+= porcentaje.totalAnswers)
   this.enviromentalAuditService.createGlobalAnswer(resultsQuestionnaire, this.userId, this.delegation.value, this.questionnaireVectorState)
     .subscribe((item: any) => {
       responseOK = true;
       this.sharedService.managementToast( 'loginFeedback', responseOK, errorResponse )
+      if (totalRealizado === 600) {
       this.router.navigateByUrl('/questionnaire-detail/'+`${item.last_id}`)
+      } else {
+        this.router.navigateByUrl('/global-questionnaire-list')
+      }
   }
 )
 }

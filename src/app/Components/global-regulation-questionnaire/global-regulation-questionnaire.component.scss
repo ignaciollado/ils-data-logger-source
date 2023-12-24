@@ -46,11 +46,11 @@ text-align: center;
   padding: 4rem;
 }
 
-mat-accordion{
+mat-accordion {
   margin-top: .3rem;
 }
 
-.button-row  {
+.button-row {
   text-align: right;
   padding: 1rem;
 }
@@ -70,9 +70,9 @@ img{
   height: auto;
 }
 
-mat-expansion-panel{
-  padding-top: .2rem;
-  padding-bottom: .2rem;
+mat-expansion-panel {
+ /*  padding-top: .2rem;
+  padding-bottom: .2rem;*/
   margin-bottom: 1rem;
 }
 
@@ -86,6 +86,10 @@ mat-progress-bar{
   padding-top: 1rem;
   padding-bottom: 1rem;
   width: 30%;
+}
+
+.progress-bar-loader{
+  min-width: 100%;
 }
 
 .warn-title{
@@ -141,7 +145,7 @@ mat-progress-bar{
     margin-right: 0;
   }
   .questions-container{
-    grid-template-columns: 100%;
+    grid-template-columns: 99%;
   }
 }
 

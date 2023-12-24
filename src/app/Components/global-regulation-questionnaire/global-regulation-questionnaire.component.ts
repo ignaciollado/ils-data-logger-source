@@ -35,6 +35,7 @@ export class GlobalRegulationQuestionnaireComponent {
 
 private userId: string | null
 questionnaireID: number | null
+hasToExpand: boolean = false
 questionnaireVectorState: vectorStateDetail [] = []
 vectorStateItem: vectorStateDetail = {vectorId: 0, vectorName: '', vectorGeneralRegulation: [], totalQuestions: 0, totalAnswers: 0}
 vectorId: UntypedFormControl
@@ -179,6 +180,9 @@ constructor (
   private sharedService: SharedService,
 ) {
   this.questionnaireID = +this.route.snapshot.paramMap.get('id');
+  if (this.questionnaireID) {
+    this.hasToExpand = true
+  }
   this.userId = this.jwtHelper.decodeToken().id_ils
   this.vectorId = new UntypedFormControl();
   this.vectorName = new UntypedFormControl();
@@ -256,9 +260,10 @@ loadQuestionnaireResult( questionnaireID: number){
         let dom = document.getElementsByTagName("input")
         console.log( this.questionaireSummaryAnwers, dom )
         for (var i = 0; i < dom.length; i++) {
-          console.log(dom[i].id, this.questionaireSummaryAnwers[i], this.questionaireSummaryAnwers[i] === "true");
+
           if (this.questionaireSummaryAnwers[i] === "true") {
-          document.getElementById(dom[i].id).setAttribute("checked", "true")
+            console.log(dom[i].id, this.questionaireSummaryAnwers[i]);
+            document.getElementById(dom[i].id).setAttribute("checked", "true")
           }
         }
       })

@@ -214,7 +214,7 @@
         "answerTooltip": "",
         "regulation": [""],
         "answerImage_1": "",
-        "answerImage_2": ""}  
+        "answerImage_2": ""}
         ]
       },
       {
@@ -313,7 +313,7 @@
         [
         {"answerText": "Sí",
         "answerTooltip": "",
-        "regulation": ["SIND_1_AP_Consolidado"], 
+        "regulation": ["SIND_1_AP_Consolidado"],
         "image_1": "",
         "image_2": ""},
         {"answerText": "No",
@@ -323,7 +323,7 @@
         "image_2": ""}
         ]
       },
-      { 
+      {
         "key": "6",
         "type": "radio",
         "questionTextES": "¿Dispone de instalaciones eléctricas de baja tensión?",
@@ -361,7 +361,7 @@
         [
                 {"answerText": "Sí",
                  "answerTooltip": "",
-                 "regulation": ["SIND_4_CT_consolidado"], 
+                 "regulation": ["SIND_4_CT_consolidado"],
                  "image_1": "",
                  "image_2": ""},
                  {"answerText": "No",
@@ -537,7 +537,7 @@
             "answerTooltip": "",
             "regulation": [""],
             "answerImage_1": "",
-            "answerImage_2": ""} 
+            "answerImage_2": ""}
         ]
       },
       {
@@ -597,7 +597,7 @@
                       "answerImage_1": "",
                       "answerImage_2": ""}
 
-                    
+
               ]
           },
           {
@@ -695,7 +695,7 @@
                    "regulation": [""],
                    "image_1": "",
                    "image_2": ""}
-          ]      
+          ]
           },
           {
           "key": "6",
@@ -778,10 +778,10 @@
                 "answerImage_1": "",
                 "answerImage_2": ""}
 
-              
+
         ]
     },
-    
+
     {
         "key": "2",
         "type": "radio",
@@ -856,7 +856,7 @@
                  "regulation": [""],
                  "image_1": "",
                  "image_2": ""}
-                 
+
 
         ]
     },
@@ -887,7 +887,7 @@
     }
     ]
   },
-  
+
   {
     "vectorId": "6",
     "vectorName": "MEDIOAMBIENTE GENERAL",
@@ -900,19 +900,19 @@
         "questionTextES": "¿Su actividad se engloba en alguna de las siguientes actividades contempladas en este link?",
         "questionTextCA": "",
         "questionDoc1" : "PMA_1",
-        "questionDoc2" : "", 
-        "questionTooltipES": "Si se incluye su actividad en alguna del siguiente listado que se adjunta,  por favor responda que <strong>SI</strong> a la pregunta, en caso contrario responda que <strong>NO</strong> .", 
+        "questionDoc2" : "",
+        "questionTooltipES": "Si se incluye su actividad en alguna del siguiente listado que se adjunta,  por favor responda que <strong>SI</strong> a la pregunta, en caso contrario responda que <strong>NO</strong> .",
         "questionTooltipCA": "",
         "link": "https://...",
         "answers":
         [
-          {"answerText": "YES",
+          {"answerText": "Sí",
             "answerTooltip": "",
             "regulation": ["MA_0","MA_1","MA_4","MA_5","MA_6","MA_11"],
             "answerImage_1": "",
             "answerImage_2": ""},
 
-          {"answerText": " NO",
+          {"answerText": " No",
             "answerTooltip": "",
             "regulation": [""],
             "answerImage_1": "",
@@ -926,12 +926,12 @@
         "questionTextCA": "",
         "questionDoc1" : "",
         "questionDoc2" : "",
-        "questionTooltipES": "La Legionella es una bacteria presente en todo el mundo, perteneciente a la familia Legionellaceae, que normalmente forma parte de la flora bacteriana de aguas superficiales, como lagos, ríos y estanques. Se trata de una bacteria muy resistente en su hábitat natural, capaz de sobrevivir en condiciones físico-químicas muy variadas. Aunque en su medio natural suele encontrarse en bajas concentraciones, a temperaturas de 20 a 45 grados se multiplica con rapidez -su temperatura óptima de crecimiento es de 35 a 37 grados. Ejemplos de instalaciones con riesgo de proliferacion de legionella: - Sistemas de agua caliente sanitaria con acumulador y circuito de retorno - Sistemas de instalación interior de agua fría de consumo humano (tuberías, depósitos, aljibes), cisternas o depósitos móviles y agua caliente sanitaria sin circuito de retorno. - Sistemas de riego por aspersión en el medio urbano. - Sistemas de agua contra incendios - Fuentes ornamentales - Centrales humidificadoras industriales. - Equipos de enfriamiento evaporativo que pulvericen agua - Humectadores. - Torres de refrigeración - Condensadores evaporativos.- Elementos de refrigeración por aerosolización, al aire libre. - Otros aparatos que acumulen agua y puedan producir aerosoles",
+        "questionTooltipES": "La Legionella es una bacteria presente en todo el mundo, perteneciente a la familia Legionellaceae, que normalmente forma parte de la flora bacteriana de aguas superficiales, como lagos, ríos y estanques. Se trata de una bacteria muy resistente en su hábitat natural, capaz de sobrevivir en condiciones físico-químicas muy variadas. Aunque en su medio natural suele encontrarse en bajas concentraciones, a temperaturas de 20 a 45 grados se multiplica con rapidez -su temperatura óptima de crecimiento es de 35 a 37 grados. Ejemplos de instalaciones con riesgo de proliferacion de legionella:<ul><li>Sistemas de agua caliente sanitaria con acumulador y circuito de retorno</li><li>Sistemas de instalación interior de agua fría de consumo humano (tuberías, depósitos, aljibes), cisternas o depósitos móviles y agua caliente sanitaria sin circuito de retorno.</li><li>Sistemas de riego por aspersión en el medio urbano.</li><li>Sistemas de agua contra incendios</li><li>Fuentes ornamentales</li><li>Centrales humidificadoras industriales.</li><li>Equipos de enfriamiento evaporativo que pulvericen agua</li><li>Humectadores.</li><li>Torres de refrigeración</li><li>Condensadores evaporativos.</li><li>Elementos de refrigeración por aerosolización, al aire libre.</li><li>Otros aparatos que acumulen agua y puedan producir aerosoles</li></ul>",
         "questionTooltipCA": "",
         "link": "https://...",
         "answers":
         [
-                {"answerText": "SI",
+                {"answerText": "Sí",
                  "answerTooltip": "",
                  "regulation": ["LEGIO_1","LEGIO_2"],
                  "answerdoc1": "",
@@ -980,17 +980,17 @@
         "link": "https://...",
         "answers":
         [
-                {"answerText": "SI",
+                {"answerText": "Sí",
                  "answerTooltip": "",
                  "regulation": ["RUI_5"],
                  "image_1": "",
                  "image_2": ""},
-                 {"answerText": "NO",
+                 {"answerText": "No",
                  "answerTooltip": "",
                  "regulation": [""],
                  "image_1": "",
                  "image_2": ""}
-                
+
         ]
       }
     ]

@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { HeaderMenus } from 'src/app/Models/header-menus.dto';
 import { HeaderMenusService } from 'src/app/Services/header-menus.service';
-
+import {MatSidenav} from '@angular/material/sidenav';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -15,6 +15,15 @@ export class HeaderComponent implements OnInit {
   isCompany: boolean = false
   userId: string = ""
   access_token: string | null
+
+  @ViewChild('sidenav') sidenav: MatSidenav;
+
+  reason = '';
+
+  close(reason: string) {
+    this.reason = reason;
+    this.sidenav.close();
+  }
 
   constructor(
     private router: Router,

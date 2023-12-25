@@ -19,12 +19,6 @@ import { DelegationDTO } from 'src/app/Models/delegation.dto';
 import { SharedService } from 'src/app/Services/shared.service';
 import { HttpErrorResponse } from '@angular/common/http';
 
-interface answerSelected {
-  id: string;
-  value: boolean;
-
-}
-
 @Component({
   selector: 'app-global-regulation-questionnaire',
   templateUrl: './global-regulation-questionnaire.component.html',
@@ -222,9 +216,9 @@ private loadQuestions(): void {
          this.vectorStateItem = {vectorId: +vector.vectorId, vectorName:  vector.vectorName, vectorGeneralRegulation: vector.vectorGeneralRegulation, totalQuestions: vector.questions.length, totalAnswers: 0}
           this.questionnaireVectorState = [...this.questionnaireVectorState, this.vectorStateItem]
       })
-      if (this.questionnaireID) {
+     /*  if (this.questionnaireID) {
         this.loadQuestionnaireResult(this.questionnaireID)
-      }
+      } */
     })
 }
 private loadDelegations(userId: string): void {
@@ -241,7 +235,7 @@ private loadDelegations(userId: string): void {
     );
   }
 }
-loadQuestionnaireResult( questionnaireID: number){
+/* loadQuestionnaireResult( questionnaireID: number){
   this.enviromentalAuditService.getQuestionnaireByID( questionnaireID )
     .subscribe((answers: AnswerDTO[]) => {
        answers.map ((answersItem:any)=>{
@@ -252,18 +246,16 @@ loadQuestionnaireResult( questionnaireID: number){
         )
         this.delegation.setValue(answersItem.companyDelegationId)
         let dom = document.getElementsByTagName("input")
-        console.log( this.questionaireSummaryAnwers, dom )
         for (var i = 0; i < dom.length; i++) {
 
           if (this.questionaireSummaryAnwers[i] === "true") {
-            console.log(dom[i].id, this.questionaireSummaryAnwers[i]);
             document.getElementById(dom[i].id).setAttribute("checked", "true")
           }
         }
       })
     }
     )
-}
+}  */
 
 openDialog(enterAnimationDuration: string, exitAnimationDuration: string, questionText: string, toolTipText: string, doc1: string, doc2: string): void {
   const dialogConfig = new MatDialogConfig();
@@ -787,6 +779,7 @@ saveQuestionForm() {
 if (this.vector_1_Question1) {
   this.vector_1_Question1.forEach((node: HTMLInputElement) => {
     if (node.value && node.checked) {
+      node.value = node.value.replaceAll(",,",",")
       node.value = node.value.replaceAll(',','","')
       node.value = '"'+node.value+'",'
       node.value = node.value.replaceAll(",,",",")
@@ -1121,128 +1114,14 @@ resultsVector6.innerText = resultsVector6.innerText.replaceAll(",,",",")
 resultsQuestionnaire.push(resultsVector6.innerHTML)
 
 /** aquí guardo un string con todos los inputs del formulario y si están o no checked para, luego,
- * pintarlo si hiciera falta
-** Hará falta cuando se deje el cuestionario sin completar al 100%
+* pintarlo si hiciera falta
+* Hará falta cuando se deje el cuestionario sin completar al 100%
 */
-this.vector_1_Question1.forEach((node: HTMLInputElement) => {
-  this.questionnaireSummary.push(node.id+"#"+node.checked)
-})
-this.vector_1_Question2.forEach((node: HTMLInputElement) => {
-  this.questionnaireSummary.push(node.id+"#"+node.checked)
-})
-this.vector_1_Question3.forEach((node: HTMLInputElement) => {
-  this.questionnaireSummary.push(node.id+"#"+node.checked)
-})
-this.vector_1_Question4.forEach((node: HTMLInputElement) => {
-  this.questionnaireSummary.push(node.id+"#"+node.checked)
-})
 
-this.vector_2_Question1.forEach((node: HTMLInputElement) => {
-  this.questionnaireSummary.push(node.id+"#"+node.checked)
-})
-this.vector_2_Question2.forEach((node: HTMLInputElement) => {
-  this.questionnaireSummary.push(node.id+"#"+node.checked)
-})
-this.vector_2_Question3.forEach((node: HTMLInputElement) => {
-  this.questionnaireSummary.push(node.id+"#"+node.checked)
-})
-this.vector_2_Question4.forEach((node: HTMLInputElement) => {
-  this.questionnaireSummary.push(node.id+"#"+node.checked)
-})
-this.vector_2_Question5.forEach((node: HTMLInputElement) => {
-  this.questionnaireSummary.push(node.id+"#"+node.checked)
-})
-this.vector_2_Question6.forEach((node: HTMLInputElement) => {
-  this.questionnaireSummary.push(node.id+"#"+node.checked)
-})
-this.vector_2_Question7.forEach((node: HTMLInputElement) => {
-  this.questionnaireSummary.push(node.id+"#"+node.checked)
-})
-this.vector_2_Question8.forEach((node: HTMLInputElement) => {
-  this.questionnaireSummary.push(node.id+"#"+node.checked)
-})
-this.vector_2_Question9.forEach((node: HTMLInputElement) => {
-  this.questionnaireSummary.push(node.id+"#"+node.checked)
-})
-this.vector_2_Question10.forEach((node: HTMLInputElement) => {
-  this.questionnaireSummary.push(node.id+"#"+node.checked)
-})
-this.vector_2_Question11.forEach((node: HTMLInputElement) => {
-  this.questionnaireSummary.push(node.id+"#"+node.checked)
-})
-
-this.vector_3_Question1.forEach((node: HTMLInputElement) => {
-  this.questionnaireSummary.push(node.id+"#"+node.checked)
-})
-this.vector_3_Question2.forEach((node: HTMLInputElement) => {
-  this.questionnaireSummary.push(node.id+"#"+node.checked)
-})
-this.vector_3_Question3.forEach((node: HTMLInputElement) => {
-  this.questionnaireSummary.push(node.id+"#"+node.checked)
-})
-
-this.vector_4_Question1.forEach((node: HTMLInputElement) => {
-  this.questionnaireSummary.push(node.id+"#"+node.checked)
-})
-this.vector_4_Question2.forEach((node: HTMLInputElement) => {
-  this.questionnaireSummary.push(node.id+"#"+node.checked)
-})
-this.vector_4_Question3.forEach((node: HTMLInputElement) => {
-  this.questionnaireSummary.push(node.id+"#"+node.checked)
-})
-this.vector_4_Question4.forEach((node: HTMLInputElement) => {
-  this.questionnaireSummary.push(node.id+"#"+node.checked)
-})
-this.vector_4_Question5.forEach((node: HTMLInputElement) => {
-  this.questionnaireSummary.push(node.id+"#"+node.checked)
-})
-this.vector_4_Question6.forEach((node: HTMLInputElement) => {
-  this.questionnaireSummary.push(node.id+"#"+node.checked)
-})
-this.vector_4_Question7.forEach((node: HTMLInputElement) => {
-  this.questionnaireSummary.push(node.id+"#"+node.checked)
-})
-
-this.vector_5_Question1.forEach((node: HTMLInputElement) => {
-  this.questionnaireSummary.push(node.id+"#"+node.checked)
-})
-this.vector_5_Question2.forEach((node: HTMLInputElement) => {
-  this.questionnaireSummary.push(node.id+"#"+node.checked)
-})
-this.vector_5_Question3.forEach((node: HTMLInputElement) => {
-  this.questionnaireSummary.push(node.id+"#"+node.checked)
-})
-this.vector_5_Question4.forEach((node: HTMLInputElement) => {
-  this.questionnaireSummary.push(node.id+"#"+node.checked)
-})
-this.vector_5_Question5.forEach((node: HTMLInputElement) => {
-  this.questionnaireSummary.push(node.id+"#"+node.checked)
-})
-
-this.vector_6_Question1.forEach((node: HTMLInputElement) => {
-  this.questionnaireSummary.push(node.id+"#"+node.checked)
-})
-this.vector_6_Question2.forEach((node: HTMLInputElement) => {
-  this.questionnaireSummary.push(node.id+"#"+node.checked)
-})
-this.vector_6_Question3.forEach((node: HTMLInputElement) => {
-  this.questionnaireSummary.push(node.id+"#"+node.checked)
-})
-this.vector_6_Question4.forEach((node: HTMLInputElement) => {
-  this.questionnaireSummary.push(node.id+"#"+node.checked)
-})
-
-resultsQuestionnaire.push (this.questionnaireSummary.toString())
 
 let responseOK: boolean = false
 let errorResponse: any
 
-if (this.questionnaireID) {
-  this.enviromentalAuditService.updateGlobalAnswer( this.questionnaireID, resultsQuestionnaire)
-    .subscribe( (item:any) => {
-      this.router.navigateByUrl('/questionnaire-detail/'+`${item.last_id}`)
-    })
-} else {
   let totalRealizado: number = 0
   this.questionnaireVectorState.map( porcentaje=> totalRealizado+= porcentaje.totalAnswers)
   this.enviromentalAuditService.createGlobalAnswer(resultsQuestionnaire, this.userId, this.delegation.value, this.questionnaireVectorState)
@@ -1256,7 +1135,5 @@ if (this.questionnaireID) {
       }
   }
 )
-}
-
 }
 }

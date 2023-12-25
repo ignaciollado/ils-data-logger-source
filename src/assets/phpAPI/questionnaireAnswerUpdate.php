@@ -13,7 +13,6 @@ $request = json_decode($postedData, TRUE);
 $companyId = $_GET['companyId'];
 $completed = $_GET['completed'];
 
-
 $companyQuestionnaireId = time();
 
 $companyDelegationId = $_GET['delegation'];
@@ -26,16 +25,12 @@ $userAnswers .= $request['4'];
 $userAnswers .= $request['5'];
 $questionnaireSummary .= $request['6'];
 
-
-$sql = "UPDATE INTO globalQuestionaire(companyId, companyQuestionnaireId, companyDelegationId, userAnswers, completed, questionnaireSummary) 
-VALUES ("
-.$companyId.","
-.$companyQuestionnaireId.","
-.$companyDelegationId.",'"
-.$userAnswers."','"
-.$completed."','"
-.$questionnaireSummary
-."')";
+$sql = "UPDATE globalQuestionaire SET
+companyDelegationId =".$companyDelegationId.",
+userAnswers ='".$userAnswers."',
+completed ='".$completed."',
+questionnaireSummary ='".$questionnaireSummary."'
+ WHERE id = ".$questionnaireSummary;
 
 echo $sql;
 

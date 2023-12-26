@@ -22,6 +22,8 @@ import { ConsumptionContainerComponent } from './Components/posts/consumption-co
 import { GlobalRegulationQuestionnaireComponent } from './Components/global-regulation-questionnaire/global-regulation-questionnaire.component';
 import { GlobalRegulationQuestionnaireListComponent } from './Components/global-regulation-questionnaire-list/global-regulation-questionnaire-list.component';
 import { GlobalRegulationQuestionnaireAnswerComponent } from './Components/global-regulation-questionnaire-answer/global-regulation-questionnaire-answer.component';
+import { GlobalRegulationQuestionnaireContinueComponent } from './Components/global-regulation-questionnaire-continue/global-regulation-questionnaire-continue.component';
+import { NotFoundComponent } from './error-pages/not-found/not-found.component';
 
 const routes: Routes = [
   {
@@ -132,15 +134,19 @@ const routes: Routes = [
     canActivate: [AuthGuard],
   },
   {
+    path: 'global-questionnaire-continue/:id',
+    title: 'ILS-Auditorías ambientales',
+    component: GlobalRegulationQuestionnaireContinueComponent,
+    canActivate: [AuthGuard],
+  },
+  {
     path: 'questionnaire-detail/:id',
     title: 'ILS-Auditorías ambientales',
     component: GlobalRegulationQuestionnaireAnswerComponent,
     canActivate: [AuthGuard],
   },
-  {
-    path: '**',
-    component: DashboardComponent
-}
+  { path: '404', component: NotFoundComponent},
+  { path: '**', redirectTo: '/404', pathMatch: 'full'}
 ];
 
 @NgModule({

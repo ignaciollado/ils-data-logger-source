@@ -85,6 +85,7 @@ import { GlobalRegulationQuestionnaireAnswerComponent } from './Components/globa
 import { FileUploadComponent } from './file-upload/file-upload.component';
 import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
 import { GlobalRegulationQuestionnaireContinueComponent } from './Components/global-regulation-questionnaire-continue/global-regulation-questionnaire-continue.component';
+import { NotFoundComponent } from './error-pages/not-found/not-found.component';
 
 export function tokenGetter() {
   return sessionStorage.getItem("access_token");
@@ -130,6 +131,7 @@ export function tokenGetter() {
     GlobalRegulationQuestionnaireAnswerComponent,
     FileUploadComponent,
     GlobalRegulationQuestionnaireContinueComponent,
+    NotFoundComponent,
   ],
   imports: [
     BrowserModule,

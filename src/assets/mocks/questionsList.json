@@ -117,7 +117,7 @@
           "questionTextCA": "",
           "questionDoc1" : "",
           "questionDoc2" : "",
-          "questionTooltipES": "Indique en su caso las operaciones que realiza. <strong>- Gestor de residuos:</strong> la persona física o jurídica, pública o privada, registrada mediante autorización o comunicación que realice cualquiera de las operaciones que componen la gestión de los residuos, sea o no el productor de los mismos. <strong>- Negociante:</strong> toda persona física o jurídica que actúe por cuenta propia en la compra y posterior venta de residuos, incluidas aquellas que no tomen posesión física de los residuos. <strong>- Agente</strong>: toda persona física o jurídica que organice la valorización o la eliminación de residuos por encargo de terceros, incluidas aquellas que no tomen posesión física de los residuos",
+          "questionTooltipES": "Indique en su caso las operaciones que realiza.<ul><li><strong>Gestor de residuos:</strong> la persona física o jurídica, pública o privada, registrada mediante autorización o comunicación que realice cualquiera de las operaciones que componen la gestión de los residuos, sea o no el productor de los mismos.</li><li><strong>Negociante:</strong> toda persona física o jurídica que actúe por cuenta propia en la compra y posterior venta de residuos, incluidas aquellas que no tomen posesión física de los residuos.</li><li><strong>Agente</strong>: toda persona física o jurídica que organice la valorización o la eliminación de residuos por encargo de terceros, incluidas aquellas que no tomen posesión física de los residuos.</li></ul>",
           "questionTooltipCA": "",
           "link": "https://...",
           "answers":

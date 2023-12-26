@@ -22,7 +22,7 @@
         </div>
       <mat-divider></mat-divider>
     </mat-card-content>
-    <mat-card-actions class="button-row">'
+    <mat-card-actions class="button-row">
       <button *ngIf="!questionaireFinalState[j].questionnaireCompleted" class="state not-completed" matTooltip='{{"continueQuestionnaire" | translate}}'>
         <a [routerLink]="['/global-questionnaire-continue', questionnaire.id]"  routerLinkActive="active" ariaCurrentWhenActive="page">NO FINALIZADO</a>
       </button>

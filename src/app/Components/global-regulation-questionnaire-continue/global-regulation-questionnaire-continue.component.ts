@@ -225,6 +225,7 @@ export class GlobalRegulationQuestionnaireContinueComponent {
         }
       })
   }
+
   private loadDelegations(userId: string): void {
     let errorResponse: any;
     if (userId) {
@@ -239,18 +240,21 @@ export class GlobalRegulationQuestionnaireContinueComponent {
       );
     }
   }
+
   loadQuestionnaireResult( questionnaireID: number){
     this.enviromentalAuditService.getQuestionnaireByID( questionnaireID )
       .subscribe((answers: AnswerDTO[]) => {
+        console.log("answers: ", answers)
          answers.map ((answersItem:any)=>{
           answersItem.questionnaireSummary.split(",").forEach(
             (element:string) => {
+              console.log ("elements: ", element)
                 this.questionaireSummaryAnwers.push( element.split("#")[1] )
             }
           )
 
           let dom = document.getElementsByTagName("input")
-          console.log( this.questionaireSummaryAnwers, dom )
+          console.log( this.questionaireSummaryAnwers )
           for (var i = 0; i < dom.length; i++) {
             if (this.questionaireSummaryAnwers[i] === "true") {
               document.getElementById(dom[i].id).setAttribute("checked", "true")

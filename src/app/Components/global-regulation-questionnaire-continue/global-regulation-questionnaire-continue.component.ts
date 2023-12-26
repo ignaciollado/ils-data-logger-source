@@ -53,7 +53,6 @@ export class GlobalRegulationQuestionnaireContinueComponent {
   questionnaireSummary: string[] = []
   questionaireSummaryAnwers: string[] = []
   introText: string = "getting intro text..."
-  x: number = 0
 
   delegations!: DelegationDTO[];
   selectedIndex: number | undefined;
@@ -249,16 +248,15 @@ export class GlobalRegulationQuestionnaireContinueComponent {
                 this.questionaireSummaryAnwers.push( element.split("#")[1] )
             }
           )
-          this.delegation.setValue(answersItem.companyDelegationId)
-          let dom = document.getElementsByTagName("input")
-         /*  console.log( this.questionaireSummaryAnwers, dom ) */
-          for (var i = 0; i < dom.length; i++) {
 
+          let dom = document.getElementsByTagName("input")
+          console.log( this.questionaireSummaryAnwers, dom )
+          for (var i = 0; i < dom.length; i++) {
             if (this.questionaireSummaryAnwers[i] === "true") {
-           /*    console.log(dom[i].id, this.questionaireSummaryAnwers[i]); */
               document.getElementById(dom[i].id).setAttribute("checked", "true")
             }
           }
+          this.delegation.setValue(answersItem.companyDelegationId)
         })
       }
       )

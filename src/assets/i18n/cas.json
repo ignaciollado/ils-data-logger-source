@@ -22,7 +22,7 @@
     "cnaes": "CNAE",
     "currentRatioType": "Tipo de RATIO:",
     "cnaesDataList": "CNAE por emplazamiento, año y mes",
-    
+
     "activityData": "Datos ambientales",
     "productionData": "Datos de producción",
     "myObjectives": "Mis objetivos",
@@ -93,6 +93,7 @@
     "dateAnswered": "Realizado el",
     "totalQuestions":"Total preguntas",
     "totalAnswers": "Total completado",
+    "continueQuestionnaire": "Continuar con el cuestionario",
 
     "copyright": "Creado por el Instituto de Innovación Empresarial de las Islas Baleares",
     "workSession": "Iniciar sesión de trabajo",

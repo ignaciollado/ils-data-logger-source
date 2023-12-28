@@ -10,11 +10,8 @@ mysqli_query($conn, "SET NAMES 'utf8'");
 $postedData = file_get_contents("php://input");
 $request = json_decode($postedData, TRUE);
 
-$companyId = $_GET['companyId'];
+$questionnaireID = $_GET['questionnaireID'];
 $completed = $_GET['completed'];
-
-$companyQuestionnaireId = time();
-
 $companyDelegationId = $_GET['delegation'];
 
 $userAnswers = $request['0'];
@@ -30,9 +27,10 @@ companyDelegationId =".$companyDelegationId.",
 userAnswers ='".$userAnswers."',
 completed ='".$completed."',
 questionnaireSummary ='".$questionnaireSummary."'
- WHERE id = ".$questionnaireSummary;
+ WHERE id = ".$questionnaireID;
 
-echo $sql;
+/* echo "---->".strlen($questionnaireSummary)."<---";
+echo $sql; */
 
 mysqli_free_result($result);
 

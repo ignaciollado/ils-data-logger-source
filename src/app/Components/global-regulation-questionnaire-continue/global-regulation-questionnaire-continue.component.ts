@@ -283,7 +283,6 @@ export class GlobalRegulationQuestionnaireContinueComponent {
     this.dialog.open(ConfirmDialogComponent, dialogConfig);
   }
   saveAnswer(e: any) {
-
     let vector1Progress1: number, vector1Progress2: number, vector1Progress3: number, vector1Progress4: number = 0
     let vector2Progress1: number, vector2Progress2: number, vector2Progress3: number, vector2Progress4: number, vector2Progress5: number, vector2Progress6: number, vector2Progress7: number, vector2Progress8: number, vector2Progress9: number, vector2Progress10: number, vector2Progress11: number = 0
     let vector3Progress1: number, vector3Progress2: number, vector3Progress3: number = 0
@@ -733,6 +732,7 @@ export class GlobalRegulationQuestionnaireContinueComponent {
   })
 
   }
+
   saveQuestionForm() {
     let resultsQuestionnaire: string[] = []
 
@@ -1108,16 +1108,20 @@ export class GlobalRegulationQuestionnaireContinueComponent {
 
   resultsVector1.innerText = resultsVector1.innerText.replaceAll(",,",",")
   resultsVector1.innerText = resultsVector1.innerText.replaceAll(",]},","]},")
-
   resultsQuestionnaire.push(resultsVector1.innerText)
+
   resultsVector2.innerText = resultsVector2.innerText.replaceAll(",,",",")
   resultsQuestionnaire.push(resultsVector2.innerHTML)
+
   resultsVector3.innerText = resultsVector3.innerText.replaceAll(",,",",")
   resultsQuestionnaire.push(resultsVector3.innerHTML)
+
   resultsVector4.innerText = resultsVector4.innerText.replaceAll(",,",",")
   resultsQuestionnaire.push(resultsVector4.innerHTML)
+
   resultsVector5.innerText = resultsVector5.innerText.replaceAll(",,",",")
   resultsQuestionnaire.push(resultsVector5.innerHTML)
+
   resultsVector6.innerText = resultsVector6.innerText.replaceAll(",,",",")
   resultsQuestionnaire.push(resultsVector6.innerHTML)
 
@@ -1306,26 +1310,33 @@ export class GlobalRegulationQuestionnaireContinueComponent {
   let responseOK: boolean = false
   let errorResponse: any
 
+  let totalRealizado: number = 0
+  this.questionnaireVectorState.map( porcentaje=> totalRealizado+= porcentaje.totalAnswers)
+  console.log (resultsQuestionnaire, this.questionnaireVectorState)
   if (this.questionnaireID) {
-    this.enviromentalAuditService.updateGlobalAnswer( this.questionnaireID, resultsQuestionnaire)
+    this.enviromentalAuditService.updateGlobalAnswer( resultsQuestionnaire, this.questionnaireID, this.delegation.value, this.questionnaireVectorState)
       .subscribe( (item:any) => {
-        this.router.navigateByUrl('/questionnaire-detail/'+`${item.last_id}`)
+        responseOK = true;
+        this.sharedService.managementToast( 'postFeedback', responseOK, errorResponse )
+        if (totalRealizado === 600) {
+          //this.router.navigateByUrl('/questionnaire-detail/'+`${this.questionnaireID}`)
+        } else {
+          //this.router.navigateByUrl('/global-questionnaire-list')
+        }
       })
-  } else {
-    let totalRealizado: number = 0
-    this.questionnaireVectorState.map( porcentaje=> totalRealizado+= porcentaje.totalAnswers)
+  } /* else {
     this.enviromentalAuditService.createGlobalAnswer(resultsQuestionnaire, this.userId, this.delegation.value, this.questionnaireVectorState)
       .subscribe((item: any) => {
         responseOK = true;
         this.sharedService.managementToast( 'loginFeedback', responseOK, errorResponse )
         if (totalRealizado === 600) {
-        this.router.navigateByUrl('/questionnaire-detail/'+`${item.last_id}`)
+          this.router.navigateByUrl('/questionnaire-detail/'+`${item.last_id}`)
         } else {
           this.router.navigateByUrl('/global-questionnaire-list')
         }
     }
   )
-  }
+  } */
 
   }
   }

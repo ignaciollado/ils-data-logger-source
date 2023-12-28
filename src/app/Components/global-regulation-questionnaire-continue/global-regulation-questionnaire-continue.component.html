@@ -1,9 +1,7 @@
-
-<p>global-regulation-questionnaire-continue works!</p>
 <div class="container-form">
   <h1>{{'requisitosLegales' | translate}} IDI<br>{{'globalQuestionnaire' | translate}}
     <button mat-flat-button type="button"
-    (click)="openDialog('300ms', '300ms', 'Nota informativa', introText, '', '')"><i class="fa-solid fa-circle-info fa-2xl" style="color: #ff9310;"></i></button>
+    (click)="openDialog('300ms', '300ms', 'Nota informativa', introText, '', '')"><i title="Información importante" class="fa-solid fa-circle-info fa-2xl" style="color: #ff9310;"></i></button>
   </h1>
  <div class="questions-container">
   <form *ngIf="questionList" [formGroup]="questionListForm"
@@ -98,7 +96,6 @@
     <div id="results-vector4" class="vector-div no-display"></div>
     <div id="results-vector5" class="vector-div no-display"></div>
     <div id="results-vector6" class="vector-div no-display"></div>
-
     <div id="progress-panel" class=" no-display"></div>
   </div>
 

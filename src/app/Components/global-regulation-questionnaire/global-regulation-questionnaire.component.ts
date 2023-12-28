@@ -1302,7 +1302,7 @@ let errorResponse: any
   this.enviromentalAuditService.createGlobalAnswer(resultsQuestionnaire, this.userId, this.delegation.value, this.questionnaireVectorState)
     .subscribe((item: any) => {
       responseOK = true;
-      this.sharedService.managementToast( 'loginFeedback', responseOK, errorResponse )
+      this.sharedService.managementToast( 'postFeedback', responseOK, errorResponse )
       if (totalRealizado === 600) {
       this.router.navigateByUrl('/questionnaire-detail/'+`${item.last_id}`)
       } else {

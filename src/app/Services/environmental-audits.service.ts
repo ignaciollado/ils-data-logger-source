@@ -44,9 +44,9 @@ export class EnvironmentalAuditsService {
       .pipe(catchError(this.sharedService.handleError));
   }
 
-  updateGlobalAnswer(questionnaireID: number, resultsQuestionnaire: string[]): Observable<QuestionDTO> {
+  updateGlobalAnswer(resultsQuestionnaire: string[], questionnaireID: number, delegation: number, completed: vectorStateDetail[]): Observable<QuestionDTO> {
     return this.http
-      .put<QuestionDTO>(`${URL_API}questionnaireAnswerUpdate.php?questionnaireID=${questionnaireID}`, resultsQuestionnaire)
+      .put<QuestionDTO>(`${URL_API}questionnaireAnswerUpdate.php?questionnaireID=${questionnaireID}&delegation=${delegation}&completed=${JSON.stringify(completed)}`, resultsQuestionnaire)
   }
 
   deleteGlobalAnswer(questionnaireId: number) : Observable<deleteResponse> {

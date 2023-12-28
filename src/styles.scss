@@ -5,13 +5,13 @@
 @include mat.core;
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100;700&display=swap');
 
-html, body { 
-  height: 100vh; 
-  margin: 0 auto;  
-  max-width: 100vw; 
-  font-family: Raleway, "Times New Roman", Times, serif; 
+html, body {
+  height: 100vh;
+  margin: 0 auto;
+  max-width: 100vw;
+  font-family: Raleway, "Times New Roman", Times, serif;
   font-size: 16px;}
-  body {
+body {
     margin-bottom: 0;
     margin-top: 0;
   }
@@ -64,10 +64,7 @@ mat-header-row{
 
 mat-header-cell {
   color: #000;
-  font-size: .8rem; 
-}
-.mat-header-cell{
-  /* width: 12rem; */
+  font-size: .8rem;
 }
 
 mat-cell{

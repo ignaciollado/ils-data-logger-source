@@ -1319,9 +1319,9 @@ export class GlobalRegulationQuestionnaireContinueComponent {
         responseOK = true;
         this.sharedService.managementToast( 'postFeedback', responseOK, errorResponse )
         if (totalRealizado === 600) {
-          //this.router.navigateByUrl('/questionnaire-detail/'+`${this.questionnaireID}`)
+          this.router.navigateByUrl('/questionnaire-detail/'+`${this.questionnaireID}`)
         } else {
-          //this.router.navigateByUrl('/global-questionnaire-list')
+          this.router.navigateByUrl('/global-questionnaire-list')
         }
       })
   } /* else {

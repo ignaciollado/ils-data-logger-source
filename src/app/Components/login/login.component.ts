@@ -33,7 +33,8 @@ export class LoginComponent implements OnInit {
   value = 'Clear me';
   isElevated = true;
   hide = true;
-  isAdmin: boolean = false
+  isCompany: boolean = false
+  userId: string = ""
   isLoggedIn: boolean = false;
   isLoginFailed: boolean = false;
   errorMessage: string = '';
@@ -81,7 +82,6 @@ export class LoginComponent implements OnInit {
         const headerInfo: HeaderMenus = { showAuthSection: true, showNoAuthSection: false, };
         this.headerMenusService.headerManagement.next(headerInfo)
         this.router.navigateByUrl('user/consumption')
-
       } else {
         const headerInfo: HeaderMenus = { showAuthSection: false, showNoAuthSection: true, };
         sessionStorage.removeItem('access_token')
@@ -123,7 +123,7 @@ export class LoginComponent implements OnInit {
             this.sharedService.managementToast( 'loginFeedback', responseOK, errorResponse )
 
             if (this.jwtHelper.decodeToken().role === 'admin') {
-              this.isAdmin = true
+              this.isCompany = false
             }
 
             if (responseOK) {

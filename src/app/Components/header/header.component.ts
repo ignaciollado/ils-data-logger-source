@@ -134,6 +134,7 @@ export class HeaderComponent implements OnInit {
   logout(): void {
     sessionStorage.removeItem('user_id')
     sessionStorage.removeItem('access_token')
+    this.userId = ""
 
     const headerInfo: HeaderMenus = { showAuthSection: false, showNoAuthSection: true, };
 

@@ -247,13 +247,13 @@ export class GlobalRegulationQuestionnaireContinueComponent {
          answers.map ((answersItem:any)=>{
           answersItem.questionnaireSummary.split(",").forEach(
             (element:string) => {
-              console.log ("elements: ", element)
+              /* console.log ("elements: ", element) */
                 this.questionaireSummaryAnwers.push( element.split("#")[1] )
             }
           )
 
           let dom = document.getElementsByTagName("input")
-          console.log( this.questionaireSummaryAnwers )
+          /* console.log( this.questionaireSummaryAnwers ) */
           for (var i = 0; i < dom.length; i++) {
             if (this.questionaireSummaryAnwers[i] === "true") {
               document.getElementById(dom[i].id).setAttribute("checked", "true")
@@ -1312,7 +1312,6 @@ export class GlobalRegulationQuestionnaireContinueComponent {
 
   let totalRealizado: number = 0
   this.questionnaireVectorState.map( porcentaje=> totalRealizado+= porcentaje.totalAnswers)
-  console.log (resultsQuestionnaire, this.questionnaireVectorState)
   if (this.questionnaireID) {
     this.enviromentalAuditService.updateGlobalAnswer( resultsQuestionnaire, this.questionnaireID, this.delegation.value, this.questionnaireVectorState)
       .subscribe( (item:any) => {

@@ -33,14 +33,14 @@ questionnaireSummary ='".$questionnaireSummary."'
 echo $sql; */
 
 mysqli_free_result($result);
+if (strlen($questionnaireSummary) != 0) {
+  $result = mysqli_query($conn, $sql);
+  mysqli_close($conn);
+}
 
-$result = mysqli_query($conn, $sql);
-$last_id = mysqli_insert_id($conn);
-
-mysqli_close($conn);
 if ($result) {
   header('Content-Type: application/json');
-  echo json_encode(array('last_id'=>$last_id, 'response_code'=>200));
+  echo json_encode(array('response_code'=>200));
 } else  {
   echo http_response_code(401);
 }

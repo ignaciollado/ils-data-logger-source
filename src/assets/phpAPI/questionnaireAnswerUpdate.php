@@ -33,7 +33,8 @@ questionnaireSummary ='".$questionnaireSummary."'
 echo $sql; */
 
 mysqli_free_result($result);
-if (strlen($questionnaireSummary) != 0) {
+
+if (strlen($questionnaireSummary) != 0) { /* si es 0 es que han cargado el cuestionario, no han modificado nada y han pulsado enviar */
   $result = mysqli_query($conn, $sql);
   mysqli_close($conn);
 }

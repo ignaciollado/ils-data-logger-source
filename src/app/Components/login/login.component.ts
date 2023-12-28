@@ -81,6 +81,7 @@ export class LoginComponent implements OnInit {
         const headerInfo: HeaderMenus = { showAuthSection: true, showNoAuthSection: false, };
         this.headerMenusService.headerManagement.next(headerInfo)
         this.router.navigateByUrl('user/consumption')
+
       } else {
         const headerInfo: HeaderMenus = { showAuthSection: false, showNoAuthSection: true, };
         sessionStorage.removeItem('access_token')
@@ -126,7 +127,7 @@ export class LoginComponent implements OnInit {
             }
 
             if (responseOK) {
-                      
+
               const headerInfo: HeaderMenus = { showAuthSection: true, showNoAuthSection: false, };
               this.router.navigateByUrl('profile');
               this.headerMenusService.headerManagement.next(headerInfo);

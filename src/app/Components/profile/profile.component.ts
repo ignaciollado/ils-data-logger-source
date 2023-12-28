@@ -128,6 +128,7 @@ export class ProfileComponent implements OnInit {
         };
         this.headerMenusService.headerManagement.next(headerInfo)
       }
+
     }
     this.loadCnaes()
   }
@@ -223,7 +224,7 @@ export class ProfileComponent implements OnInit {
 
     this.enterpriseActivityIndicatorsTemp = this.cnaeList.filter( item => item.cnaeCode === cnaeItem.value )
     this.enterpriseActivityIndicators = this.enterpriseActivityIndicatorsTemp[0].activityIndicator
-    this.activityIndicator.enable() 
+    this.activityIndicator.enable()
 
   }
 

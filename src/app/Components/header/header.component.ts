@@ -41,11 +41,16 @@ export class HeaderComponent implements OnInit {
       if (!this.jwtHelper.isTokenExpired (this.access_token)) {
         const headerInfo: HeaderMenus = {  showAuthSection: true, showNoAuthSection: false, };
         this.headerMenusService.headerManagement.next(headerInfo)
+        this.userId = this.jwtHelper.decodeToken().name
+        if (this.jwtHelper.decodeToken().role === 'company') {
+          this.isCompany = true
+        }
       } else { /* logout */
         const headerInfo: HeaderMenus = { showAuthSection: false, showNoAuthSection: true, };
         sessionStorage.removeItem('user_id')
         sessionStorage.removeItem('access_token')
         this.headerMenusService.headerManagement.next(headerInfo)
+        this.userId = ""
         this.router.navigateByUrl('login')
       }
     }
@@ -61,11 +66,6 @@ export class HeaderComponent implements OnInit {
         }
       }
     );
-      this.userId =  this.jwtHelper.decodeToken().name
-      if (this.jwtHelper.decodeToken().role === 'company') {
-        this.isCompany = true
-      }
-
   }
 
   dashboard(): void {

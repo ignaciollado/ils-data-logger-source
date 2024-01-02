@@ -1,4 +1,4 @@
-@use '../../../base';
+@use '../../../styles/typography/config' as config;
 
 .container {
   display: grid;
@@ -14,7 +14,7 @@
   padding: 5px 10px;
 }
 
-@media only screen and (max-width: base.$app-break-point) {
+@media only screen and (max-width: config.$app-break-point) {
 
   .container {
     grid-template-columns: auto;

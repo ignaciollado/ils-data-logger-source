@@ -73,7 +73,7 @@ export class GlobalRegulationQuestionnaireAnswerComponent {
                 this.regVector[(vectorAnswers.vectorId-1)].regulation.map((vReg:any) =>{
                   this.regulationList.map((regulation:regulationsDTO) => {
                     if (regulation.reg_ID == vReg) {
-                     vRegTemp += "<li><span class='ambito'> "+regulation.Ambito+" </span><span> "+regulation.Titulo+`. </span><br><span><a href='${regulation.link}' target='_blank'>`+regulation.link+`</a> </span><span> [<a href='../regulation/${vReg}' target='_blank'>`+vReg+"</a>] </span></li>"
+                     vRegTemp += "<li><span class='ambito'> "+regulation.Ambito+" </span><span> "+regulation.Titulo+`. </span><br><span><a href='${regulation.link}' target='_blank'>`+regulation.link+`</a> </span><span> [<a href='../../../assets/regulation/${vReg}' target='_blank'>`+vReg+"</a>] </span></li>"
                    }
                   })
                   /* console.log (vRegTemp) */

@@ -19,4 +19,5 @@
 </mat-dialog-content>
 <mat-dialog-actions>
     <button mat-button color="primary" [mat-dialog-close]>Close</button>
+    <button *ngIf="confirmDialog" color="warn" mat-raised-button (click)="onCommand()">Delete</button>
 </mat-dialog-actions>

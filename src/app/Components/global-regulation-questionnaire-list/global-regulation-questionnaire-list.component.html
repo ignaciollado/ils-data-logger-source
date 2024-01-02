@@ -27,7 +27,7 @@
         <a [routerLink]="['/global-questionnaire-continue', questionnaire.id]"  routerLinkActive="active" ariaCurrentWhenActive="page">CONTINUAR</a>
       </button>
       <button *ngIf="questionaireFinalState[j].questionnaireCompleted" mat-button color="primary" matTooltip='{{"viewResult" | translate}}'><a [routerLink]="['/questionnaire-detail', questionnaire.id]" routerLinkActive="active" ariaCurrentWhenActive="page"><i class="fa-solid fa-clipboard-list fa-2xl"></i></a></button>
-      <button mat-button color="warn" matTooltip='{{"deleteQuiestionnaire" | translate}}' (click)="deleteUserQuestionnaire(questionnaire.id)"><i class="fa-solid fa-trash fa-2xl"></i></button>
+      <button mat-button color="warn" matTooltip='{{"deleteQuiestionnaire" | translate}}' (click)="openDialog('300ms', '300ms', 'Acción de eliminar definitivamente', '¿Desea eleminiarlo?', questionnaire.id.toString(), '', true)"><i class="fa-solid fa-trash fa-2xl"></i></button>
     </mat-card-actions>
   <!-- </a> -->
   </mat-card>

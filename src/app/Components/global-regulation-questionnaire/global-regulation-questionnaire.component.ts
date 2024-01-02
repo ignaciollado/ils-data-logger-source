@@ -221,6 +221,7 @@ private loadQuestions(): void {
       } */
     })
 }
+
 private loadDelegations(userId: string): void {
   let errorResponse: any;
   if (userId) {
@@ -274,6 +275,7 @@ openDialog(enterAnimationDuration: string, exitAnimationDuration: string, questi
   };
   this.dialog.open(ConfirmDialogComponent, dialogConfig);
 }
+
 saveAnswer(e: any) {
 
   let vector1Progress1: number, vector1Progress2: number, vector1Progress3: number, vector1Progress4: number = 0
@@ -725,6 +727,7 @@ this.questionnaireVectorState.map(item=> {
 })
 
 }
+
 saveQuestionForm() {
   let resultsQuestionnaire: string[] = []
 

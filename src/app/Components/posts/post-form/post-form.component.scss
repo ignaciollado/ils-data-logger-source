@@ -1,3 +1,5 @@
+@use "../../../../base" as base;
+
 .error {
   color: red;
 }
@@ -30,19 +32,14 @@
 }
 .button-add-row {
   background: #1b9e1b;
-  color: #ffffff;
 }
 .button-add-row {
   background: #1b9e1b;
-  color: #ffffff;
 }
 .button-remove-rows {
-  background: red;
-  color: #ffffff;
+  background: base.$remove-selected-rows-back-color;
+  color: base.$font-color;
   margin-right: 5px;
-}
-.button-remove {
-  color: red;
 }
 
 .btn-edit{

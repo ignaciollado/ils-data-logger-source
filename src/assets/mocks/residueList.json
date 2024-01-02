@@ -77,41 +77,41 @@
                     "chapterItemId": "010407*",
                     "chapterItemName": "Residuos que contienen sustancias peligrosas procedentes de la transformación física y química de minerales no metálicos",
                     "aspect": 3
-                                  },
-                 {
+                  },
+                  {
                     "chapterItemId": "010408",
                     "chapterItemName": "Residuos de grava y rocas trituradas distintos de los mencionados en el código 010407",
                     "aspect": 3
-                                     },
-                 {
+                  },
+                  {
                     "chapterItemId": "010409",
                     "chapterItemName": "Residuos de arena y arcillas"
-                                     },
-                 {
+                  },
+                  {
                     "chapterItemId": "010410",
                     "chapterItemName": "Residuos de polvo y arenilla distintos de los mencionados en el código 010407",
                     "aspect": 3
-                                     },
-                 {
+                  },
+                  {
                     "chapterItemId": "010411",
                     "chapterItemName": "Residuos de la transformación de potasa y sal gema distintos de los mencionados en el código 010407",
                     "aspect": 3
-                                     },
-                 {
+                  },
+                  {
                     "chapterItemId": "010412",
                     "chapterItemName": "Estériles y otros residuos del lavado y limpieza de minerales, distintos de los mencionados en los códigos010407 y 010411",
                     "aspect": 3
-                                     },
-                 {
+                  },
+                  {
                     "chapterItemId": "010413",
                     "chapterItemName": "Residuos del corte y serrado de piedra distintos de los mencionados en el código 010407",
                     "aspect": 3
-                                     },
-                 {
+                  },
+                  {
                     "chapterItemId": "010499",  
                     "chapterItemName": "Residuos no especificados en otra categoría",
                     "aspect": 3
-                 }
+                  }
                 ]
             },
             {
@@ -119,7 +119,7 @@
               "chapterName": "Lodos y otros residuos de perforaciones",
               "chapterItems":
                 [
-                {
+                 {
                     "chapterItemId": "010504",
                     "chapterItemName": "Lodos y residuos de perforaciones que contienen agua dulce",
                     "aspect": 3
@@ -163,7 +163,207 @@
     "chapterTitle": "RESIDUOS DE LA AGRICULTURA, HORTICULTURA, ACUICULTURA, SILVICULTURA, CAZA Y PESCA; RESIDUOS DE LA PREPARACIÓN Y ELABORACIÓN DE ALIMENTOS",
     "chapters": 
           [
-            
+            {
+              "chapterId": "0201",
+              "chapterName": "Residuos de la agricultura, horticultura, acuicultura, silvicultura, caza y pesca",
+              "chapterItems":
+                [
+                  {
+                    "chapterItemId": "020101",
+                    "chapterItemName": "Lodos de lavado y limpieza"
+                  },
+                  {
+                    "chapterItemId": "020102",
+                    "chapterItemName": "Residuos de tejidos de animales"
+                  },
+                  {
+                    "chapterItemId": "020103",
+                    "chapterItemName": "Residuos de tejidos de vegetales"
+                  },
+                  {
+                    "chapterItemId": "020104",
+                    "chapterItemName": "Residuos de plásticos (excepto embalajes)"
+                  },
+                  {
+                    "chapterItemId": "020106",
+                    "chapterItemName": "Heces de animales, orina y estiércol (incluida paja podrida), efluentes, recogidos selectivamente y tratados fuera del lugar donde se generan"
+                  },
+                  {
+                    "chapterItemId": "020107",
+                    "chapterItemName": "Residuos de la silvicultura"
+                  },
+                  {
+                    "chapterItemId": "020108",
+                    "chapterItemName": "Residuos agroquímicos que contienen sustancias peligrosas"
+                  },
+                  {
+                    "chapterItemId": "020109",
+                    "chapterItemName": "Residuos agroquímicos distintos de los mencionados en el código 02 01 08"
+                  },
+                  {
+                    "chapterItemId": "020110",
+                    "chapterItemName": "Residuos metálicos"
+                  },
+                  {
+                    "chapterItemId": "020199",
+                    "chapterItemName": "Residuos no especificados en otra categoría"
+                  }
+                ]
+            },
+            {
+              "chapterId": "0202",
+              "chapterName": "Residuos de la preparación y elaboración de carne, pescado y otros alimentos de origen animal",
+              "chapterItems":
+                [
+		              {
+                    "chapterItemId": "020201",
+                    "chapterItemName": "Lodos del lavado y limpieza"
+                  },
+                  {
+                    "chapterItemId": "020202",
+                    "chapterItemName": "Residuos de tejidos de animales"
+                  },
+                  {
+                    "chapterItemId": "020203",
+                    "chapterItemName": "Materiales inadecuados para el consumo o la elaboración"
+                  },
+                  {
+                    "chapterItemId": "020204",
+                    "chapterItemName": "Lodos del tratamiento in situ de efluentes"
+                  },
+                  {
+                    "chapterItemId": "020299",
+                    "chapterItemName": "Residuos no especificados en otra categoría"
+                  }
+                ]
+            },
+            {
+              "chapterId": "0203",
+              "chapterName": "Residuos de la preparación y elaboración de frutas, hortalizas, cereales, aceites comestibles, cacao, café, té y tabaco; producción de conservas; producción de levadura y extracto de levadura, preparación y fermentación de melazas",
+              "chapterItems":
+                [
+                  {
+                    "chapterItemId": "020301",
+                    "chapterItemName": "Lodos del lavado, limpieza, pelado, centrifugado y separación"
+                  },
+                  {
+                    "chapterItemId": "020302",
+                    "chapterItemName": "Residuos de conservantes"
+                  },
+                  {
+                    "chapterItemId": "020303",
+                    "chapterItemName": "Residuos de la extracción con disolventes"
+                  },
+                  {
+                    "chapterItemId": "020304",
+                    "chapterItemName": "Materiales inadecuados para el consumo o la elaboración"
+                  },
+                  {
+                    "chapterItemId": "020305",
+                    "chapterItemName": "Lodos del tratamiento in situ de efluentes"
+                  },
+                  {
+                    "chapterItemId": "020399",
+                    "chapterItemName": "Residuos no especificados en otra categoría"                
+                  }
+                ]
+            },
+            {
+              "chapterId": "0204",
+              "chapterName": "Residuos de la elaboración de azúcar",
+              "chapterItems":
+                [
+		              {
+                    "chapterItemId": "020401",
+                    "chapterItemName": "Tierra procedente de la limpieza y lavado de la remolacha"
+                  },
+                  {
+                    "chapterItemId": "020402",
+                    "chapterItemName": "Carbonato cálcico fuera de especificación"
+                  },
+                  {
+                    "chapterItemId": "020403",
+                    "chapterItemName": "Lodos del tratamiento in situ de efluentes"
+                  },
+                  {
+                    "chapterItemId": "020499",
+                    "chapterItemName": "Residuos no especificados en otra categoría"
+                  }
+                ]
+            },
+            {
+              "chapterId": "0205",
+              "chapterName": "Residuos de la industria de productos lácteos",
+              "chapterItems":
+                [
+		              {
+                    "chapterItemId": "020501",
+                    "chapterItemName": "Materiales inadecuados para el consumo o la elaboración"
+                  },
+                  {
+                    "chapterItemId": "020502",
+                    "chapterItemName": "Lodos del tratamiento in situ de efluentes"
+                  },
+                  {
+                    "chapterItemId": "020599",
+                    "chapterItemName": "Residuos no especificados en otra categoría"
+                  }
+                ]
+            },
+            {
+              "chapterId": "0206",
+              "chapterName": "Residuos de la industria de panadería y pastelería",
+              "chapterItems":
+                [
+                  {
+                    "chapterItemId": "020601",
+                    "chapterItemName": "Materiales inadecuados para el consumo o la elaboración"
+                  },
+                  {
+                    "chapterItemId": "020602",
+                    "chapterItemName": "Residuos de conservantes"
+                  },
+                  {
+                    "chapterItemId": "020603",
+                    "chapterItemName": "Lodos del tratamiento in situ de efluentes"
+                  },
+                  {
+                    "chapterItemId": "020699",
+                    "chapterItemName": "Residuos no especificados en otra categoría"
+                  }
+                ]
+            },
+            {
+              "chapterId": "0207",
+              "chapterName": "Residuos de la producción de bebidas alcohólicas y no alcohólicas (excepto café, té y cacao)",
+              "chapterItems":
+                [
+		              {
+                    "chapterItemId": "020701",
+                    "chapterItemName": "Residuos del lavado, limpieza y reducción mecánica de materias primas"
+                  },
+                  {
+                    "chapterItemId": "020702",
+                    "chapterItemName": "Residuos de la destilación de alcoholes"
+                  },
+                  {
+                    "chapterItemId": "020703",
+                    "chapterItemName": "Residuos del tratamiento químico"
+                  },
+                  {
+                    "chapterItemId": "020704",
+                    "chapterItemName": "Materiales inadecuados para el consumo o la elaboración"
+                  },
+                  {
+                    "chapterItemId": "020705",
+                    "chapterItemName": "Lodos del tratamiento in situ de efluentes"
+                  },
+                  {
+                    "chapterItemId": "020799",
+                    "chapterItemName": "Residuos no especificados en otra categoría"
+                  }
+                ]
+            }         
           ]
   },
 
@@ -172,7 +372,3967 @@
     "chapterTitle": "RESIDUOS DE LA TRANSFORMACIÓN DE LA MADERA Y DE LA PRODUCCIÓN DE TABLEROS Y MUEBLES, PASTA DE PAPEL, PAPEL Y CARTÓN",
     "chapters": 
           [
-            
+            {
+              "chapterId": "0301",
+              "chapterName": "Residuos de la transformación de la madera y de la producción de tableros y muebles",
+              "chapterItems":
+                [
+                  {
+                    "chapterItemId": "030101",
+                    "chapterItemName": "Residuos de corteza y corcho"
+                  },
+                  {
+                    "chapterItemId": "030104",
+                    "chapterItemName": "Serrín, virutas, recortes, madera, tableros de partículas y chapas que contienen sustancias peligrosas"
+                  },
+                  {
+                    "chapterItemId": "030105",
+                    "chapterItemName": "Serrín, virutas, recortes, madera, tableros de partículas y chapas distintos de los mencionados en el código 03 01 04"
+                  },
+                  {
+                    "chapterItemId": "030199",
+                    "chapterItemName": "Residuos no especificados en otra categoría"
+                  }
+                ]
+            },
+            {
+              "chapterId": "0302",
+              "chapterName": "Residuos de los tratamientos de conservación de la madera",
+              "chapterItems":
+                [
+		              {
+                    "chapterItemId": "030201",
+                    "chapterItemName": "Conservantes de la madera orgánicos no halogenados"
+                  },
+                  {
+                    "chapterItemId": "030202",
+                    "chapterItemName": "Conservantes de la madera organoclorados"
+                  },
+                  {
+                    "chapterItemId": "030203",
+                    "chapterItemName": "Conservantes de la madera organometálicos"
+                  },
+                  {
+                    "chapterItemId": "030204",
+                    "chapterItemName": "Conservantes de la madera inorgánicos"
+		              },
+                  {
+                    "chapterItemId": "030205",
+                    "chapterItemName": "Otros conservantes de la madera que contienen sustancias peligrosas"
+                  },
+                  {
+                    "chapterItemId": "030299",
+                    "chapterItemName": "Conservantes de la madera no especificados en otra categoría"
+                  }
+                ]
+            },
+            {
+              "chapterId": "0303",
+              "chapterName": "Residuos de la producción y transformación de pasta de papel, papel y cartón",
+              "chapterItems":
+                [
+                  {
+                    "chapterItemId": "030301",
+                    "chapterItemName": "Residuos de corteza y madera"
+                  },
+                  {
+                    "chapterItemId": "030302",
+                    "chapterItemName": "Lodos de lejías verdes (procedentes de la recuperación de lejías de cocción)"
+                  },
+                  {
+                    "chapterItemId": "030305",
+                    "chapterItemName": "Lodos de destintado procedentes del reciclado de papel"
+                  },
+                  {
+                    "chapterItemId": "030307",
+                    "chapterItemName": "Desechos, separados mecánicamente, de pasta elaborada a partir de residuos de papel y cartón"
+                  },
+                  {
+                    "chapterItemId": "030308",
+                    "chapterItemName": "Residuos procedentes de la clasificación de papel y cartón destinados al reciclado"
+                  },
+                  {
+                    "chapterItemId": "030309",
+                    "chapterItemName": "Residuos de lodos calizos"
+		              },
+		              {
+                    "chapterItemId": "030310",
+                    "chapterItemName": "Desechos de fibras y lodos de fibras, de materiales de carga y de estucado, obtenidos por separación mecánica"
+                  },
+                  {
+                    "chapterItemId": "030311",
+                    "chapterItemName": "Lodos del tratamiento in situ de efluentes, distintos de los especificados en el código 03 03 10"
+                  },
+                  {
+                    "chapterItemId": "030399",
+                    "chapterItemName": "Residuos no especificados en otra categoría"                
+                  }
+                ]
+            }          
+          ]
+  },
+
+  {
+    "key": "04",
+    "chapterTitle": "RESIDUOS DE LAS INDUSTRIAS DEL CUERO, DE LA PIEL Y TEXTIL",
+    "chapters": 
+          [
+            {
+              "chapterId": "0401",
+              "chapterName": "Residuos de las industrias del cuero y de la piel",
+              "chapterItems":
+                [
+                  {
+                    "chapterItemId": "040101",
+                    "chapterItemName": "Residuos de descarnaduras y cuarteado de cal"
+                  },
+                  {
+                    "chapterItemId": "040102",
+                    "chapterItemName": "Residuos del encalado"
+                  },
+                  {
+                    "chapterItemId": "040103",
+                    "chapterItemName": "Residuos del desengrasado que contienen disolventes sin fase líquida"
+                  },
+                  {
+                    "chapterItemId": "040104",
+                    "chapterItemName": "Residuos líquidos de curtición que contienen cromo"
+                  },
+                  {
+                    "chapterItemId": "040105",
+                    "chapterItemName": "Residuos líquidos de curtición que no contienen cromo"
+                  },
+                  {
+                    "chapterItemId": "040106",
+                    "chapterItemName": "Lodos, en particular los procedentes del tratamiento in situ de efluentes, que contienen cromo"
+                  },
+                  {
+                    "chapterItemId": "040107",
+                    "chapterItemName": "Lodos, en particular los procedentes del tratamiento in situ de efluentes, que no contienen cromo"
+                  },
+                  {
+                    "chapterItemId": "040108",
+                    "chapterItemName": "Residuos de piel curtida (serrajes, rebajaduras, recortes y polvo de esmerilado) que contienen cromo"
+                  },
+                  {
+                    "chapterItemId": "040109",
+                    "chapterItemName": "Residuos de confección y acabado"
+                  },
+                  {
+                    "chapterItemId": "040199",
+                    "chapterItemName": "Residuos no especificados en otra categoría"
+                  }
+                ]
+            },
+            {
+              "chapterId": "0402",
+              "chapterName": "Residuos de la industria textil",
+              "chapterItems":
+                [
+		              {
+                    "chapterItemId": "040209",
+                    "chapterItemName": "Residuos de materiales compuestos (textiles impregnados, elastómeros, plastómeros)"
+                  },
+                  {
+                    "chapterItemId": "040210",
+                    "chapterItemName": "Materia orgánica de productos naturales (por ejemplo, grasa, cera)"
+                  },
+                  {
+                    "chapterItemId": "040214",
+                    "chapterItemName": "Residuos del acabado que contienen disolventes orgánicos"
+                  },
+                  {
+                    "chapterItemId": "040215",
+                    "chapterItemName": "Residuos del acabado distintos de los especificados en el código 04 02 14"
+                  },
+                  {
+                    "chapterItemId": "040216",
+                    "chapterItemName": "Colorantes y pigmentos que contienen sustancias peligrosas"
+ 		              },
+                  {
+                    "chapterItemId": "040217",
+                    "chapterItemName": "Colorantes y pigmentos distintos de los mencionados en el código 04 02 16"
+                  },
+                  {
+                    "chapterItemId": "040219",
+                    "chapterItemName": "Lodos del tratamiento in situ de efluentes que contienen sustancias peligrosas"
+                  },
+                  {
+                    "chapterItemId": "040220",
+                    "chapterItemName": "Lodos del tratamiento in situ de efluentes, distintos de los especificados en el código 04 02 19"
+                  },
+                  {
+                    "chapterItemId": "040221",
+                    "chapterItemName": "Residuos de fibras textiles no transformadas"
+                  },
+                  {
+                    "chapterItemId": "040222",
+                    "chapterItemName": "Residuos de fibras textiles transformadas"
+                  },
+                  {
+                    "chapterItemId": "040299",
+                    "chapterItemName": "Residuos no especificados en otra categoría"
+                  }
+                ]
+            } 
+          ]
+  },
+
+  {
+    "key": "05",
+    "chapterTitle": "RESIDUOS DEL REFINO DE PETRÓLEO, PURIFICACIÓN DEL GAS NATURAL Y TRATAMIENTO PIROLÍTICO DEL CARBÓN",
+    "chapters": 
+          [
+            {
+              "chapterId": "0501",
+              "chapterName": "Residuos del refino de petróleo",
+              "chapterItems":
+                [
+                  {
+                    "chapterItemId": "050102",
+                    "chapterItemName": "Lodos de la desalación"
+                  },
+                  {
+                    "chapterItemId": "050103",
+                    "chapterItemName": "Lodos de fondos de tanques"
+                  },
+                  {
+                    "chapterItemId": "050104",
+                    "chapterItemName": "Lodos de ácidos alquilo"
+                  },
+                  {
+                    "chapterItemId": "050105",
+                    "chapterItemName": "Derrames de hidrocarburos"
+ 		              },
+                  {
+                    "chapterItemId": "050106",
+                    "chapterItemName": "Lodos oleosos procedentes de operaciones de mantenimiento de plantas o equipos"
+                  },
+                  {
+                    "chapterItemId": "050107",
+                    "chapterItemName": "Alquitranes ácidos"
+                  },
+                  {
+                    "chapterItemId": "050108",
+                    "chapterItemName": "Otros alquitranes"
+                  },
+                  {
+                    "chapterItemId": "050109",
+                    "chapterItemName": "Lodos del tratamiento in situ de efluentes que contienen sustancias peligrosas"
+ 		              },
+                  {
+                    "chapterItemId": "050110",
+                    "chapterItemName": "Lodos del tratamiento in situ de efluentes, distintos de los especificados en el código 05 01 09"
+                  },
+                  {
+                    "chapterItemId": "050111",
+                    "chapterItemName": "Residuos procedentes de la limpieza de combustibles con bases"
+                  },
+                  {
+                    "chapterItemId": "050112",
+                    "chapterItemName": "Hidrocarburos que contienen ácidos"
+                  },
+                  {
+                    "chapterItemId": "050113",
+                    "chapterItemName": "Lodos procedentes del agua de alimentación de calderas"
+                  },
+                  {
+                    "chapterItemId": "050114",
+                    "chapterItemName": "Residuos de columnas de refrigeración"
+                  },
+                  {
+                    "chapterItemId": "050115",
+                    "chapterItemName": "Arcillas de filtración usadas"
+                  },
+                  {
+                    "chapterItemId": "050116",
+                    "chapterItemName": "Residuos que contienen azufre procedentes de la desulfuración del petróleo"
+                  },
+                  {
+                    "chapterItemId": "050117",
+                    "chapterItemName": "Betunes"
+                  },
+                  {
+                    "chapterItemId": "050199",
+                    "chapterItemName": "Residuos no especificados en otra categoría"
+                  }
+                ]
+            },
+            {
+              "chapterId": "0506",
+              "chapterName": "Residuos del tratamiento pirolítico del carbón",
+              "chapterItems":
+                [
+		              {
+                    "chapterItemId": "050601",
+                    "chapterItemName": "Alquitranes ácidos"
+                  },
+                  {
+                    "chapterItemId": "050603",
+                    "chapterItemName": "Otros alquitranes"
+                  },
+                  {
+                    "chapterItemId": "050604",
+                    "chapterItemName": "Residuos de columnas de refrigeración"
+                  },
+                  {
+                    "chapterItemId": "050699",
+                    "chapterItemName": "Residuos no especificados en otra categoría"
+		              }
+                ]
+            },
+            {
+              "chapterId": "0507",
+              "chapterName": "Residuos de la purificación y el transporte de gas natural",
+              "chapterItems":
+                [
+                  {
+                    "chapterItemId": "050701",
+                    "chapterItemName": "Residuos que contienen mercurio"
+                  },
+                  {
+                    "chapterItemId": "050702",
+                    "chapterItemName": "Residuos que contienen azufre"
+                  },
+                  {
+                    "chapterItemId": "050799",
+                    "chapterItemName": "Residuos no especificados en otra categoría"
+                  }
+                ]
+            }
+          ]
+  },
+
+  {
+    "key": "06",
+    "chapterTitle": "RESIDUOS DE PROCESOS QUÍMICOS INORGÁNICOS",
+    "chapters": 
+          [
+            {
+              "chapterId": "0601",
+              "chapterName": "Residuos de la fabricación, formulación, distribución y utilización (FFDU) de ácidos",
+              "chapterItems":
+                [
+                  {
+                    "chapterItemId": "060101",
+                    "chapterItemName": "Ácido sulfúrico y ácido sulfuroso"
+                  },
+                  {
+                    "chapterItemId": "060102",
+                    "chapterItemName": "Ácido clorhídrico"
+                  },
+                  {
+                    "chapterItemId": "060103",
+                    "chapterItemName": "Ácido fluorhídrico"
+                  },
+                  {
+                    "chapterItemId": "060104",
+                    "chapterItemName": "Ácido fosfórico y ácido fosforoso"
+                  },
+                  {
+                    "chapterItemId": "060105",
+                    "chapterItemName": "Ácido nítrico y ácido nitroso"
+                  },
+                  {
+                    "chapterItemId": "060106",
+                    "chapterItemName": "Otros ácidos"
+                  },
+                  {
+                    "chapterItemId": "060199",
+                    "chapterItemName": "Residuos no especificados en otra categoría"
+                  }
+                ]
+            },
+            {
+              "chapterId": "0602",
+              "chapterName": "Residuos de la FFDU de bases",
+              "chapterItems":
+                [
+		  {
+                    "chapterItemId": "060201",
+                    "chapterItemName": "Hidróxido cálcico"
+                  },
+                  {
+                    "chapterItemId": "060203",
+                    "chapterItemName": "Hidróxido amónico"
+                  },
+                  {
+                    "chapterItemId": "060204",
+                    "chapterItemName": "Hidróxido potásico e hidróxido sódico"
+                  },
+                  {
+                    "chapterItemId": "060205",
+                    "chapterItemName": "Otras bases"
+		  },
+                  {
+                    "chapterItemId": "060299",
+                    "chapterItemName": "Residuos no especificados en otra categoría"
+                  }
+                ]
+            },
+            {
+              "chapterId": "0603",
+              "chapterName": "Residuos de la FFDU de sales y sus soluciones y de óxidos metálicos",
+              "chapterItems":
+                [
+                  {
+                    "chapterItemId": "060311",
+                    "chapterItemName": "Sales sólidas y soluciones que contienen cianuros"
+                  },
+                  {
+                    "chapterItemId": "060313",
+                    "chapterItemName": "Sales sólidas y soluciones que contienen metales pesados"
+                  },
+                  {
+                    "chapterItemId": "060314",
+                    "chapterItemName": "Sales sólidas y soluciones distintas de las mencionadas en los códigos 06 03 11 y 06 03 13"
+                  },
+                  {
+                    "chapterItemId": "060315",
+                    "chapterItemName": "Óxidos metálicos que contienen metales pesados"
+                  },
+                  {
+                    "chapterItemId": "060316",
+                    "chapterItemName": "Óxidos metálicos distintos de los mencionados en el código 06 03 15"
+                  },
+                  {
+                    "chapterItemId": "060399",
+                    "chapterItemName": "Residuos no especificados en otra categoría"         
+                  }
+                ]
+            },
+            {
+              "chapterId": "0604",
+              "chapterName": "Residuos que contienen metales distintos de los especificados en el código 06 03",
+              "chapterItems":
+                [
+                  {
+                    "chapterItemId": "060403",
+                    "chapterItemName": "Residuos que contienen arsénico"
+                  },
+                  {
+                    "chapterItemId": "060404",
+                    "chapterItemName": "Residuos que contienen mercurio"
+                  },
+                  {
+                    "chapterItemId": "060405",
+                    "chapterItemName": "Residuos que contienen otros metales pesados"
+                  },
+                  {
+                    "chapterItemId": "060499",
+                    "chapterItemName": "Residuos no especificados en otra categoría"
+                  }
+                ]
+            },
+            {
+              "chapterId": "0605",
+              "chapterName": "Lodos del tratamiento in situ de efluentes",
+              "chapterItems":
+                [
+		  {
+                    "chapterItemId": "060502",
+                    "chapterItemName": "Lodos del tratamiento in situ de efluentes que contienen sustancias peligrosas"
+                  },
+                  {
+                    "chapterItemId": "060503",
+                    "chapterItemName": "Lodos del tratamiento in situ de efluentes, distintos de los especificados en el código 06 05 02"
+                  }
+                ]
+            },
+            {
+              "chapterId": "0606",
+              "chapterName": "Residuos de la FFDU de los productos químicos que contienen azufre, de los procesos químicos del azufre y de los procesos de desulfuración",
+              "chapterItems":
+                [
+                  {
+                    "chapterItemId": "060602",
+                    "chapterItemName": "Residuos que contienen sulfuros peligrosos"
+                  },
+                  {
+                    "chapterItemId": "060603",
+                    "chapterItemName": "Residuos que contienen sulfuros distintos de los mencionados en el código 06 06 02"
+                  },
+                  {
+                    "chapterItemId": "060699",
+                    "chapterItemName": "Residuos no especificados en otra categoría"
+                  }
+                ]
+            },
+            {
+              "chapterId": "0607",
+              "chapterName": "Residuos de la FFDU de halógenos y de los procesos químicos de los halógenos",
+              "chapterItems":
+                [
+		  {
+                    "chapterItemId": "060701",
+                    "chapterItemName": "Residuos de electrólisis que contienen amianto"
+                  },
+                  {
+                    "chapterItemId": "060702",
+                    "chapterItemName": "Carbón activo procedente de la producción de cloro"
+                  },
+                  {
+                    "chapterItemId": "060703",
+                    "chapterItemName": "Lodos de sulfato bárico que contienen mercurio"
+                  },
+                  {
+                    "chapterItemId": "060704",
+                    "chapterItemName": "Soluciones y ácidos, por ejemplo, ácido de contacto"
+		  },
+                  {
+                    "chapterItemId": "060799",
+                    "chapterItemName": "Residuos no especificados en otra categoría"
+                  }
+                ]
+            },
+            {
+              "chapterId": "0608",
+              "chapterName": "Residuos de la FFDU del silicio y sus derivados",
+              "chapterItems":
+                [
+                  {
+                    "chapterItemId": "060802",
+                    "chapterItemName": "Residuos que contienen clorosilanos peligrosos"
+                  },
+                  {
+                    "chapterItemId": "060899",
+                    "chapterItemName": "Residuos no especificados en otra categoría"
+                  }
+                ]
+            },
+            {
+              "chapterId": "0609",
+              "chapterName": "Residuos de la FFDU de productos químicos que contienen fósforo y de los procesos químicos del fósforo",
+              "chapterItems":
+                [
+                  {
+                    "chapterItemId": "060902",
+                    "chapterItemName": "Escorias de fósforo"
+                  },
+                  {
+                    "chapterItemId": "060903",
+                    "chapterItemName": "Residuos cálcicos de reacción que contienen o están contaminados con sustancias peligrosas"
+                  },
+                  {
+                    "chapterItemId": "060904",
+                    "chapterItemName": "Residuos cálcicos de reacción distintos de los mencionados en el código 06 09 03"
+                  },
+                  {
+                    "chapterItemId": "060999",
+                    "chapterItemName": "Residuos no especificados en otra categoría"
+                  }
+                ]
+            },
+            {
+              "chapterId": "0610",
+              "chapterName": "Residuos de la FFDU de productos químicos que contienen nitrógeno y de los procesos químicos del nitrógeno y de la fabricación de fertilizantes",
+              "chapterItems":
+                [
+		  {
+                    "chapterItemId": "061002",
+                    "chapterItemName": "Residuos que contienen sustancias peligrosas"
+                  },
+                  {
+                    "chapterItemId": "061099",
+                    "chapterItemName": "Residuos no especificados en otra categoría"
+                  }
+                ]
+            },
+            {
+              "chapterId": "0611",
+              "chapterName": "Residuos de la fabricación de pigmentos inorgánicos y opacificantes",
+              "chapterItems":
+                [
+		  {
+                    "chapterItemId": "061101",
+                    "chapterItemName": "Residuos cálcicos de reacción procedentes de la producción de dióxido de titanio"
+                  },
+                  {
+                    "chapterItemId": "061199",
+                    "chapterItemName": "Residuos no especificados en otra categoría"
+                  }
+                ]
+            },
+            {
+              "chapterId": "0613",
+              "chapterName": "Residuos de los procesos químicos inorgánicos no especificados en otra categoría",
+              "chapterItems":
+                [
+                  {
+                    "chapterItemId": "061301",
+                    "chapterItemName": "Productos fitosanitarios inorgánicos, conservantes de la madera y otros biocidas"
+                  },
+                  {
+                    "chapterItemId": "061302",
+                    "chapterItemName": "Carbón activo usado (excepto la categoría 06 07 02)"
+                  },
+                  {
+                    "chapterItemId": "061303",
+                    "chapterItemName": "Negro de carbón"
+                  },
+                  {
+                    "chapterItemId": "061304",
+                    "chapterItemName": "Residuos procedentes de la transformación del amianto"
+                  },
+                  {
+                    "chapterItemId": "061305",
+                    "chapterItemName": "Hollín"
+                  },
+                  {
+                    "chapterItemId": "061399",
+                    "chapterItemName": "Residuos no especificados en otra categoría"         
+                  }
+                ]
+            } 
+          ]
+  },
+
+  {
+    "key": "07",
+    "chapterTitle": "RESIDUOS DE LOS PROCESOS QUÍMICOS ORGÁNICOS",
+    "chapters": 
+          [
+            {
+              "chapterId": "0701",
+              "chapterName": "Residuos de la fabricación, formulación, distribución y utilización (FFDU) de productos químicos orgánicos de base",
+              "chapterItems":
+                [
+                  {
+                    "chapterItemId": "070101",
+                    "chapterItemName": "Líquidos de limpieza y licores madre acuosos"
+                  },
+                  {
+                    "chapterItemId": "070103",
+                    "chapterItemName": "Disolventes, líquidos de limpieza y licores madre organohalogenados"
+                  },
+                  {
+                    "chapterItemId": "070104",
+                    "chapterItemName": "Otros disolventes, líquidos de limpieza y licores madre orgánicos"
+                  },
+                  {
+                    "chapterItemId": "070107",
+                    "chapterItemName": "Residuos de reacción y de destilación halogenados"
+                  },
+                  {
+                    "chapterItemId": "070108",
+                    "chapterItemName": "Otros residuos de reacción y de destilación"
+                  },
+                  {
+                    "chapterItemId": "070109",
+                    "chapterItemName": "Tortas de filtración y absorbentes usados halogenados"
+                  },
+                  {
+                    "chapterItemId": "070110",
+                    "chapterItemName": "Otras tortas de filtración y absorbentes usados"
+                  },
+                  {
+                    "chapterItemId": "070111",
+                    "chapterItemName": "Lodos del tratamiento in situ de efluentes que contienen sustancias peligrosas"
+                  },
+                  {
+                    "chapterItemId": "070112",
+                    "chapterItemName": "Lodos del tratamiento in situ de efluentes, distintos de los especificados en el código 07 01 11"
+                  },
+                  {
+                    "chapterItemId": "070199",
+                    "chapterItemName": "Residuos no especificados en otra categoría"
+                  }
+                ]
+            },
+            {
+              "chapterId": "0702",
+              "chapterName": "Residuos de la FFDU de plásticos, caucho sintético y fibras artificiales",
+              "chapterItems":
+                [
+		  {
+                    "chapterItemId": "070201",
+                    "chapterItemName": "Líquidos de limpieza y licores madre acuosos"
+                  },
+                  {
+                    "chapterItemId": "070203",
+                    "chapterItemName": "Disolventes, líquidos de limpieza y licores madre organohalogenados"
+                  },
+                  {
+                    "chapterItemId": "070204",
+                    "chapterItemName": "Otros disolventes, líquidos de limpieza y licores madre orgánicos"
+                  },
+                  {
+                    "chapterItemId": "070207",
+                    "chapterItemName": "Residuos de reacción y de destilación halogenados"
+		  },
+                  {
+                    "chapterItemId": "070208",
+                    "chapterItemName": "Otros residuos de reacción y de destilación"
+		  },
+                  {
+                    "chapterItemId": "070209",
+                    "chapterItemName": "Tortas de filtración y absorbentes usados halogenados"
+                  },
+                  {
+                    "chapterItemId": "070210",
+                    "chapterItemName": "Otras tortas de filtración y absorbentes usados"
+                  },
+                  {
+                    "chapterItemId": "070211",
+                    "chapterItemName": "Lodos del tratamiento in situ de efluentes que contienen sustancias peligrosas"
+                  },
+                  {
+                    "chapterItemId": "070212",
+                    "chapterItemName": "Lodos del tratamiento in situ de efluentes, distintos de los especificados en el código 07 02 11"
+                  },
+                  {
+                    "chapterItemId": "070213",
+                    "chapterItemName": "Residuos de plástico"
+                  },
+                  {
+                    "chapterItemId": "070214",
+                    "chapterItemName": "Residuos procedentes de aditivos que contienen sustancias peligrosas"
+                  },
+                  {
+                    "chapterItemId": "070215",
+                    "chapterItemName": "Residuos procedentes de aditivos distintos de los especificados en el código 07 02 14"
+                  },
+                  {
+                    "chapterItemId": "070216",
+                    "chapterItemName": "Residuos que contienen siliconas peligrosas"
+                  },
+                  {
+                    "chapterItemId": "070217",
+                    "chapterItemName": "Residuos que contienen siliconas distintos de los mencionados en el código 07 02 16"
+                  },
+                  {
+                    "chapterItemId": "070299",
+                    "chapterItemName": "Residuos no especificados en otra categoría"
+                  },
+                  {
+                    "chapterItemId": "070214",
+                    "chapterItemName": "Residuos procedentes de aditivos que contienen sustancias peligrosas"
+                  },
+                  {
+                    "chapterItemId": "070215",
+                    "chapterItemName": "Residuos procedentes de aditivos distintos de los especificados en el código 07 02 14"
+                  },
+                  {
+                    "chapterItemId": "070216",
+                    "chapterItemName": "Residuos que contienen siliconas peligrosas"
+                  },
+                  {
+                    "chapterItemId": "070217",
+                    "chapterItemName": "Residuos que contienen siliconas distintos de los mencionados en el código 07 02 16"
+                  },
+                  {
+                    "chapterItemId": "070299",
+                    "chapterItemName": "Residuos no especificados en otra categoría"
+                  }
+                ]
+            },
+            {
+              "chapterId": "0703",
+              "chapterName": "Residuos de la FFDU de tintes y pigmentos orgánicos (excepto los del subcapítulo 06 11)",
+              "chapterItems":
+                [
+                  {
+                    "chapterItemId": "070301",
+                    "chapterItemName": "Líquidos de limpieza y licores madre acuosos"
+                  },
+                  {
+                    "chapterItemId": "070303",
+                    "chapterItemName": "Disolventes, líquidos de limpieza y licores madre organohalogenados"
+                  },
+                  {
+                    "chapterItemId": "070304",
+                    "chapterItemName": "Otros disolventes, líquidos de limpieza y licores madre orgánicos"
+                  },
+                  {
+                    "chapterItemId": "070307",
+                    "chapterItemName": "Residuos de reacción y de destilación halogenados"
+                  },
+                  {
+                    "chapterItemId": "070308",
+                    "chapterItemName": "Otros residuos de reacción y de destilación"
+                  },
+                  {
+                    "chapterItemId": "070309",
+                    "chapterItemName": "Tortas de filtración y absorbentes usados halogenados"         
+                  },
+                  {
+                    "chapterItemId": "070310",
+                    "chapterItemName": "Otras tortas de filtración y absorbentes usados"
+                  },
+                  {
+                    "chapterItemId": "070311",
+                    "chapterItemName": "Lodos del tratamiento in situ de efluentes que contienen sustancias peligrosas"
+                  },
+                  {
+                    "chapterItemId": "070312",
+                    "chapterItemName": "Lodos del tratamiento in situ de efluentes, distintos de los especificados en el código 07 03 11"
+                  },
+                  {
+                    "chapterItemId": "070399",
+                    "chapterItemName": "Residuos no especificados en otra categoría"         
+                  }
+                ]
+            },
+            {
+              "chapterId": "0704",
+              "chapterName": "Residuos de la FFDU de productos fitosanitarios orgánicos (excepto los de los códigos 02 01 08 y 02 01 09), de conservantes de la madera (excepto los del subcapítulo 03 02) y de otros biocidas",
+              "chapterItems":
+                [
+                  {
+                    "chapterItemId": "070401",
+                    "chapterItemName": "Líquidos de limpieza y licores madre acuosos"
+                  },
+                  {
+                    "chapterItemId": "070403",
+                    "chapterItemName": "Disolventes, líquidos de limpieza y licores madre organohalogenados"
+                  },
+                  {
+                    "chapterItemId": "070404",
+                    "chapterItemName": "Otros disolventes, líquidos de limpieza y licores madre orgánicos"
+                  },
+                  {
+                    "chapterItemId": "070407",
+                    "chapterItemName": "Residuos de reacción y de destilación halogenados"
+                  },
+                  {
+                    "chapterItemId": "070408",
+                    "chapterItemName": "Otros residuos de reacción y de destilación"
+                  },
+                  {
+                    "chapterItemId": "070409",
+                    "chapterItemName": "Tortas de filtración y absorbentes usados halogenados"
+                  },
+                  {
+                    "chapterItemId": "070410",
+                    "chapterItemName": "Otras tortas de filtración y absorbentes usados"
+                  },
+                  {
+                    "chapterItemId": "070411",
+                    "chapterItemName": "Lodos del tratamiento in situ de efluentes que contienen sustancias peligrosas"         
+                  },
+                  {
+                    "chapterItemId": "070412",
+                    "chapterItemName": "Lodos del tratamiento in situ de efluentes, distintos de los especificados en el código 07 04 11"
+                  },
+                  {
+                    "chapterItemId": "070413",
+                    "chapterItemName": "Residuos sólidos que contienen sustancias peligrosas"
+                  },
+                  {
+                    "chapterItemId": "070499",
+                    "chapterItemName": "Residuos no especificados en otra categoría"
+                  }
+                ]
+            },
+            {
+              "chapterId": "0705",
+              "chapterName": "Residuos de la FFDU de productos farmacéuticos",
+              "chapterItems":
+                [
+		  {
+                    "chapterItemId": "070501",
+                    "chapterItemName": "Líquidos de limpieza y licores madre acuosos"
+                  },
+                  {
+                    "chapterItemId": "070503",
+                    "chapterItemName": "Disolventes, líquidos de limpieza y licores madre organohalogenados"
+                  },
+                  {
+                    "chapterItemId": "070504",
+                    "chapterItemName": "Otros disolventes, líquidos de limpieza y licores madre orgánicos"
+                  },
+                  {
+                    "chapterItemId": "070507",
+                    "chapterItemName": "Residuos de reacción y de destilación halogenados"
+                  },
+                  {
+                    "chapterItemId": "070508",
+                    "chapterItemName": "Otros residuos de reacción y de destilación"
+                  },
+                  {
+                    "chapterItemId": "070509",
+                    "chapterItemName": "Tortas de filtración y absorbentes usados halogenados"
+                  },
+                  {
+                    "chapterItemId": "070510",
+                    "chapterItemName": "Otras tortas de filtración y absorbentes usados"
+                  },
+                  {
+                    "chapterItemId": "070511",
+                    "chapterItemName": "Lodos del tratamiento in situ de efluentes que contienen sustancias peligrosas"
+                  },
+                  {
+                    "chapterItemId": "070512",
+                    "chapterItemName": "Lodos del tratamiento in situ de efluentes, distintos de los especificados en el código 07 05 11"         
+                  },
+                  {
+                    "chapterItemId": "070513",
+                    "chapterItemName": "Residuos sólidos que contienen sustancias peligrosas"
+                  },
+                  {
+                    "chapterItemId": "070514",
+                    "chapterItemName": "Residuos sólidos distintos de los especificados en el código 07 05 13"
+                  },
+                  {
+                    "chapterItemId": "070599",
+                    "chapterItemName": "Residuos no especificados en otra categoría"
+                  }
+                ]
+            },
+            {
+              "chapterId": "0706",
+              "chapterName": "Residuos de la FFDU de grasas, jabones, detergentes, desinfectantes y cosméticos",
+              "chapterItems":
+                [
+                  {
+                    "chapterItemId": "070601",
+                    "chapterItemName": "Líquidos de limpieza y licores madre acuosos"
+                  },
+                  {
+                    "chapterItemId": "070603",
+                    "chapterItemName": "Disolventes, líquidos de limpieza y licores madre organohalogenados"
+                  },
+                  {
+                    "chapterItemId": "070604",
+                    "chapterItemName": "Otros disolventes, líquidos de limpieza y licores madre orgánicos"
+                  },
+                  {
+                    "chapterItemId": "070607",
+                    "chapterItemName": "Residuos de reacción y de destilación halogenados"
+                  },
+                  {
+                    "chapterItemId": "070608",
+                    "chapterItemName": "Otros residuos de reacción y de destilación"
+                  },
+                  {
+                    "chapterItemId": "070609",
+                    "chapterItemName": "Tortas de filtración y absorbentes usados halogenados"
+                  },
+                  {
+                    "chapterItemId": "070610",
+                    "chapterItemName": "Otras tortas de filtración y absorbentes usados"         
+                  },
+                  {
+                    "chapterItemId": "070611",
+                    "chapterItemName": "Lodos del tratamiento in situ de efluentes que contienen sustancias peligrosas"
+                  },
+                  {
+                    "chapterItemId": "070612",
+                    "chapterItemName": "Lodos del tratamiento in situ de efluentes, distintos de los especificados en el código 07 06 11"
+                  },
+                  {
+                    "chapterItemId": "070699",
+                    "chapterItemName": "Residuos no especificados en otra categoría"
+                  }
+                ]
+            },
+            {
+              "chapterId": "0707",
+              "chapterName": "Residuos de la FFDU de productos químicos resultantes de la química fina y productos químicos no especificados en otra categoría",
+              "chapterItems":
+                [
+		  {
+                    "chapterItemId": "070701",
+                    "chapterItemName": "Líquidos de limpieza y licores madre acuosos"
+                  },
+                  {
+                    "chapterItemId": "070703",
+                    "chapterItemName": "Disolventes, líquidos de limpieza y licores madre organohalogenados"
+                  },
+                  {
+                    "chapterItemId": "070704",
+                    "chapterItemName": "Otros disolventes, líquidos de limpieza y licores madre orgánicos"
+                  },
+                  {
+                    "chapterItemId": "070707",
+                    "chapterItemName": "Residuos de reacción y de destilación halogenados"
+		              },
+                  {
+                    "chapterItemId": "070708",
+                    "chapterItemName": "Otros residuos de reacción y de destilación"
+                  },
+                  {
+                    "chapterItemId": "070709",
+                    "chapterItemName": "Tortas de filtración y absorbentes usados halogenados"         
+                  },
+                  {
+                    "chapterItemId": "070710",
+                    "chapterItemName": "Otras tortas de filtración y absorbentes usados"
+                  },
+                  {
+                    "chapterItemId": "070711",
+                    "chapterItemName": "Lodos del tratamiento in situ de efluentes que contienen sustancias peligrosas"
+                  },
+                  {
+                    "chapterItemId": "070712",
+                    "chapterItemName": "Lodos del tratamiento in situ de efluentes, distintos de los especificados en el código 07 07 11"
+                  },
+                  {
+                    "chapterItemId": "070799",
+                    "chapterItemName": "Residuos no especificados en otra categoría"
+                  }
+                ]
+            }    
+          ]
+  },
+
+  {
+    "key": "08",
+    "chapterTitle": "RESIDUOS DE LA FABRICACIÓN, FORMULACIÓN, DISTRIBUCIÓN Y UTILIZACIÓN (FFDU) DE REVESTIMIENTOS (PINTURAS, BARNICES Y ESMALTES VÍTREOS), ADHESIVOS, SELLANTES Y TINTAS DE IMPRESIÓN",
+    "chapters": 
+          [
+            {
+              "chapterId": "0801",
+              "chapterName": "Residuos de la FFDU y del decapado o eliminación de pintura y barniz",
+              "chapterItems":
+                [
+                  {
+                    "chapterItemId": "080111",
+                    "chapterItemName": "Residuos de pintura y barniz que contienen disolventes orgánicos u otras sustancias peligrosas"
+                  },
+                  {
+                    "chapterItemId": "080112",
+                    "chapterItemName": "Residuos de pintura y barniz, distintos de los especificados en el código 08 01 11"
+                  },
+                  {
+                    "chapterItemId": "080113",
+                    "chapterItemName": "Lodos de pintura y barniz que contienen disolventes orgánicos u otras sustancias peligrosas"
+                  },
+                  {
+                    "chapterItemId": "080114",
+                    "chapterItemName": "Lodos de pintura y barniz, distintos de los especificados en el código 08 01 13"
+                  },
+                  {
+                    "chapterItemId": "080115",
+                    "chapterItemName": "Lodos acuosos que contienen pintura o barniz con disolventes orgánicos u otras sustancias peligrosas"
+                  },
+                  {
+                    "chapterItemId": "080116",
+                    "chapterItemName": "Lodos acuosos que contienen pintura o barniz, distintos de los especificados en el código 08 01 15"
+                  },
+                  {
+                    "chapterItemId": "080117",
+                    "chapterItemName": "Residuos del decapado o eliminación de pintura y barniz que contienen disolventes orgánicos u otras sustancias peligrosas"
+                  },
+                  {
+                    "chapterItemId": "080118",
+                    "chapterItemName": "Residuos del decapado o eliminación de pintura y barniz, distintos de los especificados en el código 08 01 17"
+                  },
+                  {
+                    "chapterItemId": "080119",
+                    "chapterItemName": "Suspensiones acuosas que contienen pintura o barniz con disolventes orgánicos u otras sustancias peligrosas"
+                  },
+                  {
+                    "chapterItemId": "080120",
+                    "chapterItemName": "Suspensiones acuosas que contienen pintura o barniz, distintas de las especificadas en el código 08 01 19"
+                  },
+                  {
+                    "chapterItemId": "080121",
+                    "chapterItemName": "Residuos de decapantes o eliminadores de pintura y barniz"
+                  },
+                  {
+                    "chapterItemId": "080199",
+                    "chapterItemName": "Residuos no especificados en otra categoría"
+                  }
+                ]
+            },
+            {
+              "chapterId": "0802",
+              "chapterName": "Residuos de la FFDU de otros revestimientos (incluidos materiales cerámicos)",
+              "chapterItems":
+                [
+		  {
+                    "chapterItemId": "080201",
+                    "chapterItemName": "Residuos de arenillas de revestimiento"
+                  },
+                  {
+                    "chapterItemId": "080202",
+                    "chapterItemName": "Lodos acuosos que contienen materiales cerámicos"
+                  },
+                  {
+                    "chapterItemId": "080203",
+                    "chapterItemName": "Suspensiones acuosas que contienen materiales cerámicos"
+                  },
+                  {
+                    "chapterItemId": "080299",
+                    "chapterItemName": "Residuos no especificados en otra categoría"
+                  }
+                ]
+            },
+            {
+              "chapterId": "0803",
+              "chapterName": "Residuos de la FFDU de tintas de impresión",
+              "chapterItems":
+                [
+                  {
+                    "chapterItemId": "080307",
+                    "chapterItemName": "Lodos acuosos que contienen tinta"
+                  },
+                  {
+                    "chapterItemId": "080308",
+                    "chapterItemName": "Residuos líquidos acuosos que contienen tinta"
+                  },
+                  {
+                    "chapterItemId": "080312",
+                    "chapterItemName": "Residuos de tintas que contienen sustancias peligrosas"
+                  },
+                  {
+                    "chapterItemId": "080313",
+                    "chapterItemName": "Residuos de tintas distintos de los especificados en el código 08 03 12"
+                  },
+                  {
+                    "chapterItemId": "080314",
+                    "chapterItemName": "Lodos de tinta que contienen sustancias peligrosas"
+                  },
+                  {
+                    "chapterItemId": "080315",
+                    "chapterItemName": "Lodos de tinta distintos de los especificados en el código 08 03 14"         
+                  },
+                  {
+                    "chapterItemId": "080316",
+                    "chapterItemName": "Residuos de soluciones corrosivas"
+                  },
+                  {
+                    "chapterItemId": "080317",
+                    "chapterItemName": "Residuos de tóner de impresión que contienen sustancias peligrosas"
+                  },
+                  {
+                    "chapterItemId": "080318",
+                    "chapterItemName": "Residuos de tóner de impresión, distintos de los especificados en el código 08 03 17"
+                  },
+                  {
+                    "chapterItemId": "080319",
+                    "chapterItemName": "Aceites de dispersión"
+                  },
+                  {
+                    "chapterItemId": "080399",
+                    "chapterItemName": "Residuos no especificados en otra categoría"         
+                  }
+                ]
+            },
+            {
+              "chapterId": "0804",
+              "chapterName": "Residuos de la FFDU de adhesivos y sellantes (incluidos productos de impermeabilización)",
+              "chapterItems":
+                [
+                  {
+                    "chapterItemId": "080409",
+                    "chapterItemName": "Residuos de adhesivos y sellantes que contienen disolventes orgánicos u otras sustancias peligrosas"
+                  },
+                  {
+                    "chapterItemId": "080410",
+                    "chapterItemName": "Residuos de adhesivos y sellantes, distintos de los especificados en el código 08 04 09"
+                  },
+                  {
+                    "chapterItemId": "080411",
+                    "chapterItemName": "Lodos de adhesivos y sellantes que contienen disolventes orgánicos u otras sustancias peligrosas"
+                  },
+                  {
+                    "chapterItemId": "080412",
+                    "chapterItemName": "Lodos de adhesivos y sellantes, distintos de los especificados en el código 08 04 11"
+                  },
+                  {
+                    "chapterItemId": "080413",
+                    "chapterItemName": "Lodos acuosos que contienen adhesivos o sellantes con disolventes orgánicos u otras sustancias peligrosas"
+                  },
+                  {
+                    "chapterItemId": "080414",
+                    "chapterItemName": "Lodos acuosos que contienen adhesivos o sellantes, distintos de los especificados en el código 08 04 13"
+                  },
+                  {
+                    "chapterItemId": "080415",
+                    "chapterItemName": "Residuos líquidos acuosos que contienen adhesivos o sellantes con disolventes orgánicos u otras sustancias peligrosas"
+                  },
+                  {
+                    "chapterItemId": "080416",
+                    "chapterItemName": "Residuos líquidos acuosos que contienen adhesivos o sellantes, distintos de los especificados en el código 08 04 15"         
+                  },
+                  {
+                    "chapterItemId": "080417",
+                    "chapterItemName": "Aceite de resina"
+                  },
+                  {
+                    "chapterItemId": "080499",
+                    "chapterItemName": "Residuos no especificados en otra categoría"
+                  }
+                ]
+            },
+            {
+              "chapterId": "0805",
+              "chapterName": "Residuos no especificados de otra forma en el capítulo 08",
+              "chapterItems":
+                [
+		  {
+                    "chapterItemId": "080501",
+                    "chapterItemName": "Isocianatos residuales"
+                  }
+                ]
+            }    
+          ]
+  },
+
+  {
+    "key": "09",
+    "chapterTitle": "RESIDUOS DE LA INDUSTRIA FOTOGRÁFICA",
+    "chapters": 
+          [
+            {
+              "chapterId": "0901",
+              "chapterName": "Residuos de la industria fotográfica",
+              "chapterItems":
+                [
+                  {
+                    "chapterItemId": "090101",
+                    "chapterItemName": "Soluciones de revelado y soluciones activadoras al agua"
+                  },
+                  {
+                    "chapterItemId": "090102",
+                    "chapterItemName": "Soluciones de revelado de placas de impresión al agua"
+                  },
+                  {
+                    "chapterItemId": "090103",
+                    "chapterItemName": "Soluciones de revelado con disolventes"
+                  },
+                  {
+                    "chapterItemId": "090104",
+                    "chapterItemName": "Soluciones de fijado"
+                  },
+                  {
+                    "chapterItemId": "090105",
+                    "chapterItemName": "Soluciones de blanqueo y soluciones de blanqueo-fijado"
+                  },
+                  {
+                    "chapterItemId": "090106",
+                    "chapterItemName": "Residuos que contienen plata procedente del tratamiento in situ de residuos fotográficos"
+                  },
+                  {
+                    "chapterItemId": "090107",
+                    "chapterItemName": "Películas y papel fotográfico que contienen plata o compuestos de plata"
+                  },
+                  {
+                    "chapterItemId": "090108",
+                    "chapterItemName": "Películas y papel fotográfico que no contienen plata ni compuestos de plata"
+                  },
+                  {
+                    "chapterItemId": "090110",
+                    "chapterItemName": "Cámaras de un solo uso sin pilas ni acumuladores"
+                  },
+                  {
+                    "chapterItemId": "090111",
+                    "chapterItemName": "Cámaras de un solo uso con pilas o acumuladores incluidos en los códigos 16 06 01, 16 06 02 o 16 06 03"
+                  },
+                  {
+                    "chapterItemId": "090112",
+                    "chapterItemName": "Cámaras de un solo uso con pilas o acumuladores distintas de las especificadas en el código 09 01 11"         
+                  },
+                  {
+                    "chapterItemId": "090113",
+                    "chapterItemName": "Residuos líquidos acuosos procedentes de la recuperación in situ de plata distintos de los especificados en el código 09 01 06"
+                  },
+                  {
+                    "chapterItemId": "090199",
+                    "chapterItemName": "Residuos no especificados en otra categoría"
+                  }
+                ]
+            }         
+          ]
+  },
+
+  {
+    "key": "10",
+    "chapterTitle": "RESIDUOS DE PROCESOS TÉRMICOS",
+    "chapters": 
+          [
+            {
+              "chapterId": "1001",
+              "chapterName": "Residuos de centrales eléctricas y otras plantas de combustión (excepto el capítulo 19)",
+              "chapterItems":
+                [
+                  {
+                    "chapterItemId": "100101",
+                    "chapterItemName": "Ceniza de fondo de horno, escorias y polvo de caldera (excepto el polvo de caldera especificado en el código 10 01 04)"
+                  },
+                  {
+                    "chapterItemId": "100102",
+                    "chapterItemName": "Cenizas volantes de carbón"
+                  },
+                  {
+                    "chapterItemId": "100103",
+                    "chapterItemName": "Cenizas volantes de turba y de madera (no tratada)"
+                  },
+                  {
+                    "chapterItemId": "100104",
+                    "chapterItemName": "Cenizas volantes y polvo de caldera de hidrocarburos"
+                  },
+                  {
+                    "chapterItemId": "100105",
+                    "chapterItemName": "Residuos cálcicos de reacción, en forma sólida, procedentes de la desulfuración de gases de combustión"
+                  },
+                  {
+                    "chapterItemId": "100107",
+                    "chapterItemName": "Residuos cálcicos de reacción, en forma de lodos, procedentes de la desulfuración de gases de combustión"
+                  },
+                  {
+                    "chapterItemId": "100109",
+                    "chapterItemName": "Ácido sulfúrico"
+                  },
+                  {
+                    "chapterItemId": "100113",
+                    "chapterItemName": "Cenizas volantes de hidrocarburos emulsionados usados como combustibles"
+                  },
+                  {
+                    "chapterItemId": "100114",
+                    "chapterItemName": "Ceniza de fondo de horno, escorias y polvo de caldera procedentes de la coincineración que contienen sustancias peligrosas"
+                  },
+                  {
+                    "chapterItemId": "100115",
+                    "chapterItemName": "Ceniza de fondo de horno, escorias y polvo de caldera procedentes de la coincineración, distintos de los especificados en el código 10 01 14"
+                  },
+                  {
+                    "chapterItemId": "100116",
+                    "chapterItemName": "Cenizas volantes procedentes de la co-incineración que contienen sustancias peligrosas"
+                  },
+                  {
+                    "chapterItemId": "100117",
+                    "chapterItemName": "Cenizas volantes procedentes de la co-incineración distintas de las especificadas en el código 10 01 16"
+                  },
+                  {
+                    "chapterItemId": "100118",
+                    "chapterItemName": "Residuos procedentes de la depuración de gases que contienen sustancias peligrosas"
+                  },
+                  {
+                    "chapterItemId": "100119",
+                    "chapterItemName": "Residuos procedentes de la depuración de gases distintos de los especificados en los códigos 10 01 05, 10 01 07 y 10 01 18"
+                  },
+                  {
+                    "chapterItemId": "100120",
+                    "chapterItemName": "Lodos del tratamiento in situ de efluentes que contienen sustancias peligrosas"
+                  },
+                  {
+                    "chapterItemId": "100121",
+                    "chapterItemName": "Lodos del tratamiento in situ de efluentes, distintos de los especificados en el código 10 01 20"
+                  },
+                  {
+                    "chapterItemId": "100122",
+                    "chapterItemName": "Lodos acuosos, procedentes de la limpieza de calderas, que contienen sustancias peligrosas"
+                  },
+                  {
+                    "chapterItemId": "100123",
+                    "chapterItemName": "Lodos acuosos procedentes de la limpieza de calderas, distintos de los especificados en el código 10 01 22"
+                  },
+                  {
+                    "chapterItemId": "100124",
+                    "chapterItemName": "Arenas de lechos fluidizados"         
+                  },
+                  {
+                    "chapterItemId": "100125",
+                    "chapterItemName": "Residuos procedentes del almacenamiento y preparación de combustible de centrales termoeléctricas de carbón"
+                  },
+                  {
+                    "chapterItemId": "100126",
+                    "chapterItemName": "Residuos del tratamiento del agua de refrigeración"
+                  },
+                  {
+                    "chapterItemId": "100199",
+                    "chapterItemName": "Residuos no especificados en otra categoría"
+                  }
+                ]
+            },
+            {
+              "chapterId": "1002",
+              "chapterName": "Residuos de la industria del hierro y del acero",
+              "chapterItems":
+                [
+		  {
+                    "chapterItemId": "100201",
+                    "chapterItemName": "Residuos del tratamiento de escorias"
+                  },
+                  {
+                    "chapterItemId": "100202",
+                    "chapterItemName": "Escorias no tratadas"
+                  },
+                  {
+                    "chapterItemId": "100207",
+                    "chapterItemName": "Residuos sólidos del tratamiento de gases que contienen sustancias peligrosas"
+                  },
+                  {
+                    "chapterItemId": "100208",
+                    "chapterItemName": "Residuos sólidos del tratamiento de gases, distintos de los especificados en el código 10 02 07"
+		  },
+                  {
+                    "chapterItemId": "100210",
+                    "chapterItemName": "Cascarilla de laminación"
+		  },
+                  {
+                    "chapterItemId": "100211",
+                    "chapterItemName": "Residuos del tratamiento del agua de refrigeración que contienen aceites"
+                  },
+                  {
+                    "chapterItemId": "100212",
+                    "chapterItemName": "Residuos del tratamiento del agua de refrigeración distintos de los especificados en el código 10 02 11"
+                  },
+                  {
+                    "chapterItemId": "100213",
+                    "chapterItemName": "Lodos y tortas de filtración del tratamiento de gases que contienen sustancias peligrosas"
+                  },
+                  {
+                    "chapterItemId": "100214",
+                    "chapterItemName": "Lodos y tortas de filtración del tratamiento de gases, distintos de los especificados en el código 10 02 13"
+                  },
+                  {
+                    "chapterItemId": "100215",
+                    "chapterItemName": "Otros lodos y tortas de filtración"
+                  },
+                  {
+                    "chapterItemId": "100299",
+                    "chapterItemName": "Residuos no especificados en otra categoría"
+                  }
+                ]
+            },
+            {
+              "chapterId": "1003",
+              "chapterName": "Residuos de la termometalurgia del aluminio",
+              "chapterItems":
+                [
+                  {
+                    "chapterItemId": "100302",
+                    "chapterItemName": "Fragmentos de ánodos"
+                  },
+                  {
+                    "chapterItemId": "100304",
+                    "chapterItemName": "Escorias de la producción primaria"
+                  },
+                  {
+                    "chapterItemId": "100305",
+                    "chapterItemName": "Residuos de alúmina"
+                  },
+                  {
+                    "chapterItemId": "100308",
+                    "chapterItemName": "Escorias salinas de la producción secundaria"
+                  },
+                  {
+                    "chapterItemId": "100309",
+                    "chapterItemName": "Granzas negras de la producción secundaria"
+                  },
+                  {
+                    "chapterItemId": "100315",
+                    "chapterItemName": "Espumas inflamables o que emiten, en contacto con el agua, gases inflamables en cantidades peligrosas"         
+                  },
+                  {
+                    "chapterItemId": "100316",
+                    "chapterItemName": "Espumas distintas de las especificadas en el código 10 03 15"
+                  },
+                  {
+                    "chapterItemId": "100317",
+                    "chapterItemName": "Residuos que contienen alquitrán procedentes de la fabricación de ánodos"
+                  },
+                  {
+                    "chapterItemId": "100318",
+                    "chapterItemName": "Residuos que contienen carbono procedentes de la fabricación de ánodos, distintos de los especificados en el código 10 03 17"
+                  },
+                  {
+                    "chapterItemId": "100319",
+                    "chapterItemName": "Partículas procedentes de los efluentes gaseosos que contienen sustancias peligrosas"
+                  },
+                  {
+                    "chapterItemId": "100320",
+                    "chapterItemName": "Partículas procedentes de los efluentes gaseosos distintas de las especificadas en el código 10 03 19"
+                  },
+                  {
+                    "chapterItemId": "100321",
+                    "chapterItemName": "Otras partículas y polvo (incluido el polvo de molienda) que contienen sustancias peligrosas"
+                  },
+                  {
+                    "chapterItemId": "100322",
+                    "chapterItemName": "Otras partículas y polvo (incluido el polvo de molienda) distintos de los especificados en el código 10 03 21"
+                  },
+                  {
+                    "chapterItemId": "100323",
+                    "chapterItemName": "Residuos sólidos del tratamiento de gases que contienen sustancias peligrosas"
+                  },
+                  {
+                    "chapterItemId": "100324",
+                    "chapterItemName": "Residuos sólidos del tratamiento de gases, distintos de los especificados en el código 10 03 23"
+                  },
+                  {
+                    "chapterItemId": "100325",
+                    "chapterItemName": "Lodos y tortas de filtración del tratamiento de gases que contienen sustancias peligrosas"
+                  },
+                  {
+                    "chapterItemId": "100326",
+                    "chapterItemName": "Lodos y tortas de filtración del tratamiento de gases, distintos de los especificados en el código 10 03 25"
+                  },
+                  {
+                    "chapterItemId": "100327",
+                    "chapterItemName": "Residuos del tratamiento del agua de refrigeración que contienen aceites"
+                  },
+                  {
+                    "chapterItemId": "100328",
+                    "chapterItemName": "Residuos del tratamiento del agua de refrigeración distintos de los especificados en el código 10 03 27"
+                  },
+                  {
+                    "chapterItemId": "100329",
+                    "chapterItemName": "Residuos del tratamiento de escorias salinas y granzas negras, que contienen sustancias peligrosas"
+                  },
+                  {
+                    "chapterItemId": "100330",
+                    "chapterItemName": "Residuos del tratamiento de escorias salinas y granzas negras distintos de los especificados en el código 10 03 29"
+                  },
+                  {
+                    "chapterItemId": "100399",
+                    "chapterItemName": "Residuos no especificados en otra categoría"         
+                  }
+                ]
+            },
+            {
+              "chapterId": "1004",
+              "chapterName": "Residuos de la termometalurgia del plomo",
+              "chapterItems":
+                [
+                  {
+                    "chapterItemId": "100401",
+                    "chapterItemName": "Escorias de la producción primaria y secundaria"
+                  },
+                  {
+                    "chapterItemId": "100402",
+                    "chapterItemName": "Granzas y espumas de la producción primaria y secundaria"
+                  },
+                  {
+                    "chapterItemId": "100403",
+                    "chapterItemName": "Arseniato de calcio"
+                  },
+                  {
+                    "chapterItemId": "100404",
+                    "chapterItemName": "Partículas procedentes de los efluentes gaseosos"
+                  },
+                  {
+                    "chapterItemId": "100405",
+                    "chapterItemName": "Otras partículas y polvos"
+                  },
+                  {
+                    "chapterItemId": "100406",
+                    "chapterItemName": "Residuos sólidos del tratamiento de gases"
+                  },
+                  {
+                    "chapterItemId": "100407",
+                    "chapterItemName": "Lodos y tortas de filtración del tratamiento de gases"
+                  },
+                  {
+                    "chapterItemId": "100409",
+                    "chapterItemName": "Residuos del tratamiento del agua de refrigeración que contienen aceites"         
+                  },
+                  {
+                    "chapterItemId": "100410",
+                    "chapterItemName": "Residuos del tratamiento del agua de refrigeración distintos de los especificados en el código 10 04 09"
+                  },
+                  {
+                    "chapterItemId": "100499",
+                    "chapterItemName": "Residuos no especificados en otra categoría"
+                  }
+                ]
+            },
+            {
+              "chapterId": "1005",
+              "chapterName": "Residuos de la termometalurgia del zinc",
+              "chapterItems":
+                [
+		  {
+                    "chapterItemId": "100501",
+                    "chapterItemName": "Escorias de la producción primaria y secundaria"
+                  },
+                  {
+                    "chapterItemId": "100503",
+                    "chapterItemName": "Partículas procedentes de los efluentes gaseosos"
+                  },
+                  {
+                    "chapterItemId": "100504",
+                    "chapterItemName": "Otras partículas y polvos"
+                  },
+                  {
+                    "chapterItemId": "100505",
+                    "chapterItemName": "Residuos sólidos del tratamiento de gases"
+                  },
+                  {
+                    "chapterItemId": "100506",
+                    "chapterItemName": "Lodos y tortas de filtración del tratamiento de gases"
+                  },
+                  {
+                    "chapterItemId": "100508",
+                    "chapterItemName": "Residuos del tratamiento del agua de refrigeración que contienen aceites"
+                  },
+                  {
+                    "chapterItemId": "100509",
+                    "chapterItemName": "Residuos del tratamiento del agua de refrigeración distintos de los especificados en el código 10 05 08"
+                  },
+                  {
+                    "chapterItemId": "100510",
+                    "chapterItemName": "Granzas y espumas inflamables o que emiten, en contacto con el agua, gases inflamables en cantidades peligrosas"
+                  },
+                  {
+                    "chapterItemId": "100511",
+                    "chapterItemName": "Granzas y espumas distintas de las especificadas en el código 10 05 10"         
+                  },
+                  {
+                    "chapterItemId": "100599",
+                    "chapterItemName": "Residuos no especificados en otra categoría"
+                  }
+                ]
+            },
+            {
+              "chapterId": "1006",
+              "chapterName": "Residuos de la termometalurgia del cobre",
+              "chapterItems":
+                [
+                  {
+                    "chapterItemId": "100601",
+                    "chapterItemName": "Escorias de la producción primaria y secundaria"
+                  },
+                  {
+                    "chapterItemId": "100602",
+                    "chapterItemName": "Granzas y espumas de la producción primaria y secundaria"
+                  },
+                  {
+                    "chapterItemId": "100603",
+                    "chapterItemName": "Partículas procedentes de los efluentes gaseosos"
+                  },
+                  {
+                    "chapterItemId": "100604",
+                    "chapterItemName": "Otras partículas y polvos"
+                  },
+                  {
+                    "chapterItemId": "100606",
+                    "chapterItemName": "Residuos sólidos del tratamiento de gases"
+                  },
+                  {
+                    "chapterItemId": "100607",
+                    "chapterItemName": "Lodos y tortas de filtración del tratamiento de gases"
+                  },
+                  {
+                    "chapterItemId": "100609",
+                    "chapterItemName": "Residuos del tratamiento del agua de refrigeración que contienen aceites"         
+                  },
+                  {
+                    "chapterItemId": "100610",
+                    "chapterItemName": "Residuos del tratamiento del agua de refrigeración distintos de los especificados en el código 10 06 09"
+                  },
+                  {
+                    "chapterItemId": "100699",
+                    "chapterItemName": "Residuos no especificados en otra categoría"
+                  }
+                ]
+            },
+            {
+              "chapterId": "1007",
+              "chapterName": "Residuos de la termometalurgia de la plata, oro y platino",
+              "chapterItems":
+                [
+		  {
+                    "chapterItemId": "100701",
+                    "chapterItemName": "Escorias de la producción primaria y secundaria"
+                  },
+                  {
+                    "chapterItemId": "100702",
+                    "chapterItemName": "Granzas y espumas de la producción primaria y secundaria"
+                  },
+                  {
+                    "chapterItemId": "100703",
+                    "chapterItemName": "Residuos sólidos del tratamiento de gases"
+                  },
+                  {
+                    "chapterItemId": "100704",
+                    "chapterItemName": "Otras partículas y polvos"
+		  },
+                  {
+                    "chapterItemId": "100705",
+                    "chapterItemName": "Lodos y tortas de filtración del tratamiento de gases"
+                  },
+                  {
+                    "chapterItemId": "100707",
+                    "chapterItemName": "Residuos del tratamiento del agua de refrigeración que contienen aceites"         
+                  },
+                  {
+                    "chapterItemId": "100708",
+                    "chapterItemName": "Residuos del tratamiento del agua de refrigeración distintos de los especificados en el código 10 07 07"
+                  },
+                  {
+                    "chapterItemId": "100799",
+                    "chapterItemName": "Residuos no especificados en otra categoría"
+                  }
+                ]
+            },
+            {
+              "chapterId": "1008",
+              "chapterName": "Residuos de la termometalurgia de otros metales no férreos",
+              "chapterItems":
+                [
+                  {
+                    "chapterItemId": "100804",
+                    "chapterItemName": "Partículas y polvo"
+                  },
+                  {
+                    "chapterItemId": "100808",
+                    "chapterItemName": "Escorias salinas de la producción primaria y secundaria"
+                  },
+                  {
+                    "chapterItemId": "100809",
+                    "chapterItemName": "Otras escorias"
+                  },
+                  {
+                    "chapterItemId": "100810",
+                    "chapterItemName": "Granzas y espumas inflamables o que emiten, en contacto con el agua, gases inflamables en cantidades peligrosas"
+                  },
+                  {
+                    "chapterItemId": "100811",
+                    "chapterItemName": "Granzas y espumas distintas de las especificadas en el código 10 08 10"
+                  },
+                  {
+                    "chapterItemId": "100812",
+                    "chapterItemName": "Residuos que contienen alquitrán procedentes de la fabricación de ánodos"         
+                  },
+                  {
+                    "chapterItemId": "100813",
+                    "chapterItemName": "Residuos que contienen carbono procedentes de la fabricación de ánodos, distintos de los especificados en el código 10 08 12"
+                  },
+                  {
+                    "chapterItemId": "100814",
+                    "chapterItemName": "Fragmentos de ánodos"
+                  },
+                  {
+                    "chapterItemId": "100815",
+                    "chapterItemName": "Partículas procedentes de los efluentes gaseosos que contienen sustancias peligrosas"
+                  },
+                  {
+                    "chapterItemId": "100816",
+                    "chapterItemName": "Partículas procedentes de los efluentes gaseosos distintas de las especificadas en el código 10 08 15"
+                  },
+                  {
+                    "chapterItemId": "100817",
+                    "chapterItemName": "Lodos y tortas de filtración del tratamiento de gases que contienen sustancias peligrosas"
+                  },
+                  {
+                    "chapterItemId": "100818",
+                    "chapterItemName": "Lodos y tortas de filtración del tratamiento de gases, distintos de los especificados en el código 10 08 17"         
+                  },
+                  {
+                    "chapterItemId": "100819",
+                    "chapterItemName": "Residuos del tratamiento del agua de refrigeración que contienen aceites"
+                  },
+                  {
+                    "chapterItemId": "100820",
+                    "chapterItemName": "Residuos del tratamiento del agua de refrigeración distintos de los especificados en el código 10 08 19"
+                  },
+                  {
+                    "chapterItemId": "100899",
+                    "chapterItemName": "Residuos no especificados en otra categoría"         
+                  }
+                ]
+            },
+            {
+              "chapterId": "1009",
+              "chapterName": "Residuos de la fundición de piezas férreas",
+              "chapterItems":
+                [
+                  {
+                    "chapterItemId": "100903",
+                    "chapterItemName": "Escorias de horno"
+                  },
+                  {
+                    "chapterItemId": "100905",
+                    "chapterItemName": "Machos y moldes de fundición sin colada que contienen sustancias peligrosas"
+                  },
+                  {
+                    "chapterItemId": "100906",
+                    "chapterItemName": "Machos y moldes de fundición sin colada distintos de los especificados en el código 10 09 05"
+                  },
+                  {
+                    "chapterItemId": "100907",
+                    "chapterItemName": "Machos y moldes de fundición con colada que contienen sustancias peligrosas"
+                  },
+                  {
+                    "chapterItemId": "100908",
+                    "chapterItemName": "Machos y moldes de fundición con colada distintos de los especificados en el código 10 09 07"
+                  },
+                  {
+                    "chapterItemId": "100909",
+                    "chapterItemName": "Partículas procedentes de los efluentes gaseosos que contienen sustancias peligrosas"
+                  },
+                  {
+                    "chapterItemId": "100910",
+                    "chapterItemName": "Partículas procedentes de los efluentes gaseosos distintas de las especificadas en el código 10 09 09"
+                  },
+                  {
+                    "chapterItemId": "100911",
+                    "chapterItemName": "Otras partículas que contienen sustancias peligrosas"         
+                  },
+                  {
+                    "chapterItemId": "100912",
+                    "chapterItemName": "Otras partículas distintas de las especificadas en el código 10 09 11"
+                  },
+                  {
+                    "chapterItemId": "100913",
+                    "chapterItemName": "Ligantes residuales que contienen sustancias peligrosas"
+                  },
+                  {
+                    "chapterItemId": "100914",
+                    "chapterItemName": "Ligantes residuales distintos de los especificados en el código 10 09 13"         
+                  },
+                  {
+                    "chapterItemId": "100915",
+                    "chapterItemName": "Residuos de agentes indicadores de fisuración que contienen sustancias peligrosas"
+                  },
+                  {
+                    "chapterItemId": "100916",
+                    "chapterItemName": "Residuos de agentes indicadores de fisuración distintos de los especificados en el código 10 09 15"
+                  },
+                  {
+                    "chapterItemId": "100999",
+                    "chapterItemName": "Residuos no especificados en otra categoría"
+                  }
+                ]
+            },
+            {
+              "chapterId": "1010",
+              "chapterName": "Residuos de la fundición de piezas no férreas",
+              "chapterItems":
+                [
+		  {
+                    "chapterItemId": "101003",
+                    "chapterItemName": "Escorias de horno"
+                  },
+                  {
+                    "chapterItemId": "101005",
+                    "chapterItemName": "Machos y moldes de fundición sin colada que contienen sustancias peligrosas"
+                  },
+                  {
+                    "chapterItemId": "101006",
+                    "chapterItemName": "Machos y moldes de fundición sin colada distintos de los especificados en el código 10 10 05"
+                  },
+                  {
+                    "chapterItemId": "101007",
+                    "chapterItemName": "Machos y moldes de fundición con colada que contienen sustancias peligrosas"
+                  },
+                  {
+                    "chapterItemId": "101008",
+                    "chapterItemName": "Machos y moldes de fundición con colada distintos de los especificados en el código 10 10 07"
+                  },
+                  {
+                    "chapterItemId": "101009",
+                    "chapterItemName": "Partículas procedentes de los efluentes gaseosos que contienen sustancias peligrosas"
+                  },
+                  {
+                    "chapterItemId": "101010",
+                    "chapterItemName": "Partículas procedentes de los efluentes gaseosos distintas de las especificadas en el código 10 10 09"
+                  },
+                  {
+                    "chapterItemId": "101011",
+                    "chapterItemName": "Otras partículas que contienen sustancias peligrosas"
+                  },
+                  {
+                    "chapterItemId": "101012",
+                    "chapterItemName": "Otras partículas distintas de las especificadas en el código 10 10 11"         
+                  },
+                  {
+                    "chapterItemId": "101013",
+                    "chapterItemName": "Ligantes residuales que contienen sustancias peligrosas"
+                  },
+                  {
+                    "chapterItemId": "101014",
+                    "chapterItemName": "Ligantes residuales distintos de los especificados en el código 10 10 13"
+                  },
+                  {
+                    "chapterItemId": "101015",
+                    "chapterItemName": "Residuos de agentes indicadores de fisuración que contienen sustancias peligrosas"
+                  },
+                  {
+                    "chapterItemId": "101016",
+                    "chapterItemName": "Residuos de agentes indicadores de fisuración distintos de los especificados en el código 10 10 15"
+                  },
+                  {
+                    "chapterItemId": "101099",
+                    "chapterItemName": "Residuos no especificados en otra categoría"
+                  }
+                ]
+            },
+            {
+              "chapterId": "1011",
+              "chapterName": "Residuos de la fabricación del vidrio y sus derivados",
+              "chapterItems":
+                [
+                  {
+                    "chapterItemId": "101103",
+                    "chapterItemName": "Residuos de materiales de fibra de vidrio"
+                  },
+                  {
+                    "chapterItemId": "101105",
+                    "chapterItemName": "Partículas y polvo"
+                  },
+                  {
+                    "chapterItemId": "101109",
+                    "chapterItemName": "Residuos de la preparación de mezclas antes del proceso de cocción que contienen sustancias peligrosas"
+                  },
+                  {
+                    "chapterItemId": "101110",
+                    "chapterItemName": "Residuos de la preparación de mezclas antes del proceso de cocción distintos de los especificados en el código 10 11 09"
+                  },
+                  {
+                    "chapterItemId": "101111",
+                    "chapterItemName": "Residuos de pequeñas partículas de vidrio y de polvo de vidrio que contienen metales pesados (por ejemplo, de tubos catódicos)"
+                  },
+                  {
+                    "chapterItemId": "101112",
+                    "chapterItemName": "Residuos de vidrio distintos de los especificados en el código 10 11 11"
+                  },
+                  {
+                    "chapterItemId": "101113",
+                    "chapterItemName": "Lodos procedentes del pulido y esmerilado del vidrio que contienen sustancias peligrosas"         
+                  },
+                  {
+                    "chapterItemId": "101114",
+                    "chapterItemName": "Lodos procedentes del pulido y esmerilado del vidrio, distintos de los especificados en el código 10 11 13"
+                  },
+                  {
+                    "chapterItemId": "101115",
+                    "chapterItemName": "Residuos sólidos del tratamiento de gases de combustión que contienen sustancias peligrosas"
+                  },
+                  {
+                    "chapterItemId": "101116",
+                    "chapterItemName": "Residuos sólidos del tratamiento de gases de combustión, distintos de los especificados en el código 10 11 15"
+                  },
+                  {
+                    "chapterItemId": "101117",
+                    "chapterItemName": "Lodos y tortas de filtración del tratamiento de gases que contienen sustancias peligrosas"
+                  },
+                  {
+                    "chapterItemId": "101118",
+                    "chapterItemName": "Lodos y tortas de filtración del tratamiento de gases, distintos de los especificados en el código 10 11 17"         
+                  },
+                  {
+                    "chapterItemId": "101119",
+                    "chapterItemName": "Residuos sólidos del tratamiento in situ de efluentes que contienen sustancias peligrosas"
+                  },
+                  {
+                    "chapterItemId": "101120",
+                    "chapterItemName": "Residuos sólidos del tratamiento in situ de efluentes, distintos de los especificados en el código 10 11 19"
+                  },
+                  {
+                    "chapterItemId": "101199",
+                    "chapterItemName": "Residuos no especificados en otra categoría"
+                  }
+                ]
+            },
+            {
+              "chapterId": "1012",
+              "chapterName": "Residuos de la fabricación de productos cerámicos, ladrillos, tejas y materiales de construcción",
+              "chapterItems":
+                [
+		  {
+                    "chapterItemId": "101201",
+                    "chapterItemName": "Residuos de la preparación de mezclas antes del proceso de cocción"
+                  },
+                  {
+                    "chapterItemId": "101203",
+                    "chapterItemName": "Partículas y polvo"
+                  },
+                  {
+                    "chapterItemId": "101205",
+                    "chapterItemName": "Lodos y tortas de filtración del tratamiento de gases"
+                  },
+                  {
+                    "chapterItemId": "101206",
+                    "chapterItemName": "Moldes desechados"
+		  },
+                  {
+                    "chapterItemId": "101208",
+                    "chapterItemName": "Residuos de cerámica, ladrillos, tejas y materiales de construcción (después del proceso de cocción)"
+                  },
+                  {
+                    "chapterItemId": "101209",
+                    "chapterItemName": "Residuos sólidos del tratamiento de gases que contienen sustancias peligrosas"         
+                  },
+                  {
+                    "chapterItemId": "101210",
+                    "chapterItemName": "Residuos sólidos del tratamiento de gases, distintos de los especificados en el código 10 12 09"
+                  },
+                  {
+                    "chapterItemId": "101211",
+                    "chapterItemName": "Residuos de vidriado que contienen metales pesados"
+                  },
+                  {
+                    "chapterItemId": "101212",
+                    "chapterItemName": "Residuos de vidriado distintos de los especificados en el código 10 12 11"
+                  },
+                  {
+                    "chapterItemId": "101213",
+                    "chapterItemName": "Lodos del tratamiento in situ de efluentes"
+                  },
+                  {
+                    "chapterItemId": "101299",
+                    "chapterItemName": "Residuos no especificados en otra categoría"
+                   }
+                ]
+            },
+            {
+              "chapterId": "1013",
+              "chapterName": "Residuos de la fabricación de cemento, cal y yeso y de productos derivados",
+              "chapterItems":
+                [
+                  {
+                    "chapterItemId": "101301",
+                    "chapterItemName": "Residuos de la preparación de mezclas antes del proceso de cocción"
+                  },
+                  {
+                    "chapterItemId": "101304",
+                    "chapterItemName": "Residuos de la calcinación e hidratación de la cal"
+                  },
+                  {
+                    "chapterItemId": "101306",
+                    "chapterItemName": "Partículas y polvo (excepto los códigos 10 13 12 y 10 13 13)"
+                  },
+                  {
+                    "chapterItemId": "101307",
+                    "chapterItemName": "Lodos y tortas de filtración del tratamiento de gases"
+                  },
+                  {
+                    "chapterItemId": "101309",
+                    "chapterItemName": "Residuos de la fabricación de fibrocemento que contienen amianto"
+                  },
+                  {
+                    "chapterItemId": "101310",
+                    "chapterItemName": "Residuos de la fabricación de fibrocemento distintos de los especificados en el código 10 13 09"
+                  },
+                  {
+                    "chapterItemId": "101311",
+                    "chapterItemName": "Residuos de materiales compuestos a base de cemento distintos de los especificados en los códigos 10 13 09 y 10 13 10"
+                  },
+                  {
+                    "chapterItemId": "101312",
+                    "chapterItemName": "Residuos sólidos del tratamiento de gases que contienen sustancias peligrosas"
+                  },
+                  {
+                    "chapterItemId": "101313",
+                    "chapterItemName": "Residuos sólidos del tratamiento de gases, distintos de los especificados en el código 10 13 12"
+                  },
+                  {
+                    "chapterItemId": "101314",
+                    "chapterItemName": "Residuos de hormigón y lodos de hormigón"
+                  },
+                  {
+                    "chapterItemId": "101399",
+                    "chapterItemName": "Residuos no especificados en otra categoría"
+                  }
+                ]
+            },
+            {
+              "chapterId": "1014",
+              "chapterName": "Residuos de crematorios",
+              "chapterItems":
+                [
+		  {
+                    "chapterItemId": "101401",
+                    "chapterItemName": "Residuos de la depuración de gases que contienen mercurio"
+                  }
+                ]
+            }          
+          ]
+  },
+
+  {
+    "key": "11",
+    "chapterTitle": "RESIDUOS DEL TRATAMIENTO QUÍMICO DE SUPERFICIE Y DEL RECUBRIMIENTO DE METALES Y OTROS MATERIALES; RESIDUOS DE LA HIDROMETALURGIA NO FÉRREA",
+    "chapters": 
+          [
+            {
+              "chapterId": "1101",
+              "chapterName": "Residuos del tratamiento químico de superficie y del recubrimiento de metales y otros materiales (por ejemplo, procesos de galvanización, procesos de recubrimiento con zinc, procesos de decapado, grabado, fosfatación, desengrasado alcalino y anodización)",
+              "chapterItems":
+                [
+                  {
+                    "chapterItemId": "110105",
+                    "chapterItemName": "Ácidos de decapado"
+                  },
+                  {
+                    "chapterItemId": "110106",
+                    "chapterItemName": "Ácidos no especificados en otra categoría"
+                  },
+                  {
+                    "chapterItemId": "110107",
+                    "chapterItemName": "Bases de decapado"
+                  },
+                  {
+                    "chapterItemId": "110108",
+                    "chapterItemName": "Lodos de fosfatación"
+                  },
+                  {
+                    "chapterItemId": "110109",
+                    "chapterItemName": "Lodos y tortas de filtración que contienen sustancias peligrosas"
+                  },
+                  {
+                    "chapterItemId": "110110",
+                    "chapterItemName": "Lodos y tortas de filtración distintos de los especificados en el código 11 01 09"
+                  },
+                  {
+                    "chapterItemId": "110111",
+                    "chapterItemName": "Líquidos acuosos de enjuague que contienen sustancias peligrosas"
+                  },
+                  {
+                    "chapterItemId": "110112",
+                    "chapterItemName": "Líquidos acuosos de enjuague distintos de los especificados en el código 11 01 11"
+                  },
+                  {
+                    "chapterItemId": "110113",
+                    "chapterItemName": "Residuos de desengrasado que contienen sustancias peligrosas"
+                  },
+                  {
+                    "chapterItemId": "110114",
+                    "chapterItemName": "Residuos de desengrasado distintos de los especificados en el código 11 01 13"
+                  },
+                  {
+                    "chapterItemId": "110115",
+                    "chapterItemName": "Eluatos y lodos procedentes de sistemas de membranas o de intercambio iónico que contienen sustancias peligrosas"         
+                  },
+                  {
+                    "chapterItemId": "110116",
+                    "chapterItemName": "Resinas intercambiadoras de iones saturadas o usadas"
+                  },
+                  {
+                    "chapterItemId": "110198",
+                    "chapterItemName": "Otros residuos que contienen sustancias peligrosas"         
+                  },
+                  {
+                    "chapterItemId": "110199",
+                    "chapterItemName": "Residuos no especificados en otra categoría"
+                  }
+                ]
+            },
+            {
+              "chapterId": "1102",
+              "chapterName": "Residuos de procesos hidrometalúrgicos no férreos",
+              "chapterItems":
+                [
+                  {
+                    "chapterItemId": "110202",
+                    "chapterItemName": "Lodos de la hidrometalurgia del zinc (incluida jarosita, goetita)"
+                  },
+                  {
+                    "chapterItemId": "110203",
+                    "chapterItemName": "Residuos de la producción de ánodos para procesos de electrólisis acuosa"
+                  },
+                  {
+                    "chapterItemId": "110205",
+                    "chapterItemName": "Residuos de procesos de la hidrometalurgia del cobre que contienen sustancias peligrosas"
+                  },
+                  {
+                    "chapterItemId": "110206",
+                    "chapterItemName": "Residuos de procesos de la hidrometalurgia del cobre distintos de los especificados en el código 11 02 05"
+                  },
+                  {
+                    "chapterItemId": "110207",
+                    "chapterItemName": "Otros residuos que contienen sustancias peligrosas"
+                  },
+                  {
+                    "chapterItemId": "110299",
+                    "chapterItemName": "Residuos no especificados en otra categoría 30.12.2014 L 370/70 Diario Oficial de la Unión Europea ES"
+                  }
+                ]
+            },
+            {
+              "chapterId": "1103",
+              "chapterName": "Lodos y sólidos de procesos de temple",
+              "chapterItems":
+                [
+		  {
+                    "chapterItemId": "110301",
+                    "chapterItemName": "Residuos que contienen cianuro"
+                  },
+                  {
+                    "chapterItemId": "110302",
+                    "chapterItemName": "Otros residuos"
+                 }
+                ]
+            },
+            {
+              "chapterId": "1105",
+              "chapterName": "Residuos de procesos de galvanización en caliente",
+              "chapterItems":
+                [
+                  {
+                    "chapterItemId": "110501",
+                    "chapterItemName": "Matas de galvanización"
+                  },
+                  {
+                    "chapterItemId": "110502",
+                    "chapterItemName": "Cenizas de zinc"
+                  },
+                  {
+                    "chapterItemId": "110503",
+                    "chapterItemName": "Residuos sólidos del tratamiento de gases"
+                  },
+                  {
+                    "chapterItemId": "110504",
+                    "chapterItemName": "Fundentes usados"
+                  },
+                  {
+                    "chapterItemId": "110599",
+                    "chapterItemName": "Residuos no especificados en otra categoría"
+                  }
+                ]
+            }          
+          ]
+  },
+
+  {
+    "key": "12",
+    "chapterTitle": "RESIDUOS DEL MOLDEADO Y DEL TRATAMIENTO FÍSICO Y MECÁNICO DE SUPERFICIE DE METALES Y PLÁSTICOS",
+    "chapters": 
+          [
+            {
+              "chapterId": "1201",
+               "chapterName": "Residuos del moldeado y tratamiento físico y mecánico de superficie de metales y plásticos",
+               "chapterItems":
+                 [
+       {
+                     "chapterItemId": "120101",
+                     "chapterItemName": "Limaduras y virutas de metales férreos"
+                   },
+                   {
+                     "chapterItemId": "120102",
+                     "chapterItemName": "Polvo y partículas de metales férreos"
+                   },
+                   {
+                     "chapterItemId": "120103",
+                     "chapterItemName": "Limaduras y virutas de metales no férreos"
+                   },
+                   {
+                     "chapterItemId": "120104",
+                     "chapterItemName": "Polvo y partículas de metales no férreos"
+       },
+                   {
+                     "chapterItemId": "120105",
+                     "chapterItemName": "Virutas y rebabas de plástico"
+                   },
+                   {
+                     "chapterItemId": "120106",
+                     "chapterItemName": "Aceites minerales de mecanizado que contienen halógenos (excepto las emulsiones o disoluciones)"         
+                   },
+                   {
+                     "chapterItemId": "120107",
+                     "chapterItemName": "Aceites minerales de mecanizado sin halógenos (excepto las emulsiones o disoluciones)"
+                   },
+                   {
+                     "chapterItemId": "120108",
+                     "chapterItemName": "Emulsiones y disoluciones de mecanizado que contienen halógenos"
+                   },
+                   {
+                     "chapterItemId": "120109",
+                     "chapterItemName": "Emulsiones y disoluciones de mecanizado sin halógenos"
+                   },
+                   {
+                     "chapterItemId": "120110",
+                     "chapterItemName": "Aceites sintéticos de mecanizado"
+                   },
+                   {
+                     "chapterItemId": "120112",
+                     "chapterItemName": "Ceras y grasas usadas"
+                   },
+                   {
+                     "chapterItemId": "120113",
+                     "chapterItemName": "Residuos de soldadura"
+                   },
+                   {
+                     "chapterItemId": "120114",
+                     "chapterItemName": "Lodos de mecanizado que contienen sustancias peligrosas"
+                   },
+                   {
+                     "chapterItemId": "120115",
+                     "chapterItemName": "Lodos de mecanizado distintos de los especificados en el código 12 01 14"
+                   },
+                   {
+                     "chapterItemId": "120116",
+                     "chapterItemName": "Residuos de granallado o chorreado que contienen sustancias peligrosas"
+                   },
+                   {
+                     "chapterItemId": "120117",
+                     "chapterItemName": "Residuos de granallado o chorreado distintos de los especificados en el código 12 01 16"
+                   },
+                   {
+                     "chapterItemId": "120118",
+                     "chapterItemName": "Lodos metálicos (lodos de esmerilado, rectificado y lapeado) que contienen aceites"
+                   },
+                   {
+                     "chapterItemId": "120119",
+                     "chapterItemName": "Aceites de mecanizado fácilmente biodegradables"
+                   },
+                   {
+                     "chapterItemId": "120120",
+                     "chapterItemName": "Muelas y materiales de esmerilado usados que contienen sustancias peligrosas"         
+                   },
+                   {
+                     "chapterItemId": "120121",
+                     "chapterItemName": "Muelas y materiales de esmerilado usados distintos de los especificados en el código 12 01 20"
+                   },
+                   {
+                     "chapterItemId": "120199",
+                     "chapterItemName": "Residuos no especificados en otra categoría"
+                    }
+                 ]
+             },
+             {
+               "chapterId": "1203",
+               "chapterName": "Residuos de los procesos de desengrase con agua y vapor (excepto el capítulo 11)",
+               "chapterItems":
+                 [
+                   {
+                     "chapterItemId": "120301",
+                     "chapterItemName": "Líquidos acuosos de limpieza"
+                   },
+                   {
+                     "chapterItemId": "120302",
+                     "chapterItemName": "Residuos de desengrase al vapor"
+                   }
+                 ]
+             }          
+          ]
+  },
+
+  {
+    "key": "13",
+    "chapterTitle": "RESIDUOS DE ACEITES Y DE COMBUSTIBLES LÍQUIDOS (excepto los aceites comestibles y los de los capítulos 05, 12 y 19)",
+    "chapters": 
+          [
+            {
+              "chapterId": "1301",
+              "chapterName": "Residuos de aceites hidráulicos",
+              "chapterItems":
+                [
+                  {
+                    "chapterItemId": "130101",
+                    "chapterItemName": "Aceites hidráulicos que contienen PCB"
+                  },
+                  {
+                    "chapterItemId": "130104",
+                    "chapterItemName": "Emulsiones cloradas"
+                  },
+                  {
+                    "chapterItemId": "130105",
+                    "chapterItemName": "Emulsiones no cloradas"
+                  },
+                  {
+                    "chapterItemId": "130109",
+                    "chapterItemName": "Aceites hidráulicos minerales clorados"
+                  },
+                  {
+                    "chapterItemId": "130110",
+                    "chapterItemName": "Aceites hidráulicos minerales no clorados"
+                  },
+                  {
+                    "chapterItemId": "130111",
+                    "chapterItemName": "Aceites hidráulicos sintéticos"
+                  },
+                  {
+                    "chapterItemId": "130112",
+                    "chapterItemName": "Aceites hidráulicos fácilmente biodegradables"
+                  },
+                  {
+                    "chapterItemId": "130113",
+                    "chapterItemName": "Otros aceites hidráulicos"
+                   }
+                ]
+            },
+            {
+              "chapterId": "1302",
+              "chapterName": "Residuos de aceites de motor, de transmisión mecánica y lubricantes",
+              "chapterItems":
+                [
+                  {
+                    "chapterItemId": "130204",
+                    "chapterItemName": "Aceites minerales clorados de motor, de transmisión mecánica y lubricantes"
+                  },
+                  {
+                    "chapterItemId": "130205",
+                    "chapterItemName": "Aceites minerales no clorados de motor, de transmisión mecánica y lubricantes"
+                  },
+                  {
+                    "chapterItemId": "130206",
+                    "chapterItemName": "Aceites sintéticos de motor, de transmisión mecánica y lubricantes"
+                  },
+                  {
+                    "chapterItemId": "130207",
+                    "chapterItemName": "Aceites fácilmente biodegradables de motor, de transmisión mecánica y lubricantes"
+                  },
+                  {
+                    "chapterItemId": "130208",
+                    "chapterItemName": "Otros aceites de motor, de transmisión mecánica y lubricantes"
+                  }
+                ]
+            },
+            {
+              "chapterId": "1303",
+              "chapterName": "Residuos de aceites de aislamiento y transmisión de calor",
+              "chapterItems":
+                [
+		  {
+                    "chapterItemId": "130301",
+                    "chapterItemName": "Aceites de aislamiento y transmisión de calor que contienen PCB"
+                  },
+                  {
+                    "chapterItemId": "130306",
+                    "chapterItemName": "Aceites minerales clorados de aislamiento y transmisión de calor, distintos de los especificados en el código 13 03 01"
+                  },
+                  {
+                    "chapterItemId": "130307",
+                    "chapterItemName": "Aceites minerales no clorados de aislamiento y transmisión de calor"
+                  },
+                  {
+                    "chapterItemId": "130308",
+                    "chapterItemName": "Aceites sintéticos de aislamiento y transmisión de calor"
+                  },
+                  {
+                    "chapterItemId": "130309",
+                    "chapterItemName": "Aceites fácilmente biodegradables de aislamiento y transmisión de calor"
+                  },
+                  {
+                    "chapterItemId": "130310",
+                    "chapterItemName": "Otros aceites de aislamiento y transmisión de calor"
+                 }
+                ]
+            },
+            {
+              "chapterId": "1304",
+              "chapterName": "Aceites de sentinas",
+              "chapterItems":
+                [
+                  {
+                    "chapterItemId": "130401",
+                    "chapterItemName": "Aceites de sentinas procedentes de la navegación en aguas continentales"
+                  },
+                  {
+                    "chapterItemId": "130402",
+                    "chapterItemName": "Aceites de sentinas recogidos en muelles"
+                  },
+                  {
+                    "chapterItemId": "130403",
+                    "chapterItemName": "Aceites de sentinas procedentes de otros tipos de navegación"
+                  }
+                ]
+            },
+            {
+              "chapterId": "1305",
+              "chapterName": "Restos de separadores de agua/sustancias aceitosas",
+              "chapterItems":
+                [
+		  {
+                    "chapterItemId": "130501",
+                    "chapterItemName": "Sólidos procedentes de desarenadores y de separadores de agua/sustancias aceitosas"
+                  },
+                  {
+                    "chapterItemId": "130502",
+                    "chapterItemName": "Lodos de separadores de agua/sustancias aceitosas"
+                  },
+                  {
+                    "chapterItemId": "130503",
+                    "chapterItemName": "Lodos de interceptores"
+                  },
+                  {
+                    "chapterItemId": "130506",
+                    "chapterItemName": "Aceites procedentes de separadores de agua/sustancias aceitosas"
+                  },
+                  {
+                    "chapterItemId": "130507",
+                    "chapterItemName": "Agua aceitosa procedente de separadores de agua/sustancias aceitosas"
+                  },
+                  {
+                    "chapterItemId": "130508",
+                    "chapterItemName": "Mezcla de residuos procedentes de desarenadores y de separadores de agua/sustancias aceitosas"
+                  }
+                ]
+            },
+            {
+              "chapterId": "1307",
+              "chapterName": "Residuos de combustibles líquidos",
+              "chapterItems":
+                [
+                  {
+                    "chapterItemId": "130701",
+                    "chapterItemName": "Fuelóleo y gasóleo"
+                  },
+                  {
+                    "chapterItemId": "130702",
+                    "chapterItemName": "Gasolina"
+                  },
+                  {
+                    "chapterItemId": "130703",
+                    "chapterItemName": "Otros combustibles (incluidas mezclas)"
+                  }
+                ]
+            },
+            {
+              "chapterId": "1308",
+              "chapterName": "Residuos de aceites no especificados en otra categoría",
+              "chapterItems":
+                [
+                  {
+                    "chapterItemId": "130801",
+                    "chapterItemName": "Lodos o emulsiones de desalación"
+                  },
+                  {
+                    "chapterItemId": "130802",
+                    "chapterItemName": "Otras emulsiones"
+                  },
+                  {
+                    "chapterItemId": "130899",
+                    "chapterItemName": "Residuos no especificados en otra categoría"
+                  }
+                ]
+            }          
+          ]
+  },
+
+  {
+    "key": "14",
+    "chapterTitle": "RESIDUOS DE DISOLVENTES, REFRIGERANTES Y PROPELENTES ORGÁNICOS (excepto los de los capítulos 07 y 08)",
+    "chapters": 
+          [
+            {
+              "chapterId": "1406",
+              "chapterName": "Residuos de disolventes, refrigerantes y propelentes de espuma y aerosoles orgánicos",
+              "chapterItems":
+                [
+                  {
+                    "chapterItemId": "140601",
+                    "chapterItemName": "Clorofluorocarburos, HCFC, HFC"
+                  },
+                  {
+                    "chapterItemId": "140602",
+                    "chapterItemName": "Otros disolventes y mezclas de disolventes halogenados"
+                  },
+                  {
+                    "chapterItemId": "140603",
+                    "chapterItemName": "Otros disolventes y mezclas de disolventes"
+                  },
+                  {
+                    "chapterItemId": "140604",
+                    "chapterItemName": "Lodos o residuos sólidos que contienen disolventes halogenados"
+                  },
+                  {
+                    "chapterItemId": "140605",
+                    "chapterItemName": "Lodos o residuos sólidos que contienen otros disolventes"
+                  }
+                ]
+            }           
+          ]
+  },
+
+  {
+    "key": "15",
+    "chapterTitle": "RESIDUOS DE ENVASES; ABSORBENTES, TRAPOS DE LIMPIEZA, MATERIALES DE FILTRACIÓN Y ROPAS DE PROTECCIÓN NO ESPECIFICADOS EN OTRA CATEGORÍA",
+    "chapters": 
+          [
+            {
+              "chapterId": "1501",
+               "chapterName": "Envases (incluidos los residuos de envases de la recogida selectiva municipal)",
+               "chapterItems":
+                 [
+       {
+                     "chapterItemId": "150101",
+                     "chapterItemName": "Envases de papel y cartón"
+                   },
+                   {
+                     "chapterItemId": "150102",
+                     "chapterItemName": "Envases de plástico"
+                   },
+                   {
+                     "chapterItemId": "150103",
+                     "chapterItemName": "Envases de madera"
+                   },
+                   {
+                     "chapterItemId": "150104",
+                     "chapterItemName": "Envases metálicos"
+       },
+                   {
+                     "chapterItemId": "150105",
+                     "chapterItemName": "Envases compuestos"
+                   },
+                   {
+                     "chapterItemId": "150106",
+                     "chapterItemName": "Envases mezclados"         
+                   },
+                   {
+                     "chapterItemId": "150107",
+                     "chapterItemName": "Envases de vidrio"
+                   },
+                   {
+                     "chapterItemId": "150108",
+                     "chapterItemName": "Emulsiones y disoluciones de mecanizado que contienen halógenos"
+                   },
+                   {
+                     "chapterItemId": "150109",
+                     "chapterItemName": "Envases textiles"
+                   },
+                   {
+                     "chapterItemId": "150110",
+                     "chapterItemName": "Envases que contienen restos de sustancias peligrosas o están contaminados por ellas"
+                   },
+                   {
+                     "chapterItemId": "150111",
+                     "chapterItemName": "Envases metálicos, incluidos los recipientes a presión vacíos, que contienen una matriz sólida y porosa peligrosa (por ejemplo, amianto)"
+                    }
+                 ]
+             },
+             {
+               "chapterId": "1502",
+               "chapterName": "Absorbentes, materiales de filtración, trapos de limpieza y ropas protectoras",
+               "chapterItems":
+                 [
+                   {
+                     "chapterItemId": "150202",
+                     "chapterItemName": "Absorbentes, materiales de filtración (incluidos los filtros de aceite no especificados en otra categoría), trapos de limpieza y ropas protectoras contaminados por sustancias peligrosas"
+                   },
+                   {
+                     "chapterItemId": "150203",
+                     "chapterItemName": "Absorbentes, materiales de filtración, trapos de limpieza y ropas protectoras distintos de los especificados en el código 15 02 02"
+                   }
+                 ]
+             }          
+          ]
+  },
+
+  {
+    "key": "16",
+    "chapterTitle": "RESIDUOS NO ESPECIFICADOS EN OTRO CAPÍTULO DE LA LISTA",
+    "chapters": 
+          [
+            {
+              "chapterId": "1601",
+              "chapterName": "Vehículos de diferentes medios de transporte (incluidas las máquinas no de carretera) al final de su vida útil y residuos del desguace de vehículos al final de su vida útil y del mantenimiento de vehículos (excepto los de los capítulos 13 y 14 y los subcapítulos 16 06 y 16 08)",
+              "chapterItems":
+                [
+                  {
+                    "chapterItemId": "160103",
+                    "chapterItemName": "Neumáticos al final de su vida útil"
+                  },
+                  {
+                    "chapterItemId": "160104",
+                    "chapterItemName": "Vehículos al final de su vida útil"
+                  },
+                  {
+                    "chapterItemId": "160106",
+                    "chapterItemName": "Vehículos al final de su vida útil que no contengan líquidos ni otros componentes peligrosos"
+                  },
+                  {
+                    "chapterItemId": "160107",
+                    "chapterItemName": "Filtros de aceite"
+                  },
+                  {
+                    "chapterItemId": "160108",
+                    "chapterItemName": "Componentes que contienen mercurio"
+                  },
+                  {
+                    "chapterItemId": "160109",
+                    "chapterItemName": "Componentes que contienen PCB"
+                  },
+                  {
+                    "chapterItemId": "160110",
+                    "chapterItemName": "Componentes explosivos (por ejemplo, colchones de aire)"
+                  },
+                  {
+                    "chapterItemId": "160111",
+                    "chapterItemName": "Zapatas de freno que contienen amianto"
+                  },
+                  {
+                    "chapterItemId": "160112",
+                    "chapterItemName": "Zapatas de freno distintas de las especificadas en el código 16 01 11"
+                  },
+                  {
+                    "chapterItemId": "160113",
+                    "chapterItemName": "Líquidos de frenos"
+                  },
+                  {
+                    "chapterItemId": "160114",
+                    "chapterItemName": "Anticongelantes que contienen sustancias peligrosas"
+                  },
+                  {
+                    "chapterItemId": "160115",
+                    "chapterItemName": "Anticongelantes distintos de los especificados en el código 16 01 14"
+                  },
+                  {
+                    "chapterItemId": "160116",
+                    "chapterItemName": "Depósitos para gases licuados"
+                  },
+                  {
+                    "chapterItemId": "160121",
+                    "chapterItemName": "Componentes peligrosos distintos de los especificados en los códigos 16 01 07 a 16 01 11 y 16 01 13 y 16 01 14"
+                  },
+                  {
+                    "chapterItemId": "160122",
+                    "chapterItemName": "Componentes no especificados en otra categoría"
+                  },
+                  {
+                    "chapterItemId": "160199",
+                    "chapterItemName": "Residuos no especificados en otra categoría"
+                  }
+                ]
+            },
+            {
+              "chapterId": "1602",
+              "chapterName": "Residuos de aparatos eléctricos y electrónicos",
+              "chapterItems":
+                [
+		  {
+                    "chapterItemId": "160209",
+                    "chapterItemName": "Transformadores y condensadores que contienen PCB"
+                  },
+                  {
+                    "chapterItemId": "160210",
+                    "chapterItemName": "Equipos desechados que contienen PCB, o están contaminados por ellos, distintos de los especificados en el código 16 02 09"
+                  },
+                  {
+                    "chapterItemId": "160211",
+                    "chapterItemName": "Equipos desechados que contienen clorofluorocarburos, HCFC, HFC"
+                  },
+                  {
+                    "chapterItemId": "160212",
+                    "chapterItemName": "Equipos desechados que contienen amianto libre"
+                  },
+                  {
+                    "chapterItemId": "160213",
+                    "chapterItemName": "Equipos desechados que contienen componentes peligrosos (1), distintos de los especificados en los códigos 16 02 09 a 16 02 12"
+                  },
+                  {
+                    "chapterItemId": "160214",
+                    "chapterItemName": "Equipos desechados distintos de los especificados en los códigos 16 02 09 a 16 02 13"
+                  },
+                  {
+                    "chapterItemId": "160215",
+                    "chapterItemName": "Componentes peligrosos retirados de equipos desechados"
+                  },
+                  {
+                    "chapterItemId": "160216",
+                    "chapterItemName": "Componentes retirados de equipos desechados distintos de los especificados en el código 16 02 15"
+                  }
+                ]
+            },
+            {
+              "chapterId": "1603",
+              "chapterName": "Lotes de productos fuera de especificación y productos no utilizados",
+              "chapterItems":
+                [
+                  {
+                    "chapterItemId": "160303",
+                    "chapterItemName": "Residuos inorgánicos que contienen sustancias peligrosas"
+                  },
+                  {
+                    "chapterItemId": "160304",
+                    "chapterItemName": "Residuos inorgánicos distintos de los especificados en el código 16 03 03"
+                  },
+                  {
+                    "chapterItemId": "160305",
+                    "chapterItemName": "Residuos orgánicos que contienen sustancias peligrosas"
+                  },
+                  {
+                    "chapterItemId": "160306",
+                    "chapterItemName": "Residuos orgánicos distintos de los especificados en el código 16 03 05"
+                  },
+                  {
+                    "chapterItemId": "160307",
+                    "chapterItemName": "Mercurio metálico"
+                  }
+                ]
+            },
+            {
+              "chapterId": "1604",
+              "chapterName": "Residuos de explosivos",
+              "chapterItems":
+                [
+                  {
+                    "chapterItemId": "160401",
+                    "chapterItemName": "Residuos de municiones"
+                  },
+                  {
+                    "chapterItemId": "160402",
+                    "chapterItemName": "Residuos de fuegos artificiales"
+                  },
+                  {
+                    "chapterItemId": "160403",
+                    "chapterItemName": "Otros residuos explosivos"
+                  }
+                ]
+            },
+            {
+              "chapterId": "1605",
+              "chapterName": "Gases en recipientes a presión y productos químicos desechados",
+              "chapterItems":
+                [
+		  {
+                    "chapterItemId": "160504",
+                    "chapterItemName": "Gases en recipientes a presión (incluidos los halones) que contienen sustancias peligrosas"
+                  },
+                  {
+                    "chapterItemId": "160505",
+                    "chapterItemName": "Gases en recipientes a presión, distintos de los especificados en el código 16 05 04"
+                  },
+                  {
+                    "chapterItemId": "160506",
+                    "chapterItemName": "Productos químicos de laboratorio que consisten en sustancias peligrosas, incluidas las mezclas de productos químicos de laboratorio, o las contienen"
+                  },
+                  {
+                    "chapterItemId": "160507",
+                    "chapterItemName": "Productos químicos inorgánicos desechados que consisten en sustancias peligrosas o las contienen"
+                  },
+                  {
+                    "chapterItemId": "160508",
+                    "chapterItemName": "Productos químicos orgánicos desechados que consisten en sustancias peligrosas o las contienen"
+                  },
+                  {
+                    "chapterItemId": "160509",
+                    "chapterItemName": "Productos químicos desechados distintos de los especificados en los códigos 16 05 06, 16 05 07 o 16 05 08"
+                  }
+                ]
+            },
+            {
+              "chapterId": "1606",
+              "chapterName": "Pilas y acumuladores",
+              "chapterItems":
+                [
+		  {
+                    "chapterItemId": "160601",
+                    "chapterItemName": "Baterías de plomo"
+                  },
+                  {
+                    "chapterItemId": "160602",
+                    "chapterItemName": "Acumuladores de Ni-Cd"
+                  },
+                  {
+                    "chapterItemId": "160603",
+                    "chapterItemName": "Pilas que contienen mercurio"
+                  },
+                  {
+                    "chapterItemId": "160604",
+                    "chapterItemName": "Pilas alcalinas (excepto 16 06 03)"
+                  },
+                  {
+                    "chapterItemId": "160605",
+                    "chapterItemName": "Otras pilas y acumuladores"
+                  },
+                  {
+                    "chapterItemId": "160606",
+                    "chapterItemName": "Electrolitos de pilas y acumuladores recogidos selectivamente"
+                 }
+                ]
+            },
+            {
+              "chapterId": "1607",
+              "chapterName": "Residuos de la limpieza de cisternas de transporte y almacenamiento y de la limpieza de cubas (excepto los de los capítulos 05 y 13)",
+              "chapterItems":
+                [
+                  {
+                    "chapterItemId": "160708",
+                    "chapterItemName": "Residuos que contienen hidrocarburos"
+                  },
+                  {
+                    "chapterItemId": "160709",
+                    "chapterItemName": "Residuos que contienen otras sustancias peligrosas"
+                  },
+                  {
+                    "chapterItemId": "160799",
+                    "chapterItemName": "Residuos no especificados en otra categoría"
+                  }
+                ]
+            },
+            {
+              "chapterId": "1608",
+              "chapterName": "Catalizadores usados",
+              "chapterItems":
+                [
+		  {
+                    "chapterItemId": "160801",
+                    "chapterItemName": "Catalizadores usados que contienen oro, plata, renio, rodio, paladio, iridio o platino (excepto el código 16 08 07)"
+                  },
+                  {
+                    "chapterItemId": "160802",
+                    "chapterItemName": "Catalizadores usados que contienen metales de transición peligrosos o compuestos de metales de transición peligrosos"
+                  },
+                  {
+                    "chapterItemId": "160803",
+                    "chapterItemName": "Catalizadores usados que contienen metales de transición o compuestos de metales de transición no especificados en otra categoría"
+                  },
+                  {
+                    "chapterItemId": "160804",
+                    "chapterItemName": "Catalizadores usados procedentes del craqueo catalítico fluido (excepto los del código 16 08 07)"
+                  },
+                  {
+                    "chapterItemId": "160805",
+                    "chapterItemName": "Catalizadores usados que contienen ácido fosfórico"
+                  },
+                  {
+                    "chapterItemId": "160806",
+                    "chapterItemName": "Líquidos usados utilizados como catalizadores"
+                  },
+                  {
+                    "chapterItemId": "160807",
+                    "chapterItemName": "Catalizadores usados contaminados con sustancias peligrosas"
+                  }
+                ]
+            },
+            {
+              "chapterId": "1609",
+              "chapterName": "Sustancias oxidantes",
+              "chapterItems":
+                [
+                  {
+                    "chapterItemId": "160901",
+                    "chapterItemName": "Permanganatos, por ejemplo permanganato potásico"
+                  },
+                  {
+                    "chapterItemId": "160902",
+                    "chapterItemName": "Cromatos, por ejemplo cromato potásico, dicromato sódico o potásico"
+                  },
+                  {
+                    "chapterItemId": "160903",
+                    "chapterItemName": "Peróxidos, por ejemplo peróxido de hidrógeno"
+                  },
+                  {
+                    "chapterItemId": "160904",
+                    "chapterItemName": "Sustancias oxidantes no especificadas en otra categoría"
+                  }
+                ]
+            },
+            {
+              "chapterId": "1610",
+              "chapterName": "Residuos líquidos acuosos destinados a plantas de tratamiento externas",
+              "chapterItems":
+                [
+                  {
+                    "chapterItemId": "161001",
+                    "chapterItemName": "Residuos líquidos acuosos que contienen sustancias peligrosas"
+                  },
+                  {
+                    "chapterItemId": "161002",
+                    "chapterItemName": "Residuos líquidos acuosos distintos de los especificados en el código 16 10 01"
+                  },
+                  {
+                    "chapterItemId": "161003",
+                    "chapterItemName": "Concentrados acuosos que contienen sustancias peligrosas"
+                  },
+                  {
+                    "chapterItemId": "161004",
+                    "chapterItemName": "Concentrados acuosos distintos de los especificados en el código 16 10 03"
+                  }
+                ]
+            },
+            {
+              "chapterId": "1611",
+              "chapterName": "Residuos de revestimientos y refractarios",
+              "chapterItems":
+                [
+		  {
+                    "chapterItemId": "161101",
+                    "chapterItemName": "Revestimientos y refractarios a base de carbono, procedentes de procesos metalúrgicos, que contienen sustancias peligrosas"
+                  },
+                  {
+                    "chapterItemId": "161102",
+                    "chapterItemName": "Revestimientos y refractarios a base de carbono, procedentes de procesos metalúrgicos, distintos de los especificados en el código 16 11 01"
+                  },
+                  {
+                    "chapterItemId": "161103",
+                    "chapterItemName": "Otros revestimientos y refractarios procedentes de procesos metalúrgicos que contienen sustancias peligrosas"
+                  },
+                  {
+                    "chapterItemId": "161104",
+                    "chapterItemName": "Otros revestimientos y refractarios procedentes de procesos metalúrgicos, distintos de los especificados en el código 16 11 03"
+                  },
+                  {
+                    "chapterItemId": "161105",
+                    "chapterItemName": "Revestimientos y refractarios, procedentes de procesos no metalúrgicos, que contienen sustancias peligrosas"
+                  },
+                  {
+                    "chapterItemId": "161106",
+                    "chapterItemName": "Revestimientos y refractarios procedentes de procesos no metalúrgicos, distintos de los especificados en el código 16 11 05"
+                  }
+                ]
+            }          
+          ]
+  },
+
+  {
+    "key": "17",
+    "chapterTitle": "RESIDUOS DE LA CONSTRUCCIÓN Y DEMOLICIÓN (INCLUIDA LA TIERRA EXCAVADA DE ZONAS CONTAMINADAS)",
+    "chapters": 
+          [
+            {
+              "chapterId": "1701",
+              "chapterName": "Hormigón, ladrillos, tejas y materiales cerámicos",
+              "chapterItems":
+                [
+                  {
+                    "chapterItemId": "170101",
+                    "chapterItemName": "Hormigón"
+                  },
+                  {
+                    "chapterItemId": "170102",
+                    "chapterItemName": "Ladrillos"
+                  },
+                  {
+                    "chapterItemId": "170103",
+                    "chapterItemName": "Tejas y materiales cerámicos"
+                  },
+                  {
+                    "chapterItemId": "170106",
+                    "chapterItemName": "Mezclas, o fracciones separadas, de hormigón, ladrillos, tejas y materiales cerámicos que contienen sustancias peligrosas"
+                  },
+                  {
+                    "chapterItemId": "170107",
+                    "chapterItemName": "Mezclas de hormigón, ladrillos, tejas y materiales cerámicos, distintas de las especificadas en el código 17 01 06"
+                   }
+                ]
+            },
+            {
+              "chapterId": "1702",
+              "chapterName": "Madera, vidrio y plástico",
+              "chapterItems":
+                [
+                  {
+                    "chapterItemId": "170201",
+                    "chapterItemName": "Madera"
+                  },
+                  {
+                    "chapterItemId": "170202",
+                    "chapterItemName": "Vidrio"
+                  },
+                  {
+                    "chapterItemId": "170203",
+                    "chapterItemName": "Plástico"
+                  },
+                  {
+                    "chapterItemId": "170204",
+                    "chapterItemName": "Vidrio, plástico y madera que contienen sustancias peligrosas o están contaminados por ellas"
+                  }
+                ]
+            },
+            {
+              "chapterId": "1703",
+              "chapterName": "Mezclas bituminosas, alquitrán de hulla y otros productos alquitranados",
+              "chapterItems":
+                [
+		  {
+                    "chapterItemId": "170301",
+                    "chapterItemName": "Mezclas bituminosas que contienen alquitrán de hulla"
+                  },
+                  {
+                    "chapterItemId": "170302",
+                    "chapterItemName": "Mezclas bituminosas distintas de las especificadas en el código 17 03 01"
+                  },
+                  {
+                    "chapterItemId": "170303",
+                    "chapterItemName": "Alquitrán de hulla y productos alquitranados"
+                 }
+                ]
+            },
+            {
+              "chapterId": "1704",
+              "chapterName": "Metales (incluidas sus aleaciones)",
+              "chapterItems":
+                [
+                  {
+                    "chapterItemId": "170401",
+                    "chapterItemName": "Cobre, bronce, latón"
+                  },
+                  {
+                    "chapterItemId": "170402",
+                    "chapterItemName": "Aluminio"
+                  },
+                  {
+                    "chapterItemId": "170403",
+                    "chapterItemName": "Plomo"
+                  },
+		  {
+                    "chapterItemId": "170404",
+                    "chapterItemName": "Zinc"
+                  },
+                  {
+                    "chapterItemId": "170405",
+                    "chapterItemName": "Hierro y acero"
+                  },
+                  {
+                    "chapterItemId": "170406",
+                    "chapterItemName": "Estaño"
+                  },
+                  {
+                    "chapterItemId": "170407",
+                    "chapterItemName": "Metales mezclados"
+                  },
+                  {
+                    "chapterItemId": "170409",
+                    "chapterItemName": "Residuos metálicos contaminados con sustancias peligrosas"
+                  },
+                  {
+                    "chapterItemId": "170410",
+                    "chapterItemName": "Cables que contienen hidrocarburos, alquitrán de hulla y otras sustancias peligrosas"
+                  },
+                  {
+                    "chapterItemId": "170411",
+                    "chapterItemName": "Cables distintos de los especificados en el código 17 04 10"
+                  }
+                ]
+            },
+            {
+              "chapterId": "1705",
+              "chapterName": "Tierra (incluida la tierra excavada de zonas contaminadas), piedras y lodos de drenaje",
+              "chapterItems":
+                [
+		  {
+                    "chapterItemId": "170503",
+                    "chapterItemName": "Tierra y piedras que contienen sustancias peligrosas"
+                  },
+                  {
+                    "chapterItemId": "170504",
+                    "chapterItemName": "Tierra y piedras distintas de las especificadas en el código 17 05 03"
+                  },
+                  {
+                    "chapterItemId": "170505",
+                    "chapterItemName": "Lodos de drenaje que contienen sustancias peligrosas"
+                  },
+                  {
+                    "chapterItemId": "170506",
+                    "chapterItemName": "Lodos de drenaje distintos de los especificados en el código 17 05 05"
+                  },
+                  {
+                    "chapterItemId": "170507",
+                    "chapterItemName": "Balasto de vías férreas que contiene sustancias peligrosas"
+                  },
+                  {
+                    "chapterItemId": "170508",
+                    "chapterItemName": "Balasto de vías férreas distinto del especificado en el código 17 05 07"
+                  }
+                ]
+            },
+            {
+              "chapterId": "1706",
+              "chapterName": "Materiales de aislamiento y materiales de construcción que contienen amianto",
+              "chapterItems":
+                [
+                  {
+                    "chapterItemId": "170601",
+                    "chapterItemName": "Materiales de aislamiento que contienen amianto"
+                  },
+                  {
+                    "chapterItemId": "170603",
+                    "chapterItemName": "Otros materiales de aislamiento que consisten en sustancias peligrosas o contienen dichas sustancias"
+                  },
+                  {
+                    "chapterItemId": "170604",
+                    "chapterItemName": "Materiales de aislamiento distintos de los especificados en los códigos 17 06 01 y 17 06 03"
+                  },
+                  {
+                    "chapterItemId": "170605",
+                    "chapterItemName": "Materiales de construcción que contienen amianto"
+                  }
+                ]
+            },
+            {
+              "chapterId": "1708",
+              "chapterName": "Materiales de construcción a base de yeso",
+              "chapterItems":
+                [
+                  {
+                    "chapterItemId": "170801",
+                    "chapterItemName": "Materiales de construcción a base de yeso contaminados con sustancias peligrosas"
+                  },
+                  {
+                    "chapterItemId": "170802",
+                    "chapterItemName": "Materiales de construcción a base de yeso distintos de los especificados en el código 17 08 01"
+                  }
+                ]
+            },
+            {
+              "chapterId": "1709",
+              "chapterName": "Otros residuos de construcción y demolición",
+              "chapterItems":
+                [
+                  {
+                    "chapterItemId": "170901",
+                    "chapterItemName": "Residuos de construcción y demolición que contienen mercurio"
+                  },
+                  {
+                    "chapterItemId": "170902",
+                    "chapterItemName": "Residuos de construcción y demolición que contienen PCB (por ejemplo, sellantes que contienen PCB, revestimientos de suelo a base de resinas que contienen PCB, acristalamientos dobles que contienen PCB, condensadores que contienen PCB)"
+                  },
+                  {
+                    "chapterItemId": "170903",
+                    "chapterItemName": "Otros residuos de construcción y demolición (incluidos los residuos mezclados) que contienen sustancias peligrosas"
+                  },
+                  {
+                    "chapterItemId": "170904",
+                    "chapterItemName": "Residuos mezclados de construcción y demolición distintos de los especificados en los códigos 17 09 01, 17 09 02 y 17 09 03"
+                  }
+                ]
+            }           
+          ]
+  },
+
+  {
+    "key": "18",
+    "chapterTitle": "RESIDUOS DE SERVICIOS MÉDICOS O VETERINARIOS O DE INVESTIGACIÓN ASOCIADA (salvo los residuos de cocina y de restaurante no procedentes directamente de la prestación de cuidados sanitarios)",
+    "chapters": 
+          [
+            {
+              "chapterId": "1801",
+               "chapterName": "Residuos de maternidades, del diagnóstico, tratamiento o prevención de enfermedades humanas",
+               "chapterItems":
+                 [
+       {
+                     "chapterItemId": "180101",
+                     "chapterItemName": "Objetos cortantes y punzantes (excepto el código 18 01 03)"
+                   },
+                   {
+                     "chapterItemId": "180102",
+                     "chapterItemName": "Restos anatómicos y órganos, incluidos bolsas y bancos de sangre (excepto el código 18 01 03)"
+                   },
+                   {
+                     "chapterItemId": "180103",
+                     "chapterItemName": "Residuos cuya recogida y eliminación son objeto de requisitos especiales para prevenir infecciones"
+                   },
+                   {
+                     "chapterItemId": "180104",
+                     "chapterItemName": "Residuos cuya recogida y eliminación no son objeto de requisitos especiales para prevenir infecciones (por ejemplo, vendajes, vaciados de yeso, ropa blanca, ropa desechable, pañales)"
+       },
+                   {
+                     "chapterItemId": "180106",
+                     "chapterItemName": "Productos químicos que consisten en sustancias peligrosas o contienen dichas sustancias"
+                   },
+                   {
+                     "chapterItemId": "180107",
+                     "chapterItemName": "Productos químicos distintos de los especificados en el código 18 01 06"         
+                   },
+                   {
+                     "chapterItemId": "180108",
+                     "chapterItemName": "Medicamentos citotóxicos y citostáticos"
+                   },
+                   {
+                     "chapterItemId": "180109",
+                     "chapterItemName": "Medicamentos distintos de los especificados en el código 18 01 08"
+                   },
+                   {
+                     "chapterItemId": "180110",
+                     "chapterItemName": "Residuos de amalgamas procedentes de cuidados dentales"
+                    }
+                 ]
+             },
+             {
+               "chapterId": "1802",
+               "chapterName": "Residuos de la investigación, diagnóstico, tratamiento o prevención de enfermedades de animales",
+               "chapterItems":
+                 [
+                   {
+                     "chapterItemId": "180201",
+                     "chapterItemName": "Objetos cortantes y punzantes (excepto el código 18 02 02)"
+                   },
+                   {
+                     "chapterItemId": "180202",
+                     "chapterItemName": "Residuos cuya recogida y eliminación son objeto de requisitos especiales para prevenir infecciones"
+       },
+                   {
+                     "chapterItemId": "180203",
+                     "chapterItemName": "Residuos cuya recogida y eliminación no son objeto de requisitos especiales para prevenir infecciones"
+                   },
+                   {
+                     "chapterItemId": "180205",
+                     "chapterItemName": "Productos químicos que consisten en, o contienen, sustancias peligrosas"         
+                   },
+                   {
+                     "chapterItemId": "180206",
+                     "chapterItemName": "Productos químicos distintos de los especificados en el código 18 02 05"
+                   },
+                   {
+                     "chapterItemId": "180207",
+                     "chapterItemName": "Medicamentos citotóxicos y citostáticos"
+                   },
+                   {
+                     "chapterItemId": "180208",
+                     "chapterItemName": "Medicamentos distintos de los especificados en el código 18 02 07"
+                   }
+                 ]
+             }          
+          ]
+  },
+
+  {
+    "key": "19",
+    "chapterTitle": "RESIDUOS DE LAS INSTALACIONES PARA EL TRATAMIENTO DE RESIDUOS, DE LAS PLANTAS EXTERNAS DE TRATAMIENTO DE AGUAS RESIDUALES Y DE LA PREPARACIÓN DE AGUA PARA CONSUMO HUMANO Y DE AGUA PARA CONSUMO INDUSTRIAL",
+    "chapters": 
+          [
+            {
+              "chapterId": "1901",
+              "chapterName": "Residuos de la incineración o pirólisis de residuos",
+              "chapterItems":
+                [
+                  {
+                    "chapterItemId": "190102",
+                    "chapterItemName": "Materiales férreos separados de la ceniza de fondo de horno"
+                  },
+                  {
+                    "chapterItemId": "190105",
+                    "chapterItemName": "Torta de filtración del tratamiento de gases"
+                  },
+                  {
+                    "chapterItemId": "190106",
+                    "chapterItemName": "Residuos líquidos acuosos del tratamiento de gases y otros residuos líquidos acuosos"
+                  },
+                  {
+                    "chapterItemId": "190107",
+                    "chapterItemName": "Residuos sólidos del tratamiento de gases"
+                  },
+                  {
+                    "chapterItemId": "190110",
+                    "chapterItemName": "Carbón activo usado procedente del tratamiento de gases de combustión"
+                  },
+                  {
+                    "chapterItemId": "190111",
+                    "chapterItemName": "Ceniza de fondo de horno y escorias que contienen sustancias peligrosas"
+                  },
+                  {
+                    "chapterItemId": "190112",
+                    "chapterItemName": "Ceniza de fondo de horno y escorias distintas de las especificadas en el código 19 01 11"
+                  },
+                  {
+                    "chapterItemId": "190113",
+                    "chapterItemName": "Cenizas volantes que contienen sustancias peligrosas"
+                  },
+                  {
+                    "chapterItemId": "190114",
+                    "chapterItemName": "Cenizas volantes distintas de las especificadas en el código 19 01 13"
+                  },
+                  {
+                    "chapterItemId": "190115",
+                    "chapterItemName": "Polvo de caldera que contiene sustancias peligrosas"
+                  },
+                  {
+                    "chapterItemId": "190116",
+                    "chapterItemName": "Polvo de caldera distinto del especificado en el código 19 01 15"
+                  },
+                  {
+                    "chapterItemId": "190117",
+                    "chapterItemName": "Residuos de pirólisis que contienen sustancias peligrosas"
+                  },
+                  {
+                    "chapterItemId": "190118",
+                    "chapterItemName": "Residuos de pirólisis distintos de los especificados en el código 19 01 17"
+                  },
+                  {
+                    "chapterItemId": "190119",
+                    "chapterItemName": "Arenas de lechos fluidizados"
+                  },
+                  {
+                    "chapterItemId": "190199",
+                    "chapterItemName": "Residuos no especificados en otra categoría"
+                  }
+                ]
+            },
+            {
+              "chapterId": "1902",
+              "chapterName": "Residuos de tratamientos fisicoquímicos de residuos (incluidas la descromatación, la descianurización y la neutralización)",
+              "chapterItems":
+                [
+		  {
+                    "chapterItemId": "190203",
+                    "chapterItemName": "Residuos mezclados previamente, compuestos exclusivamente por residuos no peligrosos"
+                  },
+                  {
+                    "chapterItemId": "190204",
+                    "chapterItemName": "Residuos mezclados previamente, compuestos por al menos un residuo peligroso"
+                  },
+                  {
+                    "chapterItemId": "190205",
+                    "chapterItemName": "Lodos de tratamientos fisicoquímicos que contienen sustancias peligrosas"
+                  },
+                  {
+                    "chapterItemId": "190206",
+                    "chapterItemName": "Lodos de tratamientos fisicoquímicos, distintos de los especificados en el código 19 02 05"
+                  },
+                  {
+                    "chapterItemId": "190207",
+                    "chapterItemName": "Aceite y concentrados procedentes del proceso de separación"
+                  },
+                  {
+                    "chapterItemId": "190208",
+                    "chapterItemName": "Residuos combustibles líquidos que contienen sustancias peligrosas"
+                  },
+                  {
+                    "chapterItemId": "190209",
+                    "chapterItemName": "Residuos combustibles sólidos que contienen sustancias peligrosas"
+                  },
+                  {
+                    "chapterItemId": "190210",
+                    "chapterItemName": "Residuos combustibles distintos de los especificados en los códigos 19 02 08 y 19 02 09"
+                  },
+                  {
+                    "chapterItemId": "190211",
+                    "chapterItemName": "Otros residuos que contienen sustancias peligrosas"
+                  },
+                  {
+                    "chapterItemId": "190299",
+                    "chapterItemName": "Residuos no especificados en otra categoría"
+                  }
+                ]
+            },
+            {
+              "chapterId": "1903",
+              "chapterName": "Residuos estabilizados/solidificados",
+              "chapterItems":
+                [
+                  {
+                    "chapterItemId": "190304",
+                    "chapterItemName": "Residuos peligrosos, parcialmente estabilizados, distintos de los especificados en el código 19 03 08"
+                  },
+                  {
+                    "chapterItemId": "190305",
+                    "chapterItemName": "Residuos estabilizados distintos de los especificados en el código 19 03 04"
+                  },
+                  {
+                    "chapterItemId": "190306",
+                    "chapterItemName": "Residuos peligrosos solidificados"
+                  },
+                  {
+                    "chapterItemId": "190307",
+                    "chapterItemName": "Residuos solidificados distintos de los especificados en el código 19 03 06"
+                  },
+                  {
+                    "chapterItemId": "190308",
+                    "chapterItemName": "Mercurio parcialmente estabilizado"
+                  }
+                ]
+            },
+            {
+              "chapterId": "1904",
+              "chapterName": "Residuos vitrificados y residuos de la vitrificación",
+              "chapterItems":
+                [
+                  {
+                    "chapterItemId": "190401",
+                    "chapterItemName": "Residuos vitrificados"
+                  },
+                  {
+                    "chapterItemId": "190402",
+                    "chapterItemName": "Cenizas volantes y otros residuos del tratamiento de gases de combustión"
+                  },
+                  {
+                    "chapterItemId": "190403",
+                    "chapterItemName": "Fase sólida no vitrificada"
+                  },
+                  {
+                    "chapterItemId": "190404",
+                    "chapterItemName": "Residuos líquidos acuosos del templado de residuos vitrificados"
+                  }
+                ]
+            },
+            {
+              "chapterId": "1905",
+              "chapterName": "Residuos del tratamiento aeróbico de residuos sólidos",
+              "chapterItems":
+                [
+		  {
+                    "chapterItemId": "190501",
+                    "chapterItemName": "Fracción no compostada de residuos municipales y asimilados"
+                  },
+                  {
+                    "chapterItemId": "190502",
+                    "chapterItemName": "Fracción no compostada de residuos de procedencia animal o vegetal"
+                  },
+                  {
+                    "chapterItemId": "190503",
+                    "chapterItemName": "Compost fuera de especificación"
+                  },
+                  {
+                    "chapterItemId": "190599",
+                    "chapterItemName": "Residuos no especificados en otra categoría"
+                  }
+                ]
+            },
+            {
+              "chapterId": "1906",
+              "chapterName": "Residuos del tratamiento anaeróbico de residuos",
+              "chapterItems":
+                [
+		  {
+                    "chapterItemId": "190603",
+                    "chapterItemName": "Licor del tratamiento anaeróbico de residuos municipales"
+                  },
+                  {
+                    "chapterItemId": "190604",
+                    "chapterItemName": "Lodos de digestión del tratamiento anaeróbico de residuos municipales"
+                  },
+                  {
+                    "chapterItemId": "190605",
+                    "chapterItemName": "Licor del tratamiento anaeróbico de residuos animales y vegetales"
+                  },
+                  {
+                    "chapterItemId": "190606",
+                    "chapterItemName": "Lodos de digestión del tratamiento anaeróbico de residuos animales y vegetales"
+                  },
+                  {
+                    "chapterItemId": "190699",
+                    "chapterItemName": "Residuos no especificados en otra categoría"
+                 }
+                ]
+            },
+            {
+              "chapterId": "1907",
+              "chapterName": "Lixiviados de vertedero",
+              "chapterItems":
+                [
+                  {
+                    "chapterItemId": "190702",
+                    "chapterItemName": "Lixiviados de vertedero que contienen sustancias peligrosas"
+                  },
+                  {
+                    "chapterItemId": "190703",
+                    "chapterItemName": "Lixiviados de vertedero distintos de los especificados en el código 19 07 02"
+                  }
+                ]
+            },
+            {
+              "chapterId": "1908",
+              "chapterName": "Residuos de plantas de tratamiento de aguas residuales no especificados en otra categoría",
+              "chapterItems":
+                [
+		  {
+                    "chapterItemId": "190801",
+                    "chapterItemName": "Residuos de cribado"
+                  },
+                  {
+                    "chapterItemId": "190802",
+                    "chapterItemName": "Residuos de desarenado"
+                  },
+                  {
+                    "chapterItemId": "190805",
+                    "chapterItemName": "Lodos del tratamiento de aguas residuales urbanas"
+                  },
+                  {
+                    "chapterItemId": "190807",
+                    "chapterItemName": "Soluciones y lodos de la regeneración de intercambiadores de iones"
+                  },
+                  {
+                    "chapterItemId": "190808",
+                    "chapterItemName": "Residuos procedentes de sistemas de membranas que contienen metales pesados"
+                  },
+                  {
+                    "chapterItemId": "190809",
+                    "chapterItemName": "Mezclas de grasas y aceites procedentes de la separación de agua/sustancias aceitosas que contienen solamente aceites y grasas comestibles"
+                  },
+                  {
+                    "chapterItemId": "190810",
+                    "chapterItemName": "Mezclas de grasas y aceites procedentes de la separación de agua/sustancias aceitosas distintas de las especificadas en el código 19 08 09"
+                  },
+                  {
+                    "chapterItemId": "190811",
+                    "chapterItemName": "Lodos que contienen sustancias peligrosas procedentes del tratamiento biológico de aguas residuales industriales"
+                  },
+                  {
+                    "chapterItemId": "190812",
+                    "chapterItemName": "Lodos procedentes del tratamiento biológico de aguas residuales industriales distintos de los especificados en el código 19 08 11"
+                  },
+                  {
+                    "chapterItemId": "190813",
+                    "chapterItemName": "Lodos que contienen sustancias peligrosas procedentes de otros tratamientos de aguas residuales industriales"
+                  },
+                  {
+                    "chapterItemId": "190814",
+                    "chapterItemName": "Lodos procedentes de otros tratamientos de aguas residuales industriales, distintos de los especificados en el código 19 08 13"
+                  },
+                  {
+                    "chapterItemId": "190899",
+                    "chapterItemName": "Residuos no especificados en otra categoría"
+                  }
+                ]
+            },
+            {
+              "chapterId": "1909",
+              "chapterName": "Residuos de la preparación de agua para consumo humano o agua para uso industrial",
+              "chapterItems":
+                [
+                  {
+                    "chapterItemId": "190901",
+                    "chapterItemName": "Residuos sólidos de la filtración primaria y cribado"
+                  },
+                  {
+                    "chapterItemId": "190902",
+                    "chapterItemName": "Lodos de la clarificación del agua"
+                  },
+                  {
+                    "chapterItemId": "190903",
+                    "chapterItemName": "Lodos de descarbonatación"
+                  },
+                  {
+                    "chapterItemId": "190904",
+                    "chapterItemName": "Carbón activo usado"
+                  },
+                  {
+                    "chapterItemId": "190905",
+                    "chapterItemName": "Resinas intercambiadoras de iones saturadas o usadas"
+                  },
+                  {
+                    "chapterItemId": "190906",
+                    "chapterItemName": "Soluciones y lodos de la regeneración de intercambiadores de iones"
+                  },
+                  {
+                    "chapterItemId": "190999",
+                    "chapterItemName": "Residuos no especificados en otra categoría"
+                  }
+                ]
+            },
+            {
+              "chapterId": "1910",
+              "chapterName": "Residuos procedentes del fragmentado de residuos que contienen metales",
+              "chapterItems":
+                [
+                  {
+                    "chapterItemId": "191001",
+                    "chapterItemName": "Residuos de hierro y acero"
+                  },
+                  {
+                    "chapterItemId": "191002",
+                    "chapterItemName": "Residuos no férreos"
+                  },
+                  {
+                    "chapterItemId": "191003",
+                    "chapterItemName": "Fracciones ligeras de fragmentación (fluff-light) y polvo que contienen sustancias peligrosas"
+                  },
+                  {
+                    "chapterItemId": "191004",
+                    "chapterItemName": "Fracciones ligeras de fragmentación (fluff-light) y polvo distintas de las especificadas en el código 19 10 03"
+                  },
+                  {
+                    "chapterItemId": "191005",
+                    "chapterItemName": "Otras fracciones que contienen sustancias peligrosas"
+                  },
+                  {
+                    "chapterItemId": "191006",
+                    "chapterItemName": "Otras fracciones distintas de las especificadas en el código 19 10 05"
+                  }
+                ]
+            },
+            {
+              "chapterId": "1911",
+              "chapterName": "Residuos de la regeneración de aceites",
+              "chapterItems":
+                [
+		  {
+                    "chapterItemId": "191101",
+                    "chapterItemName": "Arcillas de filtración usadas"
+                  },
+                  {
+                    "chapterItemId": "191102",
+                    "chapterItemName": "Alquitranes ácidos"
+                  },
+                  {
+                    "chapterItemId": "191103",
+                    "chapterItemName": "Residuos de líquidos acuosos"
+                  },
+                  {
+                    "chapterItemId": "191104",
+                    "chapterItemName": "Residuos de la limpieza de combustibles con bases"
+                  },
+                  {
+                    "chapterItemId": "191105",
+                    "chapterItemName": "Lodos del tratamiento in situ de efluentes que contienen sustancias peligrosas"
+                  },
+                  {
+                    "chapterItemId": "191106",
+                    "chapterItemName": "Lodos del tratamiento in situ de efluentes, distintos de los especificados en el código 19 11 05"
+                  },
+                  {
+                    "chapterItemId": "191107",
+                    "chapterItemName": "Residuos de la depuración de gases de combustión"
+                  },
+                  {
+                    "chapterItemId": "191199",
+                    "chapterItemName": "Residuos no especificados en otra categoría"
+                  }
+                ]
+            },
+            {
+              "chapterId": "1912",
+              "chapterName": "Residuos del tratamiento mecánico de residuos (por ejemplo, clasificación, trituración, compactación, peletización) no especificados en otra categoría",
+              "chapterItems":
+                [
+		  {
+                    "chapterItemId": "191201",
+                    "chapterItemName": "Papel y cartón"
+                  },
+                  {
+                    "chapterItemId": "191202",
+                    "chapterItemName": "Metales férreos"
+                  },
+                  {
+                    "chapterItemId": "191203",
+                    "chapterItemName": "Metales no férreos"
+                  },
+                  {
+                    "chapterItemId": "191204",
+                    "chapterItemName": "Plástico y caucho"
+                  },
+                  {
+                    "chapterItemId": "191205",
+                    "chapterItemName": "Vidrio"
+                  },
+                  {
+                    "chapterItemId": "191206",
+                    "chapterItemName": "Madera que contiene sustancias peligrosas"
+                  },
+                  {
+                    "chapterItemId": "191207",
+                    "chapterItemName": "Madera distinta de la especificada en el código 19 12 06"
+                  },
+                  {
+                    "chapterItemId": "191208",
+                    "chapterItemName": "Materias textiles"
+                  },
+                  {
+                    "chapterItemId": "191209",
+                    "chapterItemName": "Minerales (por ejemplo, arena, piedras)"
+                  },
+                  {
+                    "chapterItemId": "191210",
+                    "chapterItemName": "Residuos combustibles (combustible derivado de desperdicios)"
+                  },
+                  {
+                    "chapterItemId": "191211",
+                    "chapterItemName": "Otros residuos (incluidas mezclas de materiales) procedentes del tratamiento mecánico de residuos que contienen sustancias peligrosas"
+                  },
+                  {
+                    "chapterItemId": "191212",
+                    "chapterItemName": "Otros residuos (incluidas mezclas de materiales) procedentes del tratamiento mecánico de residuos, distintos de los especificados en el código 19 12 11"
+                  }
+                ]
+            },
+            {
+              "chapterId": "1913",
+              "chapterName": "Residuos de la recuperación de suelos y de aguas subterráneas",
+              "chapterItems":
+                [
+                  {
+                    "chapterItemId": "191301",
+                    "chapterItemName": "Residuos sólidos de la recuperación de suelos que contienen sustancias peligrosas"
+                  },
+                  {
+                    "chapterItemId": "191302",
+                    "chapterItemName": "Residuos sólidos de la recuperación de suelos distintos de los especificados en el código 19 13 01"
+                  },
+                  {
+                    "chapterItemId": "191303",
+                    "chapterItemName": "Lodos de la recuperación de suelos que contienen sustancias peligrosas"
+                  },
+                  {
+                    "chapterItemId": "191304",
+                    "chapterItemName": "Lodos de la recuperación de suelos distintos de los especificados en el código 19 13 03"
+                  },
+                  {
+                    "chapterItemId": "191305",
+                    "chapterItemName": "Lodos de la recuperación de aguas subterráneas que contienen sustancias peligrosas"
+                  },
+                  {
+                    "chapterItemId": "191306",
+                    "chapterItemName": "Lodos de la recuperación de aguas subterráneas distintos de los especificados en el código 19 13 05"
+                  },
+                  {
+                    "chapterItemId": "191307",
+                    "chapterItemName": "Residuos líquidos acuosos y concentrados acuosos, procedentes de la recuperación de aguas subterráneas, que contienen sustancias peligrosas"
+                  },
+                  {
+                    "chapterItemId": "191308",
+                    "chapterItemName": "Residuos de líquidos acuosos y concentrados acuosos procedentes de la recuperación de aguas subterráneas, distintos de los especificados en el código 19 13 07"
+                  }
+                ]
+            }
+                    
+          ]
+  },
+
+  {
+    "key": "20",
+    "chapterTitle": "RESIDUOS MUNICIPALES (RESIDUOS DOMÉSTICOS Y RESIDUOS ASIMILABLES PROCEDENTES DE LOS COMERCIOS, INDUSTRIAS E INSTITUCIONES), INCLUIDAS LAS FRACCIONES RECOGIDAS SELECTIVAMENTE",
+    "chapters": 
+          [
+            {
+              "chapterId": "2001",
+              "chapterName": "Fracciones recogidas selectivamente (excepto las especificadas en el subcapítulo 15 01)",
+              "chapterItems":
+                [
+                  {
+                    "chapterItemId": "200101",
+                    "chapterItemName": "Papel y cartón"
+                  },
+                  {
+                    "chapterItemId": "200102",
+                    "chapterItemName": "Vidrio"
+                  },
+                  {
+                    "chapterItemId": "200108",
+                    "chapterItemName": "Residuos biodegradables de cocinas y restaurantes"
+                  },
+                  {
+                    "chapterItemId": "200110",
+                    "chapterItemName": "Ropa"
+                  },
+                  {
+                    "chapterItemId": "200111",
+                    "chapterItemName": "Materias textiles"
+                  },
+                  {
+                    "chapterItemId": "200113",
+                    "chapterItemName": "Disolventes"
+                  },
+                  {
+                    "chapterItemId": "200114",
+                    "chapterItemName": "Ácidos"
+                  },
+                  {
+                    "chapterItemId": "200115",
+                    "chapterItemName": "Álcalis"
+                  },
+                  {
+                    "chapterItemId": "200117",
+                    "chapterItemName": "Productos fotoquímicos"
+                  },
+                  {
+                    "chapterItemId": "200119",
+                    "chapterItemName": "Plaguicidas"
+                  },
+                  {
+                    "chapterItemId": "200121",
+                    "chapterItemName": "Tubos fluorescentes y otros residuos que contienen mercurio"
+                  },
+                  {
+                    "chapterItemId": "200123",
+                    "chapterItemName": "Equipos desechados que contienen clorofluorocarburos"
+                  },
+                  {
+                    "chapterItemId": "200125",
+                    "chapterItemName": "Aceites y grasas comestibles"
+                  },
+                  {
+                    "chapterItemId": "200126",
+                    "chapterItemName": "Aceites y grasas distintos de los especificados en el código 20 01 25"
+                  },
+                  {
+                    "chapterItemId": "200127",
+                    "chapterItemName": "Pinturas, tintas, adhesivos y resinas que contienen sustancias peligrosas"
+                  },
+                  {
+                    "chapterItemId": "200128",
+                    "chapterItemName": "Pinturas, tintas, adhesivos y resinas distintos de los especificados en el código 20 01 27"
+                  },
+                  {
+                    "chapterItemId": "200129",
+                    "chapterItemName": "Detergentes que contienen sustancias peligrosas"
+                  },
+                  {
+                    "chapterItemId": "200130",
+                    "chapterItemName": "Detergentes distintos de los especificados en el código 20 01 29"
+                  },
+                  {
+                    "chapterItemId": "200131",
+                    "chapterItemName": "Medicamentos citotóxicos y citostáticos"
+                  },
+                  {
+                    "chapterItemId": "200132",
+                    "chapterItemName": "Medicamentos distintos de los especificados en el código 20 01 31"
+                  },
+                  {
+                    "chapterItemId": "200133",
+                    "chapterItemName": "Baterías y acumuladores especificados en los códigos 16 06 01, 16 06 02 o 16 06 03 y baterías y acumuladores sin clasificar que contienen esas baterías"
+                  },
+                  {
+                    "chapterItemId": "200134",
+                    "chapterItemName": "Baterías y acumuladores distintos de los especificados en el código 20 01 33"
+                  },
+                  {
+                    "chapterItemId": "200135",
+                    "chapterItemName": "Equipos eléctricos y electrónicos desechados, distintos de los especificados en los códigos 20 01 21 y 20 01 23, que contienen componentes peligrosos(1)"
+                  },
+                  {
+                    "chapterItemId": "200136",
+                    "chapterItemName": "Equipos eléctricos y electrónicos desechados distintos de los especificados en los códigos 20 01 21, 20 01 23 y 20 01 35"
+                  },
+                  {
+                    "chapterItemId": "200137",
+                    "chapterItemName": "Madera que contiene sustancias peligrosas"
+                  },
+                  {
+                    "chapterItemId": "200138",
+                    "chapterItemName": "Madera distinta de la especificada en el código 20 01 37"
+                  },
+                  {
+                    "chapterItemId": "200139",
+                    "chapterItemName": "Plásticos"
+                  },
+                  {
+                    "chapterItemId": "200140",
+                    "chapterItemName": "Metales"
+                  },
+                  {
+                    "chapterItemId": "200141",
+                    "chapterItemName": "Residuos del deshollinado de chimeneas"
+                  },
+                  {
+                    "chapterItemId": "200199",
+                    "chapterItemName": "Otras fracciones no especificadas en otra categoría"
+                  }
+                ]
+            },
+            {
+              "chapterId": "2002",
+              "chapterName": "Residuos de parques y jardines (incluidos los residuos de cementerios)",
+              "chapterItems":
+                [
+		  {
+                    "chapterItemId": "200201",
+                    "chapterItemName": "Residuos biodegradables"
+                  },
+                  {
+                    "chapterItemId": "200202",
+                    "chapterItemName": "Tierra y piedras"
+                  },
+                  {
+                    "chapterItemId": "200203",
+                    "chapterItemName": "Otros residuos no biodegradables"
+                  }
+                ]
+            },
+            {
+              "chapterId": "2003",
+              "chapterName": "Otros residuos municipales",
+              "chapterItems":
+                [
+                  {
+                    "chapterItemId": "200301",
+                    "chapterItemName": "Mezclas de residuos municipales"
+                  },
+                  {
+                    "chapterItemId": "200302",
+                    "chapterItemName": "Residuos de mercados"
+                  },
+                  {
+                    "chapterItemId": "200303",
+                    "chapterItemName": "Residuos de limpieza viaria"
+                  },
+                  {
+                    "chapterItemId": "200304",
+                    "chapterItemName": "Lodos de fosas sépticas"
+                  },
+                  {
+                    "chapterItemId": "200306",
+                    "chapterItemName": "Residuos de la limpieza de alcantarillas"
+                  },
+                  {
+                    "chapterItemId": "200307",
+                    "chapterItemName": "Residuos voluminosos"
+                  },
+                  {
+                    "chapterItemId": "200399",
+                    "chapterItemName": "Residuos municipales no especificados en otra categoría"
+                  }
+                ]
+            }          
           ]
   }
 ]

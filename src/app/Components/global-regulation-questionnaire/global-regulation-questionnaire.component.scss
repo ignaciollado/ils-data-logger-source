@@ -1,3 +1,5 @@
+@use "../../../base" as base;
+
 h1{
 text-align: center;
 }
@@ -71,8 +73,6 @@ img{
 }
 
 mat-expansion-panel {
- /*  padding-top: .2rem;
-  padding-bottom: .2rem;*/
   margin-bottom: 1rem;
 }
 
@@ -139,7 +139,7 @@ mat-progress-bar{
   border-radius: 0 0 4px 4px;
 }
 
-@media (max-width: 950px) {
+@media (max-width: base.$app-break-point) {
   .container-form {
     margin-left: 0;
     margin-right: 0;

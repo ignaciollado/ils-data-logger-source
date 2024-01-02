@@ -1,31 +1,44 @@
 /* You can add global styles to this file, and also import other style files */
-@use './base';
+/* @use './base' as base; */
 @use '@angular/material' as mat;
+@use "./styles/themes/all" as themes;
+@use "./styles/typography/config" as config;
+@use "./styles/themes/ils-theme";
 
-@include mat.core;
-@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100;700&display=swap');
+/* hago uso del core mixim */
+@include mat.core();
+
+@include mat.typography-hierarchy(config.$my-app-typography);
+@include mat.core-theme(themes.$my-app-light-theme);
+@include mat.button-theme(themes.$my-app-light-theme);
+@include mat.icon-theme(themes.$my-app-light-theme);
+@include mat.menu-theme(themes.$my-app-light-theme);
+
 
 html, body {
   height: 100vh;
   margin: 0 auto;
   max-width: 100vw;
-  font-family: Raleway, "Times New Roman", Times, serif;
-  font-size: 16px;}
+  font-family: config.$font-stack;
+  
+}
+
 body {
     margin-bottom: 0;
     margin-top: 0;
-  }
+}
+
 .container-form {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-  }
+}
 
 .container-chart {
     justify-content: center;
     align-items: center;
-  }
+}
 
 .grid-view {
   display:grid;
@@ -34,8 +47,8 @@ body {
 }
 
 .mat-toolbar.mat-primary {
-  background: #365446;
-  color: #fff;
+  background: config.$primary-color;
+  color: config.$font-color;
 }
 
 a, a:visited, a:active {
@@ -43,7 +56,7 @@ a, a:visited, a:active {
 }
 
 a:hover {
-  color:#365446;
+  color: config.$primary-color;
 }
 
 form {
@@ -59,7 +72,7 @@ mat-table {
 }
 
 mat-header-row{
-  background-color: #424242;
+  background-color: config.$table-header-row-color;
 }
 
 mat-header-cell {
@@ -68,5 +81,5 @@ mat-header-cell {
 }
 
 mat-cell{
-  background-color: #919191;
+  background-color: config.$table-header-cell-color;
 }

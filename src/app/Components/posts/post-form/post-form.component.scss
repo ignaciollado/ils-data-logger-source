@@ -1,4 +1,4 @@
-@use "../../../../base" as base;
+@use "../../../../styles/typography/config" as config;
 
 .error {
   color: red;
@@ -37,8 +37,8 @@
   background: #1b9e1b;
 }
 .button-remove-rows {
-  background: base.$remove-selected-rows-back-color;
-  color: base.$font-color;
+  background: config.$remove-selected-rows-back-color;
+  color: config.$font-color;
   margin-right: 5px;
 }
 

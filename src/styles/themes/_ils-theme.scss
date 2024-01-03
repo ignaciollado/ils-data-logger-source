@@ -84,13 +84,14 @@ $ils-theme: mat.define-light-theme((
     primary: $primary-palette,
     accent: $accent-palette,
     warn: $warn-palette 
-  )
+  ),
+  typography: mat.define-typography-config(),
+  density: 0,
 ));
+@include mat.core-theme($ils-theme);
 @include mat.all-component-themes($ils-theme);
 
-
-
-$custom-primary: mat.define-palette(mat.$pink-palette, 700, 500, 900);
+/* $custom-primary: mat.define-palette(mat.$pink-palette, 700, 500, 900);
 $custom-accent: mat.define-palette(mat.$blue-grey-palette, A200, A100, A400);
 
 $custom-theme: mat.define-dark-theme(
@@ -105,4 +106,4 @@ $custom-theme: mat.define-dark-theme(
 .custom-theme {
   @include mat.button-color($custom-theme);
   @include mat.progress-spinner-color($custom-theme);
-}
+} */

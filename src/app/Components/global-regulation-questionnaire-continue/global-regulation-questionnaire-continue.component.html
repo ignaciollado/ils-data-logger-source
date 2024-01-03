@@ -28,7 +28,7 @@
           <mat-panel-description>
             <span>{{'totalQuestions' | translate}}: {{totalVectorQuestions[j]}}</span>
           </mat-panel-description>
-          <mat-progress-bar mode="determinate" value="{{vectorProgress[j]}}" color="warn"></mat-progress-bar>
+          <mat-progress-bar mode="determinate" value="{{vectorProgress[j]}}" color="accent"></mat-progress-bar>
       </mat-expansion-panel-header>
       <ol>
         <li *ngFor="let question of vectors.questions; index as k">

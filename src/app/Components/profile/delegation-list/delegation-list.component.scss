@@ -1,12 +1,12 @@
-@use "../../../../styles/typography/config" as config;
+@use "../../../../styles/themes/ils-theme" as theme;
 
 table{
   min-width: 530px;
 }
 
 .warn{
-  color: config.$alternate-color;
-  background-color: config.$primary-color;
+  color: theme.$alternate-color;
+  background-color: theme.$primary-color;
   margin-top: 1rem;
   margin-bottom: 1rem;
   padding: 1rem;

@@ -2,9 +2,6 @@
 
   <h2>{{ 'totalActivityReported' | translate }}:</h2>
 
-  <!-- <li *ngFor="let item of aspectConsumptions; index as i; first as isFirst">
-    {{i}}/{{aspectConsumptions.length}}. {{item.quantity}} {{item.pci}} {{item.fromDate}} {{item.toDate}} {{item.quantity*item.pci}}<span *ngIf="isFirst">default</span>
-  </li> -->
   <mat-button-toggle-group name="charts" aria-label="Chart selection">
     <mat-button-toggle checked value="Energy" (click)="showChartEnergy()">{{aspectEnergy}}</mat-button-toggle>
     <mat-button-toggle value="Water" (click)="showChartWater()">{{aspectWater}}</mat-button-toggle>
@@ -13,7 +10,7 @@
   </mat-button-toggle-group>
 
   
-  <div class="graphContainer">
+  <div class="graph-container">
     <canvas id="graph" aria-label= "Activity graph" role="chart">{{ chart }}</canvas>
   </div>
 

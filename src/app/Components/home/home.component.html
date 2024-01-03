@@ -1,7 +1,6 @@
 
 <div class="container">
   <div *ngFor="let consumption of consumptions" class="card">
-    <!-- <h3>AspectoId: <b>{{ consumption.aspectId }}</b></h3> -->
     <h3>Aspect: <strong>{{ consumption.aspectES }}</strong></h3>
     <h4 *ngIf="consumption.aspectId == 1">Energy type: <strong>{{ consumption.energyES }}</strong></h4>
     <h4 *ngIf="consumption.aspectId == 3">Residue type: <strong>{{ consumption.residueES }}</strong></h4>
@@ -23,14 +22,12 @@
     <p>Added when: {{ consumption.created_at }}</p>
 
     <div *ngIf="showButtons">
-     <!--  <button mat-icon-button color="accent" matTooltip="Update this consumption"
-      aria-label="Button that displays a tooltip and updates this consumption" (click)="updatePost(consumption.consumptionId)">
-        <mat-icon>edit</mat-icon>
-      </button> -->
-      <button mat-icon-button color="warn" matTooltip="Permanently delete this consumption"
-      aria-label="Button that displays a tooltip and permanently deletes this consumption" (click)="deletePost(+consumption.consumptionId)">
-        <mat-icon>delete</mat-icon>
+      <button mat-icon-button color="accent" matTooltip="View detail"
+      aria-label="Button that displays a tooltip and shows the detail" (click)="goToDetail(+consumption.consumptionId)">
+      <i class="fa-solid fa-clipboard-list fa-2xl"></i>
       </button>
     </div>
   </div>
+  <span *ngIf="!consumptions" class="loader">No data found yet...
+    <mat-progress-bar class="progress-bar-loader" color="accent" mode="indeterminate" *ngIf="!consumptions"></mat-progress-bar></span>
 </div>

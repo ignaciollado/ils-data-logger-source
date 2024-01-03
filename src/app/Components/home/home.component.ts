@@ -102,26 +102,7 @@ export class HomeComponent {
     )
   }
 
-  updatePost(postId: string): void {
-    this.router.navigateByUrl('/user/consumption/' + postId);
+  goToDetail(id:number) {
+    alert (id)
   }
-
-  deletePost(consumptionId: number): void {
-    let errorResponse: any;
-    let result = confirm('Confirm delete post with id: ' + consumptionId)
-    if (result) {
-      this.consumptionService.deleteConsumption(consumptionId).subscribe(
-        (rowsAffected: deleteResponse) => {
-          if (rowsAffected.affected > 0) {
-            this.loadConsumptions();
-          }
-        },
-        (error: HttpErrorResponse) => {
-          errorResponse = error.error;
-          this.sharedService.errorLog(errorResponse);
-        }
-      );
-    }
-  }
-
 }

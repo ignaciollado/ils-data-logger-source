@@ -41,6 +41,7 @@
     "selectDelegation": "Seleccione un emplazamiento",
     "delegationAdd": "Añadir emplazamiento",
     "delegationList": "Emplazamientos de esta empresa",
+    "noDelegation": "Todavía no se ha creado ninguna delegación. Es necesario crear al menos una delegación para poder añadir los datos de su actividad.Disculpe las molestias.",
 
     "aspect": "Aspecto",
     "energy": "Energía",
@@ -89,7 +90,7 @@
     "globalQuestionnaire": "Cuestionario preliminar",
     "globalQuestionnaireList": "Ver cuestionarios",
     "answeredQuestionnairesList": "Cuestionarios realizados",
-    "loadingQuestionnaire": "Un momento, cargando cuestionarios...",
+    "loadingQuestionnaire": "Un momento, estoy buscando cuestionarios...",
     "dateAnswered": "Realizado el",
     "totalQuestions":"Total preguntas",
     "totalAnswers": "Total completado",

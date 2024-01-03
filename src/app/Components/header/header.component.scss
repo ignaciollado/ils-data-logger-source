@@ -1,6 +1,9 @@
+@use "../../../styles/typography/config" as config;
+
 .app-state{
     text-align: right;
     width: 100%;
+    color: config.$alternate-font-color;
 }
 
 .has-to-be-shown {
@@ -8,9 +11,9 @@
 }
 
 .not-has-to-be-shown {
-  display: block;
-  position: relative;
-  top: -3px;
+    display: block;
+    position: relative;
+    top: -3px;
 }
 
 .logoArea {
@@ -24,12 +27,6 @@
     width: 12%;
 }
 
-
-/* @media only screen and (max-width: 950px) {
-    .has-to-be-shown {
-        display: none;
-    }
-    .not-has-to-be-shown {
-        display: block;
-    }
-} */
+div{
+    color: config.$alternate-font-color;
+}

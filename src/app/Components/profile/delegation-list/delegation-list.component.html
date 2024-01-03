@@ -27,4 +27,4 @@
     <tr mat-row *matRowDef="let item; columns: columnsDisplayed;" class="animate__animated animate__fadeInLeft"></tr>
   </table>
 
-  <div class="loader" *ngIf="!delegations">No delegation has been created yet. <br>You need to create at least one delegation to be able to add your activity data.<br>Sorry for the inconvenience.</div>
+  <div class="warn" *ngIf="!delegations">{{"noDelegation" | translate}}</div>

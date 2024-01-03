@@ -1,3 +1,13 @@
+@use "../../../../styles/typography/config" as config;
+
 table{
   width: 100%;
+}
+
+.warn{
+  color: config.$alternate-font-color;
+  background-color: config.$font-color;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  padding: 1rem;
 }

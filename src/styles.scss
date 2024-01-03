@@ -20,7 +20,7 @@ html, body {
   margin: 0 auto;
   max-width: 100vw;
   font-family: config.$font-stack;
-  
+  color: config.$font-color;
 }
 
 body {
@@ -76,7 +76,7 @@ mat-header-row{
 }
 
 mat-header-cell {
-  color: #000;
+  color: config.$alternate-font-color;
   font-size: .8rem;
 }
 

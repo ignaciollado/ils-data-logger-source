@@ -41,6 +41,7 @@
     "selectDelegation": "Seleccioni un emplaçament",
     "delegationAdd": "Afegir emplaçament",
     "delegationList": "Emplaçaments d'aquesta empresa",
+    "noDelegation": "Encara no s'ha creat cap delegació. És necessari crear almenys una delegació per a poder afegir les dades de la seva activitat.Disculpi les molèsties.",
 
     "aspect": "Aspecte",
     "energy": "Energia",
@@ -90,7 +91,7 @@
     "globalQuestionnaire": "Qüestionari preliminar",
     "globalQuestionnaireList": "Veure qüestionaris",
     "answeredQuestionnairesList": "Qüestionaris realitzats",
-    "loadingQuestionnaire": "Un moment, carregant qüestionari...",
+    "loadingQuestionnaire": "Un moment, carregant qüestionaris...",
     "dateAnswered": "Realitzat el",
     "totalQuestions":"Total preguntes",
     "totalAnswers": "Total completat",

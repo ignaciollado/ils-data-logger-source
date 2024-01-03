@@ -81,7 +81,8 @@ export class LoginComponent implements OnInit {
       if (!this.jwtHelper.isTokenExpired (access_token)) {
         const headerInfo: HeaderMenus = { showAuthSection: true, showNoAuthSection: false, };
         this.headerMenusService.headerManagement.next(headerInfo)
-        this.router.navigateByUrl('user/consumption')
+        /* this.router.navigateByUrl('user/consumption') */
+        this.router.navigateByUrl('home')
       } else {
         const headerInfo: HeaderMenus = { showAuthSection: false, showNoAuthSection: true, };
         sessionStorage.removeItem('access_token')
@@ -139,7 +140,8 @@ export class LoginComponent implements OnInit {
                     if (this.jwtHelper.decodeToken().role === 'company') {
                       this.router.navigateByUrl('/global-questionnaire')
                     } else {
-                      this.router.navigateByUrl('user/consumption')
+                      /* this.router.navigateByUrl('user/consumption') */
+                      this.router.navigateByUrl('home')
                     }
                   }
                 } )

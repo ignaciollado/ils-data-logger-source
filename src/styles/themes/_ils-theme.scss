@@ -1,5 +1,11 @@
 @use "@angular/material" as mat;
 
+$primary-color: #365446;
+$alternate-color: #ffffff;
+$app-break-point: 950px;
+$table-header-row-color: #432937;
+$table-header-cell-color: #764d5c;
+
 $ils-primary-map: (
     50 : #e5f3f0,
     100 : #bee2d9,

@@ -1,4 +1,4 @@
-@use "../../../styles/typography/config" as config;
+@use "../../../styles/themes/ils-theme" as theme;
 
 h1{
 text-align: center;
@@ -130,7 +130,7 @@ mat-progress-bar{
   border-radius: 0 0 4px 4px;
 }
 
-@media (max-width: config.$app-break-point) {
+@media (max-width: theme.$app-break-point) {
   .container-form {
     margin-left: 0;
     margin-right: 0;

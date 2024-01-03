@@ -1,9 +1,9 @@
-@use "../../../styles/typography/config" as config;
+@use "../../../styles/themes/ils-theme" as theme;
 
 .app-state{
     text-align: right;
     width: 100%;
-    color: config.$alternate-color;
+    color: theme.$alternate-color;
 }
 
 .has-to-be-shown {
@@ -28,5 +28,12 @@
 }
 
 span{
-    color: config.$alternate-color;
+    color: theme.$alternate-color;
 }
+
+@media (max-width: theme.$app-break-point) {
+    .logo{
+        margin: 0;
+        padding: 0;
+    }
+  }

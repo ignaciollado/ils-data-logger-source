@@ -41,10 +41,11 @@ import { MatSelectModule} from '@angular/material/select';
 import { MatIconModule} from '@angular/material/icon';
 import { MatButtonModule} from '@angular/material/button';
 import { MatNativeDateModule} from '@angular/material/core';
-import { MatTabsModule} from '@angular/material/tabs';
-import { MatMenuModule} from '@angular/material/menu';
-import { MatTableModule} from '@angular/material/table';
-import { CdkTableModule} from '@angular/cdk/table';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatTableModule } from '@angular/material/table';
+import { CdkTableModule } from '@angular/cdk/table';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 import { MatPaginatorModule} from '@angular/material/paginator';
 import { MatSortModule} from '@angular/material/sort';
 import { MatDialogModule} from '@angular/material/dialog';
@@ -151,6 +152,7 @@ export function tokenGetter() {
     BrowserAnimationsModule,
     MatTableModule,
     CdkTableModule,
+    DragDropModule,
     MatButtonToggleModule,
     MatCardModule,
     MatGridListModule,

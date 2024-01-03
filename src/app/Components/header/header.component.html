@@ -10,7 +10,7 @@
        <button mat-menu-item (click)="login()"><i class="fa-solid fa-right-to-bracket"></i> {{'login' | translate}}</button>
        <app-select-language></app-select-language>
     </mat-menu>
-    <div class="app-state">{{userId}} </div>
+    <span class="app-state">{{userId}} </span>
     <img src="../../../assets/images/logo_ils.svg" title="Industria Local Sostenible" alt="Industria Local Sostenible" class="logo">
   </mat-toolbar>
 </div>
@@ -19,21 +19,21 @@
 <div *ngIf="showAuthSection">
   <mat-menu #menu="matMenu">
     <div>
-      <button *ngIf="!isCompany" mat-menu-item (click)="home()"><i class="fa-solid fa-house"></i><span> {{'home' | translate}}</span></button>
+      <button *ngIf="!isCompany" mat-menu-item (click)="home()"><i class="fa-solid fa-house"></i> {{'home' | translate}}</button>
       <mat-divider></mat-divider>
-      <button *ngIf="!isCompany" mat-menu-item (click)="dashboard()"><i class="fa-solid fa-chart-simple"></i><span> {{'sustainabilityIndicatorsCharts' | translate}}</span></button>
-      <button *ngIf="!isCompany" mat-menu-item (click)="adminConsumptions()"><i class="fa-solid fa-database"></i><span> {{'activityData' | translate}}</span></button>
-      <button *ngIf="!isCompany" mat-menu-item (click)="adminRatios()"><i class="fa-solid fa-list-check"></i><span> {{'productionData' | translate}}</span></button>
-      <button *ngIf="!isCompany" mat-menu-item (click)="myObjectives()"><i class="fa-solid fa-bullseye"></i><span> {{'myObjectives' | translate}}</span></button>
+      <button *ngIf="!isCompany" mat-menu-item (click)="dashboard()"><i class="fa-solid fa-chart-simple"></i> {{'sustainabilityIndicatorsCharts' | translate}}</button>
+      <button *ngIf="!isCompany" mat-menu-item (click)="adminConsumptions()"><i class="fa-solid fa-database"></i> {{'activityData' | translate}}</button>
+      <button *ngIf="!isCompany" mat-menu-item (click)="adminRatios()"><i class="fa-solid fa-list-check"></i> {{'productionData' | translate}}</button>
+      <button *ngIf="!isCompany" mat-menu-item (click)="myObjectives()"><i class="fa-solid fa-bullseye"></i> {{'myObjectives' | translate}}</button>
       <mat-divider *ngIf="!!isCompany"></mat-divider>
       <mat-divider></mat-divider>
       <button mat-menu-item (click)="globalQuestionnaire()" ><i class="fa-solid fa-square-poll-horizontal"></i> {{'globalQuestionnaire' | translate}}</button>
       <button mat-menu-item (click)="globalQuestionnaireList()" ><i class="fa-solid fa-list"></i> {{'answeredQuestionnairesList' | translate}}</button>
       <mat-divider></mat-divider>
 
-      <button mat-menu-item (click)="profile()"><i class="fa-solid fa-user"></i><span> {{'profile' | translate}}</span></button>
-      <button *ngIf="!isCompany" mat-menu-item (click)="createUser()"><i class="fa-solid fa-user-plus"></i><span> {{'createUser' | translate}}</span></button>
-      <button mat-menu-item (click)="logout()"><i class="fa-solid fa-right-from-bracket"></i><span> {{'logout' | translate}}</span></button>
+      <button mat-menu-item (click)="profile()"><i class="fa-solid fa-user"></i> {{'profile' | translate}}</button>
+      <button *ngIf="!isCompany" mat-menu-item (click)="createUser()"><i class="fa-solid fa-user-plus"></i> {{'createUser' | translate}}</button>
+      <button mat-menu-item (click)="logout()"><i class="fa-solid fa-right-from-bracket"></i> {{'logout' | translate}}</button>
     </div>
   </mat-menu>
 

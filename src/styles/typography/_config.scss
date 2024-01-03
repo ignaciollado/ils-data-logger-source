@@ -4,8 +4,7 @@
 
 $font-stack: 'Montserrat';
 $primary-color: #365446;
-$font-color: #365446;
-$alternate-font-color: #ffffff;
+$alternate-color: #ffffff;
 $app-break-point: 950px;
 
 $table-header-row-color: #424242;
@@ -14,11 +13,15 @@ $table-header-cell-color: #919191;
 $remove-selected-rows-back-color: #ff0000;
 $font-weights: ("regular": 400, "medium": 500, "bold": 700);
 
-.loader{
-    margin-top: 1rem;
-    background-color: darkolivegreen;
-    padding: 1rem;
-    color: $font-color;
+.loader {
+  width: 100%;
+  text-align: center;
+  margin: auto;
+  width: 50%;
+  border: 3px solid green;
+  padding: 4rem;
+  color: $alternate-color;
+  background-color: $primary-color;
 }
 
 .mat-mdc-row .mat-mdc-cell {

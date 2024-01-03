@@ -5,8 +5,8 @@ table{
 }
 
 .warn{
-  color: config.$alternate-font-color;
-  background-color: config.$font-color;
+  color: config.$alternate-color;
+  background-color: config.$primary-color;
   margin-top: 1rem;
   margin-bottom: 1rem;
   padding: 1rem;

@@ -20,7 +20,7 @@ html, body {
   margin: 0 auto;
   max-width: 100vw;
   font-family: config.$font-stack;
-  color: config.$font-color;
+  color: config.$primary-color;
 }
 
 body {
@@ -48,7 +48,7 @@ body {
 
 .mat-toolbar.mat-primary {
   background: config.$primary-color;
-  color: config.$font-color;
+  color: config.$alternate-color;
 }
 
 a, a:visited, a:active {
@@ -76,7 +76,7 @@ mat-header-row{
 }
 
 mat-header-cell {
-  color: config.$alternate-font-color;
+  color: config.$alternate-color;
   font-size: .8rem;
 }
 

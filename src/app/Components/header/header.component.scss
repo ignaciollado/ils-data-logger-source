@@ -3,7 +3,7 @@
 .app-state{
     text-align: right;
     width: 100%;
-    color: config.$alternate-font-color;
+    color: config.$alternate-color;
 }
 
 .has-to-be-shown {
@@ -27,6 +27,6 @@
     width: 12%;
 }
 
-div{
-    color: config.$alternate-font-color;
+span{
+    color: config.$alternate-color;
 }

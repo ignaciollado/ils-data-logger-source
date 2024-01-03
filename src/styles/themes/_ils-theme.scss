@@ -1,64 +1,89 @@
 @use "@angular/material" as mat;
 
 $ils-primary-map: (
-    50 : #e8eaf6,
-    100 : #c3ccc8,
-    200 : #9fa8da,
-    300 : #7985cb,
-    400 : #5c6bc0,
-    500 : #365446,
-    600 : #394aae,
-    700 : #3140a5,
-    800 : #29379d,
-    900 : #223a2f,
+    50 : #e5f3f0,
+    100 : #bee2d9,
+    200 : #97d0c1,
+    300 : #74bda9,
+    400 : #60ae98,
+    500 : #569788,
+    600 : #50927b,
+    700 : #48816d,
+    800 : #42715f,
+    900 : #365446,
     contrast: (
-        50 : #000000,
-        100 : #000000,
-        200 : #000000,
-        300 : #000000,
-        400 : #ffffff,
-        500 : #ffffff,
-        600 : #ffffff,
-        700 : #ffffff,
-        800 : #ffffff,
-        900 : #ffffff,
+        50 : #f5eaec,
+        100 : #ddccd1,
+        200 : #c3abb3,
+        300 : #a98993,
+        400 : #966f7c,
+        500 : #835665,
+        600 : #764d5c,
+        700 : #65414f,
+        800 : #543644,
+        900 : #432937,
     )
 );
 
 $ils-accent-map: (
-    50 : #e8eaf6,
-    100 : #c5cbe9,
-    200 : #9fa8da,
-    300 : #7985cb,
-    400 : #5c6bc0,
-    500 : #3f51b5,
-    600 : #394aae,
-    700 : #3140a5,
-    800 : #29379d,
+    50 : #e9ebf8,
+    100 : #c7ccee,
+    200 : #a2ace2,
+    300 : #7c8bd6,
+    400 : #5f70cd,
+    500 : #4156c4,
+    600 : #3b4eba,
+    700 : #3243ad,
+    800 : #2a39a1,
     900 : #1b278d,
     contrast: (
-        50 : #000000,
-        100 : #000000,
-        200 : #000000,
-        300 : #000000,
-        400 : #ffffff,
-        500 : #ffffff,
-        600 : #ffffff,
-        700 : #ffffff,
-        800 : #ffffff,
-        900 : #ffffff,
+        50 : #fafde8,
+        100 : #f4f8c6,
+        200 : #ecf5a1,
+        300 : #e5f17b,
+        400 : #deec5d,
+        500 : #d8e840,
+        600 : #cbd63a,
+        700 : #bac031,
+        800 : #a9a829,
+        900 : #8d821b,
+    )
+);
+
+$ils-warn-map: (
+    50 : #fff2df,
+    100 : #ffddb0,
+    200 : #ffc77d,
+    300 : #ffaf49,
+    400 : #ff9e22,
+    500 : #ff8d00,
+    600 : #fa8100,
+    700 : #f47100,
+    800 : #ee6002,
+    900 : #e54304,
+    contrast: (
+        50 : #fbe2f0,
+        100 : #f5b6da,
+        200 : #f186c0,
+        300 : #ef4fa6,
+        400 : #ee0290,
+        500 : #ef0078,
+        600 : #dd0074,
+        700 : #c7006e,
+        800 : #b1006a,
+        900 : #880061,
     )
 );
 
 $primary-palette: mat.define-palette($ils-primary-map);
 $accent-palette: mat.define-palette($ils-accent-map);
-/* $warn-palette: mat.define-palette($ils-warn-map); */
+$warn-palette: mat.define-palette($ils-warn-map);
 
 $ils-theme: mat.define-light-theme((
   color: (
     primary: $primary-palette,
-    accent: $accent-palette
-    /* warn: $warn-palette */
+    accent: $accent-palette,
+    warn: $warn-palette 
   )
 ));
 @include mat.all-component-themes($ils-theme);

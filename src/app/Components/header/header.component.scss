@@ -24,7 +24,7 @@
 .logo{
     margin: .5rem;
     padding: 2rem;
-    width: 12%;
+    width: 15%;
 }
 
 span{
@@ -33,7 +33,8 @@ span{
 
 @media (max-width: theme.$app-break-point) {
     .logo{
-        margin: 0;
+        margin-left: 0.5rem;
         padding: 0;
+        width: 20%;
     }
   }

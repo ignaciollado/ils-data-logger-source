@@ -3,11 +3,21 @@ import { Component, OnInit } from '@angular/core';
 import { ConsumptionDTO, graphConsumptionData } from 'src/app/Models/consumption.dto';
 import { ConsumptionService } from 'src/app/Services/consumption.service';
 import { SharedService } from 'src/app/Services/shared.service';
-import Chart, { controllers } from 'chart.js/auto';
+import Chart from 'chart.js/auto';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { HeaderMenusService } from 'src/app/Services/header-menus.service';
 import { HeaderMenus } from 'src/app/Models/header-menus.dto';
 import { Router } from '@angular/router';
+import {
+  UntypedFormBuilder,
+  UntypedFormControl,
+  UntypedFormGroup,
+  Validators,
+} from '@angular/forms';
+import { EnergyDTO } from 'src/app/Models/energy.dto';
+import { DelegationDTO } from 'src/app/Models/delegation.dto';
+import { EnergyService } from 'src/app/Services/energy.service';
+import { DelegationService } from 'src/app/Services/delegation.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -15,24 +25,32 @@ import { Router } from '@angular/router';
   styleUrls: ['./dashboard.component.scss'],
 })
 export class DashboardComponent implements OnInit {
-  consumptions!: ConsumptionDTO[];
-  aspectConsumptions!: ConsumptionDTO[];
-  graphComsumption:   graphConsumptionData[] = []
-  quantity2GraphEnergy:   number[] = [0,0,0,0,0,0,0,0,0,0,0,0]
-  quantity15GraphEnergy:  number[] = [0,0,0,0,0,0,0,0,0,0,0,0]
-  quantity16GraphEnergy:  number[] = [0,0,0,0,0,0,0,0,0,0,0,0]
-  quantity6GraphEnergy:   number[] = [0,0,0,0,0,0,0,0,0,0,0,0]
-  quantity18GraphEnergy:  number[] = [0,0,0,0,0,0,0,0,0,0,0,0]
-  quantity5GraphEnergy:   number[] = [0,0,0,0,0,0,0,0,0,0,0,0]
-  quantity14GraphEnergy:  number[] = [0,0,0,0,0,0,0,0,0,0,0,0]
-  ratioPersona14GraphEnergy:  number[] = [0,0,0,0,0,0,0,0,0,0,0,0]
-  ratioBilling14GraphEnergy:  number[] = [0,0,0,0,0,0,0,0,0,0,0,0]
+  consumptions!: ConsumptionDTO[]
+  aspectConsumptions!: ConsumptionDTO[]
+  delegation: UntypedFormControl
+  yearEnergy: UntypedFormControl
+  energyForm: UntypedFormGroup
+  energy: UntypedFormControl
+  energies!: EnergyDTO[];
+  delegations!: DelegationDTO[];
+  private companyId: string | null;
 
-  quantity19GraphEnergy:  number[] = [0,0,0,0,0,0,0,0,0,0,0,0]
-  quantity20GraphEnergy:  number[] = [0,0,0,0,0,0,0,0,0,0,0,0]
-  quantity21GraphEnergy:  number[] = [0,0,0,0,0,0,0,0,0,0,0,0]
-  quantity23GraphEnergy:  number[] = [0,0,0,0,0,0,0,0,0,0,0,0]
-  quantity22GraphEnergy:  number[] = [0,0,0,0,0,0,0,0,0,0,0,0]
+  graphConsumption: graphConsumptionData[] = []
+  quantity2GraphEnergy: number[] = [0,0,0,0,0,0,0,0,0,0,0,0]
+  quantity15GraphEnergy:number[] = [0,0,0,0,0,0,0,0,0,0,0,0]
+  quantity16GraphEnergy:number[] = [0,0,0,0,0,0,0,0,0,0,0,0]
+  quantity6GraphEnergy: number[] = [0,0,0,0,0,0,0,0,0,0,0,0]
+  quantity18GraphEnergy:number[] = [0,0,0,0,0,0,0,0,0,0,0,0]
+  quantity5GraphEnergy: number[] = [0,0,0,0,0,0,0,0,0,0,0,0]
+  quantity14GraphEnergy:number[] = [0,0,0,0,0,0,0,0,0,0,0,0]
+  ratioPersona14GraphEnergy:number[] = [0,0,0,0,0,0,0,0,0,0,0,0]
+  ratioBilling14GraphEnergy:number[] = [0,0,0,0,0,0,0,0,0,0,0,0]
+
+  quantity19GraphEnergy:number[] = [0,0,0,0,0,0,0,0,0,0,0,0]
+  quantity20GraphEnergy:number[] = [0,0,0,0,0,0,0,0,0,0,0,0]
+  quantity21GraphEnergy:number[] = [0,0,0,0,0,0,0,0,0,0,0,0]
+  quantity23GraphEnergy:number[] = [0,0,0,0,0,0,0,0,0,0,0,0]
+  quantity22GraphEnergy:number[] = [0,0,0,0,0,0,0,0,0,0,0,0]
 
   quantity1GraphResidue:   number[] = [0,0,0,0,0,0,0,0,0,0,0,0]
   quantity2GraphResidue:  number[] = [0,0,0,0,0,0,0,0,0,0,0,0]
@@ -95,7 +113,9 @@ export class DashboardComponent implements OnInit {
     private consumptionService: ConsumptionService,
     private sharedService: SharedService,
     private headerMenusService: HeaderMenusService,
-    private router: Router,
+    private delegationService: DelegationService,
+    private energyService: EnergyService,
+    private formBuilder: UntypedFormBuilder,
     private jwtHelper: JwtHelperService
   ) {
     this.allBackgroundColors = [
@@ -130,7 +150,7 @@ export class DashboardComponent implements OnInit {
         'rgb(255, 235, 59)',
         'rgb(255, 193, 7)'
       ]
-      
+    this.companyId = this.jwtHelper.decodeToken().id_ils;    
     this.graphMonths = [ 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December' ]
     this.aspectEnergy = "Aspect Energy (kWh)"
     this.aspectWater = "Aspect Water (Liters)"
@@ -150,6 +170,17 @@ export class DashboardComponent implements OnInit {
       this.aspectResidue = "Aspecto Residuo (Kg)"
       this.aspectEmissions = "Aspecto Emisiones (CO2e in T)"
     }
+
+    this.delegation = new UntypedFormControl('', [ Validators.required ])
+    this.yearEnergy = new UntypedFormControl('', [ Validators.required ]);
+    this.energy = new UntypedFormControl('', [ Validators.required ])
+    this.energyForm = this.formBuilder.group({
+      delegation: this.delegation,
+      yearEnergy: this.yearEnergy,
+      energy: this.energy,
+
+    });
+
   }
 
   ngOnInit(): void {
@@ -163,12 +194,42 @@ export class DashboardComponent implements OnInit {
         };
         this.headerMenusService.headerManagement.next(headerInfo)
       }
-
-    this.loadconsumptions()
+      this.loadEnergies();
+      this.loadDelegations(this.companyId)
+      this.loadconsumptions(this.companyId)
   }
 
-  private loadconsumptions(): void {
+  private loadEnergies(): void {
+    let errorResponse: any;
+    if (this.companyId) {
+      this.energyService.getAllEnergies().subscribe(
+        (energies: EnergyDTO[]) => {
+          this.energies = energies;
+        },
+        (error: HttpErrorResponse) => {
+          errorResponse = error.error;
+          this.sharedService.errorLog(errorResponse);
+        }
+      );
+    }
+  }
 
+  private loadDelegations(companyId: string): void {
+    let errorResponse: any;
+    if (companyId) {
+      this.delegationService.getAllDelegationsByCompanyIdFromMySQL(companyId).subscribe(
+        (delegations: DelegationDTO[]) => {
+          this.delegations = delegations;
+        },
+        (error: HttpErrorResponse) => {
+          errorResponse = error.error;
+          this.sharedService.errorLog(errorResponse);
+        }
+      );
+    }
+  }
+
+  private loadconsumptions(companyId: string): void {
     let dateFromDate: Date;
     let dateToDate: Date;
     let dateYearInsert: Date;
@@ -176,18 +237,16 @@ export class DashboardComponent implements OnInit {
     let mmTo: number;
     let yyFrom: number;
     let yyTo: number;
-
     let errorResponse: any;
-    const companyId = this.jwtHelper.decodeToken().id_ils;
-   
+    
     this.consumptionService.getAllConsumptionsByCompany(companyId)
     .subscribe(
       (consumptions: ConsumptionDTO[]) => {
         this.consumptions = consumptions
         this.consumptions.forEach((consumption: any) => 
         {
-          this.graphComsumption.push( 
-            {"aspectId":consumption.aspectId, 
+          this.graphConsumption.push( 
+            {"aspectId": consumption.aspectId, 
                 "delegation": consumption.delegation,
                 "year": consumption.year,
                 "energyName": consumption.energyES,
@@ -203,14 +262,15 @@ export class DashboardComponent implements OnInit {
                 "oct": consumption.oct,
                 "nov": consumption.nov,
                 "dec": consumption.dec,
-              })
-          dateFromDate = new Date(consumption.fromDate)
+            })
+
+         /*  dateFromDate = new Date(consumption.fromDate)
           dateToDate = new Date(consumption.toDate)
           dateYearInsert = new Date(consumption.created_at)
           mmFrom = dateFromDate.getMonth()+1
           mmTo = dateToDate.getMonth()+1
           yyFrom = dateFromDate.getFullYear()
-          yyTo = dateToDate.getFullYear()
+          yyTo = dateToDate.getFullYear() */
 
             if ( consumption.aspectId == 1 ) { /* ENERGY */
              /*  if ( mmFrom == 1 && mmTo == 1 ) {
@@ -1392,26 +1452,43 @@ export class DashboardComponent implements OnInit {
     )
   }
 
-  private chartEnergy() {
-    const result:any = this.graphComsumption.filter((item:any)=> item.aspectId == 1)
-    console.log("tabla de consumos de energía: ", result)
+   chartEnergy() {
+    let graphEneryDataTemp: graphConsumptionData[];
+    let  graphEneryData: number[] = [0,0,0,0,0,0,0,0,0,0,0,0]
+    graphEneryDataTemp = this.graphConsumption.filter((item:any) => item.aspectId == 1)
+    graphEneryDataTemp = graphEneryDataTemp.filter((item:any) => item.delegation == this.delegation.value)
+    graphEneryDataTemp = graphEneryDataTemp.filter((item:any) => item.year == this.yearEnergy.value)
+    graphEneryDataTemp = graphEneryDataTemp.filter((item:any) => item.energyName == this.energy.value)
+    console.log ("chartEnergy",this.delegation.value, this.yearEnergy.value, this.energy.value, graphEneryDataTemp)
+   
+    graphEneryDataTemp.map( item =>{
+
+      graphEneryData[0] = +item.jan,
+      graphEneryData[1] = +item.feb,
+      graphEneryData[2] = +item.mar,
+      graphEneryData[3] = +item.apr,
+      graphEneryData[4] = +item.may,
+      graphEneryData[5] = +item.jun,
+      graphEneryData[6] = +item.jul,
+      graphEneryData[7] = +item.aug,
+      graphEneryData[8] = +item.sep,
+      graphEneryData[9] = +item.oct,
+      graphEneryData[10] = +item.nov,
+      graphEneryData[11] = +item.dec
+    })
+    
     this.chart = new Chart("graph", {
       type: 'bar',
       data: {
-        labels: this.graphMonths,
-        datasets: [{
-          label: '# of Votes',
-          data: result,
-          borderWidth: 1
-        }]
-/*         datasets: [
-          {
-            label: "Energy consumptions",
-            data: result,
+         labels: this.graphMonths,
+         datasets: [
+           {
+            label: graphEneryDataTemp.map(item=>item.energyName).toString(),
+            data: graphEneryData,
             backgroundColor: this.allBackgroundColors[0],
             borderColor: this.allBorderColors[0],
             borderWidth: 1
-          }, */
+           },
          /*  {
             label: "GLP genérico",
             data: this.quantity19GraphEnergy,
@@ -1505,11 +1582,11 @@ export class DashboardComponent implements OnInit {
             borderColor: "#000",
             borderWidth: 1
           } */
-        /* ] */
+         ] 
       },
       options: {
         responsive: true,
-        aspectRatio: 2.0,
+        aspectRatio: 1.0,
         plugins: {
           legend: {
             position: 'bottom',
@@ -1517,8 +1594,13 @@ export class DashboardComponent implements OnInit {
           title: {
             display: true,
             text: this.aspectEnergy
-          }
+          },
         },
+
+        scales: {
+          x: { stacked: true},
+          y: { stacked: true}
+        }
       }
     });
   }

@@ -130,9 +130,7 @@ export class DashboardComponent implements OnInit {
         'rgba(0, 150, 136, 0.2)',
         'rgba(76, 175, 80, 0.2)',
         'rgba(139, 195, 74, 0.2)',
-        'rgba(205, 220, 57, 0.2)',
-        'rgba(255, 235, 59, 0.2)',
-        'rgba(255, 193, 7, 0.2)'
+        'rgba(205, 220, 57, 0.2)'
       ]
     this.allBorderColors = [
         'rgb(244, 67, 54)',
@@ -146,9 +144,7 @@ export class DashboardComponent implements OnInit {
         'rgb(0, 150, 136)',
         'rgb(76, 175, 80)',
         'rgb(139, 195, 74)',
-        'rgb(205, 220, 57)',
-        'rgb(255, 235, 59)',
-        'rgb(255, 193, 7)'
+        'rgb(205, 220, 57)'
       ]
     this.companyId = this.jwtHelper.decodeToken().id_ils;    
     this.graphMonths = [ 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December' ]

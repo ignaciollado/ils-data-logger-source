@@ -43,6 +43,8 @@ export class DashboardComponent implements OnInit {
   residuesItem: ChapterItem[] = []
   private companyId: string | null
   isSearching: boolean = false
+  isEnergy: Boolean = false
+  isResidue: Boolean = false
 
   graphConsumption: graphConsumptionData[] = []
   quantity2GraphEnergy: number[] = [0,0,0,0,0,0,0,0,0,0,0,0]
@@ -1487,36 +1489,36 @@ export class DashboardComponent implements OnInit {
   }
 
   chartEnergy() {
-    let graphEneryDataTemp: graphConsumptionData[];
-    let  graphEneryData: number[] = [0,0,0,0,0,0,0,0,0,0,0,0]
+    let graphDataTemp: graphConsumptionData[];
+    let  graphData: number[] = [0,0,0,0,0,0,0,0,0,0,0,0]
     if (this.chart) {
       this.chart.destroy()
     }
-    graphEneryDataTemp = this.graphConsumption.filter((item:any) => item.aspectId == this.aspect.value)
-    graphEneryDataTemp = graphEneryDataTemp.filter((item:any) => item.delegation == this.delegation.value)
+    graphDataTemp = this.graphConsumption.filter((item:any) => item.aspectId == this.aspect.value)
+    graphDataTemp = graphDataTemp.filter((item:any) => item.delegation == this.delegation.value)
     if (this.yearGraph.value) {
-      graphEneryDataTemp = graphEneryDataTemp.filter((item:any) => item.year == this.yearGraph.value)
+      graphDataTemp = graphDataTemp.filter((item:any) => item.year == this.yearGraph.value)
     }
     if (this.energy.value) {
-      graphEneryDataTemp = graphEneryDataTemp.filter((item:any) => item.energyName == this.energy.value)
+      graphDataTemp = graphDataTemp.filter((item:any) => item.energyName == this.energy.value)
     }
-    console.log ("chartEnergy",this.delegation.value, this.yearGraph.value, this.energy.value, graphEneryDataTemp)
    
-    graphEneryDataTemp.map( item =>{
-
-      graphEneryData[0] = +item.jan,
-      graphEneryData[1] = +item.feb,
-      graphEneryData[2] = +item.mar,
-      graphEneryData[3] = +item.apr,
-      graphEneryData[4] = +item.may,
-      graphEneryData[5] = +item.jun,
-      graphEneryData[6] = +item.jul,
-      graphEneryData[7] = +item.aug,
-      graphEneryData[8] = +item.sep,
-      graphEneryData[9] = +item.oct,
-      graphEneryData[10] = +item.nov,
-      graphEneryData[11] = +item.dec
+    graphDataTemp.map(item => {
+      graphData[0] = +item.jan,
+      graphData[1] = +item.feb,
+      graphData[2] = +item.mar,
+      graphData[3] = +item.apr,
+      graphData[4] = +item.may,
+      graphData[5] = +item.jun,
+      graphData[6] = +item.jul,
+      graphData[7] = +item.aug,
+      graphData[8] = +item.sep,
+      graphData[9] = +item.oct,
+      graphData[10] = +item.nov,
+      graphData[11] = +item.dec
     })
+
+    console.log ("chartEnergy",this.delegation.value, this.yearGraph.value, this.energy.value, this.residue.value, graphDataTemp, graphData)
     
     this.chart = new Chart("graph", {
       type: 'bar',
@@ -1524,19 +1526,24 @@ export class DashboardComponent implements OnInit {
          labels: this.graphMonths,
          datasets: [
            {
-            label: graphEneryDataTemp.map(item=>item.energyName).toString(),
-            data: graphEneryData,
+            label: graphDataTemp.map(item=>item.year).toString(),
+            data: graphData,
             backgroundColor: this.allBackgroundColors[0],
             borderColor: this.allBorderColors[0],
             borderWidth: 1
            },
-         /*  {
+           {
+            type: 'line',
+            label: 'Objective',
+            data: [50, 75, 50, 25, 50, 75, 15, 45, 40, 35, 25, 35],
+           }
+           /*  {
             label: "GLP genérico",
             data: this.quantity19GraphEnergy,
             backgroundColor: this.allBackgroundColors[1],
             borderColor: this.allBorderColors[1],
             borderWidth: 1
-          },
+            },
           {
             label: "Gas propano",
             data: this.quantity20GraphEnergy,
@@ -1878,5 +1885,25 @@ export class DashboardComponent implements OnInit {
 
   updateFields(e: any) {
     console.log ("el valor es:", e.value)
+    if (e.value == 1) {
+     this.isEnergy = true
+    } else {
+      this.isEnergy = false
+    }
+    if (e.value == 3) {
+      this.isResidue = true
+    } else {
+      this.isResidue = false
+    }
+  }
+
+  graphFormReset() {
+    this.aspect.reset()
+    this.delegation.reset()
+    this.yearGraph.reset()
+    this.energy.reset()
+    this.residue.reset()
+    this.isEnergy = false
+    this.isResidue = false
   }
 }

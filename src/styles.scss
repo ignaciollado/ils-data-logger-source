@@ -3,16 +3,16 @@
 @use '@angular/material' as mat;
 @use "./styles/themes/all" as themes;
 @use "./styles/typography/config" as config;
-@use "./styles/themes/ils-theme" as theme;
+@use "./styles/themes/ils-theme" as ils-theme;
 
 /* hago uso del core mixim */
 @include mat.core();
 
 @include mat.typography-hierarchy(config.$my-app-typography);
-@include mat.core-theme(themes.$my-app-light-theme);
+/* @include mat.core-theme(themes.$my-app-light-theme); */
 /* @include mat.button-theme(themes.$my-app-light-theme); */
-@include mat.icon-theme(themes.$my-app-light-theme);
-@include mat.menu-theme(themes.$my-app-light-theme);
+/* @include mat.icon-theme(themes.$my-app-light-theme);
+@include mat.menu-theme(themes.$my-app-light-theme); */
 
 html, body {
   height: 100vh;
@@ -44,8 +44,8 @@ body {
 }
 
 .mat-toolbar.mat-primary {
-  background: theme.$primary-color;
-  color: theme.$alternate-color;
+  background: ils-theme.$primary-color;
+  color: ils-theme.$alternate-color;
 }
 
 a, a:visited, a:active {
@@ -53,7 +53,7 @@ a, a:visited, a:active {
 }
 
 a:hover {
-  color: theme.$primary-color;
+  color: ils-theme.$primary-color;
 }
 
 form {
@@ -69,16 +69,16 @@ mat-table {
 }
 
 mat-header-row{
-  background-color: theme.$table-header-row-color;
+  background-color: ils-theme.$table-header-row-color;
 }
 
 mat-header-cell {
-  color: theme.$alternate-color;
+  color: ils-theme.$alternate-color;
   font-size: .8rem;
 }
 
 mat-cell{
-  background-color: theme.$table-header-cell-color;
+  background-color: ils-theme.$table-header-cell-color;
 }
 
 .loader {
@@ -88,8 +88,8 @@ mat-cell{
   width: 50%;
   border: 3px solid green;
   padding: 4rem;
-  color: theme.$alternate-color;
-  background-color: theme.$primary-color;
+  color: ils-theme.$alternate-color;
+  background-color: ils-theme.$primary-color;
 }
 
 .mat-mdc-row .mat-mdc-cell {

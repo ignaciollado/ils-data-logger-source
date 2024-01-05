@@ -131,32 +131,32 @@ export class DashboardComponent implements OnInit {
     private jwtHelper: JwtHelperService
   ) {
     this.allBackgroundColors = [
-        'rgba(244, 67, 54, 0.2)',
-        'rgba(233, 30, 99, 0.2)',
-        'rgba(156, 39, 176, 0.2)',
-        'rgba(103, 58, 183, 0.2)',
-        'rgba(63, 81, 181, 0.2)',
-        'rgba(33, 150, 243, 0.2)',
-        'rgba(3, 169, 244, 0.2)',
-        'rgba(0, 188, 212, 0.2)',
-        'rgba(0, 150, 136, 0.2)',
-        'rgba(76, 175, 80, 0.2)',
-        'rgba(139, 195, 74, 0.2)',
-        'rgba(205, 220, 57, 0.2)'
+      '#E0F7FA',
+      '#B2EBF2',
+      '#80DEEA',
+      '#4DD0E1',
+      '#26C6DA',
+      '#00BCD4',
+      '#00ACC1',
+      '#0097A7',
+      '#00838F',
+      '#006064',
+      '#84FFFF',
+      '#18FFFF'
       ]
     this.allBorderColors = [
-        'rgb(244, 67, 54)',
-        'rgb(233, 30, 99)',
-        'rgb(156, 39, 176)',
-        'rgb(103, 58, 183)',
-        'rgb(63, 81, 181)',
-        'rgb(33, 150, 243)',
-        'rgb(3, 169, 244)',
-        'rgb(0, 188, 212)',
-        'rgb(0, 150, 136)',
-        'rgb(76, 175, 80)',
-        'rgb(139, 195, 74)',
-        'rgb(205, 220, 57)'
+      '#F1F8E9',
+      '#DCEDC8',
+      '#C5E1A5',
+      '#AED581',
+      '#9CCC65',
+      '#8BC34A',
+      '#7CB342',
+      '#689F38',
+      '#558B2F',
+      '#33691E',
+      '#CCFF90',
+      '#B2FF59'
       ]
     this.companyId = this.jwtHelper.decodeToken().id_ils;    
     this.graphMonths = [ 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December' ]
@@ -1518,7 +1518,7 @@ export class DashboardComponent implements OnInit {
       graphData[11] = +item.dec
     })
 
-    console.log ("chartEnergy",this.delegation.value, this.yearGraph.value, this.energy.value, this.residue.value, graphDataTemp, graphData)
+    console.log (graphDataTemp, graphData)
     
     this.chart = new Chart("graph", {
       type: 'bar',
@@ -1526,129 +1526,66 @@ export class DashboardComponent implements OnInit {
          labels: this.graphMonths,
          datasets: [
            {
-            label: graphDataTemp.map(item=>item.year).toString(),
+            label: '2019',
             data: graphData,
             backgroundColor: this.allBackgroundColors[0],
             borderColor: this.allBorderColors[0],
+            stack: 'year',
             borderWidth: 1
            },
-           {
-            type: 'line',
-            label: 'Objective',
+           /* {
+            label: '2020',
             data: [50, 75, 50, 25, 50, 75, 15, 45, 40, 35, 25, 35],
-           }
-           /*  {
-            label: "GLP genérico",
-            data: this.quantity19GraphEnergy,
             backgroundColor: this.allBackgroundColors[1],
             borderColor: this.allBorderColors[1],
+            stack: 'year',
             borderWidth: 1
-            },
+          },
           {
-            label: "Gas propano",
-            data: this.quantity20GraphEnergy,
+            label: '2021',
+            data: [50, 75, 50, 35, 50, 75, 15, 85, 40, 35, 25, 65],
             backgroundColor: this.allBackgroundColors[2],
             borderColor: this.allBorderColors[2],
-            borderWidth: 1
-          },
-          {
-            label: "Gas butano",
-            data: this.quantity21GraphEnergy,
-            backgroundColor: this.allBackgroundColors[3],
-            borderColor: this.allBorderColors[3],
-            borderWidth: 1
-          },
-          {
-            label: "Fuel",
-            data: this.quantity22GraphEnergy,
-            backgroundColor: this.allBackgroundColors[4],
-            borderColor: this.allBorderColors[4],
-            borderWidth: 1
-          },
-          {
-            label: "Biomasa",
-            data: this.quantity23GraphEnergy,
-            backgroundColor: this.allBackgroundColors[5],
-            borderColor: this.allBorderColors[5],
-            borderWidth: 1
-          },           
-          {
-            label: "Gas Natural Liquado",
-            data: this.quantity18GraphEnergy,
-            backgroundColor: this.allBackgroundColors[6],
-            borderColor: this.allBorderColors[6],
-            borderWidth: 1
-          },
-          {
-            label: "Gasóleo A",
-            data: this.quantity16GraphEnergy,
-            backgroundColor: this.allBackgroundColors[7],
-            borderColor: this.allBorderColors[7],
-            borderWidth: 1
-          },
-          {
-            label: "Gasóleo B",
-            data: this.quantity15GraphEnergy,
-            backgroundColor: this.allBackgroundColors[8],
-            borderColor: this.allBorderColors[8],
-            borderWidth: 1
-          },
-          {
-            label: "Gasóleo C",
-            data: this.quantity2GraphEnergy,
-            backgroundColor: this.allBackgroundColors[9],
-            borderColor: this.allBorderColors[9],
-            borderWidth: 1
-          },
-          {
-            label: "Gasolina",
-            data: this.quantity5GraphEnergy,
-            backgroundColor: this.allBackgroundColors[10],
-            borderColor: this.allBorderColors[10],
-            borderWidth: 1
-          },
-          {
-            label: "Electricidad",
-            data: this.quantity14GraphEnergy,
-            backgroundColor: this.allBackgroundColors[11],
-            borderColor: this.allBorderColors[11],
+            stack: 'year',
             borderWidth: 1
           }, */
-        /*   {
+           {
             type: 'line',
-            label: 'Ratio Electricity/Person',
-            data: this.ratioPersona14GraphEnergy,
-            backgroundColor: "#ff0000",
-            borderColor: "#000",
-            borderWidth: 1
-          },
-          {
-            type: 'line',
-            label: 'Ratio Electricity/Billing',
-            data: this.ratioBilling14GraphEnergy,
-            backgroundColor: "#00ff00",
-            borderColor: "#000",
-            borderWidth: 1
-          } */
+            label: 'Objectives',
+            data: [45, 15, 45, 15, 45, 15, 15, 15, 45, 15, 15, 15],
+            borderColor: "#000000",
+           }
          ] 
       },
       options: {
         responsive: true,
-        aspectRatio: 1.0,
+        aspectRatio:1.0,
         plugins: {
           legend: {
             position: 'bottom',
           },
           title: {
             display: true,
-            text: this.aspectEnergy
-          },
+            text: this.aspectResidue
+          }
         },
+        
+         scales: {
+          x: {
+            border: {
+              display: this.BORDER
+            },
+            grid: {
+              display: this.DISPLAY,
+              drawOnChartArea: this.CHART_AREA,
+              drawTicks: this.TICKS,
+            }
 
-        scales: {
-          x: { stacked: true},
-          y: { stacked: true}
-        }
+          },
+          y: {
+
+          }
+        } 
       }
     });
   }

@@ -506,7 +506,7 @@ export interface graphConsumptionData {
   aspectId?: number,
   delegation?: string,
   year: string,
-  energyName: string,
+  energyName?: string,
   jan: string,
   feb: string,
   mar: string,

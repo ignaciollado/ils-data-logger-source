@@ -4,10 +4,11 @@ import { ConsumptionDTO, graphConsumptionData } from 'src/app/Models/consumption
 import { ConsumptionService } from 'src/app/Services/consumption.service';
 import { SharedService } from 'src/app/Services/shared.service';
 import Chart from 'chart.js/auto';
+import {ChartData} from 'chart.js';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { HeaderMenusService } from 'src/app/Services/header-menus.service';
 import { HeaderMenus } from 'src/app/Models/header-menus.dto';
-import { Router } from '@angular/router';
+
 import {
   FormControl,
   UntypedFormBuilder,
@@ -1490,7 +1491,9 @@ export class DashboardComponent implements OnInit {
 
   chartEnergy() {
     let graphDataTemp: graphConsumptionData[];
-    let  graphData: number[] = [0,0,0,0,0,0,0,0,0,0,0,0]
+   /*  let  graphData: number[] = [0,0,0,0,0,0,0,0,0,0,0,0,0] */
+   let graphData: graphConsumptionData[] = []
+
     if (this.chart) {
       this.chart.destroy()
     }
@@ -1505,7 +1508,7 @@ export class DashboardComponent implements OnInit {
     if (this.residue.value) {
       graphDataTemp = graphDataTemp.filter((item:any) => item.energyName == this.residue.value)
     }
-    graphDataTemp.map(item => {
+/*     graphDataTemp.map(item => {
       graphData[0] = +item.jan,
       graphData[1] = +item.feb,
       graphData[2] = +item.mar,
@@ -1518,8 +1521,27 @@ export class DashboardComponent implements OnInit {
       graphData[9] = +item.oct,
       graphData[10] = +item.nov,
       graphData[11] = +item.dec
-    })
+    }) */
 
+    graphDataTemp.map((item:graphConsumptionData) => {
+      console.log (item)
+      graphData.push({
+        'delegation':item.delegation,
+        'year':item.year,
+        'jan' : item.jan,
+        'feb' : item.feb,
+        'mar' : item.mar,
+        'apr' : item.apr,
+        'may' : item.may,
+        'jun' : item.jun,
+        'jul' : item.jul,
+        'aug' : item.aug,
+        'sep' : item.sep,
+        'oct' : item.oct,
+        'nov' : item.nov,
+        'dec' : item.dec
+      })
+    })
     console.log (graphDataTemp, graphData)
     
     this.chart = new Chart("graph", {
@@ -1537,7 +1559,7 @@ export class DashboardComponent implements OnInit {
            },
            {
             label: '2020',
-            data: [50, 75, 50, 25, 50, 75, 15, 45, 40, 35, 25, 35],
+            data: graphData,
             backgroundColor: this.allBackgroundColors[1],
             borderColor: this.allBorderColors[1],
             stack: 'year',
@@ -1545,18 +1567,19 @@ export class DashboardComponent implements OnInit {
           },
           {
             label: '2021',
-            data: [50, 75, 50, 35, 50, 75, 15, 85, 40, 35, 25, 65],
+            data: graphData,
             backgroundColor: this.allBackgroundColors[2],
             borderColor: this.allBorderColors[2],
             stack: 'year',
             borderWidth: 1
-          },
-           {
+          }, 
+          /*  {
             type: 'line',
             label: 'Objectives',
             data: [45, 15, 45, 15, 45, 15, 15, 15, 45, 15, 15, 15],
             borderColor: "#000000",
-           }
+            borderWidth: 1
+           } */
          ] 
       },
       options: {

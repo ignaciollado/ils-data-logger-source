@@ -1,8 +1,8 @@
 
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component, Inject, ViewChild, AfterViewInit, OnDestroy, OnInit, Input } from '@angular/core';
+import { Component, Inject, ViewChild, Input } from '@angular/core';
 import { ReplaySubject, Subject } from 'rxjs';
-import { take, takeUntil } from 'rxjs/operators';
+import { takeUntil } from 'rxjs/operators';
 import {
   FormControl,
   UntypedFormBuilder,
@@ -107,7 +107,7 @@ export class ResidueFormComponent {
 
   private isUpdateMode: boolean;
   private validRequest: boolean;
-  public isSearching: boolean = false
+  isSearching: boolean = false
   private consumptionId: string | null;
   private userId: string | null;
 

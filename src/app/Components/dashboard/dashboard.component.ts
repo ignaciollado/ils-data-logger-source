@@ -1,5 +1,5 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ConsumptionDTO, graphConsumptionData } from 'src/app/Models/consumption.dto';
 import { ConsumptionService } from 'src/app/Services/consumption.service';
 import { SharedService } from 'src/app/Services/shared.service';
@@ -9,6 +9,7 @@ import { HeaderMenusService } from 'src/app/Services/header-menus.service';
 import { HeaderMenus } from 'src/app/Models/header-menus.dto';
 import { Router } from '@angular/router';
 import {
+  FormControl,
   UntypedFormBuilder,
   UntypedFormControl,
   UntypedFormGroup,
@@ -18,6 +19,8 @@ import { EnergyDTO } from 'src/app/Models/energy.dto';
 import { DelegationDTO } from 'src/app/Models/delegation.dto';
 import { EnergyService } from 'src/app/Services/energy.service';
 import { DelegationService } from 'src/app/Services/delegation.service';
+import { ChapterItem, ResidueLERDTO } from 'src/app/Models/residueLER.dto';
+import { ResidueService } from 'src/app/Services/residue.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -29,12 +32,17 @@ export class DashboardComponent implements OnInit {
   aspectConsumptions!: ConsumptionDTO[]
   aspect: UntypedFormControl
   delegation: UntypedFormControl
-  yearEnergy: UntypedFormControl
-  energyForm: UntypedFormGroup
+  yearGraph: UntypedFormControl
+  graphForm: UntypedFormGroup
   energy: UntypedFormControl
-  energies!: EnergyDTO[];
-  delegations!: DelegationDTO[];
-  private companyId: string | null;
+  residue: UntypedFormControl
+  residueFilter: FormControl<string> = new FormControl<string>('')
+  energies!: EnergyDTO[]
+  delegations!: DelegationDTO[]
+  residues!: ResidueLERDTO[];
+  residuesItem: ChapterItem[] = []
+  private companyId: string | null
+  isSearching: boolean = false
 
   graphConsumption: graphConsumptionData[] = []
   quantity2GraphEnergy: number[] = [0,0,0,0,0,0,0,0,0,0,0,0]
@@ -109,12 +117,13 @@ export class DashboardComponent implements OnInit {
   BORDER:boolean = true
   CHART_AREA:boolean = true
   TICKS:boolean = true
-
+  @Input() searching = false;
   constructor(
     private consumptionService: ConsumptionService,
     private sharedService: SharedService,
     private headerMenusService: HeaderMenusService,
     private delegationService: DelegationService,
+    private residueService: ResidueService,
     private energyService: EnergyService,
     private formBuilder: UntypedFormBuilder,
     private jwtHelper: JwtHelperService
@@ -159,24 +168,27 @@ export class DashboardComponent implements OnInit {
       this.aspectEnergy = "Energía (kWh)"
       this.aspectWater = "Aigua (Litres)"
       this.aspectResidue = "Residu (Kg)"
-      this.aspectEmissions = "Emissions (CO2e in T)"
+      this.aspectEmissions = "Emissions (CO2e en T)"
     } else if (localStorage.getItem('preferredLang') === 'cas') {
       this.graphMonths = [ 'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Setiembre', 'Octubre', 'Noviembre', 'Diciembre' ]      
       this.aspectEnergy = "Energía (kWh)"
       this.aspectWater = "Agua (Litros)"
       this.aspectResidue = "Residuo (Kg)"
-      this.aspectEmissions = "Emisiones (CO2e in T)"
+      this.aspectEmissions = "Emisiones (CO2e en T)"
     }
 
     this.aspect = new UntypedFormControl('', [ Validators.required ])
     this.delegation = new UntypedFormControl('', [ Validators.required ])
-    this.yearEnergy = new UntypedFormControl('', [ Validators.required ])
-    this.energy = new UntypedFormControl('', [ Validators.required ])
-    this.energyForm = this.formBuilder.group({
+    this.yearGraph = new UntypedFormControl('')
+    this.energy = new UntypedFormControl('')
+    this.residue = new UntypedFormControl('')
+
+    this.graphForm = this.formBuilder.group({
       aspect: this.aspect,
       delegation: this.delegation,
-      yearEnergy: this.yearEnergy,
+      yearGraph: this.yearGraph,
       energy: this.energy,
+      residue: this.residue,
 
     });
 
@@ -192,7 +204,8 @@ export class DashboardComponent implements OnInit {
         };
         this.headerMenusService.headerManagement.next(headerInfo)
       }
-      this.loadEnergies();
+      this.loadEnergies()
+      this.loadResidues()
       this.loadDelegations(this.companyId)
       this.loadconsumptions(this.companyId)
   }
@@ -210,6 +223,29 @@ export class DashboardComponent implements OnInit {
         }
       );
     }
+  }
+
+  private loadResidues(): void {
+    let errorResponse: any; 
+    this.residueService.getResiduesLER()
+    .subscribe(
+      (residues: ResidueLERDTO[]) => {
+        this.residues = residues;
+        this.residues.map( item => {
+          item.chapters.map( subItem=> {
+            subItem.chapterItems.map( (subSubItem: ChapterItem)=> {
+              this.residuesItem = [...this.residuesItem, subSubItem]
+            })
+          })
+          this.residuesItem
+        })
+
+      },
+      (error: HttpErrorResponse) => {
+        errorResponse = error.error;
+        this.sharedService.errorLog(errorResponse);
+      } 
+    )
   }
 
   private loadDelegations(companyId: string): void {
@@ -1450,15 +1486,21 @@ export class DashboardComponent implements OnInit {
     )
   }
 
-   chartEnergy() {
+  chartEnergy() {
     let graphEneryDataTemp: graphConsumptionData[];
     let  graphEneryData: number[] = [0,0,0,0,0,0,0,0,0,0,0,0]
-
+    if (this.chart) {
+      this.chart.destroy()
+    }
     graphEneryDataTemp = this.graphConsumption.filter((item:any) => item.aspectId == this.aspect.value)
     graphEneryDataTemp = graphEneryDataTemp.filter((item:any) => item.delegation == this.delegation.value)
-    graphEneryDataTemp = graphEneryDataTemp.filter((item:any) => item.year == this.yearEnergy.value)
-    graphEneryDataTemp = graphEneryDataTemp.filter((item:any) => item.energyName == this.energy.value)
-    console.log ("chartEnergy",this.delegation.value, this.yearEnergy.value, this.energy.value, graphEneryDataTemp)
+    if (this.yearGraph.value) {
+      graphEneryDataTemp = graphEneryDataTemp.filter((item:any) => item.year == this.yearGraph.value)
+    }
+    if (this.energy.value) {
+      graphEneryDataTemp = graphEneryDataTemp.filter((item:any) => item.energyName == this.energy.value)
+    }
+    console.log ("chartEnergy",this.delegation.value, this.yearGraph.value, this.energy.value, graphEneryDataTemp)
    
     graphEneryDataTemp.map( item =>{
 
@@ -1834,24 +1876,7 @@ export class DashboardComponent implements OnInit {
     });
   }
 
-  showChartEnergy() {
-    this.chart.destroy()
-    this.chartEnergy()
+  updateFields(e: any) {
+    console.log ("el valor es:", e.value)
   }
-
-  showChartWater() {
-    this.chart.destroy()
-    this.chartWater()
-  }
-
-  showChartResidue() {
-    this.chart.destroy()
-    this.chartResidue()
-  }
-
-  showChartEmission() {
-    this.chart.destroy()
-    this.chartEmission()
-  }
-
 }

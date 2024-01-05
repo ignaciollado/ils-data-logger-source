@@ -89,24 +89,17 @@ mat-cell{
 }
 
 .mat-column-isSelected{
-  /* width :50px;
-  max-width:6rem; */
   word-wrap:break-word;
   max-width:3.5rem;
- /*  padding-left: 0; */
 }
 
 .mat-column-delegation{
-  /* width :50px;*/
   max-width:5rem; 
   word-wrap:break-word;
- /*  padding-left: 0; */
 }
 
 .mat-column-year{
-  /* width :50px;*/
   max-width:3rem;
- /* padding-left: 0; */
 }
 
 .mat-column-enviromentalDataName{
@@ -120,42 +113,7 @@ mat-cell{
   word-wrap:break-word;
   padding-left: 0;
 }
-/* .mat-column-jan{
-  max-width: 5.5rem;
-}
-.mat-column-feb{
-  max-width: 5.5rem;
-}
-.mat-column-mar{
-  max-width: 5.5rem;
-}
-.mat-column-apr{
-  max-width: 5.5rem;
-}
-.mat-column-may{
-  max-width: 5.5rem;
-}
-.mat-column-jun{
-  max-width: 5.5rem;
-}
-.mat-column-jul{
-  max-width: 5.5rem;
-}
-.mat-column-aug{
-  max-width: 5.5rem;
-}
-.mat-column-sep{
-  max-width: 5.5rem;
-}
-.mat-column-oct{
-  max-width: 5.5rem;
-}
-.mat-column-nov{
-  max-width: 5.5rem;
-}
-.mat-column-dec{
-  max-width: 5.5rem;
-}  */
+
 .mat-column-isEdit{
   padding-right: 3rem;
 }

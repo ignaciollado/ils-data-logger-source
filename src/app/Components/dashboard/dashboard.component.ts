@@ -149,23 +149,23 @@ export class DashboardComponent implements OnInit {
       ]
     this.companyId = this.jwtHelper.decodeToken().id_ils;    
     this.graphMonths = [ 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December' ]
-    this.aspectEnergy = "Aspect Energy (kWh)"
-    this.aspectWater = "Aspect Water (Liters)"
-    this.aspectResidue = "Aspect Residue (Kg)"
-    this.aspectEmissions = "Aspect Emissions (CO2e in T)"
+    this.aspectEnergy = "Energy (kWh)"
+    this.aspectWater = "Water (Liters)"
+    this.aspectResidue = "Residue (Kg)"
+    this.aspectEmissions = "Emissions (CO2e in T)"
 
     if (localStorage.getItem('preferredLang') === 'cat') {
       this.graphMonths = [ 'Gener', 'Febrer', 'Març', 'April', 'Maig', 'Juny', 'Juliol', 'Agost', 'Setembre', 'Octubre', 'Novembre', 'Desembre' ]
-      this.aspectEnergy = "Aspecte Energía (kWh)"
-      this.aspectWater = "Aspecte Aigua (Litres)"
-      this.aspectResidue = "Aspecte Residu (Kg)"
-      this.aspectEmissions = "Aspecte Emissions (CO2e in T)"
+      this.aspectEnergy = "Energía (kWh)"
+      this.aspectWater = "Aigua (Litres)"
+      this.aspectResidue = "Residu (Kg)"
+      this.aspectEmissions = "Emissions (CO2e in T)"
     } else if (localStorage.getItem('preferredLang') === 'cas') {
       this.graphMonths = [ 'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Setiembre', 'Octubre', 'Noviembre', 'Diciembre' ]      
-      this.aspectEnergy = "Aspecto Energía (kWh)"
-      this.aspectWater = "Aspecto Agua (Litros)"
-      this.aspectResidue = "Aspecto Residuo (Kg)"
-      this.aspectEmissions = "Aspecto Emisiones (CO2e in T)"
+      this.aspectEnergy = "Energía (kWh)"
+      this.aspectWater = "Agua (Litros)"
+      this.aspectResidue = "Residuo (Kg)"
+      this.aspectEmissions = "Emisiones (CO2e in T)"
     }
 
     this.aspect = new UntypedFormControl('', [ Validators.required ])

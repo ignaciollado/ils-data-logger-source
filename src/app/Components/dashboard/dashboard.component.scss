@@ -1,9 +1,6 @@
-.graph-container{
+.fields-container{
     display: grid;
-    grid-template-columns: auto;
-    margin-left: 20rem;
-    margin-right: 20rem;
-    margin-bottom: 6rem;
+    grid-template-columns: auto auto auto auto auto;
 }
 
 @media only screen and (max-width: 768px) {

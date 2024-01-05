@@ -42,7 +42,7 @@
   "selectDelegation": "Select an office",
   "delegationAdd": "Add delegation",
   "delegationList": "Delegation list",
-  "noDelegation": "No delegation has yet been established. It is necessary to create at least one delegation in order to add your activity data.Sorry for the inconvenience.",
+  "noDelegation": "No delegation has yet been established.<br>It is necessary to create at least one delegation in order to add your activity data.<br>Sorry for the inconvenience.",
 
   "aspect": "Aspect",
   "energy": "Energy",

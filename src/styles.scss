@@ -10,10 +10,9 @@
 
 @include mat.typography-hierarchy(config.$my-app-typography);
 @include mat.core-theme(themes.$my-app-light-theme);
-@include mat.button-theme(themes.$my-app-light-theme);
+/* @include mat.button-theme(themes.$my-app-light-theme); */
 @include mat.icon-theme(themes.$my-app-light-theme);
 @include mat.menu-theme(themes.$my-app-light-theme);
-
 
 html, body {
   height: 100vh;

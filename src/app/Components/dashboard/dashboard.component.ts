@@ -27,6 +27,7 @@ import { DelegationService } from 'src/app/Services/delegation.service';
 export class DashboardComponent implements OnInit {
   consumptions!: ConsumptionDTO[]
   aspectConsumptions!: ConsumptionDTO[]
+  aspect: UntypedFormControl
   delegation: UntypedFormControl
   yearEnergy: UntypedFormControl
   energyForm: UntypedFormGroup
@@ -167,10 +168,12 @@ export class DashboardComponent implements OnInit {
       this.aspectEmissions = "Aspecto Emisiones (CO2e in T)"
     }
 
+    this.aspect = new UntypedFormControl('', [ Validators.required ])
     this.delegation = new UntypedFormControl('', [ Validators.required ])
-    this.yearEnergy = new UntypedFormControl('', [ Validators.required ]);
+    this.yearEnergy = new UntypedFormControl('', [ Validators.required ])
     this.energy = new UntypedFormControl('', [ Validators.required ])
     this.energyForm = this.formBuilder.group({
+      aspect: this.aspect,
       delegation: this.delegation,
       yearEnergy: this.yearEnergy,
       energy: this.energy,
@@ -180,7 +183,6 @@ export class DashboardComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    
     const access_token: string | null = sessionStorage.getItem("access_token")
     
       if (!this.jwtHelper.isTokenExpired (access_token)) {
@@ -1451,7 +1453,8 @@ export class DashboardComponent implements OnInit {
    chartEnergy() {
     let graphEneryDataTemp: graphConsumptionData[];
     let  graphEneryData: number[] = [0,0,0,0,0,0,0,0,0,0,0,0]
-    graphEneryDataTemp = this.graphConsumption.filter((item:any) => item.aspectId == 1)
+
+    graphEneryDataTemp = this.graphConsumption.filter((item:any) => item.aspectId == this.aspect.value)
     graphEneryDataTemp = graphEneryDataTemp.filter((item:any) => item.delegation == this.delegation.value)
     graphEneryDataTemp = graphEneryDataTemp.filter((item:any) => item.year == this.yearEnergy.value)
     graphEneryDataTemp = graphEneryDataTemp.filter((item:any) => item.energyName == this.energy.value)

@@ -518,5 +518,6 @@ export interface graphConsumptionData {
   sep: string,
   oct: string,
   nov: string,
-  dec: string
+  dec: string,
+  months?: string[]
 }

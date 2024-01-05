@@ -1,11 +1,12 @@
 <div class="container-form">
   <h2>{{ 'totalActivityReported' | translate }}:</h2>
+  <div id='filtroFacturas'>
     <form
       *ngIf="graphForm"
       [formGroup]="graphForm"
       (ngSubmit)="chartEnergy()">
       <div class='fields-container'>
-        <mat-form-field [style.width.px]=225>
+        <mat-form-field [style.width.px]=225 class="item1">
           <mat-label>{{'aspect' | translate}}</mat-label>
           <mat-select [formControl]="aspect" (selectionChange)="updateFields($event)">
             <mat-option value="1">{{aspectEnergy}}</mat-option>
@@ -15,7 +16,7 @@
           </mat-select>
         </mat-form-field>
       
-        <mat-form-field [style.width.px]=200>
+        <mat-form-field [style.width.px]=200 class="item2">
           <mat-label>{{'delegation' | translate}}</mat-label>
           <mat-select [formControl]="delegation" panelClass="panel-{{delegation.value}}">
             <mat-option *ngFor="let delegation of delegations" [value]="delegation.name">
@@ -25,7 +26,7 @@
           <mat-error *ngIf="delegation.hasError('required')">{{'delegation' | translate}} <strong>{{'isRequired' | translate}}</strong></mat-error>
         </mat-form-field>
       
-        <mat-form-field [style.width.px]=100>
+        <mat-form-field [style.width.px]=100 class="item3">
           <mat-label>{{'year' | translate}}</mat-label>
           <mat-select [formControl]="yearGraph">
             <mat-option value="2019">2019</mat-option>
@@ -38,7 +39,7 @@
           </mat-select>
         </mat-form-field>
       
-        <mat-form-field [style.width.px]=200 *ngIf="isEnergy">
+        <mat-form-field [style.width.px]=200 *ngIf="isEnergy" class="item4">
           <mat-label>{{'selectEnergy' | translate}}</mat-label>
             <mat-select [formControl]="energy" [disabled]="true">
               <mat-option *ngFor="let energy of energies" [value]="energy.nameES">
@@ -48,7 +49,7 @@
           <mat-error *ngIf="energy.hasError('required')">{{'energyType' | translate}} <strong>{{'isRequired' | translate}}</strong></mat-error>
         </mat-form-field>
 
-        <mat-form-field [style.width.px]=225 *ngIf="isResidue">
+        <mat-form-field [style.width.px]=225 *ngIf="isResidue" class="item5">
           <mat-label>{{'residueType' | translate}}</mat-label>
           <mat-select [formControl]="residue">
             <mat-option>
@@ -69,13 +70,16 @@
 
           <mat-error *ngIf="residue.hasError('required')">{{'residueType' | translate}} <strong>{{'isRequired' | translate}}</strong></mat-error>
         </mat-form-field>
-        <mat-button-toggle-group name="buttonsform" aria-label="buttons form reset and submit">
+
+        <mat-button-toggle-group name="buttonsform" aria-label="buttons form reset and submit" class="item6">
           <button mat-raised-button color="accent" (click)="graphFormReset()">Reset</button>
           <button mat-raised-button color="primary" type="submit" [disabled]="!graphForm.valid">Graph</button>
         </mat-button-toggle-group>
 
       </div>
     </form>
+  </div>
+
     <canvas id="graph" aria-label= "Activity graph" role="chart">{{ chart }}</canvas>
   <app-modal></app-modal>
   <div class="loader" *ngIf="!consumptions">No data found yet...</div>

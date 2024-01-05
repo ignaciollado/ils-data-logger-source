@@ -1,7 +1,53 @@
+#filtroFacturas
+{
+  clear: both;
+  padding-top: 55px;
+}
+form {
+    border-top: 1px dotted #AAAAAA;
+  border-bottom: 1px dotted #AAAAAA;
+  background-color: #ECECEC;
+  overflow: hidden;
+  padding: 32px 32px;
+}
 .fields-container{
     display: grid;
-    grid-template-columns: auto auto auto auto auto;
+    grid-template-columns: repeat(6, auto);
+    grid-template-areas:
+      "a b c d e"
+      "f f f f f";
 }
+
+.item1 {
+  grid-area: a;
+  align-self: center;
+  justify-self: center;
+}
+.item2 {
+  grid-area: b;
+  align-self: center;
+  justify-self: center;
+}
+.item3 {
+  grid-area: c;
+  align-self: center;
+  justify-self: center;
+}
+.item4 {
+  grid-area: d;
+  align-self: center;
+  justify-self: center;
+}
+.item5 {
+  grid-area: e;
+  align-self: center;
+  justify-self: center;
+}
+.item6 {
+    grid-area: f;
+    align-self: center;
+    justify-self: center;
+  }
 
 canvas {
   box-sizing: border-box;

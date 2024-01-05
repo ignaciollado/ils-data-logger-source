@@ -1528,8 +1528,9 @@ export class DashboardComponent implements OnInit {
     graphDataTemp.map((item:graphConsumptionData) => {
       console.log (item)
       graphData.push({
-        'delegation':item.delegation,
-        'year':item.year,
+        'delegation': item.delegation,
+        'energyName': item.energyName,
+        'year': item.year,
         'jan' : item.jan,
         'feb' : item.feb,
         'mar' : item.mar,
@@ -1541,10 +1542,11 @@ export class DashboardComponent implements OnInit {
         'sep' : item.sep,
         'oct' : item.oct,
         'nov' : item.nov,
-        'dec' : item.dec
+        'dec' : item.dec,
+        'months': [item.jan, item.feb, item.mar, item.apr, item.may, item.jun, item.jul, item.aug, item.sep, item.oct, item.nov, item.dec]
       })
     })
-    console.log (graphDataTemp, graphData)
+    console.log (graphData)
     
     this.chart = new Chart("graph", {
       type: 'bar',
@@ -1552,35 +1554,35 @@ export class DashboardComponent implements OnInit {
          labels: this.graphMonths,
          datasets: [
            {
-            label: graphData.map((x) => x.year)[0],
-            data: graphData,
+            label: graphData.map((x) => x.energyName)[0],
+            data: graphData.map((x) => x.months),
             backgroundColor: this.allBackgroundColors[0],
             borderColor: this.allBorderColors[0],
-            stack: 'year',
+            stack: graphData.map((x) => x.year)[0],
             borderWidth: 1
            },
            {
-            label: graphData.map((x) => x.year)[1],
-            data: graphData,
+            label: graphData.map((x) => x.energyName)[1],
+            data: graphData.map((x) => x.months),
             backgroundColor: this.allBackgroundColors[1],
             borderColor: this.allBorderColors[1],
-            stack: 'year',
+            stack:  graphData.map((x) => x.year)[1],
             borderWidth: 1
           },
           {
-            label: graphData.map((x) => x.year)[2],
-            data: graphData,
+            label: graphData.map((x) => x.energyName)[2],
+            data: graphData.map((x) => x.months),
             backgroundColor: this.allBackgroundColors[2],
             borderColor: this.allBorderColors[2],
-            stack: 'year',
+            stack: graphData.map((x) => x.year)[2],
             borderWidth: 1
           }, 
           {
-            label: graphData.map((x) => x.year)[3],
-            data: graphData,
+            label: graphData.map((x) => x.energyName)[3],
+            data: graphData.map((x) => x.months),
             backgroundColor: this.allBackgroundColors[3],
             borderColor: this.allBorderColors[3],
-            stack: 'year',
+            stack: graphData.map((x) => x.year)[3],
             borderWidth: 1
           }, 
           /*  {

@@ -1493,6 +1493,8 @@ export class DashboardComponent implements OnInit {
     let graphDataTemp: graphConsumptionData[];
    /*  let  graphData: number[] = [0,0,0,0,0,0,0,0,0,0,0,0,0] */
    let graphData: graphConsumptionData[] = []
+   let chartLabels: string[] = [];
+   let chartDatasets: any[] = [];
 
     if (this.chart) {
       this.chart.destroy()
@@ -1550,7 +1552,7 @@ export class DashboardComponent implements OnInit {
          labels: this.graphMonths,
          datasets: [
            {
-            label: '2019',
+            label: graphData.map((x) => x.year)[0],
             data: graphData,
             backgroundColor: this.allBackgroundColors[0],
             borderColor: this.allBorderColors[0],
@@ -1558,7 +1560,7 @@ export class DashboardComponent implements OnInit {
             borderWidth: 1
            },
            {
-            label: '2020',
+            label: graphData.map((x) => x.year)[1],
             data: graphData,
             backgroundColor: this.allBackgroundColors[1],
             borderColor: this.allBorderColors[1],
@@ -1566,10 +1568,18 @@ export class DashboardComponent implements OnInit {
             borderWidth: 1
           },
           {
-            label: '2021',
+            label: graphData.map((x) => x.year)[2],
             data: graphData,
             backgroundColor: this.allBackgroundColors[2],
             borderColor: this.allBorderColors[2],
+            stack: 'year',
+            borderWidth: 1
+          }, 
+          {
+            label: graphData.map((x) => x.year)[3],
+            data: graphData,
+            backgroundColor: this.allBackgroundColors[3],
+            borderColor: this.allBorderColors[3],
             stack: 'year',
             borderWidth: 1
           }, 

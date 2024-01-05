@@ -1502,7 +1502,9 @@ export class DashboardComponent implements OnInit {
     if (this.energy.value) {
       graphDataTemp = graphDataTemp.filter((item:any) => item.energyName == this.energy.value)
     }
-   
+    if (this.residue.value) {
+      graphDataTemp = graphDataTemp.filter((item:any) => item.energyName == this.residue.value)
+    }
     graphDataTemp.map(item => {
       graphData[0] = +item.jan,
       graphData[1] = +item.feb,
@@ -1533,7 +1535,7 @@ export class DashboardComponent implements OnInit {
             stack: 'year',
             borderWidth: 1
            },
-           /* {
+           {
             label: '2020',
             data: [50, 75, 50, 25, 50, 75, 15, 45, 40, 35, 25, 35],
             backgroundColor: this.allBackgroundColors[1],
@@ -1548,7 +1550,7 @@ export class DashboardComponent implements OnInit {
             borderColor: this.allBorderColors[2],
             stack: 'year',
             borderWidth: 1
-          }, */
+          },
            {
             type: 'line',
             label: 'Objectives',

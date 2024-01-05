@@ -6,7 +6,7 @@
   <mat-toolbar color="primary">
     <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="menu ils data logger" [ngClass]="'not-has-to-be-shown'"><span [ngClass]="'not-has-to-be-shown'"><i class="fa-solid fa-bars fa-xl" style="color: #fff;"></i></span></button>
     <mat-menu #menu="matMenu">
-       <button mat-menu-item (click)="dashboard()"><i class="fa-solid fa-house"></i> {{'home' | translate}}</button>
+      <!--  <button mat-menu-item (click)="dashboard()"><i class="fa-solid fa-house"></i> {{'home' | translate}}</button> -->
        <button mat-menu-item (click)="login()"><i class="fa-solid fa-right-to-bracket"></i> {{'login' | translate}}</button>
        <app-select-language></app-select-language>
     </mat-menu>

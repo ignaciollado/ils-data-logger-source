@@ -7,9 +7,19 @@
   margin-right: 5px;
   margin-left: 5px;
 }
-
+p:last-child {
+  color: lime;
+}
 span,a {
   text-align: center;
+}
+
+a{
+  text-decoration: none;
+}
+
+a:hover {
+  font-weight: bolder;
 }
 
 @media only screen and (max-width: theme.$app-break-point) {

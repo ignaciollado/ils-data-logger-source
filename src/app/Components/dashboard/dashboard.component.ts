@@ -1489,9 +1489,10 @@ export class DashboardComponent implements OnInit {
   }
 
   chartEnergy() {
-   let graphDataTemp: graphConsumptionData[];
-   let graphData: graphConsumptionData[] = []
-
+    let graphDataTemp: graphConsumptionData[];
+    let graphData: graphConsumptionData[] = []
+    let myDatasets: any[] = []
+    let primaryColor: number = 9
   if (this.chart) {
       this.chart.destroy()
     }
@@ -1527,7 +1528,21 @@ export class DashboardComponent implements OnInit {
         'months': [item.jan, item.feb, item.mar, item.apr, item.may, item.jun, item.jul, item.aug, item.sep, item.oct, item.nov, item.dec]
       })
     })
-    graphData.map(item=> console.log(item.year, item.energyName, item.months))
+    graphData.map(item=> {
+      console.log(item.year, item.energyName, item.months)
+      myDatasets.push(
+        [
+          {
+           label: graphData.map(item=> item.year+item.energyName),
+           data: graphData.map(item=> item.months),
+           backgroundColor: this.primaryColors[primaryColor--],
+           stack: graphData.map(item=> item.year)[0],
+           borderWidth: 0
+          },
+        ]
+      )
+    })
+    console.log ("mi dataset: ", myDatasets)
 
     this.chart = new Chart("graph", {
       type: 'bar',
@@ -1538,49 +1553,49 @@ export class DashboardComponent implements OnInit {
             label: graphData.map(item=> item.year+item.energyName)[0],
             data: graphData.map(item=> item.months)[0],
             backgroundColor: this.primaryColors[9],
-            stack: '2019',
+            stack: graphData.map(item=> item.year)[0],
             borderWidth: 0
            },
            {
             label: graphData.map(item=> item.year+item.energyName)[1],
             data: graphData.map(item=> item.months)[1],
             backgroundColor: this.primaryColors[8],
-            stack: '2020',
+            stack: graphData.map(item=> item.year)[1],
             borderWidth: 0
           },
           {
             label: graphData.map(item=> item.year+item.energyName)[2],
             data: graphData.map(item=> item.months)[2],
             backgroundColor: this.primaryColors[7],
-            stack: '2021',
+            stack: graphData.map(item=> item.year)[2],
             borderWidth: 0
           },
           {
             label: graphData.map(item=> item.year+item.energyName)[3],
             data: graphData.map(item=> item.months)[3],
             backgroundColor: this.primaryColors[6],
-            stack: '2022',
+            stack: graphData.map(item=> item.year)[3],
             borderWidth: 0
           },
           {
             label: graphData.map(item=> item.year+item.energyName)[4],
             data: graphData.map(item=> item.months)[4],
             backgroundColor: this.primaryColors[5],
-            stack: '2023',
+            stack: graphData.map(item=> item.year)[4],
             borderWidth: 0
           },
           {
             label: graphData.map(item=> item.year+item.energyName)[5],
             data: graphData.map(item=> item.months)[5],
             backgroundColor: this.primaryColors[4],
-            stack: '2024',
+            stack: graphData.map(item=> item.year)[5],
             borderWidth: 0
           },
           {
             label: graphData.map(item=> item.year+item.energyName)[6],
             data: graphData.map(item=> item.months)[6],
             backgroundColor: this.primaryColors[3],
-            stack: '2025',
+            stack: graphData.map(item=> item.year)[6],
             borderWidth: 0
           },
           {

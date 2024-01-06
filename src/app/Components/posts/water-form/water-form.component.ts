@@ -195,31 +195,6 @@ export class WaterFormComponent {
 
   }
 
-/*   deleteWaterConsumption(consumptionId: number): void {
-    let errorResponse: any;
-    let responseOK: boolean = false;
-    this.consumptionService.deleteConsumption(consumptionId)
-    .pipe(
-      finalize(async () => {
-        await this.sharedService.managementToast(
-          'postFeedback',
-          responseOK,
-          errorResponse
-        );
-      })
-    )
-    .subscribe(
-      () => {
-        responseOK = true;
-        this.loadConsumption(this.userId);
-      },
-      (error: HttpErrorResponse) => {
-        errorResponse = error.error;
-        this.sharedService.errorLog(errorResponse);
-      }
-    );
-  }
- */
   saveWaterForm(): void {
     this.isValidForm = false;
     if (this.waterForm.invalid) {
@@ -249,18 +224,6 @@ export class WaterFormComponent {
       delegation: this.delegation.value,
       aspectId: 2,
       year: this.yearWater.value,
-      /* jan: '0',
-      feb: '0',
-      mar: '0',
-      apr: '0',
-      may: '0',
-      jun: '0',
-      jul: '0',
-      aug: '0',
-      sep: '0',
-      oct: '0',
-      nov: '0',
-      dec: '0', */
       quantity: 0,
       energy: 0,
       residueId: '',
@@ -346,16 +309,19 @@ export class WaterFormComponent {
       }) */
   }
 
-  public applyFilter(value: Event):void {
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
-  }
-
   public ratioTypeSelected(ratioType: any) {
     console.log(ratioType)
     this.theRatioTypeSelected = !this.theRatioTypeSelected
     this.objective.enable()
     this.objective.addValidators(Validators.required)
+  }
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value
+    this.dataSource.filter = filterValue.trim().toLowerCase()
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
   }
 
 }

@@ -37,31 +37,19 @@
     </mat-card>
   </form>
   <div style="margin-left: auto; margin-right: auto"><span id="postFeedback"></span></div>
-
-  <!-- <article *ngIf="dataSource else noDataFoundYet"> -->
-    <!-- <div></div> -->
+  <mat-form-field >
+    <mat-label>{{'filterByColumn' | translate}}</mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder="Search columns" #input>
+  </mat-form-field>
     <button color="warn" mat-raised-button (click)="removeSelectedRows()">Remove selected Rows</button>
     <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
       <ng-container [matColumnDef]="col.key" *ngFor="let col of columnsSchema">
         <mat-header-cell *matHeaderCellDef [ngSwitch]="col.key">
-            <span *ngSwitchCase="'isSelected'">
-               <!--  <mat-checkbox
-                    (change)="selectAll($event)"
-                    [checked]="isAllSelected()"
-                    [indeterminate]="!isAllSelected() && isAnySelected()">
-                </mat-checkbox> -->
-            </span>
             <span *ngSwitchDefault>{{col.label}}</span>
         </mat-header-cell>
         <mat-cell *matCellDef="let element">
             <div [ngSwitch]="col.type" *ngIf="!element.isEdit">
-                <ng-container *ngSwitchCase="'isSelected'">
-                  <mat-checkbox
-                    (change)="element.isSelected = $event.checked"
-                    [checked]="element.isSelected">
-                  </mat-checkbox>
-                </ng-container>
-              <div class="btn-edit" *ngSwitchCase="'isEdit'">
+               <div class="btn-edit" *ngSwitchCase="'isEdit'">
                 <button mat-icon-button (click)="element.isEdit = !element.isEdit"
                 class="material-icons app-toolbar-menu save-button"
                 matTooltip="Edit" color="accent"><i class="fa-solid fa-pencil fa-xs"></i>
@@ -98,7 +86,6 @@
       <mat-row *matRowDef="let row; columns: columnsDisplayed;"></mat-row>
     </mat-table>
     <div class="loader" *ngIf="!dataSource">No records found yet...</div>
-  <!-- </article> -->
   <ng-template #noDataFoundYet>
     <span class="loader">No data found yet...</span>
   </ng-template>

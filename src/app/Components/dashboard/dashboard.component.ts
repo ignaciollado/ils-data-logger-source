@@ -4,7 +4,7 @@ import { ConsumptionDTO, graphConsumptionData } from 'src/app/Models/consumption
 import { ConsumptionService } from 'src/app/Services/consumption.service';
 import { SharedService } from 'src/app/Services/shared.service';
 import Chart from 'chart.js/auto';
-import {ChartData} from 'chart.js';
+import {ChartDataset, ChartType, ChartOptions} from 'chart.js';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { HeaderMenusService } from 'src/app/Services/header-menus.service';
 import { HeaderMenus } from 'src/app/Models/header-menus.dto';
@@ -108,8 +108,8 @@ export class DashboardComponent implements OnInit {
 
   chart: any
 
-  allBackgroundColors!: string[]
-  allBorderColors!: string[]
+  primaryColors!: string[]
+  alternateColors!: string[]
   graphMonths: string[]
   aspectEnergy: string
   aspectWater: string
@@ -131,7 +131,7 @@ export class DashboardComponent implements OnInit {
     private formBuilder: UntypedFormBuilder,
     private jwtHelper: JwtHelperService
   ) {
-    this.allBackgroundColors = [
+    this.alternateColors = [
       '#E0F7FA',
       '#B2EBF2',
       '#80DEEA',
@@ -145,7 +145,7 @@ export class DashboardComponent implements OnInit {
       '#84FFFF',
       '#18FFFF'
       ]
-    this.allBorderColors = [
+    this.primaryColors = [
       '#F1F8E9',
       '#DCEDC8',
       '#C5E1A5',
@@ -159,7 +159,7 @@ export class DashboardComponent implements OnInit {
       '#CCFF90',
       '#B2FF59'
       ]
-    this.companyId = this.jwtHelper.decodeToken().id_ils;    
+    this.companyId = this.jwtHelper.decodeToken().id_ils;
     this.graphMonths = [ 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December' ]
     this.aspectEnergy = "Energy (kWh)"
     this.aspectWater = "Water (Liters)"
@@ -173,7 +173,7 @@ export class DashboardComponent implements OnInit {
       this.aspectResidue = "Residu (Kg)"
       this.aspectEmissions = "Emissions (CO2e en T)"
     } else if (localStorage.getItem('preferredLang') === 'cas') {
-      this.graphMonths = [ 'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Setiembre', 'Octubre', 'Noviembre', 'Diciembre' ]      
+      this.graphMonths = [ 'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Setiembre', 'Octubre', 'Noviembre', 'Diciembre' ]
       this.aspectEnergy = "Energía (kWh)"
       this.aspectWater = "Agua (Litros)"
       this.aspectResidue = "Residuo (Kg)"
@@ -192,14 +192,13 @@ export class DashboardComponent implements OnInit {
       yearGraph: this.yearGraph,
       energy: this.energy,
       residue: this.residue,
-
     });
 
   }
 
   ngOnInit(): void {
     const access_token: string | null = sessionStorage.getItem("access_token")
-    
+
       if (!this.jwtHelper.isTokenExpired (access_token)) {
         const headerInfo: HeaderMenus = {
           showAuthSection: true,
@@ -229,7 +228,7 @@ export class DashboardComponent implements OnInit {
   }
 
   private loadResidues(): void {
-    let errorResponse: any; 
+    let errorResponse: any;
     this.residueService.getResiduesLER()
     .subscribe(
       (residues: ResidueLERDTO[]) => {
@@ -247,7 +246,7 @@ export class DashboardComponent implements OnInit {
       (error: HttpErrorResponse) => {
         errorResponse = error.error;
         this.sharedService.errorLog(errorResponse);
-      } 
+      }
     )
   }
 
@@ -267,23 +266,23 @@ export class DashboardComponent implements OnInit {
   }
 
   private loadconsumptions(companyId: string): void {
-    let dateFromDate: Date;
+/*     let dateFromDate: Date;
     let dateToDate: Date;
     let dateYearInsert: Date;
     let mmFrom: number;
     let mmTo: number;
     let yyFrom: number;
-    let yyTo: number;
+    let yyTo: number; */
     let errorResponse: any;
-    
+
     this.consumptionService.getAllConsumptionsByCompany(companyId)
     .subscribe(
       (consumptions: ConsumptionDTO[]) => {
         this.consumptions = consumptions
-        this.consumptions.forEach((consumption: any) => 
+        this.consumptions.forEach((consumption: any) =>
         {
-          this.graphConsumption.push( 
-            {"aspectId": consumption.aspectId, 
+          this.graphConsumption.push(
+            {"aspectId": consumption.aspectId,
                 "delegation": consumption.delegation,
                 "year": consumption.year,
                 "energyName": consumption.energyES,
@@ -309,8 +308,8 @@ export class DashboardComponent implements OnInit {
           yyFrom = dateFromDate.getFullYear()
           yyTo = dateToDate.getFullYear() */
 
-            if ( consumption.aspectId == 1 ) { /* ENERGY */
-             /*  if ( mmFrom == 1 && mmTo == 1 ) {
+            /*             if ( consumption.aspectId == 1 ) { // ENERGY
+              if ( mmFrom == 1 && mmTo == 1 ) {
               switch ( +consumption.energy ) {
                 case 2:
                   this.quantity2GraphEnergy[0] = this.quantity2GraphEnergy[0] + (+consumption.quantity*consumption.pci)
@@ -328,7 +327,7 @@ export class DashboardComponent implements OnInit {
                   break
                 case 15:
                   this.quantity15GraphEnergy[0] = this.quantity15GraphEnergy[0] + (+consumption.quantity*consumption.pci)
-                  break                
+                  break
                 case 16:
                   this.quantity16GraphEnergy[0] = this.quantity16GraphEnergy[0] + (+consumption.quantity*consumption.pci)
                   break
@@ -372,7 +371,7 @@ export class DashboardComponent implements OnInit {
                   break
                 case 15:
                   this.quantity15GraphEnergy[1] = this.quantity15GraphEnergy[1] + (+consumption.quantity*consumption.pci)
-                  break                
+                  break
                 case 16:
                   this.quantity16GraphEnergy[1] = this.quantity16GraphEnergy[1] + (+consumption.quantity*consumption.pci)
                   break
@@ -416,7 +415,7 @@ export class DashboardComponent implements OnInit {
                   break
                 case 15:
                   this.quantity15GraphEnergy[2] = this.quantity15GraphEnergy[2] + (+consumption.quantity*consumption.pci)
-                  break                
+                  break
                 case 16:
                   this.quantity16GraphEnergy[2] = this.quantity16GraphEnergy[2] + (+consumption.quantity*consumption.pci)
                   break
@@ -460,7 +459,7 @@ export class DashboardComponent implements OnInit {
                   break
                 case 15:
                   this.quantity15GraphEnergy[3] = this.quantity15GraphEnergy[3] + (+consumption.quantity*consumption.pci)
-                  break                
+                  break
                 case 16:
                   this.quantity16GraphEnergy[3] = this.quantity16GraphEnergy[3] + (+consumption.quantity*consumption.pci)
                   break
@@ -504,7 +503,7 @@ export class DashboardComponent implements OnInit {
                   break
                 case 15:
                   this.quantity15GraphEnergy[4] = this.quantity15GraphEnergy[4] + (+consumption.quantity*consumption.pci)
-                  break                
+                  break
                 case 16:
                   this.quantity16GraphEnergy[4] = this.quantity16GraphEnergy[4] + (+consumption.quantity*consumption.pci)
                   break
@@ -548,7 +547,7 @@ export class DashboardComponent implements OnInit {
                     break
                   case 14:
                     this.quantity15GraphEnergy[5] = this.quantity15GraphEnergy[5] + (+consumption.quantity*consumption.pci)
-                    break                
+                    break
                   case 16:
                     this.quantity16GraphEnergy[5] = this.quantity16GraphEnergy[5] + (+consumption.quantity*consumption.pci)
                     break
@@ -592,7 +591,7 @@ export class DashboardComponent implements OnInit {
                     break
                   case 15:
                     this.quantity15GraphEnergy[6] = this.quantity15GraphEnergy[6] + (+consumption.quantity*consumption.pci)
-                    break                
+                    break
                   case 16:
                     this.quantity16GraphEnergy[6] = this.quantity16GraphEnergy[6] + (+consumption.quantity*consumption.pci)
                     break
@@ -636,7 +635,7 @@ export class DashboardComponent implements OnInit {
                     break
                   case 15:
                     this.quantity15GraphEnergy[7] = this.quantity15GraphEnergy[7] + (+consumption.quantity*consumption.pci)
-                    break                
+                    break
                   case 16:
                     this.quantity16GraphEnergy[7] = this.quantity16GraphEnergy[7] + (+consumption.quantity*consumption.pci)
                     break
@@ -680,7 +679,7 @@ export class DashboardComponent implements OnInit {
                     break
                   case 15:
                     this.quantity15GraphEnergy[8] = this.quantity15GraphEnergy[8] + (+consumption.quantity*consumption.pci)
-                    break                
+                    break
                   case 16:
                     this.quantity16GraphEnergy[8] = this.quantity16GraphEnergy[8] + (+consumption.quantity*consumption.pci)
                     break
@@ -724,7 +723,7 @@ export class DashboardComponent implements OnInit {
                     break
                   case 15:
                     this.quantity15GraphEnergy[9] = this.quantity15GraphEnergy[9] + (+consumption.quantity*consumption.pci)
-                    break                
+                    break
                   case 16:
                     this.quantity16GraphEnergy[9] = this.quantity16GraphEnergy[9] + (+consumption.quantity*consumption.pci)
                     break
@@ -768,7 +767,7 @@ export class DashboardComponent implements OnInit {
                     break
                   case 15:
                     this.quantity15GraphEnergy[10] = this.quantity15GraphEnergy[10] + (+consumption.quantity*consumption.pci)
-                    break                
+                    break
                   case 16:
                     this.quantity16GraphEnergy[10] = this.quantity16GraphEnergy[10] + (+consumption.quantity*consumption.pci)
                     break
@@ -812,7 +811,7 @@ export class DashboardComponent implements OnInit {
                     break
                   case 15:
                     this.quantity15GraphEnergy[11] = this.quantity15GraphEnergy[11] + (+consumption.quantity*consumption.pci)
-                    break                
+                    break
                   case 16:
                     this.quantity16GraphEnergy[11] = this.quantity16GraphEnergy[11] + (+consumption.quantity*consumption.pci)
                     break
@@ -837,9 +836,9 @@ export class DashboardComponent implements OnInit {
                   default:
                     console.log("no matching case found when logged in")
                 }
-              } */
-            }
-            if ( consumption.aspectId == 2 ) { /* WATER */
+              }
+            } */
+            /*             if ( consumption.aspectId == 2 ) { // WATER
             if (mmFrom == 1 && mmTo == 1) {
               this.quantityWater[0] = this.quantityWater[0] + (+consumption.quantity)
               }
@@ -876,8 +875,8 @@ export class DashboardComponent implements OnInit {
             if (mmFrom == 12 && mmTo == 12) {
               this.quantityWater[11] = this.quantityWater[11] + (+consumption.quantity)
               }
-            }
-            if ( consumption.aspectId == 3 ) { /* RESIDUE */
+            } */
+            /*             if ( consumption.aspectId == 3 ) { // RESIDUE
 
               if ( mmFrom == 1 && mmTo == 1 ) {
               switch ( +consumption.residueId ) {
@@ -895,7 +894,7 @@ export class DashboardComponent implements OnInit {
                   break
                 case 5:
                   this.quantity5GraphResidue[0] = this.quantity5GraphResidue[0] + (+consumption.quantity)
-                  break                
+                  break
                 case 6:
                   this.quantity6GraphResidue[0] = this.quantity6GraphResidue[0] + (+consumption.quantity)
                   break
@@ -922,7 +921,7 @@ export class DashboardComponent implements OnInit {
                   break
                 case 14:
                   this.quantity14GraphResidue[0] = this.quantity14GraphResidue[0] + (+consumption.quantity)
-                  break                                    
+                  break
                 default:
                   console.log("no matching case found when logged in")
               }
@@ -943,7 +942,7 @@ export class DashboardComponent implements OnInit {
                     break
                   case 5:
                     this.quantity5GraphResidue[1] = this.quantity5GraphResidue[1] + (+consumption.quantity)
-                    break                
+                    break
                   case 6:
                     this.quantity6GraphResidue[1] = this.quantity6GraphResidue[1] + (+consumption.quantity)
                     break
@@ -970,7 +969,7 @@ export class DashboardComponent implements OnInit {
                     break
                   case 14:
                     this.quantity14GraphResidue[1] = this.quantity14GraphResidue[1] + (+consumption.quantity)
-                    break                                    
+                    break
                   default:
                     console.log("no matching case found when logged in")
                 }
@@ -991,7 +990,7 @@ export class DashboardComponent implements OnInit {
                     break
                   case 5:
                     this.quantity5GraphResidue[2] = this.quantity5GraphResidue[2] + (+consumption.quantity)
-                    break                
+                    break
                   case 6:
                     this.quantity6GraphResidue[2] = this.quantity6GraphResidue[2] + (+consumption.quantity)
                     break
@@ -1018,7 +1017,7 @@ export class DashboardComponent implements OnInit {
                     break
                   case 14:
                     this.quantity14GraphResidue[2] = this.quantity14GraphResidue[2] + (+consumption.quantity)
-                    break                                    
+                    break
                   default:
                     console.log("no matching case found when logged in")
                 }
@@ -1039,7 +1038,7 @@ export class DashboardComponent implements OnInit {
                     break
                   case 5:
                     this.quantity5GraphResidue[3] = this.quantity5GraphResidue[3] + (+consumption.quantity)
-                    break                
+                    break
                   case 6:
                     this.quantity6GraphResidue[3] = this.quantity6GraphResidue[3] + (+consumption.quantity)
                     break
@@ -1066,7 +1065,7 @@ export class DashboardComponent implements OnInit {
                     break
                   case 14:
                     this.quantity14GraphResidue[3] = this.quantity14GraphResidue[3] + (+consumption.quantity)
-                    break                                    
+                    break
                   default:
                     console.log("no matching case found when logged in")
                 }
@@ -1087,7 +1086,7 @@ export class DashboardComponent implements OnInit {
                     break
                   case 5:
                     this.quantity5GraphResidue[4] = this.quantity5GraphResidue[4] + (+consumption.quantity)
-                    break                
+                    break
                   case 6:
                     this.quantity6GraphResidue[4] = this.quantity6GraphResidue[4] + (+consumption.quantity)
                     break
@@ -1114,7 +1113,7 @@ export class DashboardComponent implements OnInit {
                     break
                   case 14:
                     this.quantity14GraphResidue[4] = this.quantity14GraphResidue[4] + (+consumption.quantity)
-                    break                                    
+                    break
                   default:
                     console.log("no matching case found when logged in")
                 }
@@ -1135,7 +1134,7 @@ export class DashboardComponent implements OnInit {
                     break
                   case 5:
                     this.quantity5GraphResidue[5] = this.quantity5GraphResidue[5] + (+consumption.quantity)
-                    break                
+                    break
                   case 6:
                     this.quantity6GraphResidue[5] = this.quantity6GraphResidue[5] + (+consumption.quantity)
                     break
@@ -1162,7 +1161,7 @@ export class DashboardComponent implements OnInit {
                     break
                   case 14:
                     this.quantity14GraphResidue[5] = this.quantity14GraphResidue[5] + (+consumption.quantity)
-                    break                                    
+                    break
                   default:
                     console.log("no matching case found when logged in")
                 }
@@ -1184,7 +1183,7 @@ export class DashboardComponent implements OnInit {
                     break
                   case 5:
                     this.quantity5GraphResidue[6] = this.quantity5GraphResidue[6] + (+consumption.quantity)
-                    break                
+                    break
                   case 6:
                     this.quantity6GraphResidue[6] = this.quantity6GraphResidue[6] + (+consumption.quantity)
                     break
@@ -1211,7 +1210,7 @@ export class DashboardComponent implements OnInit {
                     break
                   case 14:
                     this.quantity14GraphResidue[6] = this.quantity14GraphResidue[6] + (+consumption.quantity)
-                    break                                    
+                    break
                   default:
                     console.log("no matching case found when logged in")
                 }
@@ -1232,7 +1231,7 @@ export class DashboardComponent implements OnInit {
                     break
                   case 5:
                     this.quantity5GraphResidue[7] = this.quantity5GraphResidue[7] + (+consumption.quantity)
-                    break                
+                    break
                   case 6:
                     this.quantity6GraphResidue[7] = this.quantity6GraphResidue[7] + (+consumption.quantity)
                     break
@@ -1259,7 +1258,7 @@ export class DashboardComponent implements OnInit {
                     break
                   case 14:
                     this.quantity14GraphResidue[7] = this.quantity14GraphResidue[7] + (+consumption.quantity)
-                    break                                    
+                    break
                   default:
                     console.log("no matching case found when logged in")
                 }
@@ -1280,7 +1279,7 @@ export class DashboardComponent implements OnInit {
                     break
                   case 5:
                     this.quantity5GraphResidue[8] = this.quantity5GraphResidue[8] + (+consumption.quantity)
-                    break                
+                    break
                   case 6:
                     this.quantity6GraphResidue[8] = this.quantity6GraphResidue[8] + (+consumption.quantity)
                     break
@@ -1307,7 +1306,7 @@ export class DashboardComponent implements OnInit {
                     break
                   case 14:
                     this.quantity14GraphResidue[8] = this.quantity14GraphResidue[8] + (+consumption.quantity)
-                    break                                    
+                    break
                   default:
                     console.log("no matching case found when logged in")
                 }
@@ -1328,7 +1327,7 @@ export class DashboardComponent implements OnInit {
                     break
                   case 5:
                     this.quantity5GraphResidue[9] = this.quantity5GraphResidue[9] + (+consumption.quantity)
-                    break                
+                    break
                   case 6:
                     this.quantity6GraphResidue[9] = this.quantity6GraphResidue[9] + (+consumption.quantity)
                     break
@@ -1355,7 +1354,7 @@ export class DashboardComponent implements OnInit {
                     break
                   case 14:
                     this.quantity14GraphResidue[9] = this.quantity14GraphResidue[9] + (+consumption.quantity)
-                    break                                    
+                    break
                   default:
                     console.log("no matching case found when logged in")
                 }
@@ -1376,7 +1375,7 @@ export class DashboardComponent implements OnInit {
                     break
                   case 5:
                     this.quantity5GraphResidue[10] = this.quantity5GraphResidue[10] + (+consumption.quantity)
-                    break                
+                    break
                   case 6:
                     this.quantity6GraphResidue[10] = this.quantity6GraphResidue[10] + (+consumption.quantity)
                     break
@@ -1403,7 +1402,7 @@ export class DashboardComponent implements OnInit {
                     break
                   case 14:
                     this.quantity14GraphResidue[10] = this.quantity14GraphResidue[10] + (+consumption.quantity)
-                    break                                    
+                    break
                   default:
                     console.log("no matching case found when logged in")
                 }
@@ -1424,7 +1423,7 @@ export class DashboardComponent implements OnInit {
                     break
                   case 5:
                     this.quantity5GraphResidue[11] = this.quantity5GraphResidue[11] + (+consumption.quantity)
-                    break                
+                    break
                   case 6:
                     this.quantity6GraphResidue[11] = this.quantity6GraphResidue[11] + (+consumption.quantity)
                     break
@@ -1451,16 +1450,16 @@ export class DashboardComponent implements OnInit {
                     break
                   case 14:
                     this.quantity14GraphResidue[11] = this.quantity14GraphResidue[11] + (+consumption.quantity)
-                    break                                    
+                    break
                   default:
                     console.log("no matching case found when logged in")
                 }
               }
-            }
-            if ( consumption.aspectId == 4 ) { /* MATERIALS */
+            } */
+            /*             if ( consumption.aspectId == 4 ) { // MATERIALS
                 this.quantityMaterials = this.quantityMaterials + +consumption.quantity
-            }
-            if ( consumption.aspectId == 5 ) { /* EMISSIONS */
+            } */
+            /*             if ( consumption.aspectId == 5 ) { // EMISSIONS
             if (yyFrom == 2021 && yyTo == 2021) {
               this.quantityEmissions2021ScopeOne = this.quantityEmissions2021ScopeOne + (+consumption.scopeOne)
               this.quantityEmissions2021ScopeTwo = this.quantityEmissions2021ScopeTwo + (+consumption.scopeTwo)
@@ -1476,8 +1475,8 @@ export class DashboardComponent implements OnInit {
             if (yyFrom == 2024 && yyTo == 2024) {
               this.quantityEmissions2024ScopeOne = this.quantityEmissions2024ScopeOne + (+consumption.scopeOne)
               this.quantityEmissions2024ScopeTwo = this.quantityEmissions2024ScopeTwo + (+consumption.scopeTwo)
-              }              
-            }
+              }
+            } */
         }
         )
         this.chartEnergy();
@@ -1490,13 +1489,10 @@ export class DashboardComponent implements OnInit {
   }
 
   chartEnergy() {
-    let graphDataTemp: graphConsumptionData[];
-   /*  let  graphData: number[] = [0,0,0,0,0,0,0,0,0,0,0,0,0] */
+   let graphDataTemp: graphConsumptionData[];
    let graphData: graphConsumptionData[] = []
-   let chartLabels: string[] = [];
-   let chartDatasets: any[] = [];
 
-    if (this.chart) {
+  if (this.chart) {
       this.chart.destroy()
     }
     graphDataTemp = this.graphConsumption.filter((item:any) => item.aspectId == this.aspect.value)
@@ -1510,23 +1506,8 @@ export class DashboardComponent implements OnInit {
     if (this.residue.value) {
       graphDataTemp = graphDataTemp.filter((item:any) => item.energyName == this.residue.value)
     }
-/*     graphDataTemp.map(item => {
-      graphData[0] = +item.jan,
-      graphData[1] = +item.feb,
-      graphData[2] = +item.mar,
-      graphData[3] = +item.apr,
-      graphData[4] = +item.may,
-      graphData[5] = +item.jun,
-      graphData[6] = +item.jul,
-      graphData[7] = +item.aug,
-      graphData[8] = +item.sep,
-      graphData[9] = +item.oct,
-      graphData[10] = +item.nov,
-      graphData[11] = +item.dec
-    }) */
 
     graphDataTemp.map((item:graphConsumptionData) => {
-      console.log (item)
       graphData.push({
         'delegation': item.delegation,
         'energyName': item.energyName,
@@ -1546,53 +1527,69 @@ export class DashboardComponent implements OnInit {
         'months': [item.jan, item.feb, item.mar, item.apr, item.may, item.jun, item.jul, item.aug, item.sep, item.oct, item.nov, item.dec]
       })
     })
-    console.log (graphData)
-    
+    graphData.map(item=> console.log(item.year, item.energyName, item.months))
+
     this.chart = new Chart("graph", {
       type: 'bar',
       data: {
          labels: this.graphMonths,
          datasets: [
            {
-            label: graphData.map((x) => x.energyName)[0],
-            data: graphData.map((x) => x.months),
-            backgroundColor: this.allBackgroundColors[0],
-            borderColor: this.allBorderColors[0],
-            stack: graphData.map((x) => x.year)[0],
-            borderWidth: 1
+            label: graphData.map(item=> item.year+item.energyName)[0],
+            data: graphData.map(item=> item.months)[0],
+            backgroundColor: this.primaryColors[9],
+            stack: '2019',
+            borderWidth: 0
            },
            {
-            label: graphData.map((x) => x.energyName)[1],
-            data: graphData.map((x) => x.months),
-            backgroundColor: this.allBackgroundColors[1],
-            borderColor: this.allBorderColors[1],
-            stack:  graphData.map((x) => x.year)[1],
-            borderWidth: 1
+            label: graphData.map(item=> item.year+item.energyName)[1],
+            data: graphData.map(item=> item.months)[1],
+            backgroundColor: this.primaryColors[8],
+            stack: '2020',
+            borderWidth: 0
           },
           {
-            label: graphData.map((x) => x.energyName)[2],
-            data: graphData.map((x) => x.months),
-            backgroundColor: this.allBackgroundColors[2],
-            borderColor: this.allBorderColors[2],
-            stack: graphData.map((x) => x.year)[2],
-            borderWidth: 1
-          }, 
+            label: graphData.map(item=> item.year+item.energyName)[2],
+            data: graphData.map(item=> item.months)[2],
+            backgroundColor: this.primaryColors[7],
+            stack: '2021',
+            borderWidth: 0
+          },
           {
-            label: graphData.map((x) => x.energyName)[3],
-            data: graphData.map((x) => x.months),
-            backgroundColor: this.allBackgroundColors[3],
-            borderColor: this.allBorderColors[3],
-            stack: graphData.map((x) => x.year)[3],
-            borderWidth: 1
-          }, 
-          /*  {
+            label: graphData.map(item=> item.year+item.energyName)[3],
+            data: graphData.map(item=> item.months)[3],
+            backgroundColor: this.primaryColors[6],
+            stack: '2022',
+            borderWidth: 0
+          },
+          {
+            label: graphData.map(item=> item.year+item.energyName)[4],
+            data: graphData.map(item=> item.months)[4],
+            backgroundColor: this.primaryColors[5],
+            stack: '2023',
+            borderWidth: 0
+          },
+          {
+            label: graphData.map(item=> item.year+item.energyName)[5],
+            data: graphData.map(item=> item.months)[5],
+            backgroundColor: this.primaryColors[4],
+            stack: '2024',
+            borderWidth: 0
+          },
+          {
+            label: graphData.map(item=> item.year+item.energyName)[6],
+            data: graphData.map(item=> item.months)[6],
+            backgroundColor: this.primaryColors[3],
+            stack: '2025',
+            borderWidth: 0
+          },
+          {
             type: 'line',
             label: 'Objectives',
-            data: [45, 15, 45, 15, 45, 15, 15, 15, 45, 15, 15, 15],
-            borderColor: "#000000",
-            borderWidth: 1
-           } */
-         ] 
+            data: ["45", "15", "45", "15", "45", "15", "15", "15", "45", "15", "15", "15"],
+            backgroundColor: "#000000",
+           }
+         ]
       },
       options: {
         responsive: true,
@@ -1606,7 +1603,7 @@ export class DashboardComponent implements OnInit {
             text: this.aspectResidue
           }
         },
-        
+
          scales: {
           x: {
             border: {
@@ -1622,241 +1619,10 @@ export class DashboardComponent implements OnInit {
           y: {
 
           }
-        } 
-      }
-    });
-  }
-
-  private chartWater() {
-
-    this.chart = new Chart("graph", {
-
-      data: {
-        labels:  this.graphMonths,
-        datasets: [
-          {
-            type: 'bar',
-            label: "Water",
-            data: this.quantityWater,
-            backgroundColor: this.allBackgroundColors[5],
-            borderColor: this.allBorderColors[5],
-            borderWidth: 1
-          }, {
-            type: 'line',
-            label: 'Ratios Dataset',
-            data: [50, 75, 50, 25, 50, 75],
-        }
-        ]
-      },
-      options: {
-        responsive: true,
-        aspectRatio:2.0,
-        plugins: {
-          legend: {
-            position: 'bottom',
-          },
-          title: {
-            display: true,
-            text: this.aspectWater
-          }
         }
       }
     });
   }
-
-  private chartResidue() {
-    this.chart = new Chart("graph", {
-      type: 'bar',
-      data: {
-        labels:  this.graphMonths,
-        datasets: [
-          {
-            label: "Urbano mezclado",
-            data: this.quantity1GraphResidue,
-            backgroundColor: this.allBackgroundColors[0],
-            borderColor: this.allBorderColors[0],
-            borderWidth: 1
-          },
-          {
-            label: "Papel/cartón",
-            data: this.quantity2GraphResidue,
-            backgroundColor: this.allBackgroundColors[1],
-            borderColor: this.allBorderColors[1],
-            borderWidth: 1
-          },
-          {
-            label: "Plástico",
-            data: this.quantity3GraphResidue,
-            backgroundColor: this.allBackgroundColors[2],
-            borderColor: this.allBorderColors[2],
-            borderWidth: 1
-          },
-          {
-            label: "Vidrio",
-            data: this.quantity4GraphResidue,
-            backgroundColor: this.allBackgroundColors[3],
-            borderColor: this.allBorderColors[3],
-            borderWidth: 1
-          },
-          {
-            label: "Metálicos",
-            data: this.quantity5GraphResidue,
-            backgroundColor: this.allBackgroundColors[4],
-            borderColor: this.allBorderColors[4],
-            borderWidth: 1
-          },
-          {
-            label: "Madera",
-            data: this.quantity6GraphResidue,
-            backgroundColor: this.allBackgroundColors[5],
-            borderColor: this.allBorderColors[5],
-            borderWidth: 1
-          },
-          {
-            label: "Vegetales",
-            data: this.quantity7GraphResidue,
-            backgroundColor: this.allBackgroundColors[6],
-            borderColor: this.allBorderColors[6],
-            borderWidth: 1
-          },
-          {
-            label: "Animales",
-            data: this.quantity8GraphResidue,
-            backgroundColor: this.allBackgroundColors[7],
-            borderColor: this.allBorderColors[7],
-            borderWidth: 1
-          },
-          {
-            label: "Productos alimentarios",
-            data: this.quantity9GraphResidue,
-            backgroundColor: this.allBackgroundColors[8],
-            borderColor: this.allBorderColors[8],
-            borderWidth: 1
-          },
-          {
-            label: "Lodos no contaminados",
-            data: this.quantity10GraphResidue,
-            backgroundColor: this.allBackgroundColors[9],
-            borderColor: this.allBorderColors[9],
-            borderWidth: 1
-          },
-          {
-            label: "Combustión no peligrosos",
-            data: this.quantity11GraphResidue,
-            backgroundColor: this.allBackgroundColors[10],
-            borderColor: this.allBorderColors[10],
-            borderWidth: 1
-          },
-          {
-            label: "Construcción y demolición (obra)",
-            data: this.quantity12GraphResidue,
-            backgroundColor: this.allBackgroundColors[11],
-            borderColor: this.allBorderColors[11],
-            borderWidth: 1
-          },
-          {
-            label: "Peligrosos",
-            data: this.quantity13GraphResidue,
-            backgroundColor: this.allBackgroundColors[12],
-            borderColor: this.allBorderColors[12],
-            borderWidth: 1
-          },
-          {
-            label: "Otros",
-            data: this.quantity14GraphResidue,
-            backgroundColor: this.allBackgroundColors[13],
-            borderColor: this.allBorderColors[13],
-            borderWidth: 1
-          },           
-        ]
-      },
-      options: {
-        responsive: true,
-        aspectRatio:2.0,
-        plugins: {
-          legend: {
-            position: 'bottom',
-          },
-          title: {
-            display: true,
-            text: this.aspectResidue
-          }
-        },
-        
-         scales: {
-          x: {
-            border: {
-              display: this.BORDER
-            },
-            grid: {
-              display: this.DISPLAY,
-              drawOnChartArea: this.CHART_AREA,
-              drawTicks: this.TICKS,
-            }
-
-          },
-          y: {
-
-          }
-        } 
-      }
-    });
-  }
-
-  private chartEmission() {
-    this.chart = new Chart("graph", {
-      type: 'pie',
-      data: {
-       
-        labels:  [ 'CO2e Emissions SCOPE one (T)','CO2e Emissions SCOPE two (T)' ],
-        datasets: [
-          {
-            label: "2021",
-            data: [ this.quantityEmissions2021ScopeOne, this.quantityEmissions2021ScopeTwo ],
-            backgroundColor: [ '#b9936c', '#dac292'],
-          /*   borderColor: ['rgba(0, 0, 255, 1.0)', 'rgba(0, 255, 0, 1.0)'],
-            borderWidth: 1 */
-          },
-          {
-            label: "2022",
-            data: [ this.quantityEmissions2022ScopeOne, this.quantityEmissions2022ScopeTwo ],
-            backgroundColor: [ '#b9936c', '#dac292'],
-           /*  borderColor: ['rgba(0, 0, 255, 1.0)', 'rgba(0, 255, 0, 1.0)'],
-            borderWidth: 1 */
-          },
-          {
-            label: "2023",
-            data: [ this.quantityEmissions2023ScopeOne, this.quantityEmissions2023ScopeTwo ],
-            backgroundColor: [ '#b9936c', '#dac292'],
-           /*  borderColor: ['rgba(0, 0, 255, 1.0)', 'rgba(0, 255, 0, 1.0)'],
-            borderWidth: 1 */
-          },
-        ]
-      },
-      options: {
-          responsive: true,
-          aspectRatio:2.0,
-          plugins: {
-            legend: {
-              position: 'bottom',
-            },
-            title: {
-              display: true,
-              text: this.aspectEmissions
-            }
-          },
-         /*  scales: {
-            x: {
-              stacked: true,
-            },
-            y: {
-              stacked: true
-            }
-          } */
-        }
-    });
-  }
-
   updateFields(e: any) {
     console.log ("el valor es:", e.value)
     if (e.value == 1) {

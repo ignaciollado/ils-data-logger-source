@@ -60,11 +60,11 @@ constructor (
 }
 }
 export const BillingColumns = [
-  {
+/*   {
     key: 'isSelected',
     type: 'isSelected',
     label: '',
-  },
+  }, */
 
   {
       key: "delegation",

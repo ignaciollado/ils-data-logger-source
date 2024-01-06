@@ -14,8 +14,8 @@ form {
     display: grid;
     grid-template-columns: repeat(6, auto);
     grid-template-areas:
-      "a b c d e"
-      "f f f f f";
+      "a b d e"
+      "f f f f";
 }
 
 .item1 {

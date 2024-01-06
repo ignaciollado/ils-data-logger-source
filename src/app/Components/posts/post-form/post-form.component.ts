@@ -87,8 +87,6 @@ export class PostFormComponent implements OnInit {
   columnsSchema: any = energyColumns;
 
   valid: any = {}
-/*   columnsDisplayed = ['delegation', 'year', 'energy', 'enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'setiembre', 'octubre', 'noviembre', 'diciembre', 'ACTIONS'];
-  ; */
 
   @ViewChild('energyTbSort') energyTbSort = new MatSort();
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
@@ -141,7 +139,6 @@ export class PostFormComponent implements OnInit {
     this.consumptionId = this.activatedRoute.snapshot.paramMap.get('id')
     this.userId = this.jwtHelper.decodeToken().id_ils
 
-   /*  this.consumption = new ConsumptionDTO(0, 0, this._adapter.today(), this._adapter.today(), '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 0, '', '', 0); */
     this.isUpdateMode = false;
     this.validRequest = false;
     this.delegation = new UntypedFormControl('', [ Validators.required ]);
@@ -312,32 +309,6 @@ export class PostFormComponent implements OnInit {
     }
   }
 
- /*  public deleteEnergyConsumption(consumptionId: number): void {
-    let errorResponse: any;
-    let responseOK: boolean = false;
-
-      this.consumptionService.deleteConsumption(consumptionId)
-        .pipe(
-          finalize(async () => {
-            await this.sharedService.managementToast(
-              'postFeedback',
-              responseOK,
-              errorResponse
-            );
-          })
-        )
-        .subscribe(
-          () => {
-            responseOK = true;
-            this.loadConsumption(this.userId);
-          },
-          (error: HttpErrorResponse) => {
-            errorResponse = error.error;
-            this.sharedService.errorLog(errorResponse);
-          }
-        );
-  } */
-
   public saveForm(): void {
 
     this.isValidForm = false;
@@ -354,11 +325,6 @@ export class PostFormComponent implements OnInit {
       this.createEnergyConsumption();
     }
 
-  }
-
-  public applyFilter(value: Event):void {
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
   public absoluteRelativeToggle(): void {
@@ -384,18 +350,6 @@ export class PostFormComponent implements OnInit {
       delegation: this.delegation.value,
       aspectId: 1,
       year: this.yearEnergy.value,
-      /* jan: '0',
-      feb: '0',
-      mar: '0',
-      apr: '0',
-      may: '0',
-      jun: '0',
-      jul: '0',
-      aug: '0',
-      sep: '0',
-      oct: '0',
-      nov: '0',
-      dec: '0', */
       quantity: 0,
       energy: this.energy.value,
       residueId: '',
@@ -490,6 +444,14 @@ export class PostFormComponent implements OnInit {
           })
         }
       }) */
+  }
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value
+    this.dataSource.filter = filterValue.trim().toLowerCase()
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
   }
 
 }

@@ -38,32 +38,17 @@
         </mat-card>
       </form>
       <div style="margin-left: auto; margin-right: auto"><span id="postFeedback"></span></div>
-          <!--       <p>Form Value: {{ cnaeForm.value | json }}</p>
-          <p>Form Status: {{ cnaeForm.status }}</p> -->
-
-    <!-- <article> -->
-      <!-- <div></div> -->
-      <button color="warn" mat-raised-button (click)="removeSelectedRows()">Remove selected Rows</button>
+      <mat-form-field >
+        <mat-label>{{'filterByColumn' | translate}}</mat-label>
+        <input matInput (keyup)="applyFilter($event)" placeholder="Search columns" #input>
+      </mat-form-field>
       <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
         <ng-container [matColumnDef]="col.key" *ngFor="let col of columnsSchema">
           <mat-header-cell *matHeaderCellDef [ngSwitch]="col.key">
-              <span *ngSwitchCase="'isSelected'">
-                 <!--  <mat-checkbox
-                      (change)="selectAll($event)"
-                      [checked]="isAllSelected()"
-                      [indeterminate]="!isAllSelected() && isAnySelected()">
-                  </mat-checkbox> -->
-              </span>
               <span *ngSwitchDefault>{{ col.label }}</span>
           </mat-header-cell>
           <mat-cell *matCellDef="let element">
               <div [ngSwitch]="col.type" *ngIf="!element.isEdit">
-                  <ng-container *ngSwitchCase="'isSelected'">
-                    <mat-checkbox
-                      (change)="element.isSelected = $event.checked"
-                      [checked]="element.isSelected">
-                    </mat-checkbox>
-                  </ng-container>
                 <div class="btn-edit" *ngSwitchCase="'isEdit'">
                   <button mat-icon-button (click)="element.isEdit = !element.isEdit"
                   class="material-icons app-toolbar-menu save-button"
@@ -101,6 +86,5 @@
         <mat-row *matRowDef="let row; columns: columnsDisplayed;"></mat-row>
       </mat-table>
       <mat-paginator #cnaePaginator [pageSizeOptions]="[5, 10, 15]"  showFirstLastButtons></mat-paginator>
-    <!-- </article> -->
     <app-file-upload></app-file-upload>
   </div>

@@ -36,96 +36,6 @@ import { EnergyService } from 'src/app/Services/energy.service'
   {Id: 5, delegation: "Mock Data", year: "2019", enviromentalDataName: "Gas butano (kg)", "theRatioType": "Tonelada*", "jan": 500.57, "feb": 1.4579},
   {Id: 6, delegation: "Mock Data", year: "2020", enviromentalDataName: "Gas Natural (kWh)", "theRatioType": "Tonelada*", "jan": 1.2550}
 ];
-
-/* const COLUMNS_SCHEMA = [
-  {
-    key: 'isSelected',
-    type: 'isSelected',
-    label: '',
-  },
-  {
-      key: "delegation",
-      type: "text",
-      label: "Emplaçament"
-  },
-  {
-      key: "year",
-      type: "text",
-      label: "Year"
-  },
-  {
-      key: "enviromental",
-      type: "number",
-      label: "Enviromental"
-  },
-  {
-      key: "enero",
-      type: "number",
-      label: "January"
-  },
-  {
-    key: "febrero",
-    type: "number",
-    label: "February"
-  },
-  {
-    key: "marzo",
-    type: "number",
-    label: "March"
-  },
-  {
-    key: "abril",
-    type: "number",
-    label: "April"
-  },
-  {
-    key: "mayo",
-    type: "number",
-    label: "May"
-  },
-  {
-    key: "junio",
-    type: "number",
-    label: "June"
-  },
-  {
-    key: "julio",
-    type: "number",
-    label: "July"
-  },
-  {
-    key: "agosto",
-    type: "number",
-    label: "August"
-  },
-  {
-    key: "setiembre",
-    type: "number",
-    label: "September"
-  },
-  {
-    key: "octubre",
-    type: "number",
-    label: "October"
-  },
-  {
-    key: "noviembre",
-    type: "number",
-    label: "November"
-  },
-  {
-    key: "diciembre",
-    type: "number",
-    label: "December"
-  },
-  {
-    key: "isEdit",
-    type: "isEdit",
-    label: ""
-  },
-
-] */
-
 @Component({
   selector: 'app-objectives',
   templateUrl: './objectives.component.html',
@@ -168,7 +78,7 @@ export class ObjectivesComponent {
   isChecked = false;
 
   @ViewChild('paginator') paginator: MatPaginator;
-   
+
    /** list of residues filtered by search keyword */
    public filteredResidues: ReplaySubject<ChapterItem[]> = new ReplaySubject<ChapterItem[]>(1);
 
@@ -176,7 +86,7 @@ export class ObjectivesComponent {
 
   /** Subject that emits when the component has been destroyed. */
     protected _onDestroy = new Subject<void>();
- 
+
   constructor (
     private delegationService: DelegationService,
     private jwtHelper: JwtHelperService,
@@ -305,15 +215,6 @@ export class ObjectivesComponent {
     this.isChecked = false
   }
 
-  public setAll(completed: boolean) {
-    alert (completed)
-    /* this.allComplete = completed;
-    if (this.task.subtasks == null) {
-      return;
-    }
-    this.task.subtasks.forEach(t => (t.completed = completed)); */
-  }
-
   public deleteObjective( objectiveId: string) {
 
   }
@@ -347,20 +248,7 @@ export class ObjectivesComponent {
       aspectId: this.environmentalData.value.aspect,
       theRatioType: this.objectiveType.value,
       chapterItemId: environmentalDataEnergy,
-      /* residueId: environmentalDataResidue, */
       year: this.yearObjective.value,
-     /*  jan: 0,
-      feb: 0,
-      mar: 0,
-      apr: 0,
-      may: 0,
-      jun: 0,
-      jul: 0,
-      aug: 0,
-      sep: 0,
-      oct: 0,
-      nov: 0,
-      dec: 0, */
       isEdit: true,
       isSelected: false,
     };
@@ -368,7 +256,6 @@ export class ObjectivesComponent {
   }
 
   editRow(row: ObjectiveDTO) {
-
     if (row.Id == 0) {
       this.objectiveService.createObjective(row).subscribe((newObjective: ObjectiveDTO) => {
         row.Id = newObjective.Id
@@ -431,23 +318,8 @@ export class ObjectivesComponent {
     return false
   }
 
-/*   public isAllSelected():boolean {
-    return this.dataSource.every((item: any) => item.isSelected);
-  } */
-
-/*   public isAnySelected():boolean {
-    return this.dataSource.some((item: any) => item.isSelected);
-  } */
-
-/*   public selectAll(event):void {
-    this.dataSource = this.dataSource.map((item: any) => ({
-      ...item,
-      isSelected: event.checked,
-    }));
-  } */
-
   private addResiduesList(): void {
-    let errorResponse: any; 
+    let errorResponse: any;
     this.residueService.getResiduesLER()
     .subscribe(
       (residues: ResidueLERDTO[]) => {
@@ -465,7 +337,7 @@ export class ObjectivesComponent {
       (error: HttpErrorResponse) => {
         errorResponse = error.error;
         this.sharedService.errorLog(errorResponse);
-      } 
+      }
     )
   }
 
@@ -485,7 +357,7 @@ export class ObjectivesComponent {
     this.filteredResidues.next(
       this.environmentalDataList.filter(bank => bank.chapterItemName.toLowerCase().includes(search))
     );
-   
+
   }
 
   applyFilter(event: Event) {

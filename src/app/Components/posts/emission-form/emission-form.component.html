@@ -60,30 +60,17 @@
     </mat-card>
   </form>
   <div style="margin-left: auto; margin-right: auto"><span id="postFeedback"></span></div>
-
-
-  <!-- <article *ngIf="dataSource else noDataFoundYet"> -->
-    <button color="warn" mat-raised-button (click)="removeSelectedRows()">Remove selected Rows</button>
+  <mat-form-field >
+    <mat-label>{{'filterByColumn' | translate}}</mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder="Search columns" #input>
+  </mat-form-field>
     <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
       <ng-container [matColumnDef]="col.key" *ngFor="let col of columnsSchema">
         <mat-header-cell *matHeaderCellDef [ngSwitch]="col.key">
-            <span *ngSwitchCase="'isSelected'">
-              <!--               <mat-checkbox
-                    (change)="selectAll($event)"
-                    [checked]="isAllSelected()"
-                    [indeterminate]="!isAllSelected() && isAnySelected()">
-                </mat-checkbox> -->
-            </span>
             <span *ngSwitchDefault>{{ col.label }}</span>
         </mat-header-cell>
         <mat-cell *matCellDef="let element">
           <div [ngSwitch]="col.type" *ngIf="!element.isEdit">
-            <ng-container *ngSwitchCase="'isSelected'">
-                <mat-checkbox
-                  (change)="element.isSelected = $event.checked"
-                  [checked]="element.isSelected">
-                </mat-checkbox>
-            </ng-container>
 
             <div class="btn-edit" *ngSwitchCase="'isEdit'">
               <button mat-icon-button (click)="element.isEdit = !element.isEdit"
@@ -94,9 +81,6 @@
                 matTooltip="Delete" color="warn"><i class="fa-solid fa-trash fa-xs"></i>
               </button>
             </div>
-            <!-- <span *ngSwitchDefault ngClass="small-data">{{element[col.key].split('#')[0]}}</span>
-            <span *ngSwitchDefault ngClass="small-data">{{element[col.key].split('#')[1]}}</span>
-            <span *ngSwitchDefault ngClass="small-data">{{element[col.key].split('#')[2]}}</span> -->
             <span *ngSwitchCase="'number'" ngClass="small-data">
               {{ element[col.key] | number: '1.2-3' }}
             </span>
@@ -112,9 +96,6 @@
             <span *ngSwitchCase="'isSelected'" ngClass="small-data">{{element[col.key]}}</span>
             <span *ngSwitchCase="'label'" ngClass="small-data">{{element[col.key]}}</span>
             <input *ngSwitchCase="'number'" [type]="col.type" [(ngModel)]="element[col.key]" ngClass="small-data-text" [style.width.px]='50'/>
-            <!-- <input title="Alcance 1" *ngSwitchCase="'number'" [type]="'text'" [id]="'scope1_'+col.key" [value]="element[col.key].split('#')[1]" (change)="getScopeOne(col.key, element, $event)" ngClass="small-data inputScopeOne" [style.width.px]='50'/>
-            <input title="Alcance 2" *ngSwitchCase="'number'" [type]="'text'" [id]="'scope2_'+col.key" [value]="element[col.key].split('#')[2]" (blur)="getScopeTwo(col.key, element, $event)" ngClass="small-data inputScopeTwo" [style.width.px]='50'/> -->
-            <!-- <input *ngSwitchCase="'number'" [type]="'hidden'" [(ngModel)]="element[col.key]" ngClass="small-data" [style.width.px]='50'/> -->
           </div>
       </mat-cell>
       </ng-container>
@@ -122,7 +103,6 @@
       <mat-header-row *matHeaderRowDef="columnsDisplayed"></mat-header-row>
       <mat-row *matRowDef="let row; columns: columnsDisplayed;"></mat-row>
     </mat-table>
-<!-- </article> -->
 
 <ng-template #noDataFoundYet>
   <span class="loader">No data found yet...</span>

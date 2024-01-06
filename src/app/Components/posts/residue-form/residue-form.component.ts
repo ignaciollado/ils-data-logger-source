@@ -40,49 +40,6 @@ const RESIDUES_DATA = [
   {Id: 4, delegation: "Son Castelló", year: "2020", residueES: "Urbano Mezclado (kg)", "jan": 1.2550}
 ];
 
-/* const RESIDUELIST_DATA = [
-  {
-    "chapterItemId": "010101",
-    "chapterItemName": "Residuos de la extracción de minerales metálicos"
-  },
-  {
-    "chapterItemId": "010102",
-    "chapterItemName": "Residuos de la extracción de minerales no metálicos"
-  },
-  {
-    "chapterItemId": "010304",
-    "chapterItemName": "Estériles que generan ácido procedentes de la transformación de minerales sulfurados"
-  },
-  {
-    "chapterItemId": "010305",
-    "chapterItemName": "Otros estériles que contienen sustancias peligrosas"
-  },
-  {
-    "chapterItemId": "010306",
-    "chapterItemName": "Estériles distintos de los mencionados en los códigos 01 03 04 y 01 03 05"
-  },
-  {
-    "chapterItemId": "010307",
-    "chapterItemName": "Otros residuos que contienen sustancias peligrosas procedentes de la transformación física y química de minerales metálicos"
-  },
-  {
-    "chapterItemId": "010308",
-    "chapterItemName": "Residuos de polvo y arenilla distintos de los mencionados en el código 01 03 07"
-  },
-  {
-    "chapterItemId": "010309",
-    "chapterItemName": "Lodos rojos procedentes de la producción de alúmina distintos de los mencionados en el código 01 03 10"
-  },
-  {
-    "chapterItemId": "010310",
-    "chapterItemName": "Lodos rojos procedentes de la producción de alúmina que contienen sustancias peligrosas distintos de los residuos mencionados en el código 01 03 07"
-  },
-  {
-    "chapterItemId": "010399",
-    "chapterItemName": "Residuos no especificados en otra categoría"
-  }
-] */
-
 @Component({
   selector: 'app-residue-form',
   templateUrl: './residue-form.component.html',
@@ -121,7 +78,6 @@ export class ResidueFormComponent {
   //dataSource: any = RESIDUES_DATA
   dataSource = new MatTableDataSource<ConsumptionDTO>();
   columnsSchema: any = residueColumns;
-  /* columnsDisplayed = ['delegation', 'year', 'residue', 'enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'setiembre', 'octubre', 'noviembre', 'diciembre', 'ACTIONS']; */
   valid: any = {}
 
   @ViewChild('residueTbSort') residueTbSort = new MatSort();
@@ -134,11 +90,11 @@ export class ResidueFormComponent {
     public filteredResidues: ReplaySubject<ChapterItem[]> = new ReplaySubject<ChapterItem[]>(1);
 
     @ViewChild('singleSelect', { static: true }) singleSelect: MatSelect;
-  
+
     /** Subject that emits when the component has been destroyed. */
     protected _onDestroy = new Subject<void>();
     @Input() searching = false;
-    
+
   constructor(
     private activatedRoute: ActivatedRoute,
     private consumptionService: ConsumptionService,
@@ -206,7 +162,7 @@ export class ResidueFormComponent {
   }
 
   private loadResidues(): void {
-    let errorResponse: any; 
+    let errorResponse: any;
     this.residueService.getResiduesLER()
     .subscribe(
       (residues: ResidueLERDTO[]) => {
@@ -224,7 +180,7 @@ export class ResidueFormComponent {
       (error: HttpErrorResponse) => {
         errorResponse = error.error;
         this.sharedService.errorLog(errorResponse);
-      } 
+      }
     )
   }
 
@@ -251,7 +207,7 @@ export class ResidueFormComponent {
                   this.residuesItem
                 })
               })
-         
+
           })
           this.dataSource = new MatTableDataSource(this.consumptions)
           this.dataSource.sort = this.residueTbSort
@@ -281,7 +237,7 @@ export class ResidueFormComponent {
     this.filteredResidues.next(
       this.residuesItem.filter(bank => bank.chapterItemName.toLowerCase().includes(search))
     );
-   
+
   }
 
   private createResidueConsumption(): void {
@@ -330,26 +286,6 @@ export class ResidueFormComponent {
 
   }
 
- /*  deleteResidue(consumptionId: number): void {
-
-    let errorResponse: any;
-    this.result = confirm('Confirm delete this residue.');
-    if (this.result) {
-      this.consumptionService.deleteConsumption(consumptionId).subscribe(
-        (rowsAffected: deleteResponse) => {
-          if (rowsAffected.affected > 0) {
-
-          }
-        },
-        (error: HttpErrorResponse) => {
-          errorResponse = error.error;
-          this.sharedService.errorLog(errorResponse);
-        }
-      )
-      this.loadConsumption(this.userId)
-    }
-  }
- */
   public saveResidueForm(): void {
 
     this.isValidForm = false;
@@ -378,7 +314,7 @@ export class ResidueFormComponent {
   public addRow() {
     /*  const newRow = {"delegation": this.delegation.value, "year": this.yearObjective.value, "energyES": this.energy.value, "objectiveType": this.objectiveType.value, isEdit: true} */
     /*  this.dataSource = [...this.dataSource, newRow];  */
-    
+
     const newRow: ConsumptionDTO = {
       consumptionId: '0',
       companyId: this.userId,
@@ -386,18 +322,6 @@ export class ResidueFormComponent {
       aspectId: 3,
       residueId: this.residue.value,
       year: this.yearResidue.value,
-      /* jan: '0',
-      feb: '0',
-      mar: '0',
-      apr: '0',
-      may: '0',
-      jun: '0',
-      jul: '0',
-      aug: '0',
-      sep: '0',
-      oct: '0',
-      nov: '0',
-      dec: '0', */
       quantity: 0,
       energy: this.residue.value,
       scopeOne: 0,
@@ -488,21 +412,6 @@ export class ResidueFormComponent {
     }
     return false
   }
-
-/*   public isAllSelected():boolean {
-    return this.dataSource.every((item: any) => item.isSelected);
-  }
- */
-/*   public isAnySelected():boolean {
-    return this.dataSource.some((item: any) => item.isSelected);
-  } */
-
-/*   public selectAll(event):void {
-    this.dataSource = this.dataSource.map((item: any) => ({
-      ...item,
-      isSelected: event.checked,
-    }));
-  } */
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;

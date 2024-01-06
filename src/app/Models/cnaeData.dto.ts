@@ -63,11 +63,11 @@ export class CnaeDataDTO {
   }
 
 export const CnaeColumns = [
-  {
+/*   {
     key: 'isSelected',
     type: 'isSelected',
     label: '',
-  },
+  }, */
 
   {
     key: "delegation",

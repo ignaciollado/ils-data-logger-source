@@ -104,11 +104,11 @@ constructor(
 }
 
 export const energyColumns = [
-  {
+/*   {
     key: 'isSelected',
     type: 'isSelected',
     label: '',
-  },
+  }, */
   {
       key: "delegation",
       type: "text",
@@ -193,11 +193,11 @@ export const energyColumns = [
 ]
 
 export const waterColumns = [
-  {
+/*   {
     key: 'isSelected',
     type: 'isSelected',
     label: '',
-  },
+  }, */
   {
       key: "delegation",
       type: "text",
@@ -276,11 +276,11 @@ export const waterColumns = [
 ]
 
 export const emissionColumns = [
-  {
+/*   {
     key: 'isSelected',
     type: 'isSelected',
     label: '',
-  },
+  }, */
   {
     key: "delegation",
     type: 'label',
@@ -296,71 +296,71 @@ export const emissionColumns = [
     type: "number",
     label: "Emissions"
   },
-  { 
+  {
     key:"scopeOne",
     type: "number",
     label: "Scope one",
   },
-  { 
+  {
     key:"scopeTwo",
     type: "number",
     label: "Scope two",
   },
-  
-  /* { 
+
+  /* {
     key: "jan",
     type: 'number',
     label: "January"
   },
- 
+
   {
     key: "feb",
     type: 'number',
     label: "February"
   },
-  
+
   {
     key: "mar",
     type: 'number',
     label: "March"
   },
- 
+
   {
     key: "apr",
     type: 'number',
     label: "April"
   },
-  
+
   {
     key: "may",
     type: 'number',
     label: "May"
   },
- 
+
   {
     key: "jun",
     type: 'number',
     label: "Juny"
   },
-  
+
   {
     key: "jul",
     type: 'number',
     label: "July"
   },
-  
+
   {
     key: "aug",
     type: 'number',
     label: "August"
   },
-  
+
   {
     key: "sep",
     type: 'number',
     label: "September"
   },
-  
+
   {
     key: "oct",
     type: 'number',
@@ -414,11 +414,11 @@ export const emissionColumns = [
 ]
 
 export const residueColumns = [
-  {
+/*   {
     key: 'isSelected',
     type: 'isSelected',
     label: '',
-  },
+  }, */
   {
     key: "delegation",
     type: "text",

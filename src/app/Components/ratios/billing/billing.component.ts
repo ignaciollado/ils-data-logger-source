@@ -37,8 +37,6 @@ const BILLING_DATA = [
   {Id: 4, delegation: "Son Castelló", year: "2020", "jan": 1},
   {Id: 5, delegation: "Son Castelló", year: "2023", "jan": 1}
 ];
-
-
 @Component({
   selector: 'app-billing',
   templateUrl: './billing.component.html',
@@ -84,14 +82,6 @@ export class BillingComponent {
   columnsSchema: any = BillingColumns;
 
   valid: any = {}
-
-/*   @ViewChild(MatSort) billingTbSort = {} as MatSort;
-  @ViewChild(MatPaginator) paginator = {} as MatPaginator; */
-
-/*   ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.billingTbSort;
-} */
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -160,31 +150,6 @@ export class BillingComponent {
     }
   }
 
-/*   deleteBilling(billingId: number): void {
-    let errorResponse: any;
-    this.result = confirm('Confirm delete this billing.');
-    if (this.result) {
-      this.billingService.deleteBilling(billingId).subscribe(
-        (rowsAffected: deleteResponse) => {
-          if (rowsAffected.affected > 0) {
-
-          }
-          this.loadBillings(this.userId)
-        },
-        (error: HttpErrorResponse) => {
-          errorResponse = error.error;
-          this.sharedService.errorLog(errorResponse);
-        }
-      )
-      this.loadBillings(this.userId)
-    }
-  } */
-
-  public applyFilter(value: Event):void {
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
-  }
-
   public addRow() {
 
     /*  const newRow = {"delegation": this.delegation.value, "year": this.yearObjective.value, "energyES": this.energy.value, "objectiveType": this.objectiveType.value, isEdit: true} */
@@ -195,18 +160,6 @@ export class BillingComponent {
       companyId: +this.userId,
       companyDelegationId: this.delegation.value,
       year: this.yearBilling.value,
-      /* jan: '0',
-      feb: '0',
-      mar: '0',
-      apr: '0',
-      may: '0',
-      jun: '0',
-      jul: '0',
-      aug: '0',
-      sep: '0',
-      oct: '0',
-      nov: '0',
-      dec: '0', */
       isEdit: true,
       isSelected: false,
     };
@@ -237,7 +190,7 @@ export class BillingComponent {
     );
   });
   }
-  
+
   public removeSelectedRows() {
     /* this.dataSource = this.dataSource.filter((u: any) => !u.isSelected); */
 
@@ -284,11 +237,12 @@ export class BillingComponent {
     /* return this.dataSource.some((item: any) => item.isSelected); */
   }
 
-  public selectAll(event) {
-    /* this.dataSource = this.dataSource.map((item: any) => ({
-      ...item,
-      isSelected: event.checked,
-    })); */
-  }
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
 
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
+  }
 }

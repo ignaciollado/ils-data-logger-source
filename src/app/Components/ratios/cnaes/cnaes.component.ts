@@ -98,12 +98,6 @@ export class CnaesComponent {
   columnsSchema: any = CnaeColumns
 
   valid: any = {}
-/*   @ViewChild('personTbSort') personTbSort = new MatSort();
-  @ViewChild('paginator') cnaePaginator: MatPaginator; */
-
-/*   ngAfterViewInit() {
-    this.dataSource.sort = this.personTbSort;
-  } */
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -201,18 +195,6 @@ export class CnaesComponent {
       companyDelegationId: this.delegation.value,
       cnaeUnitSelected: this.currentActivityIndicator,
       year: this.yearCnae.value,
-      /* jan: 0,
-      feb: 0,
-      mar: 0,
-      apr: 0,
-      may: 0,
-      jun: 0,
-      jul: 0,
-      aug: 0,
-      sep: 0,
-      oct: 0,
-      nov: 0,
-      dec: 0, */
       isEdit: true,
       isSelected: false,
     };
@@ -275,9 +257,12 @@ export class CnaesComponent {
       }) */
   }
 
-  public applyFilter(value: Event):void {
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value
+    this.dataSource.filter = filterValue.trim().toLowerCase()
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
   }
 }
 

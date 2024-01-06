@@ -1,33 +1,15 @@
 
-<div class="container">
-  <div *ngFor="let consumption of consumptions" class="card">
-    <h3>Aspect: <strong>{{ consumption.aspectES }}</strong></h3>
-    <h4 *ngIf="consumption.aspectId == 1">Energy type: <strong>{{ consumption.energyES }}</strong></h4>
-    <h4 *ngIf="consumption.aspectId == 3">Residue type: <strong>{{ consumption.residueES }}</strong></h4>
-
-    <p>Quantity: {{ consumption.quantity }} </p>
-    <p *ngIf="consumption.aspectId == 3">Reuse: <strong>{{ consumption.reuse }}</strong> %</p>
-    <p *ngIf="consumption.aspectId == 3">Recycling: <strong>{{ consumption.recycling }}</strong> %</p>
-    <p *ngIf="consumption.aspectId == 3">Incineration: <strong>{{ consumption.incineration }}</strong> %</p>
-    <p *ngIf="consumption.aspectId == 3">Dump: <strong>{{ consumption.dump }}</strong> %</p>
-    <p *ngIf="consumption.aspectId == 3">Compost: <strong>{{ consumption.compost }}</strong> %</p>
-
-
-    <p>From date: {{ consumption.fromDate| formatDate: 3 }}</p>
-    <p>To date: {{ consumption.toDate| formatDate: 3 }}</p>
-    <div *ngIf="showButtons">
-      <p>Delegation: {{ consumption.delegation }}</p>
-    </div>
-
-    <p>Added when: {{ consumption.created_at }}</p>
-
-    <div *ngIf="showButtons">
-      <button mat-icon-button color="accent" matTooltip="View detail"
-      aria-label="Button that displays a tooltip and shows the detail" (click)="goToDetail(+consumption.consumptionId)">
-      <i class="fa-solid fa-clipboard-list fa-2xl"></i>
-      </button>
-    </div>
-  </div>
-  <span *ngIf="!consumptions" class="loader">No data found yet...
-    <mat-progress-bar class="progress-bar-loader" color="accent" mode="indeterminate" *ngIf="!consumptions"></mat-progress-bar></span>
+<div class="container-form">
+ <p>
+  La herramienta de industria local sostenible es una solución integral para promover prácticas 
+  respetuosas con el medio ambiente en el sector industrial de las Islas Baleares. </p>
+  <p>Nuestra plataforma proporciona recursos para que las empresas locales puedan implementar medidas 
+  sostenibles, reducir su impacto ambiental y contribuir al desarrollo sostenible de la comunidad.</p>
+  <p>Con nuestra herramienta, las empresas pueden acceder a información actualizada, mejores prácticas y 
+  casos de éxito en sostenibilidad, ayudándolas a avanzar hacia un futuro más verde y próspero.
+ </p>
+ 
+ <a [routerLink]="['/login']" routerLinkActive="active" ariaCurrentWhenActive="page">Log in</a>
+ <span>¿Aún no tiene acceso?</span>
+ <a [routerLink]="['/register']" routerLinkActive="active" ariaCurrentWhenActive="page">Sign Up</a>
 </div>

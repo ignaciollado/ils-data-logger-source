@@ -28,7 +28,7 @@ import { NotFoundComponent } from './error-pages/not-found/not-found.component';
 const routes: Routes = [
   {
     path: '',
-    component: DashboardComponent,
+    component: HomeComponent,
   },
   {
     path: 'login',

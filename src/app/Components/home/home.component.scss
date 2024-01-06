@@ -1,17 +1,15 @@
 @use "../../../styles/themes/ils-theme" as theme;
 
-.container {
+.container-form {
   display: grid;
-  grid-template-columns: auto auto;
-  padding: 2px 16px;
-}
-
-.badge {
-  color: black;
+  grid-template-rows: auto auto auto auto auto;
+  padding: 4rem;
   margin-right: 5px;
   margin-left: 5px;
-  border-radius: 10px;
-  padding: 5px 10px;
+}
+
+span,a {
+  text-align: center;
 }
 
 @media only screen and (max-width: theme.$app-break-point) {

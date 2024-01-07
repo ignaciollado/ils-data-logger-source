@@ -28,22 +28,6 @@
   -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
   animation: fadein 0.5s, fadeout 0.5s 2.5s;
 }
-.button-add-row {
-  background: #1b9e1b;
-  color: #ffffff;
-}
-.button-add-row {
-  background: #1b9e1b;
-  color: #ffffff;
-}
-.button-remove-rows {
-  background: red;
-  color: #ffffff;
-  margin-right: 5px;
-}
-.button-remove {
-  color: red;
-}
 
 .btn-edit{
   display: grid;
@@ -70,18 +54,9 @@ outline: none;
 .small-data-input {
   font-size: .6rem;
   background-color: #fff;
-  border: 2px solid #679da9!important;
+  border: 2px solid #365446!important;
   border-radius: .2rem;
 }
-
-/* mat-table {
-  margin-top: .5rem;
-  margin-bottom: 2rem;
-  width: 100%;
-  max-height: 500px;
-  overflow: auto;
-  white-space: nowrap;
-} */
 
 mat-header-row{
   background-color: #424242;
@@ -97,62 +72,18 @@ mat-cell{
 }
 
 .mat-column-isSelected{
-  /* width :50px;
-  max-width:6rem; */
   word-wrap:break-word;
   max-width:3.5rem;
- /*  padding-left: 0; */
 }
 
 .mat-column-delegation{
-  /* width :50px;
-  max-width:6rem; */
   word-wrap:break-word;
- /*  padding-left: 0; */
 }
 
 .mat-column-year{
-  /* width :50px;*/
   max-width:3rem;
- /* padding-left: 0; */
 }
 
-/* .mat-column-jan{
-  max-width: 4.5rem;
-}
-.mat-column-feb{
-  max-width: 4.5rem;
-}
-.mat-column-mar{
-  max-width: 4.5rem;
-}
-.mat-column-apr{
-  max-width: 4.5rem;
-}
-.mat-column-may{
-  max-width: 4.5rem;
-}
-.mat-column-jun{
-  max-width: 4.5rem;
-}
-.mat-column-jul{
-  max-width: 4.5rem;
-}
-.mat-column-aug{
-  max-width: 4.5rem;
-}
-.mat-column-sep{
-  max-width: 4.5rem;
-}
-.mat-column-oct{
-  max-width: 4.5rem;
-}
-.mat-column-nov{
-  max-width: 4.5rem;
-}
-.mat-column-dec{
-  max-width: 4.5rem;
-} */
 .mat-column-isEdit{
   padding-right: 3rem;
 }

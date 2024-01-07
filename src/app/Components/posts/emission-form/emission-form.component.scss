@@ -29,18 +29,7 @@
   animation: fadein 0.5s, fadeout 0.5s 2.5s;
 }
 
-.button-add-row {
-  background: #1b9e1b;
-  color: #ffffff;
-}
-.button-remove-rows {
-  background: red;
-  color: #ffffff;
-  margin-right: 5px;
-}
-.button-remove {
-  color: red;
-}
+
 .btn-edit{
   display: grid;
   grid-template-columns: 50% 50%;
@@ -62,7 +51,7 @@ input[type=number] {
 .small-data-text {
   font-size: .6rem;
   background-color: #fff;
-  border: 2px solid #679da9!important;
+  border: 2px solid #365446!important;
   border-radius: .2rem;
 }
 
@@ -73,33 +62,6 @@ input[type=number] {
 .containerEmission{
   display: grid;
   grid-template-rows: 100%;
-}
-
-.co2 {
-  color: aquamarine;
-}
-.inputCo2 {
-  font-size: .5rem;
-  background-color: aquamarine;
-  border: 1px solid black!important;
-}
-
-.scopeOne {
-  color: rgb(248, 190, 1);
-}
-.inputScopeOne {
-  font-size: .5rem;
-  background-color: rgb(248, 190, 1);
-  border: 1px solid black!important;
-}
-
-.scopeTwo {
-  color: rgb(248, 100, 1);
-}
-.inputScopeTwo {
-  font-size: .5rem;
-  background-color: rgb(248, 100, 1);
-  border: 1px solid black!important;
 }
 
 .input-column{
@@ -126,5 +88,8 @@ mat-cell{
 
 .mat-column-year{
   word-wrap:break-word;
+}
+.mat-column-isEdit{
+  padding-right: 0;
 }
 

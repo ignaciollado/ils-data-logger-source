@@ -56,7 +56,7 @@ outline: none;
 .small-data-input {
   font-size: .6rem;
   background-color: #fff;
-  border: 2px solid #679da9!important;
+  border: 2px solid #365446!important;
   border-radius: .2rem;
 }
 
@@ -71,11 +71,6 @@ mat-header-cell {
 
 mat-cell{
   background-color: #919191;
-}
-
-.mat-column-isSelected{
-  word-wrap:break-word;
-  max-width:3.5rem;
 }
 
 .mat-column-delegation{

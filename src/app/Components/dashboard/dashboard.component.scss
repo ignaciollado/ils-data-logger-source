@@ -18,6 +18,10 @@ form {
       "f f f f";
 }
 
+.small-data {
+  font-size: .6rem;
+}
+
 .item1 {
   grid-area: a;
   align-self: center;
@@ -61,4 +65,13 @@ canvas {
         grid-template-columns: 100%;
         gap: 1.5rem;
     }
+    .fields-container{
+      grid-template-columns: auto;
+      grid-template-areas:
+        "a"
+        "b"
+        "d"
+        "e"
+        "f f";
+  }
 }

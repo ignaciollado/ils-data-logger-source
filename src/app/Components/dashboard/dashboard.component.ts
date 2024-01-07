@@ -48,61 +48,6 @@ export class DashboardComponent implements OnInit {
   isResidue: Boolean = false
 
   graphConsumption: graphConsumptionData[] = []
-  quantity2GraphEnergy: number[] = [0,0,0,0,0,0,0,0,0,0,0,0]
-  quantity15GraphEnergy:number[] = [0,0,0,0,0,0,0,0,0,0,0,0]
-  quantity16GraphEnergy:number[] = [0,0,0,0,0,0,0,0,0,0,0,0]
-  quantity6GraphEnergy: number[] = [0,0,0,0,0,0,0,0,0,0,0,0]
-  quantity18GraphEnergy:number[] = [0,0,0,0,0,0,0,0,0,0,0,0]
-  quantity5GraphEnergy: number[] = [0,0,0,0,0,0,0,0,0,0,0,0]
-  quantity14GraphEnergy:number[] = [0,0,0,0,0,0,0,0,0,0,0,0]
-  ratioPersona14GraphEnergy:number[] = [0,0,0,0,0,0,0,0,0,0,0,0]
-  ratioBilling14GraphEnergy:number[] = [0,0,0,0,0,0,0,0,0,0,0,0]
-
-  quantity19GraphEnergy:number[] = [0,0,0,0,0,0,0,0,0,0,0,0]
-  quantity20GraphEnergy:number[] = [0,0,0,0,0,0,0,0,0,0,0,0]
-  quantity21GraphEnergy:number[] = [0,0,0,0,0,0,0,0,0,0,0,0]
-  quantity23GraphEnergy:number[] = [0,0,0,0,0,0,0,0,0,0,0,0]
-  quantity22GraphEnergy:number[] = [0,0,0,0,0,0,0,0,0,0,0,0]
-
-  quantity1GraphResidue:   number[] = [0,0,0,0,0,0,0,0,0,0,0,0]
-  quantity2GraphResidue:  number[] = [0,0,0,0,0,0,0,0,0,0,0,0]
-  quantity3GraphResidue:  number[] = [0,0,0,0,0,0,0,0,0,0,0,0]
-  quantity4GraphResidue:   number[] = [0,0,0,0,0,0,0,0,0,0,0,0]
-  quantity5GraphResidue:  number[] = [0,0,0,0,0,0,0,0,0,0,0,0]
-  quantity6GraphResidue:   number[] = [0,0,0,0,0,0,0,0,0,0,0,0]
-  quantity7GraphResidue:  number[] = [0,0,0,0,0,0,0,0,0,0,0,0]
-  quantity8GraphResidue:  number[] = [0,0,0,0,0,0,0,0,0,0,0,0]
-  quantity9GraphResidue:  number[] = [0,0,0,0,0,0,0,0,0,0,0,0]
-  quantity10GraphResidue:  number[] = [0,0,0,0,0,0,0,0,0,0,0,0]
-  quantity11GraphResidue:  number[] = [0,0,0,0,0,0,0,0,0,0,0,0]
-  quantity12GraphResidue:  number[] = [0,0,0,0,0,0,0,0,0,0,0,0]
-  quantity13GraphResidue:  number[] = [0,0,0,0,0,0,0,0,0,0,0,0]
-  quantity14GraphResidue:  number[] = [0,0,0,0,0,0,0,0,0,0,0,0]
-
-  quantityWater:  number[] = [0,0,0,0,0,0,0,0,0,0,0,0]
-
-  quantityWaterJanuary : number = 0
-  quantityWaterFebruary : number = 0
-  quantityWaterMarch : number = 0
-  quantityWaterApril : number = 0
-  quantityWaterMay : number = 0
-  quantityWaterJune : number = 0
-  quantityWaterJuly : number = 0
-  quantityWaterAugust : number = 0
-  quantityWaterSeptember : number = 0
-  quantityWaterOctober : number = 0
-  quantityWaterNovember : number = 0
-  quantityWaterDecember : number = 0
-
-  quantityEmissions2021ScopeOne: number = 0
-  quantityEmissions2022ScopeOne: number = 0
-  quantityEmissions2023ScopeOne: number = 0
-  quantityEmissions2024ScopeOne: number = 0
-
-  quantityEmissions2021ScopeTwo: number = 0
-  quantityEmissions2022ScopeTwo: number = 0
-  quantityEmissions2023ScopeTwo: number = 0
-  quantityEmissions2024ScopeTwo: number = 0
 
   quantityMaterials: number = 0
 

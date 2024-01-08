@@ -3,12 +3,17 @@
 .container-form {
   display: grid;
   grid-template-rows: auto auto auto auto auto;
-  padding: 4rem;
+
+
   margin-right: 5px;
   margin-left: 5px;
 }
-p:last-child {
-  color: lime;
+p {
+  padding-top: 8rem;
+  padding-bottom: 4rem;
+
+  padding-left: 30rem;
+  padding-right: 30rem;
 }
 span,a {
   text-align: center;
@@ -22,8 +27,9 @@ a:hover {
 
 @media only screen and (max-width: theme.$app-break-point) {
 
-  .container {
+  .container-form {
     grid-template-columns: auto;
+    padding: 2rem;
   }
 
   .has-to-be-shown {

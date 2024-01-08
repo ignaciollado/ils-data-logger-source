@@ -276,19 +276,19 @@ export class DashboardComponent implements OnInit {
     if (this.residue.value) {
       graphDataTemp = graphDataTemp.filter((item:any) => item.energyName == this.residue.value)
     }
-
+    console.log("consumos ", graphDataTemp)
     graphDataTemp.map((item:graphConsumptionData) => {
         switch ( this.aspect.value ) {
-          case 1:
+          case '1':
             theDataType = item.energyName
               break;
-          case 2:
+          case '2':
             theDataType = ''
               break;
-          case 3:
+          case '3':
             theDataType = item.residueName
               break;
-          case 5:
+          case '5':
             theDataType = ''
               break;
        }
@@ -398,6 +398,9 @@ export class DashboardComponent implements OnInit {
     this.residue.reset()
     this.isEnergy = false
     this.isResidue = false
+    if (this.chart) {
+      this.chart.destroy()
+    }
   }
 
   onChartHover = ($event: any) => {

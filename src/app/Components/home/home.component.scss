@@ -12,8 +12,8 @@ p {
   padding-top: 8rem;
   padding-bottom: 4rem;
 
-  padding-left: 30rem;
-  padding-right: 30rem;
+  padding-left: 30%;
+  padding-right: 30%;
 }
 span,a {
   text-align: center;
@@ -30,6 +30,14 @@ a:hover {
   .container-form {
     grid-template-columns: auto;
     padding: 2rem;
+  }
+
+  p {
+    padding-top: 2rem;
+    padding-bottom: 4rem;
+
+    padding-left: 1rem;
+    padding-right: 1rem;
   }
 
   .has-to-be-shown {

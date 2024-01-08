@@ -94,26 +94,22 @@ export class DashboardComponent implements OnInit {
       '#F1F8E9',
       '#C5CAE9',
       '#DCEDC8',
-      '#9FA8DA',
-      '#C5E1A5',
-      '#7986CB',
-      '#AED581',
-      '#5C6BC0',
-      '#9CCC65',
-      '#3F51B5',
-      '#8BC34A',
-      '#3949AB',
-      '#7CB322',
-      '#303F9F',
-      '#689F38',
-      '#283593',
-      '#558B2F',
+      '#ff0000',
+      '#636363',
+      '#0000ff',
+      '#644536',
+      '#1E1E24',
+      '#FEEA00',
+      '#d90429',
+      '#ff006e',
+      '#e6b609',
+      '#00ff00',
+      '#eae2b7',
+      '#fcbf49',
+      '#F18F01',
+      '#d62828',
       '#1A237E',
       '#365446',
-      '#8C9EFF',
-      '#CCFF90',
-      '#536DFE',
-      '#B2FF59'
       ]
     this.companyId = this.jwtHelper.decodeToken().id_ils;
     this.graphMonths = [ 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December' ]
@@ -223,7 +219,6 @@ export class DashboardComponent implements OnInit {
 
   private loadconsumptions(companyId: string): void {
     let errorResponse: any;
-
     this.consumptionService.getAllConsumptionsByCompany(companyId)
     .subscribe(
       (consumptions: ConsumptionDTO[]) => {
@@ -235,6 +230,9 @@ export class DashboardComponent implements OnInit {
                 "delegation": consumption.delegation,
                 "year": consumption.year,
                 "energyName": consumption.energyES,
+                "water": consumption.water,
+                "residueName": consumption.residueES,
+                "emission": consumption.aspectES,
                 "jan": consumption.jan,
                 "feb": consumption.feb,
                 "mar": consumption.mar,
@@ -250,7 +248,6 @@ export class DashboardComponent implements OnInit {
             })
         }
         )
-        this.chartEnergy();
       },
       (error: HttpErrorResponse) => {
         errorResponse = error.error;
@@ -264,6 +261,7 @@ export class DashboardComponent implements OnInit {
     let graphData: graphConsumptionData[] = []
     let myDatasets: any[] = []
     let startPrimaryColor: number = 18
+    let theDataType: string = ''
     if (this.chart) {
       this.chart.destroy()
     }
@@ -280,20 +278,35 @@ export class DashboardComponent implements OnInit {
     }
 
     graphDataTemp.map((item:graphConsumptionData) => {
+        switch ( this.aspect.value ) {
+          case 1:
+            theDataType = item.energyName
+              break;
+          case 2:
+            theDataType = ''
+              break;
+          case 3:
+            theDataType = item.residueName
+              break;
+          case 5:
+            theDataType = ''
+              break;
+       }
       graphData.push({
         'delegation': item.delegation,
-        'energyName': item.energyName,
+        'dataType': theDataType,
         'year': item.year,
         'monthlyData': [item.jan, item.feb, item.mar, item.apr, item.may, item.jun, item.jul, item.aug, item.sep, item.oct, item.nov, item.dec]
       })
     })
+
     graphData.map(item=> {
       myDatasets.push(
           {
-           label: item.year+" "+item.energyName,
+           label: item.year+" "+item.dataType,
            data: item.monthlyData,
            backgroundColor: this.primaryColors[startPrimaryColor--],
-           stack: item.energyName,
+           stack: item.dataType,
            borderWidth: 0
           },
       )
@@ -355,6 +368,7 @@ export class DashboardComponent implements OnInit {
       }
     });
   }
+
   updateFields(e: any) {
     if (e.value == 1) {
       this.isEnergy = true

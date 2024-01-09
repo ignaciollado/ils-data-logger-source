@@ -13,11 +13,12 @@ form {
 }
 .fields-container{
     display: grid;
-    grid-template-columns: repeat(4, auto);
+    grid-template-columns: repeat(3, auto);
     grid-template-areas:
-      "a b d e"
+      "a b c d"
+      "e e e e"
       "f f f f"
-      ;
+      "g g g g";
 }
 
 .small-data {
@@ -48,17 +49,23 @@ form {
   grid-area: e;
   align-self: center;
   justify-self: center;
+  padding-bottom: 1rem;
 }
 .item6 {
-    grid-area: f;
-    align-self: center;
-    justify-self: center;
-  }
+  grid-area: f;
+  align-self: center;
+  justify-self: center;
+}
 .item7 {
-    grid-area: g;
-    align-self: center;
-    justify-self: center;
-  }
+  grid-area: g;
+  align-self: center;
+  justify-self: center;
+}
+.item8 {
+  grid-area: h;
+  align-self: center;
+  justify-self: center;
+}
 canvas {
   box-sizing: border-box;
   display: block;

@@ -1,13 +1,10 @@
-import { HttpErrorResponse } from '@angular/common/http';
-import { Component, Input, OnInit } from '@angular/core';
-import { ConsumptionDTO, graphConsumptionData } from 'src/app/Models/consumption.dto';
-import { ConsumptionService } from 'src/app/Services/consumption.service';
-import { SharedService } from 'src/app/Services/shared.service';
-import Chart from 'chart.js/auto';
-import {ChartDataset, ChartType, ChartOptions} from 'chart.js';
-import { JwtHelperService } from '@auth0/angular-jwt';
-import { HeaderMenusService } from 'src/app/Services/header-menus.service';
-import { HeaderMenus } from 'src/app/Models/header-menus.dto';
+import { HttpErrorResponse } from '@angular/common/http'
+import { Component, Input, OnInit } from '@angular/core'
+import { SharedService } from 'src/app/Services/shared.service'
+import Chart from 'chart.js/auto'
+import { JwtHelperService } from '@auth0/angular-jwt'
+import { HeaderMenusService } from 'src/app/Services/header-menus.service'
+import { HeaderMenus } from 'src/app/Models/header-menus.dto'
 
 import {
   FormControl,
@@ -16,12 +13,19 @@ import {
   UntypedFormGroup,
   Validators,
 } from '@angular/forms';
-import { EnergyDTO } from 'src/app/Models/energy.dto';
-import { DelegationDTO } from 'src/app/Models/delegation.dto';
-import { EnergyService } from 'src/app/Services/energy.service';
-import { DelegationService } from 'src/app/Services/delegation.service';
-import { ChapterItem, ResidueLERDTO } from 'src/app/Models/residueLER.dto';
-import { ResidueService } from 'src/app/Services/residue.service';
+
+import { EnergyService } from 'src/app/Services/energy.service'
+import { DelegationService } from 'src/app/Services/delegation.service'
+import { ConsumptionService } from 'src/app/Services/consumption.service'
+import { ResidueService } from 'src/app/Services/residue.service'
+import { ObjectiveService } from 'src/app/Services/objective.service'
+import { BillingService } from 'src/app/Services/billing.service'
+import { ObjectiveColumns, ObjectiveDTO } from 'src/app/Models/objective.dto'
+import { BillingColumns, BillingDTO } from 'src/app/Models/billing.dto'
+import { EnergyDTO } from 'src/app/Models/energy.dto'
+import { DelegationDTO } from 'src/app/Models/delegation.dto'
+import { ConsumptionDTO, graphConsumptionData } from 'src/app/Models/consumption.dto'
+import { ChapterItem, ResidueLERDTO } from 'src/app/Models/residueLER.dto'
 
 @Component({
   selector: 'app-dashboard',
@@ -34,6 +38,7 @@ export class DashboardComponent implements OnInit {
   aspect: UntypedFormControl
   delegation: UntypedFormControl
   yearGraph: UntypedFormControl
+  ratioModeGraph: UntypedFormControl
   graphForm: UntypedFormGroup
   energy: UntypedFormControl
   residue: UntypedFormControl
@@ -56,6 +61,7 @@ export class DashboardComponent implements OnInit {
   primaryColors!: string[]
   alternateColors!: string[]
   graphMonths: string[]
+  myDatasets: any[] = []
   aspectEnergy: string
   aspectWater: string
   aspectResidue: string
@@ -66,6 +72,8 @@ export class DashboardComponent implements OnInit {
   BORDER:boolean = true
   CHART_AREA:boolean = true
   TICKS:boolean = true
+  isRatiosMode: boolean = false
+
   @Input() searching = false;
   constructor(
     private consumptionService: ConsumptionService,
@@ -74,6 +82,8 @@ export class DashboardComponent implements OnInit {
     private delegationService: DelegationService,
     private residueService: ResidueService,
     private energyService: EnergyService,
+    private objectiveService: ObjectiveService,
+    private billingService: BillingService,
     private formBuilder: UntypedFormBuilder,
     private jwtHelper: JwtHelperService
   ) {
@@ -135,6 +145,7 @@ export class DashboardComponent implements OnInit {
     this.aspect = new UntypedFormControl('', [ Validators.required ])
     this.delegation = new UntypedFormControl('', [ Validators.required ])
     this.yearGraph = new UntypedFormControl('')
+    this.ratioModeGraph = new UntypedFormControl()
     this.energy = new UntypedFormControl('')
     this.residue = new UntypedFormControl('')
 
@@ -142,6 +153,7 @@ export class DashboardComponent implements OnInit {
       aspect: this.aspect,
       delegation: this.delegation,
       yearGraph: this.yearGraph,
+      ratioModeGraph: this.ratioModeGraph,
       energy: this.energy,
       residue: this.residue,
     });
@@ -248,6 +260,7 @@ export class DashboardComponent implements OnInit {
             })
         }
         )
+        this.chartGenerate()
       },
       (error: HttpErrorResponse) => {
         errorResponse = error.error;
@@ -256,10 +269,10 @@ export class DashboardComponent implements OnInit {
     )
   }
 
-  chartEnergy() {
+  chartGenerate() {
     let graphDataTemp: graphConsumptionData[];
     let graphData: graphConsumptionData[] = []
-    let myDatasets: any[] = []
+    
     let startPrimaryColor: number = 18
     let theDataType: string = ''
     if (this.chart) {
@@ -301,7 +314,7 @@ export class DashboardComponent implements OnInit {
     })
 
     graphData.map(item=> {
-      myDatasets.push(
+      this.myDatasets.push(
           {
            label: item.year+" "+item.dataType,
            data: item.monthlyData,
@@ -312,22 +325,14 @@ export class DashboardComponent implements OnInit {
       )
     })
 
-    myDatasets.push(
-      {
-        type: 'line',
-        label: 'Objectives',
-        data: ["45", "15", "45", "15", "45", "15", "15", "15", "45", "15", "15", "15"],
-        backgroundColor: "#000000",
-      }
-    )
-
-    console.log ("mi dataset: ", myDatasets)
+    this.chartObjectiveGenerate()
+    this.chartRatioGenerate()
 
     this.chart = new Chart("graph", {
       type: 'bar',
       data: {
          labels: this.graphMonths,
-         datasets: myDatasets
+         datasets: this.myDatasets
       },
       options: {
         responsive: true,
@@ -367,6 +372,34 @@ export class DashboardComponent implements OnInit {
         }
       }
     });
+  }
+
+  chartObjectiveGenerate() {
+    let theObjective: number[] = []
+    theObjective = [350, 250, 350, 250, 350, 250, 150, 150, 350, 150, 150, 150]
+    this.myDatasets.push(
+      {
+        type: 'line',
+        label: 'Objectives',
+        data: theObjective,
+        backgroundColor: '#DCF2F1',
+        borderColor: '#DCF2F1',
+      }
+    )
+  }
+
+  chartRatioGenerate() {
+    let theRatio: number[] = []
+    theRatio = [250, 150, 250, 150, 250, 150, 250, 150, 250, 150, 250, 150]
+    this.myDatasets.push(
+      {
+        type: 'line',
+        label: 'Ratios',
+        data: theRatio,
+        backgroundColor: '#FF9BD2',
+        borderColor: '#FF9BD2',
+      }
+    )
   }
 
   updateFields(e: any) {

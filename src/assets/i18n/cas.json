@@ -64,13 +64,13 @@
     "dump": "Vertedero",
     "compost": "Compostaje",
     "emissions": "Emisiones",
-    "emissionConsumption": "Emisiones de CO2e (T)",
+    "emissionConsumption": "Emisiones de ",
 
-    "scopeOne": "Alcance uno (T de CO2e)",
-    "scopeTwo": "Alcance dos (T de CO2e)",
+    "scopeOne": "Alcance uno (T de ",
+    "scopeTwo": "Alcance dos (T de ",
     "quantity": "Cantidad",
-    "quantityCO2e": "Cantidad (T de CO2e)",
-    "objectiveCO2e": "Objetivo (T de CO2e)",
+    "quantityCO2e": "Cantidad (T de ",
+    "objectiveCO2e": "Objetivo (T de ",
 
     "selectRatioType": "Seleccione el tipo de 'ratio':",
     "activityIndicator": "Indicador de activitad",

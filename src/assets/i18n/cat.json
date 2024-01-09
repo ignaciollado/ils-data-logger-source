@@ -66,13 +66,13 @@
     "compost": "Compostatge",
 
     "emissions": "Emissions",
-    "emissionConsumption": "Emissions de CO2e (T)",
+    "emissionConsumption": "Emissions de CO<sub>2</sub>e (T)",
 
-    "scopeOne": "Abast un (T de CO2e)",
-    "scopeTwo": "Abast dos (T de CO2e)",
+    "scopeOne": "Abast un (T de CO<sub>2</sub>e)",
+    "scopeTwo": "Abast dos (T de CO<sub>2</sub>e)",
     "quantity": "Quantitat",
-    "quantityCO2e": "Quantitat (T de CO2e)",
-    "objectiveCO2e": "Objectiu (T de CO2e)",
+    "quantityCO2e": "Quantitat (T de CO<sub>2</sub>e)",
+    "objectiveCO2e": "Objectiu (T de CO<sub>2</sub>e)",
 
     "selectRatioType": "Seleccioni el tipus de 'ratio':",
     "activityIndicator": "Indicator d'activitat",

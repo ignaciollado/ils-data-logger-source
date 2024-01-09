@@ -16,7 +16,8 @@ form {
     grid-template-columns: repeat(4, auto);
     grid-template-areas:
       "a b d e"
-      "f f f f";
+      "f f f f"
+      ;
 }
 
 .small-data {
@@ -53,7 +54,11 @@ form {
     align-self: center;
     justify-self: center;
   }
-
+.item7 {
+    grid-area: g;
+    align-self: center;
+    justify-self: center;
+  }
 canvas {
   box-sizing: border-box;
   display: block;
@@ -76,7 +81,8 @@ canvas {
         "b"
         "d"
         "e"
-        "f";
+        "f"
+        "g";
   }
   canvas[_ngcontent-ng-c3434897529]
   {

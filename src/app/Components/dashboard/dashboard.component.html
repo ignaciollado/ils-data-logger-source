@@ -4,7 +4,7 @@
     <form
       *ngIf="graphForm"
       [formGroup]="graphForm"
-      (ngSubmit)="chartEnergy()">
+      (ngSubmit)="chartGenerate()">
       <div class='fields-container'>
         <mat-form-field [style.width.px]=220 class="item1">
           <mat-label>{{'aspect' | translate}}</mat-label>
@@ -61,13 +61,13 @@
           <button mat-raised-button color="accent" (click)="graphFormReset()">Reset</button>
           <button mat-raised-button color="primary" type="submit" [disabled]="!graphForm.valid">Graph</button>
         </mat-button-toggle-group>
-
+        <mat-slide-toggle [(ngModel)]="isRatiosMode" [formControl]="ratioModeGraph" class="item7">Ratio mode graph</mat-slide-toggle>
       </div>
     </form>
   </div>
 
-    <canvas id="graph" aria-label= "Activity graph" role="chart" (chartHover)="onChartHover($event)"
-    (chartClick)="onChartClick($event)">{{ chart }}</canvas>
+    <canvas id="graph" aria-label= "Activity graph" role="chart" 
+    (Click)="onChartClick($event)">{{ chart }}</canvas>
   <app-modal></app-modal>
   <div class="loader" *ngIf="!consumptions">No data loaded yet...</div>
 </div>

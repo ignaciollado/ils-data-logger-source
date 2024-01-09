@@ -63,6 +63,7 @@
         </mat-button-toggle-group>
         <mat-slide-toggle [(ngModel)]="isRatioBilling" [formControl]="ratioBillingGraph" class="item6" (change)="chartRatioBilling()">Graph ratio mode billing</mat-slide-toggle>
         <mat-slide-toggle [(ngModel)]="isRatioCNAE" [formControl]="ratioCNAEgGraph" class="item7" (change)="chartRatioCNAE()">Graph ratio mode CNAE</mat-slide-toggle>
+      
       </div>
     </form>
   </div>
@@ -72,5 +73,3 @@
   <app-modal></app-modal>
   <div class="loader" *ngIf="!consumptions">No data loaded yet...</div>
 </div>
-
-

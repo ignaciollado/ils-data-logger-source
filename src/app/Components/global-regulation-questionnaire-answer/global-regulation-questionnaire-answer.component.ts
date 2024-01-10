@@ -28,7 +28,7 @@ export class GlobalRegulationQuestionnaireAnswerComponent {
     {"vectorName":"MEDIOAMBIENTE GENERAL", "regulation":["Ninguna"]},
   ]
 
-  questionList: QuestionDTO[]
+  /* questionList: QuestionDTO[] */
 
   constructor (
     private enviromentalAuditService: EnvironmentalAuditsService,
@@ -41,7 +41,7 @@ export class GlobalRegulationQuestionnaireAnswerComponent {
   ngOnInit() {
     const questionnaireID = this.route.snapshot.paramMap.get('id');
     this.loadRegulations(+questionnaireID)
-    this.loadQuestions()
+    /* this.loadQuestions() */
   }
 
   loadRegulations(questionnaireID: number){
@@ -53,7 +53,7 @@ export class GlobalRegulationQuestionnaireAnswerComponent {
       })
   }
 
-  private loadQuestions(): void {
+/*   private loadQuestions(): void {
     this.enviromentalAuditService.getQuestionList()
       .subscribe( (questions:QuestionDTO[]) => {
         this.questionList = questions
@@ -61,9 +61,9 @@ export class GlobalRegulationQuestionnaireAnswerComponent {
 
         })
       })
-  }
+  } */
 
-  loadQuestionnaireResult( questionnaireID: number){
+  loadQuestionnaireResult( questionnaireID: number ){
         this.enviromentalAuditService.getQuestionnaireByID( questionnaireID )
           .subscribe( (questionnaires: AnswerDTO[]) =>{
             this.userQuestionnaires = questionnaires
@@ -73,10 +73,9 @@ export class GlobalRegulationQuestionnaireAnswerComponent {
                 this.regVector[(vectorAnswers.vectorId-1)].regulation.map((vReg:any) =>{
                   this.regulationList.map((regulation:regulationsDTO) => {
                     if (regulation.reg_ID == vReg) {
-                     vRegTemp += "<li><span class='ambito'> "+regulation.Ambito+" </span><span> "+regulation.Titulo+`. </span><br><span><a href='${regulation.link}' target='_blank'>`+regulation.link+`</a> </span><span> [<a href='../../../assets/regulation/${vReg}.pdf' target='_blank'>`+vReg+"</a>] </span></li>"
-                   }
+                      vRegTemp += "<li><span class='ambito'> "+regulation.Ambito+" </span><span> "+regulation.Titulo+`. </span><br><span><a href='${regulation.link}' target='_blank'>`+regulation.link+`</a> </span><span> [<a href='../../../assets/regulation/${vReg}.pdf' target='_blank'>`+vReg+"</a>] </span></li>"
+                    }
                   })
-                  console.log ("vRegTemp", vRegTemp)
                   this.regVector[(vectorAnswers.vectorId-1)].regulation = vRegTemp
                 })
 
@@ -242,8 +241,8 @@ export class GlobalRegulationQuestionnaireAnswerComponent {
                     })
                   })
                 this.userQuestionnaireTemp.push(vectorAnswers)
-                console.log ("userQuestionnaireTemp", this.userQuestionnaireTemp)
               })
+              console.log ("userQuestionnaireTemp", this.userQuestionnaireTemp)
             })
           })
   }

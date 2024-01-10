@@ -28,8 +28,6 @@ export class GlobalRegulationQuestionnaireAnswerComponent {
     {"vectorName":"MEDIOAMBIENTE GENERAL", "regulation":["Ninguna"]},
   ]
 
-  /* questionList: QuestionDTO[] */
-
   constructor (
     private enviromentalAuditService: EnvironmentalAuditsService,
     private jwtHelper: JwtHelperService,
@@ -52,16 +50,6 @@ export class GlobalRegulationQuestionnaireAnswerComponent {
         this.loadQuestionnaireResult( +questionnaireID )
       })
   }
-
-/*   private loadQuestions(): void {
-    this.enviromentalAuditService.getQuestionList()
-      .subscribe( (questions:QuestionDTO[]) => {
-        this.questionList = questions
-        questions.map( (vector:QuestionDTO) => {
-
-        })
-      })
-  } */
 
   loadQuestionnaireResult( questionnaireID: number ){
         this.enviromentalAuditService.getQuestionnaireByID( questionnaireID )
@@ -242,7 +230,7 @@ export class GlobalRegulationQuestionnaireAnswerComponent {
                   })
                 this.userQuestionnaireTemp.push(vectorAnswers)
               })
-              console.log ("userQuestionnaireTemp", this.userQuestionnaireTemp)
+              /* console.log ("userQuestionnaireTemp", this.userQuestionnaireTemp) */
             })
           })
   }

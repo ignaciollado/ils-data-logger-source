@@ -31,18 +31,14 @@ a:hover {
     padding: 2rem;
   }
 
-  p {
-    padding-top: 2rem;
-    padding-bottom: 4rem;
-
-    padding-left: 1rem;
-    padding-right: 1rem;
-  }
-
   .has-to-be-shown {
       display: none;
   }
   .not-has-to-be-shown {
       display: block;
   }
+}
+
+@media only screen and (max-width: theme.$app-break-point) {
+
 }

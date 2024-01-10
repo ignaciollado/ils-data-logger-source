@@ -649,6 +649,7 @@ export class DashboardComponent implements OnInit {
     this.residue.reset()
     this.isEnergy = false
     this.isResidue = false
+    this.myDatasets = []
     if (this.chart) {
       this.chart.destroy()
     }

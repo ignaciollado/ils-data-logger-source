@@ -502,7 +502,7 @@ export const residueColumns = [
   },
 ]
 
-export interface graphConsumptionData {
+export interface graphData {
   aspectId?: number,
   delegation?: string,
   year: string,

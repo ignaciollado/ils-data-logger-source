@@ -72,16 +72,6 @@ constructor(
 }
 
 export const ObjectiveColumns = [
-/*       {
-        key: 'isSelected',
-        type: 'isSelected',
-        label: '',
-      }, */
-/*       {
-        key: "Id",
-        type: "hidden",
-        label: "ID"
-      }, */
       {
         key: "delegation",
         type: "text",

@@ -24,7 +24,7 @@ import { ObjectiveColumns, ObjectiveDTO } from 'src/app/Models/objective.dto'
 import { BillingColumns, BillingDTO } from 'src/app/Models/billing.dto'
 import { EnergyDTO } from 'src/app/Models/energy.dto'
 import { DelegationDTO } from 'src/app/Models/delegation.dto'
-import { ConsumptionDTO, graphConsumptionData } from 'src/app/Models/consumption.dto'
+import { ConsumptionDTO, graphData } from 'src/app/Models/consumption.dto'
 import { ChapterItem, ResidueLERDTO } from 'src/app/Models/residueLER.dto'
 import { CnaeDataDTO } from 'src/app/Models/cnaeData.dto'
 import { CnaeDataService } from 'src/app/Services/cnaeData.service'
@@ -35,11 +35,8 @@ import { CnaeDataService } from 'src/app/Services/cnaeData.service'
   styleUrls: ['./dashboard.component.scss'],
 })
 export class DashboardComponent implements OnInit {
-  consumptions!: ConsumptionDTO[]
-  objectives!: ObjectiveDTO[]
-  productionBilling!: BillingDTO[]
-  productionCNAE!: CnaeDataDTO[]
-  aspectConsumptions!: ConsumptionDTO[]
+  private companyId: string | null
+
   aspect: UntypedFormControl
   delegation: UntypedFormControl
   yearGraph: UntypedFormControl
@@ -52,18 +49,24 @@ export class DashboardComponent implements OnInit {
   energies!: EnergyDTO[]
   delegations!: DelegationDTO[]
   residues!: ResidueLERDTO[]
+  consumptions!: ConsumptionDTO[]
+  objectives!: ObjectiveDTO[]
+  productionBilling!: BillingDTO[]
+  productionCNAE!: CnaeDataDTO[]
+  aspectConsumptions!: ConsumptionDTO[]
   residuesItem: ChapterItem[] = []
-  private companyId: string | null
-  isSearching: boolean = false
-  isEnergy: Boolean = false
-  isResidue: Boolean = false
-  graphDataTemp: graphConsumptionData[]
-  graphData: graphConsumptionData[] = []
-  startPrimaryColor: number = 18
+
+  graphDataTemp: graphData[]
+  graphData: graphData[] = []
+  myDatasets: any[] = []
+
+  graphObjectiveTemp: ObjectiveDTO[]
+  graphObjective: any[] = []
+  objectiveDataSets: any[] = []
+  startPrimaryColor: number
   theDataType: string = ''
   theRatios: number[] = []
-
-  graphConsumption: graphConsumptionData[] = []
+  graphConsumption: graphData[] = []
 
   quantityMaterials: number = 0
 
@@ -72,7 +75,6 @@ export class DashboardComponent implements OnInit {
   primaryColors!: string[]
   alternateColors!: string[]
   graphMonths: string[]
-  myDatasets: any[] = []
   aspectEnergy: string
   aspectWater: string
   aspectResidue: string
@@ -85,6 +87,9 @@ export class DashboardComponent implements OnInit {
   TICKS:boolean = true
   isRatioBilling: boolean = false
   isRatioCNAE: boolean = false
+  isSearching: boolean = false
+  isEnergy: Boolean = false
+  isResidue: Boolean = false
 
   @Input() searching = false;
 
@@ -275,6 +280,7 @@ export class DashboardComponent implements OnInit {
                 "oct": consumption.oct,
                 "nov": consumption.nov,
                 "dec": consumption.dec,
+                'monthlyData': [consumption.jan, consumption.feb, consumption.mar, consumption.apr, consumption.may, consumption.jun, consumption.jul, consumption.aug, consumption.sep, consumption.oct, consumption.nov, consumption.dec]
             })
         }
         )
@@ -330,6 +336,9 @@ export class DashboardComponent implements OnInit {
   }
 
   chartGenerate() {
+    this.graphDataTemp = []
+    this.graphData = []
+    this.startPrimaryColor  = 19
     if (this.chart) {
       this.chart.destroy()
     }
@@ -347,7 +356,8 @@ export class DashboardComponent implements OnInit {
     }
 
     console.log("Los consumos: ", this.graphDataTemp)
-    this.graphDataTemp.map((item:graphConsumptionData) => {
+
+    this.graphDataTemp.map((item:graphData) => {
         switch ( this.aspect.value ) {
           case '1':
             this.theDataType = item.energyName
@@ -381,10 +391,6 @@ export class DashboardComponent implements OnInit {
           },
       )
     })
-
-    if(this.isRatioBilling || this.isRatioCNAE) {
-      this.chartObjective()
-    }
 
     this.chart = new Chart("graph", {
       type: 'bar',
@@ -432,37 +438,10 @@ export class DashboardComponent implements OnInit {
     });
   }
 
-  chartObjective() {
-    let theObjective: ObjectiveDTO[] = []
-    theObjective = this.objectives.filter((item:any) => item.aspectId == this.aspect.value)
-    theObjective = theObjective.filter((item:any) => item.delegation == this.delegation.value)
-    if (this.yearGraph.value) {
-      theObjective = theObjective.filter((item:any) => item.year == this.yearGraph.value)
-    }
-    if (this.energy.value) {
-      theObjective = theObjective.filter((item:any) => item.energyName == this.energy.value)
-    }
-    if (this.residue.value) {
-      theObjective = theObjective.filter((item:any) => item.energyName == this.residue.value)
-    }
-    console.log ("Los objetivos ", theObjective)
-    
-    this.myDatasets.push(
-      {
-        type: 'line',
-        label: 'Objectives',
-        data: theObjective,
-        backgroundColor: '#000000',
-        borderColor: '#000000',
-        borderWidth: .5,
-        fill: false,
-      }
-    )
-  }
-
   chartRatioBilling() {
-
     this.isRatioCNAE = false
+    this.chartObjective()
+    return;
     this.graphDataTemp = this.graphConsumption.filter((item:any) => item.aspectId == this.aspect.value)
     this.graphDataTemp = this.graphDataTemp.filter((item:any) => item.delegation == this.delegation.value)
     if (this.yearGraph.value) {
@@ -475,7 +454,7 @@ export class DashboardComponent implements OnInit {
       this.graphDataTemp = this.graphDataTemp.filter((item:any) => item.energyName == this.residue.value)
     }
     console.log("Ratio billing: ", this.graphDataTemp)
-    this.graphDataTemp.map((item:graphConsumptionData) => {
+    this.graphDataTemp.map((item:graphData) => {
       switch ( this.aspect.value ) {
           case '1':
             this.theDataType = item.energyName
@@ -510,15 +489,15 @@ export class DashboardComponent implements OnInit {
         )
       })
 
-    this.chartObjective()
+    /* this.chartObjective() */
    
     this.myDatasets.push(
       {
         type: 'line',
         label: 'Ratios',
         data: this.theRatios,
-        backgroundColor: '#FF9BD2',
-        borderColor: '#FF9BD2',
+        backgroundColor: '#ff0000',
+        borderColor: '#00ff00',
         borderWidth: .5,
         fill: false,
       }
@@ -543,6 +522,8 @@ export class DashboardComponent implements OnInit {
 
   chartRatioCNAE() {
     this.isRatioBilling = false
+    this.chartObjective()
+    return
     this.graphDataTemp = this.graphConsumption.filter((item:any) => item.aspectId == this.aspect.value)
     this.graphDataTemp = this.graphDataTemp.filter((item:any) => item.delegation == this.delegation.value)
     if (this.yearGraph.value) {
@@ -555,7 +536,7 @@ export class DashboardComponent implements OnInit {
       this.graphDataTemp = this.graphDataTemp.filter((item:any) => item.energyName == this.residue.value)
     }
     console.log("Ratio CNAE ", this.graphDataTemp)
-    this.graphDataTemp.map((item:graphConsumptionData) => {
+    this.graphDataTemp.map((item:graphData) => {
         switch ( this.aspect.value ) {
           case '1':
             this.theDataType = item.energyName
@@ -589,15 +570,14 @@ export class DashboardComponent implements OnInit {
             },
         )
       })
-      this.chartObjective()
  
     this.myDatasets.push(
       {
         type: 'line',
         label: 'Ratios',
         data: this.theRatios,
-        backgroundColor: '#009BD2',
-        borderColor: '#009BD2',
+        backgroundColor: '#ff0000',
+        borderColor: '#0000ff',
         borderWidth: .5,
         fill: false,
       }
@@ -618,6 +598,51 @@ export class DashboardComponent implements OnInit {
         events: ['click'],
       }
     });
+  }
+
+  chartObjective() {
+   
+    let theLabel: string = ''
+    this.startPrimaryColor  = 19
+    this.graphObjectiveTemp = this.objectives.filter((item:any) => item.aspectId == this.aspect.value)
+    this.graphObjectiveTemp = this.graphObjectiveTemp.filter((item:any) => item.delegation == this.delegation.value)
+    if (this.isRatioBilling) {
+      this.graphObjectiveTemp = this.graphObjectiveTemp.filter((item:any)=> item.theRatioRype = "Billing")
+      theLabel = "Billing objective"
+    } else {
+      this.graphObjectiveTemp = this.graphObjectiveTemp.filter((item:any) => item.theRatioRype != 'Billing')
+      theLabel = "CNAE objective"
+    }
+    if (this.yearGraph.value) {
+      this.graphObjectiveTemp = this.graphObjectiveTemp.filter((item:any) => item.year == this.yearGraph.value)
+    }
+
+    console.log ("Los objetivos ", this.graphObjectiveTemp, this.isRatioBilling, this.isRatioCNAE)
+
+    this.graphObjectiveTemp.map((item:ObjectiveDTO) => {
+      this.graphObjective.push({
+        'delegation': item.companyDelegationId,
+        'dataType': this.theDataType,
+        'year': item.year,
+        'monthlyData': [item.jan, item.feb, item.mar, item.apr, item.may, item.jun, item.jul, item.aug, item.sep, item.oct, item.nov, item.dec]
+      })
+    })
+    this.graphObjective.map(item=> {
+      this.myDatasets.push(
+        {
+          type: 'line',
+          label: item.year+": "+theLabel,
+          data: item.monthlyData,
+          stack: item.dataType,
+          backgroundColor: this.primaryColors[this.startPrimaryColor--],
+          borderColor: '#000000',
+          borderWidth: .5,
+          fill: false,
+        },
+      )
+    })
+
+    this.chart.update()
   }
 
   updateFields(e: any) {

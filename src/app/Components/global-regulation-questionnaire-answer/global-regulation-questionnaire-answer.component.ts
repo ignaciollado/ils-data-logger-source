@@ -230,7 +230,6 @@ export class GlobalRegulationQuestionnaireAnswerComponent {
                   })
                 this.userQuestionnaireTemp.push(vectorAnswers)
               })
-              /* console.log ("userQuestionnaireTemp", this.userQuestionnaireTemp) */
             })
           })
   }

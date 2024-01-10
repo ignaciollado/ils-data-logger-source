@@ -589,7 +589,8 @@
             "answerdoc2": ""}
         ]
       },
-      {                   "key": "4",
+      {
+        "key": "4",
                     "type": "radio",
                     "questionTextES": "¿ Es una empresa alimentaria y en su proceso productivo utiliza agua de consumo humano ?",
                     "questionTextCA": "",
@@ -610,9 +611,9 @@
                              "regulation": [""],
                              "image_1": "",
                              "image_2": ""}
-                            
+
                     ]
-                }
+      }
     ]
   },
 
@@ -1064,7 +1065,7 @@
                  "regulation": [""],
                  "image_1": "",
                  "image_2": ""}
-                
+
         ]
       },
       {
@@ -1089,7 +1090,7 @@
                "regulation": [""],
                "image_1": "",
                "image_2": ""}
-              
+
       ]
       }
     ]

@@ -34,7 +34,6 @@ export class GlobalRegulationQuestionnaireAnswerComponent {
     private enviromentalAuditService: EnvironmentalAuditsService,
     private jwtHelper: JwtHelperService,
     private route: ActivatedRoute,
-    private router: Router
   ) {
     this.userId = this.jwtHelper.decodeToken().id_ils
   }
@@ -49,6 +48,7 @@ export class GlobalRegulationQuestionnaireAnswerComponent {
     this.enviromentalAuditService.getRegulations()
       .subscribe( (regulations: any[]) => {
         this.regulationList = regulations
+        console.log ("regulations: ", this.regulationList)
         this.loadQuestionnaireResult( +questionnaireID )
       })
   }
@@ -76,7 +76,7 @@ export class GlobalRegulationQuestionnaireAnswerComponent {
                      vRegTemp += "<li><span class='ambito'> "+regulation.Ambito+" </span><span> "+regulation.Titulo+`. </span><br><span><a href='${regulation.link}' target='_blank'>`+regulation.link+`</a> </span><span> [<a href='../../../assets/regulation/${vReg}.pdf' target='_blank'>`+vReg+"</a>] </span></li>"
                    }
                   })
-                  /* console.log (vRegTemp) */
+                  console.log ("vRegTemp", vRegTemp)
                   this.regVector[(vectorAnswers.vectorId-1)].regulation = vRegTemp
                 })
 
@@ -226,9 +226,23 @@ export class GlobalRegulationQuestionnaireAnswerComponent {
                         })
                         questions.q11 = q11Temp
                       }
+                      if (questions.q12) {
+                        let q12Temp: string = ""
+                        questions.q12 = [...new Set(questions.q12)]; /* elimino duplicados */
+                        questions.q12.map((q12Reg:any) =>{
+                          this.regulationList.map((regulation:regulationsDTO) => {
+                             if (regulation.reg_ID === q12Reg) {
+                              q12Temp += "<li><span> "+regulation.Ambito+" </span><span> "+regulation.Titulo+` </span><br><span> <a href='${regulation.link}' target='_blank'>`+regulation.link+`</a></span><span> [<a href='../../../assets/regulation/${q12Reg}.pdf' target='_blank'>`+q12Reg+"</a>]</span></li>"
+                            }
+                        }
+                        )
+                        })
+                        questions.q12 = q12Temp
+                      }
                     })
                   })
                 this.userQuestionnaireTemp.push(vectorAnswers)
+                console.log ("userQuestionnaireTemp", this.userQuestionnaireTemp)
               })
             })
           })

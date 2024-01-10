@@ -17,7 +17,7 @@ export class GlobalRegulationQuestionnaireAnswerComponent {
   userQuestionnaires: AnswerDTO[] = []
   userQuestionnaireTemp: answeredQuestionnaire[] = []
   regulationList: regulationsDTO[] = [] /* Listado de toda la regulación medioambiental */
-  vector: string[] = ["RESIDUOS","SEGURIDAD INDUSTRIAL","AGUAS","ATMÓSFERA","SUSTANCIAS Y PREPARADOS","MEDIOAMBIENTE GENERAL"]
+  vector: string[] = ["RESIDUOS","SEGURIDAD INDUSTRIAL","AGUAS","ATMÓSFERA","SUSTANCIAS Y PREPARADOS QUiMICOS","MEDIOAMBIENTE GENERAL"]
 
   regVector: {} = [
     {"vectorName":"RESIDUOS", "regulation":["RES_3", "RES_4", "RES_5", "RES_18", "RES_19", "RES_60", "RES_61"]},

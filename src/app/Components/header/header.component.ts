@@ -1,9 +1,9 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { HeaderMenus } from 'src/app/Models/header-menus.dto';
 import { HeaderMenusService } from 'src/app/Services/header-menus.service';
-import {MatSidenav} from '@angular/material/sidenav';
+
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -27,15 +27,15 @@ export class HeaderComponent implements OnInit {
     this.showNoAuthSection = true;
 
     if (this.access_token === null) {
-      const headerInfo: HeaderMenus = { showAuthSection: false, showNoAuthSection: true, };
+      const headerInfo: HeaderMenus = { showAuthSection: false, showNoAuthSection: true, showAdminSection: false, };
       this.headerMenusService.headerManagement.next(headerInfo)
     } else {
       if (!this.jwtHelper.isTokenExpired (this.access_token)) {
-        const headerInfo: HeaderMenus = {  showAuthSection: true, showNoAuthSection: false, }
+        const headerInfo: HeaderMenus = {  showAuthSection: true, showNoAuthSection: false, showAdminSection: false,}
         this.headerMenusService.headerManagement.next(headerInfo)
         this.userId = this.jwtHelper.decodeToken().name
       } else { /* logout */
-        const headerInfo: HeaderMenus = { showAuthSection: false, showNoAuthSection: true, }
+        const headerInfo: HeaderMenus = { showAuthSection: false, showNoAuthSection: true, showAdminSection: false, }
         sessionStorage.removeItem('user_id')
         sessionStorage.removeItem('access_token')
         this.headerMenusService.headerManagement.next(headerInfo)
@@ -48,16 +48,18 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
     this.headerMenusService.headerManagement.subscribe (
       (headerInfo: HeaderMenus) => {
+        if (this.jwtHelper.decodeToken().role === 'company') {
+          this.isCompany = true
+        } else {
+          this.isCompany = false
+        }
+
         if (headerInfo) {
           this.showAuthSection = headerInfo.showAuthSection
           this.showNoAuthSection = headerInfo.showNoAuthSection
         }
       }
     )
-    if (this.jwtHelper.decodeToken().role === 'company') {
-      this.isCompany = true
-    }
-    alert ("role en header: " + this.jwtHelper.decodeToken().role + " " + this.isCompany)
   }
 
   dashboard(): void {
@@ -69,7 +71,7 @@ export class HeaderComponent implements OnInit {
   }
 
   login(): void {
-    const headerInfo: HeaderMenus = { showAuthSection: false, showNoAuthSection: true, };
+    const headerInfo: HeaderMenus = { showAuthSection: false, showNoAuthSection: true, showAdminSection: false};
     this.headerMenusService.headerManagement.next(headerInfo);
     this.router.navigateByUrl('login');
   }
@@ -127,10 +129,11 @@ export class HeaderComponent implements OnInit {
     sessionStorage.removeItem('user_id')
     sessionStorage.removeItem('access_token')
     this.userId = ""
-
+    this.isCompany = false
     const headerInfo: HeaderMenus = { showAuthSection: false, showNoAuthSection: true, };
 
     this.headerMenusService.headerManagement.next(headerInfo);
-    this.router.navigateByUrl('login');
+    this.router.navigateByUrl('');
+    location.reload()
   }
 }

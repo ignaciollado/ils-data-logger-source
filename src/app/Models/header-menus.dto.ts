@@ -1,4 +1,5 @@
 export interface HeaderMenus {
-  showAuthSection: boolean;
-  showNoAuthSection: boolean;
+  showAuthSection: boolean
+  showNoAuthSection: boolean
+  showAdminSection?: boolean
 }

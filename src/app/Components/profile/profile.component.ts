@@ -55,7 +55,7 @@ export class ProfileComponent implements OnInit {
 
   selected: string
   access_token: string | null
-  isCompany: boolean = false
+  isCompany: boolean
   private userId: string | null
 
   constructor(
@@ -135,10 +135,6 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit(): void {
     let errorResponse: any
-    if (this.jwtHelper.decodeToken().role === 'company') {
-      this.isCompany = true
-    }
-    alert ("role en profile: " + this.jwtHelper.decodeToken().role + " " + this.isCompany)
     if (this.userId) {
       this.userService.getUSerByIdMySQL(this.userId).subscribe(
         (userData: UserDTO) => {

@@ -646,8 +646,6 @@
                       "regulation": [""],
                       "answerImage_1": "",
                       "answerImage_2": ""}
-
-
               ]
           },
           {
@@ -706,7 +704,7 @@
             "questionTextCA": "",
             "questionDoc1" : "PATM_4_ANEXO",
             "questionDoc2" : "",
-            "questionTooltipES": "Se consideran Actividades Potencialmente Contaminadoras de la Atmósfera (<abbr>APCA</abbr> en adelante), aquellas que por su propia naturaleza, ubicación o por los procesos tecnológicos utilizados constituyan una fuente de contaminación cuyas características pueden requerir que sean sometidas a un régimen de control y seguimiento más estricto, como por ejemplo: calderas del sector industrial de potencia térmica nominal igual o superior a 250 kWt,  consumo de disolvente superior a 5 t/año, etc.. (<a href='../../../assets/answers_images/PATM_4_ANEXO.pdf' target='_blank'>Ver anexo</a>)",
+            "questionTooltipES": "Se consideran Actividades Potencialmente Contaminadoras de la Atmósfera (APCA en adelante), aquellas que por su propia naturaleza, ubicación o por los procesos tecnológicos utilizados constituyan una fuente de contaminación cuyas características pueden requerir que sean sometidas a un régimen de control y seguimiento más estricto, como por ejemplo: calderas del sector industrial de potencia térmica nominal igual o superior a 250 kWt,  consumo de disolvente superior a 5 t/año, etc..            Debes de revisar en el cuadro si tu actividad esta dentro de las definidas: <a href='../../../assets/answers_images/PATM_4_ANEXO.pdf' target='_blank'>Ver cuadro</a>",
             "questionTooltipCA": "",
             "link": "https://...",
             "answers":
@@ -1025,7 +1023,7 @@
         "questionTextCA": "",
         "questionDoc1" : "",
         "questionDoc2" : "",
-        "questionTooltipES": "",
+        "questionTooltipES": "Ejemplos: <ul><li>Alumbrados Ornamentales: los que corresponden a la iluminación de fachadas de edificios.</li><li>Alumbrado de vigilancia y seguridad nocturna: para la iluminación de fachadas y áreas destinadas a actividades industriales, comerciales, de servicios, deportivas y recreativas, etc. con fines de vigilancia y seguridad durante la noche.</li><li>Alumbrado de Señales y Anuncios Luminosos: es el correspondiente a señales, carteles, anuncios luminosos, anuncios iluminados, alumbrado de escaparates,</li><br>Se excluyen de este tipo todas las señales y anuncios de tráfico.",
         "questionTooltipCA": "",
         "link": "https://...",
         "answers":
@@ -1050,7 +1048,7 @@
         "questionTextCA": "",
         "questionDoc1" : "",
         "questionDoc2" : "",
-        "questionTooltipES": "Se entienden cómo gran empresas tanto las que ocupen al menos a 250 personas como las que, aun sin cumplir dicho requisito, tengan un volumen de negocio que exceda de 50 millones de euros y, a la par, un balance general que exceda de 43 millones de euros. De igual modo, será también de aplicación a los grupos de sociedades, definidos según lo establecido en el artículo 42 del Código de Comercio, que, teniendo en cuenta las magnitudes agregadas de todas las sociedades que forman el grupo consolidado, cumplan los referidos requisitos de gran empresa 2. Quedan excluidas del ámbito de aplicación, las microempresas, pequeñas y medianas empresas (PYMES), de acuerdo con el título I del anexo de la Recomendación 2003/361/CE de la Comisión, de 6 de mayo de 2003, sobre la definición de microempresas, pequeñas y medianas empresas.",
+        "questionTooltipES": "<p>Se entienden cómo gran empresas tanto las que ocupen al menos a 250 personas como las que, aun sin cumplir dicho requisito, tengan un volumen de negocio que exceda de 50 millones de euros y, a la par, un balance general que exceda de 43 millones de euros.</p><p>De igual modo, será también de aplicación a los grupos de sociedades, definidos según lo establecido en <strong>el artículo 42 del Código de Comercio</strong>, que, teniendo en cuenta las magnitudes agregadas de todas las sociedades que forman el grupo consolidado, cumplan los referidos requisitos de gran empresa 2.</p><p>Quedan excluidas del ámbito de aplicación, las microempresas, pequeñas y medianas empresas (<abbr title='pequeñas y medianas empresas'>PYMES</abbr>), de acuerdo con <strong>el título I del anexo de la Recomendación 2003/361/CE de la Comisión</strong>, de 6 de mayo de 2003, sobre la definición de microempresas, pequeñas y medianas empresas.</p>",
         "questionTooltipCA": "",
         "link": "https://...",
         "answers":
@@ -1071,11 +1069,11 @@
       {
       "key": "6",
       "type": "radio",
-      "questionTextES": "¿ Durante  dos ejercicios anteriores consecutivos tu sociedad ha superado la media de 250 empleados  y además se ha dado al menos una de las circunstancias siguientes? 1.º Que el total de las partidas del activo sea superior a 20.000.000 de euros. 2.º Que el importe neto de la cifra anual de negocios supere los 40.000.000 de euros.",
+      "questionTextES": "¿ Durante  dos ejercicios anteriores consecutivos tu sociedad ha superado la media de 250 empleados  y además se ha dado al menos una de las circunstancias indicadas en la ayuda?",
       "questionTextCA": "",
       "questionDoc1" : "",
       "questionDoc2" : "",
-      "questionTooltipES": "",
+      "questionTooltipES": "<ul><li>1.º Que el total de las partidas del activo sea superior a 20.000.000 de euros. </li><li>2.º Que el importe neto de la cifra anual de negocios supere los 40.000.000 de euros.</li></ul>",
       "questionTooltipCA": "",
       "link": "https://...",
       "answers":
@@ -1092,7 +1090,32 @@
                "image_2": ""}
 
       ]
-      }
+      },
+      {
+        "key": "7",
+        "type": "radio",
+        "questionTextES": "¿Tu industria debes de disponer de un plan de autoprotección ?",
+        "questionTextCA": "",
+        "questionDoc1" : "PMA_7",
+        "questionDoc2" : "",
+        "questionTooltipES": "Para saber si es de aplicación en su industria debe de revisar el  <a href='../../../assets/answers_images/PMA_7.pdf' target='_blank'>ANEXO I</a>",
+        "questionTooltipCA": "",
+        "link": "https://...",
+        "answers":
+        [
+                {"answerText": "SI",
+                 "answerTooltip": "",
+                 "regulation": ["MA_13"],
+                 "image_1": "",
+                 "image_2": ""},
+                 {"answerText": "NO",
+                 "answerTooltip": "",
+                 "regulation": [""],
+                 "image_1": "",
+                 "image_2": ""}
+                
+        ]
+    }
     ]
   }
 

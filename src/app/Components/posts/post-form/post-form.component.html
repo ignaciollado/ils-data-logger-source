@@ -37,7 +37,7 @@
               <mat-label>{{'energyType' | translate}}</mat-label>
               <mat-select [formControl]="energy">
                 <mat-option *ngFor="let energy of energies" [value]="energy.energyId">
-                  {{energy.nameES}}
+                  {{energy.nameES}} [{{energy.unit}}]
                 </mat-option>
               </mat-select>
               <mat-error *ngIf="energy.hasError('required')">{{'energyType' | translate}} <strong>{{'isRequired' | translate}}</strong></mat-error>

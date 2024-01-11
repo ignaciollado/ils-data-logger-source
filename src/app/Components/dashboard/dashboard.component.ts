@@ -253,13 +253,20 @@ export class DashboardComponent implements OnInit {
   }
 
   private loadconsumptions(companyId: string): void {
-    let errorResponse: any;
+    let errorResponse: any
+    let pci: number
     this.consumptionService.getAllConsumptionsByCompany(companyId)
     .subscribe(
       (consumptions: ConsumptionDTO[]) => {
         this.consumptions = consumptions
         this.consumptions.forEach((consumption: any) =>
         {
+         this.energies.forEach((energy:any) => {
+          if (energy.energyId === consumption.energy) {
+            pci = energy.pci
+            console.log ("pci: ", pci)
+          }        
+        })
           this.graphConsumption.push(
             {"aspectId": consumption.aspectId,
                 "delegation": consumption.delegation,

@@ -60,6 +60,14 @@ form {
   margin-bottom: 2.5rem;
 }
 
+.warn{
+  color: ils-theme.$alternate-color;
+  background-color: #e54304;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  padding: 1rem;
+}
+
 mat-table {
   margin-top: 1.5rem;
   margin-bottom: 2rem;

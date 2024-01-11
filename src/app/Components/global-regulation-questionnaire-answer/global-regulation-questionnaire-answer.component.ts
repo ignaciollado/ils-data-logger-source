@@ -2,10 +2,9 @@ import { Component } from '@angular/core';
 import { EnvironmentalAuditsService } from 'src/app/Services/environmental-audits.service'
 import { JwtHelperService } from '@auth0/angular-jwt'
 import { AnswerDTO } from 'src/app/Models/answer.dto'
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { answeredQuestionnaire } from 'src/app/Models/answeredQuestionnaire.dto';
 import { regulationsDTO } from 'src/app/Models/regulation.dto';
-import { QuestionDTO } from 'src/app/Models/question.dto';
 
 @Component({
   selector: 'app-global-regulation-questionnaire-answer',

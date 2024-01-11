@@ -37,6 +37,7 @@ const ENERGIES_DATA = [
   {Id: 3, delegation: "Mock data", year: "2019", energyES: "Gas butano (kg)", "jan": 500.57, "feb": 1.4579},
   {Id: 4, delegation: "Mock data", year: "2020", energyES: "Gas Natural (kWh)", "jan": 1.2550}
 ];
+
 @Component({
   selector: 'app-post-form',
   templateUrl: './post-form.component.html',
@@ -131,9 +132,6 @@ export class PostFormComponent implements OnInit {
         this.router.navigateByUrl('login')
       }
     }
-
-    this._locale = 'es-ES'
-    this._adapter.setLocale(this._locale)
 
     this.isValidForm = null;
     this.consumptionId = this.activatedRoute.snapshot.paramMap.get('id')

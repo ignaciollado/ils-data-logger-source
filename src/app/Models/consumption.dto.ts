@@ -6,6 +6,7 @@ export class ConsumptionDTO {
   companyId: string
   delegation: number
   quantity?: number
+  units?: string
   fromDate?: Date
   toDate?: Date
   created_at?: Date

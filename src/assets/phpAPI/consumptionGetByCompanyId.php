@@ -8,17 +8,17 @@ mysqli_query($conn, "SET NAMES 'utf8'");
 $companyId = $_GET['companyId'];
 $aspectId = $_GET['aspectId'];
 
-$sql = "SELECT ils_consumption.consumptionId, ils_consumption.companyId, 
-ils_consumption.aspectId, ils_consumption.energyId as energy, ils_consumption.quantity, ils_consumption.objective, 
-ils_consumption.residueId, ils_consumption.reuse, ils_consumption.recycling, ils_consumption.incineration, 
+$sql = "SELECT ils_consumption.consumptionId, ils_consumption.companyId,
+ils_consumption.aspectId, ils_consumption.energyId as energy, ils_consumption.quantity, ils_consumption.objective,
+ils_consumption.residueId, ils_consumption.reuse, ils_consumption.recycling, ils_consumption.incineration,
 ils_consumption.dump, ils_consumption.compost,
 ils_consumption.scopeOne, ils_consumption.scopeTwo,
 ils_consumption.created_at, ils_consumption.updated_at,
-ils_consumption.year, 
+ils_consumption.year,
 ils_consumption.01 as 'jan', ils_consumption.02 as 'feb', ils_consumption.03 as 'mar', ils_consumption.04 as 'apr',
-ils_consumption.05 as 'may', ils_consumption.06 as 'jun', ils_consumption.07 as 'jul', ils_consumption.08 as 'aug', 
+ils_consumption.05 as 'may', ils_consumption.06 as 'jun', ils_consumption.07 as 'jul', ils_consumption.08 as 'aug',
 ils_consumption.09 as 'sep', ils_consumption.10 as 'oct', ils_consumption.11 as 'nov', ils_consumption.12 as 'dec',
-ils_energy.nameES as energyES, ils_energy.nameCA, ils_energy.pci as pci,
+ils_energy.nameES as energyES, ils_energy.nameCA, ils_energy.pci as pci, ils_energy.unit as unit,
 ils_company_delegation.name as delegation, ils_company_delegation.address,
 ils_aspect.nameES as aspectES, ils_aspect.nameCA,
 ils_residue.nameES as residueES, ils_residue.nameCA

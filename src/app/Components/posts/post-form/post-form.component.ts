@@ -222,12 +222,14 @@ export class PostFormComponent implements OnInit {
 
   private loadConsumption(userId: string): void {
     let errorResponse: any;
-
     if (this.userId) {
-
         this.consumptionService.getAllConsumptionsByCompanyAndAspect(userId, 1).subscribe(
         (consumptions: ConsumptionDTO[]) => {
           this.consumptions = consumptions
+          this.consumptions.map((item:any) => {
+            item.energyES = item.energyES+" "+item.unit
+            console.log (item.energyES, item.unit)
+          })
           this.dataSource = new MatTableDataSource(this.consumptions);
           this.dataSource.sort = this.energyTbSort;
           this.dataSource.paginator = this.paginator;
@@ -237,7 +239,6 @@ export class PostFormComponent implements OnInit {
           this.sharedService.errorLog(errorResponse)
         }
       );
-
     }
   }
 
@@ -415,7 +416,6 @@ export class PostFormComponent implements OnInit {
 
   public removeSelectedRows() {
     /* this.dataSource = this.dataSource.filter((u: any) => !u.isSelected); */
-
     const consumptionData = this.dataSource.data.filter((u: ConsumptionDTO) => u.isSelected);
     this.dialog
       .open(ConfirmDialogComponent)
@@ -429,19 +429,6 @@ export class PostFormComponent implements OnInit {
           });
         }
       });
-
-     /* this.dialog
-      .open(ConfirmDialogComponent)
-      .afterClosed()
-      .subscribe((confirm) => {
-        if (confirm) {
-           this.objectiveService.deleteObjective(id).subscribe(() => {
-            this.dataSource.data = this.dataSource.data.filter(
-              (u: ObjectiveDTO) => !u.isSelected,
-            )
-          })
-        }
-      }) */
   }
 
   applyFilter(event: Event) {

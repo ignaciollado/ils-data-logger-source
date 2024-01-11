@@ -227,8 +227,7 @@ export class PostFormComponent implements OnInit {
         (consumptions: ConsumptionDTO[]) => {
           this.consumptions = consumptions
           this.consumptions.map((item:any) => {
-            item.energyES = item.energyES+" "+item.unit
-            console.log (item.energyES, item.unit)
+            item.energyES = item.energyES+" ["+item.unit+"]"
           })
           this.dataSource = new MatTableDataSource(this.consumptions);
           this.dataSource.sort = this.energyTbSort;

@@ -43,7 +43,9 @@
     "selectDelegation": "Seleccione un emplazamiento",
     "delegationAdd": "Añadir emplazamiento",
     "delegationList": "Emplazamientos de esta empresa",
-    "noDelegation": "Todavía no se ha creado ninguna delegación.\nEs necesario crear al menos una delegación para poder añadir los datos de su actividad.\nDisculpe las molestias.",
+    "noDelegation": "Todavía no se ha creado ninguna delegación.",
+    "noDelegation1": "Es necesario crear al menos una delegación para poder añadir los datos de su actividad.",
+    "noDelegation2": "Disculpe las molestias.",
 
     "aspect": "Aspecto",
     "energy": "Energía",

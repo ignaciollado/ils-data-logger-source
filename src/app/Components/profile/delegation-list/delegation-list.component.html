@@ -27,4 +27,8 @@
     <tr mat-row *matRowDef="let item; columns: columnsDisplayed;" class="animate__animated animate__fadeInLeft"></tr>
   </table>
 
-  <div class="warn" *ngIf="!delegations">{{"noDelegation" | translate}}</div>
+  <div class="warn" *ngIf="!delegations">
+    <p>{{"noDelegation" | translate}}</p>
+    <p>{{"noDelegation1" | translate}}</p>
+    <p>{{"noDelegation2" | translate}}</p>
+  </div>

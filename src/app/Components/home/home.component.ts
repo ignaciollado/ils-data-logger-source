@@ -57,6 +57,12 @@ export class HomeComponent {
   }
 
   ngOnInit(): void {
+    if(localStorage.getItem("preferredLang") == 'undefined') {
+      localStorage.setItem("preferredLang", "cat")
+      console.log ("preferredLang: ", localStorage.getItem("preferredLang"))
+      location.reload()
+    }
+     
     this.headerMenusService.headerManagement.subscribe(
       (headerInfo: HeaderMenus) => {
         if (headerInfo) {

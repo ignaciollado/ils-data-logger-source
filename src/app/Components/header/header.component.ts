@@ -12,7 +12,8 @@ import {MatSidenav} from '@angular/material/sidenav';
 export class HeaderComponent implements OnInit {
   showAuthSection: boolean
   showNoAuthSection: boolean
-  isCompany: boolean = false
+  isCompany: boolean
+  
   userId: string = ""
   access_token: string | null
 
@@ -39,14 +40,14 @@ export class HeaderComponent implements OnInit {
       this.headerMenusService.headerManagement.next(headerInfo)
     } else {
       if (!this.jwtHelper.isTokenExpired (this.access_token)) {
-        const headerInfo: HeaderMenus = {  showAuthSection: true, showNoAuthSection: false, };
+        const headerInfo: HeaderMenus = {  showAuthSection: true, showNoAuthSection: false, }
         this.headerMenusService.headerManagement.next(headerInfo)
         this.userId = this.jwtHelper.decodeToken().name
-        if (this.jwtHelper.decodeToken().role === 'company') {
+/*         if (this.jwtHelper.decodeToken().role === 'company') {
           this.isCompany = true
-        }
+        } */
       } else { /* logout */
-        const headerInfo: HeaderMenus = { showAuthSection: false, showNoAuthSection: true, };
+        const headerInfo: HeaderMenus = { showAuthSection: false, showNoAuthSection: true, }
         sessionStorage.removeItem('user_id')
         sessionStorage.removeItem('access_token')
         this.headerMenusService.headerManagement.next(headerInfo)
@@ -61,11 +62,15 @@ export class HeaderComponent implements OnInit {
     this.headerMenusService.headerManagement.subscribe (
       (headerInfo: HeaderMenus) => {
         if (headerInfo) {
-          this.showAuthSection = headerInfo.showAuthSection;
-          this.showNoAuthSection = headerInfo.showNoAuthSection;
+          this.showAuthSection = headerInfo.showAuthSection
+          this.showNoAuthSection = headerInfo.showNoAuthSection
         }
       }
-    );
+    )
+    console.log ("role: ", this.jwtHelper.decodeToken().role)
+    if (this.jwtHelper.decodeToken().role === 'company') {
+      this.isCompany = true
+    }
   }
 
   dashboard(): void {

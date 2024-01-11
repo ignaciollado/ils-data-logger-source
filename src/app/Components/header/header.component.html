@@ -18,9 +18,7 @@
 <!-- AUTH REQUIRED -->
 <div *ngIf="showAuthSection">
   <mat-menu #menu="matMenu">
-    <div>
-      <!-- <button *ngIf="!isCompany" mat-menu-item (click)="home()"><i class="fa-solid fa-house"></i> {{'home' | translate}}</button> -->
-      <!-- <mat-divider></mat-divider> -->
+    <div>{{isCompany}}
       <button *ngIf="!isCompany" mat-menu-item (click)="dashboard()"><i class="fa-solid fa-chart-simple"></i> {{'sustainabilityIndicatorsCharts' | translate}}</button>
       <button *ngIf="!isCompany" mat-menu-item (click)="adminConsumptions()"><i class="fa-solid fa-database"></i> {{'activityData' | translate}}</button>
       <button *ngIf="!isCompany" mat-menu-item (click)="adminRatios()"><i class="fa-solid fa-list-check"></i> {{'productionData' | translate}}</button>

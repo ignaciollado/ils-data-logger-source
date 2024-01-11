@@ -26,6 +26,7 @@ export class SelectLanguageComponent implements OnInit {
   }
 
   switchLanguage( lang:string ) {
+    console.log ("lang: ", lang)
     this.translate.use(lang)
     localStorage.setItem('preferredLang', lang)
     location.reload()

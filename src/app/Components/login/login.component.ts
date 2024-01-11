@@ -129,8 +129,8 @@ export class LoginComponent implements OnInit {
             if (responseOK) {
 
               const headerInfo: HeaderMenus = { showAuthSection: true, showNoAuthSection: false, };
-              this.router.navigateByUrl('profile');
               this.headerMenusService.headerManagement.next(headerInfo);
+              this.router.navigateByUrl('profile');
               this.delegationService.getTotalDelegationsByCompany(this.jwtHelper.decodeToken().id_ils)
                 .subscribe( item => {
                   if (item.totalDelegations === 0) {

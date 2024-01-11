@@ -22,6 +22,7 @@ span,a {
 
 a:hover {
   font-weight: bolder;
+  text-decoration: none;
 }
 
 @media only screen and (max-width: theme.$app-break-point) {
@@ -29,6 +30,8 @@ a:hover {
   .container-form {
     grid-template-columns: auto;
     padding: 2rem;
+    position: inherit;
+    transform: none;
   }
 
   .has-to-be-shown {
@@ -37,8 +40,4 @@ a:hover {
   .not-has-to-be-shown {
       display: block;
   }
-}
-
-@media only screen and (max-width: theme.$app-break-point) {
-
 }

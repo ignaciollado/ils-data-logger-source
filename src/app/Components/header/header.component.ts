@@ -73,56 +73,56 @@ export class HeaderComponent implements OnInit {
   login(): void {
     const headerInfo: HeaderMenus = { showAuthSection: false, showNoAuthSection: true, showAdminSection: false};
     this.headerMenusService.headerManagement.next(headerInfo);
-    this.router.navigateByUrl('login');
+    this.router.navigateByUrl('login')
   }
 
   register(): void {
-    this.router.navigateByUrl('register');
+    this.router.navigateByUrl('register')
   }
 
   adminPosts(): void {
-    this.router.navigateByUrl('posts');
+    this.router.navigateByUrl('posts')
   }
 
   adminCategories(): void {
-    this.router.navigateByUrl('categories');
+    this.router.navigateByUrl('categories')
   }
 
   adminConsumptions(): void {
-    this.router.navigateByUrl('consumptions');
+    this.router.navigateByUrl('consumptions')
   }
 
   adminAspects(): void {
-    this.router.navigateByUrl('aspects');
+    this.router.navigateByUrl('aspects')
   }
 
   adminEnergies(): void {
-    this.router.navigateByUrl('energies');
+    this.router.navigateByUrl('energies')
   }
 
   createUser(): void {
-    this.router.navigateByUrl('register');
+    this.router.navigateByUrl('register')
   }
 
   adminRatios(): void {
-    this.router.navigateByUrl('adminRatios');
+    this.router.navigateByUrl('adminRatios')
   }
 
   globalQuestionnaire(): void {
-    this.router.navigateByUrl('global-questionnaire');
+    this.router.navigateByUrl('global-questionnaire')
   }
 
   globalQuestionnaireList(): void {
-    this.router.navigateByUrl('global-questionnaire-list');
+    this.router.navigateByUrl('global-questionnaire-list')
   }
 
   myObjectives(): void {
-    this.router.navigateByUrl('myObjectives');
+    this.router.navigateByUrl('myObjectives')
   }
 
 
   profile(): void {
-    this.router.navigateByUrl('profile');
+    this.router.navigateByUrl('profile')
   }
 
   logout(): void {
@@ -130,10 +130,8 @@ export class HeaderComponent implements OnInit {
     sessionStorage.removeItem('access_token')
     this.userId = ""
     this.isCompany = false
-    const headerInfo: HeaderMenus = { showAuthSection: false, showNoAuthSection: true, };
-
-    this.headerMenusService.headerManagement.next(headerInfo);
-    this.router.navigateByUrl('');
     location.reload()
+    const headerInfo: HeaderMenus = { showAuthSection: false, showNoAuthSection: true, }
+    this.headerMenusService.headerManagement.next(headerInfo)
   }
 }

@@ -45,7 +45,6 @@ export class GlobalRegulationQuestionnaireAnswerComponent {
     this.enviromentalAuditService.getRegulations()
       .subscribe( (regulations: any[]) => {
         this.regulationList = regulations
-        console.log ("regulations: ", this.regulationList)
         this.loadQuestionnaireResult( +questionnaireID )
       })
   }

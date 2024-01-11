@@ -64,12 +64,12 @@
         </mat-button-toggle-group>
         <mat-slide-toggle [(ngModel)]="isRatioBilling" [formControl]="ratioBillingGraph" class="item6" (change)="chartRatioBilling()">Graph ratio mode billing</mat-slide-toggle>
         <mat-slide-toggle [(ngModel)]="isRatioCNAE" [formControl]="ratioCNAEgGraph" class="item7" (change)="chartRatioCNAE()">Graph ratio mode CNAE</mat-slide-toggle>
-      
+
       </div>
     </form>
   </div>
-<div class="warn">Versión en desarrollo. No válida</div>
-  <canvas id="graph" aria-label= "Activity graph" role="chart" 
+<div class="warn">Versión en desarrollo. No es válida para trabajo</div>
+  <canvas id="graph" aria-label= "Activity graph" role="chart"
     (Click)="onChartClick($event)">{{ chart }}</canvas>
   <app-modal></app-modal>
   <div class="loader" *ngIf="!consumptions">No data loaded yet...</div>

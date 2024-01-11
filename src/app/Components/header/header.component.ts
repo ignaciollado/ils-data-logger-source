@@ -17,15 +17,6 @@ export class HeaderComponent implements OnInit {
   userId: string = ""
   access_token: string | null
 
-  @ViewChild('sidenav') sidenav: MatSidenav;
-
-  reason = '';
-
-  close(reason: string) {
-    this.reason = reason;
-    this.sidenav.close();
-  }
-
   constructor(
     private router: Router,
     private headerMenusService: HeaderMenusService,
@@ -43,9 +34,6 @@ export class HeaderComponent implements OnInit {
         const headerInfo: HeaderMenus = {  showAuthSection: true, showNoAuthSection: false, }
         this.headerMenusService.headerManagement.next(headerInfo)
         this.userId = this.jwtHelper.decodeToken().name
-/*         if (this.jwtHelper.decodeToken().role === 'company') {
-          this.isCompany = true
-        } */
       } else { /* logout */
         const headerInfo: HeaderMenus = { showAuthSection: false, showNoAuthSection: true, }
         sessionStorage.removeItem('user_id')
@@ -58,7 +46,6 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
     this.headerMenusService.headerManagement.subscribe (
       (headerInfo: HeaderMenus) => {
         if (headerInfo) {
@@ -67,10 +54,10 @@ export class HeaderComponent implements OnInit {
         }
       }
     )
-    console.log ("role: ", this.jwtHelper.decodeToken().role)
     if (this.jwtHelper.decodeToken().role === 'company') {
       this.isCompany = true
     }
+    alert ("role en header: " + this.jwtHelper.decodeToken().role + " " + this.isCompany)
   }
 
   dashboard(): void {

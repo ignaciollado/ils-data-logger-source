@@ -58,6 +58,8 @@ export class PostFormComponent implements OnInit {
 
   isValidForm: boolean | null
   isElevated: boolean = true
+  isRatioBilling: boolean = false
+  isRatioCNAE: boolean = false
   consumptionFields: string[] = []
   result : boolean = false
   theRatioTypeSelected : boolean = false
@@ -325,7 +327,12 @@ export class PostFormComponent implements OnInit {
 
   }
 
-  public absoluteRelativeToggle(): void {
+  public ratioBilling(): void {
+    this.absoluteData = !this.absoluteData
+    console.log(this.absoluteData)
+  }
+
+  public ratioCNAE(): void {
     this.absoluteData = !this.absoluteData
     console.log(this.absoluteData)
   }

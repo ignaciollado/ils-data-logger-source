@@ -1,12 +1,13 @@
 export class EnergyDTO {
-  energyId!: string
+  energyId?: string
   nameES: string
   nameCA: string
   aspectId: number
   unit: string
   pci: number
-  createAt!: Date
-  updatedAt!: Date
+  convLKg?: number
+  createAt?: Date
+  updatedAt?: Date
 
   constructor(
     nameES: string,
@@ -14,6 +15,7 @@ export class EnergyDTO {
     aspectId: number,
     unit: string,
     pci: number,
+    convLKg: number,
     createAt: Date,
     updatedAt: Date
   ) {
@@ -22,6 +24,7 @@ export class EnergyDTO {
     this.aspectId = aspectId
     this.unit = unit
     this.pci = pci
+    this.convLKg = convLKg
     this.createAt = createAt
     this.updatedAt = updatedAt
     }

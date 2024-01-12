@@ -43,6 +43,22 @@ input::-webkit-inner-spin-button {
   margin: 0;
 }
 
+.form-filter{
+  display: grid;
+  grid-template-areas: "a a" "b c";
+  min-width: 425px;
+}
+
+.item1{
+  grid-area: a;
+}
+.item2{
+  grid-area: b;
+}
+.item3{
+  grid-area: c;
+}
+
 input[type=number] {
   appearance: textfield;
   border: none transparent;

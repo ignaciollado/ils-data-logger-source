@@ -70,7 +70,7 @@ export class CategoryFormComponent implements OnInit {
   ) {
     this.isValidForm = null;
     this.categoryId = this.activatedRoute.snapshot.paramMap.get('id');
-    this.energy = new EnergyDTO('', '', 0, '', 0, new Date(), new Date());
+    this.energy = new EnergyDTO('', '', 0, '', 0, 0, new Date(), new Date());
     this.isUpdateMode = false;
 
     this.nameES = new UntypedFormControl(this.energy.nameES, [

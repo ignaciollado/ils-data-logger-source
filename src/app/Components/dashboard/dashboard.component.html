@@ -62,8 +62,8 @@
           <button mat-raised-button color="accent" (click)="graphFormReset()">Reset</button>
           <button mat-raised-button color="primary" type="submit" [disabled]="!graphForm.valid">Graph</button>
         </mat-button-toggle-group>
-        <mat-slide-toggle [(ngModel)]="isRatioBilling" [formControl]="ratioBillingGraph" class="item6" (change)="chartRatioBilling()">Graph ratio mode billing</mat-slide-toggle>
-        <mat-slide-toggle [(ngModel)]="isRatioCNAE" [formControl]="ratioCNAEgGraph" class="item7" (change)="chartRatioCNAE()">Graph ratio mode CNAE</mat-slide-toggle>
+        <mat-slide-toggle [(ngModel)]="isRatioBilling" [formControl]="ratioBillingGraph" class="item6" (change)="chartRatioBilling()">Ratio billing graph</mat-slide-toggle>
+        <mat-slide-toggle [(ngModel)]="isRatioCNAE" [formControl]="ratioCNAEgGraph" class="item7" (change)="chartRatioCNAE()">Ratio CNAE graph</mat-slide-toggle>
 
       </div>
     </form>

@@ -254,17 +254,19 @@ export class DashboardComponent implements OnInit {
 
   private loadconsumptions(companyId: string): void {
     let errorResponse: any
-    let pci: number
+    let equivEnKg: number
+
     this.consumptionService.getAllConsumptionsByCompany(companyId)
     .subscribe(
       (consumptions: ConsumptionDTO[]) => {
         this.consumptions = consumptions
         this.consumptions.forEach((consumption: any) =>
-        {
-         this.energies.forEach((energy:any) => {
+        { 
+          /* Convierto todo a kWh */
+         this.energies.forEach((energy:EnergyDTO) => {
           if (energy.energyId === consumption.energy) {
-            pci = energy.pci
-            console.log ("pci: ", pci)
+            equivEnKg = energy.pci * energy.convLKg
+
           }        
         })
           this.graphConsumption.push(
@@ -275,18 +277,18 @@ export class DashboardComponent implements OnInit {
                 "water": consumption.water,
                 "residueName": consumption.residueES,
                 "emission": consumption.aspectES,
-                "jan": consumption.jan,
-                "feb": consumption.feb,
-                "mar": consumption.mar,
-                "apr": consumption.apr,
-                "may": consumption.may,
-                "jun": consumption.jun,
-                "jul": consumption.jul,
-                "aug": consumption.aug,
-                "sep": consumption.sep,
-                "oct": consumption.oct,
-                "nov": consumption.nov,
-                "dec": consumption.dec,
+                "jan": (consumption.jan*equivEnKg).toString(),
+                "feb": (consumption.feb*equivEnKg).toString(),
+                "mar": (consumption.mar*equivEnKg).toString(),
+                "apr": (consumption.apr*equivEnKg).toString(),
+                "may": (consumption.may*equivEnKg).toString(),
+                "jun": (consumption.jun*equivEnKg).toString(),
+                "jul": (consumption.jul*equivEnKg).toString(),
+                "aug": (consumption.aug*equivEnKg).toString(),
+                "sep": (consumption.sep*equivEnKg).toString(),
+                "oct": (consumption.oct*equivEnKg).toString(),
+                "nov": (consumption.nov*equivEnKg).toString(),
+                "dec": (consumption.dec*equivEnKg).toString(),
                 'monthlyData': [consumption.jan, consumption.feb, consumption.mar, consumption.apr, consumption.may, consumption.jun, consumption.jul, consumption.aug, consumption.sep, consumption.oct, consumption.nov, consumption.dec]
             })
         }

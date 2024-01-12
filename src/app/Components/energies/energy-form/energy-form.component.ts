@@ -88,7 +88,7 @@ export class EnergyFormComponent implements OnInit {
       }
     }
 
-    this.energy = new EnergyDTO ('', '', 0, '', 0, new Date(), new Date());
+    this.energy = new EnergyDTO ('', '', 0, '', 0, 0, new Date(), new Date());
     this.isUpdateMode = false;
     this.validRequest = false;
 

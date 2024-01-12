@@ -31,7 +31,6 @@ export class AutoevaluationQuestionnaireComponent {
   }
 
   ngOnInit() {
-    
     if (this.questionnaireID) {
       this.loadQuestionnaireResult(this.questionnaireID)
     }
@@ -42,14 +41,16 @@ export class AutoevaluationQuestionnaireComponent {
       .subscribe((answers: AnswerDTO[]) => {
         console.log ("answers: ", answers)
          answers.map ((answersItem:any)=>{
-          console.log ("answersItem: ", answersItem)
-          answersItem.questionnaireSummary.split(",").forEach(
+          console.log ("answersItem.userAnswers: ", answersItem.userAnswers)
+          JSON.parse(answersItem.userAnswers).map((item:any) => {
+            console.log("item.regulation: ", item.regulation)
+          })
+          answersItem.userAnswers.split(",").forEach(
             (element:string) => {
                 this.questionaireSummaryAnwers.push( element.split("#")[1] )
             }
           )
-        })
-        console.log ("questionnaireSummaryAnswers: ", this.questionaireSummaryAnwers)
+        }) 
       }
       )
   }

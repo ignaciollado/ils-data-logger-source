@@ -19,7 +19,7 @@
 
         <mat-form-field [style.width.px]=220 class="item2">
           <mat-label>{{'aspect' | translate}}</mat-label>
-          <mat-select [formControl]="aspect" (selectionChange)="updateFields($event)">
+          <mat-select [formControl]="aspect" (selectionChange)="changeAspect($event)">
             <mat-option value="1">{{aspectEnergy}}</mat-option>
             <mat-option value="2">{{aspectWater}}</mat-option>
             <mat-option value="3">{{aspectResidue}}</mat-option>

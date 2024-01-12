@@ -70,7 +70,10 @@ export class DashboardComponent implements OnInit {
 
   quantityMaterials: number = 0
 
-  chart: any
+  chart: any = new Chart("graph", {type: 'bar',
+  data: {
+     datasets: this.myDatasets
+  }, })
 
   primaryColors!: string[]
   alternateColors!: string[]
@@ -197,6 +200,7 @@ export class DashboardComponent implements OnInit {
     this.loadObjectives(this.companyId)
     this.loadProductionBilling(this.companyId)
     this.loadProductionCNAE(this.companyId)
+    this.chartInit()
   }
 
   private loadEnergies(): void {
@@ -265,6 +269,7 @@ export class DashboardComponent implements OnInit {
           /* Convierto todo a kWh */
          this.energies.forEach((energy:EnergyDTO) => {
           if (energy.energyId === consumption.energy) {
+            console.log (energy.pci, energy.convLKg)
             equivEnKg = energy.pci * energy.convLKg
 
           }        
@@ -344,14 +349,66 @@ export class DashboardComponent implements OnInit {
     )
   }
 
+
+  chartInit() {
+
+    this.myDatasets = []
+    this.startPrimaryColor  = 19
+   
+    this.chart = new Chart("graph", {
+      type: 'bar',
+      data: {
+         labels: this.graphMonths,
+         datasets: this.myDatasets
+      },
+      options: {
+        responsive: true,
+        aspectRatio:1.0,
+        events: ['click'],
+        plugins: {
+          legend: {
+            position: 'bottom',
+            labels: {
+              font: {
+                  size: 10,
+                  family: 'Montserrat'
+                    }
+          }
+          },
+          title: {
+            display: true,
+            text: this.aspectTitle
+          }
+        },
+
+         scales: {
+          x: {
+            border: {
+              display: this.BORDER
+            },
+            grid: {
+              display: this.DISPLAY,
+              drawOnChartArea: this.CHART_AREA,
+              drawTicks: this.TICKS,
+            }
+
+          },
+          y: {
+
+          }
+        }
+      }
+    })
+    
+  }
+
   chartGenerate() {
     this.graphDataTemp = []
     this.graphData = []
     this.startPrimaryColor  = 19
-    if (this.chart) {
-      this.chart.destroy()
-    }
-
+    
+    this.chart.destroy()
+    
     this.graphDataTemp = this.graphConsumption.filter((item:any) => item.aspectId == this.aspect.value)
     this.graphDataTemp = this.graphDataTemp.filter((item:any) => item.delegation == this.delegation.value)
     if (this.yearGraph.value) {
@@ -408,46 +465,30 @@ export class DashboardComponent implements OnInit {
          datasets: this.myDatasets
       },
       options: {
-        responsive: true,
-        aspectRatio:1.0,
-        events: ['click'],
         plugins: {
           legend: {
             position: 'bottom',
             labels: {
               font: {
-                  size: 10,
-                  family: 'Montserrat'
+                size: 10,
+                family: 'Montserrat'
                     }
-          }
-          },
+                    }
+                  },
           title: {
             display: true,
             text: this.aspectTitle
           }
         },
-
-         scales: {
-          x: {
-            border: {
-              display: this.BORDER
-            },
-            grid: {
-              display: this.DISPLAY,
-              drawOnChartArea: this.CHART_AREA,
-              drawTicks: this.TICKS,
-            }
-
-          },
-          y: {
-
-          }
-        }
       }
-    });
+    })
+    
   }
 
   chartRatioBilling() {
+    if (this.chart) {
+      this.chart.destroy()
+    }
     this.isRatioCNAE = false
     this.chartObjective()
     return;
@@ -530,6 +571,9 @@ export class DashboardComponent implements OnInit {
   }
 
   chartRatioCNAE() {
+    if (this.chart) {
+      this.chart.destroy()
+    }
     this.isRatioBilling = false
     this.chartObjective()
     return
@@ -610,7 +654,6 @@ export class DashboardComponent implements OnInit {
   }
 
   chartObjective() {
-   
     let theLabel: string = ''
     this.startPrimaryColor  = 19
     this.graphObjectiveTemp = this.objectives.filter((item:any) => item.aspectId == this.aspect.value)
@@ -654,7 +697,9 @@ export class DashboardComponent implements OnInit {
     this.chart.update()
   }
 
-  updateFields(e: any) {
+  changeAspect(e: any) {
+    this.chart.destroy()
+    this.myDatasets = []
     if (e.value == 1) {
       this.isEnergy = true
       this.aspectTitle = this.aspectEnergy
@@ -684,9 +729,7 @@ export class DashboardComponent implements OnInit {
     this.isEnergy = false
     this.isResidue = false
     this.myDatasets = []
-    if (this.chart) {
-      this.chart.destroy()
-    }
+    this.chart.destroy()
   }
 
   onChartHover = ($event: any) => {

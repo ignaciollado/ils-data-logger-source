@@ -6,7 +6,7 @@ require_once 'conectar_a_bbdd_pindust.php';
 
 mysqli_query($conn, "SET NAMES 'utf8'");
 $id = mysqli_real_escape_string($conn, $_POST["id"]);
-$query = "SELECT energyId, nameES, nameCA, aspectId, unit, pci, created_at, updated_at 
+$query = "SELECT energyId, nameES, nameCA, aspectId, unit, pci, convLKg, created_at, updated_at 
 FROM ils_energy Order by nameES";
 $result = mysqli_query($conn, $query);
 if ( $result ) {

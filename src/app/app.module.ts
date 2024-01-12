@@ -16,8 +16,6 @@ import { HomeComponent } from './Components/home/home.component';
 import { LoginComponent } from './Components/login/login.component';
 import { PostFormComponent } from './Components/posts/post-form/post-form.component';
 import { PostsListComponent } from './Components/posts/posts-list/posts-list.component';
-import { CategoryFormComponent } from './Components/categories/category-form/category-form.component';
-import { CategoriesListComponent } from './Components/categories/categories-list/categories-list.component';
 import { ProfileComponent } from './Components/profile/profile.component';
 import { RegisterComponent } from './Components/register/register.component';
 import { AuthInterceptorService } from './Services/auth-interceptor.service';
@@ -66,10 +64,6 @@ import { DelegationFormComponent } from './Components/profile/delegation-form/de
 import { WaterFormComponent } from './Components/posts/water-form/water-form.component';
 import { ResidueFormComponent } from './Components/posts/residue-form/residue-form.component';
 import { EmissionFormComponent } from './Components/posts/emission-form/emission-form.component';
-import { AspectFormComponent } from './Components/aspects/aspect-form/aspect-form.component';
-import { AspectListComponent } from './Components/aspects/aspect-list/aspect-list.component';
-import { EnergyFormComponent } from './Components/energies/energy-form/energy-form.component';
-import { EnergyListComponent } from './Components/energies/energy-list/energy-list.component';
 import { ResidueListComponent } from './Components/residues/residue-list/residue-list.component';
 import { ResidueAdminFormComponent } from './Components/residues/residue-admin-form/residue-admin-form.component';
 import { SelectLanguageComponent } from './Components/select-language/select-language.component';
@@ -87,6 +81,7 @@ import { FileUploadComponent } from './file-upload/file-upload.component';
 import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
 import { GlobalRegulationQuestionnaireContinueComponent } from './Components/global-regulation-questionnaire-continue/global-regulation-questionnaire-continue.component';
 import { NotFoundComponent } from './error-pages/not-found/not-found.component';
+import { AutoevaluationQuestionnaireComponent } from './Components/autoevaluation-questionnaire/autoevaluation-questionnaire.component';
 
 export function tokenGetter() {
   return sessionStorage.getItem("access_token");
@@ -109,18 +104,12 @@ export function tokenGetter() {
     ProfileComponent,
     PostsListComponent,
     PostFormComponent,
-    CategoryFormComponent,
-    CategoriesListComponent,
     DashboardComponent,
     DelegationListComponent,
     DelegationFormComponent,
     WaterFormComponent,
     ResidueFormComponent,
     EmissionFormComponent,
-    AspectFormComponent,
-    AspectListComponent,
-    EnergyFormComponent,
-    EnergyListComponent,
     ResidueListComponent,
     ResidueAdminFormComponent,
     SelectLanguageComponent,
@@ -133,6 +122,7 @@ export function tokenGetter() {
     FileUploadComponent,
     GlobalRegulationQuestionnaireContinueComponent,
     NotFoundComponent,
+    AutoevaluationQuestionnaireComponent,
   ],
   imports: [
     BrowserModule,

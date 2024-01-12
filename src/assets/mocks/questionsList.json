@@ -1069,7 +1069,7 @@
       {
       "key": "6",
       "type": "radio",
-      "questionTextES": "¿ Durante  dos ejercicios anteriores consecutivos tu sociedad ha superado la media de 250 empleados  y además se ha dado al menos una de las circunstancias indicadas en la ayuda?",
+      "questionTextES": "Durante  dos ejercicios anteriores consecutivos su sociedad ¿ ha superado la media de 250 empleados y además se ha dado al menos una de las circunstancias indicadas en la ayuda?",
       "questionTextCA": "",
       "questionDoc1" : "",
       "questionDoc2" : "",
@@ -1094,11 +1094,11 @@
       {
         "key": "7",
         "type": "radio",
-        "questionTextES": "¿Tu industria debes de disponer de un plan de autoprotección ?",
+        "questionTextES": "Su industria ¿ debe disponer de un plan de autoprotección ?",
         "questionTextCA": "",
         "questionDoc1" : "PMA_7",
         "questionDoc2" : "",
-        "questionTooltipES": "Para saber si es de aplicación en su industria debe de revisar el  <a href='../../../assets/answers_images/PMA_7.pdf' target='_blank'>ANEXO I</a>",
+        "questionTooltipES": "Para saber si es de aplicación en su industria debe revisar el  <a href='../../../assets/answers_images/PMA_7.pdf' target='_blank'>ANEXO I</a>",
         "questionTooltipCA": "",
         "link": "https://...",
         "answers":

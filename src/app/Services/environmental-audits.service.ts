@@ -38,6 +38,12 @@ export class EnvironmentalAuditsService {
       .pipe(catchError(this.sharedService.handleError))
   }
 
+  getAutoevaluationQuestionList(): Observable<QuestionDTO[]> {
+    return this.http
+      .get<QuestionDTO[]>(`${this.urlAPiMock}questionsListAutoEvaluation.json`)
+      .pipe(catchError(this.sharedService.handleError))
+  }
+
   createGlobalAnswer(resultsQuestionnaire: string[], companyId: string, delegation: number, completed: vectorStateDetail[]): Observable<string[]> {
     return this.http
       .post<string[]>(`${URL_API}questionnaireAnswerCreate.php?companyId=${companyId}&delegation=${delegation}&completed=${JSON.stringify(completed)}`, resultsQuestionnaire)

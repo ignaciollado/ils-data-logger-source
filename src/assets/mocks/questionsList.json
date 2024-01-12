@@ -293,7 +293,7 @@
         "regulation": ["SIND_20","SIND_39"],
         "image_1": "",
         "image_2": ""},
-        {"answerText": "Grúas torre desmontables",
+        {"answerText": "Grúas",
         "answerTooltip": "",
         "regulation": ["SIND_20","SIND_18","SIND_12"],
         "image_1": "",
@@ -1069,7 +1069,7 @@
       {
       "key": "6",
       "type": "radio",
-      "questionTextES": "Durante  dos ejercicios anteriores consecutivos su sociedad ¿ ha superado la media de 250 empleados y además se ha dado al menos una de las circunstancias indicadas en la ayuda?",
+      "questionTextES": "Durante  dos ejercicios anteriores consecutivos su industria ¿ ha superado la media de 250 empleados y además se ha dado al menos una de las circunstancias indicadas en la ayuda?",
       "questionTextCA": "",
       "questionDoc1" : "",
       "questionDoc2" : "",

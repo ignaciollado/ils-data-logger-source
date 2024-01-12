@@ -112,6 +112,10 @@ export class HeaderComponent implements OnInit {
     this.router.navigateByUrl('global-questionnaire')
   }
 
+  autoEvaluationQuestionnaire(): void {
+    this.router.navigateByUrl('autoevaluation-questionnaire')
+  }
+
   globalQuestionnaireList(): void {
     this.router.navigateByUrl('global-questionnaire-list')
   }

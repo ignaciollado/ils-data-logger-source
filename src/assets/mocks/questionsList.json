@@ -1105,7 +1105,7 @@
         [
                 {"answerText": "SI",
                  "answerTooltip": "",
-                 "regulation": ["MA_13"],
+                 "regulation": ["MA_13", "MA_14"],
                  "image_1": "",
                  "image_2": ""},
                  {"answerText": "NO",
@@ -1113,7 +1113,7 @@
                  "regulation": [""],
                  "image_1": "",
                  "image_2": ""}
-                
+
         ]
     }
     ]

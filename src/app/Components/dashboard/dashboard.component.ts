@@ -258,22 +258,23 @@ export class DashboardComponent implements OnInit {
 
   private loadconsumptions(companyId: string): void {
     let errorResponse: any
-    let equivEnKg: number
+    let equivEnKg: number = 1
 
     this.consumptionService.getAllConsumptionsByCompany(companyId)
     .subscribe(
       (consumptions: ConsumptionDTO[]) => {
         this.consumptions = consumptions
         this.consumptions.forEach((consumption: any) =>
-        { 
-          /* Convierto todo a kWh */
-         this.energies.forEach((energy:EnergyDTO) => {
-          if (energy.energyId === consumption.energy) {
-            console.log (energy.pci, energy.convLKg)
-            equivEnKg = energy.pci * energy.convLKg
-
-          }        
-        })
+        {
+          /*Cuando sea ENERGÍA (aspecto 1) Convierto todo a kWh */
+          if (this.aspect.value == 1) {
+            this.energies.forEach((energy:EnergyDTO) => {
+              if (energy.energyId === consumption.energy) {
+                console.log (energy.pci, energy.convLKg)
+                equivEnKg = energy.pci * energy.convLKg
+              }
+            })
+          }
           this.graphConsumption.push(
             {"aspectId": consumption.aspectId,
                 "delegation": consumption.delegation,
@@ -354,7 +355,7 @@ export class DashboardComponent implements OnInit {
 
     this.myDatasets = []
     this.startPrimaryColor  = 19
-   
+
     this.chart = new Chart("graph", {
       type: 'bar',
       data: {
@@ -399,16 +400,16 @@ export class DashboardComponent implements OnInit {
         }
       }
     })
-    
+
   }
 
   chartGenerate() {
     this.graphDataTemp = []
     this.graphData = []
     this.startPrimaryColor  = 19
-    
+
     this.chart.destroy()
-    
+
     this.graphDataTemp = this.graphConsumption.filter((item:any) => item.aspectId == this.aspect.value)
     this.graphDataTemp = this.graphDataTemp.filter((item:any) => item.delegation == this.delegation.value)
     if (this.yearGraph.value) {
@@ -482,7 +483,7 @@ export class DashboardComponent implements OnInit {
         },
       }
     })
-    
+
   }
 
   chartRatioBilling() {
@@ -540,7 +541,7 @@ export class DashboardComponent implements OnInit {
       })
 
     /* this.chartObjective() */
-   
+
     this.myDatasets.push(
       {
         type: 'line',
@@ -623,7 +624,7 @@ export class DashboardComponent implements OnInit {
             },
         )
       })
- 
+
     this.myDatasets.push(
       {
         type: 'line',
@@ -700,6 +701,7 @@ export class DashboardComponent implements OnInit {
   changeAspect(e: any) {
     this.chart.destroy()
     this.myDatasets = []
+
     if (e.value == 1) {
       this.isEnergy = true
       this.aspectTitle = this.aspectEnergy
@@ -718,6 +720,11 @@ export class DashboardComponent implements OnInit {
     if(e.value == 5) {
       this.aspectTitle = this.aspectEmissions
     }
+  }
+
+  selectionEnergyResidueChange(e: any) {
+    this.chart.destroy()
+    this.myDatasets = []
   }
 
   graphFormReset() {

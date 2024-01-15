@@ -14,11 +14,22 @@ import { SharedService } from 'src/app/Services/shared.service';
 import { DelegationService } from 'src/app/Services/delegation.service';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { finalize } from 'rxjs/operators';
-
+import { animate, state, style, transition, trigger } from '@angular/animations';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
+  animations: [
+    trigger( 'fadeInOut',[
+      state(
+        'void',
+        style({
+          opacity: 0.2
+        })
+      ),
+      transition('void <-> *', animate(1500))
+    ])
+  ],
 
 })
 

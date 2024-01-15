@@ -3,7 +3,7 @@
 </div>
 <div>
 
-<div class="container-form" >
+<div class="container-form" [@fadeInOut] >
   <h1>{{'workSession' | translate}}</h1>
   <form [formGroup]="loginForm" (ngSubmit)="loginObservable()">
     <mat-card [class.mat-elevation-z8]="isElevated">

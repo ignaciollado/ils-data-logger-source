@@ -255,6 +255,9 @@ export class AutoevaluationQuestionnaireComponent {
             const node = document.createElement("li")
             this.regulationListToApply.forEach((itemReg:string)=> {
               const textnode = document.createTextNode(itemReg+" ")
+              const classnode = document.createAttribute("class")
+              classnode.value = "auto-eval-list"
+              node.setAttributeNode(classnode)
               node.appendChild(textnode)
             })
             document.getElementById("regulation-to-apply").appendChild(node)

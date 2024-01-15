@@ -218,11 +218,9 @@ export class ProfileComponent implements OnInit {
   }
 
   public cnaeSelected(cnaeItem: any) {
-
     this.enterpriseActivityIndicatorsTemp = this.cnaeList.filter( item => item.cnaeCode === cnaeItem.value )
     this.enterpriseActivityIndicators = this.enterpriseActivityIndicatorsTemp[0].activityIndicator
     this.activityIndicator.enable()
-
   }
 
   public activityIndicatorSelected( activityInd: any ) {

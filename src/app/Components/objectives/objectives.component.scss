@@ -29,18 +29,6 @@
   animation: fadein 0.5s, fadeout 0.5s 2.5s;
 }
 
-.button-add-row {
-  background: #1b9e1b;
-  color: #ffffff;
-}
-.button-remove-rows {
-  background: red;
-  color: #ffffff;
-  margin-right: 5px;
-}
-.button-remove {
-  color: red;
-}
 .btn-edit{
   display: grid;
   grid-template-columns: 50% 50%;
@@ -86,11 +74,6 @@ mat-header-cell {
 
 mat-cell{
   background-color: #919191;
-}
-
-.mat-column-isSelected{
-  word-wrap:break-word;
-  max-width:3.5rem;
 }
 
 .mat-column-delegation{

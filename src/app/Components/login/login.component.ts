@@ -11,12 +11,9 @@ import { HeaderMenus } from 'src/app/Models/header-menus.dto';
 import { AuthService, AuthToken } from 'src/app/Services/auth.service';
 import { HeaderMenusService } from 'src/app/Services/header-menus.service';
 import { SharedService } from 'src/app/Services/shared.service';
-import { animate, state, style, transition, trigger } from '@angular/animations'
 import { DelegationService } from 'src/app/Services/delegation.service';
-import { HttpErrorResponse } from '@angular/common/http';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { finalize } from 'rxjs/operators';
-import { catchError } from 'rxjs/operators';
 
 @Component({
   selector: 'app-login',

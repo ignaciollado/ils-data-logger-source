@@ -9,7 +9,6 @@ import { ConsumptionService } from 'src/app/Services/consumption.service';
 import { EnergyService } from 'src/app/Services/energy.service';
 
 import { SharedService } from 'src/app/Services/shared.service';
-import { deleteResponse } from 'src/app/Services/consumption.service';
 import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Component({
@@ -61,7 +60,7 @@ export class HomeComponent {
       localStorage.setItem("preferredLang", "cat")
       location.reload()
     }
-     
+
     this.headerMenusService.headerManagement.subscribe(
       (headerInfo: HeaderMenus) => {
         if (headerInfo) {

@@ -99,8 +99,8 @@ const routes: Routes = [
     canActivate: [AuthGuard],
   },
   {
-    path:'autoevaluation-questionnaire',
-    title: 'ILS-Ficha de autoevaluación',
+    path:'autoevaluation-questionnaire/:id',
+    title: 'ILS-Formulario de autoevaluación',
     component: AutoevaluationQuestionnaireComponent,
     canActivate: [AuthGuard]
   },

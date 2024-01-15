@@ -29,6 +29,11 @@ import { MatSort } from '@angular/material/sort';
 import { MatDialog } from '@angular/material/dialog'
 import { ConfirmDialogComponent } from 'src/app/confirm-dialog/confirm-dialog.component'
 import { MatPaginator } from '@angular/material/paginator';
+import { BillingDTO } from 'src/app/Models/billing.dto';
+import { BillingService } from 'src/app/Services/billing.service';
+import { CnaeDataService } from 'src/app/Services/cnaeData.service';
+import { CnaeDataDTO } from 'src/app/Models/cnaeData.dto';
+import { CnaeDTO } from 'src/app/Models/cnae.dto';
 
 const ENERGIES_DATA = [
   {Id: 1, delegation: "Mock data", year: "2019", energyES: "Fuel (kg)", "jan": 15000000, "feb": 15000000, "mar": 15000000, "apr": 15000000, "may": 15000000
@@ -69,7 +74,6 @@ export class PostFormComponent implements OnInit {
   showButtons: boolean;
   showAuthSection: boolean;
   showNoAuthSection: boolean;
-  absoluteData: boolean = true;
   access_token: string | null;
   today: Date
   sixMonthsAgo: Date
@@ -82,6 +86,8 @@ export class PostFormComponent implements OnInit {
   energies!: EnergyDTO[];
   delegations!: DelegationDTO[];
   consumptions!: ConsumptionDTO[];
+  billings!: BillingDTO[];
+  cnaesData!: CnaeDataDTO[];
 
   isGridView: boolean = false
   columnsDisplayed: string[] = energyColumns.map((col) => col.key);
@@ -110,6 +116,8 @@ export class PostFormComponent implements OnInit {
     private jwtHelper: JwtHelperService,
     private _adapter: DateAdapter<any>,
     public dialog: MatDialog,
+    private billingService: BillingService,
+    private cnaesDataService: CnaeDataService,
 
     @Inject(MAT_DATE_LOCALE) private _locale: string,
   ) {
@@ -155,6 +163,8 @@ export class PostFormComponent implements OnInit {
       companyId: this.companyId,
     });
 
+    this.loadBillingProduction(this.userId)
+    this.loadCNAEProduction(this.userId)
     this.loadEnergies();
     this.loadDelegations(this.userId);
     this.loadConsumption(this.userId);
@@ -192,6 +202,38 @@ export class PostFormComponent implements OnInit {
     }
   }
 
+  private loadBillingProduction(userId: string){
+    let errorResponse: any;
+    if (this.userId) {
+      this.billingService.getBillingsByCompany(userId).subscribe(
+        (billings: BillingDTO[]) => {
+          this.billings = billings;
+          console.log("billings: ", this.billings)
+        },
+        (error: HttpErrorResponse) => {
+          errorResponse = error.error;
+          this.sharedService.errorLog(errorResponse)
+        }
+      );
+    }
+  }
+
+  private loadCNAEProduction(userId: string){
+    let errorResponse: any;
+    if (this.userId) {
+        this.cnaesDataService.getCnaesDataByCompany(userId).subscribe((item: CnaeDataDTO[]) => {
+          this.cnaesData = item
+          console.log("cnaesData: ", this.cnaesData)
+        },
+        (error: HttpErrorResponse) => {
+          errorResponse = error.error;
+          this.sharedService.errorLog(errorResponse)
+        }
+      );
+    }
+  }
+
+
   private loadEnergies(): void {
     let errorResponse: any;
     if (this.userId) {
@@ -224,10 +266,46 @@ export class PostFormComponent implements OnInit {
 
   private loadConsumption(userId: string): void {
     let errorResponse: any;
+    let billingProduction: string[]
+    let cnaeProduction: string[]
+
     if (this.userId) {
         this.consumptionService.getAllConsumptionsByCompanyAndAspect(userId, 1).subscribe(
         (consumptions: ConsumptionDTO[]) => {
           this.consumptions = consumptions
+          this.consumptions.map((consumptionItem:any)=> {
+            if (this.isRatioBilling) { /* Visualización de datos en formato ratio */
+              this.billings.map((billingItem:any)=>{
+                if ((consumptionItem.year === billingItem.year) && (consumptionItem.delegation === billingItem.delegation)){
+                  consumptionItem.jan = (consumptionItem.jan/billingItem.jan)
+                  consumptionItem.feb = (consumptionItem.feb/billingItem.feb)
+                  consumptionItem.mar = (consumptionItem.mar/billingItem.mar)
+                  consumptionItem.apr = (consumptionItem.apr/billingItem.apr)
+                  consumptionItem.may = (consumptionItem.may/billingItem.may)
+                  consumptionItem.jun = (consumptionItem.jun/billingItem.jun)
+                  consumptionItem.jul = (consumptionItem.jul/billingItem.jul)
+                  consumptionItem.aug = (consumptionItem.aug/billingItem.aug)
+                  consumptionItem.sep = (consumptionItem.sep/billingItem.sep)
+                  consumptionItem.oct = (consumptionItem.oct/billingItem.oct)
+                  consumptionItem.nov = (consumptionItem.nov/billingItem.nov)
+                  consumptionItem.dec = (consumptionItem.dec/billingItem.dec)
+
+                  billingProduction = [billingItem.jan, billingItem.feb, billingItem.mar, billingItem.apr, billingItem.may, billingItem.jun, billingItem.jul, billingItem.aug, billingItem.sep, billingItem.oct, billingItem.nov, billingItem.dec]
+                  console.log("billingProduction: ", billingItem.year, billingItem.delegation, billingProduction)
+                }
+              })
+
+            }
+            if (this.isRatioCNAE) { /* Visualización de datos en formato ratio */
+              this.cnaesData.map((cnaeItem:any)=>{
+                if ((consumptionItem.year === cnaeItem.year) && (consumptionItem.delegation === cnaeItem.delegation)){
+                  cnaeProduction = [cnaeItem.jan, cnaeItem.feb, cnaeItem.mar, cnaeItem.apr, cnaeItem.may, cnaeItem.jun, cnaeItem.jul, cnaeItem.aug, cnaeItem.sep, cnaeItem.oct, cnaeItem.nov, cnaeItem.dec]
+                  console.log("cnaeProduction: ", cnaeItem.year, cnaeItem.delegation, cnaeProduction)
+                }
+              })
+            }
+
+          })
           this.consumptions.map((item:any) => {
             item.energyES = item.energyES+" ["+item.unit+"]"
           })
@@ -328,13 +406,15 @@ export class PostFormComponent implements OnInit {
   }
 
   public ratioBilling(): void {
-    this.absoluteData = !this.absoluteData
-    console.log(this.absoluteData)
+    this.isRatioCNAE = false
+    console.log(this.isRatioCNAE)
+    this.loadConsumption(this.userId)
   }
 
   public ratioCNAE(): void {
-    this.absoluteData = !this.absoluteData
-    console.log(this.absoluteData)
+    this.isRatioBilling = false
+    console.log(this.isRatioBilling)
+    this.loadConsumption(this.userId)
   }
 
   public ratioTypeSelected(ratioType: any) {

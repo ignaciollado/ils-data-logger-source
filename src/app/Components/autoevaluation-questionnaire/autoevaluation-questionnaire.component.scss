@@ -1,13 +1,13 @@
+$counter: 1;
 ol {
   list-style: circle;
-  counter-reset: my-awesome-counter;
 }
 li {
-  counter-increment: my-awesome-counter;
+  counter-increment:$counter;
   margin: 0.25rem;
 }
 li::before {
-  content: counter(my-awesome-counter);
+  content: counter($counter);
   background: #662974;
   width: 2rem;
   height: 2rem;

@@ -1,7 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, Inject, ViewChild } from '@angular/core';
 import {
-  FormControl,
   UntypedFormBuilder,
   UntypedFormControl,
   UntypedFormGroup,
@@ -9,22 +8,21 @@ import {
 } from '@angular/forms';
 import {DateAdapter, MAT_DATE_LOCALE} from '@angular/material/core';
 
-import { ActivatedRoute, Router } from '@angular/router';
-import { finalize } from 'rxjs/operators';
+import { ActivatedRoute } from '@angular/router';
 import { DelegationDTO } from 'src/app/Models/delegation.dto';
 import { SharedService } from 'src/app/Services/shared.service';
-import { deleteResponse } from 'src/app/Services/category.service';
 import { DelegationService } from 'src/app/Services/delegation.service';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
 
 import { MatDialog } from '@angular/material/dialog'
 import { ConfirmDialogComponent } from 'src/app/confirm-dialog/confirm-dialog.component'
 
-import { MatSort } from '@angular/material/sort';
+
 import { CnaeColumns, CnaeDataDTO } from 'src/app/Models/cnaeData.dto';
 import { CnaeDataService } from 'src/app/Services/cnaeData.service';
 import { UserService } from 'src/app/Services/user.service';

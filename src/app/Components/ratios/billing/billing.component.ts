@@ -10,14 +10,12 @@ import {
 } from '@angular/forms';
 import {DateAdapter, MAT_DATE_LOCALE} from '@angular/material/core';
 
-import { ActivatedRoute, Router } from '@angular/router';
-import { finalize } from 'rxjs/operators';
+import { ActivatedRoute } from '@angular/router';
 import { BillingColumns, BillingDTO } from 'src/app/Models/billing.dto';
 import { DelegationDTO } from 'src/app/Models/delegation.dto';
 import { BillingService } from 'src/app/Services/billing.service';
 import { SharedService } from 'src/app/Services/shared.service';
 import { DelegationService } from 'src/app/Services/delegation.service';
-import { deleteResponse } from 'src/app/Services/category.service';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { MatTableDataSource } from '@angular/material/table';

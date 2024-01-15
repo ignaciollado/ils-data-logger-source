@@ -37,10 +37,18 @@
     </mat-card>
   </form>
   <div style="margin-left: auto; margin-right: auto"><span id="postFeedback"></span></div>
-  <mat-form-field >
-    <mat-label>{{'filterByColumn' | translate}}</mat-label>
-    <input matInput (keyup)="applyFilter($event)" placeholder="Search columns" #input>
-  </mat-form-field>
+  <div class='form-filter'>
+    <mat-form-field class="item1">
+      <mat-label>{{'filterByColumn' | translate}}</mat-label>
+      <input matInput (keyup)="applyFilter($event)" placeholder="Search columns" #input>
+    </mat-form-field>
+    <div class="item2">
+      <mat-slide-toggle [(ngModel)]="isRatioBilling" class="item6" (change)="ratioBilling()">Ratio billing mode</mat-slide-toggle>
+    </div>
+    <div class="item3">
+      <mat-slide-toggle [(ngModel)]="isRatioCNAE" class="item7" (change)="ratioCNAE()">Ratio CNAE mode</mat-slide-toggle>
+    </div>
+    </div>
 
     <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
       <ng-container [matColumnDef]="col.key" *ngFor="let col of columnsSchema">

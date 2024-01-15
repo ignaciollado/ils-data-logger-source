@@ -1,6 +1,5 @@
-import { formatDate } from '@angular/common';
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component, Inject, OnInit, ViewChild } from '@angular/core';
+import { Component, Inject, ViewChild } from '@angular/core';
 import {
   UntypedFormBuilder,
   UntypedFormControl,
@@ -23,6 +22,10 @@ import { MatSort } from '@angular/material/sort';
 
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog'
 import { ConfirmDialogComponent } from 'src/app/confirm-dialog/confirm-dialog.component'
+import { BillingService } from 'src/app/Services/billing.service';
+import { CnaeDataService } from 'src/app/Services/cnaeData.service';
+import { CnaeDataDTO } from 'src/app/Models/cnaeData.dto';
+import { BillingDTO } from 'src/app/Models/billing.dto';
 
 const EMISSION_DATA = [
    {Id: 1, delegation: "Mock data 1", year: "2019", quantity: '100.25', scopeOne: '99.25', scopeTwo: '10.75'},
@@ -55,6 +58,8 @@ export class EmissionFormComponent {
 
   isValidForm: boolean | null
   isElevated: boolean = true
+  isRatioBilling: boolean = false
+  isRatioCNAE: boolean = false
   theRatioTypeSelected: boolean = false
   consumptionFields: string[] = []
   result : boolean = false
@@ -66,6 +71,8 @@ export class EmissionFormComponent {
 
   delegations!: DelegationDTO[];
   consumptions!: ConsumptionDTO[];
+  billings!: BillingDTO[];
+  cnaesData!: CnaeDataDTO[];
 
   isGridView: boolean = false
   columnsDisplayed: string[] = emissionColumns.map((col) => col.key);
@@ -89,6 +96,9 @@ export class EmissionFormComponent {
     private jwtHelper: JwtHelperService,
     private _adapter: DateAdapter<any>,
     public dialog: MatDialog,
+    private billingService: BillingService,
+    private cnaesDataService: CnaeDataService,
+
     @Inject(MAT_DATE_LOCALE) private _locale: string,
   ) {
     this._locale = 'es-ES';
@@ -121,6 +131,37 @@ export class EmissionFormComponent {
 
   ngOnInit(): void {
     this.loadConsumption(this.userId);
+  }
+
+  private loadBillingProduction(userId: string){
+    let errorResponse: any;
+    if (this.userId) {
+      this.billingService.getBillingsByCompany(userId).subscribe(
+        (billings: BillingDTO[]) => {
+          this.billings = billings;
+          console.log("billings: ", this.billings)
+        },
+        (error: HttpErrorResponse) => {
+          errorResponse = error.error;
+          this.sharedService.errorLog(errorResponse)
+        }
+      );
+    }
+  }
+
+  private loadCNAEProduction(userId: string){
+    let errorResponse: any;
+    if (this.userId) {
+        this.cnaesDataService.getCnaesDataByCompany(userId).subscribe((item: CnaeDataDTO[]) => {
+          this.cnaesData = item
+          console.log("cnaesData: ", this.cnaesData)
+        },
+        (error: HttpErrorResponse) => {
+          errorResponse = error.error;
+          this.sharedService.errorLog(errorResponse)
+        }
+      );
+    }
   }
 
   private loadDelegations(): void {
@@ -243,6 +284,18 @@ export class EmissionFormComponent {
       this.createEmissionConsumption();
     }
 
+  }
+
+  public ratioBilling(): void {
+    this.isRatioCNAE = false
+    console.log(this.isRatioCNAE)
+    this.loadConsumption(this.userId)
+  }
+
+  public ratioCNAE(): void {
+    this.isRatioBilling = false
+    console.log(this.isRatioBilling)
+    this.loadConsumption(this.userId)
   }
 
   getRecord(row) {

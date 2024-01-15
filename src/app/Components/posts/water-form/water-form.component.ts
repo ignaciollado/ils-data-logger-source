@@ -14,16 +14,17 @@ import { ConsumptionDTO, waterColumns } from 'src/app/Models/consumption.dto';
 import { DelegationDTO } from 'src/app/Models/delegation.dto';
 import { ConsumptionService } from 'src/app/Services/consumption.service';
 import { SharedService } from 'src/app/Services/shared.service';
-import { deleteResponse } from 'src/app/Services/category.service';
 import { DelegationService } from 'src/app/Services/delegation.service';
-import { HeaderMenusService } from 'src/app/Services/header-menus.service';
-/* import { MatDatepicker } from '@angular/material/datepicker'; */
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 
 import { MatDialog } from '@angular/material/dialog'
 import { ConfirmDialogComponent } from 'src/app/confirm-dialog/confirm-dialog.component'
+import { BillingService } from 'src/app/Services/billing.service';
+import { CnaeDataService } from 'src/app/Services/cnaeData.service';
+import { BillingDTO } from 'src/app/Models/billing.dto';
+import { CnaeDataDTO } from 'src/app/Models/cnaeData.dto';
 
 const WATER_DATA = [
   {Id: 1, delegation: "Mock Data", year: "2019", "jan": 10000000, "feb": 20000000, "mar": 15000000, "apr": 15000000, "may": 15000000
@@ -40,11 +41,10 @@ const WATER_DATA = [
 })
 
 export class WaterFormComponent {
-  minDate: string;
-  maxDate: Date;
-  startDate = new Date(new Date().getFullYear(), 0, 1);
 
   consumption: ConsumptionDTO
+  billings!: BillingDTO[];
+  cnaesData!: CnaeDataDTO[];
   delegation: UntypedFormControl
   water: UntypedFormControl
   companyId: UntypedFormControl
@@ -57,6 +57,8 @@ export class WaterFormComponent {
 
   isValidForm: boolean | null
   isElevated: boolean = true
+  isRatioBilling: boolean = false
+  isRatioCNAE: boolean = false
   consumptionFields: string[] = []
   result: boolean = false
   theRatioTypeSelected : boolean = false
@@ -99,6 +101,8 @@ export class WaterFormComponent {
     private jwtHelper: JwtHelperService,
     private _adapter: DateAdapter<any>,
     public dialog: MatDialog,
+    private billingService: BillingService,
+    private cnaesDataService: CnaeDataService,
 
     @Inject(MAT_DATE_LOCALE) private _locale: string,
   ) {
@@ -125,6 +129,37 @@ export class WaterFormComponent {
 
     this.loadDelegations(this.userId);
     this.loadConsumption(this.userId);
+  }
+
+  private loadBillingProduction(userId: string){
+    let errorResponse: any;
+    if (this.userId) {
+      this.billingService.getBillingsByCompany(userId).subscribe(
+        (billings: BillingDTO[]) => {
+          this.billings = billings;
+          console.log("billings: ", this.billings)
+        },
+        (error: HttpErrorResponse) => {
+          errorResponse = error.error;
+          this.sharedService.errorLog(errorResponse)
+        }
+      );
+    }
+  }
+
+  private loadCNAEProduction(userId: string){
+    let errorResponse: any;
+    if (this.userId) {
+        this.cnaesDataService.getCnaesDataByCompany(userId).subscribe((item: CnaeDataDTO[]) => {
+          this.cnaesData = item
+          console.log("cnaesData: ", this.cnaesData)
+        },
+        (error: HttpErrorResponse) => {
+          errorResponse = error.error;
+          this.sharedService.errorLog(errorResponse)
+        }
+      );
+    }
   }
 
   private loadDelegations(userId: string): void {
@@ -193,6 +228,18 @@ export class WaterFormComponent {
 
   private editPost(): void {
 
+  }
+
+  public ratioBilling(): void {
+    this.isRatioCNAE = false
+    console.log(this.isRatioCNAE)
+    this.loadConsumption(this.userId)
+  }
+
+  public ratioCNAE(): void {
+    this.isRatioBilling = false
+    console.log(this.isRatioBilling)
+    this.loadConsumption(this.userId)
   }
 
   saveWaterForm(): void {

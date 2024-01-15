@@ -17,10 +17,8 @@ import { ActivatedRoute } from '@angular/router';
 import { finalize } from 'rxjs/operators';
 import { ConsumptionDTO, residueColumns } from 'src/app/Models/consumption.dto';
 import { DelegationDTO } from 'src/app/Models/delegation.dto';
-import { ResidueDTO } from 'src/app/Models/residue.dto';
 import { ConsumptionService } from 'src/app/Services/consumption.service';
 import { SharedService } from 'src/app/Services/shared.service';
-import { deleteResponse } from 'src/app/Services/category.service';
 import { DelegationService } from 'src/app/Services/delegation.service';
 import { ResidueService } from 'src/app/Services/residue.service';
 import { JwtHelperService } from '@auth0/angular-jwt';
@@ -31,6 +29,10 @@ import { MatDialog } from '@angular/material/dialog'
 import { ConfirmDialogComponent } from 'src/app/confirm-dialog/confirm-dialog.component'
 import { ChapterItem, ResidueLERDTO } from 'src/app/Models/residueLER.dto';
 import { MatSelect } from '@angular/material/select';
+import { BillingService } from 'src/app/Services/billing.service';
+import { CnaeDataService } from 'src/app/Services/cnaeData.service';
+import { BillingDTO } from 'src/app/Models/billing.dto';
+import { CnaeDataDTO } from 'src/app/Models/cnaeData.dto';
 
 const RESIDUES_DATA = [
   {Id: 1, delegation: "Son Castelló", year: "2019", residueES: "Combustión no peligrosos (kg)", "jan": 15000000, "feb": 15000000, "mar": 15000000, "apr": 15000000, "may": 15000000
@@ -58,6 +60,8 @@ export class ResidueFormComponent {
 
   isValidForm: boolean | null
   isElevated: boolean = true
+  isRatioBilling: boolean = false
+  isRatioCNAE: boolean = false
   theRatioTypeSelected: boolean = false
   consumptionFields: string[] = []
   result: boolean = false
@@ -72,6 +76,8 @@ export class ResidueFormComponent {
   residues!: ResidueLERDTO[];
   residuesItem: ChapterItem[] = [];
   consumptions!: ConsumptionDTO[];
+  billings!: BillingDTO[];
+  cnaesData!: CnaeDataDTO[];
 
   isGridView: boolean = false
   columnsDisplayed: string[] = residueColumns.map((col) => col.key);
@@ -105,6 +111,9 @@ export class ResidueFormComponent {
     private jwtHelper: JwtHelperService,
     private _adapter: DateAdapter<any>,
     public dialog: MatDialog,
+    private billingService: BillingService,
+    private cnaesDataService: CnaeDataService,
+
     @Inject(MAT_DATE_LOCALE) private _locale: string,
   ) {
 
@@ -144,6 +153,37 @@ export class ResidueFormComponent {
     });
 
     this.loadConsumption( this.userId )
+  }
+
+  private loadBillingProduction(userId: string){
+    let errorResponse: any;
+    if (this.userId) {
+      this.billingService.getBillingsByCompany(userId).subscribe(
+        (billings: BillingDTO[]) => {
+          this.billings = billings;
+          console.log("billings: ", this.billings)
+        },
+        (error: HttpErrorResponse) => {
+          errorResponse = error.error;
+          this.sharedService.errorLog(errorResponse)
+        }
+      );
+    }
+  }
+
+  private loadCNAEProduction(userId: string){
+    let errorResponse: any;
+    if (this.userId) {
+        this.cnaesDataService.getCnaesDataByCompany(userId).subscribe((item: CnaeDataDTO[]) => {
+          this.cnaesData = item
+          console.log("cnaesData: ", this.cnaesData)
+        },
+        (error: HttpErrorResponse) => {
+          errorResponse = error.error;
+          this.sharedService.errorLog(errorResponse)
+        }
+      );
+    }
   }
 
   private loadDelegations(): void {
@@ -302,6 +342,18 @@ export class ResidueFormComponent {
       this.createResidueConsumption();
     }
 
+  }
+
+  public ratioBilling(): void {
+    this.isRatioCNAE = false
+    console.log(this.isRatioCNAE)
+    this.loadConsumption(this.userId)
+  }
+
+  public ratioCNAE(): void {
+    this.isRatioBilling = false
+    console.log(this.isRatioBilling)
+    this.loadConsumption(this.userId)
   }
 
   public ratioTypeSelected(ratioType: any) {

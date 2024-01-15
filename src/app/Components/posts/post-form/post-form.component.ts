@@ -1,6 +1,6 @@
 import { formatDate } from '@angular/common';
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component, Inject, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
+import { Component, Inject, OnInit, ViewChild } from '@angular/core';
 import {
   UntypedFormBuilder,
   UntypedFormControl,
@@ -33,7 +33,6 @@ import { BillingDTO } from 'src/app/Models/billing.dto';
 import { BillingService } from 'src/app/Services/billing.service';
 import { CnaeDataService } from 'src/app/Services/cnaeData.service';
 import { CnaeDataDTO } from 'src/app/Models/cnaeData.dto';
-import { CnaeDTO } from 'src/app/Models/cnae.dto';
 
 const ENERGIES_DATA = [
   {Id: 1, delegation: "Mock data", year: "2019", energyES: "Fuel (kg)", "jan": 15000000, "feb": 15000000, "mar": 15000000, "apr": 15000000, "may": 15000000
@@ -233,7 +232,6 @@ export class PostFormComponent implements OnInit {
     }
   }
 
-
   private loadEnergies(): void {
     let errorResponse: any;
     if (this.userId) {
@@ -266,8 +264,6 @@ export class PostFormComponent implements OnInit {
 
   private loadConsumption(userId: string): void {
     let errorResponse: any;
-    let billingProduction: string[]
-    let cnaeProduction: string[]
 
     if (this.userId) {
         this.consumptionService.getAllConsumptionsByCompanyAndAspect(userId, 1).subscribe(
@@ -310,8 +306,8 @@ export class PostFormComponent implements OnInit {
                   consumptionItem.oct = (consumptionItem.oct/cnaeItem.oct)
                   consumptionItem.nov = (consumptionItem.nov/cnaeItem.nov)
                   consumptionItem.dec = (consumptionItem.dec/cnaeItem.dec)
-                  cnaeProduction = [cnaeItem.jan, cnaeItem.feb, cnaeItem.mar, cnaeItem.apr, cnaeItem.may, cnaeItem.jun, cnaeItem.jul, cnaeItem.aug, cnaeItem.sep, cnaeItem.oct, cnaeItem.nov, cnaeItem.dec]
-                  console.log("cnaeProduction: ", cnaeItem.year, cnaeItem.delegation, cnaeProduction)
+                  /* cnaeProduction = [cnaeItem.jan, cnaeItem.feb, cnaeItem.mar, cnaeItem.apr, cnaeItem.may, cnaeItem.jun, cnaeItem.jul, cnaeItem.aug, cnaeItem.sep, cnaeItem.oct, cnaeItem.nov, cnaeItem.dec]
+                  console.log("cnaeProduction: ", cnaeItem.year, cnaeItem.delegation, cnaeProduction) */
                 }
               })
             }

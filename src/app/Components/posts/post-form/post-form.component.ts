@@ -289,9 +289,8 @@ export class PostFormComponent implements OnInit {
                   consumptionItem.oct = (consumptionItem.oct/billingItem.oct)
                   consumptionItem.nov = (consumptionItem.nov/billingItem.nov)
                   consumptionItem.dec = (consumptionItem.dec/billingItem.dec)
-
-                  billingProduction = [billingItem.jan, billingItem.feb, billingItem.mar, billingItem.apr, billingItem.may, billingItem.jun, billingItem.jul, billingItem.aug, billingItem.sep, billingItem.oct, billingItem.nov, billingItem.dec]
-                  console.log("billingProduction: ", billingItem.year, billingItem.delegation, billingProduction)
+                 /* billingProduction = [billingItem.jan, billingItem.feb, billingItem.mar, billingItem.apr, billingItem.may, billingItem.jun, billingItem.jul, billingItem.aug, billingItem.sep, billingItem.oct, billingItem.nov, billingItem.dec] */
+                 /* console.log("billingProduction: ", billingItem.year, billingItem.delegation, billingProduction, consumptionItem) */
                 }
               })
 
@@ -299,6 +298,18 @@ export class PostFormComponent implements OnInit {
             if (this.isRatioCNAE) { /* Visualización de datos en formato ratio */
               this.cnaesData.map((cnaeItem:any)=>{
                 if ((consumptionItem.year === cnaeItem.year) && (consumptionItem.delegation === cnaeItem.delegation)){
+                  consumptionItem.jan = (consumptionItem.jan/cnaeItem.jan)
+                  consumptionItem.feb = (consumptionItem.feb/cnaeItem.feb)
+                  consumptionItem.mar = (consumptionItem.mar/cnaeItem.mar)
+                  consumptionItem.apr = (consumptionItem.apr/cnaeItem.apr)
+                  consumptionItem.may = (consumptionItem.may/cnaeItem.may)
+                  consumptionItem.jun = (consumptionItem.jun/cnaeItem.jun)
+                  consumptionItem.jul = (consumptionItem.jul/cnaeItem.jul)
+                  consumptionItem.aug = (consumptionItem.aug/cnaeItem.aug)
+                  consumptionItem.sep = (consumptionItem.sep/cnaeItem.sep)
+                  consumptionItem.oct = (consumptionItem.oct/cnaeItem.oct)
+                  consumptionItem.nov = (consumptionItem.nov/cnaeItem.nov)
+                  consumptionItem.dec = (consumptionItem.dec/cnaeItem.dec)
                   cnaeProduction = [cnaeItem.jan, cnaeItem.feb, cnaeItem.mar, cnaeItem.apr, cnaeItem.may, cnaeItem.jun, cnaeItem.jul, cnaeItem.aug, cnaeItem.sep, cnaeItem.oct, cnaeItem.nov, cnaeItem.dec]
                   console.log("cnaeProduction: ", cnaeItem.year, cnaeItem.delegation, cnaeProduction)
                 }

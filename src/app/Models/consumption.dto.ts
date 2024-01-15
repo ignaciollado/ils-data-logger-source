@@ -125,66 +125,65 @@ export const energyColumns = [
       type: "text",
       label: "Consumption"
   },
-
   {
     key: "jan",
     type: "number",
-    label: "January"
+    label: "01"
   },
   {
     key: "feb",
     type: "number",
-    label: "February"
+    label: "02"
   },
   {
     key: "mar",
     type: "number",
-    label: "March"
+    label: "03"
   },
   {
     key: "apr",
     type: "number",
-    label: "April"
+    label: "04"
   },
   {
     key: "may",
     type: "number",
-    label: "May"
+    label: "05"
   },
   {
     key: "jun",
     type: "number",
-    label: "June"
+    label: "06"
   },
   {
     key: "jul",
     type: "number",
-    label: "July"
+    label: "07"
   },
   {
     key: "aug",
     type: "number",
-    label: "August"
+    label: "08"
   },
   {
     key: "sep",
     type: "number",
-    label: "September"
+    label: "09"
   },
   {
     key: "oct",
     type: "number",
-    label: "October"
+    label: "10"
   },
   {
     key: "nov",
     type: "number",
-    label: "November"
+    label: "11"
   },
   {
     key: "dec",
     type: "number",
-    label: "December"
+    label: "12"
   },
   {
     key: "isEdit",
@@ -212,62 +211,62 @@ export const waterColumns = [
   {
     key: "jan",
     type: "number",
-    label: "January"
+    label: "01"
   },
   {
     key: "feb",
     type: "number",
-    label: "February"
+    label: "02"
   },
   {
     key: "mar",
     type: "number",
-    label: "March"
+    label: "03"
   },
   {
     key: "apr",
     type: "number",
-    label: "April"
+    label: "04"
   },
   {
     key: "may",
     type: "number",
-    label: "May"
+    label: "05"
   },
   {
     key: "jun",
     type: "number",
-    label: "June"
+    label: "06"
   },
   {
     key: "jul",
     type: "number",
-    label: "July"
+    label: "07"
   },
   {
     key: "aug",
     type: "number",
-    label: "August"
+    label: "08"
   },
   {
     key: "sep",
     type: "number",
-    label: "September"
+    label: "09"
   },
   {
     key: "oct",
     type: "number",
-    label: "October"
+    label: "10"
   },
   {
     key: "nov",
     type: "number",
-    label: "November"
+    label: "11"
   },
   {
     key: "dec",
     type: "number",
-    label: "December"
+    label: "12"
   },
   {
     key: "isEdit",
@@ -435,66 +434,65 @@ export const residueColumns = [
     type: "text",
     label: "Residue type"
   },
-
   {
     key: "jan",
-    type: 'number',
-    label: "January"
+    type: "number",
+    label: "01"
   },
   {
     key: "feb",
-    type: 'number',
-    label: "February"
+    type: "number",
+    label: "02"
   },
   {
     key: "mar",
     type: "number",
-    label: "March"
+    label: "03"
   },
   {
     key: "apr",
     type: "number",
-    label: "April"
+    label: "04"
   },
   {
     key: "may",
     type: "number",
-    label: "May"
+    label: "05"
   },
   {
     key: "jun",
     type: "number",
-    label: "June"
+    label: "06"
   },
   {
     key: "jul",
     type: "number",
-    label: "July"
+    label: "07"
   },
   {
     key: "aug",
     type: "number",
-    label: "August"
+    label: "08"
   },
   {
     key: "sep",
     type: "number",
-    label: "September"
+    label: "09"
   },
   {
     key: "oct",
     type: "number",
-    label: "October"
+    label: "10"
   },
   {
     key: "nov",
     type: "number",
-    label: "November"
+    label: "11"
   },
   {
     key: "dec",
     type: "number",
-    label: "December"
+    label: "12"
   },
   {
     key: "isEdit",

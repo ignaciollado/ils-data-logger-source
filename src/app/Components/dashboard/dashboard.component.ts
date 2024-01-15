@@ -144,13 +144,13 @@ export class DashboardComponent implements OnInit {
       '#365446',
       ]
     this.companyId = this.jwtHelper.decodeToken().id_ils;
-    this.graphMonths = [ 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December' ]
+    this.graphMonths = [ '01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12' ]
     this.aspectEnergy = "Energy (kWh)"
-    this.aspectWater = "Water (Liters)"
-    this.aspectResidue = "Residue (Kg)"
-    this.aspectEmissions = "Emissions (CO2e in T)"
+    this.aspectWater = "Water (L)"
+    this.aspectResidue = "Residue (kg)"
+    this.aspectEmissions = "Emissions (CO2e T)"
 
-    if (localStorage.getItem('preferredLang') === 'cat') {
+  /*   if (localStorage.getItem('preferredLang') === 'cat') {
       this.graphMonths = [ 'Gener', 'Febrer', 'Març', 'April', 'Maig', 'Juny', 'Juliol', 'Agost', 'Setembre', 'Octubre', 'Novembre', 'Desembre' ]
       this.aspectEnergy = "Energía (kWh)"
       this.aspectWater = "Aigua (Litres)"
@@ -162,7 +162,7 @@ export class DashboardComponent implements OnInit {
       this.aspectWater = "Agua (Litros)"
       this.aspectResidue = "Residuo (Kg)"
       this.aspectEmissions = "Emisiones (CO2e en T)"
-    }
+    } */
 
     this.aspect = new UntypedFormControl('', [ Validators.required ])
     this.delegation = new UntypedFormControl('', [ Validators.required ])

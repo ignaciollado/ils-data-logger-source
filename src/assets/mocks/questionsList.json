@@ -183,8 +183,31 @@
                "image_1": "",
                "image_2": ""}
         ]
+        },
+        
+        {    
+                    "key": "5",
+                    "type": "radio",
+                    "questionTextES": "¿Eres productor de envases,  pilas y acumuladores, neumáticos, aceites industriales y aparatos eléctricos y electrónicos o de  medicamentos?",
+                    "questionTextCA": "",
+                    "questionDoc" : "",
+                    "questionTooltipES": "",
+                    "questionTooltipCA": "",
+                    "link": "https://...",
+                    "answers":
+                    [
+                            {"answerText": "Sí",
+                             "answerTooltip": "",
+                             "regulation": ["RES_19"],
+                             "image_1": "",
+                             "image_2": ""},
+                             {"answerText": "No",
+                             "answerTooltip": "",
+                             "regulation": [""],
+                             "image_1": "",
+                             "image_2": ""}
+                    ]
         }
-
       ]
   },
 
@@ -896,7 +919,7 @@
         [
                 {"answerText": "Sí",
                  "answerTooltip": "",
-                 "regulation": ["QMC_24"],
+                 "regulation": ["QMC_24", "QMC_2", "QMC_26", "QMC_29"],
                  "image_1": "",
                  "image_2": ""},
                  {"answerText": "No",
@@ -923,7 +946,7 @@
         [
                 {"answerText": "Sí",
                  "answerTooltip": "",
-                 "regulation": ["QMC_10"],
+                 "regulation": ["QMC_10", "QMC_28"],
                  "image_1": "",
                  "image_2": ""},
                  {"answerText": "No",

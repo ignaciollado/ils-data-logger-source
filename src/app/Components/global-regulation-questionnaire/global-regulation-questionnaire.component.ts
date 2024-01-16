@@ -272,7 +272,7 @@ saveAnswer(e: any) {
 
   let vector1Progress1: number, vector1Progress2: number, vector1Progress3: number, vector1Progress4: number, vector1Progress5: number = 0
   let vector2Progress1: number, vector2Progress2: number, vector2Progress3: number, vector2Progress4: number, vector2Progress5: number, vector2Progress6: number, vector2Progress7: number, vector2Progress8: number, vector2Progress9: number, vector2Progress10: number, vector2Progress11: number, vector2Progress12: number = 0
-  let vector3Progress1: number, vector3Progress2: number, vector3Progress3: number , vector3Progress4: number = 0
+  let vector3Progress1: number, vector3Progress2: number, vector3Progress3: number, vector3Progress4: number = 0
   let vector4Progress1: number, vector4Progress2: number, vector4Progress3: number, vector4Progress4: number, vector4Progress5: number, vector4Progress6: number, vector4Progress7: number = 0
   let vector5Progress1: number, vector5Progress2: number, vector5Progress3: number, vector5Progress4: number, vector5Progress5: number = 0
   let vector6Progress1: number, vector6Progress2: number, vector6Progress3: number, vector6Progress4: number, vector6Progress5: number, vector6Progress6: number, vector6Progress7: number = 0

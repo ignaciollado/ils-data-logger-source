@@ -409,7 +409,7 @@
         [
                 {"answerText": "Sí",
                  "answerTooltip": "",
-                 "regulation": ["SIND_11_Ins_gasesosas consolidado"],
+                 "regulation": ["SIND_11_Ins_gasesosas_consolidado"],
                  "image_1": "",
                  "image_2": ""},
                  {"answerText": "No",
@@ -494,7 +494,7 @@
       {
         "key": "12",
         "type": "radio",
-        "questionTextES": "Cuando han sido legalizadas las intalaciones contraincendios de su industria",
+        "questionTextES": "¿Cuándo han sido legalizadas las intalaciones contraincendios de su industria?",
         "questionTextCA": "",
         "questionDoc1" : "",
         "questionDoc2" : "",
@@ -510,7 +510,7 @@
                  "image_2": ""},
                  {"answerText": "Posterior a febrero del 2005",
                  "answerTooltip": "",
-                 "regulation": ["SIND2,SIND_4"],
+                 "regulation": ["SIND2","SIND_4"],
                  "image_1": "",
                  "image_2": ""}
         ]
@@ -551,7 +551,7 @@
             "regulation": ["AGU_7"],
             "image_1": "",
             "image_2": ""},
-          {"answerText": "Cauce público( torrente)",
+          {"answerText": "Cauce público (torrente)",
             "answerTooltip": "Cualquier vertido que no vaya a alcantarillado o al mar. <strong>Sí</strong> es el vertido de pluviales, por ejemplo de un parking  al torrente cercano. <strong>No</strong> es ni el vertido al mar de lo varaderos, ni el vertido propio al alcantarillado público.",
             "regulation": ["AGU_7"],
             "image_1": "",
@@ -758,7 +758,7 @@
           [
                   {"answerText": "Sí",
                    "answerTooltip": "",
-                   "regulation": ["ATM_18,ATM_23,ATM_39,ATM_40,ATM_42,ATM_44"],
+                   "regulation": ["ATM_18","ATM_23","ATM_39","ATM_40","ATM_42","ATM_44"],
                    "image_1": "",
                    "image_2": ""},
                    {"answerText": "No",
@@ -782,7 +782,7 @@
           [
                   {"answerText": "Sí",
                    "answerTooltip": "",
-                   "regulation": ["ATM_48,ATM_49"],
+                   "regulation": ["ATM_48","ATM_49"],
                    "image_1": "",
                    "image_2": ""},
                    {"answerText": "No",
@@ -919,7 +919,7 @@
         [
                 {"answerText": "Sí",
                  "answerTooltip": "",
-                 "regulation": ["QMC_24", "QMC_2", "QMC_26", "QMC_29"],
+                 "regulation": ["QMC_24","QMC_2","QMC_26","QMC_29"],
                  "image_1": "",
                  "image_2": ""},
                  {"answerText": "No",
@@ -1128,7 +1128,7 @@
         [
                 {"answerText": "SI",
                  "answerTooltip": "",
-                 "regulation": ["MA_13", "MA_14"],
+                 "regulation": ["MA_13","MA_14"],
                  "image_1": "",
                  "image_2": ""},
                  {"answerText": "NO",

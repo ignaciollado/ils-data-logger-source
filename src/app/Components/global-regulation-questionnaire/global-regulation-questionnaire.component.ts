@@ -859,6 +859,7 @@ if (this.vector_1_Question1) {
       node.value = '"'+node.value+'",'
       node.value = node.value.replaceAll(",,",",")
       this.vector_1_Question1_reg.push(node.value)
+      console.log ("q1:",node.value)
     }
   })
 }
@@ -868,6 +869,7 @@ if (this.vector_1_Question2) {
     node.value = node.value.replaceAll(',','","')
     node.value = '"'+node.value+'"'
     this.vector_1_Question2_reg.push(node.value)
+    console.log ("q2:",node.value)
   }
   })
 }
@@ -877,6 +879,7 @@ if (this.vector_1_Question3) {
     node.value = node.value.replaceAll(',','","')
     node.value = '"'+node.value+'"'
     this.vector_1_Question3_reg.push(node.value)
+    console.log ("q3:",node.value)
   }
   })
 }
@@ -886,6 +889,7 @@ if (this.vector_1_Question4) {
     node.value = node.value.replaceAll(',','","')
     node.value = '"'+node.value+'"'
     this.vector_1_Question4_reg.push(node.value)
+    console.log ("q4:",node.value)
   }
   })
 }
@@ -895,6 +899,7 @@ if (this.vector_1_Question5) {
     node.value = node.value.replaceAll(',','","')
     node.value = '"'+node.value+'"'
     this.vector_1_Question5_reg.push(node.value)
+    console.log ("q5:",node.value)
   }
   })
 }

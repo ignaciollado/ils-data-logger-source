@@ -1,8 +1,7 @@
 [
   {
     "regulation": "ATM_37",
-    "parentRegulation": "",
-    "introText": "",
+    "childRegulation": "",
     "introTextES": "",
     "introTextCA": "",
     "introImage1": "",
@@ -13,29 +12,28 @@
         "optionTooltip": "Las PERSONAS FÍSICAS O JURÍDICAS que vayan a realizar OPERACIONES DE VALORIZACIÓN ENERGÉTICA O ELIMINACIÓN DE RESIDUOS y que NO SEAN TITULARES DE LA INSTALACIÓN deberán estar previamente AUTORIZADAS por el órgano competente de la comunidad autónoma donde tengan su sede social. Estas autorizaciones SERÁN VÁLIDAS PARA TODO EL TERRITORIO del Estado, debiendo quedar inscritas por la comunidad autónoma que las haya otorgado en el Registro de producción y gestión de residuos.",
         "optionImage_1": "",
         "optionImage_2": "",
+        "requirementDescription": "",
         "autoEvaluation":
-      [
-        {"answerText": "Se dispone",
-        "answerTooltip": "",
-        "answerImage_1": "",
-        "answerImage_2": ""},
-        {"answerText": "No se dispone",
-        "answerTooltip": "",
-        "answerImage_1": "",
-        "answerImage_2": ""},
-        {"answerText": "En proceso",
-        "answerTooltip": "",
-        "answerImage_1": "",
-        "answerImage_2": ""}
-      ]
+          [
+            {"answerText": "Se dispone",
+              "answerTooltip": "",
+              "answerImage_1": "",
+              "answerImage_2": ""},
+            {"answerText": "No se dispone",
+              "answerTooltip": "",
+              "answerImage_1": "",
+              "answerImage_2": ""},
+            {"answerText": "En proceso",
+              "answerTooltip": "",
+              "answerImage_1": "",
+              "answerImage_2": ""}
+          ]
       }
-    ],
-    "descendantRegulations": []
+    ]
   },
   {
     "regulation": "ATM_33",
-    "parentRegulation": "",
-    "introText": "",
+    "childRegulation": "",
     "introTextES": "",
     "introTextCA": "",
     "introImage1": "",
@@ -46,47 +44,58 @@
         "optionTooltip": "ATM_33_ANEXO_I",
         "optionImage_1": "ATM_33_ANEXO_II.pdf",
         "optionImage_2": "ATM_33_ANEXO_II_B.pdf",
+        "requirementDescription": "",
         "autoEvaluation":
-      [
-        {"answerText": "Se dispone",
-        "answerTooltip": "",
-        "answerImage_1": "",
-        "answerImage_2": ""},
-        {"answerText": "No se dispone",
-        "answerTooltip": "",
-        "answerImage_1": "",
-        "answerImage_2": ""},
-        {"answerText": "En proceso",
-        "answerTooltip": "",
-        "answerImage_1": "",
-        "answerImage_2": ""}
-      ]
+          [
+            {"answerText": "Se dispone",
+              "answerTooltip": "",
+              "answerImage_1": "",
+              "answerImage_2": ""},
+            {"answerText": "No se dispone",
+              "answerTooltip": "",
+              "answerImage_1": "",
+              "answerImage_2": ""},
+            {"answerText": "En proceso",
+              "answerTooltip": "",
+              "answerImage_1": "",
+              "answerImage_2": ""}
+          ]
       },
-
       {
-      "optionText": "Sin perjuicio de las exigencias adicionales que en materia de etiquetado establezca la legislación vigente, los productos que figuran en el ANEXO I llevarán una ETIQUETA en el momento de su comercialización, que indique lo siguiente (art. 4):a) La SUBCATEGORÍA del producto y los correspondientes VALORES MÁXIMOS para el contenido de COV en g/l como se indica en el Anexo II.b) El CONTENIDO MÁXIMO de COV en g/l del producto listo para su empleo.",
-      "optionTooltip": "",
-      "optionImage_1": "",
-      "optionImage_2": "",
-      "autoEvaluation":
-      [
-        {"answerText": "Se cumple",
-        "answerTooltip": "",
-        "answerImage_1": "",
-        "answerImage_2": ""},
-        {"answerText": "No se cumple",
-        "answerTooltip": "",
-        "answerImage_1": "",
-        "answerImage_2": ""}
-      ]
+        "optionText": "Sin perjuicio de las exigencias adicionales que en materia de etiquetado establezca la legislación vigente, los productos que figuran en el ANEXO I llevarán una ETIQUETA en el momento de su comercialización, que indique lo siguiente (art. 4):a) La SUBCATEGORÍA del producto y los correspondientes VALORES MÁXIMOS para el contenido de COV en g/l como se indica en el Anexo II.b) El CONTENIDO MÁXIMO de COV en g/l del producto listo para su empleo.",
+        "optionTooltip": "",
+        "optionImage_1": "",
+        "optionImage_2": "",
+        "requirementDescription": "",
+        "autoEvaluation":
+          [
+            {"answerText": "Se cumple",
+              "answerTooltip": "",
+              "answerImage_1": "",
+              "answerImage_2": ""},
+            {"answerText": "No se cumple",
+              "answerTooltip": "",
+              "answerImage_1": "",
+              "answerImage_2": ""}
+          ]
       }
     ]
   },
   {
-    "regulation":"ATM_1_1",
-    "parentRegulation": "ATM_1",
-    "introText": "Dentro de Actividades Potencialmente Contaminadoras de la Atmósfera, señala a que grupo pertenece tu empresa",
+    "regulation":"ATM_1",
+    "childRegulation": ["ATM_1_1", "ATM_1_2"],
     "introTextES": "",
+    "introTextCA": "",
+    "introImage1": "",
+    "introImage2": "",
+    "options": [
+     
+    ]
+  },
+  {
+    "regulation":"ATM_1_1",
+    "childRegulation": [],
+    "introTextES": "Dentro de Actividades Potencialmente Contaminadoras de la Atmósfera, señala a que grupo pertenece tu empresa",
     "introTextCA": "",
     "introImage1": "",
     "introImage2": "",
@@ -115,34 +124,11 @@
       },
 
       {
-      "optionText": "Para las empresas y actividades potencialmente contaminadoras de la atmósfera del TIPO B",
-      "optionTooltip": "",
-      "optionImage_1": "",
-      "optionImage_2": "",
-      "requirementDescription": "Control de emisiones por OCA CADA TRES AÑOS",
-      "autoEvaluation":
-      [
-        {"answerText": "Se dispone",
-        "answerTooltip": "",
-        "answerImage_1": "",
-        "answerImage_2": ""},
-        {"answerText": "No se dispone",
-        "answerTooltip": "",
-        "answerImage_1": "",
-        "answerImage_2": ""},
-        {"answerText": "En proceso",
-        "answerTooltip": "",
-        "answerImage_1": "",
-        "answerImage_2": ""}
-      ]
-      },
-
-      {
-        "optionText": "Para las empresas y actividades potencialmente contaminadoras de la atmósfera del TIPO C",
+        "optionText": "Para las empresas y actividades potencialmente contaminadoras de la atmósfera del TIPO B",
         "optionTooltip": "",
         "optionImage_1": "",
         "optionImage_2": "",
-        "requirementDescription": "Control de emisiones por OCA CADA CINCO AÑOS",
+        "requirementDescription": "Control de emisiones por OCA CADA TRES AÑOS",
         "autoEvaluation":
         [
         {"answerText": "Se dispone",
@@ -158,7 +144,62 @@
         "answerImage_1": "",
         "answerImage_2": ""}
         ]
-        }
+      },
+
+      {
+        "optionText": "Para las empresas y actividades potencialmente contaminadoras de la atmósfera del TIPO C",
+        "optionTooltip": "",
+        "optionImage_1": "",
+        "optionImage_2": "",
+        "requirementDescription": "Control de emisiones por OCA CADA CINCO AÑOS",
+        "autoEvaluation":
+        [
+          {"answerText": "Se dispone",
+          "answerTooltip": "",
+          "answerImage_1": "",
+          "answerImage_2": ""},
+          {"answerText": "No se dispone",
+          "answerTooltip": "",
+          "answerImage_1": "",
+          "answerImage_2": ""},
+          {"answerText": "En proceso",
+          "answerTooltip": "",
+          "answerImage_1": "",
+          "answerImage_2": ""}
+        ]
+      }
+    ]
+  },
+  {
+    "regulation":"ATM_1_2",
+    "childRegulation": [],
+    "introTextES": "",
+    "introTextCA": "",
+    "introImage1": "",
+    "introImage2": "",
+    "options": [
+      {
+        "optionText": "La CERTIFICACIÓN de los resultados obtenidos se ha presentado ante la Consejería competente en materia de Medio Ambiente, dentro del plazo establecido al efecto por la propia Consejería",
+        "optionTooltip": "",
+        "optionImage_1": "",
+        "optionImage_2": "",
+        "requirementDescription": "",
+        "autoEvaluation":
+        [
+        {"answerText": "Se dispone",
+        "answerTooltip": "",
+        "answerImage_1": "",
+        "answerImage_2": ""},
+        {"answerText": "No se dispone",
+        "answerTooltip": "",
+        "answerImage_1": "",
+        "answerImage_2": ""},
+        {"answerText": "En proceso",
+        "answerTooltip": "",
+        "answerImage_1": "",
+        "answerImage_2": ""}
+        ]
+      }
     ]
   }
 ]

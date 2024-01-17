@@ -27,7 +27,7 @@ $userAnswers .= $request['5'];
 $questionnaireSummary .= $request['6'];
 
 
-$sql = "INSERT INTO globalQuestionaire(companyId, companyQuestionnaireId, companyDelegationId, userAnswers, completed, questionnaireSummary) 
+$sql = "INSERT INTO globalQuestionnaire(companyId, companyQuestionnaireId, companyDelegationId, userAnswers, completed, questionnaireSummary) 
 VALUES ("
 .$companyId.","
 .$companyQuestionnaireId.","

@@ -8,7 +8,7 @@ mysqli_query($conn, "SET NAMES 'utf8'");
 
 $questionnaireId = mysqli_real_escape_string($conn, $_GET["questionnaireId"]);
 
-$sql = "DELETE FROM globalQuestionaire WHERE id = ". $questionnaireId;
+$sql = "DELETE FROM globalQuestionnaire WHERE id = ". $questionnaireId;
 
 mysqli_query($conn, $sql);
 

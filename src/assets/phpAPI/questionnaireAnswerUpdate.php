@@ -22,15 +22,12 @@ $userAnswers .= $request['4'];
 $userAnswers .= $request['5'];
 $questionnaireSummary .= $request['6'];
 
-$sql = "UPDATE globalQuestionaire SET
+$sql = "UPDATE globalQuestionnaire SET
 companyDelegationId =".$companyDelegationId.",
 userAnswers ='".$userAnswers."',
 completed ='".$completed."',
 questionnaireSummary ='".$questionnaireSummary."'
  WHERE id = ".$questionnaireID;
-
-/* echo "---->".strlen($questionnaireSummary)."<---";
-echo $sql; */
 
 mysqli_free_result($result);
 

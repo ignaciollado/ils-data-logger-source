@@ -7,15 +7,13 @@ require_once 'conectar_a_bbdd_pindust.php';
 mysqli_query($conn, "SET NAMES 'utf8'");
 $companyId = $_GET['companyId'];
 
-$sql = "SELECT *, globalQuestionaire.updated_at as updated_at, ils_company_delegation.name as companyDelegationName
+$sql = "SELECT *, globalQuestionnaire.updated_at as updated_at, ils_company_delegation.name as companyDelegationName
 
-FROM globalQuestionaire
-LEFT JOIN ils_company_delegation ON globalQuestionaire.companyDelegationId=ils_company_delegation.companyDelegationId
-WHERE globalQuestionaire.companyId =".$companyId;
+FROM globalQuestionnaire
+LEFT JOIN ils_company_delegation ON globalQuestionnaire.companyDelegationId=ils_company_delegation.companyDelegationId
+WHERE globalQuestionnaire.companyId =".$companyId;
 
 $sql .= " ORDER BY companyQuestionnaireId DESC ";
-
-/* echo $sql; */
 
 $result = mysqli_query($conn, $sql);
 

@@ -6,9 +6,7 @@ require_once 'conectar_a_bbdd_pindust.php';
 
 mysqli_query($conn, "SET NAMES 'utf8'");
 $regID = $_GET['regID'];
-$sql = "SELECT * FROM `textos_normativos_vector` WHERE reg_ID ='".$regID."'";
-
-/* echo $sql; */
+$sql = "SELECT * FROM `textos_normativos_vector` WHERE regId ='".$regID."'";
 
 $result = mysqli_query($conn, $sql);
 

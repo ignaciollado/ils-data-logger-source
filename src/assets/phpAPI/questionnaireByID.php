@@ -9,7 +9,7 @@ $questionnaireID = $_GET['questionnaireID'];
 
 $sql = "SELECT *
 
-FROM globalQuestionaire
+FROM globalQuestionnaire
 
 WHERE id =".$questionnaireID;
 

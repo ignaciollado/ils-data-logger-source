@@ -1,8 +1,140 @@
 [
   {
-
+    "regulation": "ATM_37",
+    "parentRegulation": "",
+    "introText": "",
+    "introTextES": "",
+    "introTextCA": "",
+    "introImage1": "",
+    "introImage2": "",
+    "options": "",
+    "optionTooltipES": "Las PERSONAS FÍSICAS O JURÍDICAS que vayan a realizar OPERACIONES DE VALORIZACIÓN ENERGÉTICA O ELIMINACIÓN DE RESIDUOS y que NO SEAN TITULARES DE LA INSTALACIÓN deberán estar previamente AUTORIZADAS por el órgano competente de la comunidad autónoma donde tengan su sede social. Estas autorizaciones SERÁN VÁLIDAS PARA TODO EL TERRITORIO del Estado, debiendo quedar inscritas por la comunidad autónoma que las haya otorgado en el Registro de producción y gestión de residuos.",
+    "optionTooltipCA": "",
+    "autoEvaluation":
+      [
+        {
+        "type": "radio",
+        "answers":["No requiere", "Se dispone", "No se dispone", "En proceso"]
+        }
+      ],
+    "descendantRegulations": []
   },
   {
-    
+    "regulation": "ATM_33",
+    "parentRegulation": "",
+    "introText": "",
+    "introTextES": "",
+    "introTextCA": "",
+    "introImage1": "",
+    "introImage2": "",
+    "options": [
+      {"optionText": "Los productos relacionados en el ANEXO I únicamente podrán ser COMERCIALIZADOS en el territorio nacional, después de las fechas indicadas en el ANEXO II, si su contenido en COV no supera los valores máximos fijados en dicho ANEXO II y cumplen lo dispuesto en esta disposición en lo relativo al etiquetado (art. 3.1).",
+      "optionTooltip": "ATM_33_ANEXO_I",
+      "optionImage_1": "ATM_33_ANEXO_II.pdf",
+      "optionImage_2": "ATM_33_ANEXO_II_B.pdf",
+      "autoEvaluation":
+      [
+        {
+        "type": "radio",
+        "answers":["No requiere", "Se dispone", "No se dispone", "En proceso"]
+        }
+      ]
+      },
+
+      {"optionText": "Siempre que para la utilización de estos productos sea preciso añadir disolventes u otros componentes que contengan disolventes, los valores máximos fijados en el Anexo II se aplicarán al contenido de COV del producto listo para su empleo (art. 3.3).",
+      "optionTooltip": "",
+      "optionImage_1": "",
+      "optionImage_2": "",
+      "autoEvaluation":
+      [
+        {
+        "type": "radio",
+        "answers":["No requiere", "Se dispone", "No se dispone", "En proceso"]
+        }
+      ]
+      }
+    ],
+
+    "autoEvaluation":
+      [
+        {
+        "type": "radio",
+        "answers":["No requiere", "Se dispone", "No se dispone", "En proceso"]
+        }
+      ],
+    "descendantRegulations": []
+  },
+  {
+    "parentRegulation": "ATM_1",
+    "introText": "Dentro de Actividades Potencialmente Contaminadoras de la Atmósfera, señala a que grupo pertenece tu empresa",
+    "optionTooltipES": "",
+    "optionTooltipCA": "",
+    "optionImage1": "",
+    "optionImage2": "",
+    "autoEvaluation":
+      [
+        {
+        "type": "radio",
+        "answers":["No requiere", "Se dispone", "No se dispone", "En proceso"]
+        }
+      ],
+    "descendantRegulations":
+      [
+        {
+        "childRegulation": "ATM_1_1",
+        "type": "",
+        "questionTextES": "Dentro de Actividades Potencialmente Contaminadoras de la Atmósfera, señala a que grupo pertenece tu empresa:",
+        "questionTextCA": "",
+        "questionDoc1" : "",
+        "questionDoc2" : "",
+        "questionTooltipES": "",
+        "questionTooltipCA": "",
+        "link": "https://...",
+        "options":
+          [
+            { "optionText": "Para las empresas y actividades potencialmente contaminadoras de la atmósfera del TIPO A",
+              "introText": "1.8. Industria alimentaria (ninguna) 1.9. Industria de la madera, corcho y muebles (ninguna) 1.10. Industria de materiales para la construcción 1.10.1. Fabricación de clinker y de cemento 1.10.2. Fabricación de cal y yeso con capacidad de producción superior a 5.000 t/a 1.10.3. Calcinación de la dolomita 1.10.4. Fabricación de lana de roca y otras lanas minerales 1.10.5. Fabricación de aglomerados asfálticos 1.11. Industria de la piel, cuero y calzado (ninguna) 1.12. Industrias fabriles y actividades diversas 1.12.1. Plantas de recuperación de metales por combustión de desperdicios 1.12.2. Incineración de residuos industriales 1.12.3. Torrefacción de huesos, cueros, cuernos, pezuñas y otros desechos de animales para la fabricación de abonos y otros usos 1.12.4. Plantas de tratamiento de residuos urbanos con capacidad superior a 150 t/d 1.12.5. Vertederos de basuras 1.12.6. Plantas de compostaje 1.12.7. Almacenamiento y manipulación de minerales y material pulverulento a granel y a la intemperie en zonas portuarias 1.13. Actividades agrícolas y agro-industriales 1.13.1. Mataderos con capacidad superior a 1000 t/año y talleres de descuartizamiento de animales con capacidad superior a 4000 t/año 1.13.2. Tratamiento de cuerpos, materias y despojos de animales en estado fresco con vistas a la extracción de cuerpos grasos.",
+              "optionImage_1": "Obligacions_de_les_APCA_JUNY_DE_2021_CAST.pdf",
+              "optionImage_2": "",
+              "requirementDescription": "Control de emisiones por OCA CADA AÑO",
+              "autoEvaluation":
+                [
+                  {
+                    "type": "radio",
+                    "answers":["No requiere", "No requiere", "Se dispone", "No se dispone", "En proceso"]
+                  }
+                ]
+            },
+
+            {"optionText": "Para las empresas y actividades potencialmente contaminadoras de la atmósfera del TIPO B",
+                "introText": "",
+                "optionImage_1": "",
+                "optionImage_2": "",
+                "requirementDescription": "Control de emisiones por OCA CADA TRES AÑOS.",
+                "autoEvaluation":
+                [
+                  {
+                    "type": "radio",
+                    "answers":["No requiere", "No requiere", "Se dispone", "No se dispone", "En proceso"]
+                  }
+                ]
+            },
+
+            {"optionText": "Para las empresas y actividades potencialmente contaminadoras de la atmósfera del TIPO C",
+                "optionTooltip": "",
+                "optionImage_1": "",
+                "optionImage_2": "",
+                "requirementDescription": "Control de emisiones por OCA CADA CINCO AÑOS.",
+                "autoEvaluation":
+                [
+                  {
+                    "type": "radio",
+                    "answers":["No requiere", "No requiere", "Se dispone", "No se dispone", "En proceso"]
+                  }
+                ]              
+            }
+          ]
+        }
+      ]
   }
 ]

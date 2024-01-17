@@ -174,7 +174,7 @@
         [
               {"answerText": "Sí",
                "answerTooltip": "",
-               "regulation": ["RES_59"],
+               "regulation": ["RES_59","RES_63"],
                "image_1": "",
                "image_2": ""},
                {"answerText": "No",
@@ -543,17 +543,17 @@
           "image_2": ""},
           {"answerText": "Alcantarillado",
             "answerTooltip": "Vertido que está conectado al alcantarillado municipal",
-            "regulation": ["AGU_7"],
+            "regulation": ["AGU_8", "AGU_9"],
             "image_1": "",
             "image_2": ""},
           {"answerText": "Fosa séptica",
             "answerTooltip": "Sistema de almacenaje para verter aguas residuales",
-            "regulation": ["AGU_7"],
+            "regulation": ["AGU_8"],
             "image_1": "",
             "image_2": ""},
           {"answerText": "Cauce público (torrente)",
             "answerTooltip": "Cualquier vertido que no vaya a alcantarillado o al mar. <strong>Sí</strong> es el vertido de pluviales, por ejemplo de un parking  al torrente cercano. <strong>No</strong> es ni el vertido al mar de lo varaderos, ni el vertido propio al alcantarillado público.",
-            "regulation": ["AGU_7"],
+            "regulation": ["AGU_8"],
             "image_1": "",
             "image_2": ""},
           {"answerText": "Mar",
@@ -643,7 +643,7 @@
   {
     "vectorId": "4",
     "vectorName": "ATMÓSFERA",
-    "vectorGeneralRegulation":["ATM_4","ATM_5","ATM_9","ATM_12"],
+    "vectorGeneralRegulation":["ATM_47","ATM_5","ATM_9","ATM_12", "ATM_50","ATM_51"],
     "questions":
       [
           {
@@ -867,7 +867,7 @@
         [
                 {"answerText": "Sí",
                  "answerTooltip": "",
-                 "regulation": ["QMC_5","QMC_12","QMC_16","QMC_18","QMC_19","QMC_21","QMC_25","QMC_2"],
+                 "regulation": ["QMC_5","QMC_12","QMC_16","QMC_18","QMC_19","QMC_21","QMC_25"],
 
                  "answerdoc1": "",
                  "answerdoc2": ""},
@@ -985,7 +985,7 @@
 
           {"answerText": "No",
             "answerTooltip": "",
-            "regulation": [""],
+            "regulation": ["MA_8"],
             "answerImage_1": "",
             "answerImage_2": ""}
         ]

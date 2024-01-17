@@ -63,7 +63,7 @@ export class AutoevaluationQuestionnaireComponent {
             let vRegTemp: string = ""
             this.regVector[(vectorAnswers.vectorId-1)].regulation.map((vReg:any) =>{
               this.regulationList.map((regulation:regulationsDTO) => {
-                if (regulation.reg_ID == vReg) {
+                if (regulation.regId == vReg) {
                   this.regulationListToApply.push(vReg)
                 }
               })
@@ -77,7 +77,7 @@ export class AutoevaluationQuestionnaireComponent {
                   if (questions.q1) {
                     questions.q1.map((q1Reg:any) =>{
                       this.regulationList.map((regulation:regulationsDTO) => {
-                           if (regulation.reg_ID == q1Reg) {
+                           if (regulation.regId == q1Reg) {
                             this.regulationListToApply.push(q1Reg)
                           }
                       })
@@ -86,7 +86,7 @@ export class AutoevaluationQuestionnaireComponent {
                   if (questions.q2) {
                     questions.q2.map((q2Reg:any) =>{
                       this.regulationList.map((regulation:regulationsDTO) => {
-                         if (regulation.reg_ID === q2Reg) {
+                         if (regulation.regId === q2Reg) {
                           this.regulationListToApply.push(q2Reg)
                         }
                     }
@@ -96,7 +96,7 @@ export class AutoevaluationQuestionnaireComponent {
                   if (questions.q3) {
                     questions.q3.map((q3Reg:any) =>{
                       this.regulationList.map((regulation:regulationsDTO) => {
-                         if (regulation.reg_ID === q3Reg) {
+                         if (regulation.regId === q3Reg) {
                           this.regulationListToApply.push(q3Reg)
                         }
                     }
@@ -106,7 +106,7 @@ export class AutoevaluationQuestionnaireComponent {
                   if (questions.q4) {
                     questions.q4.map((q4Reg:any) =>{
                       this.regulationList.map((regulation:regulationsDTO) => {
-                         if (regulation.reg_ID === q4Reg) {
+                         if (regulation.regId === q4Reg) {
                           this.regulationListToApply.push(q4Reg)
                         }
                     }
@@ -116,7 +116,7 @@ export class AutoevaluationQuestionnaireComponent {
                   if (questions.q5) {
                     questions.q5.map((q5Reg:any) =>{
                       this.regulationList.map((regulation:regulationsDTO) => {
-                         if (regulation.reg_ID === q5Reg) {
+                         if (regulation.regId === q5Reg) {
                           this.regulationListToApply.push(q5Reg)
                         }
                     }
@@ -126,7 +126,7 @@ export class AutoevaluationQuestionnaireComponent {
                   if (questions.q6) {
                     questions.q6.map((q6Reg:any) =>{
                       this.regulationList.map((regulation:regulationsDTO) => {
-                         if (regulation.reg_ID === q6Reg) {
+                         if (regulation.regId === q6Reg) {
                           this.regulationListToApply.push(q6Reg)
                         }
                     }
@@ -136,7 +136,7 @@ export class AutoevaluationQuestionnaireComponent {
                   if (questions.q7) {
                     questions.q7.map((q7Reg:any) =>{
                       this.regulationList.map((regulation:regulationsDTO) => {
-                         if (regulation.reg_ID === q7Reg) {
+                         if (regulation.regId === q7Reg) {
                           this.regulationListToApply.push(q7Reg)
                         }
                     }
@@ -146,7 +146,7 @@ export class AutoevaluationQuestionnaireComponent {
                   if (questions.q8) {
                     questions.q8.map((q8Reg:any) =>{
                       this.regulationList.map((regulation:regulationsDTO) => {
-                         if (regulation.reg_ID === q8Reg) {
+                         if (regulation.regId === q8Reg) {
                           this.regulationListToApply.push(q8Reg)
                         }
                     }
@@ -156,7 +156,7 @@ export class AutoevaluationQuestionnaireComponent {
                   if (questions.q9) {
                     questions.q9.map((q9Reg:any) =>{
                       this.regulationList.map((regulation:regulationsDTO) => {
-                         if (regulation.reg_ID === q9Reg) {
+                         if (regulation.regId === q9Reg) {
                           this.regulationListToApply.push(q9Reg)
                         }
                     }
@@ -167,7 +167,7 @@ export class AutoevaluationQuestionnaireComponent {
                     let q10Temp: string = ""
                     questions.q10.map((q10Reg:any) =>{
                       this.regulationList.map((regulation:regulationsDTO) => {
-                         if (regulation.reg_ID === q10Reg) {
+                         if (regulation.regId === q10Reg) {
                           this.regulationListToApply.push(q10Reg)
                         }
                     }
@@ -177,7 +177,7 @@ export class AutoevaluationQuestionnaireComponent {
                   if (questions.q11) {
                     questions.q11.map((q11Reg:any) =>{
                       this.regulationList.map((regulation:regulationsDTO) => {
-                         if (regulation.reg_ID === q11Reg) {
+                         if (regulation.regId === q11Reg) {
                           this.regulationListToApply.push(q11Reg)
                         }
                     }
@@ -187,7 +187,7 @@ export class AutoevaluationQuestionnaireComponent {
                   if (questions.q12) {
                     questions.q12.map((q12Reg:any) =>{
                       this.regulationList.map((regulation:regulationsDTO) => {
-                         if (regulation.reg_ID === q12Reg) {
+                         if (regulation.regId === q12Reg) {
                           this.regulationListToApply.push(q12Reg)
                         }
                     }

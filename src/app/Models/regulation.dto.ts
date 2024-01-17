@@ -3,6 +3,6 @@ export class regulationsDTO {
     Titulo:      string;
     idNormativa: string;
     link:        string;
-    reg_ID:      string;
+    regId:      string;
 }
  

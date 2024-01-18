@@ -320,7 +320,13 @@
         "answerTooltip": "",
         "regulation": ["SIND_20","SIND_18","SIND_12"],
         "image_1": "",
-        "image_2": ""}
+        "image_2": ""},
+        {"answerText": "Montacargas",
+        "answerTooltip": "",
+        "regulation": ["SIND_20","SIND_40"],
+        "image_1": "",
+        "image_2": ""
+        }
         ]
       },
       {
@@ -446,7 +452,7 @@
       {
         "key": "10",
         "type": "radio",
-        "questionTextES": "¿Dispone de cargador de vehiculos electricos?",
+        "questionTextES": "¿Dispone de cargador de vehículos eléctricos?",
         "questionTextCA": "",
         "questionDoc1" : "",
         "questionDoc2" : "",
@@ -510,7 +516,7 @@
                  "image_2": ""},
                  {"answerText": "Posterior a febrero del 2005",
                  "answerTooltip": "",
-                 "regulation": ["SIND_2","SIND_4"],
+                 "regulation": ["SIND_2"],
                  "image_1": "",
                  "image_2": ""}
         ]
@@ -527,7 +533,7 @@
       {
         "key": "1",
         "type": "checkbox",
-        "questionTextES": "¿ Realiza vertidos de aguas residuales ? Indique a dónde vierte, puede seleccionar más de una opcion",
+        "questionTextES": "¿Realiza vertidos de aguas residuales?. Indique a dónde vierte, puede seleccionar más de una opcion",
         "questionTextCA": "",
         "questionDoc1" : "",
         "questionDoc2" : "",
@@ -643,7 +649,7 @@
   {
     "vectorId": "4",
     "vectorName": "ATMÓSFERA",
-    "vectorGeneralRegulation":["ATM_47","ATM_5","ATM_9","ATM_12", "ATM_50","ATM_51"],
+    "vectorGeneralRegulation":["ATM_47","ATM_5","ATM_9","ATM_12","ATM_50"],
     "questions":
       [
           {
@@ -660,7 +666,7 @@
               [
                       {"answerText": "Sí",
                       "answerTooltip": "",
-                      "regulation": ["ATM_48","ATM_19","ATM_20","ATM_21","ATM_22","ATM_23","ATM_24","ATM_27"],
+                      "regulation": ["ATM_19","ATM_20","ATM_21","ATM_22","ATM_23","ATM_24","ATM_27"],
                       "answerImage_1": "",
                       "answerImage_2": ""},
 
@@ -856,7 +862,7 @@
     {
         "key": "2",
         "type": "radio",
-        "questionTextES": "¿ Utilizan y/o comercializan sustancias y/o preparados peligrosos?",
+        "questionTextES": "¿Se almacenan preparados peligrosos?",
         "questionTextCA": "",
         "questionDoc1" : "",
         "questionDoc2" : "",
@@ -919,7 +925,7 @@
         [
                 {"answerText": "Sí",
                  "answerTooltip": "",
-                 "regulation": ["QMC_24","QMC_2","QMC_26","QMC_29"],
+                 "regulation": ["QMC_24","QMC_26","QMC_29","QMC_2"],
                  "image_1": "",
                  "image_2": ""},
                  {"answerText": "No",

@@ -2,7 +2,7 @@
 
 .container-form {
   display: grid;
-  grid-template-rows: auto auto auto auto auto;
+  grid-template-rows: auto auto auto auto auto auto;
   margin: auto;
   padding-top: 8rem;
   padding-bottom: 4rem;
@@ -16,7 +16,7 @@ h1{
   font-weight: bolder;
   color: #365446;
 }
-span,a {
+span,a, app-select-language {
   text-align: center;
 }
 

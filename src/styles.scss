@@ -25,6 +25,11 @@ body {
   margin-top: 0;
 }
 
+::selection {
+  color: #fff;
+  background: #365446;
+}
+
 .container-form {
   display: flex;
   justify-content: center;

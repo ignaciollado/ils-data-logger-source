@@ -1,16 +1,12 @@
 
 <div class="container-form">
-  <h1>APP SOSTENIBILIDAD</h1>
- <p>
-  Le presentamos la herramienta de <a href='https://industrialocalsostenible.es' target="_blank">industria local sostenible</a>.<br><br>Se trata de una solución integral para promover prácticas
-  respetuosas con el medio ambiente en las empresas industriales de las Islas Baleares.<br><br>
-  Nuestra herramienta proporciona recursos para que las empresas locales puedan implementar medidas
-  sostenibles, reducir su impacto ambiental y hacer un seguimiento de sus indicadores medioambientales
-  (introducir consumos de energía, agua, residuos y emisiones de CO<sub>2</sub>e) que le permitirán
-  obtener el índice de circularidad  además de datos comparativos por medio de gráficas.<br><br>La herramienta, también le servirá como apoyo para realizar auditorias medioambientales para, así, contribuir
-  al desarrollo sostenible de nuestra comunidad.</p>
-
+  <h1>{{'appName' | translate}}</h1>
+ <p>{{'homeTextp1' | translate}}</p>
+ <p>{{'homeTextp2' | translate}}</p>
+ <p>{{'homeTextp3' | translate}}</p>
+ <p>{{'homeTextp4' | translate}}</p>
  <a [routerLink]="['/login']" routerLinkActive="active" ariaCurrentWhenActive="page">{{'login' | translate}}</a>
- <span>¿Aún no tiene acceso?</span>
+ <span>{{'giveAccess' | translate}}</span>
  <a [routerLink]="['/register']" routerLinkActive="active" ariaCurrentWhenActive="page">{{'signup' | translate}}</a>
+ <app-select-language></app-select-language>
 </div>

@@ -109,7 +109,6 @@
                 "answerImage_2": ""}
         ]
         },
-
         {
           "key": "2",
           "type": "radio",
@@ -134,7 +133,6 @@
                    "image_2": ""}
           ]
         },
-
         {
         "key": "3",
         "type": "radio",
@@ -160,7 +158,6 @@
                "answerdoc2": ""}
         ]
         },
-
         {
         "key": "4",
         "type": "radio",
@@ -184,7 +181,6 @@
                "image_2": ""}
         ]
         },
-        
         {    
                     "key": "5",
                     "type": "radio",
@@ -214,7 +210,7 @@
   {
     "vectorId": "2",
     "vectorName": "SEGURIDAD INDUSTRIAL",
-    "vectorGeneralRegulation":["SIND_1","SIND_2","SIND_4"],
+    "vectorGeneralRegulation":[],
     "questions":
       [
       {
@@ -244,7 +240,7 @@
       {
         "key": "2",
         "type": "radio",
-        "questionTextES": "¿Se realizan actividades de expedición, carga, descarga y transporte de las mercancías peligrosas ?",
+        "questionTextES": "¿Se realizan actividades de almacenamiento de mercancías peligrosas?",
         "questionTextCA": "",
         "questionDoc1" : "PSIND_2_ANEXO_1APQ.pdf",
         "questionDoc2" : "",
@@ -255,7 +251,7 @@
         [
         {"answerText": "Sí",
         "answerTooltip": "",
-        "regulation": ["QMC_25"],
+        "regulation": ["QMC_25_BOE-A-2017-8755-consolidado"],
         "answerdoc1": "",
         "answerdoc2": ""},
         {"answerText": "No",
@@ -509,16 +505,16 @@
         "link": "https://...",
         "answers":
         [
-                {"answerText": "Anterior a febrero del 2005",
-                 "answerTooltip": "",
-                 "regulation": ["SIND_4"],
-                 "image_1": "",
-                 "image_2": ""},
-                 {"answerText": "Posterior a febrero del 2005",
-                 "answerTooltip": "",
-                 "regulation": ["SIND_2"],
-                 "image_1": "",
-                 "image_2": ""}
+        {"answerText": "Anterior a febrero del 2005",
+        "answerTooltip": "",
+        "regulation": ["SIND_4"],
+        "image_1": "",
+        "image_2": ""},
+        {"answerText": "Posterior a febrero del 2005",
+        "answerTooltip": "",
+        "regulation": ["SIND_2"],
+        "image_1": "",
+        "image_2": ""}
         ]
       }
       ]
@@ -542,31 +538,31 @@
         "link": "https://...",
         "answers":
         [
-          {"answerText": "No",
-          "answerTooltip": "",
-          "regulation": [""],
-          "image_1": "",
-          "image_2": ""},
-          {"answerText": "Alcantarillado",
-            "answerTooltip": "Vertido que está conectado al alcantarillado municipal",
-            "regulation": ["AGU_8", "AGU_9"],
-            "image_1": "",
-            "image_2": ""},
-          {"answerText": "Fosa séptica",
-            "answerTooltip": "Sistema de almacenaje para verter aguas residuales",
-            "regulation": ["AGU_8"],
-            "image_1": "",
-            "image_2": ""},
-          {"answerText": "Cauce público (torrente)",
-            "answerTooltip": "Cualquier vertido que no vaya a alcantarillado o al mar. <strong>Sí</strong> es el vertido de pluviales, por ejemplo de un parking  al torrente cercano. <strong>No</strong> es ni el vertido al mar de lo varaderos, ni el vertido propio al alcantarillado público.",
-            "regulation": ["AGU_8"],
-            "image_1": "",
-            "image_2": ""},
-          {"answerText": "Mar",
-            "answerTooltip": "Incluye los vertidos al mar  canalizados de pluviales  o de otras aguas de una instalación. No incluye la aguas de escorrentía",
-            "regulation": ["AGU_7"],
-            "image_1": "",
-            "image_2": ""}
+        {"answerText": "No",
+        "answerTooltip": "",
+        "regulation": [""],
+        "image_1": "",
+        "image_2": ""},
+        {"answerText": "Alcantarillado",
+        "answerTooltip": "Vertido que está conectado al alcantarillado municipal",
+        "regulation": ["AGU_8", "AGU_9"],
+        "image_1": "",
+        "image_2": ""},
+        {"answerText": "Fosa séptica",
+        "answerTooltip": "Sistema de almacenaje para verter aguas residuales",
+        "regulation": ["AGU_8"],
+        "image_1": "",
+        "image_2": ""},
+        {"answerText": "Cauce público (torrente)",
+        "answerTooltip": "Cualquier vertido que no vaya a alcantarillado o al mar. <strong>Sí</strong> es el vertido de pluviales, por ejemplo de un parking  al torrente cercano. <strong>No</strong> es ni el vertido al mar de lo varaderos, ni el vertido propio al alcantarillado público.",
+        "regulation": ["AGU_8"],
+        "image_1": "",
+        "image_2": ""},
+        {"answerText": "Mar",
+        "answerTooltip": "Incluye los vertidos al mar  canalizados de pluviales  o de otras aguas de una instalación. No incluye la aguas de escorrentía",
+        "regulation": ["AGU_7"],
+        "image_1": "",
+        "image_2": ""}
         ]
       },
       {
@@ -581,17 +577,17 @@
         "link": "https://...",
         "answers":
         [
-          {"answerText": "Sí",
-            "answerTooltip": "",
-            "regulation": ["AGU_8"],
-            "answerImage_1": "",
-            "answerImage_2": ""},
+        {"answerText": "Sí",
+        "answerTooltip": "",
+        "regulation": ["AGU_8"],
+        "answerImage_1": "",
+        "answerImage_2": ""},
 
-          {"answerText": "No",
-            "answerTooltip": "",
-            "regulation": [""],
-            "answerImage_1": "",
-            "answerImage_2": ""}
+        {"answerText": "No",
+        "answerTooltip": "",
+        "regulation": [""],
+        "answerImage_1": "",
+        "answerImage_2": ""}
         ]
       },
       {
@@ -606,42 +602,41 @@
         "link": "https://...",
         "answers":
         [
-          {"answerText": "Sí",
-            "answerTooltip": "",
-            "regulation": ["AGU_5"],
-            "answerdoc1": "",
-            "answerdoc2": ""},
-          {"answerText": "No",
-            "answerTooltip": "",
-            "regulation": [""],
-            "answerdoc1": "",
-            "answerdoc2": ""}
+        {"answerText": "Sí",
+        "answerTooltip": "",
+        "regulation": ["AGU_5"],
+        "answerdoc1": "",
+        "answerdoc2": ""},
+        {"answerText": "No",
+        "answerTooltip": "",
+        "regulation": [""],
+        "answerdoc1": "",
+        "answerdoc2": ""}
         ]
       },
       {
         "key": "4",
-                    "type": "radio",
-                    "questionTextES": "¿ Es una empresa alimentaria y en su proceso productivo utiliza agua de consumo humano ?",
-                    "questionTextCA": "",
-                    "questionDoc1" : "",
-                    "questionDoc2" : "",
-                    "questionTooltipES": "",
-                    "questionTooltipCA": "",
-                    "link": "https://...",
-                    "answers":
-                    [
-                            {"answerText": "SI",
-                             "answerTooltip": "",
-                             "regulation": ["ACH_2"],
-                             "image_1": "",
-                             "image_2": ""},
-                             {"answerText": "NO",
-                             "answerTooltip": "",
-                             "regulation": [""],
-                             "image_1": "",
-                             "image_2": ""}
-
-                    ]
+        "type": "radio",
+        "questionTextES": "¿ Es una empresa alimentaria y en su proceso productivo utiliza agua de consumo humano ?",
+        "questionTextCA": "",
+        "questionDoc1" : "",
+        "questionDoc2" : "",
+        "questionTooltipES": "",
+        "questionTooltipCA": "",
+        "link": "https://...",
+        "answers":
+        [
+        {"answerText": "SI",
+        "answerTooltip": "",
+        "regulation": ["ACH_2"],
+        "image_1": "",
+        "image_2": ""},
+        {"answerText": "NO",
+        "answerTooltip": "",
+        "regulation": [""],
+        "image_1": "",
+        "image_2": ""}
+        ]
       }
     ]
   },
@@ -649,108 +644,106 @@
   {
     "vectorId": "4",
     "vectorName": "ATMÓSFERA",
-    "vectorGeneralRegulation":["ATM_47","ATM_5","ATM_9","ATM_12","ATM_50"],
+    "vectorGeneralRegulation":["ATM_47","ATM_5","ATM_9","ATM_12","ATM_50","ATM_51"],
     "questions":
       [
-          {
-              "key": "1",
-              "type": "radio",
-              "questionTextES": "¿Su actividad se encuentra sujeta al comercio de derechos de emisión?",
-              "questionTextCA": "",
-              "questionDoc1" : "PATM_1_ANEXO1.pdf",
-              "questionDoc2" : "",
-              "questionTooltipES": "Determinadas actividades industriales ya sea por la actividad o por la magnitud de la misma están obligadas a declarar de forma anual sus emisiones de efecto invernadero y participar en el mercado de comercio de emisiones de acuerdo al Protocolo de Kyoto ( mercado regulado). Los sistemas de comercio de emisiones son instrumentos de mercado establecidos con el objetivo de reducir las emisiones de gases de efecto invernadero (<acronym lang='es' title='Gases de Efecto Invernadero'>GEI</acronym>), en los que se define un límite superior (techo) de emisiones de <acronym lang='es' title='Gases de Efecto Invernadero'>GEI</acronym> que pueden ser emitidas por los participantes en el sistema.Busca en el siguiente recuadro si tu actividad está dentro del <a href='../../../assets/answers_images/PATM_1_ANEXO1.pdf' target='_blank'>ANEXO I</a>",
-              "questionTooltipCA": "",
-              "link": "https://...",
-              "answers":
-              [
-                      {"answerText": "Sí",
-                      "answerTooltip": "",
-                      "regulation": ["ATM_19","ATM_20","ATM_21","ATM_22","ATM_23","ATM_24","ATM_27"],
-                      "answerImage_1": "",
-                      "answerImage_2": ""},
-
-                      {"answerText": "No",
-                      "answerTooltip": "",
-                      "regulation": [""],
-                      "answerImage_1": "",
-                      "answerImage_2": ""}
-              ]
-          },
-          {
-              "key": "2",
-              "type": "radio",
-              "questionTextES": "¿Realizan actividades en las que se manejen compuestos orgánicos volátiles (COVs)?",
-              "questionTextCA": "",
-              "questionDoc1" : "PATM_2_ANEXOII.pdf",
-              "questionDoc2" : "",
-              "questionTooltipES": "Los <acronym lang='es' title='Compuestos orgánicos volátiles'>COVs</acronym>, son  compuestos ligeros, con menos de 12 átomos de carbono, y grupos funcionales diversos. Hay más de un millar de compuestos que pueden considerarse COV, pero los más abundantes son: metano, etano, propano, n-butano, n-pentano, benceno, tolueno, xileno y etileno. Ejm solventes de pintura y de laca, repelentes de polillas, aromatizantes del aire, materiales empleados en maderas, sustancias en aerosol, disolventes de grasa, productos de uso automotor y disolventes para la industria de lavado en seco....  Si estas incluido dentro de alguna de estas actividades que aparecen en este listado y superas los umbrales de consumo del <a href='../../../assets/answers_images/PATM_2_ANEXOII.pdf' target='_blank'>ANEXO II</a> responde que si a esta pregunta. Si no superas las cantidades reponde que no, porque no es de aplicación para tu industria.  <ol> <li><strong>Recubrimiento con adhesivos</strong> Toda actividad en la que se aplique a una superficie un adhesivo, con excepción del recubrimiento con adhesivos y el laminado junto con actividades de imprenta.</li><li><strong>Actividades de recubrimiento</strong> Toda actividad en la que se aplique una o varias veces una película continua de recubrimiento sobre: a) Vehículos, según se recoge a continuación: 1º. Coches nuevos, los definidos en el Real Decreto 2028/ 1986, de 6 de junio, sobre homologación de tipos de vehículos, remolques, semiremolques y sus partes o piezas, como vehículos de la categoría M1 y de la categoría N1, en la medida en que se recubran en la misma instalación que los vehículos M1. 2º. Cabinas de camiones, definidas como el habitáculo del conductor y todo el espacio integrado para el equipo técnico de los vehículos de categorías N2 y N3 en el Real Decreto 2028/ 1986. 3º. Furgonetas y camiones, definidos como vehículos de las categorías N1, N2 y N3, pero sin incluir las cabinas de camiones, en el Real Decreto 2028/ 1986. 4º. Autobuses, definidos como vehículos de las categorías M2 y M3 en el Real Decreto 2028/ 1986. 5º. Remolques, tal y como se finen en las categorías O1, O2, O3 y O4 del Real Decreto 2028/ 1986. b) Superficies metálicas y de plástico incluidas las superficies de aviones, barcos, trenes, etc. c) Superficies de madera. d) Superficies de tejidos, telas, película y papel. e) Cuero. No se incluyen los recubrimientos de sustratos con metales mediante técnicas de atomización química y electroforesis. Si la actividad de recubrimiento incluye una fase en que se imprime el mismo artículo, dicha fase de impresión se considera como parte de la actividad de recubrimiento. No obstante, no se incluyen las actividades de impresión que funcionen como actividades independientes, pero se podrán incluir en este Real Decreto siempre y cuando la actividad de impresión entre dentro de su ámbito.</li><li><strong>Recubrimiento de bobinas</strong> Toda actividad en la que se recubra con una película o un recubrimiento laminado, en un proceso continuo, acero, acero inoxidable, acero recubierto, aleaciones de cobre o tiras de aluminio en forma de bobina.</li><li><strong>Limpieza en seco</strong> Toda actividad industrial o comercial en el que se utilicen compuestos orgánicos volátiles en una instalación para eliminar la suciedad de las prendas de vestir, mobiliario y bienes de consumo similares, con excepción de la eliminación manual de manchas en la industria de tejidos y prendas de vestir.</li><li><strong>Fabricación de calzado</strong> Cualquier actividad de producción de calzado completo o de partes del mismo.</li><li><strong>Fabricación de recubrimiento, barnices, tintas y adhesivos</strong> La fabricación de los mencionados productos finales, y de sus productos intermedios cuando se haga en la misma instalación, mediante mezcla de pigmentos, resinas y materiales adhesivos con disolventes orgánicos u otros medios, con inclusión de actividades de dispersión y predispersión, ajustes de viscosidad y del tinte y operaciones de envasado del producto final en su recipiente.</li><li><strong>Fabricación de productos farmacéuticos</strong> Síntesis química, fermentación, extracción, formulación y terminación de productos farmacéuticos y sus productos intermedios cuando se lleven a cabo en el mismo sitio.</li><li><strong>Imprenta</strong> Actividad de reproducción de texto o imágenes en el que, mediante el uso de un portador de imagen, se transfiere tinta a cualquier tipo de superficie. Quedan incluidas las técnicas seleccionadas de barnizado, recubrimiento y laminación. Sin embargo, sólo están sujetos al presente Real Decreto los subprocesos siguientes: a) Flexografía: actividad de impresión que utiliza un portador de imagen de caucho o fotopolímeros elásticos en que las tintas de imprenta están por encima de las zonas de no impresión, utilizando tintas líquidas que se secan por evaporación. b) Offset de bobinas por secado al calor: actividad de impresión de bobinas que utilizan un portador de imagen donde las áreas de impresión y de no impresión están en el mismo plano, y entendiéndose por de bobinas que el material que se va a imprimir se introduce en la máquina a partir de un carrete y no de hojas separadas. El área de no impresión se trata para atraer agua y así rechazar la tinta. La zona de impresión se trata para recibir y transmitir la tinta a la superficie que se desea imprimir. La evaporación se realiza en un horno donde se utiliza aire caliente para calentar el material impreso. c) Laminación asociada a una actividad de impresión: la adhesión de dos o más materiales flexibles para producir laminados. d) Grabado de publicaciones: rotograbado utilizado para imprimir papel destinado a revistas, folletos, catálogos o productos similares, con tintas a base de tolueno. e) Rotograbado: actividad de impresión que utiliza un portador cilíndrico de imagen donde el área de impresión está por debajo del área de no impresión, utilizando tintas líquidas que se secan por evaporación. Los huecos se rellenan con tinta y el excedente se elimina del área de no impresión antes de que la superficie que se va a imprimir entre en contacto con el cilindro y levante la tinta de los huecos. f) Impresión serigráfica rotativa: actividad de impresión de bobinas donde la tinta se hace llegar a la superficie que se a va a imprimir pasándola a través de un portador de imagen poroso, donde el área de impresión está abierta, y el área de no impresión está cerrada, utilizando tintas líquidas que se secan sólo por evaporación. De bobinas significa que el material que se va a imprimir llega a la máquina a partir de un carrete y no de hojas separadas. g) Barnizado: actividad por el que se aplica a un material flexible un barniz o un recubrimiento adhesivo con el fin de sellar posteriormente el material del envase.</li><li><strong>Conversión de caucho natural o sintético</strong> Mezclado, triturado, homogeneización, calandrado, extrusión y vulcanizado de caucho sintético o natural y operaciones auxiliares para convertir el caucho sintético o natural en un producto terminado.</li><li><strong>Limpieza de superficies</strong> Toda actividad, salvo la limpieza en seco, con disolventes orgánicos para eliminar la suciedad de las superficies de materiales, con inclusión del desengrasado. Una actividad de limpieza que consista en más de una fase, antes o después de cualquier otra fase de tratamiento debe considerarse como una única actividad de limpieza de superficies. Esta actividad se refiere a la limpieza de la superficie del producto y no a la limpieza del equipo.</li><li><strong>Actividades de extracción de aceite vegetal y de refinado de grasa y aceite vegetal</strong> Toda actividad de extracción de aceite vegetal de semillas y otras materias vegetales, procesado de residuos secos para producir piensos animales, purificación de grasas y aceites vegetales obtenidos de semillas, materia vegetal o materia animal.</li><li><strong>Renovación del acabado de vehículos</strong> Toda actividad industrial o comercial de recubrimiento y actividades conexas de desengrasado mediante las que se efectúe: a) El recubrimiento de un vehículo de carretera según se define en el Real Decreto 2028/ 1986, o de una parte de aquél, realizados como parte de la reparación, conservación o decoración del vehículo fuera de las instalaciones de fabricación, o b) El recubrimiento original del vehículo de carretera, o de una parte de aquél, con materiales del tipo de renovación del acabado, cuando se realice fuera de la línea de fabricación original, o c) El recubrimiento de remolques (incluidos los semirremolques) (categoría O). Toda actividad industrial o comercial de recubrimiento y actividades conexas de desengrasado mediante las que se efectúe: a) El recubrimiento original del vehículo de carretera, o de una parte de aquél, con materiales del tipo de renovación del acabado, cuando se realice fuera de la línea de fabricación original, o c) El recubrimiento de remolques (incluidos los semirremolques) (categoría O).</li><li><strong>Recubrimiento de alambre en bobinas</strong> Todo recubrimiento de conductores metálicos utilizados para bobinar transformadores, motores, etc.</li><li><strong>Impregnación de fibras de madera</strong> Toda actividad que suponga impregnar la madera de conservantes.</li><li><strong>Laminación de madera y plástico</strong> Toda actividad de pegado de madera y plástico para producir laminados.</li> </ol>",
-              "questionTooltipCA": "",
-              "link": "https://...",
-              "answers":
-              [
-                      {"answerText": "Sí",
-                       "answerTooltip": "",
-                       "regulation": ["ATM_32"],
-                       "answerdoc1": "",
-                       "answerdoc2": ""},
-
-                       {"answerText": "No",
-                       "answerTooltip": "",
-                       "regulation": [""],
-                       "answerdoc1": "",
-                       "answerdoc2": ""}
-              ]
-          },
-          {
-              "key": "3",
-              "type": "radio",
-              "questionTextES": " Eres fabricante de pinturas, barnices y productos de renovación del acabado de vehículos que contienen COVs ( Compuestos Orgánicos volátiles)",
-              "questionTextCA": "",
-              "questionDoc1" : "",
-              "questionDoc2" : "",
-              "questionTooltipES": "",
-              "questionTooltipCA": "",
-              "link": "https://...",
-              "answers":
-              [
-                      {"answerText": "Sí",
-                       "answerTooltip": "",
-                       "regulation": ["ATM_33"],
-                       "image_1": "",
-                       "image_2": ""},
-                       {"answerText": "No",
-                       "answerTooltip": "",
-                       "regulation": [""],
-                       "image_1": "",
-                       "image_2": ""}
-              ]
-          },
-          {
-            "key": "4",
-            "type": "radio",
-            "questionTextES": "¿Realizan actividades catalogadas como potencialmente contaminadoras de la atmósfera (incluidas en el Catálogo APCAS)?",
-            "questionTextCA": "",
-            "questionDoc1" : "PATM_4_ANEXO",
-            "questionDoc2" : "",
-            "questionTooltipES": "Se consideran Actividades Potencialmente Contaminadoras de la Atmósfera (APCA en adelante), aquellas que por su propia naturaleza, ubicación o por los procesos tecnológicos utilizados constituyan una fuente de contaminación cuyas características pueden requerir que sean sometidas a un régimen de control y seguimiento más estricto, como por ejemplo: calderas del sector industrial de potencia térmica nominal igual o superior a 250 kWt,  consumo de disolvente superior a 5 t/año, etc..            Debes de revisar en el cuadro si tu actividad esta dentro de las definidas: <a href='../../../assets/answers_images/PATM_4_ANEXO.pdf' target='_blank'>Ver cuadro</a>",
-            "questionTooltipCA": "",
-            "link": "https://...",
-            "answers":
-            [
-                    {"answerText": "Sí",
-                     "answerTooltip": "",
-                     "regulation": ["ATM_1","ATM_11"],
-                     "image_1": "",
-                     "image_2": ""},
-                     {"answerText": "No",
-                     "answerTooltip": "",
-                     "regulation": [""],
-                     "image_1": "",
-                     "image_2": ""}
-            ]
-          },
-          {
+        {
+          "key": "1",
+          "type": "radio",
+          "questionTextES": "¿Su actividad se encuentra sujeta al comercio de derechos de emisión?",
+          "questionTextCA": "",
+          "questionDoc1" : "PATM_1_ANEXO1.pdf",
+          "questionDoc2" : "",
+          "questionTooltipES": "Determinadas actividades industriales ya sea por la actividad o por la magnitud de la misma están obligadas a declarar de forma anual sus emisiones de efecto invernadero y participar en el mercado de comercio de emisiones de acuerdo al Protocolo de Kyoto ( mercado regulado). Los sistemas de comercio de emisiones son instrumentos de mercado establecidos con el objetivo de reducir las emisiones de gases de efecto invernadero (<acronym lang='es' title='Gases de Efecto Invernadero'>GEI</acronym>), en los que se define un límite superior (techo) de emisiones de <acronym lang='es' title='Gases de Efecto Invernadero'>GEI</acronym> que pueden ser emitidas por los participantes en el sistema.Busca en el siguiente recuadro si tu actividad está dentro del <a href='../../../assets/answers_images/PATM_1_ANEXO1.pdf' target='_blank'>ANEXO I</a>",
+          "questionTooltipCA": "",
+          "link": "https://...",
+         "answers":
+          [
+          {"answerText": "Sí",
+          "answerTooltip": "",
+          "regulation": ["ATM_19","ATM_20","ATM_21","ATM_22","ATM_23","ATM_24","ATM_27"],
+          "answerImage_1": "",
+          "answerImage_2": ""},
+          {"answerText": "No",
+          "answerTooltip": "",
+          "regulation": [""],
+          "answerImage_1": "",
+          "answerImage_2": ""}
+          ]
+        },
+        {
+          "key": "2",
+          "type": "radio",
+          "questionTextES": "¿Realizan actividades en las que se manejen compuestos orgánicos volátiles (COVs)?",
+          "questionTextCA": "",
+          "questionDoc1" : "PATM_2_ANEXOII.pdf",
+          "questionDoc2" : "",
+          "questionTooltipES": "Los <acronym lang='es' title='Compuestos orgánicos volátiles'>COVs</acronym>, son  compuestos ligeros, con menos de 12 átomos de carbono, y grupos funcionales diversos. Hay más de un millar de compuestos que pueden considerarse COV, pero los más abundantes son: metano, etano, propano, n-butano, n-pentano, benceno, tolueno, xileno y etileno. Ejm solventes de pintura y de laca, repelentes de polillas, aromatizantes del aire, materiales empleados en maderas, sustancias en aerosol, disolventes de grasa, productos de uso automotor y disolventes para la industria de lavado en seco....  Si estas incluido dentro de alguna de estas actividades que aparecen en este listado y superas los umbrales de consumo del <a href='../../../assets/answers_images/PATM_2_ANEXOII.pdf' target='_blank'>ANEXO II</a> responde que si a esta pregunta. Si no superas las cantidades reponde que no, porque no es de aplicación para tu industria.  <ol> <li><strong>Recubrimiento con adhesivos</strong> Toda actividad en la que se aplique a una superficie un adhesivo, con excepción del recubrimiento con adhesivos y el laminado junto con actividades de imprenta.</li><li><strong>Actividades de recubrimiento</strong> Toda actividad en la que se aplique una o varias veces una película continua de recubrimiento sobre: a) Vehículos, según se recoge a continuación: 1º. Coches nuevos, los definidos en el Real Decreto 2028/ 1986, de 6 de junio, sobre homologación de tipos de vehículos, remolques, semiremolques y sus partes o piezas, como vehículos de la categoría M1 y de la categoría N1, en la medida en que se recubran en la misma instalación que los vehículos M1. 2º. Cabinas de camiones, definidas como el habitáculo del conductor y todo el espacio integrado para el equipo técnico de los vehículos de categorías N2 y N3 en el Real Decreto 2028/ 1986. 3º. Furgonetas y camiones, definidos como vehículos de las categorías N1, N2 y N3, pero sin incluir las cabinas de camiones, en el Real Decreto 2028/ 1986. 4º. Autobuses, definidos como vehículos de las categorías M2 y M3 en el Real Decreto 2028/ 1986. 5º. Remolques, tal y como se finen en las categorías O1, O2, O3 y O4 del Real Decreto 2028/ 1986. b) Superficies metálicas y de plástico incluidas las superficies de aviones, barcos, trenes, etc. c) Superficies de madera. d) Superficies de tejidos, telas, película y papel. e) Cuero. No se incluyen los recubrimientos de sustratos con metales mediante técnicas de atomización química y electroforesis. Si la actividad de recubrimiento incluye una fase en que se imprime el mismo artículo, dicha fase de impresión se considera como parte de la actividad de recubrimiento. No obstante, no se incluyen las actividades de impresión que funcionen como actividades independientes, pero se podrán incluir en este Real Decreto siempre y cuando la actividad de impresión entre dentro de su ámbito.</li><li><strong>Recubrimiento de bobinas</strong> Toda actividad en la que se recubra con una película o un recubrimiento laminado, en un proceso continuo, acero, acero inoxidable, acero recubierto, aleaciones de cobre o tiras de aluminio en forma de bobina.</li><li><strong>Limpieza en seco</strong> Toda actividad industrial o comercial en el que se utilicen compuestos orgánicos volátiles en una instalación para eliminar la suciedad de las prendas de vestir, mobiliario y bienes de consumo similares, con excepción de la eliminación manual de manchas en la industria de tejidos y prendas de vestir.</li><li><strong>Fabricación de calzado</strong> Cualquier actividad de producción de calzado completo o de partes del mismo.</li><li><strong>Fabricación de recubrimiento, barnices, tintas y adhesivos</strong> La fabricación de los mencionados productos finales, y de sus productos intermedios cuando se haga en la misma instalación, mediante mezcla de pigmentos, resinas y materiales adhesivos con disolventes orgánicos u otros medios, con inclusión de actividades de dispersión y predispersión, ajustes de viscosidad y del tinte y operaciones de envasado del producto final en su recipiente.</li><li><strong>Fabricación de productos farmacéuticos</strong> Síntesis química, fermentación, extracción, formulación y terminación de productos farmacéuticos y sus productos intermedios cuando se lleven a cabo en el mismo sitio.</li><li><strong>Imprenta</strong> Actividad de reproducción de texto o imágenes en el que, mediante el uso de un portador de imagen, se transfiere tinta a cualquier tipo de superficie. Quedan incluidas las técnicas seleccionadas de barnizado, recubrimiento y laminación. Sin embargo, sólo están sujetos al presente Real Decreto los subprocesos siguientes: a) Flexografía: actividad de impresión que utiliza un portador de imagen de caucho o fotopolímeros elásticos en que las tintas de imprenta están por encima de las zonas de no impresión, utilizando tintas líquidas que se secan por evaporación. b) Offset de bobinas por secado al calor: actividad de impresión de bobinas que utilizan un portador de imagen donde las áreas de impresión y de no impresión están en el mismo plano, y entendiéndose por de bobinas que el material que se va a imprimir se introduce en la máquina a partir de un carrete y no de hojas separadas. El área de no impresión se trata para atraer agua y así rechazar la tinta. La zona de impresión se trata para recibir y transmitir la tinta a la superficie que se desea imprimir. La evaporación se realiza en un horno donde se utiliza aire caliente para calentar el material impreso. c) Laminación asociada a una actividad de impresión: la adhesión de dos o más materiales flexibles para producir laminados. d) Grabado de publicaciones: rotograbado utilizado para imprimir papel destinado a revistas, folletos, catálogos o productos similares, con tintas a base de tolueno. e) Rotograbado: actividad de impresión que utiliza un portador cilíndrico de imagen donde el área de impresión está por debajo del área de no impresión, utilizando tintas líquidas que se secan por evaporación. Los huecos se rellenan con tinta y el excedente se elimina del área de no impresión antes de que la superficie que se va a imprimir entre en contacto con el cilindro y levante la tinta de los huecos. f) Impresión serigráfica rotativa: actividad de impresión de bobinas donde la tinta se hace llegar a la superficie que se a va a imprimir pasándola a través de un portador de imagen poroso, donde el área de impresión está abierta, y el área de no impresión está cerrada, utilizando tintas líquidas que se secan sólo por evaporación. De bobinas significa que el material que se va a imprimir llega a la máquina a partir de un carrete y no de hojas separadas. g) Barnizado: actividad por el que se aplica a un material flexible un barniz o un recubrimiento adhesivo con el fin de sellar posteriormente el material del envase.</li><li><strong>Conversión de caucho natural o sintético</strong> Mezclado, triturado, homogeneización, calandrado, extrusión y vulcanizado de caucho sintético o natural y operaciones auxiliares para convertir el caucho sintético o natural en un producto terminado.</li><li><strong>Limpieza de superficies</strong> Toda actividad, salvo la limpieza en seco, con disolventes orgánicos para eliminar la suciedad de las superficies de materiales, con inclusión del desengrasado. Una actividad de limpieza que consista en más de una fase, antes o después de cualquier otra fase de tratamiento debe considerarse como una única actividad de limpieza de superficies. Esta actividad se refiere a la limpieza de la superficie del producto y no a la limpieza del equipo.</li><li><strong>Actividades de extracción de aceite vegetal y de refinado de grasa y aceite vegetal</strong> Toda actividad de extracción de aceite vegetal de semillas y otras materias vegetales, procesado de residuos secos para producir piensos animales, purificación de grasas y aceites vegetales obtenidos de semillas, materia vegetal o materia animal.</li><li><strong>Renovación del acabado de vehículos</strong> Toda actividad industrial o comercial de recubrimiento y actividades conexas de desengrasado mediante las que se efectúe: a) El recubrimiento de un vehículo de carretera según se define en el Real Decreto 2028/ 1986, o de una parte de aquél, realizados como parte de la reparación, conservación o decoración del vehículo fuera de las instalaciones de fabricación, o b) El recubrimiento original del vehículo de carretera, o de una parte de aquél, con materiales del tipo de renovación del acabado, cuando se realice fuera de la línea de fabricación original, o c) El recubrimiento de remolques (incluidos los semirremolques) (categoría O). Toda actividad industrial o comercial de recubrimiento y actividades conexas de desengrasado mediante las que se efectúe: a) El recubrimiento original del vehículo de carretera, o de una parte de aquél, con materiales del tipo de renovación del acabado, cuando se realice fuera de la línea de fabricación original, o c) El recubrimiento de remolques (incluidos los semirremolques) (categoría O).</li><li><strong>Recubrimiento de alambre en bobinas</strong> Todo recubrimiento de conductores metálicos utilizados para bobinar transformadores, motores, etc.</li><li><strong>Impregnación de fibras de madera</strong> Toda actividad que suponga impregnar la madera de conservantes.</li><li><strong>Laminación de madera y plástico</strong> Toda actividad de pegado de madera y plástico para producir laminados.</li> </ol>",
+          "questionTooltipCA": "",
+          "link": "https://...",
+          "answers":
+          [
+          {"answerText": "Sí",
+          "answerTooltip": "",
+          "regulation": ["ATM_32"],
+          "answerdoc1": "",
+          "answerdoc2": ""},
+          {"answerText": "No",
+          "answerTooltip": "",
+          "regulation": [""],
+          "answerdoc1": "",
+          "answerdoc2": ""}
+          ]
+        },
+        {
+          "key": "3",
+          "type": "radio",
+          "questionTextES": " Eres fabricante de pinturas, barnices y productos de renovación del acabado de vehículos que contienen COVs ( Compuestos Orgánicos volátiles)",
+          "questionTextCA": "",
+          "questionDoc1" : "",
+          "questionDoc2" : "",
+          "questionTooltipES": "",
+          "questionTooltipCA": "",
+          "link": "https://...",
+          "answers":
+          [
+          {"answerText": "Sí",
+          "answerTooltip": "",
+          "regulation": ["ATM_33"],
+          "image_1": "",
+          "image_2": ""},
+          {"answerText": "No",
+          "answerTooltip": "",
+          "regulation": [""],
+          "image_1": "",
+          "image_2": ""}
+          ]
+        },
+        {
+          "key": "4",
+          "type": "radio",
+          "questionTextES": "¿Realizan actividades catalogadas como potencialmente contaminadoras de la atmósfera (incluidas en el Catálogo APCAS)?",
+          "questionTextCA": "",
+          "questionDoc1" : "PATM_4_ANEXO",
+          "questionDoc2" : "",
+          "questionTooltipES": "Se consideran Actividades Potencialmente Contaminadoras de la Atmósfera (APCA en adelante), aquellas que por su propia naturaleza, ubicación o por los procesos tecnológicos utilizados constituyan una fuente de contaminación cuyas características pueden requerir que sean sometidas a un régimen de control y seguimiento más estricto, como por ejemplo: calderas del sector industrial de potencia térmica nominal igual o superior a 250 kWt,  consumo de disolvente superior a 5 t/año, etc..            Debes de revisar en el cuadro si tu actividad esta dentro de las definidas: <a href='../../../assets/answers_images/PATM_4_ANEXO.pdf' target='_blank'>Ver cuadro</a>",
+          "questionTooltipCA": "",
+          "link": "https://...",
+          "answers":
+          [
+          {"answerText": "Sí",
+          "answerTooltip": "",
+          "regulation": ["ATM_1","ATM_11"],
+          "image_1": "",
+          "image_2": ""},
+          {"answerText": "No",
+          "answerTooltip": "",
+          "regulation": [""],
+          "image_1": "",
+          "image_2": ""}
+          ]
+        },
+        {
           "key": "5",
           "type": "radio",
           "questionTextES": "Disponen de equipos o aparatos que contengan GASES FLUORADOS de EFECTO INVERNADERO Y/O AGOTAMIENTO DE LA CAPA OZONO?",
@@ -762,19 +755,19 @@
           "link": "https://...",
           "answers":
           [
-                  {"answerText": "Sí",
-                   "answerTooltip": "",
-                   "regulation": ["ATM_18","ATM_23","ATM_39","ATM_40","ATM_42","ATM_44"],
-                   "image_1": "",
-                   "image_2": ""},
-                   {"answerText": "No",
-                   "answerTooltip": "",
-                   "regulation": [""],
-                   "image_1": "",
-                   "image_2": ""}
+          {"answerText": "Sí",
+          "answerTooltip": "",
+          "regulation": ["ATM_18","ATM_23","ATM_39","ATM_40","ATM_42","ATM_44"],
+          "image_1": "",
+          "image_2": ""},
+          {"answerText": "No",
+          "answerTooltip": "",
+          "regulation": [""],
+          "image_1": "",
+          "image_2": ""}
           ]
-          },
-          {
+        },
+        {
           "key": "6",
           "type": "radio",
           "questionTextES": "La industria dispone de algún vehículo que gestione directamente por ejemplo: vehículos de transporte, vehículos comerciales, etc.",
@@ -786,19 +779,19 @@
           "link": "https://...",
           "answers":
           [
-                  {"answerText": "Sí",
-                   "answerTooltip": "",
-                   "regulation": ["ATM_48","ATM_49"],
-                   "image_1": "",
-                   "image_2": ""},
-                   {"answerText": "No",
-                   "answerTooltip": "",
-                   "regulation": [""],
-                   "image_1": "",
-                   "image_2": ""}
+          {"answerText": "Sí",
+          "answerTooltip": "",
+          "regulation": ["ATM_48","ATM_49"],
+          "image_1": "",
+          "image_2": ""},
+          {"answerText": "No",
+          "answerTooltip": "",
+          "regulation": [""],
+          "image_1": "",
+          "image_2": ""}
           ]
-          },
-          {
+        },
+        {
           "key": "7",
           "type": "radio",
           "questionTextES": "La industria dispone de aparcamiento de más de 40 plazas",
@@ -810,18 +803,18 @@
           "link": "https://...",
           "answers":
           [
-                  {"answerText": "Sí",
-                   "answerTooltip": "",
-                   "regulation": [""],
-                   "image_1": "",
-                   "image_2": ""},
-                   {"answerText": "No",
-                   "answerTooltip": "",
-                   "regulation": [""],
-                   "image_1": "",
-                   "image_2": ""}
+          {"answerText": "Sí",
+          "answerTooltip": "",
+          "regulation": ["ATM_51"],
+          "image_1": "",
+          "image_2": ""},
+          {"answerText": "No",
+          "answerTooltip": "",
+          "regulation": [""],
+          "image_1": "",
+          "image_2": ""}
           ]
-          }
+        }
       ]
   },
 
@@ -843,19 +836,16 @@
         "link": "https://...",
         "answers":
         [
-                {"answerText": "Sí",
-                "answerTooltip": "",
-                "regulation": ["QMC_13","QMC_14","QMC_22"],
-                "answerImage_1": "",
-                "answerImage_2": ""},
-
-                {"answerText": "No",
-                "answerTooltip": "",
-                "regulation": [""],
-                "answerImage_1": "",
-                "answerImage_2": ""}
-
-
+        {"answerText": "Sí",
+        "answerTooltip": "",
+        "regulation": ["QMC_13","QMC_14","QMC_22"],
+        "answerImage_1": "",
+        "answerImage_2": ""},
+        {"answerText": "No",
+        "answerTooltip": "",
+        "regulation": [""],
+        "answerImage_1": "",
+        "answerImage_2": ""}
         ]
     },
 
@@ -871,18 +861,16 @@
         "link": "https://...",
         "answers":
         [
-                {"answerText": "Sí",
-                 "answerTooltip": "",
-                 "regulation": ["QMC_5","QMC_12","QMC_16","QMC_18","QMC_19","QMC_21","QMC_25"],
-
-                 "answerdoc1": "",
-                 "answerdoc2": ""},
-
-                 {"answerText": "No",
-                 "answerTooltip": "",
-                 "regulation": [""],
-                 "answerdoc1": "",
-                 "answerdoc2": ""}
+        {"answerText": "Sí",
+        "answerTooltip": "",
+        "regulation": ["QMC_5","QMC_12","QMC_16","QMC_18","QMC_19","QMC_21","QMC_25"],
+        "answerdoc1": "",
+        "answerdoc2": ""},
+        {"answerText": "No",
+        "answerTooltip": "",
+        "regulation": [""],
+        "answerdoc1": "",
+        "answerdoc2": ""}
         ]
     },
 
@@ -898,16 +886,16 @@
         "link": "https://...",
         "answers":
         [
-                {"answerText": "Sí",
-                 "answerTooltip": "",
-                 "regulation": ["QMC_1","QMC_9"],
-                 "image_1": "",
-                 "image_2": ""},
-                 {"answerText": "No",
-                 "answerTooltip": "",
-                 "regulation": [""],
-                 "image_1": "",
-                 "image_2": ""}
+        {"answerText": "Sí",
+        "answerTooltip": "",
+        "regulation": ["QMC_1","QMC_9"],
+        "image_1": "",
+        "image_2": ""},
+        {"answerText": "No",
+        "answerTooltip": "",
+        "regulation": [""],
+        "image_1": "",
+        "image_2": ""}
         ]
     },
 
@@ -923,18 +911,16 @@
         "link": "https://...",
         "answers":
         [
-                {"answerText": "Sí",
-                 "answerTooltip": "",
-                 "regulation": ["QMC_24","QMC_26","QMC_29","QMC_2"],
-                 "image_1": "",
-                 "image_2": ""},
-                 {"answerText": "No",
-                 "answerTooltip": "",
-                 "regulation": [""],
-                 "image_1": "",
-                 "image_2": ""}
-
-
+        {"answerText": "Sí",
+        "answerTooltip": "",
+        "regulation": ["QMC_24","QMC_26","QMC_29","QMC_2"],
+        "image_1": "",
+        "image_2": ""},
+        {"answerText": "No",
+        "answerTooltip": "",
+        "regulation": [""],
+        "image_1": "",
+        "image_2": ""}
         ]
     },
 
@@ -950,16 +936,16 @@
         "link": "https://...",
         "answers":
         [
-                {"answerText": "Sí",
-                 "answerTooltip": "",
-                 "regulation": ["QMC_10", "QMC_28"],
-                 "image_1": "",
-                 "image_2": ""},
-                 {"answerText": "No",
-                 "answerTooltip": "",
-                 "regulation": [""],
-                 "image_1": "",
-                 "image_2": ""}
+        {"answerText": "Sí",
+        "answerTooltip": "",
+        "regulation": ["QMC_10", "QMC_28"],
+        "image_1": "",
+        "image_2": ""},
+        {"answerText": "No",
+        "answerTooltip": "",
+        "regulation": [""],
+        "image_1": "",
+        "image_2": ""}
         ]
     }
     ]
@@ -983,17 +969,16 @@
         "link": "https://...",
         "answers":
         [
-          {"answerText": "Sí",
-            "answerTooltip": "",
-            "regulation": ["MA_0","MA_1","MA_4","MA_5","MA_6","MA_11"],
-            "answerImage_1": "",
-            "answerImage_2": ""},
-
-          {"answerText": "No",
-            "answerTooltip": "",
-            "regulation": ["MA_8"],
-            "answerImage_1": "",
-            "answerImage_2": ""}
+        {"answerText": "Sí",
+        "answerTooltip": "",
+        "regulation": ["MA_0","MA_1","MA_4","MA_5","MA_6","MA_11"],
+        "answerImage_1": "",
+        "answerImage_2": ""},
+        {"answerText": "No",
+        "answerTooltip": "",
+        "regulation": ["MA_8"],
+        "answerImage_1": "",
+        "answerImage_2": ""}
         ]
       },
       {
@@ -1008,17 +993,16 @@
         "link": "https://...",
         "answers":
         [
-                {"answerText": "Sí",
-                 "answerTooltip": "",
-                 "regulation": ["LEGIO_1","LEGIO_2"],
-                 "answerdoc1": "",
-                 "answerdoc2": ""},
-
-                 {"answerText": "No",
-                 "answerTooltip": "",
-                 "regulation": [""],
-                 "answerdoc1": "",
-                 "answerdoc2": ""}
+        {"answerText": "Sí",
+        "answerTooltip": "",
+        "regulation": ["LEGIO_1","LEGIO_2"],
+        "answerdoc1": "",
+        "answerdoc2": ""},
+        {"answerText": "No",
+        "answerTooltip": "",
+        "regulation": [""],
+        "answerdoc1": "",
+        "answerdoc2": ""}
         ]
       },
       {
@@ -1033,16 +1017,16 @@
         "link": "https://...",
         "answers":
         [
-                {"answerText": "Sí",
-                 "answerTooltip": "",
-                 "regulation": ["RUI_1"],
-                 "image_1": "",
-                 "image_2": ""},
-                 {"answerText": "No",
-                 "answerTooltip": "",
-                 "regulation": [""],
-                 "image_1": "",
-                 "image_2": ""}
+        {"answerText": "Sí",
+        "answerTooltip": "",
+        "regulation": ["RUI_1"],
+        "image_1": "",
+        "image_2": ""},
+        {"answerText": "No",
+        "answerTooltip": "",
+        "regulation": [""],
+        "image_1": "",
+        "image_2": ""}
         ]
       },
       {
@@ -1057,17 +1041,16 @@
         "link": "https://...",
         "answers":
         [
-                {"answerText": "Sí",
-                 "answerTooltip": "",
-                 "regulation": ["RUI_5"],
-                 "image_1": "",
-                 "image_2": ""},
-                 {"answerText": "No",
-                 "answerTooltip": "",
-                 "regulation": [""],
-                 "image_1": "",
-                 "image_2": ""}
-
+        {"answerText": "Sí",
+        "answerTooltip": "",
+        "regulation": ["RUI_5"],
+        "image_1": "",
+        "image_2": ""},
+        {"answerText": "No",
+        "answerTooltip": "",
+        "regulation": [""],
+        "image_1": "",
+        "image_2": ""}
         ]
       },
       {
@@ -1082,17 +1065,16 @@
         "link": "https://...",
         "answers":
         [
-          {"answerText": "SI",
-          "answerTooltip": "",
-          "regulation": ["ENER_1"],
-          "image_1": "",
-          "image_2": ""},
-          {"answerText": "NO",
-           "answerTooltip": "",
-                 "regulation": [""],
-                 "image_1": "",
-                 "image_2": ""}
-
+        {"answerText": "SI",
+        "answerTooltip": "",
+        "regulation": ["ENER_1"],
+        "image_1": "",
+        "image_2": ""},
+        {"answerText": "NO",
+        "answerTooltip": "",
+        "regulation": [""],
+        "image_1": "",
+        "image_2": ""}
         ]
       },
       {
@@ -1107,17 +1089,16 @@
       "link": "https://...",
       "answers":
       [
-              {"answerText": "SI",
-               "answerTooltip": "",
-               "regulation": ["MA_12"],
-               "image_1": "",
-               "image_2": ""},
-               {"answerText": "NO",
-               "answerTooltip": "",
-               "regulation": [""],
-               "image_1": "",
-               "image_2": ""}
-
+      {"answerText": "SI",
+      "answerTooltip": "",
+      "regulation": ["MA_12"],
+      "image_1": "",
+      "image_2": ""},
+      {"answerText": "NO",
+      "answerTooltip": "",
+      "regulation": [""],
+      "image_1": "",
+      "image_2": ""}
       ]
       },
       {
@@ -1132,17 +1113,16 @@
         "link": "https://...",
         "answers":
         [
-                {"answerText": "SI",
-                 "answerTooltip": "",
-                 "regulation": ["MA_13","MA_14"],
-                 "image_1": "",
-                 "image_2": ""},
-                 {"answerText": "NO",
-                 "answerTooltip": "",
-                 "regulation": [""],
-                 "image_1": "",
-                 "image_2": ""}
-
+        {"answerText": "SI",
+        "answerTooltip": "",
+        "regulation": ["MA_13","MA_14"],
+        "image_1": "",
+        "image_2": ""},
+        {"answerText": "NO",
+        "answerTooltip": "",
+        "regulation": [""],
+        "image_1": "",
+        "image_2": ""}
         ]
     }
     ]

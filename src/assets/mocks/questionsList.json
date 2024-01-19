@@ -644,7 +644,7 @@
   {
     "vectorId": "4",
     "vectorName": "ATMÓSFERA",
-    "vectorGeneralRegulation":["ATM_47","ATM_5","ATM_9","ATM_12","ATM_50","ATM_51"],
+    "vectorGeneralRegulation":["ATM_47","ATM_5","ATM_9","ATM_12","ATM_50"],
     "questions":
       [
         {

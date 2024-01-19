@@ -1,18 +1,20 @@
 [
   {
-    "regulation": "ATM_37",
+    "regulations": ["ATM_47", "ATM_5", "ATM_9", "ATM_12", "ATM_50"],
     "childRegulation": "",
     "introTextES": "",
     "introTextCA": "",
     "introImage1": "",
     "introImage2": "",
-    "options": [
+    "type": "radio",
+    "requirements": [
       {
         "optionText": "Deber de las personas físicas o jurídicas que vayan a realizar operaciones de valorización energética o eliminación de residuos y que no sean titulares de la instalación de obtener autorización previa.",
         "optionTooltip": "Las PERSONAS FÍSICAS O JURÍDICAS que vayan a realizar OPERACIONES DE VALORIZACIÓN ENERGÉTICA O ELIMINACIÓN DE RESIDUOS y que NO SEAN TITULARES DE LA INSTALACIÓN deberán estar previamente AUTORIZADAS por el órgano competente de la comunidad autónoma donde tengan su sede social. Estas autorizaciones SERÁN VÁLIDAS PARA TODO EL TERRITORIO del Estado, debiendo quedar inscritas por la comunidad autónoma que las haya otorgado en el Registro de producción y gestión de residuos.",
         "optionImage_1": "",
         "optionImage_2": "",
-        "requirementDescription": "",
+        "description": "",
+        "comments":"",
         "autoEvaluation":
           [
             {"answerText": "Se dispone",
@@ -31,13 +33,15 @@
       }
     ]
   },
+
   {
-    "regulation": "ATM_33",
+    "regulation": "RES_11",
     "childRegulation": "",
     "introTextES": "",
     "introTextCA": "",
     "introImage1": "",
     "introImage2": "",
+    "type": "radio",
     "options": [
       {
         "optionText": "Los productos relacionados en el ANEXO I únicamente podrán ser COMERCIALIZADOS en el territorio nacional, después de las fechas indicadas en el ANEXO II, si su contenido en COV no supera los valores máximos fijados en dicho ANEXO II y cumplen lo dispuesto en esta disposición en lo relativo al etiquetado (art. 3.1).",
@@ -45,6 +49,7 @@
         "optionImage_1": "ATM_33_ANEXO_II.pdf",
         "optionImage_2": "ATM_33_ANEXO_II_B.pdf",
         "requirementDescription": "",
+        "comments":"",
         "autoEvaluation":
           [
             {"answerText": "Se dispone",
@@ -67,6 +72,7 @@
         "optionImage_1": "",
         "optionImage_2": "",
         "requirementDescription": "",
+        "comments":"",
         "autoEvaluation":
           [
             {"answerText": "Se cumple",
@@ -88,8 +94,31 @@
     "introTextCA": "",
     "introImage1": "",
     "introImage2": "",
+    "type": "radio",
     "options": [
-     
+      {
+        "optionText": "",
+        "optionTooltip": "",
+        "optionImage_1": "",
+        "optionImage_2": "",
+        "requirementDescription": "",
+        "comments":"",
+        "autoEvaluation":
+      [
+        {"answerText": "Se dispone",
+        "answerTooltip": "",
+        "answerImage_1": "",
+        "answerImage_2": ""},
+        {"answerText": "No se dispone",
+        "answerTooltip": "",
+        "answerImage_1": "",
+        "answerImage_2": ""},
+        {"answerText": "En proceso",
+        "answerTooltip": "",
+        "answerImage_1": "",
+        "answerImage_2": ""}
+      ]
+      }
     ]
   },
   {
@@ -102,10 +131,11 @@
     "options": [
       {
         "optionText": "Para las empresas y actividades potencialmente contaminadoras de la atmósfera del TIPO A",
-        "optionTooltip": "",
+        "optionTooltip": "1. Categorías del catálogo de actividades potencialmente contaminadoras de la atmósfera incluidas en el grupo A ...",
         "optionImage_1": "Obligacions_de_les_APCA_JUNY_DE_2021_CAST.pdf",
         "optionImage_2": "",
         "requirementDescription": "Control de emisiones por OCA CADA AÑO",
+        "comments":"",
         "autoEvaluation":
       [
         {"answerText": "Se dispone",
@@ -122,13 +152,13 @@
         "answerImage_2": ""}
       ]
       },
-
       {
         "optionText": "Para las empresas y actividades potencialmente contaminadoras de la atmósfera del TIPO B",
-        "optionTooltip": "",
+        "optionTooltip": "2. Categorías del catálogo de actividades potencialmente contaminadoras de la atmósfera incluidas en el grupo B...",
         "optionImage_1": "",
         "optionImage_2": "",
         "requirementDescription": "Control de emisiones por OCA CADA TRES AÑOS",
+        "comments":"",
         "autoEvaluation":
         [
         {"answerText": "Se dispone",
@@ -145,13 +175,13 @@
         "answerImage_2": ""}
         ]
       },
-
       {
         "optionText": "Para las empresas y actividades potencialmente contaminadoras de la atmósfera del TIPO C",
-        "optionTooltip": "",
+        "optionTooltip": "3. Categorías del catálogo de actividades potencialmente contaminadoras de la atmósfera incluidas en el grupo C...",
         "optionImage_1": "",
         "optionImage_2": "",
         "requirementDescription": "Control de emisiones por OCA CADA CINCO AÑOS",
+        "comments":"",
         "autoEvaluation":
         [
           {"answerText": "Se dispone",
@@ -183,7 +213,8 @@
         "optionTooltip": "",
         "optionImage_1": "",
         "optionImage_2": "",
-        "requirementDescription": "",
+        "requirementDescription": "S/N",
+        "comments":"",
         "autoEvaluation":
         [
         {"answerText": "Se dispone",

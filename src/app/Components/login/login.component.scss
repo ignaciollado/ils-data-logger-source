@@ -1,6 +1,8 @@
-.error {
-  color: red;
-}
+@use "../../../styles/themes/ils-theme" as ils-theme;
+
+a {
+  color: ils-theme.$primary-color;
+} 
 
 #loginFeedback {
   visibility: hidden;

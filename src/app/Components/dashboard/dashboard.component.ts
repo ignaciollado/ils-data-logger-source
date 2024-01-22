@@ -150,19 +150,19 @@ export class DashboardComponent implements OnInit {
     this.aspectResidue = "Residue (kg)"
     this.aspectEmissions = "Emissions (CO2e T)"
 
-  /*   if (localStorage.getItem('preferredLang') === 'cat') {
-      this.graphMonths = [ 'Gener', 'Febrer', 'Març', 'April', 'Maig', 'Juny', 'Juliol', 'Agost', 'Setembre', 'Octubre', 'Novembre', 'Desembre' ]
+     if (localStorage.getItem('preferredLang') === 'cat') {
+      //this.graphMonths = [ 'Gener', 'Febrer', 'Març', 'April', 'Maig', 'Juny', 'Juliol', 'Agost', 'Setembre', 'Octubre', 'Novembre', 'Desembre' ]
       this.aspectEnergy = "Energía (kWh)"
       this.aspectWater = "Aigua (Litres)"
       this.aspectResidue = "Residu (Kg)"
       this.aspectEmissions = "Emissions (CO2e en T)"
     } else if (localStorage.getItem('preferredLang') === 'cas') {
-      this.graphMonths = [ 'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Setiembre', 'Octubre', 'Noviembre', 'Diciembre' ]
+      //this.graphMonths = [ 'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Setiembre', 'Octubre', 'Noviembre', 'Diciembre' ]
       this.aspectEnergy = "Energía (kWh)"
       this.aspectWater = "Agua (Litros)"
       this.aspectResidue = "Residuo (Kg)"
       this.aspectEmissions = "Emisiones (CO2e en T)"
-    } */
+    } 
 
     this.aspect = new UntypedFormControl('', [ Validators.required ])
     this.delegation = new UntypedFormControl('', [ Validators.required ])
@@ -698,6 +698,12 @@ export class DashboardComponent implements OnInit {
     this.chart.update()
   }
 
+  changeDelegation (e: any) {
+    this.chart.destroy()
+    this.myDatasets = []
+    this.isEnergy = false
+    this.isResidue = false
+  }
   changeAspect(e: any) {
     this.chart.destroy()
     this.myDatasets = []

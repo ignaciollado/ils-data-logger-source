@@ -9,7 +9,7 @@
 
         <mat-form-field [style.width.px]=220 class="item1">
           <mat-label>{{'delegation' | translate}}</mat-label>
-          <mat-select [formControl]="delegation" panelClass="panel-{{delegation.value}}">
+          <mat-select [formControl]="delegation" panelClass="panel-{{delegation.value}}" (selectionChange)="changeDelegation($event)">
             <mat-option *ngFor="let delegation of delegations" [value]="delegation.name">
               {{delegation.name}}
             </mat-option>

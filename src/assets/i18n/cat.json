@@ -23,7 +23,8 @@
 
     "homeTextp1": "Li presentem l'eina d'",
     "homeTextp2": "Es tracta d'una solució integral per a promoure pràctiques respectuoses amb el medi ambient en les empreses industrials de les illes Balears.",
-    "homeTextp3": "La nostra eina proporciona recursos perquè les empreses locals puguin implementar mesures sostenibles, reduir el seu impacte ambiental i fer un seguiment dels seus indicadors mediambientals (introduir consums d'energia, aigua, residus i emissions de CO<sub>2</sub>e) que li permetran obtenir l'índex de circularitat a més de dades comparatives per mitjà de gràfiques.",
+    "homeTextp3": "La nostra eina proporciona recursos perquè les empreses locals puguin implementar mesures sostenibles, reduir el seu impacte ambiental i fer un seguiment dels seus indicadors mediambientals (introduir consums d'energia, aigua, residus i emissions de ",
+    "homeTextp31": ") que li permetran obtenir l'índex de circularitat a més de dades comparatives per mitjà de gràfiques.",
     "homeTextp4": "L'eina, també li servirà com a suport per a realitzar auditories mediambientals per a contribuir al desenvolupament sostenible de la nostra comunitat.",
 
     "companyName": "Nom de l'empresa",

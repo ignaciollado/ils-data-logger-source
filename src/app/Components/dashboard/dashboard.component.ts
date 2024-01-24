@@ -266,6 +266,7 @@ export class DashboardComponent implements OnInit {
         this.consumptions = consumptions
         this.consumptions.forEach((consumption: any) =>
         {
+          console.log ("this.consumptions: ", this.consumptions)
           /*Cuando sea ENERGÍA (aspecto 1) Convierto todo a kWh */
           if (this.aspect.value == 1) {
             this.energies.forEach((energy:EnergyDTO) => {
@@ -409,7 +410,7 @@ export class DashboardComponent implements OnInit {
     this.startPrimaryColor  = 19
 
     this.chart.destroy()
-
+    console.log ("los consumos sin filtrar:", this.graphConsumption)
     this.graphDataTemp = this.graphConsumption.filter((item:any) => item.aspectId == this.aspect.value)
     this.graphDataTemp = this.graphDataTemp.filter((item:any) => item.delegation == this.delegation.value)
     if (this.yearGraph.value) {
@@ -704,6 +705,7 @@ export class DashboardComponent implements OnInit {
     this.isEnergy = false
     this.isResidue = false
   }
+
   changeAspect(e: any) {
     this.chart.destroy()
     this.myDatasets = []

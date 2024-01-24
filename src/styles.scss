@@ -67,6 +67,7 @@ a, a:visited, a:active {
 a:hover {
  text-decoration: underline;
  text-underline-offset: 0.5rem;
+ color: ils-theme.$primary-color;
 }
 
 form {

@@ -79,7 +79,6 @@ vector_2_Question8: NodeListOf<HTMLElement>
 vector_2_Question9: NodeListOf<HTMLElement>
 vector_2_Question10: NodeListOf<HTMLElement>
 vector_2_Question11: NodeListOf<HTMLElement>
-vector_2_Question12: NodeListOf<HTMLElement>
 vector_2_Question1_reg : string [] = []
 vector_2_Question2_reg : string [] = []
 vector_2_Question3_reg : string [] = []
@@ -91,7 +90,6 @@ vector_2_Question8_reg : string [] = []
 vector_2_Question9_reg : string [] = []
 vector_2_Question10_reg : string [] = []
 vector_2_Question11_reg : string [] = []
-vector_2_Question12_reg : string [] = []
 vector_2_Question1_answers: boolean [] = []
 vector_2_Question2_answers: boolean [] = []
 vector_2_Question3_answers: boolean [] = []
@@ -103,7 +101,6 @@ vector_2_Question8_answers: boolean [] = []
 vector_2_Question9_answers: boolean [] = []
 vector_2_Question10_answers: boolean [] = []
 vector_2_Question11_answers: boolean [] = []
-vector_2_Question12_answers: boolean [] = []
 
 vector_3_Question1: NodeListOf<HTMLElement>
 vector_3_Question2: NodeListOf<HTMLElement>
@@ -271,7 +268,7 @@ openDialog(enterAnimationDuration: string, exitAnimationDuration: string, questi
 saveAnswer(e: any) {
 
   let vector1Progress1: number, vector1Progress2: number, vector1Progress3: number, vector1Progress4: number, vector1Progress5: number = 0
-  let vector2Progress1: number, vector2Progress2: number, vector2Progress3: number, vector2Progress4: number, vector2Progress5: number, vector2Progress6: number, vector2Progress7: number, vector2Progress8: number, vector2Progress9: number, vector2Progress10: number, vector2Progress11: number, vector2Progress12: number = 0
+  let vector2Progress1: number, vector2Progress2: number, vector2Progress3: number, vector2Progress4: number, vector2Progress5: number, vector2Progress6: number, vector2Progress7: number, vector2Progress8: number, vector2Progress9: number, vector2Progress10: number, vector2Progress11: number = 0
   let vector3Progress1: number, vector3Progress2: number, vector3Progress3: number, vector3Progress4: number = 0
   let vector4Progress1: number, vector4Progress2: number, vector4Progress3: number, vector4Progress4: number, vector4Progress5: number, vector4Progress6: number, vector4Progress7: number = 0
   let vector5Progress1: number, vector5Progress2: number, vector5Progress3: number, vector5Progress4: number, vector5Progress5: number = 0
@@ -294,7 +291,6 @@ saveAnswer(e: any) {
   this.vector_2_Question9 = document.getElementsByName('vector_2_Question9')
   this.vector_2_Question10 = document.getElementsByName('vector_2_Question10')
   this.vector_2_Question11 = document.getElementsByName('vector_2_Question11')
-  this.vector_2_Question12 = document.getElementsByName('vector_2_Question12')
 
   this.vector_3_Question1 = document.getElementsByName('vector_3_Question1')
   this.vector_3_Question2 = document.getElementsByName('vector_3_Question2')
@@ -341,7 +337,6 @@ saveAnswer(e: any) {
   this.vector_2_Question9_answers = []
   this.vector_2_Question10_answers = []
   this.vector_2_Question11_answers = []
-  this.vector_2_Question12_answers = []
 
   this.vector_3_Question1_answers = []
   this.vector_3_Question2_answers = []
@@ -461,9 +456,6 @@ this.totalVectorAnswers = []
   this.vector_2_Question11.forEach((node: HTMLInputElement, index) => {
     this.vector_2_Question11_answers.push(node.checked)
   })
-  this.vector_2_Question12.forEach((node: HTMLInputElement, index) => {
-    this.vector_2_Question12_answers.push(node.checked)
-  })
 
   if (this.vector_2_Question1_answers.some((someItem: boolean) => someItem === true) ) {
     vector2Progress1 = (100/this.totalVectorQuestions[1])
@@ -531,14 +523,8 @@ this.totalVectorAnswers = []
   if (this.vector_2_Question11_answers.every((everyItem: boolean) => everyItem === false) ) {
     vector2Progress11 = 0
   }
-  if (this.vector_2_Question12_answers.some((someItem: boolean) => someItem === true) ) {
-    vector2Progress12 = (100/this.totalVectorQuestions[1])
-  }
-  if (this.vector_2_Question12_answers.every((everyItem: boolean) => everyItem === false) ) {
-    vector2Progress12 = 0
-  }
 
-  this.vectorProgress[1] = vector2Progress1 + vector2Progress2 + vector2Progress3 + vector2Progress4 + vector2Progress5 + vector2Progress6 + vector2Progress7 + vector2Progress8 + vector2Progress9 + vector2Progress10 + vector2Progress11 + vector2Progress12
+  this.vectorProgress[1] = vector2Progress1 + vector2Progress2 + vector2Progress3 + vector2Progress4 + vector2Progress5 + vector2Progress6 + vector2Progress7 + vector2Progress8 + vector2Progress9 + vector2Progress10 + vector2Progress11
   this.questionnaireVectorState.map(item=> {
     if(item.vectorId === 2) {
         item.totalAnswers = this.vectorProgress[1]
@@ -818,8 +804,6 @@ saveQuestionForm() {
   this.vector_2_Question9_reg = []
   this.vector_2_Question10_reg = []
   this.vector_2_Question11_reg = []
-  this.vector_2_Question12_reg = []
-
 
   this.vector_3_Question1_reg = []
   this.vector_3_Question2_reg = []
@@ -998,15 +982,7 @@ if (this.vector_2_Question11){
   }
   })
 }
-if (this.vector_2_Question12){
-  this.vector_2_Question12.forEach((node: HTMLInputElement, index) => {
-  if (node.value && node.checked) {
-    node.value = node.value.replaceAll(',','","')
-    node.value = '"'+node.value+'"'
-    this.vector_2_Question12_reg.push(node.value)
-  }
-  })
-}
+
 // VECTOR 3
 if (this.vector_3_Question1){
   this.vector_3_Question1.forEach((node: HTMLInputElement, index) => {
@@ -1219,7 +1195,7 @@ if (this.vector_6_Question7){
   })
 }
 resultsVector1.innerHTML = '[{"vectorId":1,"regulations":[{"regulation":[{"q1":['+this.vector_1_Question1_reg+']},{"q2":['+this.vector_1_Question2_reg+']},{"q3":['+this.vector_1_Question3_reg+']},{"q4":['+this.vector_1_Question4_reg+']},{"q5":['+this.vector_1_Question5_reg+']}]}]},'
-resultsVector2.innerHTML = '{"vectorId":2,"regulations":[{"regulation":[{"q1":['+this.vector_2_Question1_reg+']},{"q2":['+this.vector_2_Question2_reg+']},{"q3":['+this.vector_2_Question3_reg+']},{"q4":['+this.vector_2_Question4_reg+']},{"q5":['+this.vector_2_Question5_reg+']},{"q6":['+this.vector_2_Question6_reg+']},{"q7":['+this.vector_2_Question7_reg+']},{"q8":['+this.vector_2_Question8_reg+']},{"q9":['+this.vector_2_Question9_reg+']},{"q10":['+this.vector_2_Question10_reg+']},{"q11":['+this.vector_2_Question11_reg+']},{"q12":['+this.vector_2_Question12_reg+']}]}]},'
+resultsVector2.innerHTML = '{"vectorId":2,"regulations":[{"regulation":[{"q1":['+this.vector_2_Question1_reg+']},{"q2":['+this.vector_2_Question2_reg+']},{"q3":['+this.vector_2_Question3_reg+']},{"q4":['+this.vector_2_Question4_reg+']},{"q5":['+this.vector_2_Question5_reg+']},{"q6":['+this.vector_2_Question6_reg+']},{"q7":['+this.vector_2_Question7_reg+']},{"q8":['+this.vector_2_Question8_reg+']},{"q9":['+this.vector_2_Question9_reg+']},{"q10":['+this.vector_2_Question10_reg+']},{"q11":['+this.vector_2_Question11_reg+']}]}]},'
 resultsVector3.innerHTML = '{"vectorId":3,"regulations":[{"regulation":[{"q1":['+this.vector_3_Question1_reg+']},{"q2":['+this.vector_3_Question2_reg+']},{"q3":['+this.vector_3_Question3_reg+']},{"q4":['+this.vector_3_Question4_reg+']}]}]},'
 resultsVector4.innerHTML = '{"vectorId":4,"regulations":[{"regulation":[{"q1":['+this.vector_4_Question1_reg+']},{"q2":['+this.vector_4_Question2_reg+']},{"q3":['+this.vector_4_Question3_reg+']},{"q4":['+this.vector_4_Question4_reg+']},{"q5":['+this.vector_4_Question5_reg+']},{"q6":['+this.vector_4_Question6_reg+']},{"q7":['+this.vector_4_Question7_reg+']}]}]},'
 resultsVector5.innerHTML = '{"vectorId":5,"regulations":[{"regulation":[{"q1":['+this.vector_5_Question1_reg+']},{"q2":['+this.vector_5_Question2_reg+']},{"q3":['+this.vector_5_Question3_reg+']},{"q4":['+this.vector_5_Question4_reg+']},{"q5":['+this.vector_5_Question5_reg+']}]}]},'
@@ -1322,11 +1298,6 @@ resultsQuestionnaire.push(resultsVector6.innerHTML)
   }
   if (this.vector_2_Question11) {
     this.vector_2_Question11.forEach((node: HTMLInputElement) => {
-    this.questionnaireSummary.push(node.id+"#"+node.checked)
-  })
-  }
-  if (this.vector_2_Question12) {
-    this.vector_2_Question12.forEach((node: HTMLInputElement) => {
     this.questionnaireSummary.push(node.id+"#"+node.checked)
   })
   }

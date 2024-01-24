@@ -183,16 +183,6 @@ export class AutoevaluationQuestionnaireComponent {
                     )
                     })
                   }
-                  if (questions.q12) {
-                    questions.q12.map((q12Reg:any) =>{
-                      this.regulationList.map((regulation:regulationsDTO) => {
-                         if (regulation.regId === q12Reg) {
-                          this.regulationListToApply.push(q12Reg)
-                        }
-                    }
-                    )
-                    })
-                  }
                 })
               })
             this.userQuestionnaireTemp.push(vectorAnswers)

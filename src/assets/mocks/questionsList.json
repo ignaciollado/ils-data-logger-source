@@ -3,7 +3,7 @@
   {
     "vectorId": "1",
     "vectorName": "RESIDUOS",
-    "vectorGeneralRegulation":["RES_3","RES_4","RES_5","RES_18","RES_19","RES_60","RES_61"],
+    "vectorGeneralRegulation":["RES_3","RES_4","RES_5","RES_18","RES_19","RES_60","RES_61","RES_22","RES_6"],
     "questions":
       [
         {
@@ -171,7 +171,7 @@
         [
               {"answerText": "Sí",
                "answerTooltip": "",
-               "regulation": ["RES_59","RES_63"],
+               "regulation": ["RES_59","RES_11"],
                "image_1": "",
                "image_2": ""},
                {"answerText": "No",
@@ -240,30 +240,6 @@
       {
         "key": "2",
         "type": "radio",
-        "questionTextES": "¿Se realizan actividades de almacenamiento de mercancías peligrosas?",
-        "questionTextCA": "",
-        "questionDoc1" : "PSIND_2_ANEXO_1APQ.pdf",
-        "questionDoc2" : "",
-        "questionTooltipES": "Se refiere al almacenamiento de productos químicos con pictograma de peligrosidad siempre y cuando <strong>se supere el umbral de almacenamiento de la <a href='../../../assets/answers_images/PSIND_2_ANEXO_1APQ.pdf' target='_blank'>Tabla I</a></strong>. Relación de peligros y cantidades para la aplicación del Reglamento ( columna 5).<br><strong>Ejemplos</strong>, líquidos inflamables, óxido de etileno en recipientes fijos, almacenamiento de cloro, almacenamiento de amoniaco anhidro, almacenamiento de gases en recipientes a presión móviles,almacenamiento de líquidos corrosivos en recipientes fijos, almacenamiento de líquidos tóxicos en recipientes fijos , Almacenamiento de fertilizantes a base de nitrato amónico con alto contenido en nitrógeno,  Almacenamiento de peróxidos orgánicos y de materias autorreactivas, almacenamiento en recipientes móviles. Asimismo, <strong>NO</strong> será de aplicación a los almacenamientos de productos con reglamentaciones específicas.",
-        "questionTooltipCA": "",
-        "link": "https://...",
-        "answers":
-        [
-        {"answerText": "Sí",
-        "answerTooltip": "",
-        "regulation": ["QMC_25_BOE-A-2017-8755-consolidado"],
-        "answerdoc1": "",
-        "answerdoc2": ""},
-        {"answerText": "No",
-        "answerTooltip": "",
-        "regulation": [""],
-        "answerdoc1": "",
-        "answerdoc2": ""}
-        ]
-      },
-      {
-        "key": "3",
-        "type": "radio",
         "questionTextES": " ¿Disponen de instalaciones frigoríficas?",
         "questionTextCA": "",
         "questionDoc1" : "PSIND_3_apendice_1",
@@ -286,7 +262,7 @@
         ]
       },
       {
-        "key": "4",
+        "key": "3",
         "type": "checkbox",
         "questionTextES": " ¿Disponen de aparatos elevadores? Se pueden seleccionar varias opciones",
         "questionTextCA": "",
@@ -326,7 +302,7 @@
         ]
       },
       {
-        "key": "5",
+        "key": "4",
         "type": "radio",
         "questionTextES": "¿Dispone de equipos a presión con una presión máxima admisible superior a 0.5 bares?",
         "questionTextCA": "",
@@ -350,7 +326,7 @@
         ]
       },
       {
-        "key": "6",
+        "key": "5",
         "type": "radio",
         "questionTextES": "¿Dispone de instalaciones eléctricas de baja tensión?",
         "questionTextCA": "",
@@ -374,7 +350,7 @@
         ]
       },
       {
-        "key": "7",
+        "key": "6",
         "type": "radio",
         "questionTextES": "¿Dispone de centrales eléctricas, subestaciones o centros de transformación de alta tensión?",
         "questionTextCA": "",
@@ -398,7 +374,7 @@
         ]
       },
       {
-        "key": "8",
+        "key": "7",
         "type": "radio",
         "questionTextES": "¿Dispone de instalaciones o aparatos de gases combustibles (gas natural, butano, propano..)?",
         "questionTextCA": "",
@@ -422,7 +398,7 @@
         ]
       },
       {
-        "key": "9",
+        "key": "8",
         "type": "radio",
         "questionTextES": "¿Dispone de instalaciones de almacenamiento y distribución de los productos carburantes y combustibles líquidos? ",
         "questionTextCA": "",
@@ -435,7 +411,7 @@
         [
                 {"answerText": "Sí",
                  "answerTooltip": "",
-                 "regulation": ["SIND_5_IPLiq_consolidado"],
+                 "regulation": ["SIND_5_IPLiq_consolidado", "SIND_6_IP03y04"],
                  "image_1": "",
                  "image_2": ""},
                  {"answerText": "No",
@@ -446,7 +422,7 @@
         ]
       },
       {
-        "key": "10",
+        "key": "9",
         "type": "radio",
         "questionTextES": "¿Dispone de cargador de vehículos eléctricos?",
         "questionTextCA": "",
@@ -470,7 +446,7 @@
         ]
       },
       {
-        "key": "11",
+        "key": "10",
         "type": "radio",
         "questionTextES": "¿Dispone de instalaciones térmicas fijas de climatización (calefacción, refrigeración y ventilación) y/o de producción de agua caliente sanitaria destinadas a la demanda de bienestar térmico e higiene de las personas",
         "questionTextCA": "",
@@ -494,7 +470,7 @@
         ]
       },
       {
-        "key": "12",
+        "key": "11",
         "type": "radio",
         "questionTextES": "¿Cuándo han sido legalizadas las intalaciones contraincendios de su industria?",
         "questionTextCA": "",
@@ -644,7 +620,7 @@
   {
     "vectorId": "4",
     "vectorName": "ATMÓSFERA",
-    "vectorGeneralRegulation":["ATM_47","ATM_5","ATM_9","ATM_12","ATM_50"],
+    "vectorGeneralRegulation":["ATM_47","ATM_5","ATM_9","ATM_12","ATM_50","ATM_52"],
     "questions":
       [
         {
@@ -757,7 +733,7 @@
           [
           {"answerText": "Sí",
           "answerTooltip": "",
-          "regulation": ["ATM_18","ATM_23","ATM_39","ATM_40","ATM_42","ATM_44"],
+          "regulation": ["ATM_18","ATM_39","ATM_40","ATM_42","ATM_44"],
           "image_1": "",
           "image_2": ""},
           {"answerText": "No",
@@ -781,7 +757,7 @@
           [
           {"answerText": "Sí",
           "answerTooltip": "",
-          "regulation": ["ATM_48","ATM_49"],
+          "regulation": ["ATM_48","ATM_49","SIND_1"],
           "image_1": "",
           "image_2": ""},
           {"answerText": "No",
@@ -954,7 +930,7 @@
   {
     "vectorId": "6",
     "vectorName": "MEDIOAMBIENTE GENERAL",
-    "Vectorgeneralregulation":[""],
+    "Vectorgeneralregulation":["MA_0","MA_10","MA_1","MA_9"],
     "questions":
     [
       {
@@ -1107,7 +1083,7 @@
         "questionTextES": "Su industria ¿ debe disponer de un plan de autoprotección ?",
         "questionTextCA": "",
         "questionDoc1" : "PMA_7",
-        "questionDoc2" : "",
+        "questionDoc2" : "PMA_7_1",
         "questionTooltipES": "Para saber si es de aplicación en su industria debe revisar el  <a href='../../../assets/answers_images/PMA_7.pdf' target='_blank'>ANEXO I</a>",
         "questionTooltipCA": "",
         "link": "https://...",

@@ -57,7 +57,6 @@
     "noDelegation1": "És necessari crear almenys una delegació per a poder afegir les dades de la seva activitat.",
     "noDelegation2": "Disculpi les molèsties.",
 
-
     "aspect": "Aspecte",
     "energy": "Energia",
     "water": "Aigua",
@@ -144,42 +143,22 @@
 
     "writeHere": "Escrigui aquí, per favor",
 
-    "howCanWeHelpYou": "Com et podem ajudar?",
-    "recievedOK": "Hem rebut correctament la següent consulta:",
-    "fullName": "El seu nom per a dirigir-nos a vostè",
-    "contactPhone": "Un telèfon de contacte, no és obligatori",
-    "contactEmail": "Una adreça electrònica de contacte",
-    "subject": "L'asumpte de la seva consulta",
-    "yourMessage": "La seva consulta",
     "acceptTerms": " He llegit i accept els termes i les condicions",
     "send": "Envia",
-    "searchTheWeb": "Busca en la web",
-    "newsLetterSubscription": "Subscriu-te al butlletí de notícies:",
 
     "isRequired": " és obligatori.",
     "fieldValue": "Aquest camp",
-
-    "gettingFeaturedIDI": "Obtenint destacats IDI ...",
-    "gettingNews": "Obtenint les darreres notícies de l'IDI ...",
-    "gettingServices": "Obtenint els nostres serveis per empreses i per emprenedors ...",
-    "gettingContentsIDI": "Obtenint continguts de l'IDI ...",
-    "descubreServiciosIDI": "Descobreix els nostres serveis per a empreses i emprenedors",
-    "comoAyudaIDI": "Com t'ajuda l'IDI?",
-    "otrosServiciosIDI": "Altres serveis de l'IDI",
-    "NewsLetterSubs": "Subscriu-te al butlletí de notícies:",
-    "ArchivadoEn": "Arxivat com:",
-
-    "january": "Gener",
-    "february": "Febrer",
-    "march": "Març",
-    "april": "Abril",
+  
+    "jan": "Gener",
+    "feb": "Febrer",
+    "mar": "Març",
+    "apr": "Abril",
     "may": "Maig",
-    "june": "Juny",
-    "july": "Juliol",
-    "august": "Agost",
-    "september": "Setembre",
-    "october": "Octubre",
-    "november": "Novembre",
-    "december": "Decembre"
-
+    "jun": "Juny",
+    "jul": "Juliol",
+    "aug": "Agost",
+    "sep": "Setembre",
+    "oct": "Octubre",
+    "nov": "Novembre",
+    "dec": "Decembre"
   }

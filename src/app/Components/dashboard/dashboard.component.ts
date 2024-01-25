@@ -28,6 +28,7 @@ import { ConsumptionDTO, graphData } from 'src/app/Models/consumption.dto'
 import { ChapterItem, ResidueLERDTO } from 'src/app/Models/residueLER.dto'
 import { CnaeDataDTO } from 'src/app/Models/cnaeData.dto'
 import { CnaeDataService } from 'src/app/Services/cnaeData.service'
+import { ResidueDTO } from 'src/app/Models/residue.dto'
 
 @Component({
   selector: 'app-dashboard',
@@ -46,7 +47,9 @@ export class DashboardComponent implements OnInit {
   energy: UntypedFormControl
   residue: UntypedFormControl
   residueFilter: FormControl<string> = new FormControl<string>('')
-  energies!: EnergyDTO[]
+  energies: EnergyDTO[] = []
+  energiesItemCompany: EnergyDTO[] = []
+  energiesItemCompanyTemp: string[] = []
   delegations!: DelegationDTO[]
   residues!: ResidueLERDTO[]
   consumptions!: ConsumptionDTO[]
@@ -55,6 +58,8 @@ export class DashboardComponent implements OnInit {
   productionCNAE!: CnaeDataDTO[]
   aspectConsumptions!: ConsumptionDTO[]
   residuesItem: ChapterItem[] = []
+  residuesItemCompany: ChapterItem[] = []
+  residuesItemCompanyTemp: string[] = []
 
   graphDataTemp: graphData[]
   graphData: graphData[] = []
@@ -224,10 +229,10 @@ export class DashboardComponent implements OnInit {
     .subscribe(
       (residues: ResidueLERDTO[]) => {
         this.residues = residues;
-        this.residues.map( item => {
-          item.chapters.map( subItem=> {
-            subItem.chapterItems.map( (subSubItem: ChapterItem)=> {
-              this.residuesItem = [...this.residuesItem, subSubItem]
+        this.residues.map(item => {
+          item.chapters.map(subItem=> {
+            subItem.chapterItems.map( (chapterItem: ChapterItem)=> {
+              this.residuesItem = [...this.residuesItem, chapterItem]
             })
           })
           this.residuesItem
@@ -266,23 +271,27 @@ export class DashboardComponent implements OnInit {
         this.consumptions = consumptions
         this.consumptions.forEach((consumption: any) =>
         {
-          console.log ("this.consumptions: ", this.consumptions)
           /*Cuando sea ENERGÍA (aspecto 1) Convierto todo a kWh */
-          if (this.aspect.value == 1) {
+          if (consumption.aspectId == "1") {
             this.energies.forEach((energy:EnergyDTO) => {
               if (energy.energyId === consumption.energy) {
-                console.log (energy.pci, energy.convLKg)
                 equivEnKg = energy.pci * energy.convLKg
               }
             })
+            this.energiesItemCompanyTemp.push(consumption.energy)
+          } 
+          /*Cuando sea RESIDUO (aspecto 3) Filtro*/
+          if (consumption.aspectId == "3") {
+            this.residuesItemCompanyTemp.push(consumption.residueId)
           }
+        
           this.graphConsumption.push(
             {"aspectId": consumption.aspectId,
                 "delegation": consumption.delegation,
                 "year": consumption.year,
                 "energyName": consumption.energyES,
                 "water": consumption.water,
-                "residueName": consumption.residueES,
+                "residueName": consumption.residueId,
                 "emission": consumption.aspectES,
                 "jan": (consumption.jan*equivEnKg).toString(),
                 "feb": (consumption.feb*equivEnKg).toString(),
@@ -300,6 +309,8 @@ export class DashboardComponent implements OnInit {
             })
         }
         )
+        this.residuesItemCompany = this.residuesItem.filter((residueItem:any) => this.residuesItemCompanyTemp.includes(residueItem.chapterItemId))
+        this.energiesItemCompany = this.energies.filter((energyItem:any) => this.energiesItemCompanyTemp.includes(energyItem[0]))
         this.chartGenerate()
       },
       (error: HttpErrorResponse) => {
@@ -410,7 +421,6 @@ export class DashboardComponent implements OnInit {
     this.startPrimaryColor  = 19
 
     this.chart.destroy()
-    console.log ("los consumos sin filtrar:", this.graphConsumption)
     this.graphDataTemp = this.graphConsumption.filter((item:any) => item.aspectId == this.aspect.value)
     this.graphDataTemp = this.graphDataTemp.filter((item:any) => item.delegation == this.delegation.value)
     if (this.yearGraph.value) {
@@ -423,8 +433,6 @@ export class DashboardComponent implements OnInit {
       this.graphDataTemp = this.graphDataTemp.filter((item:any) => item.energyName == this.residue.value)
     }
 
-    console.log("Los consumos: ", this.graphDataTemp)
-
     this.graphDataTemp.map((item:graphData) => {
         switch ( this.aspect.value ) {
           case '1':
@@ -434,7 +442,16 @@ export class DashboardComponent implements OnInit {
             this.theDataType = ''
               break;
           case '3':
-            this.theDataType = item.residueName
+            /* this.theDataType = item.residueName */
+            this.residues.map( residueItem => {
+              residueItem.chapters.map( (subItem:any)=> {
+                subItem.chapterItems.forEach( (chapterItem: ChapterItem)=> {
+                  if(chapterItem.chapterItemId === item.residueName) {
+                    this.theDataType = chapterItem.chapterItemName
+                  }
+                })
+              })
+            })
               break;
           case '5':
             this.theDataType = ''

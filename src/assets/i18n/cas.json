@@ -26,8 +26,6 @@
     "homeTextp31": ") que le permitirán obtener el índice de circularidad  además de datos comparativos por medio de gráficas.",
     "homeTextp4": "La herramienta, también le servirá como apoyo para realizar auditorias medioambientales para ayudarle a contribuir al desarrollo sostenible de nuestra comunidad.",
 
-
-
     "companyName": "Nombre de la empresa",
     "companyAddress": "Domicilio",
     "companyCNAE": "CNAE de la empresa",
@@ -140,32 +138,24 @@
     "IDI": "IDI",
     "PoliticaCookies": "Política de cookies",
     "PoliticaPrivacidad": "Política de privacidad",
-    "ProgramasIDI": "Programas del IDI",
 
     "writeHere": "Escriba aquí, por favor",
 
-    "howCanWeHelpYou": "¿Cómo le podemos ayudar?",
-    "recievedOK": "Hemos recibido correctamente la siguiente consulta:",
-    "fullName": "Su nombre para dirigirnos a usted",
-    "contactPhone": "Un teléfono de contacto, no es obligatorio",
-    "contactEmail": "Una dirección de correo electrónico de contacto",
-    "subject": "El asunto de su consulta",
-    "yourMessage": "Su consulta",
     "acceptTerms": " He leído y acepto los términos y las condiciones",
     "send": "Envía",
     "fieldValue": "Este campo",
     "searchTheWeb": "Busca en la web",
 
-    "january": "Enero",
-    "february": "Febrero",
-    "march": "Marzo",
-    "april": "Abril",
+    "jan": "Enero",
+    "feb": "Febrero",
+    "mar": "Marzo",
+    "apr": "Abril",
     "may": "Mayo",
-    "june": "Junio",
-    "july": "Julio",
-    "august": "Agosto",
-    "september": "Setiembre",
-    "october": "Octubre",
-    "november": "Noviembre",
-    "december": "Diciembre"
+    "jun": "Junio",
+    "jul": "Julio",
+    "aug": "Agosto",
+    "sep": "Setiembre",
+    "oct": "Octubre",
+    "nov": "Noviembre",
+    "dec": "Diciembre"
   }

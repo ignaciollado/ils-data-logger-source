@@ -440,7 +440,7 @@ export class DashboardComponent implements OnInit {
            label: item.year+" "+item.delegation+" "+item.dataType,
            data: dataFormatToView,
            backgroundColor: this.primaryColors[this.startPrimaryColor--],
-           stack: stackFormatToView,
+           stack: item.dataType,
            borderWidth: 0
           },
       )

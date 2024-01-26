@@ -38,12 +38,18 @@ import { ResidueDTO } from 'src/app/Models/residue.dto'
 export class DashboardComponent implements OnInit {
   private companyId: string | null
 
-  aspect: UntypedFormControl
   delegation: UntypedFormControl
-  yearGraph: UntypedFormControl
-  ratioBillingGraph: UntypedFormControl
-  ratioCNAEgGraph: UntypedFormControl
-  graphForm: UntypedFormGroup
+  yearEnergy: UntypedFormControl
+  ratioBillingGraphE: UntypedFormControl
+  ratioCNAEgGraphE: UntypedFormControl
+  yearWiewGraphE: UntypedFormControl
+  trimestralViewGraphE: UntypedFormControl
+  monthlyViewGraphE: UntypedFormControl
+  energyGraphForm: UntypedFormGroup
+  waterGraphForm: UntypedFormGroup
+  residueGraphForm: UntypedFormGroup
+  emissionGraphForm: UntypedFormGroup
+
   energy: UntypedFormControl
   residue: UntypedFormControl
   residueFilter: FormControl<string> = new FormControl<string>('')
@@ -83,6 +89,8 @@ export class DashboardComponent implements OnInit {
   primaryColors!: string[]
   alternateColors!: string[]
   graphMonths: string[]
+  graphQuarters: string[]
+  graphYears: string[]
   aspectEnergy: string
   aspectWater: string
   aspectResidue: string
@@ -93,11 +101,16 @@ export class DashboardComponent implements OnInit {
   BORDER:boolean = true
   CHART_AREA:boolean = true
   TICKS:boolean = true
-  isRatioBilling: boolean = false
-  isRatioCNAE: boolean = false
+  isRatioBillingE: boolean = false
+  isRatioCNAEE: boolean = false
   isSearching: boolean = false
-  isEnergy: Boolean = false
-  isResidue: Boolean = false
+  isEnergy: boolean = false
+  isResidue: boolean = false
+  isYearViewE : boolean = true 
+  isQuarterlyViewE : boolean = false
+  isMonthlyViewE : boolean = false
+  isKWViewE : boolean = false
+  isMWViewE : boolean = false
 
   @Input() searching = false;
 
@@ -150,6 +163,10 @@ export class DashboardComponent implements OnInit {
       ]
     this.companyId = this.jwtHelper.decodeToken().id_ils;
     this.graphMonths = [ '01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12' ]
+    this.graphQuarters = [ 'Q1', 'Q2', 'Q3', 'Q4' ]
+    this.graphYears = [ '2019', '2020', '2021', '2022', '2023', '2024', '2025' ]
+
+
     this.aspectEnergy = "Energy (kWh)"
     this.aspectWater = "Water (L)"
     this.aspectResidue = "Residue (kg)"
@@ -157,34 +174,36 @@ export class DashboardComponent implements OnInit {
 
      if (localStorage.getItem('preferredLang') === 'cat') {
       //this.graphMonths = [ 'Gener', 'Febrer', 'Març', 'April', 'Maig', 'Juny', 'Juliol', 'Agost', 'Setembre', 'Octubre', 'Novembre', 'Desembre' ]
+      this.graphQuarters = [ 'T1', 'T2', 'T3', 'T4' ]
       this.aspectEnergy = "Energía (kWh)"
       this.aspectWater = "Aigua (L)"
       this.aspectResidue = "Residu (kg)"
       this.aspectEmissions = "Emissions (CO2e en T)"
     } else if (localStorage.getItem('preferredLang') === 'cas') {
       //this.graphMonths = [ 'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Setiembre', 'Octubre', 'Noviembre', 'Diciembre' ]
+      this.graphQuarters = [ 'T1', 'T2', 'T3', 'T4' ]
       this.aspectEnergy = "Energía (kWh)"
       this.aspectWater = "Agua (L)"
       this.aspectResidue = "Residuo (kg)"
       this.aspectEmissions = "Emisiones (CO2e en T)"
     } 
 
-    this.aspect = new UntypedFormControl('', [ Validators.required ])
-    this.delegation = new UntypedFormControl('', [ Validators.required ])
-    this.yearGraph = new UntypedFormControl('')
-    this.ratioBillingGraph = new UntypedFormControl()
-    this.ratioCNAEgGraph = new UntypedFormControl()
+    this.delegation = new UntypedFormControl('')
+    this.yearEnergy = new UntypedFormControl('')
+    this.ratioBillingGraphE = new UntypedFormControl()
+    this.ratioCNAEgGraphE = new UntypedFormControl()
+    this.trimestralViewGraphE = new UntypedFormControl()
+    this.yearWiewGraphE = new UntypedFormControl()
+    this.monthlyViewGraphE = new UntypedFormControl()
     this.energy = new UntypedFormControl('')
     this.residue = new UntypedFormControl('')
 
-    this.graphForm = this.formBuilder.group({
-      aspect: this.aspect,
+    this.energyGraphForm = this.formBuilder.group({
       delegation: this.delegation,
-      yearGraph: this.yearGraph,
-      ratioBillingGraph: this.ratioBillingGraph,
-      ratioCNAEgGraph: this.ratioCNAEgGraph,
+      yearEnergy: this.yearEnergy,
+      ratioBillingGraphE: this.ratioBillingGraphE,
+      ratioCNAEgGraphE: this.ratioCNAEgGraphE,
       energy: this.energy,
-      residue: this.residue,
     });
 
   }
@@ -205,7 +224,8 @@ export class DashboardComponent implements OnInit {
     this.loadObjectives(this.companyId)
     this.loadProductionBilling(this.companyId)
     this.loadProductionCNAE(this.companyId)
-    this.chartInit()
+    this.chartEnergyGenerate()
+/*     this.chartResidueGenerate() */
   }
 
   private loadEnergies(): void {
@@ -293,25 +313,25 @@ export class DashboardComponent implements OnInit {
                 "water": consumption.water,
                 "residueName": consumption.residueId,
                 "emission": consumption.aspectES,
-                "jan": (consumption.jan*equivEnKg).toString(),
-                "feb": (consumption.feb*equivEnKg).toString(),
-                "mar": (consumption.mar*equivEnKg).toString(),
-                "apr": (consumption.apr*equivEnKg).toString(),
-                "may": (consumption.may*equivEnKg).toString(),
-                "jun": (consumption.jun*equivEnKg).toString(),
-                "jul": (consumption.jul*equivEnKg).toString(),
-                "aug": (consumption.aug*equivEnKg).toString(),
-                "sep": (consumption.sep*equivEnKg).toString(),
-                "oct": (consumption.oct*equivEnKg).toString(),
-                "nov": (consumption.nov*equivEnKg).toString(),
-                "dec": (consumption.dec*equivEnKg).toString(),
+                "jan": (consumption.jan*equivEnKg),
+                "feb": (consumption.feb*equivEnKg),
+                "mar": (consumption.mar*equivEnKg),
+                "apr": (consumption.apr*equivEnKg),
+                "may": (consumption.may*equivEnKg),
+                "jun": (consumption.jun*equivEnKg),
+                "jul": (consumption.jul*equivEnKg),
+                "aug": (consumption.aug*equivEnKg),
+                "sep": (consumption.sep*equivEnKg),
+                "oct": (consumption.oct*equivEnKg),
+                "nov": (consumption.nov*equivEnKg),
+                "dec": (consumption.dec*equivEnKg),
                 'monthlyData': [consumption.jan, consumption.feb, consumption.mar, consumption.apr, consumption.may, consumption.jun, consumption.jul, consumption.aug, consumption.sep, consumption.oct, consumption.nov, consumption.dec]
             })
         }
         )
         this.residuesItemCompany = this.residuesItem.filter((residueItem:any) => this.residuesItemCompanyTemp.includes(residueItem.chapterItemId))
         this.energiesItemCompany = this.energies.filter((energyItem:any) => this.energiesItemCompanyTemp.includes(energyItem[0]))
-        this.chartGenerate()
+        this.chartEnergyGenerate()
       },
       (error: HttpErrorResponse) => {
         errorResponse = error.error;
@@ -362,13 +382,171 @@ export class DashboardComponent implements OnInit {
     )
   }
 
+  chartEnergyGenerate() {
+    this.graphDataTemp = []
+    this.graphData = []
+    this.startPrimaryColor  = 19
+    this.chart.destroy()
 
-  chartInit() {
+    this.aspectTitle = this.aspectEnergy
 
-    this.myDatasets = []
+    this.graphDataTemp = this.graphConsumption.filter((item:any) => item.aspectId == '1')
+    if (this.delegation.value) {
+      this.graphDataTemp = this.graphDataTemp.filter((item:any) => item.delegation == this.delegation.value)
+    }
+    if (this.yearEnergy.value) {
+      this.graphDataTemp = this.graphDataTemp.filter((item:any) => item.year == this.yearEnergy.value)
+    }
+    if (this.energy.value) {
+      this.graphDataTemp = this.graphDataTemp.filter((item:any) => item.energyName == this.energy.value)
+    }
+
+    this.graphDataTemp.map((item:graphData) => {
+      this.theDataType = item.energyName
+      this.graphData.push({
+        'delegation': item.delegation,
+        'dataType': this.theDataType,
+        'year': item.year,
+        'monthlyData': [item.jan, item.feb, item.mar, item.apr, item.may, item.jun, item.jul, item.aug, item.sep, item.oct, item.nov, item.dec],
+        'quarterlyData': [(item.jan + item.feb + item.mar), (item.apr + item.may + item.jun), (item.jul + item.aug + item.sep), (item.oct + item.nov + item.dec)],
+        'yearlyData': [item.jan+item.feb+item.mar+item.apr+item.may+item.jun+item.jul+item.aug+item.sep+item.oct+item.nov+item.dec]
+      })
+    })
+
+    console.log ("this.isYearWiewE", this.isYearViewE)
+    console.log ("this.graphDataTemp: ", this.graphDataTemp)
+    console.log ("this.graphData: ", this.graphData)
+    let dataFormatToView: number[]
+    let legendFormatToView: string[]
+    let stackFormatToView: string
+    this.graphData.map(item => {
+      if (this.isYearViewE) {
+        dataFormatToView = item.yearlyData
+        legendFormatToView = this.graphYears
+        stackFormatToView = item.year
+      }
+      if (this.isQuarterlyViewE) {
+        dataFormatToView = item.quarterlyData
+        legendFormatToView = this.graphQuarters
+        stackFormatToView = "q1, q2, q3, q4"
+      }
+      if (this.isMonthlyViewE) {
+        dataFormatToView = item.monthlyData
+        legendFormatToView = this.graphMonths
+        stackFormatToView = item.dataType
+      }
+      this.myDatasets.push(
+          {
+           label: item.year+" "+item.delegation+" "+item.dataType,
+           data: dataFormatToView,
+           backgroundColor: this.primaryColors[this.startPrimaryColor--],
+           stack: stackFormatToView,
+           borderWidth: 0
+          },
+      )
+    })
+
     this.startPrimaryColor  = 19
 
-    this.chart = new Chart("graph", {
+    this.chart = new Chart("energyGraph", {
+      type: 'bar',
+      data: {
+         labels: legendFormatToView,
+         datasets: this.myDatasets
+      },
+      options: {
+        responsive: true,
+        aspectRatio: 2.0,
+        events: ['click'],
+        plugins: {
+          legend: {
+            position: 'bottom',
+            labels: {
+              font: {
+                  size: 10,
+                  family: 'Montserrat'
+                    }
+          }
+          },
+          title: {
+            display: true,
+            text: this.aspectTitle
+          }
+        },
+
+         scales: {
+          x: {
+            border: {
+              display: this.BORDER
+            },
+            grid: {
+              color: '#365446',
+              display: this.DISPLAY,
+              drawOnChartArea: this.CHART_AREA,
+              drawTicks: this.TICKS,
+            }
+
+          },
+          y: {
+
+          }
+        }
+      }
+    })
+
+  }
+
+  chartResidueGenerate() {
+    this.graphDataTemp = []
+    this.graphData = []
+    this.startPrimaryColor  = 19
+    this.chart.destroy()
+
+    this.graphDataTemp = this.graphConsumption.filter((item:any) => item.aspectId == '3')
+    if (this.delegation.value) {
+      this.graphDataTemp = this.graphDataTemp.filter((item:any) => item.delegation == this.delegation.value)
+    }
+    if (this.yearEnergy.value) {
+      this.graphDataTemp = this.graphDataTemp.filter((item:any) => item.year == this.yearEnergy.value)
+    }
+    if (this.residue.value) {
+      this.graphDataTemp = this.graphDataTemp.filter((item:any) => item.energyName == this.residue.value)
+    }
+
+    this.graphDataTemp.map((item:graphData) => {
+
+      this.residues.map( residueItem => {
+        residueItem.chapters.map( (subItem:any)=> {
+          subItem.chapterItems.forEach( (chapterItem: ChapterItem)=> {
+            if(chapterItem.chapterItemId === item.residueName) {
+              this.theDataType = chapterItem.chapterItemName
+            }
+          })
+        })
+      })
+      this.graphData.push({
+        'delegation': item.delegation,
+        'dataType': this.theDataType,
+        'year': item.year,
+        'monthlyData': [item.jan, item.feb, item.mar, item.apr, item.may, item.jun, item.jul, item.aug, item.sep, item.oct, item.nov, item.dec]
+      })
+    })
+
+    this.graphData.map(item=> {
+      this.myDatasets.push(
+          {
+           label: item.year+" "+item.dataType,
+           data: item.monthlyData,
+           backgroundColor: this.primaryColors[this.startPrimaryColor--],
+           stack: item.dataType,
+           borderWidth: 0
+          },
+      )
+    })
+
+    this.startPrimaryColor  = 19
+
+    this.chart = new Chart("residueGraph", {
       type: 'bar',
       data: {
          labels: this.graphMonths,
@@ -415,106 +593,17 @@ export class DashboardComponent implements OnInit {
 
   }
 
-  chartGenerate() {
-    this.graphDataTemp = []
-    this.graphData = []
-    this.startPrimaryColor  = 19
-
-    this.chart.destroy()
-    this.graphDataTemp = this.graphConsumption.filter((item:any) => item.aspectId == this.aspect.value)
-    this.graphDataTemp = this.graphDataTemp.filter((item:any) => item.delegation == this.delegation.value)
-    if (this.yearGraph.value) {
-      this.graphDataTemp = this.graphDataTemp.filter((item:any) => item.year == this.yearGraph.value)
-    }
-    if (this.energy.value) {
-      this.graphDataTemp = this.graphDataTemp.filter((item:any) => item.energyName == this.energy.value)
-    }
-    if (this.residue.value) {
-      this.graphDataTemp = this.graphDataTemp.filter((item:any) => item.energyName == this.residue.value)
-    }
-
-    this.graphDataTemp.map((item:graphData) => {
-        switch ( this.aspect.value ) {
-          case '1':
-            this.theDataType = item.energyName
-              break;
-          case '2':
-            this.theDataType = ''
-              break;
-          case '3':
-            /* this.theDataType = item.residueName */
-            this.residues.map( residueItem => {
-              residueItem.chapters.map( (subItem:any)=> {
-                subItem.chapterItems.forEach( (chapterItem: ChapterItem)=> {
-                  if(chapterItem.chapterItemId === item.residueName) {
-                    this.theDataType = chapterItem.chapterItemName
-                  }
-                })
-              })
-            })
-              break;
-          case '5':
-            this.theDataType = ''
-              break;
-       }
-      this.graphData.push({
-        'delegation': item.delegation,
-        'dataType': this.theDataType,
-        'year': item.year,
-        'monthlyData': [item.jan, item.feb, item.mar, item.apr, item.may, item.jun, item.jul, item.aug, item.sep, item.oct, item.nov, item.dec]
-      })
-    })
-
-    this.graphData.map(item=> {
-      this.myDatasets.push(
-          {
-           label: item.year+" "+item.dataType,
-           data: item.monthlyData,
-           backgroundColor: this.primaryColors[this.startPrimaryColor--],
-           stack: item.dataType,
-           borderWidth: 0
-          },
-      )
-    })
-
-    this.chart = new Chart("graph", {
-      type: 'bar',
-      data: {
-         labels: this.graphMonths,
-         datasets: this.myDatasets
-      },
-      options: {
-        plugins: {
-          legend: {
-            position: 'bottom',
-            labels: {
-              font: {
-                size: 10,
-                family: 'Montserrat'
-                    }
-                    }
-                  },
-          title: {
-            display: true,
-            text: this.aspectTitle
-          }
-        },
-      }
-    })
-
-  }
-
   chartRatioBilling() {
     if (this.chart) {
       this.chart.destroy()
     }
-    this.isRatioCNAE = false
+    this.isRatioCNAEE = false
     this.chartObjective()
     return;
-    this.graphDataTemp = this.graphConsumption.filter((item:any) => item.aspectId == this.aspect.value)
+    this.graphDataTemp = this.graphConsumption.filter((item:any) => item.aspectId == '1')
     this.graphDataTemp = this.graphDataTemp.filter((item:any) => item.delegation == this.delegation.value)
-    if (this.yearGraph.value) {
-      this.graphDataTemp = this.graphDataTemp.filter((item:any) => item.year == this.yearGraph.value)
+    if (this.yearEnergy.value) {
+      this.graphDataTemp = this.graphDataTemp.filter((item:any) => item.year == this.yearEnergy.value)
     }
     if (this.energy.value) {
       this.graphDataTemp = this.graphDataTemp.filter((item:any) => item.energyName == this.energy.value)
@@ -524,7 +613,8 @@ export class DashboardComponent implements OnInit {
     }
     console.log("Ratio billing: ", this.graphDataTemp)
     this.graphDataTemp.map((item:graphData) => {
-      switch ( this.aspect.value ) {
+      let aspectHardCoded = '1'
+      switch ( aspectHardCoded ) {
           case '1':
             this.theDataType = item.energyName
               break;
@@ -588,18 +678,40 @@ export class DashboardComponent implements OnInit {
       }
     });
   }
+  chartYearlyViewE(){ 
+    if (this.chart) {
+      this.chart.destroy()
+    }
+    this.isQuarterlyViewE = false
+    this.isMonthlyViewE = false
+  }
+  chartQuarterlyViewE(){
+    if (this.chart) {
+      this.chart.destroy()
+    }
+    this.isYearViewE = false
+    this.isMonthlyViewE = false
+  }
+
+  chartmonthlyViewE() {
+    if (this.chart) {
+      this.chart.destroy()
+    }
+    this.isYearViewE = false
+    this.isQuarterlyViewE = false
+  }
 
   chartRatioCNAE() {
     if (this.chart) {
       this.chart.destroy()
     }
-    this.isRatioBilling = false
+    this.isRatioBillingE = false
     this.chartObjective()
     return
-    this.graphDataTemp = this.graphConsumption.filter((item:any) => item.aspectId == this.aspect.value)
+    this.graphDataTemp = this.graphConsumption.filter((item:any) => item.aspectId == '1')
     this.graphDataTemp = this.graphDataTemp.filter((item:any) => item.delegation == this.delegation.value)
-    if (this.yearGraph.value) {
-      this.graphDataTemp = this.graphDataTemp.filter((item:any) => item.year == this.yearGraph.value)
+    if (this.yearEnergy.value) {
+      this.graphDataTemp = this.graphDataTemp.filter((item:any) => item.year == this.yearEnergy.value)
     }
     if (this.energy.value) {
       this.graphDataTemp = this.graphDataTemp.filter((item:any) => item.energyName == this.energy.value)
@@ -609,7 +721,8 @@ export class DashboardComponent implements OnInit {
     }
     console.log("Ratio CNAE ", this.graphDataTemp)
     this.graphDataTemp.map((item:graphData) => {
-        switch ( this.aspect.value ) {
+        let aspectHardCoded = '1'
+        switch ( aspectHardCoded ) {
           case '1':
             this.theDataType = item.energyName
               break;
@@ -675,20 +788,20 @@ export class DashboardComponent implements OnInit {
   chartObjective() {
     let theLabel: string = ''
     this.startPrimaryColor  = 19
-    this.graphObjectiveTemp = this.objectives.filter((item:any) => item.aspectId == this.aspect.value)
+    this.graphObjectiveTemp = this.objectives.filter((item:any) => item.aspectId == '1')
     this.graphObjectiveTemp = this.graphObjectiveTemp.filter((item:any) => item.delegation == this.delegation.value)
-    if (this.isRatioBilling) {
+    if (this.isRatioBillingE) {
       this.graphObjectiveTemp = this.graphObjectiveTemp.filter((item:any)=> item.theRatioRype = "Billing")
       theLabel = "Billing objective"
     } else {
       this.graphObjectiveTemp = this.graphObjectiveTemp.filter((item:any) => item.theRatioRype != 'Billing')
       theLabel = "CNAE objective"
     }
-    if (this.yearGraph.value) {
-      this.graphObjectiveTemp = this.graphObjectiveTemp.filter((item:any) => item.year == this.yearGraph.value)
+    if (this.yearEnergy.value) {
+      this.graphObjectiveTemp = this.graphObjectiveTemp.filter((item:any) => item.year == this.yearEnergy.value)
     }
 
-    console.log ("Los objetivos ", this.graphObjectiveTemp, this.isRatioBilling, this.isRatioCNAE)
+    console.log ("Los objetivos ", this.graphObjectiveTemp, this.isRatioBillingE, this.isRatioCNAEE)
 
     this.graphObjectiveTemp.map((item:ObjectiveDTO) => {
       this.graphObjective.push({
@@ -716,35 +829,9 @@ export class DashboardComponent implements OnInit {
     this.chart.update()
   }
 
-  changeDelegation (e: any) {
+  changSelectOption (e: any) {
     this.chart.destroy()
     this.myDatasets = []
-    this.isEnergy = false
-    this.isResidue = false
-  }
-
-  changeAspect(e: any) {
-    this.chart.destroy()
-    this.myDatasets = []
-
-    if (e.value == 1) {
-      this.isEnergy = true
-      this.aspectTitle = this.aspectEnergy
-    } else {
-      this.isEnergy = false
-    }
-    if (e.value == 2) {
-      this.aspectTitle = this.aspectWater
-    }
-    if (e.value == 3) {
-      this.isResidue = true
-      this.aspectTitle = this.aspectResidue
-    } else {
-      this.isResidue = false
-    }
-    if(e.value == 5) {
-      this.aspectTitle = this.aspectEmissions
-    }
   }
 
   selectionEnergyResidueChange(e: any) {
@@ -753,9 +840,8 @@ export class DashboardComponent implements OnInit {
   }
 
   graphFormReset() {
-    this.aspect.reset()
     this.delegation.reset()
-    this.yearGraph.reset()
+    this.yearEnergy.reset()
     this.energy.reset()
     this.residue.reset()
     this.isEnergy = false

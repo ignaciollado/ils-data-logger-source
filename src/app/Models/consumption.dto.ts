@@ -510,17 +510,19 @@ export interface graphData {
   residueName?: string,
   emission?: string,
   dataType?: string,
-  jan?: string,
-  feb?: string,
-  mar?: string,
-  apr?: string,
-  may?: string,
-  jun?: string,
-  jul?: string,
-  aug?: string,
-  sep?: string,
-  oct?: string,
-  nov?: string,
-  dec?: string,
-  monthlyData?: string[]
+  jan?: number,
+  feb?: number,
+  mar?: number,
+  apr?: number,
+  may?: number,
+  jun?: number,
+  jul?: number,
+  aug?: number,
+  sep?: number,
+  oct?: number,
+  nov?: number,
+  dec?: number,
+  monthlyData?: number[]
+  quarterlyData?: number[]
+  yearlyData?: number[]
 }

@@ -5,27 +5,39 @@
   clear: both;
   padding-top: 0;
 }
+
 form {
-    border-top: 1px dotted #AAAAAA;
+  border-top: 1px dotted #AAAAAA;
   border-bottom: 1px dotted #AAAAAA;
   background-color: #ECECEC;
   overflow: hidden;
   padding: 32px 32px;
 }
+
+canvas{
+  max-width: 70%;
+  max-height: 35%;
+}
+
 .fields-container{
     display: grid;
     grid-template-columns: repeat(3, auto);
     grid-template-areas:
-      "a b c d"
-      "e e e e"
-      "f f f f"
-      "g g g g";
+      "z a b"
+      "d d e"
+      "f g h"
+      "i i j"
+      "k k k";
 }
 
 .small-data {
   font-size: .6rem;
 }
-
+.item0 {
+  grid-area: z;
+  align-self: center;
+  justify-self: center;
+}
 .item1 {
   grid-area: a;
   align-self: center;
@@ -67,11 +79,20 @@ form {
   align-self: center;
   justify-self: center;
 }
-canvas {
-  box-sizing: border-box;
-  display: block;
-  max-height: 60%;
-  max-width: 80%;
+.item9 {
+  grid-area: i;
+  align-self: center;
+  justify-self: center;
+}
+.item10 {
+  grid-area: j;
+  align-self: center;
+  justify-self: center;
+}
+.item11 {
+  grid-area: k;
+  align-self: center;
+  justify-self: center;
 }
 
 @media only screen and (max-width: theme.$app-break-point) {
@@ -93,9 +114,9 @@ canvas {
         "f"
         "g";
   }
-  canvas[_ngcontent-ng-c3434897529]
-  {
-    max-height: auto;
+  canvas{
     max-width: 100%;
+    max-height: auto;
   }
+
 }

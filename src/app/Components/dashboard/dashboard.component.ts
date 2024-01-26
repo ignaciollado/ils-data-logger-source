@@ -158,14 +158,14 @@ export class DashboardComponent implements OnInit {
      if (localStorage.getItem('preferredLang') === 'cat') {
       //this.graphMonths = [ 'Gener', 'Febrer', 'Març', 'April', 'Maig', 'Juny', 'Juliol', 'Agost', 'Setembre', 'Octubre', 'Novembre', 'Desembre' ]
       this.aspectEnergy = "Energía (kWh)"
-      this.aspectWater = "Aigua (Litres)"
-      this.aspectResidue = "Residu (Kg)"
+      this.aspectWater = "Aigua (L)"
+      this.aspectResidue = "Residu (kg)"
       this.aspectEmissions = "Emissions (CO2e en T)"
     } else if (localStorage.getItem('preferredLang') === 'cas') {
       //this.graphMonths = [ 'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Setiembre', 'Octubre', 'Noviembre', 'Diciembre' ]
       this.aspectEnergy = "Energía (kWh)"
-      this.aspectWater = "Agua (Litros)"
-      this.aspectResidue = "Residuo (Kg)"
+      this.aspectWater = "Agua (L)"
+      this.aspectResidue = "Residuo (kg)"
       this.aspectEmissions = "Emisiones (CO2e en T)"
     } 
 

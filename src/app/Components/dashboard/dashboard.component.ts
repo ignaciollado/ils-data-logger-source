@@ -444,6 +444,7 @@ export class DashboardComponent implements OnInit {
            borderWidth: 0
           },
       )
+      console.log ("this.myDatasets", this.myDatasets)
     })
 
     this.startPrimaryColor  = 19

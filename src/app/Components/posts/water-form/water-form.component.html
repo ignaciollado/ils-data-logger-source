@@ -43,10 +43,10 @@
       <input matInput (keyup)="applyFilter($event)" placeholder="Search columns" #input>
     </mat-form-field>
     <div class="item2">
-      <mat-slide-toggle [(ngModel)]="isRatioBilling" class="item6" (change)="ratioBilling()">Ratio billing mode</mat-slide-toggle>
+      <mat-slide-toggle [(ngModel)]="isRatioBilling" class="item6" (change)="ratioBilling()">{{'ratioBillingMode' | translate}}</mat-slide-toggle>
     </div>
     <div class="item3">
-      <mat-slide-toggle [(ngModel)]="isRatioCNAE" class="item7" (change)="ratioCNAE()">Ratio CNAE mode</mat-slide-toggle>
+      <mat-slide-toggle [(ngModel)]="isRatioCNAE" class="item7" (change)="ratioCNAE()">{{'ratioCNAEMode' | translate}}</mat-slide-toggle>
     </div>
     </div>
 

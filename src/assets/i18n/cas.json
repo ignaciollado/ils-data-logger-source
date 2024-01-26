@@ -87,6 +87,8 @@
     "activityIndicator": "Indicador de activitad",
     "activityIndicatorSelect": "Seleccione el indicador de activitad que desea usar",
     "activityIndicatorChange": "Cambiar el indicador de actividad",
+    "ratioBillingMode": "Ratio por facturación",
+    "ratioCNAEMode": "Ratio por CNAE",
 
     "year": "Año",
     "fromDate": "Desde",

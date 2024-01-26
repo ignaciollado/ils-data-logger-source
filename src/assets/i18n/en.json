@@ -16,7 +16,6 @@
   "currentUser": "Current user",
   "acceder": "Login",
 
-
   "companyName": "Company name",
   "companyAddress": "Company address",
   "companyCNAE": "Company CNAE",
@@ -87,6 +86,9 @@
   "persons": "Media personal",
   "monthlyPersons": "Personal mes",
 
+  "ratioBillingMode": "Ratio por facturación",
+  "ratioCNAEMode": "Ratio por CNAE",
+
   "requisitosLegales": "Identificació de requisits legals",
   "globalQuestionnaire": "Cuestionario preliminar",
   "globalQuestionnaireList": "Ver cuestionarios",
@@ -117,8 +119,7 @@
   "Update": "Actualizar",
   "Error": "Por favor, indique los detalles requeridos.",
 
-  "Accesibilidad": "Accesibilidad",
-  "AvisoLegal": "Aviso legal",
+
   "Contacta": "Contacta",
   "Contactanos": "Contáctanos",
   "Links": "Enlaces externos",
@@ -141,17 +142,17 @@
   "fieldValue": "Este campo",
   "searchTheWeb": "Busca en la web",
 
-  "january": "Enero",
-  "february": "Febrero",
-  "march": "Marzo",
-  "april": "Abril",
+  "jan": "Enero",
+  "feb": "Febrero",
+  "mar": "Marzo",
+  "apr": "Abril",
   "may": "Mayo",
-  "june": "Junio",
-  "july": "Julio",
-  "august": "Agosto",
-  "september": "Setiembre",
-  "october": "Octubre",
-  "november": "Noviembre",
-  "december": "Diciembre"
+  "jun": "Junio",
+  "jul": "Julio",
+  "aug": "Agosto",
+  "sep": "Setiembre",
+  "oct": "Octubre",
+  "nov": "Noviembre",
+  "dec": "Diciembre"
 
   }

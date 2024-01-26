@@ -89,6 +89,8 @@
     "activityIndicator": "Indicator d'activitat",
     "activityIndicatorSelect": "Seleccioni l'indicator d'activitat",
     "activityIndicatorChange": "Canviar l'indicator d'activitat",
+    "ratioBillingMode": "Ratio per facturació",
+    "ratioCNAEMode": "Ratio per CNAE",
 
     "year": "Any",
     "fromDate": "Des de",

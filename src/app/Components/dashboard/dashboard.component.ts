@@ -385,6 +385,7 @@ export class DashboardComponent implements OnInit {
   chartEnergyGenerate() {
     this.graphDataTemp = []
     this.graphData = []
+    this.myDatasets = []
     this.startPrimaryColor  = 19
     this.chart.destroy()
 
@@ -422,7 +423,7 @@ export class DashboardComponent implements OnInit {
     this.graphData.map(item => {
       if (this.isYearViewE) {
         dataFormatToView = item.yearlyData
-        legendFormatToView = this.graphYears
+        legendFormatToView = ["Year"]
         stackFormatToView = item.year
       }
       if (this.isQuarterlyViewE) {
@@ -440,7 +441,7 @@ export class DashboardComponent implements OnInit {
            label: item.year+" "+item.delegation+" "+item.dataType,
            data: dataFormatToView,
            backgroundColor: this.primaryColors[this.startPrimaryColor--],
-           stack: item.dataType,
+           stack: stackFormatToView,
            borderWidth: 0
           },
       )

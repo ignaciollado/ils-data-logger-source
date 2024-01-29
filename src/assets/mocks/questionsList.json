@@ -947,7 +947,7 @@
         [
         {"answerText": "Sí",
         "answerTooltip": "",
-        "regulation": ["MA_0","MA_1","MA_4","MA_5","MA_6","MA_11"],
+        "regulation": ["MA_4","MA_5","MA_6","MA_11, MA_15"],
         "answerImage_1": "",
         "answerImage_2": ""},
         {"answerText": "No",

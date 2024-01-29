@@ -25,10 +25,10 @@ export class AutoevaluationQuestionnaireComponent {
     {"vectorName":"SEGURIDAD INDUSTRIAL", "regulation":["Ninguna"]},
     {"vectorName":"AGUAS", "regulation":["AGU_8"]},
     {"vectorName":"ATMÓSFERA", "regulation":["ATM_47","ATM_5","ATM_9","ATM_12","ATM_50","ATM_52"]},
-    {"vectorName":"SUSTANCIAS Y PREPARADOS QUiMICOS", "regulation":["Ninguna"]},
+    {"vectorName":"SUSTANCIAS Y PREPARADOS QUÍMICOS", "regulation":["Ninguna"]},
     {"vectorName":"MEDIOAMBIENTE GENERAL", "regulation":["MA_0","MA_10","MA_1","MA_9"]},
   ]
-  vector: string[] = ["RESIDUOS","SEGURIDAD INDUSTRIAL","AGUAS","ATMÓSFERA","SUSTANCIAS Y PREPARADOS QUiMICOS","MEDIOAMBIENTE GENERAL"]
+  vector: string[] = ["RESIDUOS","SEGURIDAD INDUSTRIAL","AGUAS","ATMÓSFERA","SUSTANCIAS Y PREPARADOS QUÍMICOS","MEDIOAMBIENTE GENERAL"]
 
   constructor (
     private jwtHelper: JwtHelperService,

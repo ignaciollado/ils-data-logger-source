@@ -104,7 +104,7 @@
 
               {"answerText": "Lodos de depuración",
                 "answerTooltip": "",
-                "regulation": ["RES_11","RES_33","RES_37"],
+                "regulation": ["RES_11","RES_37"],
                 "answerImage_1": "",
                 "answerImage_2": ""}
         ]
@@ -251,7 +251,7 @@
         [
         {"answerText": "Sí",
         "answerTooltip": "",
-        "regulation": ["SIND_6","SIND_7"],
+        "regulation": ["SIND_7"],
         "image_1": "",
         "image_2": ""},
         {"answerText": "No",
@@ -947,7 +947,7 @@
         [
         {"answerText": "Sí",
         "answerTooltip": "",
-        "regulation": ["MA_4","MA_5","MA_6","MA_11, MA_15"],
+        "regulation": ["MA_4","MA_5","MA_6","MA_11","MA_15"],
         "answerImage_1": "",
         "answerImage_2": ""},
         {"answerText": "No",
@@ -1084,7 +1084,7 @@
         "questionTextCA": "",
         "questionDoc1" : "PMA_7",
         "questionDoc2" : "PMA_7_1",
-        "questionTooltipES": "Para saber si es de aplicación en su industria debe revisar el  <a href='../../../assets/answers_images/PMA_7.pdf' target='_blank'>ANEXO I</a>",
+        "questionTooltipES": "Para saber si es de aplicación en su industria debe revisar el <a href='../../../assets/answers_images/PMA_7.pdf' target='_blank'>ANEXO I</a> o esto otro <a href='../../../assets/answers_images/PMA_7_1.pdf' target='_blank'>DOCUMENTO</a>",
         "questionTooltipCA": "",
         "link": "https://...",
         "answers":

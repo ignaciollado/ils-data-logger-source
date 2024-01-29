@@ -21,12 +21,12 @@ export class AutoevaluationQuestionnaireComponent {
   regulationList: regulationsDTO[] = [] /* Listado de toda la regulación medioambiental */
   regulationListToApply: string[] = [] /* Regulación que se aplica basada en las respuestas del cuestionario preliminar */
   regVector: {} = [
-    {"vectorName":"RESIDUOS", "regulation":["RES_3","RES_4","RES_5","RES_18","RES_19","RES_60","RES_61"]},
+    {"vectorName":"RESIDUOS", "regulation":["RES_3","RES_4","RES_5","RES_6","RES_18","RES_19","RES_22","RES_60","RES_61"]},
     {"vectorName":"SEGURIDAD INDUSTRIAL", "regulation":["Ninguna"]},
     {"vectorName":"AGUAS", "regulation":["AGU_8"]},
-    {"vectorName":"ATMÓSFERA", "regulation":["ATM_47","ATM_5","ATM_9","ATM_12","ATM_50","ATM_51"]},
+    {"vectorName":"ATMÓSFERA", "regulation":["ATM_47","ATM_5","ATM_9","ATM_12","ATM_50","ATM_52"]},
     {"vectorName":"SUSTANCIAS Y PREPARADOS QUiMICOS", "regulation":["Ninguna"]},
-    {"vectorName":"MEDIOAMBIENTE GENERAL", "regulation":["Ninguna"]},
+    {"vectorName":"MEDIOAMBIENTE GENERAL", "regulation":["MA_0","MA_10","MA_1","MA_9"]},
   ]
   vector: string[] = ["RESIDUOS","SEGURIDAD INDUSTRIAL","AGUAS","ATMÓSFERA","SUSTANCIAS Y PREPARADOS QUiMICOS","MEDIOAMBIENTE GENERAL"]
 

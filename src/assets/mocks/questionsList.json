@@ -3,7 +3,7 @@
   {
     "vectorId": "1",
     "vectorName": "RESIDUOS",
-    "vectorGeneralRegulation":["RES_3","RES_4","RES_5","RES_18","RES_19","RES_60","RES_61","RES_22","RES_6"],
+    "vectorGeneralRegulation":["RES_3","RES_4","RES_5","RES_6","RES_18","RES_19","RES_22","RES_60","RES_61"],
     "questions":
       [
         {

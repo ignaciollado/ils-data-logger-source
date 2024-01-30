@@ -1,236 +1,137 @@
 [
   {
-    "regulations": ["ATM_47", "ATM_5", "ATM_9", "ATM_12", "ATM_50"],
-    "childRegulation": "",
-    "introTextES": "",
-    "introTextCA": "",
-    "introImage1": "",
-    "introImage2": "",
-    "type": "radio",
-    "requirements": [
-      {
-        "optionText": "Deber de las personas físicas o jurídicas que vayan a realizar operaciones de valorización energética o eliminación de residuos y que no sean titulares de la instalación de obtener autorización previa.",
-        "optionTooltip": "Las PERSONAS FÍSICAS O JURÍDICAS que vayan a realizar OPERACIONES DE VALORIZACIÓN ENERGÉTICA O ELIMINACIÓN DE RESIDUOS y que NO SEAN TITULARES DE LA INSTALACIÓN deberán estar previamente AUTORIZADAS por el órgano competente de la comunidad autónoma donde tengan su sede social. Estas autorizaciones SERÁN VÁLIDAS PARA TODO EL TERRITORIO del Estado, debiendo quedar inscritas por la comunidad autónoma que las haya otorgado en el Registro de producción y gestión de residuos.",
-        "optionImage_1": "",
-        "optionImage_2": "",
-        "description": "",
-        "comments":"",
-        "autoEvaluation":
-          [
-            {"answerText": "Se dispone",
-              "answerTooltip": "",
-              "answerImage_1": "",
-              "answerImage_2": ""},
-            {"answerText": "No se dispone",
-              "answerTooltip": "",
-              "answerImage_1": "",
-              "answerImage_2": ""},
-            {"answerText": "En proceso",
-              "answerTooltip": "",
-              "answerImage_1": "",
-              "answerImage_2": ""}
-          ]
-      }
-    ]
-  },
+    "regulation": ["MA_1"],
+    "type": "none",
+    "questionTextES": "Ley 26/2007 de 23 de octubre, de Responsabilidad Medioambiental.<p><strong>  Art 5 (ley 11/2014) Obligación de los operadores de actividades incluidas en el anexo III de constituir una garantía financiera obligatoria (Modificación del art. 24 de la Ley 26/2007, de Responsabilidad Medioambiental). Los OPERADORES de las actividades incluidas en el anexo III, sin perjuicio de las exenciones previstas en el artículo 28, deberán disponer de una GARANTÍA FINANCIERA que les permita hacer frente a la responsabilidad medioambiental inherente a la actividad que pretendan desarrollar. Para el RESTO DE OPERADORES, la constitución de la garantía financiera tendrá carácter voluntario</strong></p>",
+    "questionTextCA": "",
+    "questionDoc1" : "",
+    "questionDoc2" : "",
+    "questionTooltipES": "",
+    "questionTooltipCA": "",
+    "link1": "",
+    "link2": "",
+    "requirements": 
+    [
 
+    ]
+  },
   {
-    "regulation": "RES_11",
-    "childRegulation": "",
-    "introTextES": "",
-    "introTextCA": "",
-    "introImage1": "",
-    "introImage2": "",
+    "regulation": ["MA_1"],
     "type": "radio",
-    "options": [
-      {
-        "optionText": "Los productos relacionados en el ANEXO I únicamente podrán ser COMERCIALIZADOS en el territorio nacional, después de las fechas indicadas en el ANEXO II, si su contenido en COV no supera los valores máximos fijados en dicho ANEXO II y cumplen lo dispuesto en esta disposición en lo relativo al etiquetado (art. 3.1).",
-        "optionTooltip": "ATM_33_ANEXO_I",
-        "optionImage_1": "ATM_33_ANEXO_II.pdf",
-        "optionImage_2": "ATM_33_ANEXO_II_B.pdf",
-        "requirementDescription": "",
-        "comments":"",
-        "autoEvaluation":
-          [
-            {"answerText": "Se dispone",
-              "answerTooltip": "",
-              "answerImage_1": "",
-              "answerImage_2": ""},
-            {"answerText": "No se dispone",
-              "answerTooltip": "",
-              "answerImage_1": "",
-              "answerImage_2": ""},
+    "questionTextES": "¿Estas obligado a disponer de una garantia financiera de reponsabilidad ambiental?",
+    "questionTextCA": "",
+    "questionDoc1" : "MA_15_ANEXO1",
+    "questionDoc2" : "",
+    "questionTooltipES": "Es de aplicación para <ul><li>Operadores sujetos al ámbito de aplicación del Texto refundido de la Ley de prevención y control integrados de la contaminación aprobado por el Real Decreto Legislativo 1/2016, de 16 de diciembre (IPPC).</li><li>Operadores sujetos al ámbito de aplicación del Real Decreto 840/2015, de 16 de julio, por el que se aprueban medidas de control de los riesgos inherentes a los accidentes graves en los que intervengan sustancias peligrosas (SEVESO).</li><li>Operadores dedicados a la gestión de residuos de las industrias extractivas, cuando se trate de instalaciones clasificadas como de categoría A, según lo dispuesto en el Real Decreto 975/2009, de 12 de junio.</li><li>El resto de operadores del anexo III, siempre y cuando no estén incluidos en el ámbito de aplicación de la normativa citada, no están obligados a la constitución de la garantía financiera por responsabilidad medioambiental, sin perjuicio de que el operador decida su constitución de manera voluntaria.</li><li>Se adjunta el anexo 1 del rden ARM/1783/2011, de 22 de junio, por la que se establece el orden de prioridad y el calendario para la aprobación de las órdenes ministeriales a partir de las cuales será exigible la constitución de la garantía financiera obligatoria, donde pueden verse que actividades están obligadas.</li><li>Importante resaltar con independencia de tener la obligación o no de constituir la garantía financiera, se recuerda que todos los operados de las actividades del anexo III de la Ley 26/2007, de 23 de octubre, están sujetos a un régimen de responsabilidad objetivo e ilimitado. De este modo, esos operadores, si son responsables de ocasionar una amenaza inminente de daño o daño medioambiental, deben adoptar las medidas necesarias de prevención, evitación y/o reparación que sean necesarias, con independencia del coste de las mismas.                                                                                                                                            La CANTIDAD que, como mínimo, deberá quedar garantizada y que no limitará en sentido alguno las responsabilidades establecidas en la ley, SERÁ DETERMINADA POR EL OPERADOR según la intensidad y extensión del daño que la actividad del operador pueda causar, de conformidad con los criterios que se establezcan reglamentariamente.</li></ul>Los operadores deberán COMUNICAR a la autoridad competente la constitución de la garantía financiera a la que vengan obligados de acuerdo con el apartado primero de este artículo. La fijación de la cuantía de esta garantía partirá del análisis de riesgos medioambientales de la actividad, o de las tablas de baremos, que se realizarán de acuerdo a la metodología que reglamentariamente se establezca por el Gobierno. La autoridad competente establecerá los correspondientes sistemas de control que le permitan comprobar el cumplimiento de estas obligaciones.EN CASO AFIRMATIVO ¿Has hecho la Evaluacion de Riesgos ambientales para determinar la cuantia de a garantia?",
+    "questionTooltipCA": "",
+    "link1": "",
+    "link2": "",
+    "requirements": 
+    [
+    {"answerText": "Cumple",
+     "answerTooltip": "",
+     "conditionalQuestions": 
+     [
+     {
+     "type": "radio",
+     "conditionalES": "EN CASO AFIRMATIVO ¿Has hecho la Evaluacion de Riesgos ambientales para determinar la cuantia de a garantia? ",
+     "conditionalCA": "",
+     "conditionalDoc1" : "",
+     "conditionalDoc2" : "",
+     "conditionalTooltipES": "",
+     "conditionalTooltipCA": "",
+     "answers":
+     [
+            {"answerText": "Cumple",
+            "answerTooltip": "",
+            "regulation": [],
+            "answerdoc1": "",
+            "answerdoc2": ""},
+            {"answerText": "No cumple",
+            "answerTooltip": "",
+            "regulation": [""],
+            "answerdoc1": "",
+            "answerdoc2": ""},
             {"answerText": "En proceso",
-              "answerTooltip": "",
-              "answerImage_1": "",
-              "answerImage_2": ""}
-          ]
-      },
-      {
-        "optionText": "Sin perjuicio de las exigencias adicionales que en materia de etiquetado establezca la legislación vigente, los productos que figuran en el ANEXO I llevarán una ETIQUETA en el momento de su comercialización, que indique lo siguiente (art. 4):a) La SUBCATEGORÍA del producto y los correspondientes VALORES MÁXIMOS para el contenido de COV en g/l como se indica en el Anexo II.b) El CONTENIDO MÁXIMO de COV en g/l del producto listo para su empleo.",
-        "optionTooltip": "",
-        "optionImage_1": "",
-        "optionImage_2": "",
-        "requirementDescription": "",
-        "comments":"",
-        "autoEvaluation":
-          [
-            {"answerText": "Se cumple",
-              "answerTooltip": "",
-              "answerImage_1": "",
-              "answerImage_2": ""},
-            {"answerText": "No se cumple",
-              "answerTooltip": "",
-              "answerImage_1": "",
-              "answerImage_2": ""}
-          ]
-      }
+            "answerTooltip": "",
+            "regulation": [""],
+            "answerdoc1": "",
+            "answerdoc2": ""}
+     ]
+     }
+     ]
+    },
+    {"answerText": "No cumple",
+     "answerTooltip": "",
+     "conditionalQuestions": 
+     [
+     {
+     }
+     ]
+    },
+    {"answerText": "En proceso",
+     "answerTooltip": "",
+     "conditionalQuestions": 
+     [
+     {
+     }
+     ]
+    }
     ]
   },
   {
-    "regulation":"ATM_1",
-    "childRegulation": ["ATM_1_1", "ATM_1_2"],
-    "introTextES": "",
-    "introTextCA": "",
-    "introImage1": "",
-    "introImage2": "",
+    "regulation": ["MA_1"],
     "type": "radio",
-    "options": [
-      {
-        "optionText": "",
-        "optionTooltip": "",
-        "optionImage_1": "",
-        "optionImage_2": "",
-        "requirementDescription": "",
-        "comments":"",
-        "autoEvaluation":
+    "questionTextES": "¿Te encuentras exento de constituir Garantia financiera obligatoria? (por ej evaluación de riesgos entre 30.000 - 2.000.000 € con SGA acreditado y vigente)",
+    "questionTextCA": "",
+    "questionDoc1" : "",
+    "questionDoc2" : "",
+    "questionTooltipES": "Quedan EXENTOS de constituir garantía financiera obligatoria:<ol><li>Los operadores de aquellas actividades susceptibles de ocasionar daños cuya reparación se evalúe por una cantidad inferior a 300.000 euros.</li><li>Los operadores de actividades susceptibles de ocasionar daños cuya reparación se evalúe por una cantidad comprendida entre 300.000 y 2.000.000 de euros que acrediten mediante la presentación de certificados expedidos por organismos independientes, que están adheridos con carácter permanente y continuado, bien al sistema comunitario de gestión y auditoría medioambientales (EMAS), bien al sistema de gestión medioambiental UNE-EN ISO 14001 vigente.</li><li>La utilización de los productos fitosanitarios y biocidas a los que se refiere el apartado 8.c) y d) del anexo III, con fines agropecuarios y forestales, quedando por tanto exentos de efectuar la comunicación prevista en el artículo 24.3.</li><li>Los operadores de las actividades que se establezcan reglamentariamente atendiendo a su escaso potencial de generar daños medioambientales y bajo nivel de accidentalidad, quedando igualmente exentos de efectuar la comunicación prevista en el artículo 24.3 (art. 28).</li></ol>",
+    "questionTooltipCA": "",
+    "link1": "",
+    "link2": "",
+    "requirements": 
+    [
+    {"answerText": "Cumple",
+     "answerTooltip": "",
+     "conditionalQuestions": 
+     [
+     {
+     }
+     ]  
+    },
+    {"answerText": "No cumple",
+     "answerTooltip": "",
+     "conditionalQuestions": 
       [
-        {"answerText": "Se dispone",
-        "answerTooltip": "",
-        "answerImage_1": "",
-        "answerImage_2": ""},
-        {"answerText": "No se dispone",
-        "answerTooltip": "",
-        "answerImage_1": "",
-        "answerImage_2": ""},
-        {"answerText": "En proceso",
-        "answerTooltip": "",
-        "answerImage_1": "",
-        "answerImage_2": ""}
-      ]
+      {
       }
+      ]
+    },
+    {"answerText": "En proceso",
+     "answerTooltip": "",
+     "conditionalQuestions": 
+      [
+      {
+      }
+      ]
+    }  
     ]
   },
   {
-    "regulation":"ATM_1_1",
-    "childRegulation": [],
-    "introTextES": "Dentro de Actividades Potencialmente Contaminadoras de la Atmósfera, señala a que grupo pertenece tu empresa",
-    "introTextCA": "",
-    "introImage1": "",
-    "introImage2": "",
-    "options": [
-      {
-        "optionText": "Para las empresas y actividades potencialmente contaminadoras de la atmósfera del TIPO A",
-        "optionTooltip": "1. Categorías del catálogo de actividades potencialmente contaminadoras de la atmósfera incluidas en el grupo A ...",
-        "optionImage_1": "Obligacions_de_les_APCA_JUNY_DE_2021_CAST.pdf",
-        "optionImage_2": "",
-        "requirementDescription": "Control de emisiones por OCA CADA AÑO",
-        "comments":"",
-        "autoEvaluation":
-      [
-        {"answerText": "Se dispone",
-        "answerTooltip": "",
-        "answerImage_1": "",
-        "answerImage_2": ""},
-        {"answerText": "No se dispone",
-        "answerTooltip": "",
-        "answerImage_1": "",
-        "answerImage_2": ""},
-        {"answerText": "En proceso",
-        "answerTooltip": "",
-        "answerImage_1": "",
-        "answerImage_2": ""}
-      ]
-      },
-      {
-        "optionText": "Para las empresas y actividades potencialmente contaminadoras de la atmósfera del TIPO B",
-        "optionTooltip": "2. Categorías del catálogo de actividades potencialmente contaminadoras de la atmósfera incluidas en el grupo B...",
-        "optionImage_1": "",
-        "optionImage_2": "",
-        "requirementDescription": "Control de emisiones por OCA CADA TRES AÑOS",
-        "comments":"",
-        "autoEvaluation":
-        [
-        {"answerText": "Se dispone",
-        "answerTooltip": "",
-        "answerImage_1": "",
-        "answerImage_2": ""},
-        {"answerText": "No se dispone",
-        "answerTooltip": "",
-        "answerImage_1": "",
-        "answerImage_2": ""},
-        {"answerText": "En proceso",
-        "answerTooltip": "",
-        "answerImage_1": "",
-        "answerImage_2": ""}
-        ]
-      },
-      {
-        "optionText": "Para las empresas y actividades potencialmente contaminadoras de la atmósfera del TIPO C",
-        "optionTooltip": "3. Categorías del catálogo de actividades potencialmente contaminadoras de la atmósfera incluidas en el grupo C...",
-        "optionImage_1": "",
-        "optionImage_2": "",
-        "requirementDescription": "Control de emisiones por OCA CADA CINCO AÑOS",
-        "comments":"",
-        "autoEvaluation":
-        [
-          {"answerText": "Se dispone",
-          "answerTooltip": "",
-          "answerImage_1": "",
-          "answerImage_2": ""},
-          {"answerText": "No se dispone",
-          "answerTooltip": "",
-          "answerImage_1": "",
-          "answerImage_2": ""},
-          {"answerText": "En proceso",
-          "answerTooltip": "",
-          "answerImage_1": "",
-          "answerImage_2": ""}
-        ]
-      }
+    "regulation": ["MA_4"],
+    "type": "none",
+    "questionTextES": "Real Decreto 508/2007 Por el que se regula el suministro de información sobre emisiones del Reglamento E-PRTR y de las autorizaciones ambientales integradas",
+    "questionTextCA": "",
+    "questionDoc1" : "",
+    "questionDoc2" : "",
+    "questionTooltipES": "Art 1. Este real decreto se aplica a la información procedente de las actividades industriales contenidas en el anexo I, y deberá ser suministrada a través de los medios y técnicas informáticas o telemáticas que al efecto determinen las Administraciones públicas competentes. Art 3.1 Deber del titular de actividades incluidas en el Anexo I que se realicen por encima de los umbrales de capacidad recogidos en el mismo, de comunicar anualmente las emisiones y transferencias. ANEXO I https://www.boe.es/buscar/act.php?id=BOE-A-2007-8351&p=20170831&tn=1#ci CAPITULO 2 https://www.boe.es/buscar/act.php?id=BOE-A-2007-8351&p=20170831&tn=1#cii Categorías de actividades industriales no incluidas en el anejo 1 de la Ley 16/2002, de 1 de julio Se describen en este capítulo las actividades industriales que no están incluidas en el anejo 1 de la Ley 16/2002, de 1 de julio, es decir, no están sujetas a autorización ambiental integrada, pero, no obstante, deben cumplir los requisitos de información de este real decreto. En este caso, para la identificación de las actividades industriales sólo debe tenerse en cuenta la codificación basada en el Reglamento E-PRTR.",
+    "questionTooltipCA": "",
+    "link1": "https://www.boe.es/buscar/act.php?id=BOE-A-2007-8351&p=20170831&tn=1#ci",
+    "link2": "https://www.boe.es/buscar/act.php?id=BOE-A-2007-8351&p=20170831&tn=1#cii",
+    "requirements": 
+    [
+    
     ]
-  },
-  {
-    "regulation":"ATM_1_2",
-    "childRegulation": [],
-    "introTextES": "",
-    "introTextCA": "",
-    "introImage1": "",
-    "introImage2": "",
-    "options": [
-      {
-        "optionText": "La CERTIFICACIÓN de los resultados obtenidos se ha presentado ante la Consejería competente en materia de Medio Ambiente, dentro del plazo establecido al efecto por la propia Consejería",
-        "optionTooltip": "",
-        "optionImage_1": "",
-        "optionImage_2": "",
-        "requirementDescription": "S/N",
-        "comments":"",
-        "autoEvaluation":
-        [
-        {"answerText": "Se dispone",
-        "answerTooltip": "",
-        "answerImage_1": "",
-        "answerImage_2": ""},
-        {"answerText": "No se dispone",
-        "answerTooltip": "",
-        "answerImage_1": "",
-        "answerImage_2": ""},
-        {"answerText": "En proceso",
-        "answerTooltip": "",
-        "answerImage_1": "",
-        "answerImage_2": ""}
-        ]
-      }
-    ]
-  }
+  }  
 ]

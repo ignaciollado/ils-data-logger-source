@@ -23,73 +23,59 @@ canvas{
     display: grid;
     grid-template-columns: repeat(3, auto);
     grid-template-areas:
-      "z a b"
-      "d d e"
-      "f g h"
-      "i i j"
-      "k k k";
+      "a b c d e e"
+      "a b c f g h"
+      "a b c i j j"
+      "k k k i j j"
+      ;
 }
 
 .small-data {
   font-size: .6rem;
 }
 .item0 {
-  grid-area: z;
-  align-self: center;
-  justify-self: center;
-}
-.item1 {
   grid-area: a;
   align-self: center;
   justify-self: center;
 }
-.item2 {
+.item1 {
   grid-area: b;
   align-self: center;
   justify-self: center;
 }
-.item3 {
+.item2 {
   grid-area: c;
   align-self: center;
   justify-self: center;
 }
-.item4 {
+.item3 {
   grid-area: d;
-  align-self: center;
-  justify-self: center;
+  padding-left: .5rem;
+} 
+.item4 {
+  grid-area: e;
+  padding-left: .5rem;
 }
 .item5 {
-  grid-area: e;
-  align-self: center;
-  justify-self: center;
-  padding-bottom: 1rem;
+  grid-area: f;
+  padding-left: .5rem;
 }
 .item6 {
-  grid-area: f;
-  align-self: center;
-  justify-self: center;
+  grid-area: g;
+  padding-left: .5rem;
 }
 .item7 {
-  grid-area: g;
-  align-self: center;
-  justify-self: center;
+  grid-area: h;
 }
 .item8 {
-  grid-area: h;
-  align-self: center;
-  justify-self: center;
+  grid-area: i;
+  padding-left: .5rem;
 }
 .item9 {
-  grid-area: i;
-  align-self: center;
-  justify-self: center;
+  grid-area: j;
+  padding-left: .5rem;
 }
 .item10 {
-  grid-area: j;
-  align-self: center;
-  justify-self: center;
-}
-.item11 {
   grid-area: k;
   align-self: center;
   justify-self: center;

@@ -175,7 +175,7 @@ export class DashboardComponent implements OnInit {
      if (localStorage.getItem('preferredLang') === 'cat') {
       //this.graphMonths = [ 'Gener', 'Febrer', 'Març', 'April', 'Maig', 'Juny', 'Juliol', 'Agost', 'Setembre', 'Octubre', 'Novembre', 'Desembre' ]
       this.graphQuarters = [ 'T1', 'T2', 'T3', 'T4' ]
-      this.aspectEnergy = "Energía (kWh)"
+      this.aspectEnergy = "Energia (kWh)"
       this.aspectWater = "Aigua (L)"
       this.aspectResidue = "Residu (kg)"
       this.aspectEmissions = "Emissions (CO2e en T)"
@@ -205,7 +205,6 @@ export class DashboardComponent implements OnInit {
       ratioCNAEgGraphE: this.ratioCNAEgGraphE,
       energy: this.energy,
     });
-
   }
 
   ngOnInit(): void {
@@ -225,7 +224,6 @@ export class DashboardComponent implements OnInit {
     this.loadProductionBilling(this.companyId)
     this.loadProductionCNAE(this.companyId)
     this.chartEnergyGenerate()
-/*     this.chartResidueGenerate() */
   }
 
   private loadEnergies(): void {
@@ -300,7 +298,7 @@ export class DashboardComponent implements OnInit {
             })
             this.energiesItemCompanyTemp.push(consumption.energy)
           } 
-          /*Cuando sea RESIDUO (aspecto 3) Filtro*/
+          /*Cuando sea RESIDUO (aspecto 3) Filtro, sólo los del usuario, para el desplegable*/
           if (consumption.aspectId == "3") {
             this.residuesItemCompanyTemp.push(consumption.residueId)
           }
@@ -325,10 +323,13 @@ export class DashboardComponent implements OnInit {
                 "oct": (consumption.oct*equivEnKg),
                 "nov": (consumption.nov*equivEnKg),
                 "dec": (consumption.dec*equivEnKg),
-                'monthlyData': [consumption.jan, consumption.feb, consumption.mar, consumption.apr, consumption.may, consumption.jun, consumption.jul, consumption.aug, consumption.sep, consumption.oct, consumption.nov, consumption.dec]
+                'monthlyData': [consumption.jan, consumption.feb, consumption.mar, consumption.apr, consumption.may, consumption.jun, consumption.jul, consumption.aug, consumption.sep, consumption.oct, consumption.nov, consumption.dec],
+                'quarterlyData': [(consumption.jan + consumption.feb + consumption.mar), (consumption.apr + consumption.may + consumption.jun), (consumption.jul + consumption.aug + consumption.sep), (consumption.oct + consumption.nov + consumption.dec)],
+                'yearlyData': consumption.jan+consumption.feb+consumption.mar+consumption.apr+consumption.may+consumption.jun+consumption.jul+consumption.aug+consumption.sep+consumption.oct+consumption.nov+consumption.dec
             })
         }
         )
+        console.log("this.graphConsumption: ", this.graphConsumption)
         this.residuesItemCompany = this.residuesItem.filter((residueItem:any) => this.residuesItemCompanyTemp.includes(residueItem.chapterItemId))
         this.energiesItemCompany = this.energies.filter((energyItem:any) => this.energiesItemCompanyTemp.includes(energyItem[0]))
         this.chartEnergyGenerate()
@@ -389,8 +390,6 @@ export class DashboardComponent implements OnInit {
     this.startPrimaryColor  = 19
     this.chart.destroy()
 
-    this.aspectTitle = this.aspectEnergy
-
     this.graphDataTemp = this.graphConsumption.filter((item:any) => item.aspectId == '1')
     if (this.delegation.value) {
       this.graphDataTemp = this.graphDataTemp.filter((item:any) => item.delegation == this.delegation.value)
@@ -401,99 +400,140 @@ export class DashboardComponent implements OnInit {
     if (this.energy.value) {
       this.graphDataTemp = this.graphDataTemp.filter((item:any) => item.energyName == this.energy.value)
     }
-
     this.graphDataTemp.map((item:graphData) => {
-      this.theDataType = item.energyName
       this.graphData.push({
         'delegation': item.delegation,
-        'dataType': this.theDataType,
+        'dataType': item.energyName,
         'year': item.year,
         'monthlyData': [item.jan, item.feb, item.mar, item.apr, item.may, item.jun, item.jul, item.aug, item.sep, item.oct, item.nov, item.dec],
-        'quarterlyData': [(item.jan + item.feb + item.mar), (item.apr + item.may + item.jun), (item.jul + item.aug + item.sep), (item.oct + item.nov + item.dec)],
-        'yearlyData': [item.jan+item.feb+item.mar+item.apr+item.may+item.jun+item.jul+item.aug+item.sep+item.oct+item.nov+item.dec]
+        'quarterlyData': [(item.jan + item.feb + item.mar),(item.apr + item.may + item.jun),(item.jul + item.aug + item.sep), (item.oct + item.nov + item.dec)],
+        'yearlyData': item.jan+item.feb+item.mar+item.apr+item.may+item.jun+item.jul+item.aug+item.sep+item.oct+item.nov+item.dec
       })
     })
 
-    console.log ("this.isYearWiewE", this.isYearViewE)
-    console.log ("this.graphDataTemp: ", this.graphDataTemp)
     console.log ("this.graphData: ", this.graphData)
     let dataFormatToView: number[]
-    let legendFormatToView: string[]
+    let  legendFormatToView: string[]
     let stackFormatToView: string
+
     this.graphData.map(item => {
+      console.log ("item", item)
       if (this.isYearViewE) {
-        dataFormatToView = item.yearlyData
-        legendFormatToView = ["Year"]
+        dataFormatToView = [item.yearlyData]
+        legendFormatToView = this.graphQuarters
         stackFormatToView = item.year
+        this.myDatasets.push(
+        {
+        label: item.delegation+" "+item.dataType,
+        data: dataFormatToView,
+        backgroundColor: this.primaryColors[this.startPrimaryColor--],
+        stack: item.delegation,
+        },
+      )
       }
       if (this.isQuarterlyViewE) {
         dataFormatToView = item.quarterlyData
         legendFormatToView = this.graphQuarters
-        stackFormatToView = "q1, q2, q3, q4"
+        stackFormatToView = "Q1, Q2, Q3, Q4"
       }
       if (this.isMonthlyViewE) {
         dataFormatToView = item.monthlyData
         legendFormatToView = this.graphMonths
         stackFormatToView = item.dataType
       }
-      this.myDatasets.push(
+     /*  this.myDatasets.push(
           {
            label: item.year+" "+item.delegation+" "+item.dataType,
            data: dataFormatToView,
            backgroundColor: this.primaryColors[this.startPrimaryColor--],
            stack: stackFormatToView,
-           borderWidth: 0
           },
-      )
-      console.log ("this.myDatasets", this.myDatasets)
+      ) */
     })
+    console.log ("this.myDatasets", this.myDatasets)
 
     this.startPrimaryColor  = 19
-
     this.chart = new Chart("energyGraph", {
       type: 'bar',
       data: {
-         labels: legendFormatToView,
-         datasets: this.myDatasets
+         labels: ["2019","2020","2021","2022","2023","2024"],
+         datasets: [
+          {
+            "label": "Can Valero Biomasa",
+            "data": [707.94,707.94,707.94,707.94,707.94, 0], /* total año de la delegación y energía */
+            "backgroundColor": "#365446",
+            "stack": "Can Valero"
+          },
+          {
+            "label": "Can Valero Electricidad",
+            "data": [210, 210, 210, 210, 210, 0],
+            "backgroundColor": "#1A237E",
+            "stack": "Can Valero"
+          },
+          {
+            "label": "Can Valero Fuel",
+            "data": [2334,2334,2334,2334,2334,0],
+            "backgroundColor": "#d62828",
+            "stack": "Can Valero"
+          },
+          {
+            "label": "Son Bugadelles Biomasa",
+            "data": [707.94,707.94,707.94,707.94,707.94, 0],
+            "backgroundColor": "#365446",
+            "stack": "Son Bugadelles"
+          },
+          {
+            "label": "Son Bugadelles Electricidad",
+            "data": [210, 210, 210, 210, 210, 0],
+            "backgroundColor": "#1A237E",
+            "stack": "Son Bugadelles"
+          },
+          {
+            "label": "Son Castelló Fuel",
+            "data": [2334,2334,2334,2334,2334,0],
+            "backgroundColor": "#d62828",
+            "stack": "Son Castelló"
+          },
+          {
+            "label": "Son Castelló Biomasa",
+            "data": [707.94,707.94,707.94,707.94,707.94, 0],
+            "backgroundColor": "#365446",
+            "stack": "Son Castelló"
+          },
+          {
+            "label": "Son Castelló Electricidad",
+            "data": [210, 210, 210, 210, 210, 0],
+            "backgroundColor": "#1A237E",
+            "stack": "Son Castelló"
+          },
+          {
+            "label": "Son Castelló Fuel",
+            "data": [2334,2334,2334,2334,2334,0],
+            "backgroundColor": "#d62828",
+            "stack": "Son Castelló"
+          },
+        ]
       },
       options: {
-        responsive: true,
-        aspectRatio: 2.0,
-        events: ['click'],
         plugins: {
-          legend: {
-            position: 'bottom',
-            labels: {
-              font: {
-                  size: 10,
-                  family: 'Montserrat'
-                    }
-          }
-          },
           title: {
-            display: true,
-            text: this.aspectTitle
-          }
-        },
-
-         scales: {
-          x: {
-            border: {
-              display: this.BORDER
+              display: true,
+              text: this.aspectEnergy          
             },
-            grid: {
-              color: '#365446',
-              display: this.DISPLAY,
-              drawOnChartArea: this.CHART_AREA,
-              drawTicks: this.TICKS,
-            }
-
+        },
+        responsive: true,
+        interaction: {
+          intersect: true,
+        },
+        scales: {
+          x: {
+          
           },
           y: {
-
+  
           }
         }
-      }
+      }      
     })
 
   }
@@ -516,7 +556,6 @@ export class DashboardComponent implements OnInit {
     }
 
     this.graphDataTemp.map((item:graphData) => {
-
       this.residues.map( residueItem => {
         residueItem.chapters.map( (subItem:any)=> {
           subItem.chapterItems.forEach( (chapterItem: ChapterItem)=> {
@@ -594,7 +633,6 @@ export class DashboardComponent implements OnInit {
     })
 
   }
-
   chartRatioBilling() {
     if (this.chart) {
       this.chart.destroy()
@@ -694,7 +732,6 @@ export class DashboardComponent implements OnInit {
     this.isYearViewE = false
     this.isMonthlyViewE = false
   }
-
   chartmonthlyViewE() {
     if (this.chart) {
       this.chart.destroy()

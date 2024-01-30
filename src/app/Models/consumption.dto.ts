@@ -504,7 +504,7 @@ export const residueColumns = [
 export interface graphData {
   aspectId?: number,
   delegation?: string,
-  year: string,
+  year?: string,
   energyName?: string,
   water?: string,
   residueName?: string,
@@ -524,5 +524,5 @@ export interface graphData {
   dec?: number,
   monthlyData?: number[]
   quarterlyData?: number[]
-  yearlyData?: number[]
+  yearlyData?: number
 }

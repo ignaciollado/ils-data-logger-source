@@ -106,7 +106,7 @@ export class DashboardComponent implements OnInit {
   isSearching: boolean = false
   isEnergy: boolean = false
   isResidue: boolean = false
-  isYearViewE : boolean = true 
+  isYearViewE : boolean = true
   isQuarterlyViewE : boolean = false
   isMonthlyViewE : boolean = false
   isKWViewE : boolean = false
@@ -186,7 +186,7 @@ export class DashboardComponent implements OnInit {
       this.aspectWater = "Agua (L)"
       this.aspectResidue = "Residuo (kg)"
       this.aspectEmissions = "Emisiones (CO2e en T)"
-    } 
+    }
 
     this.delegation = new UntypedFormControl('')
     this.yearEnergy = new UntypedFormControl('')
@@ -223,8 +223,7 @@ export class DashboardComponent implements OnInit {
     this.loadObjectives(this.companyId)
     this.loadProductionBilling(this.companyId)
     this.loadProductionCNAE(this.companyId)
-    this.loadgraphDataEnergy(this.companyId)
-    //this.chartEnergyGenerate()
+    this.loadgraphDataEnergy()
   }
 
   private loadEnergies(): void {
@@ -298,12 +297,12 @@ export class DashboardComponent implements OnInit {
               }
             })
             //this.energiesItemCompanyTemp.push(consumption.energy)
-          } 
+          }
           /*Cuando sea RESIDUO (aspecto 3) Filtro, sólo los del usuario, para el desplegable*/
           if (consumption.aspectId == "3") {
             this.residuesItemCompanyTemp.push(consumption.residueId)
           }
-        
+
           this.graphConsumption.push(
             {"aspectId": consumption.aspectId,
                 "delegation": consumption.delegation,
@@ -333,7 +332,6 @@ export class DashboardComponent implements OnInit {
         /* console.log("this.graphConsumption: ", this.graphConsumption) */
         this.residuesItemCompany = this.residuesItem.filter((residueItem:any) => this.residuesItemCompanyTemp.includes(residueItem.chapterItemId))
         //this.energiesItemCompany = this.energies.filter((energyItem:any) => this.energiesItemCompanyTemp.includes(energyItem[0]))
-        this.chartEnergyGenerate()
       },
       (error: HttpErrorResponse) => {
         errorResponse = error.error;
@@ -342,7 +340,7 @@ export class DashboardComponent implements OnInit {
     )
   }
 
-  private loadgraphDataEnergy(companyId: string): void {
+  loadgraphDataEnergy(): void {
     let errorResponse: any
     let equivEnKg: number = 1
     let prevDelegation: string = ""
@@ -351,27 +349,24 @@ export class DashboardComponent implements OnInit {
     let currentEnergy: string
     let dataToView: number[] = [0,0,0,0,0,0,0,0]
     this.startPrimaryColor  = 19
-    this.consumptionService.getEnergyByCompanyId(companyId)
+
+    this.consumptionService.getYearlyEnergyByCompanyId(this.companyId)
     .subscribe(
       (consumptions: ConsumptionDTO[]) => {
         this.consumptions = consumptions
-        console.log (this.consumptions)
-
         this.consumptions.forEach((consumption: any) =>
         {
-                    /*La ENERGÍA (aspecto 1) la convierto a kWh */
-                    this.energies.forEach((energy:EnergyDTO) => {
-                      if (energy.energyId === consumption.energy) {
-                          equivEnKg = energy.pci * energy.convLKg
-                      }
-                    })
+          /*La ENERGÍA la convierto a kWh */
+          this.energies.forEach((energy:EnergyDTO) => {
+            if (energy.energyId === consumption.energy) {
+              equivEnKg = energy.pci * energy.convLKg
+            }
+          })
           currentDelegation = consumption.delegation
           currentEnergy = consumption.energyName
-          console.log (prevDelegation,currentDelegation,prevEnergy,currentEnergy)
           if ((prevDelegation == "" || prevDelegation == currentDelegation) && (prevEnergy == "" || prevEnergy == currentEnergy)) {
             dataToView[(consumption.year-2019)] = consumption.totalYear * equivEnKg
-            console.log ("dataToView: ", dataToView, equivEnKg)
-          } 
+          }
           else {
             this.myDatasets.push (
               {
@@ -383,7 +378,6 @@ export class DashboardComponent implements OnInit {
             )
             dataToView = [0,0,0,0,0,0,0,0]
             dataToView[(consumption.year-2019)] = consumption.totalYear * equivEnKg
-            console.log("dataToView-> ", dataToView, equivEnKg)
           }
           prevDelegation = currentDelegation
           prevEnergy = currentEnergy
@@ -398,34 +392,26 @@ export class DashboardComponent implements OnInit {
           stack: prevDelegation,
           },
         )
-        
+        console.log(this.myDatasets)
         this.chart = new Chart("energyGraph", {
           type: 'bar',
           data: {
-          labels: ["2019","2020","2021","2022","2023","2024","2025","2026"],
+          labels: ["2019","2020","2021","2022","2023","2024","2025"],
           datasets: this.myDatasets},
           options: {
             plugins: {
               title: {
                   display: true,
-                  text: this.aspectEnergy          
+                  text: this.aspectEnergy
                 },
             },
             responsive: true,
             interaction: {
               intersect: true,
             },
-            scales: {
-              x: {
-              
-              },
-              y: {
-      
-              }
-            }
-          }      
+          }
         })
-            
+
         },
       (error: HttpErrorResponse) => {
         errorResponse = error.error;
@@ -475,8 +461,6 @@ export class DashboardComponent implements OnInit {
       }
     )
   }
-
-  chartEnergyGenerate() {}
 
 /*   chartEnergyGenerate() {
     this.graphDataTemp = []
@@ -619,7 +603,7 @@ export class DashboardComponent implements OnInit {
         plugins: {
           title: {
               display: true,
-              text: this.aspectEnergy          
+              text: this.aspectEnergy
             },
         },
         responsive: true,
@@ -628,13 +612,13 @@ export class DashboardComponent implements OnInit {
         },
         scales: {
           x: {
-          
+
           },
           y: {
-  
+
           }
         }
-      }      
+      }
     })
 
   } */
@@ -819,7 +803,7 @@ export class DashboardComponent implements OnInit {
       }
     });
   }
-  chartYearlyViewE(){ 
+  chartYearlyViewE(){
     if (this.chart) {
       this.chart.destroy()
     }

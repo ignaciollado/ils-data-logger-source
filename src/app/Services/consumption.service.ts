@@ -61,10 +61,16 @@ export class ConsumptionService {
     }
   }
 
-  getEnergyByCompanyId(companyId:string): Observable<ConsumptionDTO[]> {
+  getYearlyEnergyByCompanyId(companyId:string): Observable<ConsumptionDTO[]> {
     console.log (companyId)
     return this.http
-      .get<ConsumptionDTO[]>(`${URL_API}graphEnergyGetByCompanyId.php?companyId=${companyId}`)
+      .get<ConsumptionDTO[]>(`${URL_API}graphEnergyYearlyGetByCompanyId.php?companyId=${companyId}`)
+  }
+
+  getYearlyQuarterlyByCompanyId(companyId:string): Observable<ConsumptionDTO[]> {
+    console.log (companyId)
+    return this.http
+      .get<ConsumptionDTO[]>(`${URL_API}graphEnergyQuarterlyGetByCompanyId.php?companyId=${companyId}`)
   }
 
   getConsumptionsById(consumptionId: string): Observable<ConsumptionDTO> {

@@ -1,10 +1,10 @@
 <div class="container-form">
   <h2>{{ 'sustainabilityIndicatorsCharts' | translate }}</h2>
-  <div id='filtroGraficas'>
+  <div class='filtroGraficas'>
     <form
       *ngIf="energyGraphForm"
       [formGroup]="energyGraphForm"
-      (ngSubmit)="chartEnergyGenerate()">
+      (ngSubmit)="loadgraphDataEnergy()">
       <div class='fields-container'>
 
         <mat-form-field [style.width.px]=220 class="item1">
@@ -42,11 +42,11 @@
 
         <mat-slide-toggle [(ngModel)]="isRatioBillingE" [formControl]="ratioBillingGraphE" class="item3" (change)="chartRatioBilling()">Ratio billing</mat-slide-toggle>
         <mat-slide-toggle [(ngModel)]="isRatioCNAEE" [formControl]="ratioCNAEgGraphE" class="item4" (change)="chartRatioCNAE()">Ratio CNAE</mat-slide-toggle>
-        
+
         <mat-slide-toggle [(ngModel)]="isYearViewE" [formControl]="yearWiewGraphE" class="item5" (change)="chartYearlyViewE()">Year</mat-slide-toggle>
         <mat-slide-toggle [(ngModel)]="isQuarterlyViewE" [formControl]="trimestralViewGraphE" class="item6" (change)="chartQuarterlyViewE()">Quarterly</mat-slide-toggle>
         <mat-slide-toggle [(ngModel)]="isMonthlyViewE" [formControl]="monthlyViewGraphE" class="item7" (change)="chartmonthlyViewE()">Monthly</mat-slide-toggle>
-        
+
         <mat-slide-toggle [(ngModel)]="isKWViewE" [formControl]="monthlyViewGraphE" class="item8" (change)="chartmonthlyViewE()">kWh</mat-slide-toggle>
         <mat-slide-toggle [(ngModel)]="isMWViewE" [formControl]="monthlyViewGraphE" class="item9" (change)="chartmonthlyViewE()">MWh</mat-slide-toggle>
 
@@ -61,11 +61,11 @@
   <canvas id="energyGraph" aria-label= "Energy graph" role="chart"
     (Click)="onChartClick($event)">{{ chart }}</canvas>
 
-  <div id='filtroGraficas'>
+  <div class='filtroGraficas'>
     <form
       *ngIf="waterGraphForm"
       [formGroup]="waterGraphForm"
-      (ngSubmit)="chartEnergyGenerate()">
+      (ngSubmit)="loadgraphDataEnergy()">
       <div class='fields-container'>
 
         <mat-form-field [style.width.px]=220 class="item1">
@@ -128,17 +128,17 @@
         <mat-slide-toggle [(ngModel)]="isMonthlyViewE" [formControl]="monthlyViewGraphE" class="item7" (change)="chartRatioCNAE()">L</mat-slide-toggle>
         <mat-slide-toggle [(ngModel)]="isMonthlyViewE" [formControl]="monthlyViewGraphE" class="item7" (change)="chartRatioCNAE()">m3</mat-slide-toggle>
 
- 
+
       </div>
     </form>
     <canvas id="waterGraph" aria-label= "Water graph" role="chart"
     (Click)="onChartClick($event)">{{ chart }}</canvas>
   </div>
-  
-  <div id='filtroGraficas'>
+
+  <div class='filtroGraficas'>
     <form *ngIf="residueGraphForm"
       [formGroup]="residueGraphForm"
-      (ngSubmit)="chartEnergyGenerate()">
+      (ngSubmit)="loadgraphDataEnergy()">
       <div class='fields-container'>
 
         <mat-form-field [style.width.px]=220 class="item1">
@@ -196,11 +196,11 @@
   <canvas id="residueGraph" aria-label= "Residue graph" role="chart"
   (Click)="onChartClick($event)">{{ chart }}</canvas>
 
-  <div id='filtroGraficas'>
+  <div class='filtroGraficas'>
     <form
       *ngIf="emissionGraphForm"
       [formGroup]="emissionGraphForm"
-      (ngSubmit)="chartEnergyGenerate()">
+      (ngSubmit)="loadgraphDataEnergy()">
       <div class='fields-container'>
 
         <mat-form-field [style.width.px]=220 class="item1">
@@ -267,7 +267,7 @@
     </form>
     <canvas id="emssionGraph" aria-label= "Emissions graph" role="chart"
     (Click)="onChartClick($event)">{{ chart }}</canvas>
-  </div>   
- 
+  </div>
+
   <div class="loader" *ngIf="!consumptions">No data loaded yet...</div>
 </div>

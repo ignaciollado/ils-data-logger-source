@@ -429,8 +429,6 @@ export class DashboardComponent implements OnInit {
       .subscribe(
       (consumptions: ConsumptionDTO[]) => {
         this.consumptions = consumptions
-        console.log (this.consumptions)
-        return
         this.consumptions.forEach((consumption: any) =>
         {
           /*La ENERGÍA la convierto a kWh */
@@ -442,7 +440,10 @@ export class DashboardComponent implements OnInit {
           currentDelegation = consumption.delegation
           currentEnergy = consumption.energyName
           if ((prevDelegation == "" || prevDelegation == currentDelegation) && (prevEnergy == "" || prevEnergy == currentEnergy)) {
-            dataToQuarterView[(consumption.year-2019)] = consumption.totalYear * equivEnKg
+            dataToQuarterView[0] = consumption.Q1 * equivEnKg
+            dataToQuarterView[1] = consumption.Q2 * equivEnKg
+            dataToQuarterView[2] = consumption.Q3 * equivEnKg
+            dataToQuarterView[3] = consumption.Q4 * equivEnKg
           }
           else {
             this.myDatasets.push (
@@ -469,12 +470,11 @@ export class DashboardComponent implements OnInit {
           stack: prevDelegation,
           },
         )
-
         console.log("quarterly: ", this.myDatasets)
         this.chart = new Chart("energyGraph", {
           type: 'bar',
           data: {
-          labels: ["2019","2020","2021","2022","2023","2024","2025"],
+          labels: ["Q1","Q2","Q3","Q4"],
           datasets: this.myDatasets},
           options: {
             plugins: {

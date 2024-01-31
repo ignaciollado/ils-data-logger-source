@@ -350,7 +350,7 @@ export class DashboardComponent implements OnInit {
     let currentDelegation: string
     let currentEnergy: string
     let dataToView: number[] = [0,0,0,0,0,0,0,0]
-
+    this.startPrimaryColor  = 19
     this.consumptionService.getEnergyByCompanyId(companyId)
     .subscribe(
       (consumptions: ConsumptionDTO[]) => {
@@ -359,12 +359,18 @@ export class DashboardComponent implements OnInit {
 
         this.consumptions.forEach((consumption: any) =>
         {
+                    /*La ENERGÍA (aspecto 1) la convierto a kWh */
+                    this.energies.forEach((energy:EnergyDTO) => {
+                      if (energy.energyId === consumption.energy) {
+                          equivEnKg = energy.pci * energy.convLKg
+                      }
+                    })
           currentDelegation = consumption.delegation
           currentEnergy = consumption.energyName
           console.log (prevDelegation,currentDelegation,prevEnergy,currentEnergy)
           if ((prevDelegation == "" || prevDelegation == currentDelegation) && (prevEnergy == "" || prevEnergy == currentEnergy)) {
-            dataToView[(consumption.year-2019)] = consumption.totalYear
-            console.log ("dataToView: ", dataToView)
+            dataToView[(consumption.year-2019)] = consumption.totalYear * equivEnKg
+            console.log ("dataToView: ", dataToView, equivEnKg)
           } 
           else {
             this.myDatasets.push (
@@ -376,27 +382,27 @@ export class DashboardComponent implements OnInit {
               },
             )
             dataToView = [0,0,0,0,0,0,0,0]
-            dataToView[(consumption.year-2019)] = consumption.totalYear
-            console.log("dataToView-> ", dataToView)
+            dataToView[(consumption.year-2019)] = consumption.totalYear * equivEnKg
+            console.log("dataToView-> ", dataToView, equivEnKg)
           }
           prevDelegation = currentDelegation
           prevEnergy = currentEnergy
           currentDelegation = consumption.delegation
           currentEnergy = consumption.energyName
-
-          /*La ENERGÍA (aspecto 1) la convierto a kWh */
-          this.energies.forEach((energy:EnergyDTO) => {
-            if (energy.energyId === consumption.energy) {
-                equivEnKg = energy.pci * energy.convLKg
-            }
-          })
         })
-
-        this.startPrimaryColor  = 19
+        this.myDatasets.push (
+          {
+          label: prevDelegation+" "+prevEnergy,
+          data: dataToView,
+          backgroundColor: this.primaryColors[this.startPrimaryColor--],
+          stack: prevDelegation,
+          },
+        )
+        
         this.chart = new Chart("energyGraph", {
           type: 'bar',
           data: {
-          labels: ["2019","2020","2021","2022","2023","2024"],
+          labels: ["2019","2020","2021","2022","2023","2024","2025","2026"],
           datasets: this.myDatasets},
           options: {
             plugins: {

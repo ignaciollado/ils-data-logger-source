@@ -7,7 +7,7 @@ require_once 'conectar_a_bbdd_pindust.php';
 mysqli_query($conn, "SET NAMES 'utf8'");
 $companyId = $_GET['companyId'];
 $sql = "SELECT ils_company_delegation.name as delegation, ils_energy.nameES as energyName, year,
-        `01` as jan,`02` as feb,`03` as mar,`04` as apr,`05` as may,`06` as jun,`07` as jul,`08` as aug,`09` as sep,`10` as oct,`11` as nov,`12` as dec
+        `01` as 'jan',`02` as 'feb',`03` as 'mar',`04` as 'apr',`05` as 'may',`06` as 'jun',`07` as 'jul',`08` as 'aug',`09` as 'sep',`10` as 'oct',`11` as 'nov',`12` as 'dec'
 
         FROM ils_consumption
 

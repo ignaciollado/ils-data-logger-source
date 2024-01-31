@@ -43,7 +43,7 @@ export class DashboardComponent implements OnInit {
   ratioBillingGraphE: UntypedFormControl
   ratioCNAEgGraphE: UntypedFormControl
   yearWiewGraphE: UntypedFormControl
-  trimestralViewGraphE: UntypedFormControl
+  quarterlyViewGraphE: UntypedFormControl
   monthlyViewGraphE: UntypedFormControl
   energyGraphForm: UntypedFormGroup
   waterGraphForm: UntypedFormGroup
@@ -106,8 +106,8 @@ export class DashboardComponent implements OnInit {
   isSearching: boolean = false
   isEnergy: boolean = false
   isResidue: boolean = false
-  isYearViewE : boolean = true
-  isQuarterlyViewE : boolean = false
+  isYearViewE : boolean = false
+  isQuarterlyViewE : boolean = true
   isMonthlyViewE : boolean = false
   isKWViewE : boolean = false
   isMWViewE : boolean = false
@@ -192,7 +192,7 @@ export class DashboardComponent implements OnInit {
     this.yearEnergy = new UntypedFormControl('')
     this.ratioBillingGraphE = new UntypedFormControl()
     this.ratioCNAEgGraphE = new UntypedFormControl()
-    this.trimestralViewGraphE = new UntypedFormControl()
+    this.quarterlyViewGraphE = new UntypedFormControl()
     this.yearWiewGraphE = new UntypedFormControl()
     this.monthlyViewGraphE = new UntypedFormControl()
     this.energy = new UntypedFormControl('')
@@ -347,11 +347,16 @@ export class DashboardComponent implements OnInit {
     let prevEnergy: string = ""
     let currentDelegation: string
     let currentEnergy: string
-    let dataToView: number[] = [0,0,0,0,0,0,0,0]
+    let dataToYearView: number[] = [0,0,0,0,0,0,0,0]
+    let dataToQuarterView: number[] = [0,0,0,0]
+
     this.startPrimaryColor  = 19
 
-    this.consumptionService.getYearlyEnergyByCompanyId(this.companyId)
-    .subscribe(
+    console.log(this.isYearViewE, this.isQuarterlyViewE, this.isMonthlyViewE)
+
+    if (this.isYearViewE) {
+      this.consumptionService.getYearlyEnergyByCompanyId(this.companyId)
+      .subscribe(
       (consumptions: ConsumptionDTO[]) => {
         this.consumptions = consumptions
         this.consumptions.forEach((consumption: any) =>
@@ -365,19 +370,19 @@ export class DashboardComponent implements OnInit {
           currentDelegation = consumption.delegation
           currentEnergy = consumption.energyName
           if ((prevDelegation == "" || prevDelegation == currentDelegation) && (prevEnergy == "" || prevEnergy == currentEnergy)) {
-            dataToView[(consumption.year-2019)] = consumption.totalYear * equivEnKg
+            dataToYearView[(consumption.year-2019)] = consumption.totalYear * equivEnKg
           }
           else {
             this.myDatasets.push (
               {
               label: prevDelegation+" "+prevEnergy,
-              data: dataToView,
+              data: dataToYearView,
               backgroundColor: this.primaryColors[this.startPrimaryColor--],
               stack: prevDelegation,
               },
             )
-            dataToView = [0,0,0,0,0,0,0,0]
-            dataToView[(consumption.year-2019)] = consumption.totalYear * equivEnKg
+            dataToYearView = [0,0,0,0,0,0,0,0]
+            dataToYearView[(consumption.year-2019)] = consumption.totalYear * equivEnKg
           }
           prevDelegation = currentDelegation
           prevEnergy = currentEnergy
@@ -387,12 +392,11 @@ export class DashboardComponent implements OnInit {
         this.myDatasets.push (
           {
           label: prevDelegation+" "+prevEnergy,
-          data: dataToView,
+          data: dataToYearView,
           backgroundColor: this.primaryColors[this.startPrimaryColor--],
           stack: prevDelegation,
           },
         )
-        console.log(this.myDatasets)
         this.chart = new Chart("energyGraph", {
           type: 'bar',
           data: {
@@ -417,7 +421,82 @@ export class DashboardComponent implements OnInit {
         errorResponse = error.error;
         this.sharedService.errorLog(errorResponse);
       }
-    )
+      )
+    }
+
+    if (this.isQuarterlyViewE) {
+      this.consumptionService.getYearlyQuarterlyByCompanyId(this.companyId)
+      .subscribe(
+      (consumptions: ConsumptionDTO[]) => {
+        this.consumptions = consumptions
+        console.log (this.consumptions)
+        return
+        this.consumptions.forEach((consumption: any) =>
+        {
+          /*La ENERGÍA la convierto a kWh */
+          this.energies.forEach((energy:EnergyDTO) => {
+            if (energy.energyId === consumption.energy) {
+              equivEnKg = energy.pci * energy.convLKg
+            }
+          })
+          currentDelegation = consumption.delegation
+          currentEnergy = consumption.energyName
+          if ((prevDelegation == "" || prevDelegation == currentDelegation) && (prevEnergy == "" || prevEnergy == currentEnergy)) {
+            dataToQuarterView[(consumption.year-2019)] = consumption.totalYear * equivEnKg
+          }
+          else {
+            this.myDatasets.push (
+              {
+              label: prevDelegation+" "+prevEnergy,
+              data: dataToQuarterView,
+              backgroundColor: this.primaryColors[this.startPrimaryColor--],
+              stack: prevDelegation,
+              },
+            )
+            dataToQuarterView = [0,0,0,0]
+            dataToQuarterView[(consumption.year-2019)] = consumption.totalYear * equivEnKg
+          }
+          prevDelegation = currentDelegation
+          prevEnergy = currentEnergy
+          currentDelegation = consumption.delegation
+          currentEnergy = consumption.energyName
+        })
+        this.myDatasets.push (
+          {
+          label: prevDelegation+" "+prevEnergy,
+          data: dataToQuarterView,
+          backgroundColor: this.primaryColors[this.startPrimaryColor--],
+          stack: prevDelegation,
+          },
+        )
+
+        console.log("quarterly: ", this.myDatasets)
+        this.chart = new Chart("energyGraph", {
+          type: 'bar',
+          data: {
+          labels: ["2019","2020","2021","2022","2023","2024","2025"],
+          datasets: this.myDatasets},
+          options: {
+            plugins: {
+              title: {
+                  display: true,
+                  text: this.aspectEnergy
+                },
+            },
+            responsive: true,
+            interaction: {
+              intersect: true,
+            },
+          }
+        })
+
+        },
+      (error: HttpErrorResponse) => {
+        errorResponse = error.error;
+        this.sharedService.errorLog(errorResponse);
+      }
+      )
+    }
   }
 
   private loadObjectives(companyId: string): void {

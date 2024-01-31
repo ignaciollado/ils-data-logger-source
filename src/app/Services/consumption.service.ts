@@ -62,13 +62,11 @@ export class ConsumptionService {
   }
 
   getYearlyEnergyByCompanyId(companyId:string): Observable<ConsumptionDTO[]> {
-    console.log (companyId)
     return this.http
       .get<ConsumptionDTO[]>(`${URL_API}graphEnergyYearlyGetByCompanyId.php?companyId=${companyId}`)
   }
 
   getYearlyQuarterlyByCompanyId(companyId:string): Observable<ConsumptionDTO[]> {
-    console.log (companyId)
     return this.http
       .get<ConsumptionDTO[]>(`${URL_API}graphEnergyQuarterlyGetByCompanyId.php?companyId=${companyId}`)
   }

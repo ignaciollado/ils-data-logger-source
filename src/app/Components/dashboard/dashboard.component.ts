@@ -107,8 +107,8 @@ export class DashboardComponent implements OnInit {
   isEnergy: boolean = false
   isResidue: boolean = false
   isYearViewE : boolean = false
-  isQuarterlyViewE : boolean = true
-  isMonthlyViewE : boolean = false
+  isQuarterlyViewE : boolean = false
+  isMonthlyViewE : boolean = true
   isKWViewE : boolean = false
   isMWViewE : boolean = false
 
@@ -350,6 +350,8 @@ export class DashboardComponent implements OnInit {
     let dataToMonthlyView: number[] = [0,0,0,0,0,0,0,0,0,0,0,0]
     let dataToYearView: number[] = [0,0,0,0,0,0,0,0]
     let dataToQuarterView: number[] = [0,0,0,0]
+    this.myDatasets = []
+    this.chart.destroy()
 
     this.startPrimaryColor  = 19
 
@@ -518,41 +520,41 @@ export class DashboardComponent implements OnInit {
           currentDelegation = consumption.delegation
           currentEnergy = consumption.energyName
           if ((prevDelegation == "" || prevDelegation == currentDelegation) && (prevEnergy == "" || prevEnergy == currentEnergy)) {
-            dataToQuarterView[0] = consumption.jan * equivEnKg
-            dataToQuarterView[1] = consumption.feb * equivEnKg
-            dataToQuarterView[2] = consumption.mar * equivEnKg
-            dataToQuarterView[3] = consumption.apr * equivEnKg
-            dataToQuarterView[4] = consumption.may * equivEnKg
-            dataToQuarterView[5] = consumption.jun * equivEnKg
-            dataToQuarterView[6] = consumption.jul * equivEnKg
-            dataToQuarterView[7] = consumption.aug * equivEnKg
-            dataToQuarterView[8] = consumption.sep * equivEnKg
-            dataToQuarterView[9] = consumption.oct * equivEnKg
-            dataToQuarterView[10] = consumption.nov * equivEnKg
-            dataToQuarterView[11] = consumption.dec * equivEnKg
+            dataToMonthlyView[0] = consumption.jan * equivEnKg
+            dataToMonthlyView[1] = consumption.feb * equivEnKg
+            dataToMonthlyView[2] = consumption.mar * equivEnKg
+            dataToMonthlyView[3] = consumption.apr * equivEnKg
+            dataToMonthlyView[4] = consumption.may * equivEnKg
+            dataToMonthlyView[5] = consumption.jun * equivEnKg
+            dataToMonthlyView[6] = consumption.jul * equivEnKg
+            dataToMonthlyView[7] = consumption.aug * equivEnKg
+            dataToMonthlyView[8] = consumption.sep * equivEnKg
+            dataToMonthlyView[9] = consumption.oct * equivEnKg
+            dataToMonthlyView[10] = consumption.nov * equivEnKg
+            dataToMonthlyView[11] = consumption.dec * equivEnKg
           }
           else {
             this.myDatasets.push (
               {
               label: prevDelegation+" "+prevEnergy,
-              data: dataToQuarterView,
+              data: dataToMonthlyView,
               backgroundColor: this.primaryColors[this.startPrimaryColor--],
               stack: prevDelegation,
               },
             )
-            dataToQuarterView = [0,0,0,0,0,0,0,0,0,0,0,0]
-            dataToQuarterView[0] = consumption.jan * equivEnKg
-            dataToQuarterView[1] = consumption.feb * equivEnKg
-            dataToQuarterView[2] = consumption.mar * equivEnKg
-            dataToQuarterView[3] = consumption.apr * equivEnKg
-            dataToQuarterView[4] = consumption.may * equivEnKg
-            dataToQuarterView[5] = consumption.jun * equivEnKg
-            dataToQuarterView[6] = consumption.jul * equivEnKg
-            dataToQuarterView[7] = consumption.aug * equivEnKg
-            dataToQuarterView[8] = consumption.sep * equivEnKg
-            dataToQuarterView[9] = consumption.oct * equivEnKg
-            dataToQuarterView[10] = consumption.nov * equivEnKg
-            dataToQuarterView[11] = consumption.dec * equivEnKg
+            dataToMonthlyView = [0,0,0,0,0,0,0,0,0,0,0,0]
+            dataToMonthlyView[0] = consumption.jan * equivEnKg
+            dataToMonthlyView[1] = consumption.feb * equivEnKg
+            dataToMonthlyView[2] = consumption.mar * equivEnKg
+            dataToMonthlyView[3] = consumption.apr * equivEnKg
+            dataToMonthlyView[4] = consumption.may * equivEnKg
+            dataToMonthlyView[5] = consumption.jun * equivEnKg
+            dataToMonthlyView[6] = consumption.jul * equivEnKg
+            dataToMonthlyView[7] = consumption.aug * equivEnKg
+            dataToMonthlyView[8] = consumption.sep * equivEnKg
+            dataToMonthlyView[9] = consumption.oct * equivEnKg
+            dataToMonthlyView[10] = consumption.nov * equivEnKg
+            dataToMonthlyView[11] = consumption.dec * equivEnKg
           }
           prevDelegation = currentDelegation
           prevEnergy = currentEnergy
@@ -562,7 +564,7 @@ export class DashboardComponent implements OnInit {
         this.myDatasets.push (
           {
           label: prevDelegation+" "+prevEnergy,
-          data: dataToQuarterView,
+          data: dataToMonthlyView,
           backgroundColor: this.primaryColors[this.startPrimaryColor--],
           stack: prevDelegation,
           },

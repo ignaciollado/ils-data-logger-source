@@ -1,7 +1,7 @@
 [
   {
     "regulation": ["MA_1"],
-    "type": "none",
+    "type": "Aclaración",
     "questionTextES": "Ley 26/2007 de 23 de octubre, de Responsabilidad Medioambiental.<p><strong>  Art 5 (ley 11/2014) Obligación de los operadores de actividades incluidas en el anexo III de constituir una garantía financiera obligatoria (Modificación del art. 24 de la Ley 26/2007, de Responsabilidad Medioambiental). Los OPERADORES de las actividades incluidas en el anexo III, sin perjuicio de las exenciones previstas en el artículo 28, deberán disponer de una GARANTÍA FINANCIERA que les permita hacer frente a la responsabilidad medioambiental inherente a la actividad que pretendan desarrollar. Para el RESTO DE OPERADORES, la constitución de la garantía financiera tendrá carácter voluntario</strong></p>",
     "questionTextCA": "",
     "questionDoc1" : "",
@@ -22,105 +22,74 @@
     "questionTextCA": "",
     "questionDoc1" : "MA_15_ANEXO1",
     "questionDoc2" : "",
-    "questionTooltipES": "Es de aplicación para <ul><li>Operadores sujetos al ámbito de aplicación del Texto refundido de la Ley de prevención y control integrados de la contaminación aprobado por el Real Decreto Legislativo 1/2016, de 16 de diciembre (IPPC).</li><li>Operadores sujetos al ámbito de aplicación del Real Decreto 840/2015, de 16 de julio, por el que se aprueban medidas de control de los riesgos inherentes a los accidentes graves en los que intervengan sustancias peligrosas (SEVESO).</li><li>Operadores dedicados a la gestión de residuos de las industrias extractivas, cuando se trate de instalaciones clasificadas como de categoría A, según lo dispuesto en el Real Decreto 975/2009, de 12 de junio.</li><li>El resto de operadores del anexo III, siempre y cuando no estén incluidos en el ámbito de aplicación de la normativa citada, no están obligados a la constitución de la garantía financiera por responsabilidad medioambiental, sin perjuicio de que el operador decida su constitución de manera voluntaria.</li><li>Se adjunta el anexo 1 del rden ARM/1783/2011, de 22 de junio, por la que se establece el orden de prioridad y el calendario para la aprobación de las órdenes ministeriales a partir de las cuales será exigible la constitución de la garantía financiera obligatoria, donde pueden verse que actividades están obligadas.</li><li>Importante resaltar con independencia de tener la obligación o no de constituir la garantía financiera, se recuerda que todos los operados de las actividades del anexo III de la Ley 26/2007, de 23 de octubre, están sujetos a un régimen de responsabilidad objetivo e ilimitado. De este modo, esos operadores, si son responsables de ocasionar una amenaza inminente de daño o daño medioambiental, deben adoptar las medidas necesarias de prevención, evitación y/o reparación que sean necesarias, con independencia del coste de las mismas.                                                                                                                                            La CANTIDAD que, como mínimo, deberá quedar garantizada y que no limitará en sentido alguno las responsabilidades establecidas en la ley, SERÁ DETERMINADA POR EL OPERADOR según la intensidad y extensión del daño que la actividad del operador pueda causar, de conformidad con los criterios que se establezcan reglamentariamente.</li></ul>Los operadores deberán COMUNICAR a la autoridad competente la constitución de la garantía financiera a la que vengan obligados de acuerdo con el apartado primero de este artículo. La fijación de la cuantía de esta garantía partirá del análisis de riesgos medioambientales de la actividad, o de las tablas de baremos, que se realizarán de acuerdo a la metodología que reglamentariamente se establezca por el Gobierno. La autoridad competente establecerá los correspondientes sistemas de control que le permitan comprobar el cumplimiento de estas obligaciones.EN CASO AFIRMATIVO ¿Has hecho la Evaluacion de Riesgos ambientales para determinar la cuantia de a garantia?",
+    "questionTooltipES": "Es de aplicación para <ul><li>Operadores sujetos al ámbito de aplicación del Texto refundido de la Ley de prevención y control integrados de la contaminación aprobado por el Real Decreto Legislativo 1/2016, de 16 de diciembre (IPPC).</li><li>Operadores sujetos al ámbito de aplicación del Real Decreto 840/2015, de 16 de julio, por el que se aprueban medidas de control de los riesgos inherentes a los accidentes graves en los que intervengan sustancias peligrosas (SEVESO).</li><li>Operadores dedicados a la gestión de residuos de las industrias extractivas, cuando se trate de instalaciones clasificadas como de categoría A, según lo dispuesto en el Real Decreto 975/2009, de 12 de junio.</li><li>El resto de operadores del anexo III, siempre y cuando no estén incluidos en el ámbito de aplicación de la normativa citada, no están obligados a la constitución de la garantía financiera por responsabilidad medioambiental, sin perjuicio de que el operador decida su constitución de manera voluntaria.</li><li>Se adjunta el anexo 1 del rden ARM/1783/2011, de 22 de junio, por la que se establece el orden de prioridad y el calendario para la aprobación de las órdenes ministeriales a partir de las cuales será exigible la constitución de la garantía financiera obligatoria, donde pueden verse que actividades están obligadas.</li><li>Importante resaltar con independencia de tener la obligación o no de constituir la garantía financiera, se recuerda que todos los operados de las actividades del anexo III de la Ley 26/2007, de 23 de octubre, están sujetos a un régimen de responsabilidad objetivo e ilimitado. De este modo, esos operadores, si son responsables de ocasionar una amenaza inminente de daño o daño medioambiental, deben adoptar las medidas necesarias de prevención, evitación y/o reparación que sean necesarias, con independencia del coste de las mismas.                                                                                                                                            La CANTIDAD que, como mínimo, deberá quedar garantizada y que no limitará en sentido alguno las responsabilidades establecidas en la ley, SERÁ DETERMINADA POR EL OPERADOR según la intensidad y extensión del daño que la actividad del operador pueda causar, de conformidad con los criterios que se establezcan reglamentariamente.</li></ul>Los operadores deberán COMUNICAR a la autoridad competente la constitución de la garantía financiera a la que vengan obligados de acuerdo con el apartado primero de este artículo. La fijación de la cuantía de esta garantía partirá del análisis de riesgos medioambientales de la actividad, o de las tablas de baremos, que se realizarán de acuerdo a la metodología que reglamentariamente se establezca por el Gobierno. La autoridad competente establecerá los correspondientes sistemas de control que le permitan comprobar el cumplimiento de estas obligaciones.",
     "questionTooltipCA": "",
     "link1": "",
     "link2": "",
     "requirements": 
     [
     {"answerText": "Cumple",
-     "answerTooltip": "",
-     "conditionalQuestions": 
-     [
-     {
-     "type": "radio",
-     "conditionalES": "EN CASO AFIRMATIVO ¿Has hecho la Evaluacion de Riesgos ambientales para determinar la cuantia de a garantia? ",
-     "conditionalCA": "",
-     "conditionalDoc1" : "",
-     "conditionalDoc2" : "",
-     "conditionalTooltipES": "",
-     "conditionalTooltipCA": "",
-     "answers":
-     [
-            {"answerText": "Cumple",
-            "answerTooltip": "",
-            "regulation": [],
-            "answerdoc1": "",
-            "answerdoc2": ""},
-            {"answerText": "No cumple",
-            "answerTooltip": "",
-            "regulation": [""],
-            "answerdoc1": "",
-            "answerdoc2": ""},
-            {"answerText": "En proceso",
-            "answerTooltip": "",
-            "regulation": [""],
-            "answerdoc1": "",
-            "answerdoc2": ""}
-     ]
-     }
-     ]
+     "answerTooltip": ""
     },
     {"answerText": "No cumple",
-     "answerTooltip": "",
-     "conditionalQuestions": 
-     [
-     {
-     }
-     ]
+     "answerTooltip": ""
     },
     {"answerText": "En proceso",
-     "answerTooltip": "",
-     "conditionalQuestions": 
-     [
-     {
-     }
-     ]
+     "answerTooltip": ""
     }
     ]
   },
   {
     "regulation": ["MA_1"],
     "type": "radio",
-    "questionTextES": "¿Te encuentras exento de constituir Garantia financiera obligatoria? (por ej evaluación de riesgos entre 30.000 - 2.000.000 € con SGA acreditado y vigente)",
+    "questionTextES": "En caso de que te aplica la Responsabilidad Ambiental, ¿Has hecho la Evaluacion de Riesgos ambientales para determinar la cuantia de a garantia?",
     "questionTextCA": "",
     "questionDoc1" : "",
     "questionDoc2" : "",
-    "questionTooltipES": "Quedan EXENTOS de constituir garantía financiera obligatoria:<ol><li>Los operadores de aquellas actividades susceptibles de ocasionar daños cuya reparación se evalúe por una cantidad inferior a 300.000 euros.</li><li>Los operadores de actividades susceptibles de ocasionar daños cuya reparación se evalúe por una cantidad comprendida entre 300.000 y 2.000.000 de euros que acrediten mediante la presentación de certificados expedidos por organismos independientes, que están adheridos con carácter permanente y continuado, bien al sistema comunitario de gestión y auditoría medioambientales (EMAS), bien al sistema de gestión medioambiental UNE-EN ISO 14001 vigente.</li><li>La utilización de los productos fitosanitarios y biocidas a los que se refiere el apartado 8.c) y d) del anexo III, con fines agropecuarios y forestales, quedando por tanto exentos de efectuar la comunicación prevista en el artículo 24.3.</li><li>Los operadores de las actividades que se establezcan reglamentariamente atendiendo a su escaso potencial de generar daños medioambientales y bajo nivel de accidentalidad, quedando igualmente exentos de efectuar la comunicación prevista en el artículo 24.3 (art. 28).</li></ol>",
+    "questionTooltipES": "",
     "questionTooltipCA": "",
     "link1": "",
     "link2": "",
     "requirements": 
     [
     {"answerText": "Cumple",
-     "answerTooltip": "",
-     "conditionalQuestions": 
-     [
-     {
-     }
-     ]  
+     "answerTooltip": ""
     },
     {"answerText": "No cumple",
-     "answerTooltip": "",
-     "conditionalQuestions": 
-      [
-      {
-      }
-      ]
+     "answerTooltip": ""
     },
     {"answerText": "En proceso",
-     "answerTooltip": "",
-     "conditionalQuestions": 
-      [
-      {
-      }
-      ]
-    }  
+     "answerTooltip": ""
+    }
+    ]
+  },
+  {
+    "regulation": ["MA_1"],
+    "type": "radio",
+    "questionTextES": "¿Te encuentras exento de constituir Garantia financiera obligatoria? (por ej evaluación de riesgos entre 30.000 - 2.000.000 € con SGA acreditado y vigente)?",
+    "questionTextCA": "",
+    "questionDoc1" : "",
+    "questionDoc2" : "",
+    "questionTooltipES": "Quedan EXENTOS de constituir garantía financiera obligatoria: a) Los operadores de aquellas actividades susceptibles de ocasionar daños cuya reparación se evalúe por una cantidad inferior a 300.000 euros. b) Los operadores de actividades susceptibles de ocasionar daños cuya reparación se evalúe por una cantidad comprendida entre 300.000 y 2.000.000 de euros que acrediten mediante la presentación de certificados expedidos por organismos independientes, que están adheridos con carácter permanente y continuado, bien al sistema comunitario de gestión y auditoría medioambientales (EMAS), bien al sistema de gestión medioambiental UNE-EN ISO 14001 vigente. c) La utilización de los productos fitosanitarios y biocidas a los que se refiere el apartado 8.c) y d) del anexo III, con fines agropecuarios y forestales, quedando por tanto exentos de efectuar la comunicación prevista en el artículo 24.3. d) Los operadores de las actividades que se establezcan reglamentariamente atendiendo a su escaso potencial de generar daños medioambientales y bajo nivel de accidentalidad, quedando igualmente exentos de efectuar la comunicación prevista en el artículo 24.3 (art. 28).",
+    "questionTooltipCA": "",
+    "link1": "",
+    "link2": "",
+    "requirements": 
+    [
+    {"answerText": "Cumple",
+     "answerTooltip": ""
+    },
+    {"answerText": "No cumple",
+     "answerTooltip": ""
+    },
+    {"answerText": "En proceso",
+     "answerTooltip": ""
+    }
     ]
   },
   {
     "regulation": ["MA_4"],
-    "type": "none",
+    "type": "Aclaración",
     "questionTextES": "Real Decreto 508/2007 Por el que se regula el suministro de información sobre emisiones del Reglamento E-PRTR y de las autorizaciones ambientales integradas",
     "questionTextCA": "",
     "questionDoc1" : "",
@@ -131,7 +100,30 @@
     "link2": "https://www.boe.es/buscar/act.php?id=BOE-A-2007-8351&p=20170831&tn=1#cii",
     "requirements": 
     [
-    
+    ]
+  },
+  {
+    "regulation": ["MA_4"],
+    "type": "radio",
+    "questionTextES": "En caso de aplicación, ¿Su actividad se encuentra registrada en el PRTR?",
+    "questionTextCA": "",
+    "questionDoc1" : "",
+    "questionDoc2" : "",
+    "questionTooltipES": "ANEXO 1. (acceso enlace arriba) CAPITULO 1 Categorías de actividades industriales incluidas en el anejo 1 de Ley 16/2002, de 1 de julio En este anexo se describen las instalaciones o complejos y actividades industriales que deben cumplir con los requerimientos de información ambiental establecidos en el presente real decreto. Las instalaciones o complejos se entenderán incluidas en el ámbito de este real decreto cuando realicen una o varias de las actividades incluidas en este anexo, sea o no ésta su actividad principal, y siempre que se superen los umbrales descritos en cada categoría de actividad. En todo caso, si un mismo titular realiza diversas actividades de la misma categoría en la misma instalación en el mismo lugar de emplazamiento, se sumarán las capacidades de dichas actividades. Asimismo, se indican tanto los códigos de las categorías de actividades industriales especificados en la Ley 16/2002, de 1 de julio, como la codificación basada en el Reglamento (CE) nº 166/2006, del Parlamento Europeo y del Consejo, de 18 de enero, relativo al establecimiento de un registro europeo de emisiones y transferencias de contaminantes y por el que se modifican las Directivas 91/689/CEE y 96/61/CE del Consejo. Estos códigos deben ser notificados como identificativos de la actividad industrial. En los casos en los que una misma actividad esté identificada por las dos codificaciones, ambas deberán ser notificadas. APLICA PARA CUALQUIERA DE LAS ACTIVIDADES QUE ESTÁN EN LOS DOS CAPÍTULOS A PARTIR DE LOS UMBRAOLES DE CAPACIDAD. En caso de aplicacion la solicitud de registro se hace a traves de: https://areaprivada.prtr-es.es/",
+    "questionTooltipCA": "",
+    "link1": "https://www.boe.es/buscar/act.php?id=BOE-A-2007-8351&p=20170831&tn=1#ci",
+    "link2": "https://www.boe.es/buscar/act.php?id=BOE-A-2007-8351&p=20170831&tn=1#cii",
+    "requirements": 
+    [
+     {"answerText": "Cumple",
+      "answerTooltip": ""
+     },
+     {"answerText": "No cumple",
+      "answerTooltip": ""
+     },
+     {"answerText": "En proceso",
+      "answerTooltip": ""
+     }
     ]
   }  
 ]

@@ -223,7 +223,8 @@ export class DashboardComponent implements OnInit {
     this.loadObjectives(this.companyId)
     this.loadProductionBilling(this.companyId)
     this.loadProductionCNAE(this.companyId)
-    this.chartEnergyGenerate()
+    this.loadgraphDataEnergy(this.companyId)
+    //this.chartEnergyGenerate()
   }
 
   private loadEnergies(): void {
@@ -296,7 +297,7 @@ export class DashboardComponent implements OnInit {
                 equivEnKg = energy.pci * energy.convLKg
               }
             })
-            this.energiesItemCompanyTemp.push(consumption.energy)
+            //this.energiesItemCompanyTemp.push(consumption.energy)
           } 
           /*Cuando sea RESIDUO (aspecto 3) Filtro, sólo los del usuario, para el desplegable*/
           if (consumption.aspectId == "3") {
@@ -323,17 +324,103 @@ export class DashboardComponent implements OnInit {
                 "oct": (consumption.oct*equivEnKg),
                 "nov": (consumption.nov*equivEnKg),
                 "dec": (consumption.dec*equivEnKg),
-                'monthlyData': [consumption.jan, consumption.feb, consumption.mar, consumption.apr, consumption.may, consumption.jun, consumption.jul, consumption.aug, consumption.sep, consumption.oct, consumption.nov, consumption.dec],
-                'quarterlyData': [(consumption.jan + consumption.feb + consumption.mar), (consumption.apr + consumption.may + consumption.jun), (consumption.jul + consumption.aug + consumption.sep), (consumption.oct + consumption.nov + consumption.dec)],
-                'yearlyData': consumption.jan+consumption.feb+consumption.mar+consumption.apr+consumption.may+consumption.jun+consumption.jul+consumption.aug+consumption.sep+consumption.oct+consumption.nov+consumption.dec
+                'monthlyData': [consumption.jan*equivEnKg, consumption.feb*equivEnKg, consumption.mar*equivEnKg, consumption.apr*equivEnKg, consumption.may*equivEnKg, consumption.jun*equivEnKg, consumption.jul*equivEnKg, consumption.aug*equivEnKg, consumption.sep*equivEnKg, consumption.oct*equivEnKg, consumption.nov*equivEnKg, consumption.dec*equivEnKg],
+                'quarterlyData': [(consumption.jan*equivEnKg + consumption.feb*equivEnKg + consumption.mar*equivEnKg), (consumption.apr*equivEnKg + consumption.may*equivEnKg + consumption.jun*equivEnKg), (consumption.jul*equivEnKg + consumption.aug*equivEnKg + consumption.sep*equivEnKg), (consumption.oct*equivEnKg + consumption.nov*equivEnKg + consumption.dec*equivEnKg)],
+                'yearlyData': consumption.jan*equivEnKg+consumption.feb*equivEnKg+consumption.mar*equivEnKg+consumption.apr*equivEnKg+consumption.may*equivEnKg+consumption.jun*equivEnKg+consumption.jul*equivEnKg+consumption.aug*equivEnKg+consumption.sep*equivEnKg+consumption.oct*equivEnKg+consumption.nov*equivEnKg+consumption.dec*equivEnKg
             })
         }
         )
-        console.log("this.graphConsumption: ", this.graphConsumption)
+        /* console.log("this.graphConsumption: ", this.graphConsumption) */
         this.residuesItemCompany = this.residuesItem.filter((residueItem:any) => this.residuesItemCompanyTemp.includes(residueItem.chapterItemId))
-        this.energiesItemCompany = this.energies.filter((energyItem:any) => this.energiesItemCompanyTemp.includes(energyItem[0]))
+        //this.energiesItemCompany = this.energies.filter((energyItem:any) => this.energiesItemCompanyTemp.includes(energyItem[0]))
         this.chartEnergyGenerate()
       },
+      (error: HttpErrorResponse) => {
+        errorResponse = error.error;
+        this.sharedService.errorLog(errorResponse);
+      }
+    )
+  }
+
+  private loadgraphDataEnergy(companyId: string): void {
+    let errorResponse: any
+    let equivEnKg: number = 1
+    let prevDelegation: string = ""
+    let prevEnergy: string = ""
+    let currentDelegation: string
+    let currentEnergy: string
+    let dataToView: number[] = [0,0,0,0,0,0,0,0]
+
+    this.consumptionService.getEnergyByCompanyId(companyId)
+    .subscribe(
+      (consumptions: ConsumptionDTO[]) => {
+        this.consumptions = consumptions
+        console.log (this.consumptions)
+
+        this.consumptions.forEach((consumption: any) =>
+        {
+          currentDelegation = consumption.delegation
+          currentEnergy = consumption.energyName
+          console.log (prevDelegation,currentDelegation,prevEnergy,currentEnergy)
+          if ((prevDelegation == "" || prevDelegation == currentDelegation) && (prevEnergy == "" || prevEnergy == currentEnergy)) {
+            dataToView[(consumption.year-2019)] = consumption.totalYear
+            console.log ("dataToView: ", dataToView)
+          } 
+          else {
+            this.myDatasets.push (
+              {
+              label: prevDelegation+" "+prevEnergy,
+              data: dataToView,
+              backgroundColor: this.primaryColors[this.startPrimaryColor--],
+              stack: prevDelegation,
+              },
+            )
+            dataToView = [0,0,0,0,0,0,0,0]
+            dataToView[(consumption.year-2019)] = consumption.totalYear
+            console.log("dataToView-> ", dataToView)
+          }
+          prevDelegation = currentDelegation
+          prevEnergy = currentEnergy
+          currentDelegation = consumption.delegation
+          currentEnergy = consumption.energyName
+
+          /*La ENERGÍA (aspecto 1) la convierto a kWh */
+          this.energies.forEach((energy:EnergyDTO) => {
+            if (energy.energyId === consumption.energy) {
+                equivEnKg = energy.pci * energy.convLKg
+            }
+          })
+        })
+
+        this.startPrimaryColor  = 19
+        this.chart = new Chart("energyGraph", {
+          type: 'bar',
+          data: {
+          labels: ["2019","2020","2021","2022","2023","2024"],
+          datasets: this.myDatasets},
+          options: {
+            plugins: {
+              title: {
+                  display: true,
+                  text: this.aspectEnergy          
+                },
+            },
+            responsive: true,
+            interaction: {
+              intersect: true,
+            },
+            scales: {
+              x: {
+              
+              },
+              y: {
+      
+              }
+            }
+          }      
+        })
+            
+        },
       (error: HttpErrorResponse) => {
         errorResponse = error.error;
         this.sharedService.errorLog(errorResponse);
@@ -383,7 +470,9 @@ export class DashboardComponent implements OnInit {
     )
   }
 
-  chartEnergyGenerate() {
+  chartEnergyGenerate() {}
+
+/*   chartEnergyGenerate() {
     this.graphDataTemp = []
     this.graphData = []
     this.myDatasets = []
@@ -410,47 +499,53 @@ export class DashboardComponent implements OnInit {
         'yearlyData': item.jan+item.feb+item.mar+item.apr+item.may+item.jun+item.jul+item.aug+item.sep+item.oct+item.nov+item.dec
       })
     })
-
-    console.log ("this.graphData: ", this.graphData)
-    let dataFormatToView: number[]
-    let  legendFormatToView: string[]
+    let dataToView: number[] = []
+    let legendFormatToView: string[]
     let stackFormatToView: string
+    let prevYear: string = ""
+    let prevDelegation: string = ""
+    let prevEnergy: string = ""
+    let currentYear: string
+    let currentDelegation: string
+    let currentEnergy: string
 
     this.graphData.map(item => {
-      console.log ("item", item)
+      currentYear = item.year
+      currentDelegation = item.delegation
+      currentEnergy = item.dataType
+
       if (this.isYearViewE) {
-        dataFormatToView = [item.yearlyData]
+        if ((prevDelegation == "" || prevDelegation == currentDelegation) && (prevEnergy == "" || prevEnergy == currentEnergy)) {
+          dataToView.push(item.yearlyData)
+          prevYear = currentYear
+          prevDelegation = currentDelegation
+          prevEnergy = currentEnergy
+        } else {
+          dataToView = []
+        }
         legendFormatToView = this.graphQuarters
         stackFormatToView = item.year
         this.myDatasets.push(
         {
         label: item.delegation+" "+item.dataType,
-        data: dataFormatToView,
+        data: dataToView,
         backgroundColor: this.primaryColors[this.startPrimaryColor--],
         stack: item.delegation,
         },
-      )
+        )
       }
+
       if (this.isQuarterlyViewE) {
-        dataFormatToView = item.quarterlyData
+        dataToView = item.quarterlyData
         legendFormatToView = this.graphQuarters
         stackFormatToView = "Q1, Q2, Q3, Q4"
       }
       if (this.isMonthlyViewE) {
-        dataFormatToView = item.monthlyData
+        dataToView = item.monthlyData
         legendFormatToView = this.graphMonths
         stackFormatToView = item.dataType
       }
-     /*  this.myDatasets.push(
-          {
-           label: item.year+" "+item.delegation+" "+item.dataType,
-           data: dataFormatToView,
-           backgroundColor: this.primaryColors[this.startPrimaryColor--],
-           stack: stackFormatToView,
-          },
-      ) */
     })
-    console.log ("this.myDatasets", this.myDatasets)
 
     this.startPrimaryColor  = 19
     this.chart = new Chart("energyGraph", {
@@ -460,7 +555,7 @@ export class DashboardComponent implements OnInit {
          datasets: [
           {
             "label": "Can Valero Biomasa",
-            "data": [707.94,707.94,707.94,707.94,707.94, 0], /* total año de la delegación y energía */
+            "data": [707.94,707.94,707.94,707.94,707.94,0],
             "backgroundColor": "#365446",
             "stack": "Can Valero"
           },
@@ -478,7 +573,7 @@ export class DashboardComponent implements OnInit {
           },
           {
             "label": "Son Bugadelles Biomasa",
-            "data": [707.94,707.94,707.94,707.94,707.94, 0],
+            "data": [707.94,707.94,707.94,707.94,707.94,0],
             "backgroundColor": "#365446",
             "stack": "Son Bugadelles"
           },
@@ -496,13 +591,13 @@ export class DashboardComponent implements OnInit {
           },
           {
             "label": "Son Castelló Biomasa",
-            "data": [707.94,707.94,707.94,707.94,707.94, 0],
+            "data": [707.94,707.94,707.94,707.94,707.94,0],
             "backgroundColor": "#365446",
             "stack": "Son Castelló"
           },
           {
             "label": "Son Castelló Electricidad",
-            "data": [210, 210, 210, 210, 210, 0],
+            "data": [210, 210, 210, 210, 210,0],
             "backgroundColor": "#1A237E",
             "stack": "Son Castelló"
           },
@@ -536,7 +631,7 @@ export class DashboardComponent implements OnInit {
       }      
     })
 
-  }
+  } */
 
   chartResidueGenerate() {
     this.graphDataTemp = []

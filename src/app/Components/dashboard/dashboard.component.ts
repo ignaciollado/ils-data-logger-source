@@ -280,8 +280,10 @@ export class DashboardComponent implements OnInit {
     let convertkWhToMWh = 1
     let prevDelegation: string = ""
     let prevEnergy: string = ""
+    let prevYear: string = ""
     let currentDelegation: string
     let currentEnergy: string
+    let currentYear: string
     let dataToMonthlyView: number[] = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
     let dataToQuarterView: number[] = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
     let dataToYearView: number[] = [0,0,0,0,0,0] /* seis años del 2019 al 2024 */
@@ -551,7 +553,8 @@ export class DashboardComponent implements OnInit {
           })
           currentDelegation = consumption.delegation
           currentEnergy = consumption.energyName
-          if ((prevDelegation == "" || prevDelegation == currentDelegation) && (prevEnergy == "" || prevEnergy == currentEnergy)) {
+          prevYear = consumption.year
+          if ((prevDelegation == "" || prevDelegation == currentDelegation) && (prevEnergy == "" || prevEnergy == currentEnergy) && (prevYear == "" || prevYear == currentYear)) {
               if(consumption.year == "2019"){
                 dataToMonthlyView[0] = consumption.jan * equivEnkWh/convertkWhToMWh
                 dataToMonthlyView[1] = consumption.feb * equivEnkWh/convertkWhToMWh
@@ -647,7 +650,6 @@ export class DashboardComponent implements OnInit {
               },
             )
             dataToMonthlyView = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
-            /* if (this.isMWViewE) { */
               if(consumption.year == "2019"){
                 dataToMonthlyView[0] = consumption.jan * equivEnkWh/convertkWhToMWh
                 dataToMonthlyView[1] = consumption.feb * equivEnkWh/convertkWhToMWh
@@ -735,8 +737,10 @@ export class DashboardComponent implements OnInit {
           }
           prevDelegation = currentDelegation
           prevEnergy = currentEnergy
+          prevYear = currentYear
           currentDelegation = consumption.delegation
           currentEnergy = consumption.energyName
+          prevYear = consumption.year
         })
         this.myDatasets.push (
           {

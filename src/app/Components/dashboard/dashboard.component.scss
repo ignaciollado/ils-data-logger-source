@@ -66,6 +66,7 @@ canvas{
 }
 .item7 {
   grid-area: h;
+  padding-left: .5rem;
 }
 .item8 {
   grid-area: i;
@@ -92,13 +93,10 @@ canvas{
   .fields-container{
       grid-template-columns: auto;
       grid-template-areas:
-        "a"
-        "b"
-        "c"
-        "d"
-        "e"
-        "f"
-        "g";
+        "a d h"
+        "b e g"
+        "c e f"
+        "k i j";
   }
   canvas{
     max-width: 100%;

@@ -45,6 +45,8 @@ export class DashboardComponent implements OnInit {
   yearWiewGraphE: UntypedFormControl
   quarterlyViewGraphE: UntypedFormControl
   monthlyViewGraphE: UntypedFormControl
+  kWView: UntypedFormControl
+  MWView: UntypedFormControl
   energyGraphForm: UntypedFormGroup
   waterGraphForm: UntypedFormGroup
   residueGraphForm: UntypedFormGroup
@@ -109,9 +111,9 @@ export class DashboardComponent implements OnInit {
   isYearViewE : boolean = false
   isQuarterlyViewE : boolean = false
   isMonthlyViewE : boolean = true
-  isKWViewE : boolean = false
+  iskWViewE : boolean = true
   isMWViewE : boolean = false
-
+ 
   @Input() searching = false;
 
   constructor(
@@ -195,6 +197,8 @@ export class DashboardComponent implements OnInit {
     this.quarterlyViewGraphE = new UntypedFormControl()
     this.yearWiewGraphE = new UntypedFormControl()
     this.monthlyViewGraphE = new UntypedFormControl()
+    this.kWView = new UntypedFormControl()
+    this.MWView = new UntypedFormControl()
     this.energy = new UntypedFormControl('')
     this.residue = new UntypedFormControl('')
 
@@ -203,6 +207,8 @@ export class DashboardComponent implements OnInit {
       yearEnergy: this.yearEnergy,
       ratioBillingGraphE: this.ratioBillingGraphE,
       ratioCNAEgGraphE: this.ratioCNAEgGraphE,
+      kWView: this.kWView,
+      MWView: this.MWView, 
       energy: this.energy,
     });
   }
@@ -355,7 +361,7 @@ export class DashboardComponent implements OnInit {
 
     this.startPrimaryColor  = 19
 
-    console.log(this.isYearViewE, this.isQuarterlyViewE, this.isMonthlyViewE)
+    console.log(this.isYearViewE, this.isQuarterlyViewE, this.isMonthlyViewE, this.iskWViewE, this.isMWViewE)
 
     if (this.isYearViewE) {
       this.consumptionService.getYearlyEnergyByCompanyId(this.companyId)
@@ -987,6 +993,7 @@ export class DashboardComponent implements OnInit {
     }
     this.isQuarterlyViewE = false
     this.isMonthlyViewE = false
+    this.loadgraphDataEnergy()
   }
   chartQuarterlyViewE(){
     if (this.chart) {
@@ -994,6 +1001,7 @@ export class DashboardComponent implements OnInit {
     }
     this.isYearViewE = false
     this.isMonthlyViewE = false
+    this.loadgraphDataEnergy()
   }
   chartmonthlyViewE() {
     if (this.chart) {
@@ -1001,7 +1009,22 @@ export class DashboardComponent implements OnInit {
     }
     this.isYearViewE = false
     this.isQuarterlyViewE = false
+    this.loadgraphDataEnergy()
   }
+  chartkWViewE() {
+    if (this.chart) {
+      this.chart.destroy()
+    }
+    this.isMWViewE = false
+    this.loadgraphDataEnergy()
+  }
+  chartMWViewE() {
+    if (this.chart) {
+      this.chart.destroy()
+    }
+    this.iskWViewE = false
+    this.loadgraphDataEnergy()
+  }    
 
   chartRatioCNAE() {
     if (this.chart) {

@@ -1,6 +1,6 @@
 <div class="container-form">
   <h2>{{ 'sustainabilityIndicatorsCharts' | translate }}</h2>
-  <div class='filtroGraficas'>
+  <div class='filtro-graficas'>
     <form
       *ngIf="energyGraphForm"
       [formGroup]="energyGraphForm"
@@ -15,19 +15,6 @@
             </mat-option>
           </mat-select>
           <mat-error *ngIf="delegation.hasError('required')">{{'delegation' | translate}} <strong>{{'isRequired' | translate}}</strong></mat-error>
-        </mat-form-field>
-
-        <mat-form-field [style.width.px]=220 class="item1">
-          <mat-label>{{'year' | translate}}</mat-label>
-          <mat-select [formControl]="yearEnergy" (selectionChange)="changSelectOption($event)">
-            <mat-option value="2019">2019</mat-option>
-            <mat-option value="2020">2020</mat-option>
-            <mat-option value="2021">2021</mat-option>
-            <mat-option value="2022">2022</mat-option>
-            <mat-option value="2023">2023</mat-option>
-            <mat-option value="2024">2024</mat-option>
-            <mat-option value="2025">2025</mat-option>
-          </mat-select>
         </mat-form-field>
 
         <mat-form-field [style.width.px]=220 class="item2">
@@ -61,7 +48,7 @@
   <canvas id="energyGraph" aria-label= "Energy graph" role="chart"
     (Click)="onChartClick($event)">{{ chart }}</canvas>
 
-  <div class='filtroGraficas'>
+  <div class='filtro-graficas'>
     <form
       *ngIf="waterGraphForm"
       [formGroup]="waterGraphForm"
@@ -77,16 +64,6 @@
           </mat-select>
           <mat-error *ngIf="delegation.hasError('required')">{{'delegation' | translate}} <strong>{{'isRequired' | translate}}</strong></mat-error>
         </mat-form-field>
-
-<!--         <mat-form-field [style.width.px]=220 class="item2">
-          <mat-label>{{'aspect' | translate}}</mat-label>
-          <mat-select [formControl]="aspect" (selectionChange)="changeAspect($event)">
-            <mat-option value="1">{{aspectEnergy}}</mat-option>
-            <mat-option value="2">{{aspectWater}}</mat-option>
-            <mat-option value="3">{{aspectResidue}}</mat-option>
-            <mat-option value="5">{{aspectEmissions}}</mat-option>
-          </mat-select>
-        </mat-form-field> -->
 
         <mat-form-field [style.width.px]=220 *ngIf="isEnergy" class="item3">
           <mat-label>{{'energies' | translate}}</mat-label>
@@ -135,7 +112,7 @@
     (Click)="onChartClick($event)">{{ chart }}</canvas>
   </div>
 
-  <div class='filtroGraficas'>
+  <div class='filtro-graficas'>
     <form *ngIf="residueGraphForm"
       [formGroup]="residueGraphForm"
       (ngSubmit)="loadgraphDataEnergy()">
@@ -196,7 +173,7 @@
   <canvas id="residueGraph" aria-label= "Residue graph" role="chart"
   (Click)="onChartClick($event)">{{ chart }}</canvas>
 
-  <div class='filtroGraficas'>
+  <div class='filtro-graficas'>
     <form
       *ngIf="emissionGraphForm"
       [formGroup]="emissionGraphForm"

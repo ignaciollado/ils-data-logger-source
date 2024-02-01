@@ -14,7 +14,7 @@ $sql = "SELECT ils_company_delegation.name as delegation, ils_energy.nameES as e
         LEFT JOIN ils_energy ON ils_consumption.energyId=ils_energy.energyId 
         LEFT JOIN ils_company_delegation ON ils_consumption.companyDelegationId=ils_company_delegation.companyDelegationId
 
-        WHERE ils_consumption.aspectId = 1 AND ils_consumption.companyId = ".$companyId."  
+        WHERE ils_consumption.aspectId = 1 AND ils_consumption.companyId = ".$companyId."
         ORDER by ils_consumption.energyId, Year, ils_consumption.companyDelegationId"; 
 
 $result = mysqli_query($conn, $sql);

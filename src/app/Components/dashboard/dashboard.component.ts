@@ -165,25 +165,15 @@ export class DashboardComponent implements OnInit {
       ]
     this.companyId = this.jwtHelper.decodeToken().id_ils;
     this.graphMonths = [ '01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12' ]
-    this.graphQuarters = [ 'Q1', 'Q2', 'Q3', 'Q4' ]
+    this.graphQuarters = [ 'T1', 'T2', 'T3', 'T4' ]
     this.graphYears = [ '2019', '2020', '2021', '2022', '2023', '2024', '2025' ]
 
-
-    this.aspectEnergy = "Energy (kWh)"
-    this.aspectWater = "Water (L)"
-    this.aspectResidue = "Residue (kg)"
-    this.aspectEmissions = "Emissions (CO2e T)"
-
-     if (localStorage.getItem('preferredLang') === 'cat') {
-      //this.graphMonths = [ 'Gener', 'Febrer', 'Març', 'April', 'Maig', 'Juny', 'Juliol', 'Agost', 'Setembre', 'Octubre', 'Novembre', 'Desembre' ]
-      this.graphQuarters = [ 'T1', 'T2', 'T3', 'T4' ]
+    if (localStorage.getItem('preferredLang') === 'cat') {
       this.aspectEnergy = "Energia (kWh)"
       this.aspectWater = "Aigua (L)"
       this.aspectResidue = "Residu (kg)"
       this.aspectEmissions = "Emissions (CO2e en T)"
     } else if (localStorage.getItem('preferredLang') === 'cas') {
-      //this.graphMonths = [ 'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Setiembre', 'Octubre', 'Noviembre', 'Diciembre' ]
-      this.graphQuarters = [ 'T1', 'T2', 'T3', 'T4' ]
       this.aspectEnergy = "Energía (kWh)"
       this.aspectWater = "Agua (L)"
       this.aspectResidue = "Residuo (kg)"
@@ -358,10 +348,7 @@ export class DashboardComponent implements OnInit {
     let dataToQuarterView: number[] = [0,0,0,0]
     this.myDatasets = []
     this.chart.destroy()
-
-    this.startPrimaryColor  = 19
-
-    console.log(this.isYearViewE, this.isQuarterlyViewE, this.isMonthlyViewE, this.iskWViewE, this.isMWViewE)
+    this.startPrimaryColor = 19
 
     if (this.isYearViewE) {
       this.consumptionService.getYearlyEnergyByCompanyId(this.companyId)
@@ -379,7 +366,11 @@ export class DashboardComponent implements OnInit {
           currentDelegation = consumption.delegation
           currentEnergy = consumption.energyName
           if ((prevDelegation == "" || prevDelegation == currentDelegation) && (prevEnergy == "" || prevEnergy == currentEnergy)) {
-            dataToYearView[(consumption.year-2019)] = consumption.totalYear * equivEnKg
+            if (this.isMWViewE) {
+              dataToYearView[(consumption.year-2019)] = consumption.totalYear * equivEnKg/1000
+            } else {
+              dataToYearView[(consumption.year-2019)] = consumption.totalYear * equivEnKg
+            }
           }
           else {
             this.myDatasets.push (
@@ -391,7 +382,11 @@ export class DashboardComponent implements OnInit {
               },
             )
             dataToYearView = [0,0,0,0,0,0,0,0]
-            dataToYearView[(consumption.year-2019)] = consumption.totalYear * equivEnKg
+            if (this.isMWViewE) {
+              dataToYearView[(consumption.year-2019)] = consumption.totalYear * equivEnKg/1000
+            } else {
+              dataToYearView[(consumption.year-2019)] = consumption.totalYear * equivEnKg
+            }
           }
           prevDelegation = currentDelegation
           prevEnergy = currentEnergy
@@ -406,17 +401,27 @@ export class DashboardComponent implements OnInit {
           stack: prevDelegation,
           },
         )
+        console.log("sin filtrar: ", this.myDatasets)
+        if(this.delegation.value) {
+          this.myDatasets = this.myDatasets.filter((item:any)=>item.stack == this.delegation.value)
+        }
+        console.log("filtrado delegación: ",this.myDatasets)
+        if(this.energy.value) {
+          this.myDatasets = this.myDatasets.filter((item:any)=>item.label.slice(-this.energy.value.length) == this.energy.value)
+        }
+        console.log("filtrado energía: ",this.myDatasets)
+
         this.chart = new Chart("energyGraph", {
           type: 'bar',
           data: {
           labels: this.graphYears,
           datasets: this.myDatasets},
-          options: {
+          options: 
+          {
+            events: ['click'],
             plugins: {
-              title: {
-                  display: true,
-                  text: this.aspectEnergy
-                },
+              legend: {display: true, position: 'bottom', labels: { color: '#365446'}},
+              title: { display: true, text: this.aspectEnergy},
             },
             responsive: true,
             interaction: {
@@ -449,10 +454,17 @@ export class DashboardComponent implements OnInit {
           currentDelegation = consumption.delegation
           currentEnergy = consumption.energyName
           if ((prevDelegation == "" || prevDelegation == currentDelegation) && (prevEnergy == "" || prevEnergy == currentEnergy)) {
-            dataToQuarterView[0] = consumption.Q1 * equivEnKg
-            dataToQuarterView[1] = consumption.Q2 * equivEnKg
-            dataToQuarterView[2] = consumption.Q3 * equivEnKg
-            dataToQuarterView[3] = consumption.Q4 * equivEnKg
+            if (this.isMWViewE) {
+              dataToQuarterView[0] = consumption.Q1 * equivEnKg/1000
+              dataToQuarterView[1] = consumption.Q2 * equivEnKg/1000
+              dataToQuarterView[2] = consumption.Q3 * equivEnKg/1000
+              dataToQuarterView[3] = consumption.Q4 * equivEnKg/1000
+            } else {
+              dataToQuarterView[0] = consumption.Q1 * equivEnKg
+              dataToQuarterView[1] = consumption.Q2 * equivEnKg
+              dataToQuarterView[2] = consumption.Q3 * equivEnKg
+              dataToQuarterView[3] = consumption.Q4 * equivEnKg
+            }
           }
           else {
             this.myDatasets.push (
@@ -464,10 +476,17 @@ export class DashboardComponent implements OnInit {
               },
             )
             dataToQuarterView = [0,0,0,0]
-            dataToQuarterView[0] = consumption.Q1 * equivEnKg
-            dataToQuarterView[1] = consumption.Q2 * equivEnKg
-            dataToQuarterView[2] = consumption.Q3 * equivEnKg
-            dataToQuarterView[3] = consumption.Q4 * equivEnKg
+            if (this.isMWViewE) {
+              dataToQuarterView[0] = consumption.Q1 * equivEnKg/1000
+              dataToQuarterView[1] = consumption.Q2 * equivEnKg/1000
+              dataToQuarterView[2] = consumption.Q3 * equivEnKg/1000
+              dataToQuarterView[3] = consumption.Q4 * equivEnKg/1000
+            } else {
+              dataToQuarterView[0] = consumption.Q1 * equivEnKg
+              dataToQuarterView[1] = consumption.Q2 * equivEnKg
+              dataToQuarterView[2] = consumption.Q3 * equivEnKg
+              dataToQuarterView[3] = consumption.Q4 * equivEnKg
+            }
           }
           prevDelegation = currentDelegation
           prevEnergy = currentEnergy
@@ -488,12 +507,12 @@ export class DashboardComponent implements OnInit {
           data: {
           labels: this.graphQuarters,
           datasets: this.myDatasets},
-          options: {
+          options:
+          {
+            events: ['click'],
             plugins: {
-              title: {
-                  display: true,
-                  text: this.aspectEnergy
-                },
+              legend: {display: true, position: 'bottom', labels: { color: '#365446'}},
+              title: { display: true, text: this.aspectEnergy},
             },
             responsive: true,
             interaction: {
@@ -526,18 +545,33 @@ export class DashboardComponent implements OnInit {
           currentDelegation = consumption.delegation
           currentEnergy = consumption.energyName
           if ((prevDelegation == "" || prevDelegation == currentDelegation) && (prevEnergy == "" || prevEnergy == currentEnergy)) {
-            dataToMonthlyView[0] = consumption.jan * equivEnKg
-            dataToMonthlyView[1] = consumption.feb * equivEnKg
-            dataToMonthlyView[2] = consumption.mar * equivEnKg
-            dataToMonthlyView[3] = consumption.apr * equivEnKg
-            dataToMonthlyView[4] = consumption.may * equivEnKg
-            dataToMonthlyView[5] = consumption.jun * equivEnKg
-            dataToMonthlyView[6] = consumption.jul * equivEnKg
-            dataToMonthlyView[7] = consumption.aug * equivEnKg
-            dataToMonthlyView[8] = consumption.sep * equivEnKg
-            dataToMonthlyView[9] = consumption.oct * equivEnKg
-            dataToMonthlyView[10] = consumption.nov * equivEnKg
-            dataToMonthlyView[11] = consumption.dec * equivEnKg
+            if (this.isMWViewE) {
+              dataToMonthlyView[0] = consumption.jan * equivEnKg/1000
+              dataToMonthlyView[1] = consumption.feb * equivEnKg/1000
+              dataToMonthlyView[2] = consumption.mar * equivEnKg/1000
+              dataToMonthlyView[3] = consumption.apr * equivEnKg/1000
+              dataToMonthlyView[4] = consumption.may * equivEnKg/1000
+              dataToMonthlyView[5] = consumption.jun * equivEnKg/1000
+              dataToMonthlyView[6] = consumption.jul * equivEnKg/1000
+              dataToMonthlyView[7] = consumption.aug * equivEnKg/1000
+              dataToMonthlyView[8] = consumption.sep * equivEnKg/1000
+              dataToMonthlyView[9] = consumption.oct * equivEnKg/1000
+              dataToMonthlyView[10] = consumption.nov * equivEnKg/1000
+              dataToMonthlyView[11] = consumption.dec * equivEnKg/1000
+            } else {
+              dataToMonthlyView[0] = consumption.jan * equivEnKg
+              dataToMonthlyView[1] = consumption.feb * equivEnKg
+              dataToMonthlyView[2] = consumption.mar * equivEnKg
+              dataToMonthlyView[3] = consumption.apr * equivEnKg
+              dataToMonthlyView[4] = consumption.may * equivEnKg
+              dataToMonthlyView[5] = consumption.jun * equivEnKg
+              dataToMonthlyView[6] = consumption.jul * equivEnKg
+              dataToMonthlyView[7] = consumption.aug * equivEnKg
+              dataToMonthlyView[8] = consumption.sep * equivEnKg
+              dataToMonthlyView[9] = consumption.oct * equivEnKg
+              dataToMonthlyView[10] = consumption.nov * equivEnKg
+              dataToMonthlyView[11] = consumption.dec * equivEnKg
+            }
           }
           else {
             this.myDatasets.push (
@@ -549,18 +583,33 @@ export class DashboardComponent implements OnInit {
               },
             )
             dataToMonthlyView = [0,0,0,0,0,0,0,0,0,0,0,0]
-            dataToMonthlyView[0] = consumption.jan * equivEnKg
-            dataToMonthlyView[1] = consumption.feb * equivEnKg
-            dataToMonthlyView[2] = consumption.mar * equivEnKg
-            dataToMonthlyView[3] = consumption.apr * equivEnKg
-            dataToMonthlyView[4] = consumption.may * equivEnKg
-            dataToMonthlyView[5] = consumption.jun * equivEnKg
-            dataToMonthlyView[6] = consumption.jul * equivEnKg
-            dataToMonthlyView[7] = consumption.aug * equivEnKg
-            dataToMonthlyView[8] = consumption.sep * equivEnKg
-            dataToMonthlyView[9] = consumption.oct * equivEnKg
-            dataToMonthlyView[10] = consumption.nov * equivEnKg
-            dataToMonthlyView[11] = consumption.dec * equivEnKg
+            if (this.isMWViewE) {
+              dataToMonthlyView[0] = consumption.jan * equivEnKg/1000
+              dataToMonthlyView[1] = consumption.feb * equivEnKg/1000
+              dataToMonthlyView[2] = consumption.mar * equivEnKg/1000
+              dataToMonthlyView[3] = consumption.apr * equivEnKg/1000
+              dataToMonthlyView[4] = consumption.may * equivEnKg/1000
+              dataToMonthlyView[5] = consumption.jun * equivEnKg/1000
+              dataToMonthlyView[6] = consumption.jul * equivEnKg/1000
+              dataToMonthlyView[7] = consumption.aug * equivEnKg/1000
+              dataToMonthlyView[8] = consumption.sep * equivEnKg/1000
+              dataToMonthlyView[9] = consumption.oct * equivEnKg/1000
+              dataToMonthlyView[10] = consumption.nov * equivEnKg/1000
+              dataToMonthlyView[11] = consumption.dec * equivEnKg/1000
+            } else {
+              dataToMonthlyView[0] = consumption.jan * equivEnKg
+              dataToMonthlyView[1] = consumption.feb * equivEnKg
+              dataToMonthlyView[2] = consumption.mar * equivEnKg
+              dataToMonthlyView[3] = consumption.apr * equivEnKg
+              dataToMonthlyView[4] = consumption.may * equivEnKg
+              dataToMonthlyView[5] = consumption.jun * equivEnKg
+              dataToMonthlyView[6] = consumption.jul * equivEnKg
+              dataToMonthlyView[7] = consumption.aug * equivEnKg
+              dataToMonthlyView[8] = consumption.sep * equivEnKg
+              dataToMonthlyView[9] = consumption.oct * equivEnKg
+              dataToMonthlyView[10] = consumption.nov * equivEnKg
+              dataToMonthlyView[11] = consumption.dec * equivEnKg
+            }
           }
           prevDelegation = currentDelegation
           prevEnergy = currentEnergy
@@ -575,18 +624,17 @@ export class DashboardComponent implements OnInit {
           stack: prevDelegation,
           },
         )
-        console.log("monthly: ", this.myDatasets)
         this.chart = new Chart("energyGraph", {
           type: 'bar',
           data: {
           labels: this.graphMonths,
           datasets: this.myDatasets},
-          options: {
+          options:
+          {
+            events: ['click'],
             plugins: {
-              title: {
-                  display: true,
-                  text: this.aspectEnergy
-                },
+              legend: {display: true, position: 'bottom', labels: { color: '#365446'}},
+              title: { display: true, text: this.aspectEnergy},
             },
             responsive: true,
             interaction: {
@@ -645,167 +693,6 @@ export class DashboardComponent implements OnInit {
       }
     )
   }
-
-/*   chartEnergyGenerate() {
-    this.graphDataTemp = []
-    this.graphData = []
-    this.myDatasets = []
-    this.startPrimaryColor  = 19
-    this.chart.destroy()
-
-    this.graphDataTemp = this.graphConsumption.filter((item:any) => item.aspectId == '1')
-    if (this.delegation.value) {
-      this.graphDataTemp = this.graphDataTemp.filter((item:any) => item.delegation == this.delegation.value)
-    }
-    if (this.yearEnergy.value) {
-      this.graphDataTemp = this.graphDataTemp.filter((item:any) => item.year == this.yearEnergy.value)
-    }
-    if (this.energy.value) {
-      this.graphDataTemp = this.graphDataTemp.filter((item:any) => item.energyName == this.energy.value)
-    }
-    this.graphDataTemp.map((item:graphData) => {
-      this.graphData.push({
-        'delegation': item.delegation,
-        'dataType': item.energyName,
-        'year': item.year,
-        'monthlyData': [item.jan, item.feb, item.mar, item.apr, item.may, item.jun, item.jul, item.aug, item.sep, item.oct, item.nov, item.dec],
-        'quarterlyData': [(item.jan + item.feb + item.mar),(item.apr + item.may + item.jun),(item.jul + item.aug + item.sep), (item.oct + item.nov + item.dec)],
-        'yearlyData': item.jan+item.feb+item.mar+item.apr+item.may+item.jun+item.jul+item.aug+item.sep+item.oct+item.nov+item.dec
-      })
-    })
-    let dataToView: number[] = []
-    let legendFormatToView: string[]
-    let stackFormatToView: string
-    let prevYear: string = ""
-    let prevDelegation: string = ""
-    let prevEnergy: string = ""
-    let currentYear: string
-    let currentDelegation: string
-    let currentEnergy: string
-
-    this.graphData.map(item => {
-      currentYear = item.year
-      currentDelegation = item.delegation
-      currentEnergy = item.dataType
-
-      if (this.isYearViewE) {
-        if ((prevDelegation == "" || prevDelegation == currentDelegation) && (prevEnergy == "" || prevEnergy == currentEnergy)) {
-          dataToView.push(item.yearlyData)
-          prevYear = currentYear
-          prevDelegation = currentDelegation
-          prevEnergy = currentEnergy
-        } else {
-          dataToView = []
-        }
-        legendFormatToView = this.graphQuarters
-        stackFormatToView = item.year
-        this.myDatasets.push(
-        {
-        label: item.delegation+" "+item.dataType,
-        data: dataToView,
-        backgroundColor: this.primaryColors[this.startPrimaryColor--],
-        stack: item.delegation,
-        },
-        )
-      }
-
-      if (this.isQuarterlyViewE) {
-        dataToView = item.quarterlyData
-        legendFormatToView = this.graphQuarters
-        stackFormatToView = "Q1, Q2, Q3, Q4"
-      }
-      if (this.isMonthlyViewE) {
-        dataToView = item.monthlyData
-        legendFormatToView = this.graphMonths
-        stackFormatToView = item.dataType
-      }
-    })
-
-    this.startPrimaryColor  = 19
-    this.chart = new Chart("energyGraph", {
-      type: 'bar',
-      data: {
-         labels: ["2019","2020","2021","2022","2023","2024"],
-         datasets: [
-          {
-            "label": "Can Valero Biomasa",
-            "data": [707.94,707.94,707.94,707.94,707.94,0],
-            "backgroundColor": "#365446",
-            "stack": "Can Valero"
-          },
-          {
-            "label": "Can Valero Electricidad",
-            "data": [210, 210, 210, 210, 210, 0],
-            "backgroundColor": "#1A237E",
-            "stack": "Can Valero"
-          },
-          {
-            "label": "Can Valero Fuel",
-            "data": [2334,2334,2334,2334,2334,0],
-            "backgroundColor": "#d62828",
-            "stack": "Can Valero"
-          },
-          {
-            "label": "Son Bugadelles Biomasa",
-            "data": [707.94,707.94,707.94,707.94,707.94,0],
-            "backgroundColor": "#365446",
-            "stack": "Son Bugadelles"
-          },
-          {
-            "label": "Son Bugadelles Electricidad",
-            "data": [210, 210, 210, 210, 210, 0],
-            "backgroundColor": "#1A237E",
-            "stack": "Son Bugadelles"
-          },
-          {
-            "label": "Son Castelló Fuel",
-            "data": [2334,2334,2334,2334,2334,0],
-            "backgroundColor": "#d62828",
-            "stack": "Son Castelló"
-          },
-          {
-            "label": "Son Castelló Biomasa",
-            "data": [707.94,707.94,707.94,707.94,707.94,0],
-            "backgroundColor": "#365446",
-            "stack": "Son Castelló"
-          },
-          {
-            "label": "Son Castelló Electricidad",
-            "data": [210, 210, 210, 210, 210,0],
-            "backgroundColor": "#1A237E",
-            "stack": "Son Castelló"
-          },
-          {
-            "label": "Son Castelló Fuel",
-            "data": [2334,2334,2334,2334,2334,0],
-            "backgroundColor": "#d62828",
-            "stack": "Son Castelló"
-          },
-        ]
-      },
-      options: {
-        plugins: {
-          title: {
-              display: true,
-              text: this.aspectEnergy
-            },
-        },
-        responsive: true,
-        interaction: {
-          intersect: true,
-        },
-        scales: {
-          x: {
-
-          },
-          y: {
-
-          }
-        }
-      }
-    })
-
-  } */
 
   chartResidueGenerate() {
     this.graphDataTemp = []
@@ -1016,6 +903,12 @@ export class DashboardComponent implements OnInit {
       this.chart.destroy()
     }
     this.isMWViewE = false
+    if (localStorage.getItem('preferredLang') === 'cat') {
+      this.aspectEnergy = "Energia (kWh)"
+    }
+    else {
+      this.aspectEnergy = "Energía (kWh)"
+    }
     this.loadgraphDataEnergy()
   }
   chartMWViewE() {
@@ -1023,9 +916,14 @@ export class DashboardComponent implements OnInit {
       this.chart.destroy()
     }
     this.iskWViewE = false
+    if (localStorage.getItem('preferredLang') === 'cat') {
+      this.aspectEnergy = "Energia (MWh)"
+    }
+    else {
+      this.aspectEnergy = "Energía (MWh)"
+    }
     this.loadgraphDataEnergy()
   }    
-
   chartRatioCNAE() {
     if (this.chart) {
       this.chart.destroy()
@@ -1109,7 +1007,6 @@ export class DashboardComponent implements OnInit {
       }
     });
   }
-
   chartObjective() {
     let theLabel: string = ''
     this.startPrimaryColor  = 19
@@ -1153,17 +1050,14 @@ export class DashboardComponent implements OnInit {
 
     this.chart.update()
   }
-
   changSelectOption (e: any) {
     this.chart.destroy()
     this.myDatasets = []
   }
-
   selectionEnergyResidueChange(e: any) {
     this.chart.destroy()
     this.myDatasets = []
   }
-
   graphFormReset() {
     this.delegation.reset()
     this.yearEnergy.reset()
@@ -1174,11 +1068,9 @@ export class DashboardComponent implements OnInit {
     this.myDatasets = []
     this.chart.destroy()
   }
-
   onChartHover = ($event: any) => {
     window.console.log('onChartHover', $event);
   };
-
   onChartClick = ($event: any) => {
     window.console.log('onChartClick', $event);
   };

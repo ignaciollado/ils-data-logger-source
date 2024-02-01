@@ -78,8 +78,8 @@ canvas{
 }
 .item10 {
   grid-area: k;
-  align-self: center;
-  justify-self: center;
+  align-self: right;
+  justify-self: right;
 }
 
 @media only screen and (max-width: theme.$app-break-point) {

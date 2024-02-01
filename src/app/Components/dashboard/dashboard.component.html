@@ -38,8 +38,8 @@
         <mat-slide-toggle [(ngModel)]="isMWViewE" [formControl]="MWView" class="item9" (change)="chartMWViewE()">MWh</mat-slide-toggle>
 
         <mat-button-toggle-group name="buttonsform" aria-label="buttons form reset and submit" class="item10">
-          <button mat-raised-button color="accent" (click)="graphFormReset()">Reset</button>
-        <!--   <button mat-raised-button color="primary" type="submit" [disabled]="!energyGraphForm.valid">Graph</button> -->
+          <button mat-raised-button color="primary" (click)="graphFormReset()">Reset</button>
+        <!--   <button mat-raised-button color="accent" type="submit" [disabled]="!energyGraphForm.valid">Graph</button> -->
         </mat-button-toggle-group>
       </div>
     </form>

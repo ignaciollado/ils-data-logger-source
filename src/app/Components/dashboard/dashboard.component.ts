@@ -658,6 +658,7 @@ export class DashboardComponent implements OnInit {
       }
       )
     }
+    this.chartObjective(1)
   }
 
   private loadObjectives(companyId: string): void {
@@ -666,6 +667,7 @@ export class DashboardComponent implements OnInit {
     .subscribe(
       (objectives: ObjectiveDTO[]) => {
         this.objectives = objectives
+        console.log("objectives: ", this.objectives)
       },
       (error: HttpErrorResponse) => {
         errorResponse = error.error;
@@ -802,7 +804,8 @@ export class DashboardComponent implements OnInit {
       this.chart.destroy()
     }
     this.isRatioCNAEE = false
-    this.chartObjective()
+    this.chartObjective(1)
+    this.loadgraphDataEnergy()
     return;
     this.graphDataTemp = this.graphConsumption.filter((item:any) => item.aspectId == '1')
     this.graphDataTemp = this.graphDataTemp.filter((item:any) => item.delegation == this.delegation.value)
@@ -937,7 +940,8 @@ export class DashboardComponent implements OnInit {
       this.chart.destroy()
     }
     this.isRatioBillingE = false
-    this.chartObjective()
+    this.chartObjective(1)
+    this.loadgraphDataEnergy()
     return
     this.graphDataTemp = this.graphConsumption.filter((item:any) => item.aspectId == '1')
     this.graphDataTemp = this.graphDataTemp.filter((item:any) => item.delegation == this.delegation.value)
@@ -1015,11 +1019,13 @@ export class DashboardComponent implements OnInit {
       }
     });
   }
-  chartObjective() {
+  chartObjective(aspectId:number) {
     let theLabel: string = ''
     this.startPrimaryColor  = 19
-    this.graphObjectiveTemp = this.objectives.filter((item:any) => item.aspectId == '1')
-    this.graphObjectiveTemp = this.graphObjectiveTemp.filter((item:any) => item.delegation == this.delegation.value)
+    this.graphObjectiveTemp = this.objectives.filter((item:any) => item.aspectId == aspectId)
+    if(this.delegation.value){
+      this.graphObjectiveTemp = this.graphObjectiveTemp.filter((item:any) => item.delegation == this.delegation.value)
+    }
     if (this.isRatioBillingE) {
       this.graphObjectiveTemp = this.graphObjectiveTemp.filter((item:any)=> item.theRatioRype = "Billing")
       theLabel = "Billing objective"
@@ -1027,11 +1033,9 @@ export class DashboardComponent implements OnInit {
       this.graphObjectiveTemp = this.graphObjectiveTemp.filter((item:any) => item.theRatioRype != 'Billing')
       theLabel = "CNAE objective"
     }
-    if (this.yearEnergy.value) {
-      this.graphObjectiveTemp = this.graphObjectiveTemp.filter((item:any) => item.year == this.yearEnergy.value)
+    if (this.energy.value) {
+      this.graphObjectiveTemp = this.graphObjectiveTemp.filter((item:any) => item.year == this.energy.value)
     }
-
-    console.log ("Los objetivos ", this.graphObjectiveTemp, this.isRatioBillingE, this.isRatioCNAEE)
 
     this.graphObjectiveTemp.map((item:ObjectiveDTO) => {
       this.graphObjective.push({
@@ -1041,6 +1045,7 @@ export class DashboardComponent implements OnInit {
         'monthlyData': [item.jan, item.feb, item.mar, item.apr, item.may, item.jun, item.jul, item.aug, item.sep, item.oct, item.nov, item.dec]
       })
     })
+    console.log ("graphObjective ", this.graphObjective)
     this.graphObjective.map(item=> {
       this.myDatasets.push(
         {
@@ -1055,24 +1060,12 @@ export class DashboardComponent implements OnInit {
         },
       )
     })
-
+    console.log ("myDatasets ", this.myDatasets)
     this.chart.update()
-  }
-  changSelectOption (e: any) {
-    this.chart.destroy()
-    this.myDatasets = []
-  }
-  selectionEnergyResidueChange(e: any) {
-    this.chart.destroy()
-    this.myDatasets = []
   }
   graphFormReset() {
     this.delegation.reset()
-    this.yearEnergy.reset()
     this.energy.reset()
-    this.residue.reset()
-    this.isEnergy = false
-    this.isResidue = false
     this.myDatasets = []
     this.chart.destroy()
   }

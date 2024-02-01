@@ -778,7 +778,7 @@ export class DashboardComponent implements OnInit {
       }
       )
     }
-    /* this.chartObjective(1) */
+    this.chartObjective(1)
   }
 
   private loadObjectives(companyId: string): void {
@@ -787,7 +787,6 @@ export class DashboardComponent implements OnInit {
     .subscribe(
       (objectives: ObjectiveDTO[]) => {
         this.objectives = objectives
-        console.log("objectives: ", this.objectives)
       },
       (error: HttpErrorResponse) => {
         errorResponse = error.error;
@@ -1140,39 +1139,37 @@ export class DashboardComponent implements OnInit {
     });
   }
   chartObjective(aspectId:number) {
-    let theLabel: string = ''
+
     this.startPrimaryColor  = 19
     this.graphObjectiveTemp = this.objectives.filter((item:any) => item.aspectId == aspectId)
     if(this.delegation.value){
       this.graphObjectiveTemp = this.graphObjectiveTemp.filter((item:any) => item.delegation == this.delegation.value)
     }
-    if (this.isRatioBillingE) {
-      this.graphObjectiveTemp = this.graphObjectiveTemp.filter((item:any)=> item.theRatioRype = "Billing")
-      theLabel = "Billing objective"
-    } else {
-      this.graphObjectiveTemp = this.graphObjectiveTemp.filter((item:any) => item.theRatioRype != 'Billing')
-      theLabel = "CNAE objective"
-    }
     if (this.energy.value) {
       this.graphObjectiveTemp = this.graphObjectiveTemp.filter((item:any) => item.year == this.energy.value)
     }
 
-    this.graphObjectiveTemp.map((item:ObjectiveDTO) => {
+
+    this.graphObjectiveTemp.map((item:any) => {
+      this.energies.forEach((energy)=>{
+        if (energy.energyId == item.enviromentalDataName){
+          this.theDataType = energy.nameES
+        }
+      })
       this.graphObjective.push({
-        'delegation': item.companyDelegationId,
+        'delegation': item.delegation,
         'dataType': this.theDataType,
-        'year': item.year,
+        'year': item.theRatioType+" "+item.year,
         'monthlyData': [item.jan, item.feb, item.mar, item.apr, item.may, item.jun, item.jul, item.aug, item.sep, item.oct, item.nov, item.dec]
       })
     })
-    console.log ("graphObjective ", this.graphObjective)
     this.graphObjective.map(item=> {
       this.myDatasets.push(
         {
           type: 'line',
-          label: item.year+": "+theLabel,
+          label: "Objective: "+item.year+" "+item.delegation+" "+item.dataType,
           data: item.monthlyData,
-          stack: item.dataType,
+          stack: item.year+" "+item.delegation,
           backgroundColor: this.primaryColors[this.startPrimaryColor--],
           borderColor: '#000000',
           borderWidth: .5,
@@ -1183,6 +1180,7 @@ export class DashboardComponent implements OnInit {
     console.log ("myDatasets ", this.myDatasets)
     this.chart.update()
   }
+
   graphFormReset() {
     this.delegation.reset()
     this.energy.reset()

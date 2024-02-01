@@ -440,7 +440,6 @@ export class DashboardComponent implements OnInit {
       .subscribe(
       (consumptions: ConsumptionDTO[]) => {
         this.consumptions = consumptions
-        console.log ("this.consumptions", this.consumptions)
         this.consumptions.forEach((consumption: any) =>
         {
           /*La ENERGÍA la convierto a kWh */
@@ -652,7 +651,7 @@ export class DashboardComponent implements OnInit {
           stack: prevDelegation,
           },
         )
-        console.log(this.myDatasets)
+        console.log("this.myDatasets: ", this.myDatasets)
         if(this.yearEnergy.value) {
           this.myDatasets = this.myDatasets.filter((item:any)=>item.stack == this.yearEnergy.value)
         }

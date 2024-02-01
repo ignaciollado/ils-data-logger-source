@@ -1,33 +1,31 @@
 @use "../../../styles/themes/ils-theme" as theme;
 
-.filtro-graficas
-{
+.filtro-graficas {
   clear: both;
   padding-top: 0;
+  margin-bottom: 0;
 }
 
 form {
-  border-top: 1px dotted #AAAAAA;
-  border-bottom: 1px dotted #AAAAAA;
   background-color: #ECECEC;
   overflow: hidden;
-  padding: 25px 25px;
+  padding: 1rem;
+  margin-bottom: 0;
 }
 
-/* canvas{
-  max-width: 70%;
-  max-height: 35%;
-} */
+ canvas {
+  max-width: 90%;
+  max-height: 70%;
+}
 
 .fields-container{
-    display: grid;
-    grid-template-columns: repeat(6, auto);
-    grid-template-areas:
-      "a b c d e e"
-      "a b c f g h"
-      "a b c i j j"
-      "k k k i j j"
-      ;
+  display: grid;
+  grid-template-columns: repeat(5, auto);
+  grid-template-areas:
+    "a c d e e"
+    "a c f g h"
+    "a c i j j"
+    "k k i j j";
 }
 
 .small-data {
@@ -47,10 +45,12 @@ form {
   grid-area: c;
   align-self: center;
   justify-self: center;
+  padding-right: .5rem;
 }
 .item3 {
   grid-area: d;
   padding-left: .5rem;
+  border-left: 1px solid #365446;
 }
 .item4 {
   grid-area: e;
@@ -59,6 +59,7 @@ form {
 .item5 {
   grid-area: f;
   padding-left: .5rem;
+  border-left: 1px solid #365446;
 }
 .item6 {
   grid-area: g;
@@ -71,6 +72,7 @@ form {
 .item8 {
   grid-area: i;
   padding-left: .5rem;
+  border-left: 1px solid #365446;
 }
 .item9 {
   grid-area: j;
@@ -78,25 +80,25 @@ form {
 }
 .item10 {
   grid-area: k;
-  align-self: right;
-  justify-self: right;
+  align-self: left;
+  justify-self: left;
 }
 
 @media only screen and (max-width: theme.$app-break-point) {
   form  {
-      padding: 1rem 1rem;
+    padding: 1rem 1rem;
   }
   .graph-container {
-        grid-template-columns: 100%;
-        gap: .5rem;
+    grid-template-columns: 100%;
+    gap: .5rem;
   }
   .fields-container{
-      grid-template-columns: auto;
-      grid-template-areas:
-        "a d h"
-        "b e g"
-        "c e f"
-        "k i j";
+    grid-template-columns: auto;
+    grid-template-areas:
+      "a d h"
+      "b e g"
+      "c e f"
+      "k i j";
   }
   canvas{
     max-width: 100%;

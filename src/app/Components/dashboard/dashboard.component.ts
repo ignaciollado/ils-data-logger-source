@@ -108,9 +108,9 @@ export class DashboardComponent implements OnInit {
   isSearching: boolean = false
   isEnergy: boolean = false
   isResidue: boolean = false
-  isYearViewE : boolean = false
+  isYearViewE : boolean = true
   isQuarterlyViewE : boolean = false
-  isMonthlyViewE : boolean = true
+  isMonthlyViewE : boolean = false
   iskWViewE : boolean = true
   isMWViewE : boolean = false
 

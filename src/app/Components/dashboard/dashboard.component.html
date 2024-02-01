@@ -7,7 +7,7 @@
       (ngSubmit)="loadgraphDataEnergy()">
       <div class='fields-container'>
 
-       <!--  <mat-form-field [style.width.px]='220'>
+       <!--  <mat-form-field [style.width.px]='220' class="item1">
           <mat-label>{{'year' | translate}}</mat-label>
           <mat-select [formControl]="yearEnergy">
             <mat-option value="2019">2019</mat-option>
@@ -58,9 +58,10 @@
       </div>
     </form>
   </div>
-
   <canvas id="energyGraph" aria-label= "Energy graph" role="chart"
     (Click)="onChartClick($event)">{{ chart }}</canvas>
+    <div class="loader" *ngIf="!consumptions">No data loaded yet...</div>
+</div>
 
   <div class='filtro-graficas'>
     <form
@@ -122,9 +123,9 @@
 
       </div>
     </form>
-    <canvas id="waterGraph" aria-label= "Water graph" role="chart"
-    (Click)="onChartClick($event)">{{ chart }}</canvas>
   </div>
+  <canvas id="waterGraph" aria-label= "Water graph" role="chart"
+  (Click)="onChartClick($event)">{{ chart }}</canvas>
 
   <div class='filtro-graficas'>
     <form *ngIf="residueGraphForm"
@@ -246,9 +247,6 @@
 
       </div>
     </form>
-    <canvas id="emssionGraph" aria-label= "Emissions graph" role="chart"
-    (Click)="onChartClick($event)">{{ chart }}</canvas>
   </div>
-
-  <div class="loader" *ngIf="!consumptions">No data loaded yet...</div>
-</div>
+  <canvas id="emssionGraph" aria-label= "Emissions graph" role="chart"
+  (Click)="onChartClick($event)">{{ chart }}</canvas>

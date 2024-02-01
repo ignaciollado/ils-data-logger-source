@@ -401,15 +401,12 @@ export class DashboardComponent implements OnInit {
           stack: prevDelegation,
           },
         )
-        console.log("sin filtrar: ", this.myDatasets)
         if(this.delegation.value) {
           this.myDatasets = this.myDatasets.filter((item:any)=>item.stack == this.delegation.value)
         }
-        console.log("filtrado delegación: ",this.myDatasets)
         if(this.energy.value) {
           this.myDatasets = this.myDatasets.filter((item:any)=>item.label.slice(-this.energy.value.length) == this.energy.value)
         }
-        console.log("filtrado energía: ",this.myDatasets)
 
         this.chart = new Chart("energyGraph", {
           type: 'bar',
@@ -501,7 +498,12 @@ export class DashboardComponent implements OnInit {
           stack: prevDelegation,
           },
         )
-        console.log("quarterly: ", this.myDatasets)
+        if(this.delegation.value) {
+          this.myDatasets = this.myDatasets.filter((item:any)=>item.stack == this.delegation.value)
+        }
+        if(this.energy.value) {
+          this.myDatasets = this.myDatasets.filter((item:any)=>item.label.slice(-this.energy.value.length) == this.energy.value)
+        }
         this.chart = new Chart("energyGraph", {
           type: 'bar',
           data: {
@@ -624,6 +626,12 @@ export class DashboardComponent implements OnInit {
           stack: prevDelegation,
           },
         )
+        if(this.delegation.value) {
+          this.myDatasets = this.myDatasets.filter((item:any)=>item.stack == this.delegation.value)
+        }
+        if(this.energy.value) {
+          this.myDatasets = this.myDatasets.filter((item:any)=>item.label.slice(-this.energy.value.length) == this.energy.value)
+        }
         this.chart = new Chart("energyGraph", {
           type: 'bar',
           data: {

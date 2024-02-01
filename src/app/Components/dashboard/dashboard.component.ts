@@ -277,7 +277,7 @@ export class DashboardComponent implements OnInit {
 
   private loadconsumptions(companyId: string): void {
     let errorResponse: any
-    let equivEnKg: number = 1
+    let equivEnkWh: number = 1
 
     this.consumptionService.getAllConsumptionsByCompany(companyId)
     .subscribe(
@@ -289,7 +289,7 @@ export class DashboardComponent implements OnInit {
           if (consumption.aspectId == "1") {
             this.energies.forEach((energy:EnergyDTO) => {
               if (energy.energyId === consumption.energy) {
-                equivEnKg = energy.pci * energy.convLKg
+                equivEnkWh = energy.pci * energy.convLKg
               }
             })
             //this.energiesItemCompanyTemp.push(consumption.energy)
@@ -307,21 +307,21 @@ export class DashboardComponent implements OnInit {
                 "water": consumption.water,
                 "residueName": consumption.residueId,
                 "emission": consumption.aspectES,
-                "jan": (consumption.jan*equivEnKg),
-                "feb": (consumption.feb*equivEnKg),
-                "mar": (consumption.mar*equivEnKg),
-                "apr": (consumption.apr*equivEnKg),
-                "may": (consumption.may*equivEnKg),
-                "jun": (consumption.jun*equivEnKg),
-                "jul": (consumption.jul*equivEnKg),
-                "aug": (consumption.aug*equivEnKg),
-                "sep": (consumption.sep*equivEnKg),
-                "oct": (consumption.oct*equivEnKg),
-                "nov": (consumption.nov*equivEnKg),
-                "dec": (consumption.dec*equivEnKg),
-                'monthlyData': [consumption.jan*equivEnKg, consumption.feb*equivEnKg, consumption.mar*equivEnKg, consumption.apr*equivEnKg, consumption.may*equivEnKg, consumption.jun*equivEnKg, consumption.jul*equivEnKg, consumption.aug*equivEnKg, consumption.sep*equivEnKg, consumption.oct*equivEnKg, consumption.nov*equivEnKg, consumption.dec*equivEnKg],
-                'quarterlyData': [(consumption.jan*equivEnKg + consumption.feb*equivEnKg + consumption.mar*equivEnKg), (consumption.apr*equivEnKg + consumption.may*equivEnKg + consumption.jun*equivEnKg), (consumption.jul*equivEnKg + consumption.aug*equivEnKg + consumption.sep*equivEnKg), (consumption.oct*equivEnKg + consumption.nov*equivEnKg + consumption.dec*equivEnKg)],
-                'yearlyData': consumption.jan*equivEnKg+consumption.feb*equivEnKg+consumption.mar*equivEnKg+consumption.apr*equivEnKg+consumption.may*equivEnKg+consumption.jun*equivEnKg+consumption.jul*equivEnKg+consumption.aug*equivEnKg+consumption.sep*equivEnKg+consumption.oct*equivEnKg+consumption.nov*equivEnKg+consumption.dec*equivEnKg
+                "jan": (consumption.jan*equivEnkWh),
+                "feb": (consumption.feb*equivEnkWh),
+                "mar": (consumption.mar*equivEnkWh),
+                "apr": (consumption.apr*equivEnkWh),
+                "may": (consumption.may*equivEnkWh),
+                "jun": (consumption.jun*equivEnkWh),
+                "jul": (consumption.jul*equivEnkWh),
+                "aug": (consumption.aug*equivEnkWh),
+                "sep": (consumption.sep*equivEnkWh),
+                "oct": (consumption.oct*equivEnkWh),
+                "nov": (consumption.nov*equivEnkWh),
+                "dec": (consumption.dec*equivEnkWh),
+                'monthlyData': [consumption.jan*equivEnkWh, consumption.feb*equivEnkWh, consumption.mar*equivEnkWh, consumption.apr*equivEnkWh, consumption.may*equivEnkWh, consumption.jun*equivEnkWh, consumption.jul*equivEnkWh, consumption.aug*equivEnkWh, consumption.sep*equivEnkWh, consumption.oct*equivEnkWh, consumption.nov*equivEnkWh, consumption.dec*equivEnkWh],
+                'quarterlyData': [(consumption.jan*equivEnkWh + consumption.feb*equivEnkWh + consumption.mar*equivEnkWh), (consumption.apr*equivEnkWh + consumption.may*equivEnkWh + consumption.jun*equivEnkWh), (consumption.jul*equivEnkWh + consumption.aug*equivEnkWh + consumption.sep*equivEnkWh), (consumption.oct*equivEnkWh + consumption.nov*equivEnkWh + consumption.dec*equivEnkWh)],
+                'yearlyData': consumption.jan*equivEnkWh+consumption.feb*equivEnkWh+consumption.mar*equivEnkWh+consumption.apr*equivEnkWh+consumption.may*equivEnkWh+consumption.jun*equivEnkWh+consumption.jul*equivEnkWh+consumption.aug*equivEnkWh+consumption.sep*equivEnkWh+consumption.oct*equivEnkWh+consumption.nov*equivEnkWh+consumption.dec*equivEnkWh
             })
         }
         )
@@ -338,14 +338,14 @@ export class DashboardComponent implements OnInit {
 
   loadgraphDataEnergy(): void {
     let errorResponse: any
-    let equivEnKg: number = 1
+    let equivEnkWh: number = 1
     let prevDelegation: string = ""
     let prevEnergy: string = ""
     let currentDelegation: string
     let currentEnergy: string
     let dataToMonthlyView: number[] = [0,0,0,0,0,0,0,0,0,0,0,0]
     let dataToYearView: number[] = [0,0,0,0,0,0,0,0]
-    let dataToQuarterView: number[] = [0,0,0,0]
+    let dataToQuarterView: number[] = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
     this.myDatasets = []
     this.chart.destroy()
     this.startPrimaryColor = 19
@@ -360,16 +360,16 @@ export class DashboardComponent implements OnInit {
           /*La ENERGÍA la convierto a kWh */
           this.energies.forEach((energy:EnergyDTO) => {
             if (energy.energyId == consumption.energy) {
-              equivEnKg = energy.pci * energy.convLKg
+              equivEnkWh = energy.pci * energy.convLKg
             }
           })
           currentDelegation = consumption.delegation
           currentEnergy = consumption.energyName
           if ((prevDelegation == "" || prevDelegation == currentDelegation) && (prevEnergy == "" || prevEnergy == currentEnergy)) {
             if (this.isMWViewE) {
-              dataToYearView[(consumption.year-2019)] = consumption.totalYear * equivEnKg/1000
+              dataToYearView[(consumption.year-2019)] = consumption.totalYear * equivEnkWh/1000
             } else {
-              dataToYearView[(consumption.year-2019)] = consumption.totalYear * equivEnKg
+              dataToYearView[(consumption.year-2019)] = consumption.totalYear * equivEnkWh
             }
           }
           else {
@@ -383,9 +383,9 @@ export class DashboardComponent implements OnInit {
             )
             dataToYearView = [0,0,0,0,0,0,0,0]
             if (this.isMWViewE) {
-              dataToYearView[(consumption.year-2019)] = consumption.totalYear * equivEnKg/1000
+              dataToYearView[(consumption.year-2019)] = consumption.totalYear * equivEnkWh/1000
             } else {
-              dataToYearView[(consumption.year-2019)] = consumption.totalYear * equivEnKg
+              dataToYearView[(consumption.year-2019)] = consumption.totalYear * equivEnkWh
             }
           }
           prevDelegation = currentDelegation
@@ -440,27 +440,105 @@ export class DashboardComponent implements OnInit {
       .subscribe(
       (consumptions: ConsumptionDTO[]) => {
         this.consumptions = consumptions
+        console.log ("this.consumptions", this.consumptions)
         this.consumptions.forEach((consumption: any) =>
         {
           /*La ENERGÍA la convierto a kWh */
           this.energies.forEach((energy:EnergyDTO) => {
             if (energy.energyId == consumption.energy) {
-              equivEnKg = energy.pci * energy.convLKg
+              equivEnkWh = energy.pci * energy.convLKg
             }
           })
+
           currentDelegation = consumption.delegation
           currentEnergy = consumption.energyName
           if ((prevDelegation == "" || prevDelegation == currentDelegation) && (prevEnergy == "" || prevEnergy == currentEnergy)) {
             if (this.isMWViewE) {
-              dataToQuarterView[0] = consumption.Q1 * equivEnKg/1000
-              dataToQuarterView[1] = consumption.Q2 * equivEnKg/1000
-              dataToQuarterView[2] = consumption.Q3 * equivEnKg/1000
-              dataToQuarterView[3] = consumption.Q4 * equivEnKg/1000
+              if(consumption.year == "2019"){
+                dataToQuarterView[0] = consumption.Q1 * equivEnkWh/1000
+                dataToQuarterView[1] = consumption.Q2 * equivEnkWh/1000
+                dataToQuarterView[2] = consumption.Q3 * equivEnkWh/1000
+                dataToQuarterView[3] = consumption.Q4 * equivEnkWh/1000
+              }
+              if(consumption.year == "2020"){
+                dataToQuarterView[4] = consumption.Q1 * equivEnkWh/1000
+                dataToQuarterView[5] = consumption.Q2 * equivEnkWh/1000
+                dataToQuarterView[6] = consumption.Q3 * equivEnkWh/1000
+                dataToQuarterView[7] = consumption.Q4 * equivEnkWh/1000
+              }
+              if(consumption.year == "2021"){
+                dataToQuarterView[8] = consumption.Q1 * equivEnkWh/1000
+                dataToQuarterView[9] = consumption.Q2 * equivEnkWh/1000
+                dataToQuarterView[10] = consumption.Q3 * equivEnkWh/1000
+                dataToQuarterView[11] = consumption.Q4 * equivEnkWh/1000
+              }
+              if(consumption.year == "2022"){
+                dataToQuarterView[12] = consumption.Q1 * equivEnkWh/1000
+                dataToQuarterView[13] = consumption.Q2 * equivEnkWh/1000
+                dataToQuarterView[14] = consumption.Q3 * equivEnkWh/1000
+                dataToQuarterView[15] = consumption.Q4 * equivEnkWh/1000
+              }  
+              if(consumption.year == "2023"){
+                dataToQuarterView[16] = consumption.Q1 * equivEnkWh/1000
+                dataToQuarterView[17] = consumption.Q2 * equivEnkWh/1000
+                dataToQuarterView[18] = consumption.Q3 * equivEnkWh/1000
+                dataToQuarterView[19] = consumption.Q4 * equivEnkWh/1000
+              }
+              if(consumption.year == "2024"){
+                dataToQuarterView[20] = consumption.Q1 * equivEnkWh/1000
+                dataToQuarterView[21] = consumption.Q2 * equivEnkWh/1000
+                dataToQuarterView[22] = consumption.Q3 * equivEnkWh/1000
+                dataToQuarterView[23] = consumption.Q4 * equivEnkWh/1000
+              }
+              if(consumption.year == "2025"){
+                dataToQuarterView[24] = consumption.Q1 * equivEnkWh/1000
+                dataToQuarterView[25] = consumption.Q2 * equivEnkWh/1000
+                dataToQuarterView[26] = consumption.Q3 * equivEnkWh/1000
+                dataToQuarterView[27] = consumption.Q4 * equivEnkWh/1000
+              }
             } else {
-              dataToQuarterView[0] = consumption.Q1 * equivEnKg
-              dataToQuarterView[1] = consumption.Q2 * equivEnKg
-              dataToQuarterView[2] = consumption.Q3 * equivEnKg
-              dataToQuarterView[3] = consumption.Q4 * equivEnKg
+              if(consumption.year == "2019"){
+                dataToQuarterView[0] = consumption.Q1
+                dataToQuarterView[1] = consumption.Q2
+                dataToQuarterView[2] = consumption.Q3
+                dataToQuarterView[3] = consumption.Q4
+              }
+              if(consumption.year == "2020"){
+                dataToQuarterView[4] = consumption.Q1
+                dataToQuarterView[5] = consumption.Q2
+                dataToQuarterView[6] = consumption.Q3
+                dataToQuarterView[7] = consumption.Q4
+              }
+              if(consumption.year == "2021"){
+                dataToQuarterView[8] = consumption.Q1
+                dataToQuarterView[9] = consumption.Q2
+                dataToQuarterView[10] = consumption.Q3
+                dataToQuarterView[11] = consumption.Q4
+              }
+              if(consumption.year == "2022"){
+                dataToQuarterView[12] = consumption.Q1
+                dataToQuarterView[13] = consumption.Q2
+                dataToQuarterView[14] = consumption.Q3
+                dataToQuarterView[15] = consumption.Q4
+              }  
+              if(consumption.year == "2023"){
+                dataToQuarterView[16] = consumption.Q1
+                dataToQuarterView[17] = consumption.Q2
+                dataToQuarterView[18] = consumption.Q3
+                dataToQuarterView[19] = consumption.Q4
+              }
+              if(consumption.year == "2024"){
+                dataToQuarterView[20] = consumption.Q1
+                dataToQuarterView[21] = consumption.Q2
+                dataToQuarterView[22] = consumption.Q3
+                dataToQuarterView[23] = consumption.Q4
+              }
+              if(consumption.year == "2025"){
+                dataToQuarterView[24] = consumption.Q1
+                dataToQuarterView[25] = consumption.Q2
+                dataToQuarterView[26] = consumption.Q3
+                dataToQuarterView[27] = consumption.Q4
+              }
             }
           }
           else {
@@ -472,17 +550,93 @@ export class DashboardComponent implements OnInit {
               stack: prevDelegation,
               },
             )
-            dataToQuarterView = [0,0,0,0]
+            dataToQuarterView = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
             if (this.isMWViewE) {
-              dataToQuarterView[0] = consumption.Q1 * equivEnKg/1000
-              dataToQuarterView[1] = consumption.Q2 * equivEnKg/1000
-              dataToQuarterView[2] = consumption.Q3 * equivEnKg/1000
-              dataToQuarterView[3] = consumption.Q4 * equivEnKg/1000
+              if(consumption.year == "2019"){
+                dataToQuarterView[0] = consumption.Q1 * equivEnkWh/1000
+                dataToQuarterView[1] = consumption.Q2 * equivEnkWh/1000
+                dataToQuarterView[2] = consumption.Q3 * equivEnkWh/1000
+                dataToQuarterView[3] = consumption.Q4 * equivEnkWh/1000
+              }
+              if(consumption.year == "2020"){
+                dataToQuarterView[4] = consumption.Q1 * equivEnkWh/1000
+                dataToQuarterView[5] = consumption.Q2 * equivEnkWh/1000
+                dataToQuarterView[6] = consumption.Q3 * equivEnkWh/1000
+                dataToQuarterView[7] = consumption.Q4 * equivEnkWh/1000
+              }
+              if(consumption.year == "2021"){
+                dataToQuarterView[8] = consumption.Q1 * equivEnkWh/1000
+                dataToQuarterView[9] = consumption.Q2 * equivEnkWh/1000
+                dataToQuarterView[10] = consumption.Q3 * equivEnkWh/1000
+                dataToQuarterView[11] = consumption.Q4 * equivEnkWh/1000
+              }
+              if(consumption.year == "2022"){
+                dataToQuarterView[12] = consumption.Q1 * equivEnkWh/1000
+                dataToQuarterView[13] = consumption.Q2 * equivEnkWh/1000
+                dataToQuarterView[14] = consumption.Q3 * equivEnkWh/1000
+                dataToQuarterView[15] = consumption.Q4 * equivEnkWh/1000
+              }  
+              if(consumption.year == "2023"){
+                dataToQuarterView[16] = consumption.Q1 * equivEnkWh/1000
+                dataToQuarterView[17] = consumption.Q2 * equivEnkWh/1000
+                dataToQuarterView[18] = consumption.Q3 * equivEnkWh/1000
+                dataToQuarterView[19] = consumption.Q4 * equivEnkWh/1000
+              }
+              if(consumption.year == "2024"){
+                dataToQuarterView[20] = consumption.Q1 * equivEnkWh/1000
+                dataToQuarterView[21] = consumption.Q2 * equivEnkWh/1000
+                dataToQuarterView[22] = consumption.Q3 * equivEnkWh/1000
+                dataToQuarterView[23] = consumption.Q4 * equivEnkWh/1000
+              }
+              if(consumption.year == "2025"){
+                dataToQuarterView[24] = consumption.Q1 * equivEnkWh/1000
+                dataToQuarterView[25] = consumption.Q2 * equivEnkWh/1000
+                dataToQuarterView[26] = consumption.Q3 * equivEnkWh/1000
+                dataToQuarterView[27] = consumption.Q4 * equivEnkWh/1000
+              }
             } else {
-              dataToQuarterView[0] = consumption.Q1 * equivEnKg
-              dataToQuarterView[1] = consumption.Q2 * equivEnKg
-              dataToQuarterView[2] = consumption.Q3 * equivEnKg
-              dataToQuarterView[3] = consumption.Q4 * equivEnKg
+              if(consumption.year == "2019"){
+                dataToQuarterView[0] = consumption.Q1
+                dataToQuarterView[1] = consumption.Q2
+                dataToQuarterView[2] = consumption.Q3
+                dataToQuarterView[3] = consumption.Q4
+              }
+              if(consumption.year == "2020"){
+                dataToQuarterView[4] = consumption.Q1
+                dataToQuarterView[5] = consumption.Q2
+                dataToQuarterView[6] = consumption.Q3
+                dataToQuarterView[7] = consumption.Q4
+              }
+              if(consumption.year == "2021"){
+                dataToQuarterView[8] = consumption.Q1
+                dataToQuarterView[9] = consumption.Q2
+                dataToQuarterView[10] = consumption.Q3
+                dataToQuarterView[11] = consumption.Q4
+              }
+              if(consumption.year == "2022"){
+                dataToQuarterView[12] = consumption.Q1
+                dataToQuarterView[13] = consumption.Q2
+                dataToQuarterView[14] = consumption.Q3
+                dataToQuarterView[15] = consumption.Q4
+              }  
+              if(consumption.year == "2023"){
+                dataToQuarterView[16] = consumption.Q1
+                dataToQuarterView[17] = consumption.Q2
+                dataToQuarterView[18] = consumption.Q3
+                dataToQuarterView[19] = consumption.Q4
+              }
+              if(consumption.year == "2024"){
+                dataToQuarterView[20] = consumption.Q1
+                dataToQuarterView[21] = consumption.Q2
+                dataToQuarterView[22] = consumption.Q3
+                dataToQuarterView[23] = consumption.Q4
+              }
+              if(consumption.year == "2025"){
+                dataToQuarterView[24] = consumption.Q1
+                dataToQuarterView[25] = consumption.Q2
+                dataToQuarterView[26] = consumption.Q3
+                dataToQuarterView[27] = consumption.Q4
+              }
             }
           }
           prevDelegation = currentDelegation
@@ -492,12 +646,16 @@ export class DashboardComponent implements OnInit {
         })
         this.myDatasets.push (
           {
-          label: prevDelegation+" "+prevEnergy,
+          label: prevDelegation+" "+prevEnergy+" "+prevEnergy,
           data: dataToQuarterView,
           backgroundColor: this.primaryColors[this.startPrimaryColor--],
           stack: prevDelegation,
           },
         )
+        console.log(this.myDatasets)
+        if(this.yearEnergy.value) {
+          this.myDatasets = this.myDatasets.filter((item:any)=>item.stack == this.yearEnergy.value)
+        }
         if(this.delegation.value) {
           this.myDatasets = this.myDatasets.filter((item:any)=>item.stack == this.delegation.value)
         }
@@ -507,7 +665,7 @@ export class DashboardComponent implements OnInit {
         this.chart = new Chart("energyGraph", {
           type: 'bar',
           data: {
-          labels: this.graphQuarters,
+          labels: this.graphYears,
           datasets: this.myDatasets},
           options:
           {
@@ -541,38 +699,38 @@ export class DashboardComponent implements OnInit {
           /*La ENERGÍA la convierto a kWh */
           this.energies.forEach((energy:EnergyDTO) => {
             if (energy.energyId == consumption.energy) {
-              equivEnKg = energy.pci * energy.convLKg
+              equivEnkWh = energy.pci * energy.convLKg
             }
           })
           currentDelegation = consumption.delegation
           currentEnergy = consumption.energyName
           if ((prevDelegation == "" || prevDelegation == currentDelegation) && (prevEnergy == "" || prevEnergy == currentEnergy)) {
             if (this.isMWViewE) {
-              dataToMonthlyView[0] = consumption.jan * equivEnKg/1000
-              dataToMonthlyView[1] = consumption.feb * equivEnKg/1000
-              dataToMonthlyView[2] = consumption.mar * equivEnKg/1000
-              dataToMonthlyView[3] = consumption.apr * equivEnKg/1000
-              dataToMonthlyView[4] = consumption.may * equivEnKg/1000
-              dataToMonthlyView[5] = consumption.jun * equivEnKg/1000
-              dataToMonthlyView[6] = consumption.jul * equivEnKg/1000
-              dataToMonthlyView[7] = consumption.aug * equivEnKg/1000
-              dataToMonthlyView[8] = consumption.sep * equivEnKg/1000
-              dataToMonthlyView[9] = consumption.oct * equivEnKg/1000
-              dataToMonthlyView[10] = consumption.nov * equivEnKg/1000
-              dataToMonthlyView[11] = consumption.dec * equivEnKg/1000
+              dataToMonthlyView[0] = consumption.jan * equivEnkWh/1000
+              dataToMonthlyView[1] = consumption.feb * equivEnkWh/1000
+              dataToMonthlyView[2] = consumption.mar * equivEnkWh/1000
+              dataToMonthlyView[3] = consumption.apr * equivEnkWh/1000
+              dataToMonthlyView[4] = consumption.may * equivEnkWh/1000
+              dataToMonthlyView[5] = consumption.jun * equivEnkWh/1000
+              dataToMonthlyView[6] = consumption.jul * equivEnkWh/1000
+              dataToMonthlyView[7] = consumption.aug * equivEnkWh/1000
+              dataToMonthlyView[8] = consumption.sep * equivEnkWh/1000
+              dataToMonthlyView[9] = consumption.oct * equivEnkWh/1000
+              dataToMonthlyView[10] = consumption.nov * equivEnkWh/1000
+              dataToMonthlyView[11] = consumption.dec * equivEnkWh/1000
             } else {
-              dataToMonthlyView[0] = consumption.jan * equivEnKg
-              dataToMonthlyView[1] = consumption.feb * equivEnKg
-              dataToMonthlyView[2] = consumption.mar * equivEnKg
-              dataToMonthlyView[3] = consumption.apr * equivEnKg
-              dataToMonthlyView[4] = consumption.may * equivEnKg
-              dataToMonthlyView[5] = consumption.jun * equivEnKg
-              dataToMonthlyView[6] = consumption.jul * equivEnKg
-              dataToMonthlyView[7] = consumption.aug * equivEnKg
-              dataToMonthlyView[8] = consumption.sep * equivEnKg
-              dataToMonthlyView[9] = consumption.oct * equivEnKg
-              dataToMonthlyView[10] = consumption.nov * equivEnKg
-              dataToMonthlyView[11] = consumption.dec * equivEnKg
+              dataToMonthlyView[0] = consumption.jan * equivEnkWh
+              dataToMonthlyView[1] = consumption.feb * equivEnkWh
+              dataToMonthlyView[2] = consumption.mar * equivEnkWh
+              dataToMonthlyView[3] = consumption.apr * equivEnkWh
+              dataToMonthlyView[4] = consumption.may * equivEnkWh
+              dataToMonthlyView[5] = consumption.jun * equivEnkWh
+              dataToMonthlyView[6] = consumption.jul * equivEnkWh
+              dataToMonthlyView[7] = consumption.aug * equivEnkWh
+              dataToMonthlyView[8] = consumption.sep * equivEnkWh
+              dataToMonthlyView[9] = consumption.oct * equivEnkWh
+              dataToMonthlyView[10] = consumption.nov * equivEnkWh
+              dataToMonthlyView[11] = consumption.dec * equivEnkWh
             }
           }
           else {
@@ -586,31 +744,31 @@ export class DashboardComponent implements OnInit {
             )
             dataToMonthlyView = [0,0,0,0,0,0,0,0,0,0,0,0]
             if (this.isMWViewE) {
-              dataToMonthlyView[0] = consumption.jan * equivEnKg/1000
-              dataToMonthlyView[1] = consumption.feb * equivEnKg/1000
-              dataToMonthlyView[2] = consumption.mar * equivEnKg/1000
-              dataToMonthlyView[3] = consumption.apr * equivEnKg/1000
-              dataToMonthlyView[4] = consumption.may * equivEnKg/1000
-              dataToMonthlyView[5] = consumption.jun * equivEnKg/1000
-              dataToMonthlyView[6] = consumption.jul * equivEnKg/1000
-              dataToMonthlyView[7] = consumption.aug * equivEnKg/1000
-              dataToMonthlyView[8] = consumption.sep * equivEnKg/1000
-              dataToMonthlyView[9] = consumption.oct * equivEnKg/1000
-              dataToMonthlyView[10] = consumption.nov * equivEnKg/1000
-              dataToMonthlyView[11] = consumption.dec * equivEnKg/1000
+              dataToMonthlyView[0] = consumption.jan * equivEnkWh/1000
+              dataToMonthlyView[1] = consumption.feb * equivEnkWh/1000
+              dataToMonthlyView[2] = consumption.mar * equivEnkWh/1000
+              dataToMonthlyView[3] = consumption.apr * equivEnkWh/1000
+              dataToMonthlyView[4] = consumption.may * equivEnkWh/1000
+              dataToMonthlyView[5] = consumption.jun * equivEnkWh/1000
+              dataToMonthlyView[6] = consumption.jul * equivEnkWh/1000
+              dataToMonthlyView[7] = consumption.aug * equivEnkWh/1000
+              dataToMonthlyView[8] = consumption.sep * equivEnkWh/1000
+              dataToMonthlyView[9] = consumption.oct * equivEnkWh/1000
+              dataToMonthlyView[10] = consumption.nov * equivEnkWh/1000
+              dataToMonthlyView[11] = consumption.dec * equivEnkWh/1000
             } else {
-              dataToMonthlyView[0] = consumption.jan * equivEnKg
-              dataToMonthlyView[1] = consumption.feb * equivEnKg
-              dataToMonthlyView[2] = consumption.mar * equivEnKg
-              dataToMonthlyView[3] = consumption.apr * equivEnKg
-              dataToMonthlyView[4] = consumption.may * equivEnKg
-              dataToMonthlyView[5] = consumption.jun * equivEnKg
-              dataToMonthlyView[6] = consumption.jul * equivEnKg
-              dataToMonthlyView[7] = consumption.aug * equivEnKg
-              dataToMonthlyView[8] = consumption.sep * equivEnKg
-              dataToMonthlyView[9] = consumption.oct * equivEnKg
-              dataToMonthlyView[10] = consumption.nov * equivEnKg
-              dataToMonthlyView[11] = consumption.dec * equivEnKg
+              dataToMonthlyView[0] = consumption.jan * equivEnkWh
+              dataToMonthlyView[1] = consumption.feb * equivEnkWh
+              dataToMonthlyView[2] = consumption.mar * equivEnkWh
+              dataToMonthlyView[3] = consumption.apr * equivEnkWh
+              dataToMonthlyView[4] = consumption.may * equivEnkWh
+              dataToMonthlyView[5] = consumption.jun * equivEnkWh
+              dataToMonthlyView[6] = consumption.jul * equivEnkWh
+              dataToMonthlyView[7] = consumption.aug * equivEnkWh
+              dataToMonthlyView[8] = consumption.sep * equivEnkWh
+              dataToMonthlyView[9] = consumption.oct * equivEnkWh
+              dataToMonthlyView[10] = consumption.nov * equivEnkWh
+              dataToMonthlyView[11] = consumption.dec * equivEnkWh
             }
           }
           prevDelegation = currentDelegation

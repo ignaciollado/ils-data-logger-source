@@ -11,17 +11,17 @@ form {
   border-bottom: 1px dotted #AAAAAA;
   background-color: #ECECEC;
   overflow: hidden;
-  padding: 32px 32px;
+  padding: 25px 25px;
 }
 
-canvas{
+/* canvas{
   max-width: 70%;
   max-height: 35%;
-}
+} */
 
 .fields-container{
     display: grid;
-    grid-template-columns: repeat(3, auto);
+    grid-template-columns: repeat(6, auto);
     grid-template-areas:
       "a b c d e e"
       "a b c f g h"

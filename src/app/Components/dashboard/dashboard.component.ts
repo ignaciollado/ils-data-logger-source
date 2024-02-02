@@ -109,8 +109,8 @@ export class DashboardComponent implements OnInit {
   isEnergy: boolean = false
   isResidue: boolean = false
   isYearViewE : boolean = true
-  isQuarterlyViewE : boolean = false
-  isMonthlyViewE : boolean = false
+  isQuarterViewE : boolean = false
+  isMonthViewE : boolean = false
   iskWViewE : boolean = true
   isMWViewE : boolean = false
 
@@ -250,7 +250,6 @@ export class DashboardComponent implements OnInit {
           })
           this.residuesItem
         })
-
       },
       (error: HttpErrorResponse) => {
         errorResponse = error.error;
@@ -306,7 +305,7 @@ export class DashboardComponent implements OnInit {
         {
           /*La ENERGÍA la convierto a kWh */
           this.energies.forEach((energy:EnergyDTO) => {
-            if (energy.energyId == consumption.energy) {
+            if (energy.nameES == consumption.energyName) {
               equivEnkWh = energy.pci * energy.convLKg
             }
           })
@@ -374,7 +373,7 @@ export class DashboardComponent implements OnInit {
       )
     }
 
-    if (this.isQuarterlyViewE) {
+    if (this.isQuarterViewE) {
       this.consumptionService.getQuarterlyEnergyByCompanyId(this.companyId)
       .subscribe(
       (consumptions: ConsumptionDTO[]) => {
@@ -383,7 +382,7 @@ export class DashboardComponent implements OnInit {
         {
           /*La ENERGÍA la convierto a kWh */
           this.energies.forEach((energy:EnergyDTO) => {
-            if (energy.energyId == consumption.energy) {
+            if (energy.nameES == consumption.energyName) {
               equivEnkWh = energy.pci * energy.convLKg
             }
           })
@@ -500,7 +499,6 @@ export class DashboardComponent implements OnInit {
           stack: prevDelegation,
           },
         )
-        console.log("this.myDatasets: ", this.myDatasets)
         if(this.yearEnergy.value) {
           this.myDatasets = this.myDatasets.filter((item:any)=>item.stack == this.yearEnergy.value)
         }
@@ -537,7 +535,7 @@ export class DashboardComponent implements OnInit {
       )
     }
 
-    if (this.isMonthlyViewE) {
+    if (this.isMonthViewE) {
       this.consumptionService.getMonthlyEnergyByCompanyId(this.companyId)
       .subscribe(
       (consumptions: ConsumptionDTO[]) => {
@@ -546,7 +544,7 @@ export class DashboardComponent implements OnInit {
         {
           /*La ENERGÍA la convierto a kWh */
           this.energies.forEach((energy:EnergyDTO) => {
-            if (energy.energyId == consumption.energy) {
+            if (energy.nameES == consumption.energyName) {
               equivEnkWh = energy.pci * energy.convLKg
             }
           })
@@ -804,6 +802,7 @@ export class DashboardComponent implements OnInit {
     .subscribe(
       (billings: BillingDTO[]) => {
         this.productionBilling = billings
+        console.log("this.productionBilling", this.productionBilling)
       },
       (error: HttpErrorResponse) => {
         errorResponse = error.error;
@@ -921,19 +920,16 @@ export class DashboardComponent implements OnInit {
     })
 
   }
+
   chartRatioBilling() {
-    if (this.chart) {
-      this.chart.destroy()
-    }
     this.isRatioCNAEE = false
-    this.chartObjective(1)
-    this.loadgraphDataEnergy()
-    return;
     this.graphDataTemp = this.graphConsumption.filter((item:any) => item.aspectId == '1')
     this.graphDataTemp = this.graphDataTemp.filter((item:any) => item.delegation == this.delegation.value)
-    if (this.yearEnergy.value) {
-      this.graphDataTemp = this.graphDataTemp.filter((item:any) => item.year == this.yearEnergy.value)
-    }
+    
+    if (this.isYearViewE) {}
+    if (this.isQuarterViewE) {}
+    if (this.isMonthViewE) {}
+
     if (this.energy.value) {
       this.graphDataTemp = this.graphDataTemp.filter((item:any) => item.energyName == this.energy.value)
     }
@@ -975,13 +971,10 @@ export class DashboardComponent implements OnInit {
             },
         )
       })
-
-    /* this.chartObjective() */
-
-    this.myDatasets.push(
+      this.myDatasets.push(
       {
         type: 'line',
-        label: 'Ratios',
+        label: 'Ratio producción facturación',
         data: this.theRatios,
         backgroundColor: '#ff0000',
         borderColor: '#00ff00',
@@ -989,47 +982,36 @@ export class DashboardComponent implements OnInit {
         fill: false,
       }
     )
-
-    if (this.chart) {
-      this.chart.destroy()
-    }
-    this.chart = new Chart("graph", {
-      type: 'bar',
-      data: {
-         labels: this.graphMonths,
-         datasets: this.myDatasets
-      },
-      options: {
-        responsive: true,
-        aspectRatio:1.0,
-        events: ['click'],
-      }
-    });
+    this.chart.update()
   }
+
   chartYearlyViewE(){
     if (this.chart) {
       this.chart.destroy()
     }
-    this.isQuarterlyViewE = false
-    this.isMonthlyViewE = false
+    this.isQuarterViewE = false
+    this.isMonthViewE = false
     this.loadgraphDataEnergy()
   }
+
   chartQuarterlyViewE(){
     if (this.chart) {
       this.chart.destroy()
     }
     this.isYearViewE = false
-    this.isMonthlyViewE = false
+    this.isMonthViewE = false
     this.loadgraphDataEnergy()
   }
+
   chartmonthlyViewE() {
     if (this.chart) {
       this.chart.destroy()
     }
     this.isYearViewE = false
-    this.isQuarterlyViewE = false
+    this.isQuarterViewE = false
     this.loadgraphDataEnergy()
   }
+
   chartkWViewE() {
     if (this.chart) {
       this.chart.destroy()
@@ -1043,6 +1025,7 @@ export class DashboardComponent implements OnInit {
     }
     this.loadgraphDataEnergy()
   }
+
   chartMWViewE() {
     if (this.chart) {
       this.chart.destroy()
@@ -1056,6 +1039,7 @@ export class DashboardComponent implements OnInit {
     }
     this.loadgraphDataEnergy()
   }
+
   chartRatioCNAE() {
     if (this.chart) {
       this.chart.destroy()
@@ -1139,10 +1123,10 @@ export class DashboardComponent implements OnInit {
       }
     });
   }
-  chartObjective(aspectId:number) {
 
+  chartObjective(aspectId:number) {
     this.startPrimaryColor  = 19
-    this.graphObjectiveTemp = this.objectives.filter((item:any) => item.aspectId == aspectId)
+   /*  this.graphObjectiveTemp = this.objectives.filter((item:any) => item.aspectId == aspectId)
     if(this.delegation.value){
       this.graphObjectiveTemp = this.graphObjectiveTemp.filter((item:any) => item.delegation == this.delegation.value)
     }
@@ -1178,7 +1162,7 @@ export class DashboardComponent implements OnInit {
       )
     })
     console.log ("Objectives myDatasets ", this.myDatasets) 
-    this.chart.update()
+    this.chart.update() */
   }
 
   graphFormReset() {
@@ -1187,6 +1171,7 @@ export class DashboardComponent implements OnInit {
     this.myDatasets = []
     this.chart.destroy()
   }
+
   onChartHover = ($event: any) => {
     window.console.log('onChartHover', $event);
   };

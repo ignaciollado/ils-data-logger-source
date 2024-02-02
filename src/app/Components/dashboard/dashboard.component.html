@@ -16,7 +16,6 @@
             <mat-option value="2022">2022</mat-option>
             <mat-option value="2023">2023</mat-option>
             <mat-option value="2024">2024</mat-option>
-            <mat-option value="2025">2025</mat-option>
           </mat-select>
           <mat-error *ngIf="yearEnergy.hasError('required')">{{'year' | translate}} <strong>{{'isRequired' | translate}}</strong></mat-error>
         </mat-form-field> -->
@@ -45,8 +44,8 @@
         <mat-slide-toggle [(ngModel)]="isRatioCNAEE" [formControl]="ratioCNAEgGraphE" class="item4" (change)="chartRatioCNAE()">Ratio CNAE</mat-slide-toggle>
 
         <mat-slide-toggle [(ngModel)]="isYearViewE" [formControl]="yearWiewGraphE" class="item5" (change)="chartYearlyViewE()">Year</mat-slide-toggle>
-        <mat-slide-toggle [(ngModel)]="isQuarterlyViewE" [formControl]="quarterlyViewGraphE" class="item6" (change)="chartQuarterlyViewE()">Quarter</mat-slide-toggle>
-        <mat-slide-toggle [(ngModel)]="isMonthlyViewE" [formControl]="monthlyViewGraphE" class="item7" (change)="chartmonthlyViewE()">Month</mat-slide-toggle>
+        <mat-slide-toggle [(ngModel)]="isQuarterViewE" [formControl]="quarterlyViewGraphE" class="item6" (change)="chartQuarterlyViewE()">Quarter</mat-slide-toggle>
+        <mat-slide-toggle [(ngModel)]="isMonthViewE" [formControl]="monthlyViewGraphE" class="item7" (change)="chartmonthlyViewE()">Month</mat-slide-toggle>
 
         <mat-slide-toggle [(ngModel)]="iskWViewE" [formControl]="kWView" class="item8" (change)="chartkWViewE()">kWh</mat-slide-toggle>
         <mat-slide-toggle [(ngModel)]="isMWViewE" [formControl]="MWView" class="item9" (change)="chartMWViewE()">MWh</mat-slide-toggle>
@@ -117,8 +116,8 @@
         </mat-button-toggle-group>
         <mat-slide-toggle [(ngModel)]="isRatioBillingE" [formControl]="ratioBillingGraphE" class="item6" (change)="chartRatioBilling()">Ratio billing graph</mat-slide-toggle>
         <mat-slide-toggle [(ngModel)]="isRatioCNAEE" [formControl]="ratioCNAEgGraphE" class="item7" (change)="chartRatioCNAE()">Ratio CNAE graph</mat-slide-toggle>
-        <mat-slide-toggle [(ngModel)]="isMonthlyViewE" [formControl]="monthlyViewGraphE" class="item7" (change)="chartRatioCNAE()">L</mat-slide-toggle>
-        <mat-slide-toggle [(ngModel)]="isMonthlyViewE" [formControl]="monthlyViewGraphE" class="item7" (change)="chartRatioCNAE()">m3</mat-slide-toggle>
+        <mat-slide-toggle [(ngModel)]="isMonthViewE" [formControl]="monthlyViewGraphE" class="item7" (change)="chartRatioCNAE()">L</mat-slide-toggle>
+        <mat-slide-toggle [(ngModel)]="isMonthViewE" [formControl]="monthlyViewGraphE" class="item7" (change)="chartRatioCNAE()">m3</mat-slide-toggle>
 
 
       </div>
@@ -180,8 +179,8 @@
         </mat-button-toggle-group>
         <mat-slide-toggle [(ngModel)]="isRatioBillingE" [formControl]="ratioBillingGraphE" class="item6" (change)="chartRatioBilling()">Ratio billing graph</mat-slide-toggle>
         <mat-slide-toggle [(ngModel)]="isRatioCNAEE" [formControl]="ratioCNAEgGraphE" class="item7" (change)="chartRatioCNAE()">Ratio CNAE graph</mat-slide-toggle>
-        <mat-slide-toggle [(ngModel)]="isMonthlyViewE" [formControl]="monthlyViewGraphE" class="item7" (change)="chartRatioCNAE()">kg</mat-slide-toggle>
-        <mat-slide-toggle [(ngModel)]="isMonthlyViewE" [formControl]="monthlyViewGraphE" class="item7" (change)="chartRatioCNAE()">T</mat-slide-toggle>
+        <mat-slide-toggle [(ngModel)]="isMonthViewE" [formControl]="monthlyViewGraphE" class="item7" (change)="chartRatioCNAE()">kg</mat-slide-toggle>
+        <mat-slide-toggle [(ngModel)]="isMonthViewE" [formControl]="monthlyViewGraphE" class="item7" (change)="chartRatioCNAE()">T</mat-slide-toggle>
       </div>
     </form>
   </div>
@@ -242,8 +241,8 @@
         </mat-button-toggle-group>
         <mat-slide-toggle [(ngModel)]="isRatioBillingE" [formControl]="ratioBillingGraphE" class="item6" (change)="chartRatioBilling()">Ratio billing graph</mat-slide-toggle>
         <mat-slide-toggle [(ngModel)]="isRatioCNAEE" [formControl]="ratioCNAEgGraphE" class="item7" (change)="chartRatioCNAE()">Ratio CNAE graph</mat-slide-toggle>
-        <mat-slide-toggle [(ngModel)]="isMonthlyViewE" [formControl]="monthlyViewGraphE" class="item7" (change)="chartRatioCNAE()">kg</mat-slide-toggle>
-        <mat-slide-toggle [(ngModel)]="isMonthlyViewE" [formControl]="monthlyViewGraphE" class="item7" (change)="chartRatioCNAE()">T</mat-slide-toggle>
+        <mat-slide-toggle [(ngModel)]="isMonthViewE" [formControl]="monthlyViewGraphE" class="item7" (change)="chartRatioCNAE()">kg</mat-slide-toggle>
+        <mat-slide-toggle [(ngModel)]="isMonthViewE" [formControl]="monthlyViewGraphE" class="item7" (change)="chartRatioCNAE()">T</mat-slide-toggle>
 
       </div>
     </form>

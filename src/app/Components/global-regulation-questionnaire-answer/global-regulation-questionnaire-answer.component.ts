@@ -4,7 +4,7 @@ import { JwtHelperService } from '@auth0/angular-jwt'
 import { AnswerDTO } from 'src/app/Models/answer.dto'
 import { ActivatedRoute } from '@angular/router';
 import { answeredQuestionnaire } from 'src/app/Models/answeredQuestionnaire.dto';
-import { regulationsDTO } from 'src/app/Models/regulation.dto';
+import { regulationsDTO, ordenanzasDTO } from 'src/app/Models/regulation.dto';
 
 @Component({
   selector: 'app-global-regulation-questionnaire-answer',
@@ -16,7 +16,7 @@ export class GlobalRegulationQuestionnaireAnswerComponent {
   userQuestionnaires: AnswerDTO[] = []
   userQuestionnaireTemp: answeredQuestionnaire[] = []
   regulationList: regulationsDTO[] = [] /* Listado de toda la regulación medioambiental */
-  ordenanzasList: regulationsDTO[] = [] /* Listado de toda las ordenanzas municipales */
+  ordenanzasList: ordenanzasDTO[] = [] /* Listado de toda las ordenanzas municipales */
   vector: string[] = ["RESIDUOS","SEGURIDAD INDUSTRIAL","AGUAS","ATMÓSFERA","SUSTANCIAS Y PREPARADOS QUÍMICOS","MEDIOAMBIENTE GENERAL"]
 
   regVector: {} = [
@@ -39,6 +39,7 @@ export class GlobalRegulationQuestionnaireAnswerComponent {
   ngOnInit() {
     const questionnaireID = this.route.snapshot.paramMap.get('id');
     this.loadRegulations(+questionnaireID)
+    this.loadOrdenanzas()
   }
 
   loadRegulations(questionnaireID: number){
@@ -51,7 +52,7 @@ export class GlobalRegulationQuestionnaireAnswerComponent {
 
   loadOrdenanzas(){
     this.enviromentalAuditService.getOrdenanzas()
-      .subscribe( (ordenanzas: any[]) => {
+      .subscribe( (ordenanzas: ordenanzasDTO[]) => {
         this.ordenanzasList = ordenanzas
         console.log (this.ordenanzasList)
       })

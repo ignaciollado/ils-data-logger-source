@@ -81,9 +81,14 @@ export class EnvironmentalAuditsService {
   getRegulations(): Observable<AnswerDTO[]> {
     return this.http
     .get<AnswerDTO[]>(`${URL_API}regulationsGetAll.php`)
- }
- getRegulationByID(regID: string): Observable<AnswerDTO[]> {
+  }
+  getRegulationByID(regID: string): Observable<AnswerDTO[]> {
   return this.http
   .get<AnswerDTO[]>(`${URL_API}regulationGetByID.php?regID=${regID}`)
-}
+  }
+
+  getOrdenanzas(): Observable<any[]> {
+    return this.http
+    .get<any[]>(`${URL_API}ordenanzasGetAll.php`)
+  }
 }

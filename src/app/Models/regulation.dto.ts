@@ -3,6 +3,14 @@ export class regulationsDTO {
     Titulo:      string;
     idNormativa: string;
     link:        string;
-    regId:      string;
+    regId:       string;
+}
+
+export class ordenanzasDTO {
+    vector:      string;
+    titulo:      string;
+    municipio:   string;
+    regId:       string;
+    id:          string;
 }
  

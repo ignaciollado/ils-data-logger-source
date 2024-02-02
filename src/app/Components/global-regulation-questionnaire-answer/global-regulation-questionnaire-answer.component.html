@@ -42,6 +42,9 @@
         </ng-container>
       </mat-card-content>
     </mat-card>
+    <mat-card class="questionnaire-card" *ngFor="let ordenanza of ordenanzasList">
+      {{ordenanza.regId}} {{ordenanza.municipio}} {{ordenanza.titulo}}
+    </mat-card>
   </div>
   <span *ngIf="!userQuestionnaires" class="loader">{{'loadingQuestionnaire' | translate}}
   <mat-progress-bar color="accent" mode="indeterminate" *ngIf="!userQuestionnaires"></mat-progress-bar></span>

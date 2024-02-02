@@ -379,7 +379,6 @@ export class DashboardComponent implements OnInit {
       .subscribe(
       (consumptions: ConsumptionDTO[]) => {
         this.consumptions = consumptions
-        console.log("this.consumptions", this.consumptions)
         this.consumptions.forEach((consumption: any) =>
         {
           /*La ENERGÍA la convierto a kWh */
@@ -941,7 +940,6 @@ export class DashboardComponent implements OnInit {
     if (this.residue.value) {
       this.graphDataTemp = this.graphDataTemp.filter((item:any) => item.energyName == this.residue.value)
     }
-    console.log("Ratio billing: ", this.graphDataTemp)
     this.graphDataTemp.map((item:graphData) => {
       let aspectHardCoded = '1'
       switch ( aspectHardCoded ) {
@@ -1077,7 +1075,6 @@ export class DashboardComponent implements OnInit {
     if (this.residue.value) {
       this.graphDataTemp = this.graphDataTemp.filter((item:any) => item.energyName == this.residue.value)
     }
-    console.log("Ratio CNAE ", this.graphDataTemp)
     this.graphDataTemp.map((item:graphData) => {
         let aspectHardCoded = '1'
         switch ( aspectHardCoded ) {
@@ -1153,7 +1150,6 @@ export class DashboardComponent implements OnInit {
       this.graphObjectiveTemp = this.graphObjectiveTemp.filter((item:any) => item.year == this.energy.value)
     }
 
-
     this.graphObjectiveTemp.map((item:any) => {
       this.energies.forEach((energy)=>{
         if (energy.energyId == item.enviromentalDataName){
@@ -1181,7 +1177,7 @@ export class DashboardComponent implements OnInit {
         },
       )
     })
-    console.log ("myDatasets ", this.myDatasets)
+    console.log ("Objectives myDatasets ", this.myDatasets) 
     this.chart.update()
   }
 

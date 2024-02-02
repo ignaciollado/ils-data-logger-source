@@ -207,7 +207,6 @@ export class PostFormComponent implements OnInit {
       this.billingService.getBillingsByCompany(userId).subscribe(
         (billings: BillingDTO[]) => {
           this.billings = billings;
-          console.log("billings: ", this.billings)
         },
         (error: HttpErrorResponse) => {
           errorResponse = error.error;
@@ -222,7 +221,6 @@ export class PostFormComponent implements OnInit {
     if (this.userId) {
         this.cnaesDataService.getCnaesDataByCompany(userId).subscribe((item: CnaeDataDTO[]) => {
           this.cnaesData = item
-          console.log("cnaesData: ", this.cnaesData)
         },
         (error: HttpErrorResponse) => {
           errorResponse = error.error;
@@ -382,8 +380,8 @@ export class PostFormComponent implements OnInit {
         .subscribe(
           () => {
             responseOK = true;
-            this.energy.reset()
-            /* this.yearEnergy.reset() */
+            /* this.energy.reset() */
+            this.yearEnergy.reset() 
             this.loadConsumption(this.userId);
           },
           (error: HttpErrorResponse) => {

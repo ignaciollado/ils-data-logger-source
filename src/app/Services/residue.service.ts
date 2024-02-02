@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpParams, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { ResidueDTO } from '../Models/residue.dto';
-import { Observable, forkJoin } from 'rxjs';
+import { Observable } from 'rxjs';
 import { SharedService } from './shared.service';
 import { catchError } from 'rxjs/operators';
 import { ResidueLERDTO } from '../Models/residueLER.dto';

@@ -36,18 +36,6 @@ export class BillingService {
     this.urlAPiMySql = '../../assets/phpAPI/'
   }
 
-/*   getAllBillingsByCompanyMock(companyId:string): Observable<BillingDTO[]> {
-    if (companyId) {
-      console.log ("logged IN")
-      return this.http
-        .get<BillingDTO[]>(`${URL_MOCKS}`)
-    } else {
-      console.log("NOT logged")
-      return this.http
-        .get<BillingDTO[]>(`${URL_API_SRV}/api/get-all-billings`, httpOptions)
-    }
-  } */
-
   getBillingsByCompany(companyId:string): Observable<BillingDTO[]> {
     if (companyId) {
       console.log ("logged INNN", companyId)
@@ -89,6 +77,11 @@ export class BillingService {
         this.http.delete<BillingDTO>(`${URL_API}billingsDelete.php?billings=${billings}`)
       )
     );
+  }
+
+  getYearlyBillingByCompanyId(companyId:string): Observable<BillingDTO[]> {
+    return this.http
+      .get<BillingDTO[]>(`${URL_API}graphProductionBillingYearlyGetByCompanyId.php?companyId=${companyId}`)
   }
 
 }

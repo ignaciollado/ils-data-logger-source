@@ -12,3 +12,8 @@ export class DelegationDTO {
     this.address = address;
   }
 }
+
+export interface MunicipalityDto {
+  name: string;
+  key:  string;
+}

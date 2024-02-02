@@ -40,7 +40,6 @@ export class ConsumptionService {
   getAllConsumptions(): Observable<ConsumptionDTO[]> {
     return this.http
       .get<ConsumptionDTO[]>(`${URL_API_SRV}/api/get-all-consumptions`, httpOptions)
-
   }
 
   getAllConsumptionsByCompanyAndAspect(companyId:any, aspectId?: number): Observable<ConsumptionDTO[]> {

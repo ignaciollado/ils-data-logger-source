@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { DelegationDTO } from '../Models/delegation.dto';
+import { DelegationDTO, MunicipalityDto } from '../Models/delegation.dto';
 import { Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { SharedService } from './shared.service';
@@ -26,10 +26,12 @@ interface deleteResponse {
 })
 export class DelegationService {
   private urlAPiMySql:  string;
+  private urlAPiMock: string
 
     constructor(private http: HttpClient,
       private sharedService: SharedService) {
-    this.urlAPiMySql = '../../assets/phpAPI/'
+      this.urlAPiMySql = '../../assets/phpAPI/'
+      this.urlAPiMock = '../../assets/mocks/'
   }
 
   getAllDelegationsByCompanyIdFromMySQL (companyId: string): Observable<DelegationDTO[]> {
@@ -40,6 +42,12 @@ export class DelegationService {
   getTotalDelegationsByCompany (companyId: string): Observable<any> {
     return this.http
       .get<any>(`${this.urlAPiMySql}delegationCountByCompany.php?companyId=${companyId}`)
+  }
+
+  getMinicipalities(): Observable<MunicipalityDto[]> {
+    return this.http
+      .get<MunicipalityDto[]>(`${this.urlAPiMock}municipios.json`)
+      .pipe(catchError(this.sharedService.handleError))
   }
 
   createDelegation(delegation: DelegationDTO): Observable<DelegationDTO> {

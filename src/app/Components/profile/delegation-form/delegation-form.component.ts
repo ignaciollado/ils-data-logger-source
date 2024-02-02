@@ -1,5 +1,5 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {
   UntypedFormBuilder,
   UntypedFormControl,
@@ -7,9 +7,9 @@ import {
   Validators,
 } from '@angular/forms';
 
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { finalize } from 'rxjs/operators';
-import { DelegationDTO } from 'src/app/Models/delegation.dto';
+import { DelegationDTO, MunicipalityDto } from 'src/app/Models/delegation.dto';
 import { DelegationService } from 'src/app/Services/delegation.service';
 import { LocalStorageService } from 'src/app/Services/local-storage.service';
 import { HeaderMenus } from 'src/app/Models/header-menus.dto';
@@ -47,6 +47,7 @@ export class DelegationFormComponent implements OnInit {
   isValidForm: boolean | null
   isElevated = true
   delegationFields: string[] = []
+  municipalities: MunicipalityDto[] = []
 
   private isUpdateMode: boolean;
   private validRequest: boolean;
@@ -82,16 +83,16 @@ export class DelegationFormComponent implements OnInit {
       address: this.address
     });
 
+    this.loadMunicipalities()
   }
 
   ngOnInit(): void {
     let errorResponse: any;
     // update
     if (this.companyId) {
-      
       this.isUpdateMode = true;
-
     }
+    
   }
 
   saveDelegation(): void {
@@ -143,4 +144,10 @@ export class DelegationFormComponent implements OnInit {
       );
   }
 
+  loadMunicipalities():void {
+    this.delegationService.getMinicipalities()
+    .subscribe((municipalities:MunicipalityDto[])=>{
+      this.municipalities = municipalities
+    })
+  }
 }

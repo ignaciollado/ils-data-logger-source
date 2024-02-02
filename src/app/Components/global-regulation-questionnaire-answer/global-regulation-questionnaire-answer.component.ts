@@ -16,6 +16,7 @@ export class GlobalRegulationQuestionnaireAnswerComponent {
   userQuestionnaires: AnswerDTO[] = []
   userQuestionnaireTemp: answeredQuestionnaire[] = []
   regulationList: regulationsDTO[] = [] /* Listado de toda la regulación medioambiental */
+  ordenanzasList: regulationsDTO[] = [] /* Listado de toda las ordenanzas municipales */
   vector: string[] = ["RESIDUOS","SEGURIDAD INDUSTRIAL","AGUAS","ATMÓSFERA","SUSTANCIAS Y PREPARADOS QUÍMICOS","MEDIOAMBIENTE GENERAL"]
 
   regVector: {} = [
@@ -38,7 +39,6 @@ export class GlobalRegulationQuestionnaireAnswerComponent {
   ngOnInit() {
     const questionnaireID = this.route.snapshot.paramMap.get('id');
     this.loadRegulations(+questionnaireID)
-    /* this.loadQuestions() */
   }
 
   loadRegulations(questionnaireID: number){
@@ -46,6 +46,14 @@ export class GlobalRegulationQuestionnaireAnswerComponent {
       .subscribe( (regulations: any[]) => {
         this.regulationList = regulations
         this.loadQuestionnaireResult( +questionnaireID )
+      })
+  }
+
+  loadOrdenanzas(){
+    this.enviromentalAuditService.getOrdenanzas()
+      .subscribe( (ordenanzas: any[]) => {
+        this.ordenanzasList = ordenanzas
+        console.log (this.ordenanzasList)
       })
   }
 

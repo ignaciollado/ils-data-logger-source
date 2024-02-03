@@ -16,12 +16,12 @@
         <ng-container *ngFor="let regulations  of userQuestionnaireTemp; index as j">
           <div class="vector-data"><strong>{{regVector[j].vectorName}}</strong></div>
           <div>
-            <h3 *ngIf="regVector[j].regulation" class="regulacion-general">Regulación general</h3>
+            <h3 *ngIf="regVector[j].regulation" class="regulacion-general">Normativa general</h3>
             <ul *ngIf="regVector[j].regulation" [innerHTML]="regVector[j].regulation"></ul>
           </div>
 
           <ng-container *ngFor="let item of regulations.regulations">
-            <h3 *ngIf="regulations.regulations" class="regulacion-especifica">Regulación específica</h3>
+            <h3 *ngIf="regulations.regulations" class="regulacion-especifica">Normativa específica</h3>
             <ul>
               <ng-container *ngFor="let questions of item.regulation" >
                 <div *ngIf="questions.q1" [innerHTML]="questions.q1"></div>
@@ -42,10 +42,13 @@
         </ng-container>
       </mat-card-content>
     </mat-card>
+    <div><h3 class="regulacion-general">Normativa municipal de aplicación</h3></div>
+    <ul>
     <mat-card class="questionnaire-card" *ngFor="let ordenanza of ordenanzasList">
-      {{ordenanza.Vector}}-{{ordenanza.Municipio}}-{{ordenanza.Titulo}}-{{ordenanza.regId}}
-      <span><a href='{{ordenanza.regId}}' target='_blank'>{{ordenanza.regId}}</a> </span>
+      <li><span>{{ordenanza.Titulo}}</span> - <span>[{{ordenanza.Vector}}]</span> -
+      <span><a href='../../../assets/regulation/municipal/{{ordenanza.Municipio}}/{{ordenanza.regId}}.pdf' target='_blank'>{{ordenanza.regId}}</a></span></li>
     </mat-card>
+  </ul>
   </div>
   <span *ngIf="!userQuestionnaires" class="loader">{{'loadingQuestionnaire' | translate}}
   <mat-progress-bar color="accent" mode="indeterminate" *ngIf="!userQuestionnaires"></mat-progress-bar></span>

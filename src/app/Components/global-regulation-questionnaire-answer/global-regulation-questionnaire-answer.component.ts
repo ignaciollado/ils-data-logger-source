@@ -17,6 +17,7 @@ import { SharedService } from 'src/app/Services/shared.service';
 export class GlobalRegulationQuestionnaireAnswerComponent {
   private userId: string | null
   delegations!: DelegationDTO[]
+  qDelegation:DelegationDTO[]
   currentDelegation: number
   userQuestionnaires: AnswerDTO[] = []
   userQuestionnaireTemp: answeredQuestionnaire[] = []
@@ -65,11 +66,12 @@ export class GlobalRegulationQuestionnaireAnswerComponent {
   }
 
   private loadDelegations(currentDelegation: number): void {
-    console.log("currentDelegation: ", currentDelegation)
     if (this.userId) {
         this.delegationService.getAllDelegationsByCompanyIdFromMySQL(this.userId).subscribe(
         (delegations: DelegationDTO[]) => {
           this.delegations = delegations
+          this.qDelegation = this.delegations.filter(item=> item.companyDelegationId == currentDelegation)
+          this.ordenanzasList = this.ordenanzasList.filter(item=>item.Municipio.trim() == this.qDelegation[0].address.trim())
         }
       );
     }
@@ -80,7 +82,7 @@ export class GlobalRegulationQuestionnaireAnswerComponent {
           .subscribe( (questionnaires: AnswerDTO[]) =>{
             this.userQuestionnaires = questionnaires
             this.userQuestionnaires.map(delegation => {
-              this.currentDelegation = delegation.companyDelegationId
+              this.loadDelegations(delegation.companyDelegationId)
             })
             this.userQuestionnaires.map((item:AnswerDTO) =>{
               JSON.parse(item.userAnswers).map((vectorAnswers:any) => {
@@ -259,7 +261,5 @@ export class GlobalRegulationQuestionnaireAnswerComponent {
               })
             })
           })
-          console.log("this.currentDelegation", this.currentDelegation)
-          this.loadDelegations(this.currentDelegation)
   }
 }

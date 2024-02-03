@@ -43,7 +43,8 @@
       </mat-card-content>
     </mat-card>
     <mat-card class="questionnaire-card" *ngFor="let ordenanza of ordenanzasList">
-      {{ordenanza.regId}} {{ordenanza.municipio}} {{ordenanza.titulo}}
+      {{ordenanza.Vector}}-{{ordenanza.Municipio}}-{{ordenanza.Titulo}}-{{ordenanza.regId}}
+      <span><a href='{{ordenanza.regId}}' target='_blank'>{{ordenanza.regId}}</a> </span>
     </mat-card>
   </div>
   <span *ngIf="!userQuestionnaires" class="loader">{{'loadingQuestionnaire' | translate}}

@@ -5,6 +5,9 @@ import { AnswerDTO } from 'src/app/Models/answer.dto'
 import { ActivatedRoute } from '@angular/router';
 import { answeredQuestionnaire } from 'src/app/Models/answeredQuestionnaire.dto';
 import { regulationsDTO, ordenanzasDTO } from 'src/app/Models/regulation.dto';
+import { DelegationService } from 'src/app/Services/delegation.service';
+import { DelegationDTO } from 'src/app/Models/delegation.dto';
+import { SharedService } from 'src/app/Services/shared.service';
 
 @Component({
   selector: 'app-global-regulation-questionnaire-answer',
@@ -13,6 +16,8 @@ import { regulationsDTO, ordenanzasDTO } from 'src/app/Models/regulation.dto';
 })
 export class GlobalRegulationQuestionnaireAnswerComponent {
   private userId: string | null
+  delegations!: DelegationDTO[]
+  currentDelegation: number
   userQuestionnaires: AnswerDTO[] = []
   userQuestionnaireTemp: answeredQuestionnaire[] = []
   regulationList: regulationsDTO[] = [] /* Listado de toda la regulación medioambiental */
@@ -29,6 +34,7 @@ export class GlobalRegulationQuestionnaireAnswerComponent {
   ]
 
   constructor (
+    private delegationService: DelegationService,
     private enviromentalAuditService: EnvironmentalAuditsService,
     private jwtHelper: JwtHelperService,
     private route: ActivatedRoute,
@@ -58,10 +64,24 @@ export class GlobalRegulationQuestionnaireAnswerComponent {
       })
   }
 
+  private loadDelegations(currentDelegation: number): void {
+    console.log("currentDelegation: ", currentDelegation)
+    if (this.userId) {
+        this.delegationService.getAllDelegationsByCompanyIdFromMySQL(this.userId).subscribe(
+        (delegations: DelegationDTO[]) => {
+          this.delegations = delegations
+        }
+      );
+    }
+  }
+
   loadQuestionnaireResult( questionnaireID: number ){
         this.enviromentalAuditService.getQuestionnaireByID( questionnaireID )
           .subscribe( (questionnaires: AnswerDTO[]) =>{
             this.userQuestionnaires = questionnaires
+            this.userQuestionnaires.map(delegation => {
+              this.currentDelegation = delegation.companyDelegationId
+            })
             this.userQuestionnaires.map((item:AnswerDTO) =>{
               JSON.parse(item.userAnswers).map((vectorAnswers:any) => {
                 let vRegTemp: string = ""
@@ -239,5 +259,7 @@ export class GlobalRegulationQuestionnaireAnswerComponent {
               })
             })
           })
+          console.log("this.currentDelegation", this.currentDelegation)
+          this.loadDelegations(this.currentDelegation)
   }
 }

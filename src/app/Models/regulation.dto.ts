@@ -7,10 +7,10 @@ export class regulationsDTO {
 }
 
 export class ordenanzasDTO {
-    vector:      string;
-    titulo:      string;
-    municipio:   string;
+    Vector:      string;
+    Titulo:      string;
+    Municipio:   string;
     regId:       string;
     id:          string;
 }
- 
+

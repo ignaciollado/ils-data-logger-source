@@ -44,7 +44,7 @@ export class DelegationService {
       .get<any>(`${this.urlAPiMySql}delegationCountByCompany.php?companyId=${companyId}`)
   }
 
-  getMinicipalities(): Observable<MunicipalityDto[]> {
+  getMunicipalities(): Observable<MunicipalityDto[]> {
     return this.http
       .get<MunicipalityDto[]>(`${this.urlAPiMock}municipios.json`)
       .pipe(catchError(this.sharedService.handleError))

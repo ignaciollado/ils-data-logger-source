@@ -38,7 +38,6 @@ export class GlobalRegulationQuestionnaireListComponent {
   loadUserQuestionnaires( userId: string) {
     this.enviromentalAuditService.getGlobalAnswersByCompany( userId )
       .subscribe( (questionaires: AnswerDTO[]) => {
-
         this.userQuestionnaires = questionaires
         this.userQuestionnaires.map(( questionnaire:any ) => {
           questionnaire.completed = JSON.parse(questionnaire.completed)
@@ -60,7 +59,7 @@ export class GlobalRegulationQuestionnaireListComponent {
 
   openDialog(enterAnimationDuration: string, exitAnimationDuration: string, questionText: string, toolTipText: string, doc1: string, doc2: string, confirmDialog: boolean): void {
     const dialogConfig = new MatDialogConfig();
-  
+
     dialogConfig.disableClose = false
     dialogConfig.autoFocus = true
     dialogConfig.panelClass = "dialog-customization"

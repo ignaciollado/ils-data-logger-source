@@ -4,6 +4,7 @@ export class AnswerDTO {
   companyId: number
   companyQuestionnaireId: number
   companyDelegationName: string
+  companyDelegationId: number
   userAnswers: string
   completed: vectorStateDetail[]
   updated_at: Date

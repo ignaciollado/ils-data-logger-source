@@ -66,7 +66,7 @@ export class DelegationFormComponent implements OnInit {
 
     this.isValidForm = null;
     this.companyId = this.jwtHelper.decodeToken().id_ils
-    
+
     this.delegation = new DelegationDTO('', '')
     this.isUpdateMode = false
     this.validRequest = false
@@ -92,7 +92,7 @@ export class DelegationFormComponent implements OnInit {
     if (this.companyId) {
       this.isUpdateMode = true;
     }
-    
+
   }
 
   saveDelegation(): void {
@@ -145,7 +145,7 @@ export class DelegationFormComponent implements OnInit {
   }
 
   loadMunicipalities():void {
-    this.delegationService.getMinicipalities()
+    this.delegationService.getMunicipalities()
     .subscribe((municipalities:MunicipalityDto[])=>{
       this.municipalities = municipalities
     })

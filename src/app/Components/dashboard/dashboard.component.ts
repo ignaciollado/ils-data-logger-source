@@ -825,7 +825,7 @@ export class DashboardComponent implements OnInit {
     )
   }
 
-  chartResidueGenerate() {
+  chartResidueGenerate(){
     this.graphDataTemp = []
     this.graphData = []
     this.startPrimaryColor  = 19
@@ -921,7 +921,7 @@ export class DashboardComponent implements OnInit {
 
   }
 
-  chartRatioBilling() {
+  chartRatioBilling(){
     let currentDelegation: string
     let currentYear: string
     let prevDelegation: string = ""
@@ -931,7 +931,6 @@ export class DashboardComponent implements OnInit {
     let dataToQuarterView: number[] = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
     let dataToYearView: number[] = [0,0,0,0,0,0] /* seis años del 2019 al 2024 */
     this.startPrimaryColor = 21
-    this.isRatioCNAEE = false
 
     if (this.isYearViewE) {
       this.billingService.getYearlyBillingByCompanyId(this.companyId)
@@ -1022,66 +1021,10 @@ export class DashboardComponent implements OnInit {
     if (this.isMonthViewE) {}
   }
 
-  chartYearlyViewE(){
+  chartRatioCNAE(){
     if (this.chart) {
       this.chart.destroy()
     }
-    this.isQuarterViewE = false
-    this.isMonthViewE = false
-    this.loadgraphDataEnergy()
-  }
-
-  chartQuarterlyViewE(){
-    if (this.chart) {
-      this.chart.destroy()
-    }
-    this.isYearViewE = false
-    this.isMonthViewE = false
-    this.loadgraphDataEnergy()
-  }
-
-  chartmonthlyViewE() {
-    if (this.chart) {
-      this.chart.destroy()
-    }
-    this.isYearViewE = false
-    this.isQuarterViewE = false
-    this.loadgraphDataEnergy()
-  }
-
-  chartkWViewE() {
-    if (this.chart) {
-      this.chart.destroy()
-    }
-    this.isMWViewE = false
-    if (localStorage.getItem('preferredLang') === 'cat') {
-      this.aspectEnergy = "Energia (kWh)"
-    }
-    else {
-      this.aspectEnergy = "Energía (kWh)"
-    }
-    this.loadgraphDataEnergy()
-  }
-
-  chartMWViewE() {
-    if (this.chart) {
-      this.chart.destroy()
-    }
-    this.iskWViewE = false
-    if (localStorage.getItem('preferredLang') === 'cat') {
-      this.aspectEnergy = "Energia (MWh)"
-    }
-    else {
-      this.aspectEnergy = "Energía (MWh)"
-    }
-    this.loadgraphDataEnergy()
-  }
-
-  chartRatioCNAE() {
-    if (this.chart) {
-      this.chart.destroy()
-    }
-    this.isRatioBillingE = false
     this.chartObjective(1)
     this.loadgraphDataEnergy()
     return
@@ -1161,7 +1104,62 @@ export class DashboardComponent implements OnInit {
     });
   }
 
-  chartObjective(aspectId:number) {
+  chartYearlyViewE(){
+    if (this.chart) {
+      this.chart.destroy()
+    }
+    this.isQuarterViewE = !this.isYearViewE
+    this.isMonthViewE = false
+    this.loadgraphDataEnergy()
+  }
+
+  chartQuarterlyViewE(){
+    if (this.chart) {
+      this.chart.destroy()
+    }
+    this.isMonthViewE = !this.isQuarterViewE
+    this.isYearViewE = false
+    this.loadgraphDataEnergy()
+  }
+
+  chartmonthlyViewE(){
+    if (this.chart) {
+      this.chart.destroy()
+    }
+    this.isYearViewE = !this.isMonthViewE
+    this.isQuarterViewE = false
+    this.loadgraphDataEnergy()
+  }
+
+  chartkWViewE(){
+    if (this.chart) {
+      this.chart.destroy()
+    }
+    this.isMWViewE = !this.iskWViewE
+    if (localStorage.getItem('preferredLang') === 'cat') {
+      this.aspectEnergy = "Energia (kWh)"
+    }
+    else {
+      this.aspectEnergy = "Energía (kWh)"
+    }
+    this.loadgraphDataEnergy()
+  }
+
+  chartMWViewE(){
+    if (this.chart) {
+      this.chart.destroy()
+    }
+    this.iskWViewE = !this.isMWViewE
+    if (localStorage.getItem('preferredLang') === 'cat') {
+      this.aspectEnergy = "Energia (MWh)"
+    }
+    else {
+      this.aspectEnergy = "Energía (MWh)"
+    }
+    this.loadgraphDataEnergy()
+  }
+
+  chartObjective(aspectId:number){
     this.startPrimaryColor  = 19
    /*  this.graphObjectiveTemp = this.objectives.filter((item:any) => item.aspectId == aspectId)
     if(this.delegation.value){
@@ -1202,7 +1200,7 @@ export class DashboardComponent implements OnInit {
     this.chart.update() */
   }
 
-  graphFormReset() {
+  graphFormReset(){
     this.delegation.reset()
     this.energy.reset()
     this.myDatasets = []

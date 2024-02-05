@@ -36,11 +36,6 @@ form {
   align-self: center;
   justify-self: center;
 }
-.item1 {
-  grid-area: b;
-  align-self: center;
-  justify-self: center;
-}
 .item2 {
   grid-area: c;
   align-self: center;
@@ -50,32 +45,13 @@ form {
 .item3 {
   grid-area: d;
   padding-left: .5rem;
-  border-left: 1px solid #365446;
-}
-.item4 {
-  grid-area: e;
-  padding-left: .5rem;
 }
 .item5 {
   grid-area: f;
   padding-left: .5rem;
-  border-left: 1px solid #365446;
-}
-.item6 {
-  grid-area: g;
-  padding-left: .5rem;
-}
-.item7 {
-  grid-area: h;
-  padding-left: .5rem;
 }
 .item8 {
   grid-area: i;
-  padding-left: .5rem;
-  border-left: 1px solid #365446;
-}
-.item9 {
-  grid-area: j;
   padding-left: .5rem;
 }
 .item10 {
@@ -93,12 +69,17 @@ form {
     gap: .5rem;
   }
   .fields-container{
-    grid-template-columns: auto;
+    grid-template-columns: repeat(5, auto);
     grid-template-areas:
-      "a d h"
-      "b e g"
-      "c e f"
-      "k i j";
+      "a d d d d"
+      "a d d d d"
+      "c f f f f"
+      "c i i i i"
+      "k k k k k";
+  }
+  .item10 {
+    align-self: right;
+    justify-self: right;
   }
   canvas{
     max-width: 100%;

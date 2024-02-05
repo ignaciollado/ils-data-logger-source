@@ -42,15 +42,22 @@
         </ng-container>
       </mat-card-content>
     </mat-card>
-    <div><h3 class="regulacion-general">Normativa municipal de aplicación</h3></div>
-    <ul>
-    <mat-card class="questionnaire-card" *ngFor="let ordenanza of ordenanzasList">
-      <li><span>{{ordenanza.Titulo}}</span> - <span>[{{ordenanza.Vector}}]</span> -
-      <span><a href='../../../assets/regulation/municipal/{{ordenanza.Municipio}}/{{ordenanza.regId}}.pdf' target='_blank'>{{ordenanza.regId}}</a></span></li>
+    <mat-card class="questionnaire-card">
+      <mat-card-content>
+        <ng-container>
+          <div><h3 class="regulacion-municipal">Normativa municipal de aplicación</h3></div>
+          <ng-container *ngFor="let ordenanza of ordenanzasList">
+            <ul>
+              <li>
+                <span>{{ordenanza.Titulo}}</span> - <span>[{{ordenanza.Vector}}]</span> -
+                <span><a href='../../../assets/regulation/municipal/{{ordenanza.Municipio}}/{{ordenanza.regId}}.pdf' target='_blank'>{{ordenanza.regId}}</a></span>
+              </li>
+            </ul>
+          </ng-container>
+        </ng-container>
+      </mat-card-content>
     </mat-card>
-  </ul>
   </div>
   <span *ngIf="!userQuestionnaires" class="loader">{{'loadingQuestionnaire' | translate}}
   <mat-progress-bar color="accent" mode="indeterminate" *ngIf="!userQuestionnaires"></mat-progress-bar></span>
 </div>
-

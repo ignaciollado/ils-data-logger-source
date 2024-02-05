@@ -7,19 +7,6 @@
       (ngSubmit)="loadgraphDataEnergy()">
       <div class='fields-container'>
 
-       <!--  <mat-form-field [style.width.px]='220' class="item1">
-          <mat-label>{{'year' | translate}}</mat-label>
-          <mat-select [formControl]="yearEnergy">
-            <mat-option value="2019">2019</mat-option>
-            <mat-option value="2020">2020</mat-option>
-            <mat-option value="2021">2021</mat-option>
-            <mat-option value="2022">2022</mat-option>
-            <mat-option value="2023">2023</mat-option>
-            <mat-option value="2024">2024</mat-option>
-          </mat-select>
-          <mat-error *ngIf="yearEnergy.hasError('required')">{{'year' | translate}} <strong>{{'isRequired' | translate}}</strong></mat-error>
-        </mat-form-field> -->
-
         <mat-form-field [style.width.px]=220 class="item0">
           <mat-label>{{'delegation' | translate}}</mat-label>
           <mat-select [formControl]="delegation" panelClass="panel-{{delegation.value}}" (selectionChange)="loadgraphDataEnergy()">
@@ -40,19 +27,23 @@
           <mat-error *ngIf="energy.hasError('required')">{{'energyType' | translate}} <strong>{{'isRequired' | translate}}</strong></mat-error>
         </mat-form-field>
 
-        <mat-slide-toggle [(ngModel)]="isRatioBillingE" [formControl]="ratioBillingGraphE" class="item3" (change)="chartRatioBilling()">Ratio billing</mat-slide-toggle>
-        <mat-slide-toggle [(ngModel)]="isRatioCNAEE" [formControl]="ratioCNAEgGraphE" class="item4" (change)="chartRatioCNAE()">Ratio CNAE</mat-slide-toggle>
-
-        <mat-slide-toggle [(ngModel)]="isYearViewE" [formControl]="yearWiewGraphE" class="item5" (change)="chartYearlyViewE()">Year</mat-slide-toggle>
-        <mat-slide-toggle [(ngModel)]="isQuarterViewE" [formControl]="quarterlyViewGraphE" class="item6" (change)="chartQuarterlyViewE()">Quarter</mat-slide-toggle>
-        <mat-slide-toggle [(ngModel)]="isMonthViewE" [formControl]="monthlyViewGraphE" class="item7" (change)="chartmonthlyViewE()">Month</mat-slide-toggle>
-
-        <mat-slide-toggle [(ngModel)]="iskWViewE" [formControl]="kWView" class="item8" (change)="chartkWViewE()">kWh</mat-slide-toggle>
-        <mat-slide-toggle [(ngModel)]="isMWViewE" [formControl]="MWView" class="item9" (change)="chartMWViewE()">MWh</mat-slide-toggle>
+        <div class="item3">
+          <mat-slide-toggle [(ngModel)]="isRatioBillingE" [formControl]="ratioBillingGraphE" (change)="chartRatioBilling()">Ratio billing</mat-slide-toggle>
+          <mat-slide-toggle [(ngModel)]="isRatioCNAEE" [formControl]="ratioCNAEgGraphE" (change)="chartRatioCNAE()">Ratio CNAE</mat-slide-toggle>  
+        </div>
+        <div class="item5">
+          <mat-slide-toggle [(ngModel)]="isYearViewE" [formControl]="yearWiewGraphE" (change)="chartYearlyViewE()">Year</mat-slide-toggle>
+          <mat-slide-toggle [(ngModel)]="isQuarterViewE" [formControl]="quarterlyViewGraphE" (change)="chartQuarterlyViewE()">Quarter</mat-slide-toggle>
+          <mat-slide-toggle [(ngModel)]="isMonthViewE" [formControl]="monthlyViewGraphE" (change)="chartmonthlyViewE()">Month</mat-slide-toggle>  
+        </div>
+        <div class="item8">
+          <mat-slide-toggle [(ngModel)]="iskWViewE" [formControl]="kWView" (change)="chartkWViewE()">kWh</mat-slide-toggle>
+          <mat-slide-toggle [(ngModel)]="isMWViewE" [formControl]="MWView" (change)="chartMWViewE()">MWh</mat-slide-toggle>  
+        </div>
 
         <mat-button-toggle-group name="buttonsform" aria-label="buttons form reset and submit" class="item10">
           <button mat-raised-button color="primary" (click)="graphFormReset()">Reset</button>
-        <!--   <button mat-raised-button color="accent" type="submit" [disabled]="!energyGraphForm.valid">Graph</button> -->
+          <!-- <button mat-raised-button color="accent" type="submit" [disabled]="!energyGraphForm.valid">Graph</button> -->
         </mat-button-toggle-group>
       </div>
     </form>

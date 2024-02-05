@@ -124,7 +124,7 @@ export class LoginComponent implements OnInit {
             console.log ("Welcome to the ILS datalogger.industrialocalsostenible.com created by IDI!!")
             responseOK = true;
             errorResponse = "login correct"
-            this.loginUser.user_id = item.user_id /* this.jwtHelper.decodeToken().id_ils */
+            this.loginUser.user_id = item.user_id
             this.loginUser.access_token = item.access_token
             sessionStorage.setItem('user_id', this.loginUser.user_id)
             sessionStorage.setItem('access_token', this.loginUser.access_token)

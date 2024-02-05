@@ -48,10 +48,13 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
     this.headerMenusService.headerManagement.subscribe (
       (headerInfo: HeaderMenus) => {
-        if (this.jwtHelper.decodeToken().role === 'company') {
-          this.isCompany = true
-        } else {
-          this.isCompany = false
+
+        if (this.jwtHelper.decodeToken().role) {
+          if (this.jwtHelper.decodeToken().role === 'company') {
+            this.isCompany = true
+          } else {
+            this.isCompany = false
+          }
         }
 
         if (headerInfo) {

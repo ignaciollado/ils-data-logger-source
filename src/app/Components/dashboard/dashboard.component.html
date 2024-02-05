@@ -28,7 +28,7 @@
         </mat-form-field>
 
         <div class="item3">
-          <mat-slide-toggle [(ngModel)]="isRatioBillingE" [formControl]="ratioBillingGraphE" (change)="chartRatioBilling()">Ratio billing</mat-slide-toggle>
+          <mat-slide-toggle [(ngModel)]="isRatioBillingE" [formControl]="ratioBillingGraphE" (change)="loadgraphDataEnergy()">Ratio billing</mat-slide-toggle>
           <mat-slide-toggle [(ngModel)]="isRatioCNAEE" [formControl]="ratioCNAEgGraphE" (change)="chartRatioCNAE()">Ratio CNAE</mat-slide-toggle>  
         </div>
         <div class="item5">
@@ -105,7 +105,7 @@
           <button mat-raised-button color="accent" (click)="graphFormReset()">Reset</button>
           <button mat-raised-button color="primary" type="submit" [disabled]="!waterGraphForm.valid">Graph</button>
         </mat-button-toggle-group>
-        <mat-slide-toggle [(ngModel)]="isRatioBillingE" [formControl]="ratioBillingGraphE" class="item6" (change)="chartRatioBilling()">Ratio billing graph</mat-slide-toggle>
+        <mat-slide-toggle [(ngModel)]="isRatioBillingE" [formControl]="ratioBillingGraphE" class="item6" (change)="loadgraphDataEnergy()">Ratio billing graph</mat-slide-toggle>
         <mat-slide-toggle [(ngModel)]="isRatioCNAEE" [formControl]="ratioCNAEgGraphE" class="item7" (change)="chartRatioCNAE()">Ratio CNAE graph</mat-slide-toggle>
         <mat-slide-toggle [(ngModel)]="isMonthViewE" [formControl]="monthlyViewGraphE" class="item7" (change)="chartRatioCNAE()">L</mat-slide-toggle>
         <mat-slide-toggle [(ngModel)]="isMonthViewE" [formControl]="monthlyViewGraphE" class="item7" (change)="chartRatioCNAE()">m3</mat-slide-toggle>
@@ -168,7 +168,7 @@
           <button mat-raised-button color="accent" (click)="graphFormReset()">Reset</button>
           <button mat-raised-button color="primary" type="submit" [disabled]="!residueGraphForm.valid">Graph</button>
         </mat-button-toggle-group>
-        <mat-slide-toggle [(ngModel)]="isRatioBillingE" [formControl]="ratioBillingGraphE" class="item6" (change)="chartRatioBilling()">Ratio billing graph</mat-slide-toggle>
+        <mat-slide-toggle [(ngModel)]="isRatioBillingE" [formControl]="ratioBillingGraphE" class="item6" (change)="loadgraphDataEnergy()">Ratio billing graph</mat-slide-toggle>
         <mat-slide-toggle [(ngModel)]="isRatioCNAEE" [formControl]="ratioCNAEgGraphE" class="item7" (change)="chartRatioCNAE()">Ratio CNAE graph</mat-slide-toggle>
         <mat-slide-toggle [(ngModel)]="isMonthViewE" [formControl]="monthlyViewGraphE" class="item7" (change)="chartRatioCNAE()">kg</mat-slide-toggle>
         <mat-slide-toggle [(ngModel)]="isMonthViewE" [formControl]="monthlyViewGraphE" class="item7" (change)="chartRatioCNAE()">T</mat-slide-toggle>
@@ -230,7 +230,7 @@
           <button mat-raised-button color="accent" (click)="graphFormReset()">Reset</button>
           <button mat-raised-button color="primary" type="submit" [disabled]="!emissionGraphForm.valid">Graph</button>
         </mat-button-toggle-group>
-        <mat-slide-toggle [(ngModel)]="isRatioBillingE" [formControl]="ratioBillingGraphE" class="item6" (change)="chartRatioBilling()">Ratio billing graph</mat-slide-toggle>
+        <mat-slide-toggle [(ngModel)]="isRatioBillingE" [formControl]="ratioBillingGraphE" class="item6" (change)="loadgraphDataEnergy()">Ratio billing graph</mat-slide-toggle>
         <mat-slide-toggle [(ngModel)]="isRatioCNAEE" [formControl]="ratioCNAEgGraphE" class="item7" (change)="chartRatioCNAE()">Ratio CNAE graph</mat-slide-toggle>
         <mat-slide-toggle [(ngModel)]="isMonthViewE" [formControl]="monthlyViewGraphE" class="item7" (change)="chartRatioCNAE()">kg</mat-slide-toggle>
         <mat-slide-toggle [(ngModel)]="isMonthViewE" [formControl]="monthlyViewGraphE" class="item7" (change)="chartRatioCNAE()">T</mat-slide-toggle>

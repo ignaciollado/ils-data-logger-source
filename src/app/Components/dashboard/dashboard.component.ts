@@ -69,7 +69,7 @@ export class DashboardComponent implements OnInit {
   residuesItemCompany: ChapterItem[] = []
   residuesItemCompanyTemp: string[] = []
 
-  graphDataTemp: graphData[]
+  graphDataTemp: graphData[] = []
   graphData: graphData[] = []
   myDatasets: any[] = []
 
@@ -216,7 +216,6 @@ export class DashboardComponent implements OnInit {
     this.loadResidues()
     this.loadDelegations(this.companyId)
     this.loadObjectives(this.companyId)
-    this.loadProductionBilling(this.companyId)
     this.loadProductionCNAE(this.companyId)
     this.loadgraphDataEnergy()
   }
@@ -309,6 +308,7 @@ export class DashboardComponent implements OnInit {
               equivEnkWh = energy.pci * energy.convLKg
             }
           })
+
           currentDelegation = consumption.delegation
           currentEnergy = consumption.energyName
           if ((prevDelegation == "" || prevDelegation == currentDelegation) && (prevEnergy == "" || prevEnergy == currentEnergy)) {
@@ -324,13 +324,19 @@ export class DashboardComponent implements OnInit {
               },
             )
             dataToYearView = [0,0,0,0,0,0]
-              dataToYearView[(consumption.year-2019)] = consumption.totalYear * equivEnkWh/convertkWhToMWh
+            dataToYearView[(consumption.year-2019)] = consumption.totalYear * equivEnkWh/convertkWhToMWh
           }
           prevDelegation = currentDelegation
           prevEnergy = currentEnergy
           currentDelegation = consumption.delegation
           currentEnergy = consumption.energyName
         })
+        if (this.isRatioBillingE){
+          console.log ("dataToYearView absolute: ", dataToYearView)
+          dataToYearView = this.billingProduction(dataToYearView)
+          console.log ("dataToYearView ratio: ", dataToYearView)
+        }
+
         this.myDatasets.push (
           {
           label: prevDelegation+" "+prevEnergy,
@@ -796,21 +802,6 @@ export class DashboardComponent implements OnInit {
     )
   }
 
-  private loadProductionBilling(companyId: string): void {
-    let errorResponse: any;
-    this.billingService.getBillingsByCompany(companyId)
-    .subscribe(
-      (billings: BillingDTO[]) => {
-        this.billingProductions = billings
-        console.log("this.productionBilling", this.billingProductions)
-      },
-      (error: HttpErrorResponse) => {
-        errorResponse = error.error;
-        this.sharedService.errorLog(errorResponse);
-      }
-    )
-  }
-
   private loadProductionCNAE(companyId: string): void {
     let errorResponse: any;
     this.cnaesDataService.getCnaesDataByCompany(companyId)
@@ -921,15 +912,17 @@ export class DashboardComponent implements OnInit {
 
   }
 
-  chartRatioBilling(){
+  billingProduction(dataToYearView:number[]): number[] {
     let currentDelegation: string
     let currentYear: string
     let prevDelegation: string = ""
     let prevYear: string = ""
     
-    let dataToMonthlyView: number[] = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
-    let dataToQuarterView: number[] = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
-    let dataToYearView: number[] = [0,0,0,0,0,0] /* seis años del 2019 al 2024 */
+    let billingProductionMonthly: number[] = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+    let billingProductionQuarterly: number[] = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+    let billingProductionYearly: number[] = [0,0,0,0,0,0] /* seis años del 2019 al 2024 */
+    let ratiobillingProductionYearly: number[] = [0,0,0,0,0,0] /* seis años del 2019 al 2024 */
+
     this.startPrimaryColor = 21
 
     if (this.isYearViewE) {
@@ -941,84 +934,35 @@ export class DashboardComponent implements OnInit {
           currentDelegation = billingProduction.delegation
           currentYear = billingProduction.year
           if ((prevDelegation == "" || prevDelegation == currentDelegation)) {
-              dataToYearView[(billingProduction.year-2019)] = billingProduction.totalYear
+            billingProductionYearly[(billingProduction.year-2019)] = billingProduction.totalYear
           }
           else {
-            this.myDatasets.push (
-              {
-              label: prevDelegation,
-              data: dataToYearView,
-              backgroundColor: this.primaryColors[this.startPrimaryColor--],
-              stack: prevDelegation,
-              },
-            )
-            dataToYearView = [0,0,0,0,0,0]
-              dataToYearView[(billingProduction.year-2019)] = billingProduction.totalYear
+            billingProductionYearly = [0,0,0,0,0,0]
+            billingProductionYearly[(billingProduction.year-2019)] = billingProduction.totalYear
           }
           prevDelegation = currentDelegation
           prevYear = currentYear
           currentDelegation = billingProduction.delegation
           currentYear = billingProduction.year
         })
+        ratiobillingProductionYearly= [
+          +billingProductionYearly[0]/+dataToYearView[0],
+          +billingProductionYearly[1]/+dataToYearView[1],
+          +billingProductionYearly[2]/+dataToYearView[2],
+          +billingProductionYearly[3]/+dataToYearView[3],
+          +billingProductionYearly[4]/+dataToYearView[4],
+          +billingProductionYearly[5]/+dataToYearView[5]
+        ]
+        return ratiobillingProductionYearly
       }
       )
 
-      this.graphDataTemp.map((item:graphData) => {
-        let aspectHardCoded = '1'
-        switch ( aspectHardCoded ) {
-            case '1':
-              this.theDataType = item.energyName
-                break;
-            case '2':
-              this.theDataType = ''
-                break;
-            case '3':
-              this.theDataType = item.residueName
-                break;
-            case '5':
-              this.theDataType = ''
-                break;
-          }
-        this.graphData.push({
-          'delegation': item.delegation,
-          'dataType': this.theDataType,
-          'year': item.year,
-          'monthlyData': [item.jan, item.feb, item.mar, item.apr, item.may, item.jun, item.jul, item.aug, item.sep, item.oct, item.nov, item.dec]
-          })
-        })
-        this.graphData.map(item=> {
-          this.myDatasets.push(
-            {
-              label: item.year+" "+item.dataType,
-              data: item.monthlyData,
-              backgroundColor: this.primaryColors[this.startPrimaryColor--],
-              stack: item.dataType,
-              borderWidth: 0
-            },
-          )
-        })
-        this.myDatasets.push(
-        {
-          type: 'line',
-          label: 'Ratio producción facturación',
-          data: this.theRatios,
-          backgroundColor: '#ff0000',
-          borderColor: '#00ff00',
-          borderWidth: .5,
-          fill: false,
-        }
-      )
-      if(this.delegation.value) {
-        this.myDatasets = this.myDatasets.filter((item:any)=>item.stack == this.delegation.value)
-      }
-      if(this.energy.value) {
-        this.myDatasets = this.myDatasets.filter((item:any)=>item.label.slice(-this.energy.value.length) == this.energy.value)
-      }
-      this.chart.update()
-    }
-
-    if (this.isQuarterViewE) {}
-    if (this.isMonthViewE) {}
+    } else if (this.isQuarterViewE) {
+      return billingProductionQuarterly
+    } else if (this.isMonthViewE) {
+      return billingProductionMonthly
+    } 
+    return [1,1,1,1,1,1]
   }
 
   chartRatioCNAE(){

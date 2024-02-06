@@ -308,14 +308,17 @@ export class DashboardComponent implements OnInit {
               equivEnkWh = energy.pci * energy.convLKg
             }
           })
-
           currentDelegation = consumption.delegation
           currentEnergy = consumption.energyName
           currentYear = consumption.year
           if ((prevDelegation == "" || prevDelegation == currentDelegation) && (prevEnergy == "" || prevEnergy == currentEnergy)) {
-              dataToYearView[(consumption.year-2019)] = consumption.totalYear * equivEnkWh/convertkWhToMWh
+              dataToYearView[(consumption.year-2019)] = consumption.totalYear * (equivEnkWh/convertkWhToMWh)
           }
           else {
+            if (this.isRatioBillingE){
+              this.billingYearProduction(dataToYearView, prevDelegation)
+              console.log("this.myDatasets: ", this.myDatasets)
+            } else {
             this.myDatasets.push (
               {
               label: prevDelegation+" "+prevEnergy,
@@ -323,9 +326,10 @@ export class DashboardComponent implements OnInit {
               backgroundColor: this.primaryColors[this.startPrimaryColor--],
               stack: prevDelegation,
               },
-            )
-            dataToYearView = [0,0,0,0,0,0]
-            dataToYearView[(consumption.year-2019)] = consumption.totalYear * equivEnkWh/convertkWhToMWh
+              )
+              dataToYearView = [0,0,0,0,0,0]
+              dataToYearView[(consumption.year-2019)] = consumption.totalYear * (equivEnkWh/convertkWhToMWh)
+            }
           }
           prevDelegation = currentDelegation
           prevEnergy = currentEnergy
@@ -334,11 +338,11 @@ export class DashboardComponent implements OnInit {
           currentEnergy = consumption.energyName
           currentYear = consumption.year
         })
-        if (this.isRatioBillingE){
-          dataToYearView = this.billingProduction(dataToYearView)
-          console.log ("dataToYearView ratio: ", dataToYearView)
+        if (this.isRatioBillingE) {
+          this.billingYearProduction(dataToYearView, prevDelegation)
+          console.log("this.myDatasets: ", this.myDatasets)
         }
-
+        else {
         this.myDatasets.push (
           {
           label: prevDelegation+" "+prevEnergy,
@@ -346,8 +350,8 @@ export class DashboardComponent implements OnInit {
           backgroundColor: this.primaryColors[this.startPrimaryColor--],
           stack: prevDelegation,
           },
-        )
-        console.log ("this.myDatasets: ", this.myDatasets, "this.isYearViewE", this.isYearViewE)
+        )}
+
         if(this.delegation.value) {
           this.myDatasets = this.myDatasets.filter((item:any)=>item.stack == this.delegation.value)
         }
@@ -915,24 +919,20 @@ export class DashboardComponent implements OnInit {
 
   }
 
-  billingProduction(dataToYearView:number[]): number[] {
+  billingYearProduction(dataToYearView:number[], delegationProduction: string): void {
     let currentDelegation: string
     let currentYear: string
     let prevDelegation: string = ""
     let prevYear: string = ""
     
-    let billingProductionMonthly: number[] = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
-    let billingProductionQuarterly: number[] = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
     let billingProductionYearly: number[] = [0,0,0,0,0,0] /* seis años del 2019 al 2024 */
     let ratiobillingProductionYearly: number[] = [0,0,0,0,0,0] /* seis años del 2019 al 2024 */
+    let ratiosDataset: any[] = []
 
-    this.startPrimaryColor = 21
-
-    if (this.isYearViewE) {
-      this.billingService.getYearlyBillingByCompanyId(this.companyId)
+    this.startPrimaryColor = 10
+    this.billingService.getYearlyBillingByCompanyId(this.companyId, delegationProduction)
       .subscribe((yearBillingProduction: BillingDTO[]) => {
         this.billingProductions = yearBillingProduction
-        console.log ("this.billingProductions", this.billingProductions)
         this.billingProductions.forEach((billingProduction: any) =>
         {
           currentDelegation = billingProduction.delegation
@@ -949,24 +949,33 @@ export class DashboardComponent implements OnInit {
           currentDelegation = billingProduction.delegation
           currentYear = billingProduction.year
         })
-        ratiobillingProductionYearly= [
-          +billingProductionYearly[0]/+dataToYearView[0],
-          +billingProductionYearly[1]/+dataToYearView[1],
-          +billingProductionYearly[2]/+dataToYearView[2],
-          +billingProductionYearly[3]/+dataToYearView[3],
-          +billingProductionYearly[4]/+dataToYearView[4],
-          +billingProductionYearly[5]/+dataToYearView[5]
+        ratiobillingProductionYearly = [
+          +dataToYearView[0]/+billingProductionYearly[0],
+          +dataToYearView[1]/+billingProductionYearly[1],
+          +dataToYearView[2]/+billingProductionYearly[2],
+          +dataToYearView[3]/+billingProductionYearly[3],
+          +dataToYearView[4]/+billingProductionYearly[4],
+          +dataToYearView[5]/+billingProductionYearly[5]
         ]
-        return ratiobillingProductionYearly
+        this.myDatasets.push (
+          {
+          type: 'line',
+          label: prevDelegation,
+          data: ratiobillingProductionYearly,
+          backgroundColor: this.primaryColors[this.startPrimaryColor--],
+          stack: prevDelegation,
+          },
+        )
+        if(this.delegation.value) {
+          this.myDatasets = this.myDatasets.filter((item:any)=>item.stack == this.delegation.value)
+        }
+        if(this.energy.value) {
+          this.myDatasets = this.myDatasets.filter((item:any)=>item.label.slice(-this.energy.value.length) == this.energy.value)
+        }
+        
+        this.chart.update();
       }
       )
-
-    } else if (this.isQuarterViewE) {
-      return billingProductionQuarterly
-    } else if (this.isMonthViewE) {
-      return billingProductionMonthly
-    } 
-    return [1,1,1,1,1,1]
   }
 
   chartRatioCNAE(){
@@ -1144,7 +1153,6 @@ export class DashboardComponent implements OnInit {
         },
       )
     })
-    console.log ("Objectives myDatasets ", this.myDatasets) 
     this.chart.update() */
   }
 

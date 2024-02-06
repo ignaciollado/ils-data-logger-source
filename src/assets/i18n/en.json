@@ -76,6 +76,8 @@
   "activityIndicatorChange": "Change the activity indicator to use",
 
   "year": "Year",
+  "quarter": "Quar",
+  "month": "Month",
   "fromDate": "From",
   "toDate": "To",
   "monthAndYear": "Month and Year",

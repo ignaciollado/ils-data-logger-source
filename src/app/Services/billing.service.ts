@@ -79,9 +79,9 @@ export class BillingService {
     );
   }
 
-  getYearlyBillingByCompanyId(companyId:string): Observable<BillingDTO[]> {
+  getYearlyBillingByCompanyId(companyId:string, delegation:string): Observable<BillingDTO[]> {
     return this.http
-      .get<BillingDTO[]>(`${URL_API}graphProductionBillingYearlyGetByCompanyId.php?companyId=${companyId}`)
+      .get<BillingDTO[]>(`${URL_API}graphProductionBillingYearlyGetByCompanyId.php?companyId=${companyId}&delegation=${delegation}`)
   }
 
 }

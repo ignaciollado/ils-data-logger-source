@@ -28,17 +28,17 @@
         </mat-form-field>
 
         <div class="item3">
-          <mat-slide-toggle [(ngModel)]="isRatioBillingE" [formControl]="ratioBillingGraphE" (change)="loadgraphDataEnergy()">Ratio billing</mat-slide-toggle>
-          <mat-slide-toggle [(ngModel)]="isRatioCNAEE" [formControl]="ratioCNAEgGraphE" (change)="chartRatioCNAE()">Ratio CNAE</mat-slide-toggle>  
+          <mat-slide-toggle [(ngModel)]="isRatioBillingE" [formControl]="ratioBillingGraphE" (change)="loadgraphDataEnergy()">{{'ratioBillingMode' | translate}}</mat-slide-toggle>
+          <mat-slide-toggle class="item4" [(ngModel)]="isRatioCNAEE" [formControl]="ratioCNAEgGraphE" (change)="chartRatioCNAE()">{{'ratioCNAEMode' | translate}}</mat-slide-toggle>  
         </div>
         <div class="item5">
-          <mat-slide-toggle [(ngModel)]="isYearViewE" [formControl]="yearWiewGraphE" (change)="chartYearlyViewE()">Year</mat-slide-toggle>
-          <mat-slide-toggle [(ngModel)]="isQuarterViewE" [formControl]="quarterlyViewGraphE" (change)="chartQuarterlyViewE()">Quarter</mat-slide-toggle>
-          <mat-slide-toggle [(ngModel)]="isMonthViewE" [formControl]="monthlyViewGraphE" (change)="chartmonthlyViewE()">Month</mat-slide-toggle>  
+          <mat-slide-toggle [(ngModel)]="isYearViewE" [formControl]="yearWiewGraphE" (change)="chartYearlyViewE()">{{'year' | translate}}</mat-slide-toggle>
+          <mat-slide-toggle class="item6" [(ngModel)]="isQuarterViewE" [formControl]="quarterlyViewGraphE" (change)="chartQuarterlyViewE()">{{'quarter' | translate}}</mat-slide-toggle>
+          <mat-slide-toggle class="item7" [(ngModel)]="isMonthViewE" [formControl]="monthlyViewGraphE" (change)="chartmonthlyViewE()">{{'month' | translate}}</mat-slide-toggle>  
         </div>
         <div class="item8">
           <mat-slide-toggle [(ngModel)]="iskWViewE" [formControl]="kWView" (change)="chartkWViewE()">kWh</mat-slide-toggle>
-          <mat-slide-toggle [(ngModel)]="isMWViewE" [formControl]="MWView" (change)="chartMWViewE()">MWh</mat-slide-toggle>  
+          <mat-slide-toggle class="item9" [(ngModel)]="isMWViewE" [formControl]="MWView" (change)="chartMWViewE()">MWh</mat-slide-toggle>  
         </div>
 
         <mat-button-toggle-group name="buttonsform" aria-label="buttons form reset and submit" class="item10">
@@ -53,7 +53,7 @@
     <div class="loader" *ngIf="!consumptions">No data loaded yet...</div>
 </div>
 
-  <div class='filtro-graficas'>
+<!--   <div class='filtro-graficas'>
     <form
       *ngIf="waterGraphForm"
       [formGroup]="waterGraphForm"
@@ -240,3 +240,4 @@
   </div>
   <canvas id="emssionGraph" aria-label= "Emissions graph" role="chart"
   (Click)="onChartClick($event)">{{ chart }}</canvas>
+ -->

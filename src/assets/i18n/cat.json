@@ -93,6 +93,8 @@
     "ratioCNAEMode": "Ratio per CNAE",
 
     "year": "Any",
+    "quarter": "Trimestre",
+    "month": "Mes",
     "fromDate": "Des de",
     "toDate": "Fins a",
     "monthAndYear": "Mes i any",
@@ -142,7 +144,6 @@
     "IDI": "IDI",
     "PoliticaCookies": "Política de cookies",
     "PoliticaPrivacidad": "Política de privacitat",
-    "ProgramasIDI": "Programes de l'IDI",
 
     "writeHere": "Escrigui aquí, per favor",
 

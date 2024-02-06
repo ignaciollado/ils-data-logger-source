@@ -311,6 +311,7 @@ export class DashboardComponent implements OnInit {
 
           currentDelegation = consumption.delegation
           currentEnergy = consumption.energyName
+          currentYear = consumption.year
           if ((prevDelegation == "" || prevDelegation == currentDelegation) && (prevEnergy == "" || prevEnergy == currentEnergy)) {
               dataToYearView[(consumption.year-2019)] = consumption.totalYear * equivEnkWh/convertkWhToMWh
           }
@@ -328,11 +329,12 @@ export class DashboardComponent implements OnInit {
           }
           prevDelegation = currentDelegation
           prevEnergy = currentEnergy
+          prevYear = currentYear
           currentDelegation = consumption.delegation
           currentEnergy = consumption.energyName
+          currentYear = consumption.year
         })
         if (this.isRatioBillingE){
-          console.log ("dataToYearView absolute: ", dataToYearView)
           dataToYearView = this.billingProduction(dataToYearView)
           console.log ("dataToYearView ratio: ", dataToYearView)
         }
@@ -345,6 +347,7 @@ export class DashboardComponent implements OnInit {
           stack: prevDelegation,
           },
         )
+        console.log ("this.myDatasets: ", this.myDatasets, "this.isYearViewE", this.isYearViewE)
         if(this.delegation.value) {
           this.myDatasets = this.myDatasets.filter((item:any)=>item.stack == this.delegation.value)
         }
@@ -929,6 +932,7 @@ export class DashboardComponent implements OnInit {
       this.billingService.getYearlyBillingByCompanyId(this.companyId)
       .subscribe((yearBillingProduction: BillingDTO[]) => {
         this.billingProductions = yearBillingProduction
+        console.log ("this.billingProductions", this.billingProductions)
         this.billingProductions.forEach((billingProduction: any) =>
         {
           currentDelegation = billingProduction.delegation

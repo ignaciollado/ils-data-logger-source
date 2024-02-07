@@ -9,19 +9,19 @@
         </mat-card-title>
         <mat-card-subtitle>
           <div>Ref. <strong>{{userQuestionnaire.companyQuestionnaireId}}</strong></div>
-          <span>Fecha realización: {{userQuestionnaire.updated_at| date :'short'}}</span>
+          <span>{{'dateAnswered' | translate}}: {{userQuestionnaire.updated_at| date :'short'}}</span>
         </mat-card-subtitle>
       </mat-card-header>
       <mat-card-content>
         <ng-container *ngFor="let regulations  of userQuestionnaireTemp; index as j">
           <div class="vector-data"><strong>{{regVector[j].vectorName}}</strong></div>
           <div>
-            <h3 *ngIf="regVector[j].regulation" class="regulacion-general">Normativa general</h3>
+            <h3 *ngIf="regVector[j].regulation" class="regulacion-general">{{'normativaGeneral' | translate}}</h3>
             <ul *ngIf="regVector[j].regulation" [innerHTML]="regVector[j].regulation"></ul>
           </div>
 
           <ng-container *ngFor="let item of regulations.regulations">
-            <h3 *ngIf="regulations.regulations" class="regulacion-especifica">Normativa específica</h3>
+            <h3 *ngIf="regulations.regulations" class="regulacion-especifica">{{'normativaEspecífica' | translate}}</h3>
             <ul>
               <ng-container *ngFor="let questions of item.regulation" >
                 <div *ngIf="questions.q1" [innerHTML]="questions.q1"></div>
@@ -45,7 +45,7 @@
     <mat-card class="questionnaire-card">
       <mat-card-content>
         <ng-container>
-          <div><h3 class="regulacion-municipal">Normativa municipal de aplicación</h3></div>
+          <div><h3 class="regulacion-municipal">{{'ordenanzasMunicipalesDeAplicacion' | translate}}</h3></div>
           <ng-container *ngFor="let ordenanza of ordenanzasList">
             <ul>
               <li>

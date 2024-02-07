@@ -317,7 +317,6 @@ export class DashboardComponent implements OnInit {
           else {
             if (this.isRatioBillingE){
               this.billingYearProduction(dataToYearView, prevDelegation)
-              console.log("this.myDatasets: ", this.myDatasets)
             } else {
             this.myDatasets.push (
               {
@@ -340,7 +339,6 @@ export class DashboardComponent implements OnInit {
         })
         if (this.isRatioBillingE) {
           this.billingYearProduction(dataToYearView, prevDelegation)
-          console.log("this.myDatasets: ", this.myDatasets)
         }
         else {
         this.myDatasets.push (
@@ -957,6 +955,7 @@ export class DashboardComponent implements OnInit {
           +dataToYearView[4]/+billingProductionYearly[4],
           +dataToYearView[5]/+billingProductionYearly[5]
         ]
+        console.log("this.myDatasets antes: ", this.myDatasets)
         this.myDatasets.push (
           {
           type: 'line',
@@ -966,6 +965,7 @@ export class DashboardComponent implements OnInit {
           stack: prevDelegation,
           },
         )
+        console.log("this.myDatasets después: ", this.myDatasets)
         if(this.delegation.value) {
           this.myDatasets = this.myDatasets.filter((item:any)=>item.stack == this.delegation.value)
         }

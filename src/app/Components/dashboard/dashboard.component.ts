@@ -11,7 +11,6 @@ import {
   UntypedFormBuilder,
   UntypedFormControl,
   UntypedFormGroup,
-  Validators,
 } from '@angular/forms';
 
 import { EnergyService } from 'src/app/Services/energy.service'
@@ -86,7 +85,18 @@ export class DashboardComponent implements OnInit {
   chart: any = new Chart("graph", {type: 'bar',
   data: {
      datasets: this.myDatasets
-  }, })
+  }, 
+  options: {
+    responsive: true,
+    scales: {
+      x: {
+        ticks: {
+          color: '#365446',
+        }
+      }
+    }
+  },
+})
 
   primaryColors!: string[]
   alternateColors!: string[]
@@ -282,9 +292,14 @@ export class DashboardComponent implements OnInit {
     let currentDelegation: string
     let currentEnergy: string
     let currentYear: string
-    let dataToMonthlyView: number[] = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
-    let dataToQuarterView: number[] = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
-    let dataToYearView: number[] = [0,0,0,0,0,0] /* seis años del 2019 al 2024 */
+    let dataToMonthlyView: number[] = [] /* los meses de seis años */
+    let dataToQuarterView: number[] = [] /* los trimestres de seis años */
+    let dataToYearView: number[] = [] /* seis años del 2019 al 2024 */
+    for (var _i = 0; _i < 72; _i++) {
+      if (_i<6) {dataToYearView.push(0)}
+      if (_i<24) {dataToQuarterView.push(0)}
+      dataToMonthlyView.push(0)
+    }
     this.myDatasets = []
     this.chart.destroy()
     this.startPrimaryColor = 19
@@ -312,23 +327,27 @@ export class DashboardComponent implements OnInit {
           currentEnergy = consumption.energyName
           currentYear = consumption.year
           if ((prevDelegation == "" || prevDelegation == currentDelegation) && (prevEnergy == "" || prevEnergy == currentEnergy)) {
-              dataToYearView[(consumption.year-2019)] = consumption.totalYear * (equivEnkWh/convertkWhToMWh)
+            dataToYearView[(consumption.year-2019)] = consumption.totalYear * (equivEnkWh/convertkWhToMWh)
           }
           else {
-            if (this.isRatioBillingE){
+            if (this.isRatioBillingE) {
               this.billingYearProduction(dataToYearView, prevDelegation)
+              this.delegation.disable()
+              this.energy.disable()
             } else {
-            this.myDatasets.push (
-              {
-              label: prevDelegation+" "+prevEnergy,
-              data: dataToYearView,
-              backgroundColor: this.primaryColors[this.startPrimaryColor--],
-              stack: prevDelegation,
-              },
-              )
-              dataToYearView = [0,0,0,0,0,0]
-              dataToYearView[(consumption.year-2019)] = consumption.totalYear * (equivEnkWh/convertkWhToMWh)
+              this.delegation.enable()
+              this.energy.enable()
             }
+            this.myDatasets.push (
+            {
+            label: prevDelegation+" "+prevEnergy,
+            data: dataToYearView,
+            backgroundColor: this.primaryColors[this.startPrimaryColor--],
+            stack: prevDelegation,
+            },
+            )
+            dataToYearView = [0,0,0,0,0,0]
+            dataToYearView[(consumption.year-2019)] = consumption.totalYear * (equivEnkWh/convertkWhToMWh)
           }
           prevDelegation = currentDelegation
           prevEnergy = currentEnergy
@@ -338,17 +357,21 @@ export class DashboardComponent implements OnInit {
           currentYear = consumption.year
         })
         if (this.isRatioBillingE) {
-          this.billingYearProduction(dataToYearView, prevDelegation)
+        this.billingYearProduction(dataToYearView, prevDelegation)
+        this.delegation.disable()
+        this.energy.disable()
+        } else {
+        this.delegation.enable()
+        this.energy.enable()
         }
-        else {
         this.myDatasets.push (
-          {
-          label: prevDelegation+" "+prevEnergy,
-          data: dataToYearView,
-          backgroundColor: this.primaryColors[this.startPrimaryColor--],
-          stack: prevDelegation,
-          },
-        )}
+        {
+        label: prevDelegation+" "+prevEnergy,
+        data: dataToYearView,
+        backgroundColor: this.primaryColors[this.startPrimaryColor--],
+        stack: prevDelegation,
+        },
+        )
 
         if(this.delegation.value) {
           this.myDatasets = this.myDatasets.filter((item:any)=>item.stack == this.delegation.value)
@@ -356,15 +379,15 @@ export class DashboardComponent implements OnInit {
         if(this.energy.value) {
           this.myDatasets = this.myDatasets.filter((item:any)=>item.label.slice(-this.energy.value.length) == this.energy.value)
         }
-
         this.chart = new Chart("energyGraph", {
           type: 'bar',
-          data: {
+          data: 
+          {
           labels: this.graphYears,
-          datasets: this.myDatasets},
+          datasets: this.myDatasets
+          },
           options:
           {
-            events: ['click'],
             plugins: {
               legend: {display: true, position: 'bottom', labels: { color: '#365446'}},
               title: { display: true, text: this.aspectEnergy},
@@ -397,7 +420,6 @@ export class DashboardComponent implements OnInit {
               equivEnkWh = energy.pci * energy.convLKg
             }
           })
-
           currentDelegation = consumption.delegation
           currentEnergy = consumption.energyName
           if ((prevDelegation == "" || prevDelegation == currentDelegation) && (prevEnergy == "" || prevEnergy == currentEnergy)) {
@@ -445,6 +467,14 @@ export class DashboardComponent implements OnInit {
               }
           }
           else {
+            if (this.isRatioBillingE) {
+              this.billingQuarterProduction(dataToQuarterView, prevDelegation)
+              this.delegation.disable()
+              this.energy.disable()
+            } else {
+              this.delegation.enable()
+              this.energy.enable()
+            }
             this.myDatasets.push (
               {
               label: prevDelegation+" "+prevEnergy,
@@ -502,6 +532,14 @@ export class DashboardComponent implements OnInit {
           currentDelegation = consumption.delegation
           currentEnergy = consumption.energyName
         })
+        if (this.isRatioBillingE) {
+          this.billingQuarterProduction(dataToQuarterView, prevDelegation)
+          this.delegation.disable()
+          this.energy.disable()
+        } else {
+          this.delegation.enable()
+          this.energy.enable()
+        }
         this.myDatasets.push (
           {
           label: prevDelegation+" "+prevEnergy,
@@ -922,13 +960,10 @@ export class DashboardComponent implements OnInit {
     let currentYear: string
     let prevDelegation: string = ""
     let prevYear: string = ""
-    
     let billingProductionYearly: number[] = [0,0,0,0,0,0] /* seis años del 2019 al 2024 */
-    let ratiobillingProductionYearly: number[] = [0,0,0,0,0,0] /* seis años del 2019 al 2024 */
-    let ratiosDataset: any[] = []
+    let ratiobillingProductionYearly: number[] = [0,0,0,0,0,0]
 
-    this.startPrimaryColor = 10
-    this.billingService.getYearlyBillingByCompanyId(this.companyId, delegationProduction)
+    this.billingService.getYearBillingByCompanyId(this.companyId, delegationProduction)
       .subscribe((yearBillingProduction: BillingDTO[]) => {
         this.billingProductions = yearBillingProduction
         this.billingProductions.forEach((billingProduction: any) =>
@@ -955,24 +990,183 @@ export class DashboardComponent implements OnInit {
           +dataToYearView[4]/+billingProductionYearly[4],
           +dataToYearView[5]/+billingProductionYearly[5]
         ]
-        console.log("this.myDatasets antes: ", this.myDatasets)
         this.myDatasets.push (
-          {
-          type: 'line',
-          label: prevDelegation,
-          data: ratiobillingProductionYearly,
-          backgroundColor: this.primaryColors[this.startPrimaryColor--],
-          stack: prevDelegation,
-          },
+        {
+        type: 'line',
+        label: "Ratio "+prevDelegation,
+        data: ratiobillingProductionYearly,
+        backgroundColor: this.primaryColors[this.startPrimaryColor--],
+        borderColor: this.primaryColors[this.startPrimaryColor--],
+        borderWidth: 1,
+        stack: prevDelegation,
+        },
         )
-        console.log("this.myDatasets después: ", this.myDatasets)
         if(this.delegation.value) {
           this.myDatasets = this.myDatasets.filter((item:any)=>item.stack == this.delegation.value)
         }
         if(this.energy.value) {
           this.myDatasets = this.myDatasets.filter((item:any)=>item.label.slice(-this.energy.value.length) == this.energy.value)
         }
-        
+        this.chart.update();
+      }
+      )
+  }
+
+  billingQuarterProduction(dataToQuarterView:number[], delegationProduction: string): void {
+    let currentDelegation: string
+    let currentYear: string
+    let prevDelegation: string = ""
+    let prevYear: string = ""
+    let billingProductionQuarterly: number[] = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0] /* los trimestres de seis años */
+    let ratiobillingProductionQuarterly: number[] = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0] /* los trimestres de seis años */
+
+    this.billingService.getQuarterBillingByCompanyId(this.companyId, delegationProduction)
+      .subscribe((quearterBillingProduction: BillingDTO[]) => {
+        this.billingProductions = quearterBillingProduction
+        console.log("this.billingProductions", this.billingProductions)
+        this.billingProductions.forEach((billingProduction: any) =>
+        {
+          currentDelegation = billingProduction.delegation
+          currentYear = billingProduction.year
+          if ((prevDelegation == "" || prevDelegation == currentDelegation)) {
+            if(billingProduction.year == "2019"){
+              dataToQuarterView[0] = billingProduction.Q1
+              dataToQuarterView[1] = billingProduction.Q2
+              dataToQuarterView[2] = billingProduction.Q3
+              dataToQuarterView[3] = billingProduction.Q4
+            }
+            if(billingProduction.year == "2020"){
+              dataToQuarterView[4] = billingProduction.Q1
+              dataToQuarterView[5] = billingProduction.Q2
+              dataToQuarterView[6] = billingProduction.Q3
+              dataToQuarterView[7] = billingProduction.Q4
+            }
+            if(billingProduction.year == "2021"){
+              dataToQuarterView[8] = billingProduction.Q1
+              dataToQuarterView[9] = billingProduction.Q2
+              dataToQuarterView[10] = billingProduction.Q3
+              dataToQuarterView[11] = billingProduction.Q4
+            }
+            if(billingProduction.year == "2022"){
+              dataToQuarterView[12] = billingProduction.Q1
+              dataToQuarterView[13] = billingProduction.Q2
+              dataToQuarterView[14] = billingProduction.Q3
+              dataToQuarterView[15] = billingProduction.Q4
+            }
+            if(billingProduction.year == "2023"){
+              dataToQuarterView[16] = billingProduction.Q1
+              dataToQuarterView[17] = billingProduction.Q2
+              dataToQuarterView[18] = billingProduction.Q3
+              dataToQuarterView[19] = billingProduction.Q4
+            }
+            if(billingProduction.year == "2024"){
+              dataToQuarterView[20] = billingProduction.Q1
+              dataToQuarterView[21] = billingProduction.Q2
+              dataToQuarterView[22] = billingProduction.Q3
+              dataToQuarterView[23] = billingProduction.Q4
+            }
+            if(billingProduction.year == "2025"){
+              dataToQuarterView[24] = billingProduction.Q1
+              dataToQuarterView[25] = billingProduction.Q2
+              dataToQuarterView[26] = billingProduction.Q3
+              dataToQuarterView[27] = billingProduction.Q4
+            }
+          }
+          else {
+            dataToQuarterView = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+            if(billingProduction.year == "2019"){
+              dataToQuarterView[0] = billingProduction.Q1
+              dataToQuarterView[1] = billingProduction.Q2
+              dataToQuarterView[2] = billingProduction.Q3
+              dataToQuarterView[3] = billingProduction.Q4
+            }
+            if(billingProduction.year == "2020"){
+              dataToQuarterView[4] = billingProduction.Q1
+              dataToQuarterView[5] = billingProduction.Q2
+              dataToQuarterView[6] = billingProduction.Q3
+              dataToQuarterView[7] = billingProduction.Q4
+            }
+            if(billingProduction.year == "2021"){
+              dataToQuarterView[8] = billingProduction.Q1
+              dataToQuarterView[9] = billingProduction.Q2
+              dataToQuarterView[10] = billingProduction.Q3
+              dataToQuarterView[11] = billingProduction.Q4
+            }
+            if(billingProduction.year == "2022"){
+              dataToQuarterView[12] = billingProduction.Q1
+              dataToQuarterView[13] = billingProduction.Q2
+              dataToQuarterView[14] = billingProduction.Q3
+              dataToQuarterView[15] = billingProduction.Q4
+            }
+            if(billingProduction.year == "2023"){
+              dataToQuarterView[16] = billingProduction.Q1
+              dataToQuarterView[17] = billingProduction.Q2
+              dataToQuarterView[18] = billingProduction.Q3
+              dataToQuarterView[19] = billingProduction.Q4
+            }
+            if(billingProduction.year == "2024"){
+              dataToQuarterView[20] = billingProduction.Q1
+              dataToQuarterView[21] = billingProduction.Q2
+              dataToQuarterView[22] = billingProduction.Q3
+              dataToQuarterView[23] = billingProduction.Q4
+            }
+            if(billingProduction.year == "2025"){
+              dataToQuarterView[24] = billingProduction.Q1
+              dataToQuarterView[25] = billingProduction.Q2
+              dataToQuarterView[26] = billingProduction.Q3
+              dataToQuarterView[27] = billingProduction.Q4
+            }
+          }
+          prevDelegation = currentDelegation
+          prevYear = currentYear
+          currentDelegation = billingProduction.delegation
+          currentYear = billingProduction.year
+        })
+        ratiobillingProductionQuarterly = [
+          +dataToQuarterView[0]/+billingProductionQuarterly[0],
+          +dataToQuarterView[1]/+billingProductionQuarterly[1],
+          +dataToQuarterView[2]/+billingProductionQuarterly[2],
+          +dataToQuarterView[3]/+billingProductionQuarterly[3],
+          +dataToQuarterView[4]/+billingProductionQuarterly[4],
+          +dataToQuarterView[5]/+billingProductionQuarterly[5],
+          +dataToQuarterView[6]/+billingProductionQuarterly[6],
+          +dataToQuarterView[7]/+billingProductionQuarterly[7],
+          +dataToQuarterView[8]/+billingProductionQuarterly[8],
+          +dataToQuarterView[9]/+billingProductionQuarterly[9],
+          +dataToQuarterView[10]/+billingProductionQuarterly[10],
+          +dataToQuarterView[11]/+billingProductionQuarterly[11],
+          +dataToQuarterView[12]/+billingProductionQuarterly[12],
+          +dataToQuarterView[13]/+billingProductionQuarterly[13],
+          +dataToQuarterView[14]/+billingProductionQuarterly[14],
+          +dataToQuarterView[15]/+billingProductionQuarterly[15],
+          +dataToQuarterView[16]/+billingProductionQuarterly[16],
+          +dataToQuarterView[17]/+billingProductionQuarterly[17],
+          +dataToQuarterView[18]/+billingProductionQuarterly[18],
+          +dataToQuarterView[19]/+billingProductionQuarterly[19],
+          +dataToQuarterView[20]/+billingProductionQuarterly[20],
+          +dataToQuarterView[21]/+billingProductionQuarterly[21],
+          +dataToQuarterView[22]/+billingProductionQuarterly[22],
+          +dataToQuarterView[23]/+billingProductionQuarterly[23]
+
+        ]
+        console.log("ratiobillingProductionQuarterly", ratiobillingProductionQuarterly, "dataToQuarterView", dataToQuarterView, "billingProductionQuarterly", billingProductionQuarterly)
+        this.myDatasets.push (
+        {
+        type: 'line',
+        label: "Ratio "+prevDelegation,
+        data: ratiobillingProductionQuarterly,
+        backgroundColor: this.primaryColors[this.startPrimaryColor--],
+        borderColor: this.primaryColors[this.startPrimaryColor--],
+        borderWidth: 1,
+        stack: prevDelegation,
+        },
+        )
+        if(this.delegation.value) {
+          this.myDatasets = this.myDatasets.filter((item:any)=>item.stack == this.delegation.value)
+        }
+        if(this.energy.value) {
+          this.myDatasets = this.myDatasets.filter((item:any)=>item.label.slice(-this.energy.value.length) == this.energy.value)
+        }
         this.chart.update();
       }
       )

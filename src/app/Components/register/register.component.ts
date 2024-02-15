@@ -67,13 +67,13 @@ export class RegisterComponent implements OnInit {
     this.password = new UntypedFormControl(this.registerUser.password, [
       Validators.required,
       Validators.minLength(8),
-      Validators.maxLength(25),
+      Validators.maxLength(55),
     ]);
 
     this.confirmPassword = new UntypedFormControl(this.registerUser.password, [
       Validators.required,
       Validators.minLength(8),
-      Validators.maxLength(55),
+      Validators.maxLength(25),
     ]);
 
 

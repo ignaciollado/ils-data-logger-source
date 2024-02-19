@@ -6,7 +6,7 @@
     (ngSubmit)="saveForm()">
     <mat-card [class.mat-elevation-z8]="isElevated">
       <section>
-            <mat-form-field [style.width.px]=425>
+            <mat-form-field [style.width.px]=325>
               <mat-label>{{'delegation' | translate}}</mat-label>
               <mat-select [formControl]="delegation" panelClass="panel-{{delegation.value}}">
                 <mat-option *ngFor="let delegation of delegations" [value]="delegation.companyDelegationId">
@@ -15,22 +15,7 @@
               </mat-select>
               <mat-error *ngIf="delegation.hasError('required')">{{'delegation' | translate}} <strong>{{'isRequired' | translate}}</strong></mat-error>
             </mat-form-field>
-      </section>
-
-      <section>
-        <mat-form-field [style.width.px]=425>
-          <mat-label>{{'energyType' | translate}}</mat-label>
-          <mat-select [formControl]="energy">
-            <mat-option *ngFor="let energy of energies" [value]="energy.energyId">
-              {{energy.nameES}} [{{energy.unit}}]
-            </mat-option>
-          </mat-select>
-          <mat-error *ngIf="energy.hasError('required')">{{'energyType' | translate}} <strong>{{'isRequired' | translate}}</strong></mat-error>
-        </mat-form-field>
-      </section>
-
-      <section>
-            <mat-form-field [style.width.px]=425>
+            <mat-form-field [style.width.px]=325>
               <mat-label>{{'year' | translate}}</mat-label>
               <mat-select [formControl]="yearEnergy">
                 <mat-option value="2019">2019</mat-option>
@@ -42,6 +27,32 @@
               </mat-select>
             </mat-form-field>
       </section>
+
+      <section>
+        <mat-form-field [style.width.px]=650>
+          <mat-label>{{'energyType' | translate}}</mat-label>
+          <mat-select [formControl]="energy">
+            <mat-option *ngFor="let energy of energies" [value]="energy.energyId">
+              {{energy.nameES}} [{{energy.unit}}]
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="energy.hasError('required')">{{'energyType' | translate}} <strong>{{'isRequired' | translate}}</strong></mat-error>
+        </mat-form-field>
+      </section>
+
+<!--       <section>
+            <mat-form-field [style.width.px]=425>
+              <mat-label>{{'year' | translate}}</mat-label>
+              <mat-select [formControl]="yearEnergy">
+                <mat-option value="2019">2019</mat-option>
+                <mat-option value="2020">2020</mat-option>
+                <mat-option value="2021">2021</mat-option>
+                <mat-option value="2022">2022</mat-option>
+                <mat-option value="2023">2023</mat-option>
+                <mat-option value="2024">2024</mat-option>
+              </mat-select>
+            </mat-form-field>
+      </section> -->
 
       <button mat-raised-button color="primary" type="submit" [disabled]="!energyForm.valid">ADD</button>
     </mat-card>

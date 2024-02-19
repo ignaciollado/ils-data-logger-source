@@ -1,8 +1,6 @@
-import { formatDate } from '@angular/common';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import {
-  FormGroup,
   UntypedFormBuilder,
   UntypedFormControl,
   UntypedFormGroup,
@@ -16,6 +14,8 @@ import { HeaderMenusService } from 'src/app/Services/header-menus.service';
 import { SharedService } from 'src/app/Services/shared.service';
 import { UserService } from 'src/app/Services/user.service';
 import { MustMatch } from 'src/app/_helpers';
+import { EmailManagementService } from 'src/app/Services/emailManagement.service';
+/* import emailjs, { EmailJSResponseStatus } from '@emailjs/browser'; */
 
 @Component({
   selector: 'app-register',
@@ -25,23 +25,25 @@ import { MustMatch } from 'src/app/_helpers';
 export class RegisterComponent implements OnInit {
   registerUser: UserDTO;
 
-  name: UntypedFormControl;
-  email: UntypedFormControl;
-  password: UntypedFormControl;
-  confirmPassword: UntypedFormControl;
+  name: UntypedFormControl
+  email: UntypedFormControl
+  password: UntypedFormControl
+  confirmPassword: UntypedFormControl
 
-  domicilio: UntypedFormControl;
-  cnae: UntypedFormControl;
+  domicilio: UntypedFormControl
+  cnae: UntypedFormControl
 
-  registerForm: UntypedFormGroup;
-  isValidForm: boolean | null;
-  isElevated = true;
+  registerForm: UntypedFormGroup
+  isValidForm: boolean | null
+  isValidMail: boolean | null
+  isElevated = true
   constructor(
     private formBuilder: UntypedFormBuilder,
     private userService: UserService,
     private sharedService: SharedService,
     private headerMenusService: HeaderMenusService,
-    private router: Router
+    private router: Router,
+    private emailManagementService: EmailManagementService
   ) {
     this.registerUser = new UserDTO('', '', '', '', '', '', '');
 
@@ -107,6 +109,7 @@ export class RegisterComponent implements OnInit {
       .register(this.registerUser)
       .pipe(
         finalize(async () => {
+          /* call to emailJS */
           await this.sharedService.managementToast(
             'registerFeedback',
             responseOK,
@@ -138,4 +141,19 @@ export class RegisterComponent implements OnInit {
       );
   }
 
+  public generatePassword() {
+    this.password.setValue( Math.random().toString(36).slice(-8) )
+    this.confirmPassword.setValue( this.password.value )
+  }
+
+  public validateTheEMail() {
+    this.emailManagementService.validateThisEmail(this.email.value)
+      .subscribe((theValidationResult:any) =>{
+        if (theValidationResult.deliverability == "DELIVERABLE") {
+          this.isValidMail = true
+        } else {
+          this.isValidMail = false
+        }
+      })
+  }
 }

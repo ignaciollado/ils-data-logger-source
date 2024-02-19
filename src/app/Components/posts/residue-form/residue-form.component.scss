@@ -32,70 +32,70 @@
 }
 
 .btn-edit{
-    display: grid;
-    grid-template-columns: 50% 50%;
-  }
+  display: grid;
+  grid-template-columns: 50% 50%;
+}
 
-  .form-filter{
-    display: grid;
-    grid-template-areas: "a a" "b c";
-    min-width: 425px;
-  }
+.form-filter{
+  display: grid;
+  grid-template-areas: "a a" "b c";
+  min-width: 425px;
+}
 
-  .item1{
+.item1{
     grid-area: a;
   }
-  .item2{
+.item2{
     grid-area: b;
   }
-  .item3{
+.item3{
     grid-area: c;
   }
 
 input[type=number] {
-    appearance: textfield;
-    border: none transparent;
+  appearance: textfield;
+  border: none transparent;
   outline: none;
-  }
+}
 
 .small-data {
-    font-size: .5rem;
-  }
+  font-size: .5rem;
+}
 
 .small-data-input {
-    font-size: .5rem;
-    background-color: #fff;
-    border: 2px solid #365446!important;
-    border-radius: .2rem;
-  }
+  font-size: .5rem;
+  background-color: #fff;
+  border: 2px solid #365446!important;
+  border-radius: .2rem;
+}
 
-  mat-header-row{
-    background-color: #424242;
-  }
+mat-header-row{
+  background-color: #424242;
+}
 
-  mat-header-cell {
-    color: white;
-    font-size: .6rem;
-  }
+mat-header-cell {
+  color: white;
+  font-size: .6rem;
+}
 
-  mat-cell{
-    background-color: #919191;
-  }
+mat-cell{
+  background-color: #919191;
+}
 
-  .mat-column-delegation{
-    word-wrap:break-word;
-  }
+.mat-column-delegation{
+  word-wrap:break-word;
+}
 
-  .mat-column-year{
-    max-width:3rem;
-  }
+.mat-column-year{
+  max-width:3rem;
+}
 
-  .mat-column-residueES{
-    white-space: normal;
-    min-width: 8rem;
-    padding-left: 0;
-  }
+.mat-column-residueES{
+  white-space: normal;
+  min-width: 8rem;
+  padding-left: 0;
+}
 
-  .mat-column-isEdit{
-    padding-right: 3rem;
-  }
+.mat-column-isEdit{
+  padding-right: 3rem;
+}

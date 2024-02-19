@@ -7,7 +7,7 @@
 
         <mat-card [class.mat-elevation-z8]="isElevated">
           <section >
-            <mat-form-field [style.width.px]=625>
+            <mat-form-field [style.width.px]=325>
             <mat-label>{{'delegation' | translate}}</mat-label>
             <mat-select [formControl]="delegation">
               <mat-option *ngFor="let delegation of delegations" [value]="delegation.companyDelegationId">
@@ -16,25 +16,23 @@
             </mat-select>
             <mat-error *ngIf="delegation.hasError('required')">{{'delegation' | translate}} <strong>{{'isRequired' | translate}}</strong></mat-error>
             </mat-form-field>
+
+            <mat-form-field [style.width.px]=325>
+              <mat-label>{{'year' | translate}}</mat-label>
+                <mat-select [formControl]="yearResidue">
+                  <mat-option value="2019">2019</mat-option>
+                  <mat-option value="2020">2020</mat-option>
+                  <mat-option value="2021">2021</mat-option>
+                  <mat-option value="2022">2022</mat-option>
+                  <mat-option value="2023">2023</mat-option>
+                  <mat-option value="2024">2024</mat-option>
+                </mat-select>
+                <mat-error *ngIf="yearResidue.hasError('required')">{{'year' | translate}} <strong>{{'isRequired' | translate}}</strong></mat-error>
+              </mat-form-field>
           </section>
 
           <section>
-            <mat-form-field [style.width.px]=625>
-            <mat-label>{{'year' | translate}}</mat-label>
-              <mat-select [formControl]="yearResidue">
-                <mat-option value="2019">2019</mat-option>
-                <mat-option value="2020">2020</mat-option>
-                <mat-option value="2021">2021</mat-option>
-                <mat-option value="2022">2022</mat-option>
-                <mat-option value="2023">2023</mat-option>
-                <mat-option value="2024">2024</mat-option>
-              </mat-select>
-              <mat-error *ngIf="yearResidue.hasError('required')">{{'year' | translate}} <strong>{{'isRequired' | translate}}</strong></mat-error>
-            </mat-form-field>
-          </section>
-
-          <section>
-          <mat-form-field [style.width.px]=625>
+          <mat-form-field [style.width.px]=650>
             <mat-label>{{'residueType' | translate}}</mat-label>
             <mat-select [formControl]="residue">
               <mat-option>
@@ -56,11 +54,10 @@
             <mat-error *ngIf="residue.hasError('required')">{{'residueType' | translate}} <strong>{{'isRequired' | translate}}</strong></mat-error>
           </mat-form-field>
           </section>
-
           <button mat-raised-button color="primary" type="submit" [disabled]="!residueForm.valid">ADD</button>
         </mat-card>
       </form>
-      <mat-chip-option color="accent" selected><strong>Nota:</strong> a final de año se tendrá que totalizar el residuo e indicar el destino de este: reuse, recycling, incineration, dump y compost</mat-chip-option>
+
       <div style="margin-left: auto; margin-right: auto"><span id="postFeedback"></span></div>
       <div class='form-filter'>
         <mat-form-field class="item1">
@@ -73,14 +70,16 @@
         <div class="item3">
           <mat-slide-toggle [(ngModel)]="isRatioCNAE" class="item7" (change)="ratioCNAE()">{{'ratioCNAEMode' | translate}}</mat-slide-toggle>
         </div>
-        </div>
-  <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-    <ng-container [matColumnDef]="col.key" *ngFor="let col of columnsSchema">
-      <mat-header-cell *matHeaderCellDef [ngSwitch]="col.key">
-          <span *ngSwitchDefault>{{ col.label }}</span>
-      </mat-header-cell>
-      <mat-cell *matCellDef="let element">
-        <div [ngSwitch]="col.type" *ngIf="!element.isEdit">
+      </div>
+ 
+    <mat-chip-option color="accent" selected><strong>Nota:</strong> a final de año se tendrá que totalizar el residuo<br> e indicar el destino de este: reuse, recycling, <br>incineration, dump y compost</mat-chip-option>
+    <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+      <ng-container [matColumnDef]="col.key" *ngFor="let col of columnsSchema">
+        <mat-header-cell *matHeaderCellDef [ngSwitch]="col.key">
+            <span *ngSwitchDefault>{{ col.label }}</span>
+        </mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          <div [ngSwitch]="col.type" *ngIf="!element.isEdit">
             <div class="btn-edit" *ngSwitchCase="'isEdit'">
             <button mat-icon-button (click)="element.isEdit = !element.isEdit"
               class="material-icons app-toolbar-menu save-button"
@@ -96,30 +95,26 @@
             <span *ngSwitchDefault ngClass="small-data">
               {{ element[col.key] }}
             </span>
-        </div>
-
-        <div [ngSwitch]="col.type" *ngIf="element.isEdit">
-          <div class="btn-edit" *ngSwitchCase="'isEdit'">
-            <button mat-button (click)="editRow(element)" [disabled]="valid[element.Id] === false">Done</button>
           </div>
-          <span *ngSwitchCase="'isSelected'" ngClass="small-data">
-            {{element[col.key]}}
-          </span>
 
-          <span *ngSwitchCase="'text'" ngClass="small-data">
-            {{element[col.key]}}
-          </span>
+          <div [ngSwitch]="col.type" *ngIf="element.isEdit">
+            <div class="btn-edit" *ngSwitchCase="'isEdit'">
+              <button mat-button (click)="editRow(element)" [disabled]="valid[element.Id] === false">Done</button>
+            </div>
+            <span *ngSwitchCase="'isSelected'" ngClass="small-data">
+              {{element[col.key]}}
+            </span>
+            <span *ngSwitchCase="'text'" ngClass="small-data">
+              {{element[col.key]}}
+            </span>
+            <input *ngSwitchCase="'number'" [type]="col.type" [(ngModel)]="element[col.key]" ngClass="small-data-input" [style.width.px]='50'/>
+          </div>
+        </mat-cell>
+      </ng-container>
 
-          <input *ngSwitchCase="'number'" [type]="col.type" [(ngModel)]="element[col.key]" ngClass="small-data-input" [style.width.px]='50'/>
-        </div>
-    </mat-cell>
-    </ng-container>
+      <mat-header-row *matHeaderRowDef="columnsDisplayed"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: columnsDisplayed;"></mat-row>
+    </mat-table>
+    <div class="loader" *ngIf="!dataSource">No data found yet...</div>
 
-    <mat-header-row *matHeaderRowDef="columnsDisplayed"></mat-header-row>
-    <mat-row *matRowDef="let row; columns: columnsDisplayed;"></mat-row>
-  </mat-table>
-  <div class="loader" *ngIf="!dataSource">No records found yet...</div>
-<ng-template #noDataFoundYet>
-  <span class="loader">No data found yet...</span>
-</ng-template>
 </div>

@@ -77,11 +77,11 @@
     "emissions": "Emisiones",
     "emissionConsumption": "Emisiones de ",
 
-    "scopeOne": "Alcance uno (T de ",
-    "scopeTwo": "Alcance dos (T de ",
+    "scopeOne": "Alcance uno ",
+    "scopeTwo": "Alcance dos ",
     "quantity": "Cantidad",
-    "quantityCO2e": "Cantidad (T de ",
-    "objectiveCO2e": "Objetivo (T de ",
+    "quantityCO2e": "Cantidad ",
+    "objectiveCO2e": "Objetivo ",
 
     "selectRatioType": "Seleccione el tipo de 'ratio':",
     "activityIndicator": "Indicador de activitad",

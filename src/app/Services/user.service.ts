@@ -6,7 +6,6 @@ import { UserDTO } from '../Models/user.dto';
 import { CnaeDTO } from '../Models/cnae.dto';
 import { SharedService } from './shared.service';
 
-const URL_MOCKS = '../../assets/mocks/cnaeList.json'
 const URL_API_SRV = "https://jwt.idi.es/public/index.php"
 
 const httpOptions = {
@@ -38,12 +37,6 @@ export class UserService {
       .pipe(catchError(this.sharedService.handleError));
   }
 
-  updateUser(userId: string, user: UserDTO): Observable<UserDTO> {
-    return this.http
-      .put<UserDTO>(this.urlBlogUocApi + '/' + userId, user)
-      .pipe(catchError(this.sharedService.handleError));
-  }
-
   updateUserMySQL(userId: string, user: UserDTO): Observable<UserDTO> {
     return this.http
       .put<UserDTO>(`${this.urlAPiMySql}userUpdate.php?userId=${userId}`, user)
@@ -51,6 +44,8 @@ export class UserService {
   }
 
   updateUserPindustExpedientes(userId: string, profile: UserDTO): Observable<UserDTO> {
+    console.log ("profile: ", profile)
+    
     return this.http
       .put<UserDTO>(`${this.urlAPiMySql}userPindustExpedientesUpdate.php?userId=${userId}`,profile)
       .pipe(catchError(this.sharedService.handleError))

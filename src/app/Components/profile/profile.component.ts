@@ -41,10 +41,9 @@ export class ProfileComponent implements OnInit {
   email: UntypedFormControl
   nif: UntypedFormControl
   domicilio: UntypedFormControl
-  localidad: UntypedFormControl
   cnaeSelect: UntypedFormControl
   activityIndicator: UntypedFormControl
-  currentActivityIndicator: string
+  currentActivityIndicator: UntypedFormControl
 
   profileForm: UntypedFormGroup
   isValidForm: boolean | null
@@ -82,12 +81,6 @@ export class ProfileComponent implements OnInit {
       Validators.maxLength(100),
     ]);
 
-    this.localidad = new UntypedFormControl(this.profileUser.localidad, [
-      Validators.required,
-      Validators.minLength(5),
-      Validators.maxLength(100),
-    ]);
-
     this.email = new UntypedFormControl(this.profileUser.email, [
       Validators.required,
       Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,4}$'),
@@ -95,8 +88,13 @@ export class ProfileComponent implements OnInit {
 
     this.nif = new UntypedFormControl(this.profileUser.nif, [
       Validators.required,
-      Validators.minLength(8),
+      Validators.minLength(9),
+      Validators.maxLength(9)
     ]);
+
+    this.currentActivityIndicator = new UntypedFormControl({value: this.profileUser.activityIndicator, disabled: true}, 
+      [ Validators.required ]);
+
 
     this.cnaeSelect = new UntypedFormControl(this.profileUser.cnae, [ Validators.required ]);
 
@@ -104,11 +102,11 @@ export class ProfileComponent implements OnInit {
 
     this.profileForm = this.formBuilder.group({
       name: this.name,
-      email: this.email,
       nif: this.nif,
       domicilio: this.domicilio,
-      localidad: this.localidad,
+      email: this.email,
       cnaeSelect: this.cnaeSelect,
+      currentActivityIndicator: this.currentActivityIndicator,
       activityIndicator: this.activityIndicator
     });
 
@@ -142,10 +140,10 @@ export class ProfileComponent implements OnInit {
           this.name.setValue(this.userFields[1])
           this.nif.setValue(this.userFields[2])
           this.domicilio.setValue(this.userFields[3])
-          this.localidad.setValue(this.userFields[4])
           this.cnaeSelect.setValue(this.userFields[6])
           this.activityIndicator.setValue(this.userFields[7])
-          this.currentActivityIndicator = JSON.parse(JSON.stringify(this.userFields[7]))
+          this.currentActivityIndicator.setValue(JSON.parse(JSON.stringify(this.userFields[7])))
+
           this.email.setValue(this.userFields[10])
 
           this.profileForm = this.formBuilder.group({
@@ -153,11 +151,12 @@ export class ProfileComponent implements OnInit {
             nif: this.nif,
             domicilio: this.domicilio,
             email: this.email,
-            localidad: this.localidad,
             cnaeSelect: this.cnaeSelect,
-            activityIndicator: this.activityIndicator
+            activityIndicator: this.activityIndicator,
+            currentActivityIndicator: this.currentActivityIndicator
           });
           this.cnaeSelected(this.userFields[6])
+          this.activityIndicatorSelected(JSON.parse(JSON.stringify(this.userFields[7])))
         },
         (error: HttpErrorResponse) => {
           errorResponse = error.error;
@@ -189,8 +188,8 @@ export class ProfileComponent implements OnInit {
       return;
     }
 
-    this.isValidForm = true;
-    this.profileUser = this.profileForm.value;
+    this.isValidForm = true
+    this.profileUser = this.profileForm.value
 
     if (this.userId) {
       this.userService

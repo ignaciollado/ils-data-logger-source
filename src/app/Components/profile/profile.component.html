@@ -16,9 +16,9 @@
       <section>
         <mat-form-field appearance="outline" [style.width.px]=530>
           <mat-label>NIF</mat-label>
-          <input matInput type="text"  [readonly]="!isCompany" [formControl]="nif" />
-          <mat-error *ngIf="nif.hasError('minlength')" >nif must be at least 5 characters long</mat-error>
-          <mat-error *ngIf="nif.hasError('maxlength')" >nif can be max 8 characters long</mat-error>
+          <input matInput type="text" maxlength="9" [readonly]="isCompany" [formControl]="nif" />
+          <mat-error *ngIf="nif.hasError('minlength')" >nif must be at least 9 characters long</mat-error>
+          <mat-error *ngIf="nif.hasError('maxlength')" >nif can be max 9 characters long</mat-error>
           <mat-error *ngIf="nif.hasError('required')">nif <strong>is required</strong></mat-error>
         </mat-form-field>
       </section>
@@ -26,7 +26,7 @@
       <section>
         <mat-form-field appearance="outline" [style.width.px]=530>
           <mat-label>{{ 'companyAddress' | translate }}</mat-label>
-          <input matInput type="text" [readonly]="!isCompany" [formControl]="domicilio" />
+          <input matInput type="text" [readonly]="isCompany" [formControl]="domicilio" />
           <mat-error *ngIf="domicilio.hasError('minlength')" >domicilio must be at least 5 characters long</mat-error>
           <mat-error *ngIf="domicilio.hasError('maxlength')" >domicilio can be max 100 characters long</mat-error>
           <mat-error *ngIf="domicilio.hasError('required')">domicilio <strong>is required</strong></mat-error>
@@ -40,16 +40,6 @@
             <mat-error *ngIf="email.hasError('pattern')" >Email not a valid format</mat-error>
             <mat-error *ngIf="email.hasError('required')">Email <strong>is required</strong></mat-error>
           </mat-form-field>
-      </section>  
-  
-      <section>
-        <mat-form-field appearance="outline" [style.width.px]=530>
-          <mat-label>Localidad</mat-label>
-          <input matInput type="text"  [readonly]="!isCompany" [formControl]="localidad" />
-          <mat-error *ngIf="localidad.hasError('minlength')" >{{'city' | translate}} <strong>{{'charsMin' | translate}}</strong> 8 <strong>{{'characters' | translate}} 8 characters</strong></mat-error>
-          <mat-error *ngIf="localidad.hasError('maxlength')" >{{'city' | translate}} <strong>{{'charsMax' | translate}}</strong> 100 <strong>{{'characters' | translate}}</strong></mat-error>
-          <mat-error *ngIf="localidad.hasError('required')">{{'city' | translate}} <strong>is required</strong></mat-error>
-        </mat-form-field>
       </section>
 
       <section>
@@ -70,13 +60,20 @@
         <mat-card>
           <mat-card-header>
             <mat-card-subtitle>Current Activity indicator</mat-card-subtitle>
-            <mat-card-title>{{currentActivityIndicator}}</mat-card-title>
+            <mat-card-title>
+              <input matInput type="text" readonly [formControl]="currentActivityIndicator" required />
+            </mat-card-title>
           </mat-card-header>
           <mat-card-content>
             <mat-form-field appearance="outline" [style.width.px]=425>
               <mat-label>{{'activityIndicatorChange' | translate}}</mat-label>
-              <mat-select [formControl]="activityIndicator" required matTooltip="{{'activityIndicatorSelect' | translate}}" (selectionChange)='activityIndicatorSelected($event)'>
-                <mat-option *ngFor="let activityIndicator of enterpriseActivityIndicators" [value]="activityIndicator['indicator']">
+              <mat-select [formControl]="activityIndicator" 
+                required matTooltip="{{'activityIndicatorSelect' | translate}}" 
+                (selectionChange)='activityIndicatorSelected($event)'
+                >
+                <mat-option *ngFor="let activityIndicator of enterpriseActivityIndicators" 
+                [value]="activityIndicator['indicator']"
+                >
                   <small>{{activityIndicator['indicator']}}</small>
                 </mat-option>
               </mat-select>
@@ -86,7 +83,6 @@
           </mat-card-content>
         </mat-card>
       </section>  
-
      <button mat-raised-button color="primary" type="submit" [disabled]="!profileForm.valid">Update Company</button>
     </mat-card>
   </form>

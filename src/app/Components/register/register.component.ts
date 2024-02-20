@@ -15,7 +15,6 @@ import { SharedService } from 'src/app/Services/shared.service';
 import { UserService } from 'src/app/Services/user.service';
 import { MustMatch } from 'src/app/_helpers';
 import { EmailManagementService } from 'src/app/Services/emailManagement.service';
-/* import emailjs, { EmailJSResponseStatus } from '@emailjs/browser'; */
 
 @Component({
   selector: 'app-register',
@@ -88,7 +87,7 @@ export class RegisterComponent implements OnInit {
       confirmPassword: this.confirmPassword
     },{
       validator: MustMatch('password', 'confirmPassword')
-  });
+    });
   }
 
   ngOnInit(): void {}
@@ -109,7 +108,6 @@ export class RegisterComponent implements OnInit {
       .register(this.registerUser)
       .pipe(
         finalize(async () => {
-          /* call to emailJS */
           await this.sharedService.managementToast(
             'registerFeedback',
             responseOK,
@@ -117,8 +115,11 @@ export class RegisterComponent implements OnInit {
           );
 
           if (responseOK) {
-            this.registerForm.reset();
-            this.router.navigateByUrl('/login');
+            this.emailManagementService.sendCustomerEmail(this.registerForm)
+            .subscribe((sendMailResult:any) => {
+              console.log("sendMailResult: ", sendMailResult)
+            })
+            this.router.navigateByUrl('/login')
           }
         })
       )

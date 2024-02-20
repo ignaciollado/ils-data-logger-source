@@ -3,7 +3,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 const URL_API = 'https://emailvalidation.abstractapi.com/v1/?api_key=0b27a379af684fa9bd8c0a672c535d3d'
-const URL_API_SEND = "https://api.emailjs.com/api/v1.0/email/send"
+const URL_API_SEND = 'https://tramits.idi.es/public/assets/utils/enviaCorreoElectronicoANGULAR.php'
 export interface updateResponse {
   affected: number;
 }
@@ -20,15 +20,17 @@ export class EmailManagementService {
 
   constructor(private http: HttpClient) {}
 
-
   validateThisEmail(emailAddress: string): Observable<any> {
     return this.http
       .get<any>(`${URL_API}&email=${emailAddress}` )
   }
 
-  sendCustomerEmail( emailAddress: string, userName: string): Observable<any> {
+  sendCustomerEmail(registerForm: any): Observable<any> {
+    const name: string = registerForm.value.name
+    const email: string = registerForm.value.email
+    const password: string = registerForm.value.password
     return this.http
-      .get<any>(`${URL_API_SEND}`)
+      .get<any>(`${URL_API_SEND}?${email}/${name}/${password}/appILS`)
   }
 
   errorLog(error: HttpErrorResponse): void {

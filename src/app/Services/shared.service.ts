@@ -18,7 +18,7 @@ export interface ResponseError {
 export class SharedService {
   constructor() {}
 
-  async managementToast( element: string, validRequest: boolean, error?: ResponseError ): Promise<void> {
+  async managementToast( element: string, validRequest: boolean, error?: any ): Promise<void> {
     const toastMsg = document.getElementById(element);
     if (toastMsg) {
       if (validRequest) {
@@ -30,18 +30,17 @@ export class SharedService {
         toastMsg.className = 'show requestKo';
         if (error?.messageDetail) {
           toastMsg.textContent =
-            'Error on data submitted, show logs. Message: ' +
+            'Error on data submitted. Explanation: ' +
             error?.message +
-            '. Message detail: ' +
+            '. Message detail: ' + error + ' ' +
             error?.messageDetail +
             '. Status code: ' +
             error?.statusCode;
         } else {
           toastMsg.textContent =
-            'Error on data submitted, show logs. Message: ' +
-            error?.message +
-            '. Status code: ' +
-            error?.statusCode;
+            error?.messages.error +'. Error on data submitted. ' +
+            'Status code: ' +
+            error?.status;
         }
 
         await this.wait(4500);

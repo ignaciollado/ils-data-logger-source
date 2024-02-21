@@ -5,7 +5,7 @@
 
 <div class="container-form" [@fadeInOut] >
   <h1>{{'workSession' | translate}}</h1>
-  <form [formGroup]="loginForm" (ngSubmit)="loginObservable()">
+  <form [formGroup]="loginForm" (ngSubmit)="loginApp()">
     <mat-card [class.mat-elevation-z8]="isElevated">
       <section>
         <mat-form-field [style.width.px]=327>

@@ -15,6 +15,7 @@ import { DelegationService } from 'src/app/Services/delegation.service';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { finalize } from 'rxjs/operators';
 import { animate, state, style, transition, trigger } from '@angular/animations';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -30,7 +31,6 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
       transition('void <-> *', animate(1500))
     ])
   ],
-
 })
 
 export class LoginComponent implements OnInit {
@@ -80,7 +80,6 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
     const access_token: string | null = sessionStorage.getItem("access_token")
     if (access_token === null) {
       const headerInfo: HeaderMenus = { showAuthSection: false, showNoAuthSection: true, };
@@ -97,10 +96,9 @@ export class LoginComponent implements OnInit {
         this.router.navigateByUrl('login');
       }
     }
-
   }
 
-  loginObservable() {
+  loginApp() {
     let responseOK: boolean = false
     let errorResponse: any
     this.loginUser.email = this.email.value
@@ -108,9 +106,9 @@ export class LoginComponent implements OnInit {
 
     if ( this.loginUser ) {
         this.authService.login( this.loginUser )
-        .pipe(
+        /* .pipe( */
           /* catchError(this.sharedService.handleError), */
-          finalize(async () => {
+/*           finalize(async () => {
             responseOK = false
             errorResponse = "login fail"
             this.sharedService.managementToast( 'loginFeedback', responseOK, errorResponse )
@@ -118,7 +116,7 @@ export class LoginComponent implements OnInit {
               this.router.navigateByUrl('posts');
             }
           })
-            )
+            ) */
         .subscribe(
           (item:AuthToken ) => {
             console.log ("Welcome to the ILS datalogger.industrialocalsostenible.com created by IDI!!")
@@ -141,14 +139,14 @@ export class LoginComponent implements OnInit {
               this.router.navigateByUrl('profile');
               this.delegationService.getTotalDelegationsByCompany(this.jwtHelper.decodeToken().id_ils)
                 .subscribe( item => {
-                  if (item.totalDelegations === 0) {
+                  if (item.totalDelegations == 0) {
                     this.router.navigateByUrl('profile')
                   } else {
-                    if (this.jwtHelper.decodeToken().role === 'company') {
+                    /* if (this.jwtHelper.decodeToken().role === 'company') {
                       this.router.navigateByUrl('/global-questionnaire')
-                    } else {
+                    } else { */
                       this.router.navigateByUrl('dashboard')
-                    }
+                    /* } */
                   }
                 } )
 
@@ -164,5 +162,5 @@ export class LoginComponent implements OnInit {
                   () => console.log("Login complete.")
         )
     }
-}
+  }
 }

@@ -6,6 +6,8 @@
   "home": "Home",
   "login": "Login",
   "logout": "Logout",
+  "signup": "Sign-up for free",
+
   "name": "Name",
   "ubication": "Ubication",
   "city": "City",
@@ -15,6 +17,8 @@
   "createUser": "Create user",
   "currentUser": "Current user",
   "acceder": "Login",
+  "waitingForData": "Waiting for data to come...",
+  "filterByColumn": "Filter by columns",
 
   "companyName": "Company name",
   "companyAddress": "Company address",

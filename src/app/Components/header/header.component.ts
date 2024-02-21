@@ -48,10 +48,9 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
     this.headerMenusService.headerManagement.subscribe (
       (headerInfo: HeaderMenus) => {
-
-        if (this.jwtHelper.decodeToken().role) {
-          if (this.jwtHelper.decodeToken().role === 'company') {
-            this.isCompany = true
+        if (this.jwtHelper.decodeToken()) {
+          if (this.jwtHelper.decodeToken().role == 'company') {
+           this.isCompany = true
           } else {
             this.isCompany = false
           }
@@ -133,11 +132,12 @@ export class HeaderComponent implements OnInit {
   }
 
   logout(): void {
+    this.router.navigateByUrl('home')
     sessionStorage.removeItem('user_id')
     sessionStorage.removeItem('access_token')
     this.userId = ""
     this.isCompany = false
-    location.reload()
+    /* location.reload() */
     const headerInfo: HeaderMenus = { showAuthSection: false, showNoAuthSection: true, }
     this.headerMenusService.headerManagement.next(headerInfo)
   }

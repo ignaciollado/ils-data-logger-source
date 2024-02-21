@@ -126,7 +126,6 @@ export class ProfileComponent implements OnInit {
         };
         this.headerMenusService.headerManagement.next(headerInfo)
       }
-
     }
     this.loadCnaes()
   }

@@ -21,6 +21,7 @@ import { EmailManagementService } from 'src/app/Services/emailManagement.service
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss'],
 })
+
 export class RegisterComponent implements OnInit {
   registerUser: UserDTO;
 
@@ -36,6 +37,7 @@ export class RegisterComponent implements OnInit {
   isValidForm: boolean | null
   isValidMail: boolean | null
   isElevated = true
+  
   constructor(
     private formBuilder: UntypedFormBuilder,
     private userService: UserService,
@@ -45,7 +47,6 @@ export class RegisterComponent implements OnInit {
     private emailManagementService: EmailManagementService
   ) {
     this.registerUser = new UserDTO('', '', '', '', '', '', '');
-
     this.isValidForm = null;
 
     this.name = new UntypedFormControl(this.registerUser.name, [

@@ -45,7 +45,6 @@ export class UserService {
 
   updateUserPindustExpedientes(userId: string, profile: UserDTO): Observable<UserDTO> {
     console.log ("profile: ", profile)
-    
     return this.http
       .put<UserDTO>(`${this.urlAPiMySql}userPindustExpedientesUpdate.php?userId=${userId}`,profile)
       .pipe(catchError(this.sharedService.handleError))

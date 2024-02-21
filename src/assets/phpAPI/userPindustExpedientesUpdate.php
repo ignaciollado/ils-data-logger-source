@@ -18,18 +18,11 @@ $domicilio = $request['domicilio'];
 $cnaeSelect = $request['cnaeSelect'];
 $activityIndicator = $request['activityIndicator'];
 
-echo "____".$activityIndicator."___";
-
+$sql = "UPDATE pindust_expediente SET nif = '".$nif."', domicilio = '".$domicilio."', cnae = '".$cnaeSelect."' ";
 if(isset($activityIndicator)) {
-  echo "activityindicator";
+  $sql .= ", activityIndicator = ".json_encode($activityIndicator);
 }
-if(isset($domicilio)){
-  echo "domicilio";
-}
-
-$sql = "UPDATE pindust_expediente SET nif = '".$nif."', domicilio = '".$domicilio."', cnae = '".$cnaeSelect."', 
-activityIndicator = ".json_encode($activityIndicator)."
- WHERE id = " .$userId;
+$sql .= " WHERE id = " .$userId;
 
 $result = mysqli_query($conn, $sql);
 $rowcount = mysqli_num_rows($result);

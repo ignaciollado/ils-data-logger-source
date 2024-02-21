@@ -55,7 +55,7 @@ export class UserService {
 
   getAllRegisteredUsers(): Observable<UserDTO> {
     return this.http
-      .get<UserDTO>(`${this.urlAPiMySql}userAppSostenibilityList.php`)
+      .get<UserDTO>(`${URL_API_SRV}/api/get-all-users/`)
       .pipe(catchError(this.sharedService.handleError));
   }
 

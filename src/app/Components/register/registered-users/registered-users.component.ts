@@ -71,6 +71,7 @@ private loadUsers(): void {
       this.userService.getAllRegisteredUsers().subscribe(
       (users: any) => {
         this.users = users
+        console.log(this.users)
         this.dataSource = new MatTableDataSource(this.users)
       },
       (error: HttpErrorResponse) => {

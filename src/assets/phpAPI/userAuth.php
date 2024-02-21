@@ -4,7 +4,6 @@ header('Access-Control-Allow-Origin: *');
 header("Access-Control-Allow-Methods: PUT, GET, POST, DELETE");
 header('Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept');
 
-/* require_once 'conectar_a_bbdd_ils.php'; */
 require_once 'conectar_a_bbdd_pindust.php';
 
 require_once 'encrDecr.php';

@@ -2,7 +2,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { catchError } from 'rxjs/operators';
 import { AuthDTO } from '../Models/auth.dto';
 import { SharedService } from './shared.service';
 import { JwtHelperService } from '@auth0/angular-jwt';

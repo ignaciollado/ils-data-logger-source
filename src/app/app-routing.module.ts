@@ -19,6 +19,7 @@ import { GlobalRegulationQuestionnaireAnswerComponent } from './Components/globa
 import { GlobalRegulationQuestionnaireContinueComponent } from './Components/global-regulation-questionnaire-continue/global-regulation-questionnaire-continue.component';
 import { NotFoundComponent } from './error-pages/not-found/not-found.component';
 import { AutoevaluationQuestionnaireComponent } from './Components/autoevaluation-questionnaire/autoevaluation-questionnaire.component';
+import { RegisteredUsersComponent } from './Components/register/registered-users/registered-users.component';
 
 const routes: Routes = [
   {
@@ -32,6 +33,10 @@ const routes: Routes = [
   {
     path: 'register',
     component: RegisterComponent,
+  },
+  {
+    path: 'listUsers',
+    component: RegisteredUsersComponent,
   },
   {
     path: 'home',

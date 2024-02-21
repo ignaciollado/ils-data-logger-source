@@ -14,6 +14,10 @@ const httpOptions = {
   })
 };
 
+export interface deleteResponse {
+  affected: number;
+}
+
 @Injectable({
   providedIn: 'root',
 })
@@ -44,10 +48,15 @@ export class UserService {
   }
 
   updateUserPindustExpedientes(userId: string, profile: UserDTO): Observable<UserDTO> {
-    console.log ("profile: ", profile)
     return this.http
       .put<UserDTO>(`${this.urlAPiMySql}userPindustExpedientesUpdate.php?userId=${userId}`,profile)
       .pipe(catchError(this.sharedService.handleError))
+  }
+
+  getAllRegisteredUsers(): Observable<UserDTO> {
+    return this.http
+      .get<UserDTO>(`${this.urlAPiMySql}userAppSostenibilityList.php`)
+      .pipe(catchError(this.sharedService.handleError));
   }
 
   getUSerById(userId: string): Observable<UserDTO> {
@@ -57,7 +66,6 @@ export class UserService {
   }
 
   getUSerByIdMySQL(userId: string): Observable<UserDTO> {
-    console.log (userId)
     return this.http
       .get<UserDTO>(`${this.urlAPiMySql}userGet.php?userId=${userId}`)
       .pipe(catchError(this.sharedService.handleError));
@@ -67,6 +75,12 @@ export class UserService {
     return this.http
       .get<CnaeDTO[]>(`${this.urlAPiMock}cnaeList.json`)
       .pipe(catchError(this.sharedService.handleError))
-
   }
+
+  deleteUser(userId: string): Observable<deleteResponse> {
+    return this.http
+      .delete<deleteResponse>(`${this.urlAPiMySql}userAppSostenibiityDelete.php?userId=${userId}`)
+      .pipe(catchError(this.sharedService.handleError));
+    }
 }
+

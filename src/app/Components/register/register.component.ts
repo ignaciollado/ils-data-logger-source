@@ -46,7 +46,7 @@ export class RegisterComponent implements OnInit {
     private router: Router,
     private emailManagementService: EmailManagementService
   ) {
-    this.registerUser = new UserDTO('', '', '', '', '', '', '');
+    this.registerUser = new UserDTO('', '', '', '', '', '', '', false, false);
     this.isValidForm = null;
 
     this.name = new UntypedFormControl(this.registerUser.name, [

@@ -64,7 +64,7 @@ export class ProfileComponent implements OnInit {
     private headerMenusService: HeaderMenusService,
     private jwtHelper: JwtHelperService,
   ) {
-    this.profileUser = new UserDTO('', '', '', '', '', '', '');
+    this.profileUser = new UserDTO('', '', '', '', '', '', '', false, false);
     this.isValidForm = null;
 
     this.userId = this.jwtHelper.decodeToken().id_ils

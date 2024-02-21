@@ -82,6 +82,7 @@ import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
 import { GlobalRegulationQuestionnaireContinueComponent } from './Components/global-regulation-questionnaire-continue/global-regulation-questionnaire-continue.component';
 import { NotFoundComponent } from './error-pages/not-found/not-found.component';
 import { AutoevaluationQuestionnaireComponent } from './Components/autoevaluation-questionnaire/autoevaluation-questionnaire.component';
+import { RegisteredUsersComponent } from './Components/register/registered-users/registered-users.component';
 
 export function tokenGetter() {
   return sessionStorage.getItem("access_token");
@@ -123,6 +124,7 @@ export function tokenGetter() {
     GlobalRegulationQuestionnaireContinueComponent,
     NotFoundComponent,
     AutoevaluationQuestionnaireComponent,
+    RegisteredUsersComponent,
   ],
   imports: [
     BrowserModule,

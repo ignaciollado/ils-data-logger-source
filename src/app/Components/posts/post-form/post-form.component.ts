@@ -287,7 +287,6 @@ export class PostFormComponent implements OnInit {
                  /* console.log("billingProduction: ", billingItem.year, billingItem.delegation, billingProduction, consumptionItem) */
                 }
               })
-
             }
             if (this.isRatioCNAE) { /* Visualización de datos en formato ratio */
               this.cnaesData.map((cnaeItem:any)=>{
@@ -309,7 +308,6 @@ export class PostFormComponent implements OnInit {
                 }
               })
             }
-
           })
           this.consumptions.map((item:any) => {
             item.energyES = item.energyES+" ["+item.unit+"]"

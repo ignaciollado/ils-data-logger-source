@@ -82,6 +82,10 @@ export class HeaderComponent implements OnInit {
     this.router.navigateByUrl('register')
   }
 
+  listUsers(): void {
+    this.router.navigateByUrl('listUsers')
+  }
+
   adminPosts(): void {
     this.router.navigateByUrl('posts')
   }

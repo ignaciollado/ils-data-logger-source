@@ -1,0 +1,7 @@
+{
+  "/api/*": {
+      "target": "https://jwt.idi.es/public/index.php",
+      "secure": false,
+      "logLevel": "debug"
+  }
+}

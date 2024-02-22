@@ -53,25 +53,30 @@ constructor(
       const headerInfo: HeaderMenus = { showAuthSection: true, showNoAuthSection: false, }
       this.headerMenusService.headerManagement.next(headerInfo)
       this.userId = this.jwtHelper.decodeToken().id_ils
+      console.log("lanzo loadUsers", this.userId)
+      this.loadUsers();
     } else {
       const headerInfo: HeaderMenus = { showAuthSection: false, showNoAuthSection: true, };
       sessionStorage.removeItem('user_id')
       sessionStorage.removeItem('access_token')
       this.headerMenusService.headerManagement.next(headerInfo)
       this.router.navigateByUrl('login')
-
-      this.loadUsers();
     }
   }
 }
 
+ngOnInit(): void { 
+
+}
+
 private loadUsers(): void {
   let errorResponse: any;
+  console.log("estoy en loadusers")
   if (this.userId) {
       this.userService.getAllRegisteredUsers().subscribe(
       (users: any) => {
         this.users = users
-        console.log(this.users)
+        console.log("usuarios: ",this.users)
         this.dataSource = new MatTableDataSource(this.users)
       },
       (error: HttpErrorResponse) => {

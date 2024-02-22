@@ -1,17 +1,30 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { UserDTO } from '../Models/user.dto';
 import { CnaeDTO } from '../Models/cnae.dto';
 import { SharedService } from './shared.service';
 
+const URL_API = '../../assets/phpAPI/'
 const URL_API_SRV = "https://jwt.idi.es/public/index.php"
 
 const httpOptions = {
   headers: new HttpHeaders({
     'Content-Type': 'text/plain', /* la única forma de evitar errores de CORS ha sido añadiendo esta cabecera */
   })
+};
+
+const headerDict = {
+  'Content-Type': 'application/json',
+  'Accept': 'application/json',
+  'Access-Control-Allow-Origin': '*',
+  'Access-Control-Allow-Methods': 'DELETE, POST, GET, PUT, OPTIONS',
+  'Access-Control-Allow-Headers': 'origin, x-requested-with, content-type'
+}
+
+const requestOptions = {                                                                                                                                                                                 
+  headers: new HttpHeaders(headerDict), 
 };
 
 export interface deleteResponse {
@@ -55,7 +68,7 @@ export class UserService {
 
   getAllRegisteredUsers(): Observable<UserDTO> {
     return this.http
-      .get<UserDTO>(`${URL_API_SRV}/api/get-all-users/`)
+      .get<UserDTO>(`${URL_API}getAllRegisteredUsers.php`, requestOptions)
       .pipe(catchError(this.sharedService.handleError));
   }
 

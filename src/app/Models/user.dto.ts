@@ -48,7 +48,7 @@ export const userColumns = [
       type: "text",
       label: "Empresa"
     },
-    {
+    /* {
       key: "nif",
       type: "text",
       label: "NIF"
@@ -57,7 +57,7 @@ export const userColumns = [
       key: "domicilio",
       type: "text",
       label: "Domicilio"
-    },
+    }, */
     {
       key: "email",
       type: "text",

@@ -1,6 +1,8 @@
-import { HttpErrorResponse } from '@angular/common/http';
+import { HttpErrorResponse,HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { throwError } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
+import { YearsDTO } from '../Models/years.dto';
+import { catchError } from 'rxjs/operators';
 
 export interface ResponseError {
   statusCode: number;
@@ -16,7 +18,10 @@ export interface ResponseError {
   providedIn: 'root',
 })
 export class SharedService {
-  constructor() {}
+  private urlAPiMock: string
+  constructor(private http: HttpClient,) {
+    this.urlAPiMock = '../../assets/mocks/'
+  }
 
   async managementToast( element: string, validRequest: boolean, error?: any ): Promise<void> {
     const toastMsg = document.getElementById(element);
@@ -47,6 +52,11 @@ export class SharedService {
         toastMsg.className = toastMsg.className.replace('show', '');
       }
     }
+  }
+
+  getAllYears(): Observable<YearsDTO[]> {
+    return this.http
+      .get<YearsDTO[]>(`${this.urlAPiMock}years.json`)
   }
 
   errorLog(error: ResponseError): void {

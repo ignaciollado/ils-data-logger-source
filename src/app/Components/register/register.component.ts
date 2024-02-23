@@ -149,13 +149,14 @@ export class RegisterComponent implements OnInit {
   }
 
   public validateTheEMail() {
-    this.emailManagementService.validateThisEmail(this.email.value)
+    /* ES UN SERVICIO DE PAGO por lo que ANULO LAS PETICIONES */
+    /* this.emailManagementService.validateThisEmail(this.email.value)
       .subscribe((theValidationResult:any) =>{
         if (theValidationResult.deliverability == "DELIVERABLE") {
           this.isValidMail = true
         } else {
           this.isValidMail = false
         }
-      })
+      }) */
   }
 }

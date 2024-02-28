@@ -69,6 +69,11 @@ export const userColumns = [
       label: "Password"
     },
     {
+      key: "updated_at",
+      type: "text",
+      label: "Created"
+    },
+    {
       key: "isEdit",
       type: "isEdit",
       label: ""

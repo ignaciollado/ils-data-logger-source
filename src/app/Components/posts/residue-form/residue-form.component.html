@@ -115,6 +115,7 @@
       <mat-header-row *matHeaderRowDef="columnsDisplayed"></mat-header-row>
       <mat-row *matRowDef="let row; columns: columnsDisplayed;"></mat-row>
     </mat-table>
+    <app-file-upload></app-file-upload>
     <div class="loader" *ngIf="!dataSource">No data found yet...</div>
 
 </div>

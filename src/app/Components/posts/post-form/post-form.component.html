@@ -40,20 +40,6 @@
         </mat-form-field>
       </section>
 
-<!--       <section>
-            <mat-form-field [style.width.px]=425>
-              <mat-label>{{'year' | translate}}</mat-label>
-              <mat-select [formControl]="yearEnergy">
-                <mat-option value="2019">2019</mat-option>
-                <mat-option value="2020">2020</mat-option>
-                <mat-option value="2021">2021</mat-option>
-                <mat-option value="2022">2022</mat-option>
-                <mat-option value="2023">2023</mat-option>
-                <mat-option value="2024">2024</mat-option>
-              </mat-select>
-            </mat-form-field>
-      </section> -->
-
       <button mat-raised-button color="primary" type="submit" [disabled]="!energyForm.valid">ADD</button>
     </mat-card>
   </form>
@@ -70,7 +56,7 @@
     <mat-slide-toggle [(ngModel)]="isRatioCNAE" class="item7" (change)="ratioCNAE()">{{'ratioCNAEMode' | translate}}</mat-slide-toggle>
   </div>
   </div>
-    <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <mat-table *ngIf="dataSource" [dataSource]="dataSource" class="mat-elevation-z8">
       <ng-container [matColumnDef]="col.key" *ngFor="let col of columnsSchema">
               <mat-header-cell *matHeaderCellDef [ngSwitch]="col.key">
                   <span *ngSwitchDefault>{{ col.label }}</span>
@@ -108,9 +94,6 @@
       <mat-header-row *matHeaderRowDef="columnsDisplayed"></mat-header-row>
       <mat-row *matRowDef="let row; columns: columnsDisplayed;"></mat-row>
     </mat-table>
-
-  <ng-template #noDataFoundYet>
-    <span class="loader">No data found yet...</span>
-  </ng-template>
+    <app-file-upload></app-file-upload>
+  <div class="loader" *ngIf="!dataSource">No data found yet...</div>
 </div>
-

@@ -24,6 +24,7 @@ import { MatPaginator, MatPaginatorModule  } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmDialogComponent } from 'src/app/confirm-dialog/confirm-dialog.component';
+import { YearsDTO } from 'src/app/Models/years.dto';
 
 registerLocaleData(localeEs, 'es')
 
@@ -55,6 +56,7 @@ const BILLING_DATA = [
 export class BillingComponent {
 
   billing: BillingDTO
+  years: YearsDTO[]
   delegation: UntypedFormControl
   companyId: UntypedFormControl
   yearBilling: UntypedFormControl
@@ -242,5 +244,12 @@ export class BillingComponent {
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
+  }
+
+  getAllYears() {
+    this.sharedService.getAllYears()
+      .subscribe((years:YearsDTO[])=>{
+        this.years = years
+      })
   }
 }

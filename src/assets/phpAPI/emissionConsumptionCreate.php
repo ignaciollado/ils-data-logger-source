@@ -16,7 +16,7 @@ $sql = "INSERT INTO ils_consumption(companyId, companyDelegationId, aspectId,
 .$request['companyId'].","
 .$request['delegation'].","
 .$request['aspectId'].","
-.$request['quantityEmission'].",'"
+.($request['scopeone']+$request['scopetwo']).",'"
 .$request['yearEmission']."',"
 .$request['scopeone'].","
 .$request['scopetwo'].")";

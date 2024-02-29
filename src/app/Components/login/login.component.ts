@@ -13,7 +13,7 @@ import { HeaderMenusService } from 'src/app/Services/header-menus.service';
 import { SharedService } from 'src/app/Services/shared.service';
 import { DelegationService } from 'src/app/Services/delegation.service';
 import { JwtHelperService } from '@auth0/angular-jwt';
-import { finalize } from 'rxjs/operators';
+import { catchError, finalize } from 'rxjs/operators';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 
 @Component({
@@ -106,9 +106,9 @@ export class LoginComponent implements OnInit {
 
     if ( this.loginUser ) {
         this.authService.login( this.loginUser )
-        /* .pipe( */
-          /* catchError(this.sharedService.handleError), */
-/*           finalize(async () => {
+         .pipe( 
+          catchError(this.sharedService.handleError), 
+           finalize(async () => {
             responseOK = false
             errorResponse = "login fail"
             this.sharedService.managementToast( 'loginFeedback', responseOK, errorResponse )
@@ -116,7 +116,7 @@ export class LoginComponent implements OnInit {
               this.router.navigateByUrl('posts');
             }
           })
-            ) */
+            ) 
         .subscribe(
           (item:AuthToken ) => {
             console.log ("Welcome to the ILS datalogger.industrialocalsostenible.com created by IDI!!")

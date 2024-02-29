@@ -1,5 +1,9 @@
-section{
-  min-width: 60%;
+@use "../../../styles/themes/ils-theme" as theme;
+form{
+  width: 70%;
+}
+.mat-mdc-form-field {
+  min-width: 100%;
 }
 .error {
   color: red;
@@ -78,4 +82,9 @@ section{
 
 mat-option {
   font-size: .7rem;
+}
+@media only screen and (max-width: theme.$app-break-point) {
+  form  {
+    width: 100%;
+  }
 }

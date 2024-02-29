@@ -412,6 +412,7 @@ export class DashboardComponent implements OnInit {
       .subscribe(
       (consumptions: ConsumptionDTO[]) => {
         this.consumptions = consumptions
+        console.log ("this.consumptions ", this.consumptions, this.companyId)
         this.consumptions.forEach((consumption: any) =>
         {
           /*La ENERGÍA la convierto a kWh */

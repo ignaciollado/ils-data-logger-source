@@ -33,6 +33,7 @@ import { BillingDTO } from 'src/app/Models/billing.dto';
 import { BillingService } from 'src/app/Services/billing.service';
 import { CnaeDataService } from 'src/app/Services/cnaeData.service';
 import { CnaeDataDTO } from 'src/app/Models/cnaeData.dto';
+import { YearsDTO } from 'src/app/Models/years.dto';
 
 const ENERGIES_DATA = [
   {Id: 1, delegation: "Mock data", year: "2019", energyES: "Fuel (kg)", "jan": 15000000, "feb": 15000000, "mar": 15000000, "apr": 15000000, "may": 15000000
@@ -82,11 +83,12 @@ export class PostFormComponent implements OnInit {
   private consumptionId: string | null;
   private userId: string | null;
 
-  energies!: EnergyDTO[];
-  delegations!: DelegationDTO[];
-  consumptions!: ConsumptionDTO[];
-  billings!: BillingDTO[];
-  cnaesData!: CnaeDataDTO[];
+  energies!: EnergyDTO[]
+  delegations!: DelegationDTO[]
+  consumptions!: ConsumptionDTO[]
+  billings!: BillingDTO[]
+  cnaesData!: CnaeDataDTO[]
+  years: YearsDTO[]
 
   isGridView: boolean = false
   columnsDisplayed: string[] = energyColumns.map((col) => col.key);
@@ -199,6 +201,7 @@ export class PostFormComponent implements OnInit {
         }
       );
     }
+    this.loadYears()
   }
 
   private loadBillingProduction(userId: string){
@@ -322,6 +325,13 @@ export class PostFormComponent implements OnInit {
         }
       );
     }
+  }
+
+  loadYears() {
+    this.sharedService.getAllYears()
+      .subscribe((years:YearsDTO[])=>{
+        this.years = years
+      })
   }
 
   private editPost(): void {

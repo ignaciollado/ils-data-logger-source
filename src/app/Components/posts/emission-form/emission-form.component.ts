@@ -26,6 +26,7 @@ import { BillingService } from 'src/app/Services/billing.service';
 import { CnaeDataService } from 'src/app/Services/cnaeData.service';
 import { CnaeDataDTO } from 'src/app/Models/cnaeData.dto';
 import { BillingDTO } from 'src/app/Models/billing.dto';
+import { YearsDTO } from 'src/app/Models/years.dto';
 
 const EMISSION_DATA = [
    {Id: 1, delegation: "Mock data 1", year: "2019", quantity: '100.25', scopeOne: '99.25', scopeTwo: '10.75'},
@@ -69,10 +70,11 @@ export class EmissionFormComponent {
   private consumptionId: string | null;
   private userId: string | null;
 
-  delegations!: DelegationDTO[];
-  consumptions!: ConsumptionDTO[];
-  billings!: BillingDTO[];
-  cnaesData!: CnaeDataDTO[];
+  delegations!: DelegationDTO[]
+  consumptions!: ConsumptionDTO[]
+  billings!: BillingDTO[]
+  cnaesData!: CnaeDataDTO[]
+  years: YearsDTO[]
 
   isGridView: boolean = false
   columnsDisplayed: string[] = emissionColumns.map((col) => col.key);
@@ -130,7 +132,8 @@ export class EmissionFormComponent {
   }
 
   ngOnInit(): void {
-    this.loadConsumption(this.userId);
+    this.loadConsumption(this.userId)
+    this.loadYears()
   }
 
   private loadBillingProduction(userId: string){
@@ -162,6 +165,13 @@ export class EmissionFormComponent {
         }
       );
     }
+  }
+
+  loadYears() {
+    this.sharedService.getAllYears()
+      .subscribe((years:YearsDTO[])=>{
+        this.years = years
+      })
   }
 
   private loadDelegations(): void {

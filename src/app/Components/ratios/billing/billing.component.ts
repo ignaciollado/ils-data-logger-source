@@ -118,6 +118,7 @@ export class BillingComponent {
 
   ngOnInit() {
     this.loadBillings( this.userId )
+    this.loadYears()
   }
 
   private loadDelegations(userId: string): void {
@@ -148,6 +149,13 @@ export class BillingComponent {
         }
       );
     }
+  }
+
+  loadYears() {
+    this.sharedService.getAllYears()
+      .subscribe((years:YearsDTO[])=>{
+        this.years = years
+      })
   }
 
   public addRow() {
@@ -244,12 +252,5 @@ export class BillingComponent {
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
-  }
-
-  getAllYears() {
-    this.sharedService.getAllYears()
-      .subscribe((years:YearsDTO[])=>{
-        this.years = years
-      })
   }
 }

@@ -33,6 +33,7 @@ import { BillingService } from 'src/app/Services/billing.service';
 import { CnaeDataService } from 'src/app/Services/cnaeData.service';
 import { BillingDTO } from 'src/app/Models/billing.dto';
 import { CnaeDataDTO } from 'src/app/Models/cnaeData.dto';
+import { YearsDTO } from 'src/app/Models/years.dto';
 
 const RESIDUES_DATA = [
   {Id: 1, delegation: "Son Castelló", year: "2019", residueES: "Combustión no peligrosos (kg)", "jan": 15000000, "feb": 15000000, "mar": 15000000, "apr": 15000000, "may": 15000000
@@ -72,12 +73,13 @@ export class ResidueFormComponent {
   private consumptionId: string | null;
   private userId: string | null;
 
-  delegations!: DelegationDTO[];
-  residues!: ResidueLERDTO[];
-  residuesItem: ChapterItem[] = [];
-  consumptions!: ConsumptionDTO[];
-  billings!: BillingDTO[];
-  cnaesData!: CnaeDataDTO[];
+  delegations!: DelegationDTO[]
+  residues!: ResidueLERDTO[]
+  residuesItem: ChapterItem[] = []
+  consumptions!: ConsumptionDTO[]
+  billings!: BillingDTO[]
+  cnaesData!: CnaeDataDTO[]
+  years: YearsDTO[]
 
   isGridView: boolean = false
   columnsDisplayed: string[] = residueColumns.map((col) => col.key);
@@ -153,6 +155,7 @@ export class ResidueFormComponent {
     });
 
     this.loadConsumption( this.userId )
+    this.loadYears()
   }
 
   private loadBillingProduction(userId: string){
@@ -259,6 +262,13 @@ export class ResidueFormComponent {
       );
 
     }
+  }
+
+  loadYears() {
+    this.sharedService.getAllYears()
+      .subscribe((years:YearsDTO[])=>{
+        this.years = years
+      })
   }
 
   protected filterResidues() {

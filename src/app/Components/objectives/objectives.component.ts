@@ -26,6 +26,7 @@ import { ReplaySubject, Subject, takeUntil } from 'rxjs'
 import { MatSelect } from '@angular/material/select'
 import { ResidueService } from 'src/app/Services/residue.service'
 import { EnergyService } from 'src/app/Services/energy.service'
+import { YearsDTO } from 'src/app/Models/years.dto'
 
  const OBJECTIVES_DATA = [
   {Id: 1, delegation: "Mock Data", year: "2019", enviromentalDataName: "Fuel (kg)", "theRatioType": "Billing", "jan": 15000000, "feb": 15000000, "mar": 15000000, "apr": 15000000, "may": 15000000
@@ -53,7 +54,8 @@ export class ObjectivesComponent {
   objectives!: ObjectiveDTO[]
   energies!: EnergyDTO[]
   residues!: ResidueLERDTO[]
-  residuesItem: ChapterItem[] = [];
+  residuesItem: ChapterItem[] = []
+  years: YearsDTO[]
 
   residueFilter: FormControl<string> = new FormControl<string>('');
   environmentalDataList: any[] = []
@@ -126,6 +128,7 @@ export class ObjectivesComponent {
       this.filterResidues();
   });
     this.loadObjectives( this.userId )
+    this.loadYears()
   }
 
   private loadDelegations(): void {
@@ -183,6 +186,13 @@ export class ObjectivesComponent {
       this.environmentalDataList = res
       this.addResiduesList()
     });
+  }
+
+  loadYears() {
+    this.sharedService.getAllYears()
+      .subscribe((years:YearsDTO[])=>{
+        this.years = years
+      })
   }
 
   private getCurrentIndicator( companyId: string ){

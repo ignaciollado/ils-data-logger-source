@@ -27,6 +27,7 @@ import { CnaeColumns, CnaeDataDTO } from 'src/app/Models/cnaeData.dto';
 import { CnaeDataService } from 'src/app/Services/cnaeData.service';
 import { UserService } from 'src/app/Services/user.service';
 import { UserDTO } from 'src/app/Models/user.dto';
+import { YearsDTO } from 'src/app/Models/years.dto';
 
 
 export const MY_FORMATS = {
@@ -70,6 +71,7 @@ export class CnaesComponent {
 
   cnaeData: CnaeDataDTO
   cnaesData: CnaeDataDTO[]
+  years: YearsDTO[]
   delegation: UntypedFormControl
   companyId: UntypedFormControl
   yearCnae: UntypedFormControl
@@ -135,6 +137,7 @@ export class CnaesComponent {
 
   ngOnInit() {
     this.loadCnaeData( this.userId )
+    this.loadYears()
   }
 
   private loadDelegations(): void {
@@ -164,6 +167,13 @@ export class CnaesComponent {
         }
       );
     }
+  }
+
+  loadYears() {
+    this.sharedService.getAllYears()
+      .subscribe((years:YearsDTO[])=>{
+        this.years = years
+      })
   }
 
   private getCurrentIndicator( companyId: string ){

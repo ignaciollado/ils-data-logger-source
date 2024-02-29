@@ -24,12 +24,6 @@
                 <mat-option *ngFor="let year of years" [value]="year.name">
                   {{year.name}}
                 </mat-option>
-                <mat-option value="2019">2019</mat-option>
-                <mat-option value="2020">2020</mat-option>
-                <mat-option value="2021">2021</mat-option>
-                <mat-option value="2022">2022</mat-option>
-                <mat-option value="2023">2023</mat-option>
-                <mat-option value="2024">2024</mat-option>
               </mat-select>
               <mat-error *ngIf="yearBilling.hasError('required')">{{'yearBilling' | translate}} <strong>{{'isRequired' | translate}}</strong></mat-error>
             </mat-form-field>

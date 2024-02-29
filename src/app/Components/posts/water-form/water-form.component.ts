@@ -25,6 +25,7 @@ import { BillingService } from 'src/app/Services/billing.service';
 import { CnaeDataService } from 'src/app/Services/cnaeData.service';
 import { BillingDTO } from 'src/app/Models/billing.dto';
 import { CnaeDataDTO } from 'src/app/Models/cnaeData.dto';
+import { YearsDTO } from 'src/app/Models/years.dto';
 
 const WATER_DATA = [
   {Id: 1, delegation: "Mock Data", year: "2019", "jan": 10000000, "feb": 20000000, "mar": 15000000, "apr": 15000000, "may": 15000000
@@ -76,6 +77,7 @@ export class WaterFormComponent {
 
   delegations!: DelegationDTO[]
   consumptions!: ConsumptionDTO[]
+  years: YearsDTO[]
 
   isGridView: boolean = false
   columnsDisplayed: string[] = waterColumns.map((col) => col.key);
@@ -129,6 +131,7 @@ export class WaterFormComponent {
 
     this.loadDelegations(this.userId);
     this.loadConsumption(this.userId);
+    this.loadYears()
   }
 
   private loadBillingProduction(userId: string){
@@ -193,6 +196,13 @@ export class WaterFormComponent {
       );
 
     }
+  }
+
+  loadYears() {
+    this.sharedService.getAllYears()
+      .subscribe((years:YearsDTO[])=>{
+        this.years = years
+      })
   }
 
   /* ASPECT WATER */

@@ -29,7 +29,8 @@ export class ConfirmDialogComponent {
         }
       }      
      }
-     onCommand(): void {
+    
+    onCommand(): void {
       this.dialogRef.close(true);
     }
 }

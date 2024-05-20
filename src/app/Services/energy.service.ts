@@ -14,13 +14,6 @@ const httpsOptions = {
   })
 };
 
-/* const httpsOptions = {
-  headers: new HttpHeaders({
-    'Content-type': 'application/json',
-    Authorization: 'json_token'
-  })
-} */
-
 export interface updateResponse {
   affected: number;
 }

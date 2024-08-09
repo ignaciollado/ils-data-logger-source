@@ -30,7 +30,7 @@ export class EmailManagementService {
     const email: string = registerForm.value.email
     const password: string = registerForm.value.password
     return this.http
-      .get<any>(`${URL_API_SEND}?${email}/${name}/${password}/appILS`)
+      .get<any>(`${URL_API_SEND}?${email}/${name}/${password}/Industria Local Sostenible`)
   }
 
   errorLog(error: HttpErrorResponse): void {

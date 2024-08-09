@@ -78,7 +78,6 @@ export class RegisterComponent implements OnInit {
       Validators.maxLength(25),
     ]);
 
-
     this.cnae = new UntypedFormControl(this.registerUser.cnae, [ Validators.required ]);
 
     this.registerForm = this.formBuilder.group({

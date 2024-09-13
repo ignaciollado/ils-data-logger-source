@@ -1,7 +1,7 @@
 {
-    "IdiOneLine": "Instituto de Innovación Empresarial de las Islas Baleares",
-    "IdiLine_1": "Instituto de Innovación",
-    "IdiLine_2": "Empresarial",
+    "IdiOneLine": "Agencia de desarrollo regional de las Islas Baleares",
+    "IdiLine_1": "Agencia de desarrollo",
+    "IdiLine_2": "regional",
     "IdiLine_3": "de las Islas Baleares",
     "home": "Inicio",
     "login": "Entrar",
@@ -19,15 +19,15 @@
     "acceder": "Acceder",
     "giveAccess":"¿Aún no tiene acceso?",
     "signUp": "Registrarse como empresa industrial",
-    "appName": "APP SOSTENIBILIDAD",
+    "appName": "HERRAMIENTAS SOSTENIBILIDAD",
     "homeTextp1": "Le presentamos la herramienta de",
     "waitingForData": "Esperando datos para mostrar...",
     "filterByColumn": "Filtrar por columnas",
     
     "homeTextp2": "Se trata de una solución integral para promover prácticas respetuosas con el medio ambiente en las empresas industriales de las Islas Baleares.",
-    "homeTextp3": "Nuestra herramienta proporciona recursos para que las empresas locales puedan implementar medidas sostenibles, reducir su impacto ambiental y hacer un seguimiento de sus indicadores medioambientales (introducir consumos de energía, agua, residuos y emisiones de ",
+    "homeTextp3": "Nuestras herramientas proporcionan recursos para que las empresas locales puedan implementar medidas sostenibles, reducir su impacto ambiental y hacer un seguimiento de sus indicadores medioambientales (introducir consumos de energía, agua, residuos y emisiones de ",
     "homeTextp31": ") que le permitirán obtener el índice de circularidad  además de datos comparativos por medio de gráficas.",
-    "homeTextp4": "La herramienta, también le servirá como apoyo para realizar auditorias medioambientales para ayudarle a contribuir al desarrollo sostenible de nuestra comunidad.",
+    "homeTextp4": "Estas herramientas, también le servirán como apoyo para realizar auditorias medioambientales para ayudarle a contribuir al desarrollo sostenible de nuestra comunidad.",
 
     "companyName": "Nombre de la empresa",
     "companyAddress": "Domicilio",
@@ -122,7 +122,7 @@
     "normativaEspecífica": "Normativa específica",
     "normativaGeneral": "Normativa general",
 
-    "copyright": "Creado por el Instituto de Innovación Empresarial de las Islas Baleares",
+    "copyright": "Creado por la Agencia de desarrollo regional de las Islas Baleares",
     "workSession": "Iniciar sesión de trabajo",
     "password": "Contraseña",
     "confirmPassword": "Confirmar contraseña",
@@ -146,7 +146,7 @@
     "Contacta": "Contacta",
     "Contactanos": "Contáctanos",
     "Links": "Enlaces externos",
-    "IDI": "IDI",
+    "IDI": "ADR Balears",
     "PoliticaCookies": "Política de cookies",
     "PoliticaPrivacidad": "Política de privacidad",
 

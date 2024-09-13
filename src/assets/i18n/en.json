@@ -1,7 +1,7 @@
 {
-  "IdiOneLine": "Instituto de Innovación Empresarial de las Islas Baleares",
-  "IdiLine_1": "Instituto de Innovación",
-  "IdiLine_2": "Empresarial",
+  "IdiOneLine": "Agencia de desarrollo regional de las Islas Baleares",
+  "IdiLine_1": "Agencia de desarrollo",
+  "IdiLine_2": "regional",
   "IdiLine_3": "de las Islas Baleares",
   "home": "Home",
   "login": "Login",
@@ -110,7 +110,7 @@
   "normativaEspecífica": "Normativa específica",
   "normativaGeneral": "Normativa general",
 
-  "copyright": "Creado por el Instituto de Innovación Empresarial de las Islas Baleares",
+  "copyright": "Creado por el Agencia de desarrollo regional de las Islas Baleares",
   "workSession": "Iniciar sesión de trabajo",
   "password": "Password",
   "confirmPassword": "Retype password",

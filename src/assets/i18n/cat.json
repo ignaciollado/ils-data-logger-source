@@ -1,7 +1,7 @@
 {
-    "IdiOneLine": "Institut d'Innovació Empresarial \nde les Illes Balears",
-    "IdiLine_1": "Institut d'Innovació",
-    "IdiLine_2": "Empresarial",
+    "IdiOneLine": "Agència de desenvolupament regional \nde les Illes Balears",
+    "IdiLine_1": "Agència de desenvolupament",
+    "IdiLine_2": "regional",
     "IdiLine_3": "de les Illes Balears",
     "home": "Inici",
     "login": "Entrar",
@@ -19,7 +19,7 @@
     "acceder": "Accedir",
     "giveAccess":"Encara no té accés?",
     "signUp": "Registrar-se com a empresa industrial",
-    "appName": "APP SOSTENIBILITAT",
+    "appName": "EINES SOSTENIBILITAT",
     "waitingForData": "Esperant dades per mostrar...",
     "filterByColumn": "Filtrar per columnes",
 
@@ -123,7 +123,7 @@
     "normativaEspecífica": "Normativa especifica",
     "normativaGeneral": "Normativa general",
 
-    "copyright": "Creat per l'Institut d'Innovació Empresarial de les Illes Balears",
+    "copyright": "Creat per l'Agència de desenvolupament regional de les Illes Balears",
     "workSession": "Iniciar sessió de treball",
     "password": "Contrassenya",
     "confirmPassword": "Confirmar contrassenya",

@@ -20,6 +20,7 @@ import { GlobalRegulationQuestionnaireContinueComponent } from './Components/glo
 import { NotFoundComponent } from './error-pages/not-found/not-found.component';
 import { AutoevaluationQuestionnaireComponent } from './Components/autoevaluation-questionnaire/autoevaluation-questionnaire.component';
 import { RegisteredUsersComponent } from './Components/register/registered-users/registered-users.component';
+import { GlobalRegulationNormativeTextsComponent } from './global-regulation-normative-texts/global-regulation-normative-texts.component';
 
 const routes: Routes = [
   {
@@ -96,6 +97,11 @@ const routes: Routes = [
     title: 'ILS-Auditorías ambientales',
     component: GlobalRegulationQuestionnaireComponent,
     canActivate: [AuthGuard],
+  },
+  {
+    path: 'global-questionnaire-normative-texts',
+    title: 'ILS- Mantenimiento de textos normativos',
+    component: GlobalRegulationNormativeTextsComponent
   },
   {
     path: 'global-questionnaire-list',

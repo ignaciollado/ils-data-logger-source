@@ -83,6 +83,7 @@ import { GlobalRegulationQuestionnaireContinueComponent } from './Components/glo
 import { NotFoundComponent } from './error-pages/not-found/not-found.component';
 import { AutoevaluationQuestionnaireComponent } from './Components/autoevaluation-questionnaire/autoevaluation-questionnaire.component';
 import { RegisteredUsersComponent } from './Components/register/registered-users/registered-users.component';
+import { GlobalRegulationNormativeTextsComponent } from './global-regulation-normative-texts/global-regulation-normative-texts.component';
 
 export function tokenGetter() {
   return sessionStorage.getItem("access_token");
@@ -125,6 +126,7 @@ export function tokenGetter() {
     NotFoundComponent,
     AutoevaluationQuestionnaireComponent,
     RegisteredUsersComponent,
+    GlobalRegulationNormativeTextsComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,7 +1,7 @@
 {
-    "IdiOneLine": "Agència de desenvolupament regional \nde les Illes Balears",
-    "IdiLine_1": "Agència de desenvolupament",
-    "IdiLine_2": "regional",
+    "IdiOneLine": "Agència de Desenvolupament Regional \nde les Illes Balears",
+    "IdiLine_1": "Agència de Desenvolupament",
+    "IdiLine_2": "Regional",
     "IdiLine_3": "de les Illes Balears",
     "home": "Inici",
     "login": "Entrar",
@@ -106,6 +106,12 @@
     "monthlyBilling": "Facturació mes",
     "persons": "Mitjana de personal",
     "monthlyPersons": "Personal mes",
+
+    "globalQuestionnaireNormativeTexts": "Normativa legal",
+    "regulationID": "Regulation ID",
+    "scope": "Àmbit territorial",
+    "title": "Títol de la normativa legal",
+    "linkNorma": "Enllaç al texte legal",
 
     "requisitosLegales": "Identificació de requisits legals",
     "globalQuestionnaire": "Qüestionari preliminar",

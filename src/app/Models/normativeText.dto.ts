@@ -3,35 +3,41 @@ export class NormativeTextDTO {
   Ambito: string
   Titulo: string
   link: string
-  idNormativa?: Number
+  idNormativa?: number
   isEdit: boolean
   isSelected: boolean
 }
 
 export const normativeColumns = [
-  {
-    key: "regId",
-    type: "text",
-    label: "ID key"
+{
+  key: "regId",
+  type: "readOnly",
+  label: "Reg ID"
 },
 {
-    key: "Ambito",
-    type: "text",
-    label: "Scope"
+  key: "Ambito",
+  type: "scope",
+  label: "Scope"
 },
 {
-    key: "Titulo",
-    type: "text",
-    label: "Title"
+  key: "Titulo",
+  type: "textarea",
+  label: "Title"
 },
 {
   key: "link",
-  type: "string",
+  type: "url",
   label: "Linked to"
 },
-{
+
+/* {
   key: "idNormativa",
   type: "number",
   label: "Ref. normativa"
+}, */
+{
+  key: "isEdit",
+  type: "isEdit",
+  label: ""
 },
 ]

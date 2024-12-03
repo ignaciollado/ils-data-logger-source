@@ -1,6 +1,6 @@
-import { formatDate } from '@angular/common';
+
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component, Inject, OnInit, ViewChild } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import {
   UntypedFormBuilder,
   UntypedFormControl,
@@ -16,36 +16,58 @@ import { MatDialog } from '@angular/material/dialog'
 import { ConfirmDialogComponent } from 'src/app/confirm-dialog/confirm-dialog.component'
 import { MatPaginator } from '@angular/material/paginator';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { MatSort } from '@angular/material/sort';
+
+const NORMATIVETEXT_DATA = [
+  {regId: "SIND_1", Ambito: "ESTATAL", Titulo: "Real Decreto 227/2006, de 24/02/2006, Se complementa el régimen jurídico sobre la limitación de las emisiones de Compuestos Orgánicos Volátiles (COV), en determinadas Pinturas y Barnices y en Productos de Renovación del Acabado de Vehículos. (BOE nº 48, de 25/02/2006)", link: "https://www.boe.es/eli/es/rd/2004/12/03/2267/con"},
+  {regId: "SIND_3_BT_consolidado", Ambito: "BALEARES", Titulo: "Real Decreto 842/2002,BT - Se aprueba el Reglamento Electrotécnico para BAJA TENSIÓN IT.bt 52", link: "https://www.boe.es/eli/es/rd/2002/08/02/842/con"},
+  {regId: "SAN_5", Ambito: "UNIÓN EUROPEA", Titulo: "Real Decreto 3/2023, de 10/01/2023, por el que se establecen los criterios técnico-sanitarios de la calidad del agua de consumo, su control y suministro.", link: "https://www.boe.es/eli/es/rd/2023/01/10/3/con"},
+  {regId: "RES_6", Ambito: "BALEARES", Titulo: "Orden /1986, de 17/03/1986, Se dictan normas para la homologación de ENVASES y EMBALAJES destinados al Transporte de MERCANCÍAS PELIGROSAS. (BOE nº 77, de 31/03/1986)", link: "https://www.boe.es/eli/es/o/1986/03/17/(5)/con"}
+];
 
 @Component({
   selector: 'app-global-regulation-normative-texts',
   templateUrl: './global-regulation-normative-texts.component.html',
   styleUrls: ['./global-regulation-normative-texts.component.scss']
 })
+
 export class GlobalRegulationNormativeTextsComponent {
 
   normativeForm: UntypedFormGroup
+  normativeText: NormativeTextDTO
   regId: UntypedFormControl
   ambito: UntypedFormControl
   Titulo: UntypedFormControl
   linkNorma: UntypedFormControl
   normativaId: UntypedFormControl
   isElevated:boolean = true
-  regulationsIDS: string[] = ['SIND_1','RES_1','ATM_1','AGU_1','QMC_13']
-  ambitos: string[] = ['UNIÓN EUROPEA','ESTATAL','BALEAR','AUTONÓMICO']
+  private isUpdateMode: boolean
+  regulationsIDS: NormativeTextDTO[] = []
+  ambitos: string[] = ['AUTONÓMICO','BALEAR','ESTATAL','UNIÓN EUROPEA']
   private userId: string | null
   normativeTexts!: NormativeTextDTO[]
+  isValidForm: boolean | null
 
   columnsDisplayed: string[] = normativeColumns.map((col) => col.key);
-  //dataSource: any = ENERGIES_DATA
+  //dataSource: any = NORMATIVETEXT_DATA
   dataSource = new MatTableDataSource<NormativeTextDTO>()
   columnsSchema: any = normativeColumns;
+  valid: any = {}
+
+  @ViewChild('normativeTextTbSort') normativeTextTbSort = new MatSort();
+  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
+
+  ngAfterViewInit() {
+    this.dataSource.sort = this.normativeTextTbSort;
+  }
 
   constructor(private formBuilder: UntypedFormBuilder, private normativeService: NormativeTextService, 
     private sharedService: SharedService, public dialog: MatDialog,
     private jwtHelper: JwtHelperService
     ) {
-    this.regId = new UntypedFormControl('', [ Validators.required ]);
+      
+    this.isValidForm = null;
+    this.regId = new UntypedFormControl('', [ Validators.required, Validators.minLength(6), Validators.maxLength(35) ]);
     this.ambito = new UntypedFormControl('', [ Validators.required ]);
     this.Titulo = new UntypedFormControl('', [ Validators.required ])
     this.linkNorma = new UntypedFormControl('', [ Validators.required ])
@@ -60,16 +82,31 @@ export class GlobalRegulationNormativeTextsComponent {
       linkNorma: this.linkNorma,
       normativaId: this.normativaId,
     });
-
-    this.loadNormativeText();
+/*     this.loadRegulationIDs() */
+    this.loadNormativeText()
   }
 
+/*   private loadRegulationIDs(): void {
+    let errorResponse: any
+    if (this.userId) {
+      this.normativeService.getAllRegulationIDs().subscribe(
+        (regID: NormativeTextDTO[]) => {
+          this.regulationsIDS = regID
+          console.log (this.regulationsIDS, typeof this.regulationsIDS)
+        }
+      )
+    }
+  } */
+
   private loadNormativeText(): void {
-    let errorResponse: any;
+    let errorResponse: any
     if (this.userId) {
       this.normativeService.getAllNormativeText().subscribe(
         (normatives: NormativeTextDTO[]) => {
           this.normativeTexts = normatives;
+          this.dataSource = new MatTableDataSource(this.normativeTexts);
+          this.dataSource.sort = this.normativeTextTbSort;
+          this.dataSource.paginator = this.paginator;
         },
         (error: HttpErrorResponse) => {
           errorResponse = error.error;
@@ -80,10 +117,81 @@ export class GlobalRegulationNormativeTextsComponent {
   }
 
   saveForm() {
+    this.isValidForm = false;
+    if (this.normativeForm.invalid) {
+      return;
+    }
 
+    this.isValidForm = true;
+    this.normativeText = this.normativeForm.value;
+
+    if (this.isUpdateMode) {
+      this.editPost();
+    } else {
+      this.createNormativeText();
+    }
   }
 
+  private editPost(): void {
+    let errorResponse: any
+    let responseOK: boolean = false
+    if (this.regId) {
+      if (this.userId) {
+        this.normativeService.updateNormativeText(this.normativeText.idNormativa, this.normativeText)
+          .pipe(
+            finalize(async () => {
+              await this.sharedService.managementToast(
+                'postFeedback',
+                responseOK,
+                errorResponse
+              );
+            })
+          )
+          .subscribe(
+            () => {
+              responseOK = true
+            },
+            (error: HttpErrorResponse) => {
+              errorResponse = error.error;
+              this.sharedService.errorLog(errorResponse);
+            }
+          )
+      }
+    }
+  }
 
+  private createNormativeText(): void {
+    let errorResponse: any;
+    let responseOK: boolean = false;
+
+    if (this.userId) {
+
+      this.normativeService.createNormativeText(this.normativeText)
+        .pipe(
+          finalize(async () => {
+            await this.sharedService.managementToast(
+              'postFeedback',
+              responseOK,
+              errorResponse
+            );
+          })
+        )
+        .subscribe(
+          () => {
+            responseOK = true;
+            this.regId.reset() 
+            this.ambito.reset()
+            this.Titulo.reset()
+            this.linkNorma.reset()
+            this.loadNormativeText()
+          },
+          (error: HttpErrorResponse) => {
+            errorResponse = error.error;
+            this.sharedService.errorLog(errorResponse);
+          }
+        );
+    }
+  }
 
   public addRow() {
 
@@ -103,9 +211,9 @@ export class GlobalRegulationNormativeTextsComponent {
   public editRow(row: NormativeTextDTO) {
     let responseOK: boolean = false;
     let errorResponse: any;
-
-    if (row.regId === '0') {
-      this.normativeService.createEnergyConsumption(row)
+    console.log ("the row ", row)
+    if (row.idNormativa === 0) {
+      this.normativeService.createNormativeText(row)
       .pipe(
         finalize(async () => {
           await this.sharedService.managementToast(
@@ -115,22 +223,34 @@ export class GlobalRegulationNormativeTextsComponent {
           );
         })
       )
-      .subscribe((newConsumption: NormativeTextDTO) => {
-        row.regId = newConsumption.regId
+      .subscribe((newNormativeText: NormativeTextDTO) => {
+        row.idNormativa = newNormativeText.idNormativa
         row.isEdit = false
-        this.normativeText( this.regId )
+        this.loadNormativeText()
       });
     } else {
-      this.normativeService.updateConsumptions(row.regId, row).subscribe(() => {
+      this.normativeService.updateNormativeText(row.idNormativa, row).subscribe(() => {
         row.isEdit = false
-        this.loadNormativeText( this.regId )
+        this.loadNormativeText()
       })
     }
     row.isEdit = false
   }
 
   public removeRow(id: any) {
-   this.normativeService.deleteConsumption(id).subscribe(() => {
+    let errorResponse: any;
+    let responseOK: boolean = false;
+   this.normativeService.deleteNormativeText(id)
+   .pipe(
+    finalize(async () => {
+      await this.sharedService.managementToast(
+        'postFeedback',
+        responseOK,
+        errorResponse
+      );
+    })
+  )
+   .subscribe(() => {
     this.dataSource.data = this.dataSource.data.filter(
       (u: NormativeTextDTO) => u.regId !== id
     );
@@ -139,17 +259,18 @@ export class GlobalRegulationNormativeTextsComponent {
 
   public removeSelectedRows() {
     /* this.dataSource = this.dataSource.filter((u: any) => !u.isSelected); */
-    const consumptionData = this.dataSource.data.filter((u: NormativeTextDTO) => u.isSelected);
+    const normativeTextData = this.dataSource.data.filter((u: NormativeTextDTO) => u.isSelected)
+    console.log ("removeSelected ", normativeTextData)
     this.dialog
       .open(ConfirmDialogComponent)
       .afterClosed()
       .subscribe((confirm) => {
         if (confirm) {
-          this.normativeService.deleteConsumptions(consumptionData).subscribe(() => {
+/*           this.normativeService.deleteNormativeText(normativeTextData).subscribe(() => {
             this.dataSource.data = this.dataSource.data.filter(
               (u: NormativeTextDTO) => !u.isSelected
             );
-          });
+          }); */
         }
       });
   }

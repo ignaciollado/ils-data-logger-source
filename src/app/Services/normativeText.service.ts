@@ -39,101 +39,30 @@ export class NormativeTextService {
 
   getAllNormativeText(): Observable<NormativeTextDTO[]> {
     return this.http
-      .get<NormativeTextDTO[]>(`${URL_API_SRV}/api/get-all-consumptions`, httpOptions)
+      .get<NormativeTextDTO[]>(`${URL_API}getAllNormativeText.php`, httpOptions)
   }
 
-  getAllConsumptionsByCompanyAndAspect(companyId:any, aspectId?: number): Observable<NormativeTextDTO[]> {
+  getAllRegulationIDs(): Observable<NormativeTextDTO[]> {
     return this.http
-     /* .get<NormativeTextDTO[]>(`${URL_API_SRV}/api/get-all-company-aspect-consumptions/${companyId}/${aspectId}`, httpOptions) */
-     .get<NormativeTextDTO[]>(`${URL_API}consumptionGetByCompanyId.php?companyId=${companyId}&aspectId=${aspectId}`, httpOptions)
+      .get<NormativeTextDTO[]>(`${URL_API}getAllRegulationIDs.php`, httpOptions)
   }
 
-  getAllConsumptionsByCompany(companyId:string): Observable<NormativeTextDTO[]> {
-    if (companyId) {
-      console.log ("logged in")
-      return this.http
-        .get<NormativeTextDTO[]>(`${URL_API}consumptionGetByCompanyId.php?companyId=${companyId}`)
-    } else {
-      console.log("NOT logged")
-      return this.http
-        .get<NormativeTextDTO[]>(`${URL_API_SRV}/api/get-all-consumptions`, httpOptions)
-    }
-  }
-
-  getYearlyEnergyByCompanyId(companyId:string): Observable<NormativeTextDTO[]> {
+  createNormativeText(normativeText: NormativeTextDTO): Observable<NormativeTextDTO> {
     return this.http
-      .get<NormativeTextDTO[]>(`${URL_API}graphEnergyYearlyGetByCompanyId.php?companyId=${companyId}`)
-  }
-
-  getQuarterlyEnergyByCompanyId(companyId:string): Observable<NormativeTextDTO[]> {
-    return this.http
-      .get<NormativeTextDTO[]>(`${URL_API}graphEnergyQuarterlyGetByCompanyId.php?companyId=${companyId}`)
-  }
-
-  getMonthlyEnergyByCompanyId(companyId:string): Observable<NormativeTextDTO[]> {
-    return this.http
-      .get<NormativeTextDTO[]>(`${URL_API}graphEnergyMonthlyGetByCompanyId.php?companyId=${companyId}`)
-  }
-
-  getConsumptionsById(consumptionId: string): Observable<NormativeTextDTO> {
-    return this.http
-    .get<NormativeTextDTO>(`${URL_API}energyConsumptionGetByConsumptionId.php?consumptionId=${consumptionId}`)
-  }
-
-  getAllResiduesByCompany(companyId:any, aspectId?: number): Observable<NormativeTextDTO[]> {
-    return this.http
-     /* .get<NormativeTextDTO[]>(`${URL_API_SRV}/api/get-all-company-aspect-consumptions/${companyId}/${aspectId}`, httpOptions) */
-     .get<NormativeTextDTO[]>(`${URL_API}residueConsumptionGetByCompanyId.php?companyId=${companyId}&aspectId=${aspectId}`, httpOptions)
-  }
-
-  createEnergyConsumption(energyConsumption: NormativeTextDTO): Observable<NormativeTextDTO> {
-    return this.http
-      .post<NormativeTextDTO>(`${URL_API}energyConsumptionCreate.php`, energyConsumption)
+      .post<NormativeTextDTO>(`${URL_API}normativeTextCreate.php`, normativeText)
       .pipe(catchError(this.sharedService.handleError));
   }
 
-  createWaterConsumption(waterConsumption: NormativeTextDTO): Observable<NormativeTextDTO> {
+  updateNormativeText(normativeTextID: number, normativeText: NormativeTextDTO): Observable<NormativeTextDTO> {
+    console.log ("nueva normativa ", normativeText )
     return this.http
-      .post<NormativeTextDTO>(`${URL_API}waterConsumptionCreate.php`, waterConsumption)
+      .put<NormativeTextDTO>(`${URL_API}normativeTextUpdate.php?normativeTextID=${normativeTextID}`, normativeText)
+  }
+
+  deleteNormativeText(normativeTextID: number): Observable<deleteResponse> {
+    return this.http
+      .delete<deleteResponse>(`${URL_API}normativeTextDelete.php?normativeTextID=${normativeTextID}`)
       .pipe(catchError(this.sharedService.handleError));
-  }
-
-  createResidueConsumption(residueConsumption: NormativeTextDTO): Observable<NormativeTextDTO> {
-    console.log (residueConsumption)
-    return this.http
-     /*  .post<NormativeTextDTO>(`${URL_API}waterConsumptionCreate.php`, residueConsumption) */
-     .post<NormativeTextDTO>(`${URL_API}residueConsumptionCreate.php`, residueConsumption)
-      .pipe(catchError(this.sharedService.handleError));
-  }
-
-  createEmissionConsumption(emissionConsumption: NormativeTextDTO): Observable<NormativeTextDTO> {
-    return this.http
-      .post<NormativeTextDTO>(`${URL_API}emissionConsumptionCreate.php`, emissionConsumption)
-      .pipe(catchError(this.sharedService.handleError));
-  }
-
-  updateConsumptions(consumptionId: string, consumption: NormativeTextDTO): Observable<NormativeTextDTO> {
-    return this.http
-      .put<NormativeTextDTO>(`${URL_API}energyConsumptionUpdate.php?consumptionId=${consumptionId}`, consumption)
-  }
-
-  updateEmissionConsumption(consumptionId: string, consumption: NormativeTextDTO): Observable<NormativeTextDTO> {
-    return this.http
-      .put<NormativeTextDTO>(`${URL_API}emissionConsumptionUpdate.php?consumptionId=${consumptionId}`, consumption)
-  }
-
-  deleteConsumption(consumptionId: number): Observable<deleteResponse> {
-    return this.http
-      .delete<deleteResponse>(`${URL_API}energyConsumptionDelete.php?consumptionId=${consumptionId}`)
-      .pipe(catchError(this.sharedService.handleError));
-  }
-
-  deleteConsumptions(consumptionData: NormativeTextDTO[]): Observable<NormativeTextDTO[]> {
-    return forkJoin(
-        consumptionData.map((consumptions) =>
-        this.http.delete<NormativeTextDTO>(`${URL_API}consumptionsDataDelete.php?consumptions=${consumptions}`)
-      )
-    );
   }
 
   errorLog(error: HttpErrorResponse): void {

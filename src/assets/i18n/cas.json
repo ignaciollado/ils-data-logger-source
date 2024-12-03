@@ -1,7 +1,7 @@
 {
-    "IdiOneLine": "Agencia de desarrollo regional de las Islas Baleares",
-    "IdiLine_1": "Agencia de desarrollo",
-    "IdiLine_2": "regional",
+    "IdiOneLine": "Agencia de Desarrollo Regional de las Islas Baleares",
+    "IdiLine_1": "Agencia de Desarrollo",
+    "IdiLine_2": "Regional",
     "IdiLine_3": "de las Islas Baleares",
     "home": "Inicio",
     "login": "Entrar",
@@ -105,6 +105,12 @@
     "monthlyBilling": "Facturación mes",
     "persons": "Media personal",
     "monthlyPersons": "Personal mes",
+
+    "globalQuestionnaireNormativeTexts": "Normativa legal",
+    "regulationID": "Regulation ID",
+    "scope": "Ámbito territorial",
+    "title": "Título de la normativa legal",
+    "linkNorma": "Enlace al texto legal",
 
     "requisitosLegales": "Identificación de requisitos legales",
     "globalQuestionnaire": "Cuestionario preliminar",

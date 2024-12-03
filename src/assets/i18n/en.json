@@ -95,6 +95,12 @@
   "ratioBillingMode": "Ratio por facturación",
   "ratioCNAEMode": "Ratio por CNAE",
 
+  "globalQuestionnaireNormativeTexts": "Legal regulation",
+  "regulationID": "Regulation ID",
+  "scope": "Regioanl scope",
+  "title": "Legal regulation title",
+  "linkNorma": "Link to the legal regulation",
+
   "requisitosLegales": "Identificació de requisits legals",
   "globalQuestionnaire": "Cuestionario preliminar",
   "globalQuestionnaireList": "Ver cuestionarios",

@@ -107,10 +107,10 @@
     "monthlyPersons": "Personal mes",
 
     "globalQuestionnaireNormativeTexts": "Normativa legal",
-    "regulationID": "Regulation ID",
+    "regulationID": "ID texto normativo",
     "scope": "Ámbito territorial",
-    "title": "Título de la normativa legal",
-    "linkNorma": "Enlace al texto legal",
+    "title": "Título de la norma",
+    "linkNorma": "Enlace a la norma",
 
     "requisitosLegales": "Identificación de requisitos legales",
     "globalQuestionnaire": "Cuestionario preliminar",

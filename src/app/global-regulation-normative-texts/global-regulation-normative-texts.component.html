@@ -38,9 +38,9 @@
         <mat-form-field [style.width.px]=650>
           <mat-label>{{'linkNorma' | translate}}</mat-label>
           <input matInput type="url" [formControl]="linkNorma" />
-          <mat-error *ngIf="linkNorma.hasError('minlength')" >linkNorma must be at least 5 characters long</mat-error>
-          <mat-error *ngIf="linkNorma.hasError('maxlength')" >linkNorma can be max 1024 characters long</mat-error>
-          <mat-error *ngIf="linkNorma.hasError('required')">linkNorma <strong>is required</strong></mat-error>
+          <mat-error *ngIf="linkNorma.hasError('minlength')" >link must be at least 5 characters long</mat-error>
+          <mat-error *ngIf="linkNorma.hasError('maxlength')" >link can be max 1024 characters long</mat-error>
+          <mat-error *ngIf="linkNorma.hasError('required')">link <strong>is required</strong></mat-error>
         </mat-form-field>
       </section>
       <button mat-raised-button color="primary" type="submit" [disabled]="!normativeForm.valid">ADD</button>
@@ -77,11 +77,13 @@
               </div>
               <span *ngSwitchCase="'isSelected'" ngClass="small-data">{{element[col.key]}}</span>
               <span *ngSwitchCase="'readOnly'" [(ngModel)]="element[col.key]" ngClass="small-data">{{element[col.key]}}</span>
-              <mat-select *ngSwitchCase="'scope'" [(ngModel)]="element[col.key]">
+              
+              <mat-select *ngSwitchCase="'scope'" [(ngModel)]="element[col.key]" ngClass="select-scope">
                 <mat-option *ngFor="let ambito of ambitos" [value]="ambito">
                   {{ambito}}
                 </mat-option>
               </mat-select>
+
               <textarea *ngSwitchCase="'textarea'" ngClass="textarea-edition-format small-data-input" [(ngModel)]="element[col.key]"></textarea>
               <input *ngSwitchCase="'url'" [type]="col.type" [(ngModel)]="element[col.key]" ngClass="url-edition-format small-data-input"/>
               <input *ngSwitchDefault [type]="col.type" [(ngModel)]="element[col.key]" ngClass="text-edition-format small-data-input"/>

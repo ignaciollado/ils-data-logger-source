@@ -56,6 +56,11 @@ input[type=number] {
   outline: none;
 }
 
+.select-scope {
+  min-width: 10rem;
+  border: 1px solid white;
+}
+
 .small-data {
   font-size: .6rem;
 }

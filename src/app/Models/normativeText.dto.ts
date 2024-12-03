@@ -12,22 +12,22 @@ export const normativeColumns = [
 {
   key: "regId",
   type: "readOnly",
-  label: "Reg ID"
+  label: "ID texto normativo"
 },
 {
   key: "Ambito",
   type: "scope",
-  label: "Scope"
+  label: "Ámbito"
 },
 {
   key: "Titulo",
   type: "textarea",
-  label: "Title"
+  label: "Título"
 },
 {
   key: "link",
   type: "url",
-  label: "Linked to"
+  label: "Link"
 },
 
 /* {

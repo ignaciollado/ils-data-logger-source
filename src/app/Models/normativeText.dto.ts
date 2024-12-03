@@ -29,12 +29,6 @@ export const normativeColumns = [
   type: "url",
   label: "Link"
 },
-
-/* {
-  key: "idNormativa",
-  type: "number",
-  label: "Ref. normativa"
-}, */
 {
   key: "isEdit",
   type: "isEdit",

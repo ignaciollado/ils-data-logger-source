@@ -24,7 +24,7 @@
       <button *ngIf="!isCompany" mat-menu-item (click)="myObjectives()"><i class="fa-solid fa-bullseye"></i> {{'myObjectives' | translate}}</button>
       <mat-divider *ngIf="!!isCompany"></mat-divider>
       <mat-divider></mat-divider>
-      <button mat-menu-item (click)="globalQuestionnaireNormative()"><i class="fa-solid fa-square-poll-horizontal"></i> {{'globalQuestionnaireNormativeTexts' | translate}}</button>
+      <button *ngIf="!isCompany" mat-menu-item (click)="globalQuestionnaireNormative()"><i class="fa-solid fa-square-poll-horizontal"></i> {{'globalQuestionnaireNormativeTexts' | translate}}</button>
       <button mat-menu-item (click)="globalQuestionnaire()"><i class="fa-solid fa-square-poll-horizontal"></i> {{'globalQuestionnaire' | translate}}</button>
       <button mat-menu-item (click)="globalQuestionnaireList()"><i class="fa-solid fa-list"></i> {{'answeredQuestionnairesList' | translate}}</button>
       <mat-divider></mat-divider>

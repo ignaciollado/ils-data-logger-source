@@ -1,4 +1,4 @@
-<p>registered-users works!</p>
+<h2>{{'listUsers' | translate}}</h2>
 <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
   <ng-container [matColumnDef]="col.key" *ngFor="let col of columnsSchema">
           <mat-header-cell *matHeaderCellDef [ngSwitch]="col.key">

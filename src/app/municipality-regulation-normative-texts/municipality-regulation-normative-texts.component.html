@@ -9,18 +9,18 @@
             <mat-form-field [style.width.px]=325>
               <mat-label>{{'regulationID' | translate}}</mat-label>
               <input matInput type="text" [formControl]="regId" />
-              <mat-error *ngIf="regId.hasError('required')">{{'regulation ID ' | translate}} <strong>{{'isRequired' | translate}}</strong></mat-error>
-              <mat-error *ngIf="regId.hasError('minlength')">{{'regulation ID ' | translate}} <strong>minlength: 5 characters</strong></mat-error>
-              <mat-error *ngIf="regId.hasError('maxlength')">{{'regulation ID ' | translate}} <strong>minlength: 35 characters</strong></mat-error>
+              <mat-error *ngIf="regId.hasError('required')">{{'regulationID' | translate}} <strong>{{'isRequired' | translate}}</strong></mat-error>
+              <mat-error *ngIf="regId.hasError('minlength')">{{'regulationID' | translate}} <strong>min. length: 5 characters</strong></mat-error>
+              <mat-error *ngIf="regId.hasError('maxlength')">{{'regulationID' | translate}} <strong>max. length: 35 characters</strong></mat-error>
             </mat-form-field>
             <mat-form-field [style.width.px]=325>
               <mat-label>{{'municipio' | translate}}</mat-label>
               <mat-select [formControl]="municipio" panelClass="panel-{{municipio.value}}">
-                <mat-option *ngFor="let normative of normativeTexts" [value]="normative.Municipio">
-                  {{normative.Municipio}}
+                <mat-option *ngFor="let item of municipalities" [value]="item.key">
+                  {{item.name}}
                 </mat-option>
               </mat-select>
-              <mat-error *ngIf="regId.hasError('required')">{{'Municipio ' | translate}} <strong>{{'isRequired' | translate}}</strong></mat-error>
+              <mat-error *ngIf="regId.hasError('required')">{{'municipio' | translate}} <strong>{{'isRequired' | translate}}</strong></mat-error>
             </mat-form-field>
       </section>
 
@@ -28,9 +28,9 @@
         <mat-form-field [style.width.px]=650>
           <mat-label>{{'title' | translate}}</mat-label>
           <textarea matInput [formControl]="titulo"></textarea>
-          <mat-error *ngIf="titulo.hasError('minlength')" >Titulo must be at least 5 characters long</mat-error>
-          <mat-error *ngIf="titulo.hasError('maxlength')" >Titulo can be max 1024 characters long</mat-error>
-          <mat-error *ngIf="titulo.hasError('required')">Titulo <strong>is required</strong></mat-error>
+          <mat-error *ngIf="titulo.hasError('minlength')" >{{'title' | translate}} min. length: 5 characters</mat-error>
+          <mat-error *ngIf="titulo.hasError('maxlength')" >{{'title' | translate}} max. length: 1024 characters</mat-error>
+          <mat-error *ngIf="titulo.hasError('required')">{{'title' | translate}} <strong>is required</strong></mat-error>
         </mat-form-field>
       </section>
 
@@ -50,52 +50,58 @@
   </form>
 
   <div style="margin-left: auto; margin-right: auto"><span id="postFeedback"></span></div>
-  <div class='form-filter'>
+  <section class='form-filter'>
     <mat-form-field class="item1">
       <mat-label>{{'filterByColumn' | translate}}</mat-label>
       <input matInput (keyup)="applyFilter($event)" placeholder="Search columns" #input>
     </mat-form-field>
-  </div>
+  </section>
 
     <mat-table *ngIf="dataSource" [dataSource]="dataSource" class="mat-elevation-z8">
       <ng-container [matColumnDef]="col.key" *ngFor="let col of columnsSchema">
         <mat-header-cell *matHeaderCellDef [ngSwitch]="col.key">
           <span *ngSwitchDefault>{{ col.label }}</span>
         </mat-header-cell>
-          <mat-cell *matCellDef="let element">
-            <div [ngSwitch]="col.type" *ngIf="!element.isEdit">
-              <div class="btn-edit" *ngSwitchCase="'isEdit'">
-                <button mat-icon-button (click)="element.isEdit = !element.isEdit" class="material-icons app-toolbar-menu save-button" matTooltip="Edit" color="accent"><i class="fa-solid fa-pencil fa-xs"></i></button>
-                <button mat-icon-button class="material-icons app-toolbar-menu delete-button" (click)="removeRow(element.idNormativa)" matTooltip="Delete" color="warn"><i class="fa-solid fa-trash fa-xs"></i></button>
-              </div>
-              <span *ngSwitchCase="'scope'" ngClass="small-data" [innerHTML]="element[col.key]"></span>
+        <mat-cell *matCellDef="let element">
+          <div [ngSwitch]="col.type" *ngIf="!element.isEdit">
+            <div class="btn-edit" *ngSwitchCase="'isEdit'">
+              <button mat-icon-button (click)="element.isEdit = !element.isEdit" class="material-icons app-toolbar-menu save-button" matTooltip="Edit" color="accent"><i class="fa-solid fa-pencil fa-xs"></i></button>
+              <button mat-icon-button class="material-icons app-toolbar-menu delete-button" (click)="removeRow(element.idNormativa)" matTooltip="Delete" color="warn"><i class="fa-solid fa-trash fa-xs"></i></button>
+            </div>
+            <span *ngSwitchCase="'scope'" ngClass="small-data" [innerHTML]="element[col.key]"></span>
               <a *ngSwitchCase="'url'" ngClass="small-data" href='{{ element[col.key] }}' target="_blank" title="Click to view regulation text detail">{{ element[col.key] }}</a>
-              <span *ngSwitchDefault ngClass="small-data">{{ element[col.key] }}</span>
-            </div>
+            <span *ngSwitchDefault ngClass="small-data">{{ element[col.key] }}</span>
+          </div>
 
-            <div [ngSwitch]="col.type" *ngIf="element.isEdit">
-              <div class="btn-edit" *ngSwitchCase="'isEdit'">
-                <button mat-button (click)="editRow(element)" [disabled]="valid[element.idNormativa] === false">Done</button>
-              </div>
-              <span *ngSwitchCase="'isSelected'" ngClass="small-data">{{element[col.key]}}</span>
-              <span *ngSwitchCase="'readOnly'" [(ngModel)]="element[col.key]" ngClass="small-data">{{element[col.key]}}</span>
+          <div [ngSwitch]="col.type" *ngIf="element.isEdit">
+            <div class="btn-edit" *ngSwitchCase="'isEdit'">
+              <button mat-button (click)="editRow(element)" [disabled]="valid[element.idNormativa] === false">Done</button>
+            </div>
+            <span *ngSwitchCase="'isSelected'" ngClass="small-data">{{element[col.key]}}</span>
+            <span *ngSwitchCase="'readOnly'" [(ngModel)]="element[col.key]" ngClass="small-data">{{element[col.key]}}</span>
+
+            <mat-select *ngSwitchCase="'municipio'" [(ngModel)]="element[col.key]" ngClass="select-municipio">
+              <mat-option *ngFor="let item of municipalities" [value]="item.key">
+                {{item.name}}
+              </mat-option>
+            </mat-select>
               
-              <mat-select *ngSwitchCase="'vector'" [(ngModel)]="element[col.key]" ngClass="select-scope">
-                <mat-option *ngFor="let vector of vectores" [value]="vector">
-                  {{vector}}
-                </mat-option>
-              </mat-select>
+            <mat-select *ngSwitchCase="'vector'" [(ngModel)]="element[col.key]" ngClass="select-scope">
+              <mat-option *ngFor="let vector of vectores" [value]="vector">
+                {{vector}}
+              </mat-option>
+            </mat-select>
 
-              <textarea *ngSwitchCase="'textarea'" ngClass="textarea-edition-format small-data-input" [(ngModel)]="element[col.key]"></textarea>
-              <input *ngSwitchCase="'url'" [type]="col.type" [(ngModel)]="element[col.key]" ngClass="url-edition-format small-data-input"/>
-              <input *ngSwitchDefault [type]="col.type" [(ngModel)]="element[col.key]" ngClass="text-edition-format small-data-input"/>
-            </div>
-          </mat-cell>
+            <textarea *ngSwitchCase="'textarea'" ngClass="textarea-edition-format small-data-input" [(ngModel)]="element[col.key]"></textarea>
+            <input *ngSwitchCase="'url'" [type]="col.type" [(ngModel)]="element[col.key]" ngClass="url-edition-format small-data-input"/>
+            <input *ngSwitchDefault [type]="col.type" [(ngModel)]="element[col.key]" ngClass="text-edition-format small-data-input"/>
+          </div>
+        </mat-cell>
       </ng-container>
       <mat-header-row *matHeaderRowDef="columnsDisplayed"></mat-header-row>
       <mat-row *matRowDef="let row; columns: columnsDisplayed;"></mat-row>
     </mat-table>
 
-    <span *ngIf="!dataSource">No data found</span>
+    <span *ngIf="!dataSource">No data found yet!!</span>
 
 

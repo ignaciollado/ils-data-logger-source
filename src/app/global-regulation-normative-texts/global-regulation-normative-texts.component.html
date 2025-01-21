@@ -9,15 +9,15 @@
             <mat-form-field [style.width.px]=325>
               <mat-label>{{'regulationID' | translate}}</mat-label>
               <input matInput type="url" [formControl]="regId" />
-              <mat-error *ngIf="regId.hasError('required')">{{'regulation ID ' | translate}} <strong>{{'isRequired' | translate}}</strong></mat-error>
-              <mat-error *ngIf="regId.hasError('minlength')">{{'regulation ID ' | translate}} <strong>minlength: 5 characters</strong></mat-error>
-              <mat-error *ngIf="regId.hasError('maxlength')">{{'regulation ID ' | translate}} <strong>minlength: 35 characters</strong></mat-error>
+              <mat-error *ngIf="regId.hasError('required')">{{'regulation ID' | translate}} <strong>{{'isRequired' | translate}}</strong></mat-error>
+              <mat-error *ngIf="regId.hasError('minlength')">{{'regulation ID' | translate}} <strong>min. length: 5 characters</strong></mat-error>
+              <mat-error *ngIf="regId.hasError('maxlength')">{{'regulation ID' | translate}} <strong>max. length: 35 characters</strong></mat-error>
             </mat-form-field>
             <mat-form-field [style.width.px]=325>
               <mat-label>{{'scope' | translate}}</mat-label>
               <mat-select [formControl]="ambito" panelClass="panel-{{ambito.value}}">
-                <mat-option *ngFor="let ambito of ambitos" [value]="ambito">
-                  {{ambito}}
+                <mat-option *ngFor="let scope of scopes" [value]="scope.Ambito" [innerHTML]="scope.Ambito">
+                  {{scope.Ambito}}
                 </mat-option>
               </mat-select>
               <mat-error *ngIf="regId.hasError('required')">{{'Ámbito ' | translate}} <strong>{{'isRequired' | translate}}</strong></mat-error>
@@ -28,8 +28,8 @@
         <mat-form-field [style.width.px]=650>
           <mat-label>{{'title' | translate}}</mat-label>
           <textarea matInput [formControl]="Titulo"></textarea>
-          <mat-error *ngIf="Titulo.hasError('minlength')" >Titulo must be at least 5 characters long</mat-error>
-          <mat-error *ngIf="Titulo.hasError('maxlength')" >Titulo can be max 1024 characters long</mat-error>
+          <mat-error *ngIf="Titulo.hasError('minlength')" >min. length: 5 characters</mat-error>
+          <mat-error *ngIf="Titulo.hasError('maxlength')" >ax. length: 1024 characters</mat-error>
           <mat-error *ngIf="Titulo.hasError('required')">Titulo <strong>is required</strong></mat-error>
         </mat-form-field>
       </section>
@@ -39,7 +39,7 @@
           <mat-label>{{'linkNorma' | translate}}</mat-label>
           <input matInput type="url" [formControl]="linkNorma" />
           <mat-error *ngIf="linkNorma.hasError('minlength')" >link must be at least 5 characters long</mat-error>
-          <mat-error *ngIf="linkNorma.hasError('maxlength')" >link can be max 1024 characters long</mat-error>
+          <mat-error *ngIf="linkNorma.hasError('maxlength')" >link can be max 350 characters long</mat-error>
           <mat-error *ngIf="linkNorma.hasError('required')">link <strong>is required</strong></mat-error>
         </mat-form-field>
       </section>
@@ -79,8 +79,8 @@
               <span *ngSwitchCase="'readOnly'" [(ngModel)]="element[col.key]" ngClass="small-data">{{element[col.key]}}</span>
               
               <mat-select *ngSwitchCase="'scope'" [(ngModel)]="element[col.key]" ngClass="select-scope">
-                <mat-option *ngFor="let ambito of ambitos" [value]="ambito">
-                  {{ambito}}
+                <mat-option *ngFor="let scope of scopes" [value]="scope.Ambito" [innerHTML]="scope.Ambito">
+                  {{scope.Ambito}}
                 </mat-option>
               </mat-select>
 

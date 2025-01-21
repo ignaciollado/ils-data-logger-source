@@ -47,6 +47,11 @@ export class NormativeTextService {
       .get<NormativeTextDTO[]>(`${URL_API}getAllRegulationIDs.php`, httpOptions)
   }
 
+  getAllRegulationScopes(): Observable<NormativeTextDTO[]> {
+    return this.http
+      .get<NormativeTextDTO[]>(`${URL_API}getAllNormativeTextScopes.php`, httpOptions)
+  }
+
   createNormativeText(normativeText: NormativeTextDTO): Observable<NormativeTextDTO> {
     return this.http
       .post<NormativeTextDTO>(`${URL_API}normativeTextCreate.php`, normativeText)

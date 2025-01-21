@@ -21,7 +21,7 @@ export const normativeColumns = [
 },
 {
   key: "Vector",
-  type: "select",
+  type: "vector",
   label: "Vector"
 },
 {

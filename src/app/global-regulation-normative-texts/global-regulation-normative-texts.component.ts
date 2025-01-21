@@ -43,7 +43,8 @@ export class GlobalRegulationNormativeTextsComponent {
   isElevated:boolean = true
   private isUpdateMode: boolean
   regulationsIDS: NormativeTextDTO[] = []
-  ambitos: string[] = ['AUTONÓMICO','BALEAR','ESTATAL','UNIÓN EUROPEA']
+  //scopes: string[] = ['AUTONÓMICO','BALEAR','ESTATAL','UNIÓN EUROPEA']
+  scopes: NormativeTextDTO[] = []
   private userId: string | null
   normativeTexts!: NormativeTextDTO[]
   isValidForm: boolean | null
@@ -67,9 +68,9 @@ export class GlobalRegulationNormativeTextsComponent {
     ) {
       
     this.isValidForm = null;
-    this.regId = new UntypedFormControl('', [ Validators.required, Validators.minLength(6), Validators.maxLength(35) ]);
+    this.regId = new UntypedFormControl('', [ Validators.required, Validators.minLength(5), Validators.maxLength(35) ]);
     this.ambito = new UntypedFormControl('', [ Validators.required ]);
-    this.Titulo = new UntypedFormControl('', [ Validators.required ])
+    this.Titulo = new UntypedFormControl('', [ Validators.required , Validators.minLength(5), Validators.maxLength(1024)])
     this.linkNorma = new UntypedFormControl('', [ Validators.required ])
     this.normativaId = new UntypedFormControl({value: '', disabled: false})
 
@@ -82,21 +83,9 @@ export class GlobalRegulationNormativeTextsComponent {
       linkNorma: this.linkNorma,
       normativaId: this.normativaId,
     });
-/*     this.loadRegulationIDs() */
     this.loadNormativeText()
+    this.loadNormativeTextScopes()
   }
-
-/*   private loadRegulationIDs(): void {
-    let errorResponse: any
-    if (this.userId) {
-      this.normativeService.getAllRegulationIDs().subscribe(
-        (regID: NormativeTextDTO[]) => {
-          this.regulationsIDS = regID
-          console.log (this.regulationsIDS, typeof this.regulationsIDS)
-        }
-      )
-    }
-  } */
 
   private loadNormativeText(): void {
     let errorResponse: any
@@ -113,6 +102,18 @@ export class GlobalRegulationNormativeTextsComponent {
           this.sharedService.errorLog(errorResponse);
         }
       );
+    }
+  }
+
+  private loadNormativeTextScopes(): void {
+    let errorResponse: any
+    if (this.userId) {
+      this.normativeService.getAllRegulationScopes().subscribe(
+        (scopes: NormativeTextDTO[]) => {
+          this.scopes = scopes
+          console.log (this.scopes)
+        }
+      )
     }
   }
 

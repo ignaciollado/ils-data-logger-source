@@ -115,6 +115,8 @@
     "scope": "Ámbito territorial",
     "title": "Título de la norma",
     "linkNorma": "Enlace a la norma",
+    "municipio": "Municipio",
+    "vector": "Vector",
 
     "requisitosLegales": "Identificación de requisitos legales",
     "globalQuestionnaire": "Cuestionario preliminar",

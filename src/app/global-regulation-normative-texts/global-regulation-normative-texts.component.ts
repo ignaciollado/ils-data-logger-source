@@ -117,6 +117,12 @@ export class GlobalRegulationNormativeTextsComponent {
     }
   }
 
+  regIdToUpper(regId:string) {
+    let newstr: string = regId.toUpperCase();
+    console.log (newstr)
+    this.regId.setValue (newstr)
+  }
+
   saveForm() {
     this.isValidForm = false;
     if (this.normativeForm.invalid) {

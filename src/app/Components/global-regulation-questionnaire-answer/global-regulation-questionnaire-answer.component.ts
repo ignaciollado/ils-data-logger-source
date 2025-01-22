@@ -90,7 +90,8 @@ export class GlobalRegulationQuestionnaireAnswerComponent {
                 this.regVector[(vectorAnswers.vectorId-1)].regulation.map((vReg:any) =>{
                   this.regulationList.map((regulation:regulationsDTO) => {
                     if (regulation.regId == vReg) {
-                      vRegTemp += "<li><span class='ambito'> "+regulation.Ambito+" </span><span> "+regulation.Titulo+`. </span><br><span><a href='${regulation.link}' target='_blank'>`+regulation.link+`</a> </span><span> [<a href='../../../assets/regulation/${vReg}.pdf' target='_blank'>`+vReg+"</a>] </span></li>"
+                      /* vRegTemp += "<li><span class='ambito'> "+regulation.Ambito+" </span><span> "+regulation.Titulo+`. </span><br><span><a href='${regulation.link}' target='_blank'>`+regulation.link+`</a> </span><span> [<a href='../../../assets/regulation/${vReg}.pdf' target='_blank'>`+vReg+"</a>] </span></li>" */
+                      vRegTemp += "<li><span class='ambito'> "+regulation.Ambito+" </span><span> "+regulation.Titulo+`. </span><br><span><a href='${regulation.link}' target='_blank'>`+regulation.link+`</a> </span><span> [<a href='../../../regulation/${vReg}.pdf' target='_blank'>`+vReg+"</a>] </span></li>"
                     }
                   })
                   this.regVector[(vectorAnswers.vectorId-1)].regulation = vRegTemp
@@ -106,7 +107,8 @@ export class GlobalRegulationQuestionnaireAnswerComponent {
                         questions.q1.map((q1Reg:any) =>{
                           this.regulationList.map((regulation:regulationsDTO) => {
                                if (regulation.regId == q1Reg) {
-                                q1Temp += "<li><span> "+regulation.Ambito+" </span><span> "+regulation.Titulo+` </span><br><span> <a href='${regulation.link}' target='_blank'>`+regulation.link+`</a></span><span> [<a href='../../../assets/regulation/${q1Reg}.pdf' target='_blank'>`+q1Reg+"</a>]</span></li>"
+                                /* q1Temp += "<li><span> "+regulation.Ambito+" </span><span> "+regulation.Titulo+` </span><br><span> <a href='${regulation.link}' target='_blank'>`+regulation.link+`</a></span><span> [<a href='../../../assets/regulation/${q1Reg}.pdf' target='_blank'>`+q1Reg+"</a>]</span></li>" */
+                                q1Temp += "<li><span> "+regulation.Ambito+" </span><span> "+regulation.Titulo+` </span><br><span> <a href='${regulation.link}' target='_blank'>`+regulation.link+`</a></span><span> [<a href='../../../regulation/${q1Reg}.pdf' target='_blank'>`+q1Reg+"</a>]</span></li>"
                               }
                           })
                         })
@@ -118,7 +120,8 @@ export class GlobalRegulationQuestionnaireAnswerComponent {
                         questions.q2.map((q2Reg:any) =>{
                           this.regulationList.map((regulation:regulationsDTO) => {
                              if (regulation.regId === q2Reg) {
-                              q2Temp += "<li><span> "+regulation.Ambito+" </span><span> "+regulation.Titulo+` </span><br><span> <a href='${regulation.link}' target='_blank'>`+regulation.link+`</a></span><span> [<a href='../../../assets/regulation/${q2Reg}.pdf' target='_blank'>`+q2Reg+"</a>]</span></li>"
+                              /* q2Temp += "<li><span> "+regulation.Ambito+" </span><span> "+regulation.Titulo+` </span><br><span> <a href='${regulation.link}' target='_blank'>`+regulation.link+`</a></span><span> [<a href='../../../assets/regulation/${q2Reg}.pdf' target='_blank'>`+q2Reg+"</a>]</span></li>" */
+                              q2Temp += "<li><span> "+regulation.Ambito+" </span><span> "+regulation.Titulo+` </span><br><span> <a href='${regulation.link}' target='_blank'>`+regulation.link+`</a></span><span> [<a href='../../../regulation/${q2Reg}.pdf' target='_blank'>`+q2Reg+"</a>]</span></li>"
                             }
                         }
                         )
@@ -131,7 +134,8 @@ export class GlobalRegulationQuestionnaireAnswerComponent {
                         questions.q3.map((q3Reg:any) =>{
                           this.regulationList.map((regulation:regulationsDTO) => {
                              if (regulation.regId === q3Reg) {
-                              q3Temp += "<li><span> "+regulation.Ambito+" </span><span> "+regulation.Titulo+` </span><br><span> <a href='${regulation.link}' target='_blank'>`+regulation.link+`</a></span><span> [<a href='../../../assets/regulation/${q3Reg}.pdf' target='_blank'>`+q3Reg+"</a>]</span></li>"
+                              /* q3Temp += "<li><span> "+regulation.Ambito+" </span><span> "+regulation.Titulo+` </span><br><span> <a href='${regulation.link}' target='_blank'>`+regulation.link+`</a></span><span> [<a href='../../../assets/regulation/${q3Reg}.pdf' target='_blank'>`+q3Reg+"</a>]</span></li>" */
+                              q3Temp += "<li><span> "+regulation.Ambito+" </span><span> "+regulation.Titulo+` </span><br><span> <a href='${regulation.link}' target='_blank'>`+regulation.link+`</a></span><span> [<a href='../../../regulation/${q3Reg}.pdf' target='_blank'>`+q3Reg+"</a>]</span></li>"
                             }
                         }
                         )
@@ -144,7 +148,8 @@ export class GlobalRegulationQuestionnaireAnswerComponent {
                         questions.q4.map((q4Reg:any) =>{
                           this.regulationList.map((regulation:regulationsDTO) => {
                              if (regulation.regId === q4Reg) {
-                              q4Temp += "<li><span> "+regulation.Ambito+" </span><span> "+regulation.Titulo+` </span><br><span> <a href='${regulation.link}' target='_blank'>`+regulation.link+`</a></span><span> [<a href='../../../assets/regulation/${q4Reg}.pdf' target='_blank'>`+q4Reg+"</a>]</span></li>"
+                              /* q4Temp += "<li><span> "+regulation.Ambito+" </span><span> "+regulation.Titulo+` </span><br><span> <a href='${regulation.link}' target='_blank'>`+regulation.link+`</a></span><span> [<a href='../../../assets/regulation/${q4Reg}.pdf' target='_blank'>`+q4Reg+"</a>]</span></li>" */
+                              q4Temp += "<li><span> "+regulation.Ambito+" </span><span> "+regulation.Titulo+` </span><br><span> <a href='${regulation.link}' target='_blank'>`+regulation.link+`</a></span><span> [<a href='../../../regulation/${q4Reg}.pdf' target='_blank'>`+q4Reg+"</a>]</span></li>"
                             }
                         }
                         )
@@ -157,7 +162,8 @@ export class GlobalRegulationQuestionnaireAnswerComponent {
                         questions.q5.map((q5Reg:any) =>{
                           this.regulationList.map((regulation:regulationsDTO) => {
                              if (regulation.regId === q5Reg) {
-                              q5Temp += "<li><span> "+regulation.Ambito+" </span><span> "+regulation.Titulo+` </span><br><span> <a href='${regulation.link}' target='_blank'>`+regulation.link+`</a></span><span> [<a href='../../../assets/regulation/${q5Reg}.pdf' target='_blank'>`+q5Reg+"</a>]</span></li>"
+                              /* q5Temp += "<li><span> "+regulation.Ambito+" </span><span> "+regulation.Titulo+` </span><br><span> <a href='${regulation.link}' target='_blank'>`+regulation.link+`</a></span><span> [<a href='../../../assets/regulation/${q5Reg}.pdf' target='_blank'>`+q5Reg+"</a>]</span></li>" */
+                              q5Temp += "<li><span> "+regulation.Ambito+" </span><span> "+regulation.Titulo+` </span><br><span> <a href='${regulation.link}' target='_blank'>`+regulation.link+`</a></span><span> [<a href='../../../regulation/${q5Reg}.pdf' target='_blank'>`+q5Reg+"</a>]</span></li>"
                             }
                         }
                         )
@@ -170,7 +176,8 @@ export class GlobalRegulationQuestionnaireAnswerComponent {
                         questions.q6.map((q6Reg:any) =>{
                           this.regulationList.map((regulation:regulationsDTO) => {
                              if (regulation.regId === q6Reg) {
-                              q6Temp += "<li><span class='ambito'> "+regulation.Ambito+" </span><span> "+regulation.Titulo+` </span><br><span> <a href='${regulation.link}' target='_blank'>`+regulation.link+`</a></span><span> [<a href='../../../assets/regulation/${q6Reg}.pdf' target='_blank'>`+q6Reg+"</a>]</span></li>"
+                              /* q6Temp += "<li><span class='ambito'> "+regulation.Ambito+" </span><span> "+regulation.Titulo+` </span><br><span> <a href='${regulation.link}' target='_blank'>`+regulation.link+`</a></span><span> [<a href='../../../assets/regulation/${q6Reg}.pdf' target='_blank'>`+q6Reg+"</a>]</span></li>" */
+                              q6Temp += "<li><span class='ambito'> "+regulation.Ambito+" </span><span> "+regulation.Titulo+` </span><br><span> <a href='${regulation.link}' target='_blank'>`+regulation.link+`</a></span><span> [<a href='../../../regulation/${q6Reg}.pdf' target='_blank'>`+q6Reg+"</a>]</span></li>"
                             }
                         }
                         )
@@ -183,7 +190,9 @@ export class GlobalRegulationQuestionnaireAnswerComponent {
                         questions.q7.map((q7Reg:any) =>{
                           this.regulationList.map((regulation:regulationsDTO) => {
                              if (regulation.regId === q7Reg) {
-                              q7Temp += "<li><span> "+regulation.Ambito+" </span><span> "+regulation.Titulo+` </span><br><span> <a href='${regulation.link}' target='_blank'>`+regulation.link+`</a></span><span> [<a href='../../../assets/regulation/${q7Reg}.pdf' target='_blank'>`+q7Reg+"</a>]</span></li>"
+                              /* q7Temp += "<li><span> "+regulation.Ambito+" </span><span> "+regulation.Titulo+` </span><br><span> <a href='${regulation.link}' target='_blank'>`+regulation.link+`</a></span><span> [<a href='../../../assets/regulation/${q7Reg}.pdf' target='_blank'>`+q7Reg+"</a>]</span></li>" */
+                              q7Temp += "<li><span> "+regulation.Ambito+" </span><span> "+regulation.Titulo+` </span><br><span> <a href='${regulation.link}' target='_blank'>`+regulation.link+`</a></span><span> [<a href='../../../regulation/${q7Reg}.pdf' target='_blank'>`+q7Reg+"</a>]</span></li>"
+
                             }
                         }
                         )
@@ -196,7 +205,8 @@ export class GlobalRegulationQuestionnaireAnswerComponent {
                         questions.q8.map((q8Reg:any) =>{
                           this.regulationList.map((regulation:regulationsDTO) => {
                              if (regulation.regId === q8Reg) {
-                              q8Temp += "<li><span> "+regulation.Ambito+" </span><span> "+regulation.Titulo+` </span><br><span> <a href='${regulation.link}' target='_blank'>`+regulation.link+`</a></span><span> [<a href='../../../assets/regulation/${q8Reg}.pdf' target='_blank'>`+q8Reg+"</a>]</span></li>"
+                              /* q8Temp += "<li><span> "+regulation.Ambito+" </span><span> "+regulation.Titulo+` </span><br><span> <a href='${regulation.link}' target='_blank'>`+regulation.link+`</a></span><span> [<a href='../../../assets/regulation/${q8Reg}.pdf' target='_blank'>`+q8Reg+"</a>]</span></li>" */
+                              q8Temp += "<li><span> "+regulation.Ambito+" </span><span> "+regulation.Titulo+` </span><br><span> <a href='${regulation.link}' target='_blank'>`+regulation.link+`</a></span><span> [<a href='../../../regulation/${q8Reg}.pdf' target='_blank'>`+q8Reg+"</a>]</span></li>"
                             }
                         }
                         )
@@ -209,7 +219,8 @@ export class GlobalRegulationQuestionnaireAnswerComponent {
                         questions.q9.map((q9Reg:any) =>{
                           this.regulationList.map((regulation:regulationsDTO) => {
                              if (regulation.regId === q9Reg) {
-                              q9Temp += "<li><span> "+regulation.Ambito+" </span><span> "+regulation.Titulo+` </span><br><span> <a href='${regulation.link}' target='_blank'>`+regulation.link+`</a></span><span> [<a href='../../../assets/regulation/${q9Reg}.pdf' target='_blank'>`+q9Reg+"</a>]</span></li>"
+                              /* q9Temp += "<li><span> "+regulation.Ambito+" </span><span> "+regulation.Titulo+` </span><br><span> <a href='${regulation.link}' target='_blank'>`+regulation.link+`</a></span><span> [<a href='../../../assets/regulation/${q9Reg}.pdf' target='_blank'>`+q9Reg+"</a>]</span></li>" */
+                              q9Temp += "<li><span> "+regulation.Ambito+" </span><span> "+regulation.Titulo+` </span><br><span> <a href='${regulation.link}' target='_blank'>`+regulation.link+`</a></span><span> [<a href='../../../regulation/${q9Reg}.pdf' target='_blank'>`+q9Reg+"</a>]</span></li>"
                             }
                         }
                         )
@@ -222,7 +233,8 @@ export class GlobalRegulationQuestionnaireAnswerComponent {
                         questions.q10.map((q10Reg:any) =>{
                           this.regulationList.map((regulation:regulationsDTO) => {
                              if (regulation.regId === q10Reg) {
-                              q10Temp += "<li><span> "+regulation.Ambito+" </span><span> "+regulation.Titulo+` </span><br><span> <a href='${regulation.link}' target='_blank'>`+regulation.link+`</a></span><span> [<a href='../../../assets/regulation/${q10Reg}.pdf' target='_blank'>`+q10Reg+"</a>]</span></li>"
+                              /* q10Temp += "<li><span> "+regulation.Ambito+" </span><span> "+regulation.Titulo+` </span><br><span> <a href='${regulation.link}' target='_blank'>`+regulation.link+`</a></span><span> [<a href='../../../assets/regulation/${q10Reg}.pdf' target='_blank'>`+q10Reg+"</a>]</span></li>" */
+                              q10Temp += "<li><span> "+regulation.Ambito+" </span><span> "+regulation.Titulo+` </span><br><span> <a href='${regulation.link}' target='_blank'>`+regulation.link+`</a></span><span> [<a href='../../../regulation/${q10Reg}.pdf' target='_blank'>`+q10Reg+"</a>]</span></li>"
                             }
                         }
                         )
@@ -235,7 +247,8 @@ export class GlobalRegulationQuestionnaireAnswerComponent {
                         questions.q11.map((q11Reg:any) =>{
                           this.regulationList.map((regulation:regulationsDTO) => {
                              if (regulation.regId === q11Reg) {
-                              q11Temp += "<li><span> "+regulation.Ambito+" </span><span> "+regulation.Titulo+` </span><br><span> <a href='${regulation.link}' target='_blank'>`+regulation.link+`</a></span><span> [<a href='../../../assets/regulation/${q11Reg}.pdf' target='_blank'>`+q11Reg+"</a>]</span></li>"
+                              /* q11Temp += "<li><span> "+regulation.Ambito+" </span><span> "+regulation.Titulo+` </span><br><span> <a href='${regulation.link}' target='_blank'>`+regulation.link+`</a></span><span> [<a href='../../../assets/regulation/${q11Reg}.pdf' target='_blank'>`+q11Reg+"</a>]</span></li>" */
+                              q11Temp += "<li><span> "+regulation.Ambito+" </span><span> "+regulation.Titulo+` </span><br><span> <a href='${regulation.link}' target='_blank'>`+regulation.link+`</a></span><span> [<a href='../../../regulation/${q11Reg}.pdf' target='_blank'>`+q11Reg+"</a>]</span></li>"
                             }
                         }
                         )
@@ -248,7 +261,8 @@ export class GlobalRegulationQuestionnaireAnswerComponent {
                         questions.q12.map((q12Reg:any) =>{
                           this.regulationList.map((regulation:regulationsDTO) => {
                              if (regulation.regId === q12Reg) {
-                              q12Temp += "<li><span> "+regulation.Ambito+" </span><span> "+regulation.Titulo+` </span><br><span> <a href='${regulation.link}' target='_blank'>`+regulation.link+`</a></span><span> [<a href='../../../assets/regulation/${q12Reg}.pdf' target='_blank'>`+q12Reg+"</a>]</span></li>"
+                              /* q12Temp += "<li><span> "+regulation.Ambito+" </span><span> "+regulation.Titulo+` </span><br><span> <a href='${regulation.link}' target='_blank'>`+regulation.link+`</a></span><span> [<a href='../../../assets/regulation/${q12Reg}.pdf' target='_blank'>`+q12Reg+"</a>]</span></li>" */
+                              q12Temp += "<li><span> "+regulation.Ambito+" </span><span> "+regulation.Titulo+` </span><br><span> <a href='${regulation.link}' target='_blank'>`+regulation.link+`</a></span><span> [<a href='../../../regulation/${q12Reg}.pdf' target='_blank'>`+q12Reg+"</a>]</span></li>"
                             }
                         }
                         )

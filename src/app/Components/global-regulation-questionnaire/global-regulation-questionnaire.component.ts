@@ -115,7 +115,6 @@ vector_3_Question2_answers: boolean [] = []
 vector_3_Question3_answers: boolean [] = []
 vector_3_Question4_answers: boolean [] = []
 
-
 vector_4_Question1: NodeListOf<HTMLElement>
 vector_4_Question2: NodeListOf<HTMLElement>
 vector_4_Question3: NodeListOf<HTMLElement>

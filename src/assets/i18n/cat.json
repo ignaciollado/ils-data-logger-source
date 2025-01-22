@@ -135,6 +135,9 @@
     "normativaEspecífica": "Normativa especifica",
     "normativaGeneral": "Normativa general",
 
+    "normasLegalesSegunRequisitos": "Llistat de Normes Legals/Documents propis a partir dels requisits de client",
+    "subNormasLegalesSegunRequisitos": "Llistat de Normes Legals de les quals es deriven requisits de client, per a aquest centre",
+
     "copyright": "Creat per l'Agència de desenvolupament regional de les Illes Balears",
     "workSession": "Iniciar sessió de treball",
     "password": "Contrassenya",

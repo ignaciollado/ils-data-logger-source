@@ -134,6 +134,9 @@
     "normativaEspecífica": "Normativa específica",
     "normativaGeneral": "Normativa general",
 
+    "normasLegalesSegunRequisitos": "Listado de Normas Legales/Documentos propios a partir de los requisitos de cliente",
+    "subNormasLegalesSegunRequisitos": "Listado de Normas Legales de las que se derivan requisitos de cliente, para este centro",
+
     "copyright": "Creado por la Agencia de desarrollo regional de las Islas Baleares",
     "workSession": "Iniciar sesión de trabajo",
     "password": "Contraseña",

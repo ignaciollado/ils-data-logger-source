@@ -46,6 +46,7 @@ export class UserService {
     this.urlBlogUocApi = 'http://localhost:3000/' + this.controller;
     this.urlAPiMySql = '../../assets/phpAPI/'
     this.urlAPiMock = '../../assets/mocks/'
+    this.urlAPiMock = '../../jsons/'
   }
 
   register(user: UserDTO): Observable<UserDTO> {

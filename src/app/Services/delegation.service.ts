@@ -32,6 +32,7 @@ export class DelegationService {
       private sharedService: SharedService) {
       this.urlAPiMySql = '../../assets/phpAPI/'
       this.urlAPiMock = '../../assets/mocks/'
+      this.urlAPiMock = '../../jsons/'
   }
 
   getAllDelegationsByCompanyIdFromMySQL (companyId: string): Observable<DelegationDTO[]> {

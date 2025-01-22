@@ -6,12 +6,11 @@
   gap: 2rem;
   min-width: 90%;
 }
+
 .button-row {
   display: grid;
   grid-template-columns: auto auto auto auto;
 }
-
-
 
 a {
   text-decoration: none;
@@ -32,6 +31,12 @@ a:hover {
   text-align: center;
   background-color: rgb(78, 41, 5);
   color: #fff;
+}
+
+.background-header-done-test {
+  background-color: #fff;
+  padding: .2rem;
+  border-radius: .2rem;
 }
 
 @media (max-width: theme.$app-break-point) {

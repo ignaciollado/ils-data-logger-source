@@ -25,6 +25,7 @@ export class EnvironmentalAuditsService {
 
   constructor( private http: HttpClient, private sharedService: SharedService ) {
     this.urlAPiMock = '../../assets/mocks/'
+    this.urlAPiMock = '../../jsons/'
   }
 
   getIntroText(): Observable<string> {

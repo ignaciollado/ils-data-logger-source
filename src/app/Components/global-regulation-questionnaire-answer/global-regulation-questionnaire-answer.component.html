@@ -1,6 +1,6 @@
 <div class="container-form">
-  <h1>Listado de Normas Legales/Documentos propios a partir de los Requisitos de Cliente</h1>
-  <h2>Listado de Normas Legales de las que se derivan Requisitos de Cliente, para este Centro</h2>
+  <h1>{{'normasLegalesSegunRequisitos' | translate}}</h1>
+  <h2>{{'subNormasLegalesSegunRequisitos' | translate}}</h2>
   <div *ngIf="userQuestionnaires" >
     <mat-card class="questionnaire-card" *ngFor="let userQuestionnaire of userQuestionnaires">
       <mat-card-header>
@@ -50,7 +50,9 @@
             <ul>
               <li>
                 <span>{{ordenanza.Titulo}}</span> - <span>[{{ordenanza.Vector}}]</span> -
-                <span><a href='../../../assets/regulation/municipal/{{ordenanza.Municipio}}/{{ordenanza.regId}}.pdf' target='_blank'>{{ordenanza.regId}}</a></span>
+                <!-- <span><a href='../../../assets/regulation/municipal/{{ordenanza.Municipio}}/{{ordenanza.regId}}.pdf' target='_blank'>{{ordenanza.regId}}</a></span> -->
+                <span><a href='../../../regulation/municipal/{{ordenanza.Municipio}}/{{ordenanza.regId}}.pdf' target='_blank'>{{ordenanza.regId}}</a></span>
+
               </li>
             </ul>
           </ng-container>

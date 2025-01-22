@@ -35,8 +35,8 @@ export class ResidueService {
   constructor(private http: HttpClient, private sharedService: SharedService) {  
     this.urlApi = '../../assets/mocks/fuels.json'
     this.urlAPiMySql = '../../assets/phpAPI/'
-    this.urlAPiMock = '../../assets/mocks/'
-    this.urlAPiMock = '../../jsons/'
+    /* this.urlAPiMock = '../../assets/mocks/' */
+    this.urlAPiMock = '../../assets_auto/jsons/'
   }
 
   getAllResidues(): Observable<ResidueDTO[]> {

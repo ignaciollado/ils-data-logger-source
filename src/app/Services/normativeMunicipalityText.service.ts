@@ -49,6 +49,7 @@ export class NormativeMunicipalityTextService {
   }
 
   createNormativeText(normativeText: NormativeMunicipalityTextDTO): Observable<NormativeMunicipalityTextDTO> {
+    console.log(normativeText)
     return this.http
       .post<NormativeMunicipalityTextDTO>(`${URL_API}normativeMunicipalityTextCreate.php`, normativeText)
       .pipe(catchError(this.sharedService.handleError));

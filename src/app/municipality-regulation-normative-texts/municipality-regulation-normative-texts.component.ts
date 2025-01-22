@@ -70,7 +70,7 @@ export class MunicipalityRegulationNormativeTextsComponent {
     ) {
       
     this.isValidForm = null;
-    this.regId = new UntypedFormControl('', [ Validators.required, Validators.minLength(6), Validators.maxLength(35) ]);
+    this.regId = new UntypedFormControl('', [ Validators.required, Validators.minLength(5), Validators.maxLength(35) ]);
     this.municipio = new UntypedFormControl('', [ Validators.required ]);
     this.titulo = new UntypedFormControl('', [ Validators.required , Validators.minLength(5), Validators.maxLength(1024)])
     this.vector = new UntypedFormControl('', [ Validators.required ])
@@ -185,9 +185,11 @@ export class MunicipalityRegulationNormativeTextsComponent {
             responseOK = true;
             this.normativeForm.reset()
             this.loadNormativeText()
+            window.location.reload()
           },
           (error: HttpErrorResponse) => {
             errorResponse = error.error;
+            console.log ("el error de ordenanza insert: ", error)
             this.sharedService.errorLog(errorResponse);
           }
         );
@@ -255,6 +257,7 @@ export class MunicipalityRegulationNormativeTextsComponent {
     this.dataSource.data = this.dataSource.data.filter(
       (u: NormativeMunicipalityTextDTO) => u.regId !== id
     );
+    window.location.reload()
   });
   }
 

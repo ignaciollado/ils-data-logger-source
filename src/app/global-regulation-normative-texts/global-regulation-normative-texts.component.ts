@@ -191,6 +191,7 @@ export class GlobalRegulationNormativeTextsComponent {
             this.Titulo.reset()
             this.linkNorma.reset()
             this.loadNormativeText()
+            window.location.reload()
           },
           (error: HttpErrorResponse) => {
             errorResponse = error.error;
@@ -259,8 +260,8 @@ export class GlobalRegulationNormativeTextsComponent {
   )
    .subscribe(() => {
     this.dataSource.data = this.dataSource.data.filter(
-      (u: NormativeTextDTO) => u.regId !== id
-    );
+      (u: NormativeTextDTO) => u.regId !== id);
+      window.location.reload()
   });
   }
 

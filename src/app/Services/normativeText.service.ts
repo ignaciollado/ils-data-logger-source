@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
-import { Observable, forkJoin } from 'rxjs';
+import { Observable } from 'rxjs';
 import { NormativeTextDTO } from '../Models/normativeText.dto';
 import { SharedService } from './shared.service';
 import { catchError } from 'rxjs/operators';

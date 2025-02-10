@@ -10,7 +10,7 @@
               <mat-label>{{'regulationID' | translate}}</mat-label>
               <input matInput type="text" [formControl]="regId" (input)="regIdToUpper(regId.value)" />
               <mat-error *ngIf="regId.hasError('required')">{{'regulation ID' | translate}} <strong>{{'isRequired' | translate}}</strong></mat-error>
-              <mat-error *ngIf="regId.hasError('minlength')">{{'regulation ID' | translate}} <strong>min. length: 5 characters</strong></mat-error>
+              <mat-error *ngIf="regId.hasError('minlength')">{{'regulation ID' | translate}} <strong>min. length: 4 characters</strong></mat-error>
               <mat-error *ngIf="regId.hasError('maxlength')">{{'regulation ID' | translate}} <strong>max. length: 35 characters</strong></mat-error>
             </mat-form-field>
             <mat-form-field [style.width.px]=325>
@@ -28,7 +28,7 @@
         <mat-form-field [style.width.px]=650>
           <mat-label>{{'title' | translate}}</mat-label>
           <textarea matInput [formControl]="Titulo"></textarea>
-          <mat-error *ngIf="Titulo.hasError('minlength')" >min. length: 5 characters</mat-error>
+          <mat-error *ngIf="Titulo.hasError('minlength')" >min. length: 4 characters</mat-error>
           <mat-error *ngIf="Titulo.hasError('maxlength')" >ax. length: 1024 characters</mat-error>
           <mat-error *ngIf="Titulo.hasError('required')">Titulo <strong>is required</strong></mat-error>
         </mat-form-field>
@@ -38,7 +38,7 @@
         <mat-form-field [style.width.px]=650>
           <mat-label>{{'linkNorma' | translate}}</mat-label>
           <input matInput type="url" [formControl]="linkNorma" />
-          <mat-error *ngIf="linkNorma.hasError('minlength')" >link must be at least 5 characters long</mat-error>
+          <mat-error *ngIf="linkNorma.hasError('minlength')" >link must be at least 4 characters long</mat-error>
           <mat-error *ngIf="linkNorma.hasError('maxlength')" >link can be max 350 characters long</mat-error>
           <mat-error *ngIf="linkNorma.hasError('required')">link <strong>is required</strong></mat-error>
         </mat-form-field>

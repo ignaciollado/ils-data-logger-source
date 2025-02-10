@@ -10,8 +10,6 @@ $normativeTextID = mysqli_real_escape_string($conn, $_GET["normativeTextID"]);
 
 $query = "DELETE FROM listado_ordenanzas WHERE regId = '". $normativeTextID."'";
 
-echo $query;
-
 mysqli_query($conn, $query);
 
 if(mysqli_affected_rows($conn) == 0){

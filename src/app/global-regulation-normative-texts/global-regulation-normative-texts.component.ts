@@ -68,9 +68,9 @@ export class GlobalRegulationNormativeTextsComponent {
     ) {
       
     this.isValidForm = null;
-    this.regId = new UntypedFormControl('', [ Validators.required, Validators.minLength(5), Validators.maxLength(35) ]);
+    this.regId = new UntypedFormControl('', [ Validators.required, Validators.minLength(4), Validators.maxLength(35) ]);
     this.ambito = new UntypedFormControl('', [ Validators.required ]);
-    this.Titulo = new UntypedFormControl('', [ Validators.required , Validators.minLength(5), Validators.maxLength(1024)])
+    this.Titulo = new UntypedFormControl('', [ Validators.required , Validators.minLength(4), Validators.maxLength(1024)])
     this.linkNorma = new UntypedFormControl('', [ Validators.required ])
     this.normativaId = new UntypedFormControl({value: '', disabled: false})
 

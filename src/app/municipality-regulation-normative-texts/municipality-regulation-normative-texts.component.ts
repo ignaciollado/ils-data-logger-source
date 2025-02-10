@@ -70,9 +70,9 @@ export class MunicipalityRegulationNormativeTextsComponent {
     ) {
       
     this.isValidForm = null;
-    this.regId = new UntypedFormControl('', [ Validators.required, Validators.minLength(5), Validators.maxLength(35) ]);
+    this.regId = new UntypedFormControl('', [ Validators.required, Validators.minLength(4), Validators.maxLength(35) ]);
     this.municipio = new UntypedFormControl('', [ Validators.required ]);
-    this.titulo = new UntypedFormControl('', [ Validators.required , Validators.minLength(5), Validators.maxLength(1024)])
+    this.titulo = new UntypedFormControl('', [ Validators.required , Validators.minLength(4), Validators.maxLength(1024)])
     this.vector = new UntypedFormControl('', [ Validators.required ])
  
     this.userId = this.jwtHelper.decodeToken().id_ils

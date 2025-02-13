@@ -171,6 +171,7 @@ export class EmissionFormComponent {
     this.sharedService.getAllYears()
       .subscribe((years:YearsDTO[])=>{
         this.years = years
+        console.log ("años: ", this.years)
       })
   }
 

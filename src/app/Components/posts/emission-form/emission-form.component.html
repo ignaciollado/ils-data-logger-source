@@ -102,6 +102,7 @@
       <mat-header-row *matHeaderRowDef="columnsDisplayed"></mat-header-row>
       <mat-row *matRowDef="let row; columns: columnsDisplayed;"></mat-row>
     </mat-table>
+    <mat-paginator [pageSizeOptions]='[5, 10, 15, 20, 50]' showFirstLastButtons></mat-paginator>
     <!-- <app-file-upload></app-file-upload> -->
 <ng-template #noDataFoundYet>
   <span class="loader">No data found yet...</span>

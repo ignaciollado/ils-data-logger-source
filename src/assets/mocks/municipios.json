@@ -1,0 +1,270 @@
+[
+  {
+    "name": "Alaró",
+    "key": "MallorcaAlaro"
+  },
+  {
+    "name": "Alcúdia",
+    "key": "MallorcaAlcudia"
+  },
+  {
+    "name": "Algaida",
+    "key": "MallorcaAlgaida"
+  },
+  {
+    "name": "Andraitx",
+    "key": "MallorcaAndraitx"
+  },
+  {
+    "name": "Ariany",
+    "key": "MallorcaAriany"
+  },
+  {
+    "name": "Artà",
+    "key": "MallorcaArta"
+  },
+  {
+    "name": "Banyalbufar",
+    "key": "MallorcaBanyalbufar"
+  },
+  {
+    "name": "Binissalem",
+    "key": "MallorcaBinissalem"
+  },
+  {
+    "name": "Búger",
+    "key": "MallorcaBuger"
+  },
+  {
+    "name": "Bunyola",
+    "key": "MallorcaBunyola"
+  },
+  {
+    "name": "Calvià",
+    "key": "MallorcaCalvia"
+  },
+  {
+    "name": "Campanet",
+    "key": "MallorcaCampanet"
+  },
+  {
+    "name": "Campos",
+    "key": "MallorcaCampos"
+  },
+  {
+    "name": "Capdepera",
+    "key": "MallorcaCapdepera"
+  },
+  {
+    "name": "Consell",
+    "key": "MallorcaConsell"
+  },
+  {
+    "name": "Costitx",
+    "key": "MallorcaCostitx"
+  },
+  {
+    "name": "Deià",
+    "key": "MallorcaDeia"
+  },
+  {
+    "name": "Escorca",
+    "key": "MallorcaEscorca"
+  },
+  {
+    "name": "Esporles",
+    "key": "MallorcaEsporles"
+  },
+  {
+    "name": "Estellencs",
+    "key": "MallorcaEstellencs"
+  },
+  {
+    "name": "Felanitx",
+    "key": "MallorcaFelanitx"
+  },
+  {
+    "name": "Fornalutx",
+    "key": "MallorcaFornalutx"
+  },
+  {
+    "name": "Inca",
+    "key": "MallorcaInca"
+  },
+  {
+    "name": "Lloret de Vistalegre",
+    "key": "MallorcaLloretdeVistalegre"
+  },
+  {
+    "name": "Lloseta",
+    "key": "MallorcaLloseta"
+  },
+  {
+    "name": "Llubí",
+    "key": "MallorcaLlubi"
+  },
+  {
+    "name": "Llucmajor",
+    "key": "MallorcaLlucmajor"
+  },
+  {
+    "name": "Manacor",
+    "key": "MallorcaManacor"
+  },
+  {
+    "name": "Mancor de la Vall",
+    "key": "MallorcaMancordelaVall"
+  },
+  {
+    "name": "Maria de la Salut",
+    "key": "MallorcaMariadelaSalut"
+  },
+  {
+    "name": "Marratxí",
+    "key": "MallorcaMarratxi"
+  },
+  {
+    "name": "Montuïri",
+    "key": "MallorcaMontuiri"
+  },
+  {
+    "name": "Muro",
+    "key": "MallorcaMuro"
+  },
+  {
+    "name": "Palma",
+    "key": "MallorcaPalma"
+  },
+  {
+    "name": "Petra",
+    "key": "MallorcaPetra"
+  },
+  {
+    "name": "Sa Pobla",
+    "key": "MallorcaSaPobla"
+  },
+  {
+    "name": "Pollença",
+    "key": "MallorcaPollença"
+  },
+  {
+    "name": "Porreres",
+    "key": "MallorcaPorreres"
+  },
+  {
+    "name": "Puigpunyent",
+    "key": "MallorcaPuigpunyent"
+  },
+  {
+    "name": "Ses Salines",
+    "key": "MallorcaSesSalines"
+  },
+  {
+    "name": "Sant Joan",
+    "key": "MallorcaSantJoan"
+  },
+  {
+    "name": "Sant Llorenç des Cardassar",
+    "key": "MallorcaSantLlorencdesCardassar"
+  },
+  {
+    "name": "Santa Eugènia",
+    "key": "MallorcaSantaEugenia"
+  },
+  {
+    "name": "Santa Margalida",
+    "key": "MallorcaSantaMargalida"
+  },
+  {
+    "name": "Santa Maria del Camí",
+    "key": "MallorcaSantaMariadelCami"
+  },
+  {
+    "name": "Santanyí",
+    "key": "MallorcaSantanyi"
+  },
+  {
+    "name": "Selva",
+    "key": "MallorcaSelva"
+  },
+  {
+    "name": "Sencelles",
+    "key": "MallorcaSencelles"
+  },
+  {
+    "name": "Sineu",
+    "key": "MallorcaSineu"
+  },
+  {
+    "name": "Sóller",
+    "key": "MallorcaSoller"
+  },
+  {
+    "name": "Son Servera",
+    "key": "MallorcaSonServera"
+  },
+  {
+    "name": "Valldemossa",
+    "key": "MallorcaValldemossa"
+  },
+  {
+    "name": "Vilafranca",
+    "key": "MallorcaVilafranca"
+  },
+  {
+    "name": "Alaior",
+    "key": "MenorcaAlaior"
+  },
+  {
+    "name": "Es Castell",
+    "key": "MenorcaEsCastell"
+  },
+  {
+    "name": "Ciutadella de Menorca",
+    "key": "MenorcaCiutadelladeMenorca"
+  },
+  {
+    "name": "Ferreries",
+    "key": "MenorcaFerreries"
+  },
+  {
+    "name": "Maó",
+    "key": "MenorcaMao"
+  },
+  {
+    "name": "Es Mercadal",
+    "key": "MenorcaEsMercadal"
+  },
+  {
+    "name": "Es Migjorn Gran",
+    "key": "MenorcaEsMigjornGran"
+  },
+  {
+    "name": "Sant Lluís",
+    "key": "MenorcaSantLluis"
+  },
+  {
+    "name": "Eivissa",
+    "key": "EivissaEivissa"
+  },
+  {
+    "name": "Sant Antoni de Portmany",
+    "key": "EivissaSantAntonidePortmany"
+  },
+  {
+    "name": "Sant Joan de Labritja",
+    "key": "EivissaSantJoandeLabritja"
+  },
+  {
+    "name": "Sant Josep de Sa Talaia",
+    "key": "EivissaSantJosepdeSaTalaia"
+  },
+  {
+    "name": "Santa Eulària des Riu",
+    "key": "EivissaSantaEulariadesRiu"
+  },
+  {
+    "name": "Formentera",
+    "key": "Formentera#Formentera"
+  }
+]

@@ -169,6 +169,7 @@ export class PostFormComponent implements OnInit {
     this.loadEnergies();
     this.loadDelegations(this.userId);
     this.loadConsumption(this.userId);
+    this.dataSource.paginator = this.paginator
   }
 
   ngOnInit(): void {

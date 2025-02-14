@@ -93,7 +93,7 @@
       <mat-header-row *matHeaderRowDef="columnsDisplayed"></mat-header-row>
       <mat-row *matRowDef="let row; columns: columnsDisplayed;"></mat-row>
     </mat-table>
-
+    <mat-paginator [pageSizeOptions]='[100, 150, 200, 250]' showFirstLastButtons></mat-paginator>
     <span *ngIf="!dataSource">No data found</span>
 
 

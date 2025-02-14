@@ -61,6 +61,9 @@ export class GlobalRegulationQuestionnaireAnswerComponent {
     this.enviromentalAuditService.getOrdenanzas()
       .subscribe( (ordenanzas: ordenanzasDTO[]) => {
         this.ordenanzasList = ordenanzas
+        this.ordenanzasList.map((ordenanza:any) => {
+          ordenanza.regId = ordenanza.regId.toUpperCase()
+        })
         console.log (this.ordenanzasList)
       })
   }

@@ -110,6 +110,7 @@ export class MunicipalityRegulationNormativeTextsComponent {
     this.delegationService.getMunicipalities().subscribe (
       (municipalities: MunicipalityDto[]) => {
         this.municipalities = municipalities
+        console.log ("municipios: ", this.municipalities)
       }
     )
   }

@@ -110,7 +110,7 @@ export class MunicipalityRegulationNormativeTextsComponent {
     this.delegationService.getMunicipalities().subscribe (
       (municipalities: MunicipalityDto[]) => {
         this.municipalities = municipalities
-        console.log ("municipios: ", this.municipalities)
+       
       }
     )
   }
@@ -258,7 +258,7 @@ export class MunicipalityRegulationNormativeTextsComponent {
     this.dataSource.data = this.dataSource.data.filter(
       (u: NormativeMunicipalityTextDTO) => u.regId !== id
     );
-    window.location.reload()
+    this.loadMunicipalities()
   });
   }
 

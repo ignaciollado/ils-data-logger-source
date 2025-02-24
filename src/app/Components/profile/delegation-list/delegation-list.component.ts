@@ -58,9 +58,8 @@ export class DelegationListComponent {
     if (this.result) {
       this.delegationService.deleteDelegation(companyDelegationId).subscribe (
         (rowsAffected: deleteResponse) => {
-          if (rowsAffected.affected > 0) {
-
-          }
+          this.loadDelegations()
+          if (rowsAffected.affected > 0) {}
         },
         (error: HttpErrorResponse) => {
           errorResponse = error.error;

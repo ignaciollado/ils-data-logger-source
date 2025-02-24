@@ -72,11 +72,11 @@ export class DelegationFormComponent implements OnInit {
     this.validRequest = false
 
     this.name = new UntypedFormControl(this.delegation.name, [ Validators.required,
-      Validators.minLength(3),
-      Validators.maxLength(25), ]);
+      Validators.minLength(5),
+      Validators.maxLength(50), ]);
     this.address = new UntypedFormControl(this.delegation.address, [ Validators.required,
-      Validators.minLength(3),
-      Validators.maxLength(25), ]);
+      Validators.minLength(5),
+      Validators.maxLength(75), ]);
 
     this.delegationForm = this.formBuilder.group({
       name: this.name,

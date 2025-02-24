@@ -8,7 +8,7 @@ mysqli_query($conn, "SET NAMES 'utf8'");
 $consumptionId = $_GET['consumptionId'];
 $postedData = file_get_contents("php://input");
 $request = json_decode($postedData, TRUE);
-var_dump($request);
+
 $sql = "UPDATE consumption SET () VALUES() WHERE consumptionId = '" .$consumptionId. "'";
 $result = mysqli_query($conn, $sql);
 

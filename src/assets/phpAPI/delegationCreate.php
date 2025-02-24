@@ -11,14 +11,16 @@ mysqli_query($conn, "SET NAMES 'utf8'");
 $postedData = file_get_contents("php://input");
 $request = json_decode($postedData, TRUE);
 
+$name = mysqli_real_escape_string($conn,$request['name']);
+
 $sql = "INSERT INTO ils_company_delegation(companyId, name, address) VALUES ("
 .$request['companyId'].",'"
-.$request['name']."','"
+.$name."','"
 .$request['address']."'
  )";
 
 $result = mysqli_query($conn, $sql);
-$rowcount=mysqli_num_rows($result);
+$rowcount = mysqli_num_rows($result);
 $field = mysqli_fetch_row($result);
 
 mysqli_close($conn);

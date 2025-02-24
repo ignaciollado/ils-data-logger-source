@@ -1,15 +1,13 @@
-<div class="content-outer-container">
+<section class="content-outer-container">
+  <app-header></app-header>
+  <router-outlet></router-outlet>
+</section>
   
-    <app-header></app-header>
-    <router-outlet></router-outlet>
-    <!-- <app-footer></app-footer> -->
-  </div>
-  
-  <footer class="content-inner-container">
-    <div class="footer-content">
-      &copy; {{currentYear}} {{'copyright' | translate}}
-    </div>
-  </footer>
+<footer class="content-inner-container">
+  <section class="footer-content">
+      &copy; {{currentYear}} {{'copyright' | translate}} - v.1.0.0
+  </section>
+</footer>
 
 
 

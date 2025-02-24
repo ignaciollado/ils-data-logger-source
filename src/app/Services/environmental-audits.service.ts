@@ -6,9 +6,9 @@ import { catchError } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { SharedService } from './shared.service';
 
-const URL_MOCKS = '../../assets/mocks/questionsList.json'
+/* const URL_MOCKS = '../../assets/mocks/questionsList.json'
 const URL_MOCKS_INTRO_TEXT = '../../assets/mocks/introTextQuestionnaire.json'
-
+ */
 const URL_API = '../../assets/phpAPI/'
 
 export interface deleteResponse {

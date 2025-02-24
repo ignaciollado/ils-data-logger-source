@@ -261,7 +261,7 @@ export class GlobalRegulationNormativeTextsComponent {
    .subscribe(() => {
     this.dataSource.data = this.dataSource.data.filter(
       (u: NormativeTextDTO) => u.regId !== id);
-      window.location.reload()
+      this.loadNormativeText()
   });
   }
 

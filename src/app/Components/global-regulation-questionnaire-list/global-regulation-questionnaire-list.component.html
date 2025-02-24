@@ -1,7 +1,7 @@
 <div class="container-form">
 <h2>{{'answeredQuestionnairesList' | translate}}</h2>
 
-<div class='card-container' *ngIf="userQuestionnaires">
+<section class='card-container' *ngIf="userQuestionnaires">
   <mat-card *ngFor="let questionnaire of userQuestionnaires; index as j" [ngClass]="{'completed' : questionaireFinalState[j].questionnaireCompleted}">
     <!-- <a *ngIf="questionaireFinalState[j].questionnaireCompleted" [routerLink]="['/questionnaire-detail', questionnaire.id]" routerLinkActive="active" ariaCurrentWhenActive="page"> -->
     <mat-card-header>
@@ -33,7 +33,7 @@
     </mat-card-actions>
   <!-- </a> -->
   </mat-card>
-</div>
+</section>
 
 <span *ngIf="!userQuestionnaires" class="loader">{{'searchingQuestionnairies' | translate}}
 <mat-progress-bar mode="indeterminate" color="primary" *ngIf="!userQuestionnaires"></mat-progress-bar></span>

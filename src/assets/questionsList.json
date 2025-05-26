@@ -1,0 +1,1107 @@
+[
+
+  {
+    "vectorId": "1",
+    "vectorName": "RESIDUOS",
+    "vectorGeneralRegulation":["RES_3","RES_4","RES_5","RES_6","RES_18","RES_19","RES_22","RES_60","RES_61"],
+    "questions":
+      [
+        {
+        "key": "1",
+        "type": "checkbox",
+        "questionTextES": "Indique los tipos de residuos y/o subproductos que produce",
+        "questionTextCA": "",
+        "questionDoc1" : "",
+        "questionDoc2" : "",
+        "questionTooltipES": "Señalar en el listado todos los residuos que genere su industria, se pueden señalar varias opciones",
+        "questionTooltipCA": "",
+        "link": "https://...",
+        "answers":
+        [
+              {"answerText": "Residuos PELIGROSOS",
+                "answerTooltip": "Se trata de residuos con una composición o propiedades que lo hace peligroso para las personas o el medioambiente. Ejemplos, <strong>SI</strong> es residuo peligrosos los fluorescentes, baterías, aceite mineral, etc.. y <strong>NO</strong> es un residuo peligroso, el papel/cartón, el vidrio…",
+                "regulation": ["RES_11"],
+                "answerImage_1": "PRES1_IMAGE1.jpg",
+                "answerImage_2": ""},
+
+              {"answerText": "Residuos NO PELIGROSOS",
+                "answerTooltip": "Se considera residuos no peligrosos aquellos que no contienen sustancias peligrosas para las personas o el medio ambiente. Ejemplo <strong>SI</strong> es un residuo no peligroso el papel/carton, los envases y  <strong>NO</strong> son residuos no peligrosos las baterías, filtro de aceite de motor, aceite mineral , fluorescentes.",
+                "regulation": [""],
+                "answerImage_1": "",
+                "answerImage_2": ""},
+
+              {"answerText": "Aceites Industriales Usados",
+                "answerTooltip": "",
+                "regulation": ["RES_25"],
+                "answerImage_1": "",
+                "answerImage_2": ""},
+
+              {"answerText": "Residuos de Pilas, Baterías y Acumuladores",
+                "answerTooltip": "",
+                "regulation": ["RES_11","RES_16","RES_42","RES_43","RES_44"],
+                "answerImage_1": "",
+                "answerImage_2": ""},
+
+              {"answerText": "Residuos de Aparatos Eléctricos y Electrónicos (RAEE)",
+                "answerTooltip": "Se incluyen todos los aparatos eléctricos y electrónicos que pasan a ser residuos, incluidos todos los componentes, subconjuntos y consumibles que forman parte del producto en el momento en que se rechaza.",
+                "regulation": ["RES_11","RES_53","RES_55"],
+                "answerImage_1": "PRES_IMAGE2.jpg",
+                "answerImage_2": ""},
+
+              {"answerText": "Residuos Envases Usados Comerciales o industriales",
+                "answerTooltip": "Es aquel envase que, sin tener la consideración de doméstico, está destinado al uso y consumo propio del ejercicio de la actividad comercial / industrial.",
+                "regulation": ["RES_35"],
+                "answerImage_1": "",
+                "answerImage_2": ""},
+
+              {"answerText": "Residuos de Construcción y Demolición",
+                "answerTooltip": "",
+                "regulation": ["RES_1","RES_11","RES_38","RES_39"],
+                "answerImage_1": "",
+                "answerImage_2": ""},
+
+              {"answerText": "Neumáticos Fuera de Uso",
+                "answerTooltip": "",
+                "regulation": ["RES_1","RES_11","RES_4","RES_46","RES_48"],
+                "answerImage_1": "",
+                "answerImage_2": ""},
+
+              {"answerText": "Residuos Sanitarios",
+                "answerTooltip": "",
+                "regulation": ["RES_8","RES_11"],
+                "answerImage_1": "",
+                "answerImage_2": ""},
+
+              {"answerText": "Subproductos",
+                "answerTooltip": "Un subproducto es todo aquel bien que se obtiene de manera secundaria dentro del proceso productivo, es decir, que se consigue al mismo tiempo que el producto principal, pero tiene un valor de venta mucho menor que este.",
+                "regulation": ["RES_11","RES_13","RES_15","RES_17","RES_21","RES_26","RES_32","RES_33","RES_34","RES_39"],
+                "answerImage_1": "",
+                "answerImage_2": ""},
+
+              {"answerText": "Residuos de industrias extractivas",
+                "answerTooltip": "",
+                "regulation": ["RES_11","RES_33","RES_56"],
+                "answerImage_1": "",
+                "answerImage_2": ""},
+
+              {"answerText": "Residuos de animales muertos",
+                "answerTooltip": "",
+                "regulation": ["RES_10"],
+                "answerImage_1": "",
+                "answerImage_2": ""},
+
+              {"answerText": "Residuos amianto",
+                "answerTooltip": "",
+                "regulation": ["RES_32","RES_33","RES_27"],
+                "answerImage_1": "",
+                "answerImage_2": ""},
+
+              {"answerText": "Residuos de vehículos",
+                "answerTooltip": "",
+                "regulation": ["RES_11","RES_45","RES_46","RES_48","RES_49"],
+                "answerImage_1": "",
+                "answerImage_2": ""},
+
+              {"answerText": "Lodos de depuración",
+                "answerTooltip": "",
+                "regulation": ["RES_11","RES_37"],
+                "answerImage_1": "",
+                "answerImage_2": ""}
+        ]
+        },
+        {
+          "key": "2",
+          "type": "radio",
+          "questionTextES": "¿Realiza algún tipo de operación relacionada con la gestión de residuos (recogida, transporte, valorización, eliminación, o incineración así como actuaciones realizadas en calidad de negociante o agente) ? ",
+          "questionTextCA": "",
+          "questionDoc1" : "",
+          "questionDoc2" : "",
+          "questionTooltipES": "Indique en su caso las operaciones que realiza.<ul><li><strong>Gestor de residuos:</strong> la persona física o jurídica, pública o privada, registrada mediante autorización o comunicación que realice cualquiera de las operaciones que componen la gestión de los residuos, sea o no el productor de los mismos.</li><li><strong>Negociante:</strong> toda persona física o jurídica que actúe por cuenta propia en la compra y posterior venta de residuos, incluidas aquellas que no tomen posesión física de los residuos.</li><li><strong>Agente</strong>: toda persona física o jurídica que organice la valorización o la eliminación de residuos por encargo de terceros, incluidas aquellas que no tomen posesión física de los residuos.</li></ul>",
+          "questionTooltipCA": "",
+          "link": "https://...",
+          "answers":
+          [
+                  {"answerText": "Sí",
+                   "answerTooltip": "",
+                   "regulation": ["RES_2","RES_12","RES_45","RES_59"],
+                   "image_1": "",
+                   "image_2": ""},
+                   {"answerText": "No",
+                   "answerTooltip": "",
+                   "regulation": [""],
+                   "image_1": "",
+                   "image_2": ""}
+          ]
+        },
+        {
+        "key": "3",
+        "type": "radio",
+        "questionTextES": "¿Se envasan productos para su puesta en el mercado nacional o se importan y/o adquieren en otros países en la UE productos envasados para su puesta en el mercado nacional que no tengan designado Representante Autorizado por el envasador con sede fuera de España (productores de producto)?",
+        "questionTextCA": "",
+        "questionDoc1" : "",
+        "questionDoc2" : "",
+        "questionTooltipES": "Los productores de producto que ponen envases en el mercado español, ya sean domésticos, comerciales o industriales, tienen la obligación de inscribirse en dicho registro y declarar en él los envases puestos en el mercado desde el año 2021 en adelante.<br><strong>Productor de producto:</strong> envasadores o agentes económicos dedicados a la importación o adquisición en otros Estados miembros de la Unión Europea de productos envasados para su puesta en el mercado. Cuando los productos envasados puestos en el mercado mediante marcas de distribución, no se identifique al productor de producto, ejercerá como tal el titular de la marca de distribución con sede en España bajo  cual se comercialice el producto. En el caso de aquellos productos envasados por encargo de un tercero que actúa como responsable de su puesta en el mercado, ejercerá este último como productor de producto. Cuando a través de las plataformas de comercio electrónico se introduzcan en el mercado productos envasados procedentes de fuera de España y el productor no haya designado representante autorizado de conformidad con lo dispuesto en el <a href='https://www.boe.es/eli/es/rd/2022/12/27/1055' target='_blank'>artículo 17.2 del RD 1055/2022</a>, dicha plataforma actuará, subsidiariamente, como productor de producto a efectos de las obligaciones financieras y de información, así como organizativas cuando proceda, reguladas en este real decreto, respecto de esos envases.",
+        "questionTooltipCA": "",
+        "link": "https://...",
+        "answers":
+        [
+              {"answerText": "Sí",
+               "answerTooltip": "",
+               "regulation": ["RES_32","RES_33","RES_64"],
+               "answerdoc1": "",
+               "answerdoc2": ""},
+
+               {"answerText": "No",
+               "answerTooltip": "",
+               "regulation": [""],
+               "answerdoc1": "",
+               "answerdoc2": ""}
+        ]
+        },
+        {
+        "key": "4",
+        "type": "radio",
+        "questionTextES": " ¿Realiza algún traslado de residuos como operador, transportista, gestor, negociante?",
+        "questionTextCA": "Se aplica si realizas traslados de residuos entre comunidades autónomas  para su valorización o eliminación, incluidos los traslados que se producen a instalaciones que realizan operaciones de tratamiento intermedio y de almacenamiento. No tienen la consideración de traslado de residuos las siguientes actividades de transporte destinadas al acopio inicial de residuos: a) El transporte de residuos que realizan las empresas de instalación o mantenimiento, desde el lugar en que se han producido estos residuos hasta sus propias instalaciones, siempre que sean residuos generados como consecuencia de su actividad. b) En el ámbito de la logística inversa, el transporte desde los hogares particulares hasta los comercios o hasta las plataformas de la distribución; y el transporte desde los comercios hasta las plataformas de distribución. c) El transporte de los residuos por parte de los particulares a los puntos de recogida establecidos por las entidades locales, gestores de residuos autorizados o cualesquiera de los puntos de recogida indicados en la normativa aplicable.",
+        "questionDoc" : "",
+        "questionTooltipES": "",
+        "questionTooltipCA": "",
+        "link": "https://...",
+        "answers":
+        [
+              {"answerText": "Sí",
+               "answerTooltip": "",
+               "regulation": ["RES_59","RES_11"],
+               "image_1": "",
+               "image_2": ""},
+               {"answerText": "No",
+               "answerTooltip": "",
+               "regulation": [""],
+               "image_1": "",
+               "image_2": ""}
+        ]
+        },
+        {    
+                    "key": "5",
+                    "type": "radio",
+                    "questionTextES": "¿Eres productor de envases,  pilas y acumuladores, neumáticos, aceites industriales y aparatos eléctricos y electrónicos o de  medicamentos?",
+                    "questionTextCA": "",
+                    "questionDoc" : "",
+                    "questionTooltipES": "",
+                    "questionTooltipCA": "",
+                    "link": "https://...",
+                    "answers":
+                    [
+                            {"answerText": "Sí",
+                             "answerTooltip": "",
+                             "regulation": ["RES_19"],
+                             "image_1": "",
+                             "image_2": ""},
+                             {"answerText": "No",
+                             "answerTooltip": "",
+                             "regulation": [""],
+                             "image_1": "",
+                             "image_2": ""}
+                    ]
+        }
+      ]
+  },
+
+  {
+    "vectorId": "2",
+    "vectorName": "SEGURIDAD INDUSTRIAL",
+    "vectorGeneralRegulation":[],
+    "questions":
+      [
+      {
+        "key": "1",
+        "type": "radio",
+        "questionTextES": "¿La industria se encuentra sujeta a las medidas de control de los riesgos inherentes a los accidentes graves en los que intervengan sustancias peligrosas (SEVESO)?",
+        "questionTextCA": "",
+        "questionDoc1" : "PSIND_1_ANEXO1",
+        "questionDoc2" : "",
+        "questionTooltipES": "Se consideran incluidos en el ámbito de aplicación del <a href='https://www.boe.es/eli/es/rd/2015/09/21/840' target='_blank'>RD 840/2015</a> las industrias en los que estén presentes sustancias peligrosas en cantidades iguales o superiores a las especificadas en la columna 2 de las partes 1 y 2 del <a href='../../../assets_auto/answers_images/PSIND_1_ANEXO1.pdf' target='_blank'>ANEXO I</a> del citado Real Decreto<strong> (Ver tipo de sustancias y cantidades de la columna 2 en l a imagen adjunta).</strong><br>Se encuentran <strong>excluidos</strong> del ámbito de aplicación del <a href='https://www.boe.es/eli/es/rd/2015/09/21/840' target='_blank'>RD 840/2015</a>: <ul><li>Los peligros creados por las radiaciones ionizantes originadas por sustancias</li><li>El transporte de mercancías peligrosas por carretera, ferrocarril, vía navegable interior y marítima o aérea y el almacenamiento temporal intermedio directamente relacionado con él; así como a las actividades de carga y descarga y al traslado desde y hacia otro tipo de transporte con destino a muelles, embarcaderos o instalaciones logísticas ferroviarias o terminales ferroviarias fuera de los establecimientos contemplados en este real decreto</li><li>El transporte de sustancias peligrosas por canalizaciones, incluidas las estaciones de bombeo, que se encuentren fuera de los establecimientos a que se refiere este real decreto;</li><li>La explotación de minerales en minas, canteras y mediante perforación; en concreto a las actividades de exploración, extracción y tratamiento de los mismos;</li><li>La exploración y explotación mar adentro (off-shore) de minerales, incluidos los hidrocarburos;</li><li>El almacenamiento de gas en emplazamientos subterráneos mar adentro, tanto en aquellos dedicados específicamente al almacenamiento, como en los que también se lleven a cabo actividades de exploración y extracción de minerales, incluidos los hidrocarburos.</li><li>Los vertederos de residuos, incluyendo el almacenamiento subterráneo de los mismos.</li></ul><u>CLASIFICACIÓN ESTABLECIMIENTOS</u><ul><li><strong>Establecimiento de nivel inferior:</strong> un establecimiento en el que haya presentes sustancias peligrosas en cantidades iguales o superiores a las especificadas en la columna 2 de la parte 1 o de la parte 2 del <a href='../../../assets_auto/answers_images/PSIND_1_ANEXO1.pdf' target='_blank'>ANEXO I</a>, pero inferiores a las cantidades especificadas en la columna 3 de la parte 1 o de la parte 2 del <a href='../../../assets_auto/answers_images/PSIND_1_ANEXO1.pdf' target='_blank'>ANEXO I</a>. Todo ello empleando, cuando sea aplicable, la regla de la suma de la nota 4 del <a href='../../../assets_auto/answers_images/PSIND_1_ANEXO1.pdf' target='_blank'>ANEXO I</a>.</li><li><strong>Establecimiento de nivel superior:</strong> un establecimiento en el que haya presentes sustancias peligrosas en cantidades iguales o superiores a las especificadas en la columna 3 de la parte 1 o de la parte 2 del <a href='../../../assets_auto/answers_images/PSIND_1_ANEXO1.pdf' target='_blank'>ANEXO I</a>. Todo ello empleando, cuando sea aplicable, la regla de la suma de la nota 4 del <a href='../../../assets_auto/answers_images/PSIND_1_ANEXO1.pdf' target='_blank'>ANEXO I</a>.</li></ul>",
+        "questionTooltipCA": "",
+        "link": "https://...",
+        "answers":
+        [
+        {"answerText": "Sí",
+        "answerTooltip": "",
+        "regulation": ["SIND_35","SIND_36"],
+        "answerImage_1": "",
+        "answerImage_2": ""},
+        {"answerText": "No",
+        "answerTooltip": "",
+        "regulation": [""],
+        "answerImage_1": "",
+        "answerImage_2": ""}
+        ]
+      },
+      {
+        "key": "2",
+        "type": "radio",
+        "questionTextES": " ¿Disponen de instalaciones frigoríficas?",
+        "questionTextCA": "",
+        "questionDoc1" : "PSIND_3_apendice_1",
+        "questionDoc2" : "",
+        "questionTooltipES": "Se entiende por sistemas de refrigeración (incluidas las bombas de calor) el conjunto de componentes interconectados que contienen refrigerante y que constituyen un circuito frigorífico cerrado, en el cual el refrigerante circula con el propósito de extraer o ceder calor (es decir, enfriar o calentar) a un medio externo al circuito frigorífico. <br><br>No es necesario incluir las siguientes instalaciones: <ol><li>Las instalaciones frigoríficas correspondientes a modos y medios de transporte terrestre, marítimo y aéreos.</li><li>Los sistemas secundarios utilizados en las instalaciones de climatización para condiciones de bienestar térmico de las personas en los edificios.</li><li>Los sistemas de refrigeración compactos (sistemas de acondicionamiento de aire portátiles, frigoríficos y congeladores domésticos, etc.) con carga de refrigerante inferior a:<ul><li>2,5 Kg. de refrigerante del grupo L1</li><li>0,5 Kg. de refrigerante del grupo L2,</li><li>y para los refrigerantes de la clase A2L, será el resultado de aplicar el factor 1,5 a m1 [m1=LIIx4m3]* 0,2 Kg. de refrigerante del grupo L3</li></ul> </li></ol>Para la clasificación de los diferentes refrigerantes en los grupos L1, L2 y L3 se deberá consultar <a href='../../../assets_auto/answers_images/PSIND_3_apendice_1.pdf' target='_blank'>el apéndice 1 (tabla A)</a> de <strong>la Instrucción IF-02. del RD 552/2019</strong> (verIMAGEN pregunta). <br><br>* m1 es uno de los factores tope incluidos en <a href='../../../assets_auto/answers_images/PSIND_3_apendice_1.pdf' target='_blank'>la tabla B del apéndice 1</a> de la IF-04. <br><br>LII es el límite inferior de inflamabilidad, que aparece en <a href='../../../assets_auto/answers_images/PSIND_3_apendice_1.pdf' target='_blank'>la tabla A del apéndice 1</a> de la IF-02, en kg/m3.<br><br>El multiplicador 4 se basa en una carga de 150 gr. del refrigerante R-290. </li></ol><br><br><strong>DEFINICIONES:</strong><ul><li>Sistema semicompacto: Sistema de refrigeración construido completamente en fábrica, sobre una bancada metálica o en una cabina o recinto adecuados; fabricado y transportado en una o varias partes y en el cual ningún elemento conteniendo fluido frigorígeno sea montado in situ, salvo las válvulas de interconexión y pequeños tramos de tubería frigorífica.</li><li>Sistema compacto: Sistema semicompacto que ha sido montado, cargado para ser utilizado y probado antes de su instalación y que se instala sin necesidad de conectar partes que contengan refrigerante. Un equipo compacto puede incluir uniones rápidas o válvulas de cierre montadas en fábrica.</li></ul>",
+        "questionTooltipCA": "",
+        "link": "https://...",
+        "answers":
+        [
+        {"answerText": "Sí",
+        "answerTooltip": "",
+        "regulation": ["SIND_7"],
+        "image_1": "",
+        "image_2": ""},
+        {"answerText": "No",
+        "answerTooltip": "",
+        "regulation": [""],
+        "image_1": "",
+        "image_2": ""}
+        ]
+      },
+      {
+        "key": "3",
+        "type": "checkbox",
+        "questionTextES": " ¿Disponen de aparatos elevadores? Se pueden seleccionar varias opciones",
+        "questionTextCA": "",
+        "questionDoc1" : "",
+        "questionDoc2" : "",
+        "questionTooltipES": "",
+        "questionTooltipCA": "",
+        "link": "https://...",
+        "answers":
+        [
+        {"answerText": "No",
+        "answerTooltip": "",
+        "regulation": [""],
+        "image_1": "",
+        "image_2": ""},
+        {"answerText": "Ascensores",
+        "answerTooltip": "",
+        "regulation": ["SIND_16","SIND_17","SIND_20"],
+        "image_1": "",
+        "image_2": ""},
+        {"answerText": "Carretillas automotoras",
+        "answerTooltip": "",
+        "regulation": ["SIND_20","SIND_39"],
+        "image_1": "",
+        "image_2": ""},
+        {"answerText": "Grúas",
+        "answerTooltip": "",
+        "regulation": ["SIND_20","SIND_18","SIND_12"],
+        "image_1": "",
+        "image_2": ""},
+        {"answerText": "Montacargas",
+        "answerTooltip": "",
+        "regulation": ["SIND_20","SIND_40"],
+        "image_1": "",
+        "image_2": ""
+        }
+        ]
+      },
+      {
+        "key": "4",
+        "type": "radio",
+        "questionTextES": "¿Dispone de equipos a presión con una presión máxima admisible superior a 0.5 bares?",
+        "questionTextCA": "",
+        "questionDoc1" : "",
+        "questionDoc2" : "",
+        "questionTooltipES": "Equipo a presión son los recipientes, las tuberías, los accesorios de seguridad y los accesorios a presión que está diseñado y fabricado para contener fluidos a presión superior a 0.5 bar.<br>Ejemplos: botellas a presión, compresores, calderas de vapor, caldera proceso, depósito criogénico etc....<br><br><strong>NO SE DEBEN INCLUIR EN ESTA PREGUNTA LOS SIGUIENTES EQUIPOS:</strong><ul><li>las redes de tuberías de suministro o distribución de agua fría o combustibles líquidos o gaseosos, así como las redes de agua contra incendios y las de conducción de agua motriz de las centrales hidroeléctricas.</li><li>Equipos a presión que disponen de reglamentación de seguridad específica, tales como:<ol><li>Instalaciones térmicas para confort térmico de las personas en edificios (RITE).</li><li>Instalaciones frigoríficas (RSIF).</li><li>Instalaciones de protección contra incendios.</li></ol></li></ul>",
+        "questionTooltipCA": "",
+        "link": "https://...",
+        "answers":
+        [
+        {"answerText": "Sí",
+        "answerTooltip": "",
+        "regulation": ["SIND_1_AP_Consolidado"],
+        "image_1": "",
+        "image_2": ""},
+        {"answerText": "No",
+        "answerTooltip": "",
+        "regulation": [""],
+        "image_1": "",
+        "image_2": ""}
+        ]
+      },
+      {
+        "key": "5",
+        "type": "radio",
+        "questionTextES": "¿Dispone de instalaciones eléctricas de baja tensión?",
+        "questionTextCA": "",
+        "questionDoc1" : "",
+        "questionDoc2" : "",
+        "questionTooltipES": "Instalaciones eléctricas son aquellas que contienen electricidad para uso propio , es decir, contrato inferior de 1000V de corriente alterna.<br><strong>Ejemplos</strong> donde <strong>si</strong> aplica ,es la instalacion elécctrica del emplazamiento.<br><strong>Ejemplos</strong> donde <strong>no</strong> aplica es un centro de alta tensión.",
+        "questionTooltipCA": "",
+        "link": "https://...",
+        "answers":
+        [
+                {"answerText": "Sí",
+                 "answerTooltip": "",
+                 "regulation": ["SIND_3_BT_consolidado"],
+                 "image_1": "",
+                 "image_2": ""},
+                 {"answerText": "No",
+                 "answerTooltip": "",
+                 "regulation": [""],
+                 "image_1": "",
+                 "image_2": ""}
+        ]
+      },
+      {
+        "key": "6",
+        "type": "radio",
+        "questionTextES": "¿Dispone de centrales eléctricas, subestaciones o centros de transformación de alta tensión?",
+        "questionTextCA": "",
+        "questionDoc1" : "",
+        "questionDoc2" : "",
+        "questionTooltipES": "Instalaciones eléctricas de alta tensión, entendiéndose como tales las de corriente alterna trifásica de frecuencia de servicio inferior a 100 Hz, cuya tensión nominal eficaz entre fases sea superior a 1 kV.",
+        "questionTooltipCA": "",
+        "link": "https://...",
+        "answers":
+        [
+                {"answerText": "Sí",
+                 "answerTooltip": "",
+                 "regulation": ["SIND_4_CT_consolidado"],
+                 "image_1": "",
+                 "image_2": ""},
+                 {"answerText": "No",
+                 "answerTooltip": "",
+                 "regulation": [""],
+                 "image_1": "",
+                 "image_2": ""}
+        ]
+      },
+      {
+        "key": "7",
+        "type": "radio",
+        "questionTextES": "¿Dispone de instalaciones o aparatos de gases combustibles (gas natural, butano, propano..)?",
+        "questionTextCA": "",
+        "questionDoc1" : "",
+        "questionDoc2" : "",
+        "questionTooltipES": "",
+        "questionTooltipCA": "",
+        "link": "https://...",
+        "answers":
+        [
+                {"answerText": "Sí",
+                 "answerTooltip": "",
+                 "regulation": ["SIND_11_Ins_gasesosas_consolidado"],
+                 "image_1": "",
+                 "image_2": ""},
+                 {"answerText": "No",
+                 "answerTooltip": "",
+                 "regulation": [""],
+                 "image_1": "",
+                 "image_2": ""}
+        ]
+      },
+      {
+        "key": "8",
+        "type": "radio",
+        "questionTextES": "¿Dispone de instalaciones de almacenamiento y distribución de los productos carburantes y combustibles líquidos? ",
+        "questionTextCA": "",
+        "questionDoc1" : "",
+        "questionDoc2" : "",
+        "questionTooltipES": "Ejemplos de  instalaciones de almacenamiento y distribucion de productos carburantes y combustibles liquidos Depósitos de gasoil o gasolina, surtidores combustibles",
+        "questionTooltipCA": "",
+        "link": "https://...",
+        "answers":
+        [
+                {"answerText": "Sí",
+                 "answerTooltip": "",
+                 "regulation": ["SIND_5_IPLiq_consolidado", "SIND_6_IP03y04"],
+                 "image_1": "",
+                 "image_2": ""},
+                 {"answerText": "No",
+                 "answerTooltip": "",
+                 "regulation": [""],
+                 "image_1": "",
+                 "image_2": ""}
+        ]
+      },
+      {
+        "key": "9",
+        "type": "radio",
+        "questionTextES": "¿Dispone de cargador de vehículos eléctricos?",
+        "questionTextCA": "",
+        "questionDoc1" : "",
+        "questionDoc2" : "",
+        "questionTooltipES": "",
+        "questionTooltipCA": "",
+        "link": "https://...",
+        "answers":
+        [
+                {"answerText": "Sí",
+                 "answerTooltip": "",
+                 "regulation": ["ENER_4"],
+                 "image_1": "",
+                 "image_2": ""},
+                 {"answerText": "No",
+                 "answerTooltip": "",
+                 "regulation": [""],
+                 "image_1": "",
+                 "image_2": ""}
+        ]
+      },
+      {
+        "key": "10",
+        "type": "radio",
+        "questionTextES": "¿Dispone de instalaciones térmicas fijas de climatización (calefacción, refrigeración y ventilación) y/o de producción de agua caliente sanitaria destinadas a la demanda de bienestar térmico e higiene de las personas",
+        "questionTextCA": "",
+        "questionDoc1" : "",
+        "questionDoc2" : "",
+        "questionTooltipES": "Algunos ejemplos: Bombas de calor, split aire acondicionado, rooftop a/a, enfriadoras,  aerotermia, geotermia, caldera para calefacción y/o caldera para agua caliente sanitaria, No aplica cámaras frigoríficas ni caldera para proceso productivo",
+        "questionTooltipCA": "",
+        "link": "https://...",
+        "answers":
+        [
+                {"answerText": "Sí",
+                 "answerTooltip": "",
+                 "regulation": ["SIND_7_RITE_Consolidado"],
+                 "image_1": "",
+                 "image_2": ""},
+                 {"answerText": "No",
+                 "answerTooltip": "",
+                 "regulation": [""],
+                 "image_1": "",
+                 "image_2": ""}
+        ]
+      },
+      {
+        "key": "11",
+        "type": "radio",
+        "questionTextES": "¿Cuándo han sido legalizadas las intalaciones contraincendios de su industria?",
+        "questionTextCA": "",
+        "questionDoc1" : "",
+        "questionDoc2" : "",
+        "questionTooltipES": "",
+        "questionTooltipCA": "",
+        "link": "https://...",
+        "answers":
+        [
+        {"answerText": "Anterior a febrero del 2005",
+        "answerTooltip": "",
+        "regulation": ["SIND_4"],
+        "image_1": "",
+        "image_2": ""},
+        {"answerText": "Posterior a febrero del 2005",
+        "answerTooltip": "",
+        "regulation": ["SIND_2"],
+        "image_1": "",
+        "image_2": ""}
+        ]
+      }
+      ]
+  },
+
+  {
+    "vectorId": "3",
+    "vectorName": "AGUAS",
+    "vectorGeneralRegulation":["AGU_8"],
+    "questions":
+    [
+      {
+        "key": "1",
+        "type": "checkbox",
+        "questionTextES": "¿Realiza vertidos de aguas residuales?. Indique a dónde vierte, puede seleccionar más de una opcion",
+        "questionTextCA": "",
+        "questionDoc1" : "",
+        "questionDoc2" : "",
+        "questionTooltipES": "",
+        "questionTooltipCA": "",
+        "link": "https://...",
+        "answers":
+        [
+        {"answerText": "No",
+        "answerTooltip": "",
+        "regulation": [""],
+        "image_1": "",
+        "image_2": ""},
+        {"answerText": "Alcantarillado",
+        "answerTooltip": "Vertido que está conectado al alcantarillado municipal",
+        "regulation": ["AGU_8", "AGU_9"],
+        "image_1": "",
+        "image_2": ""},
+        {"answerText": "Fosa séptica",
+        "answerTooltip": "Sistema de almacenaje para verter aguas residuales",
+        "regulation": ["AGU_8"],
+        "image_1": "",
+        "image_2": ""},
+        {"answerText": "Cauce público (torrente)",
+        "answerTooltip": "Cualquier vertido que no vaya a alcantarillado o al mar. <strong>Sí</strong> es el vertido de pluviales, por ejemplo de un parking  al torrente cercano. <strong>No</strong> es ni el vertido al mar de lo varaderos, ni el vertido propio al alcantarillado público.",
+        "regulation": ["AGU_8"],
+        "image_1": "",
+        "image_2": ""},
+        {"answerText": "Mar",
+        "answerTooltip": "Incluye los vertidos al mar  canalizados de pluviales  o de otras aguas de una instalación. No incluye la aguas de escorrentía",
+        "regulation": ["AGU_7"],
+        "image_1": "",
+        "image_2": ""}
+        ]
+      },
+      {
+        "key": "2",
+        "type": "radio",
+        "questionTextES": "¿Dispone de pozo de abastecimiento de agua?",
+        "questionTextCA": "",
+        "questionDoc1" : "",
+        "questionDoc2" : "",
+        "questionTooltipES": "Pozo de agua se refiere a la captación de aguas subterraneas (acuífero, manto de agua), agua extraída mediante bombeo. No se refiere a sistema de almacenamiento de agua ( aljibes, depósitos de agua), ni a pozos destinados a vertidos (Ciego/negro) .",
+        "questionTooltipCA": "",
+        "link": "https://...",
+        "answers":
+        [
+        {"answerText": "Sí",
+        "answerTooltip": "",
+        "regulation": ["AGU_8"],
+        "answerImage_1": "",
+        "answerImage_2": ""},
+
+        {"answerText": "No",
+        "answerTooltip": "",
+        "regulation": [""],
+        "answerImage_1": "",
+        "answerImage_2": ""}
+        ]
+      },
+      {
+        "key": "3",
+        "type": "radio",
+        "questionTextES": "¿Hacen reutilización de aguas en su actividad?",
+        "questionTextCA": "",
+        "questionDoc1" : "",
+        "questionDoc2" : "",
+        "questionTooltipES": "Se entiende por reutilización de las aguas depuradas a la utilización para un nuevo uso privativo, antes de su devolución al dominio público hidráulico o marítimo-terrestre, de las aguas que, habiendo sido utilizadas por quien las derivó, se han sometido a un tratamiento que permite adecuar su calidad al uso al que se van a destinar. Las aguas sometidas a este tratamiento se denominan aguas regeneradas . En usos industriales <strong>no</strong> tendrá consideración de reutilización de aguas la recirculación de estas dentro de los procesos industriales de la propia actividad. <strong>Si</strong> es reutilización el uso de pluviales para riego",
+        "questionTooltipCA": "",
+        "link": "https://...",
+        "answers":
+        [
+        {"answerText": "Sí",
+        "answerTooltip": "",
+        "regulation": ["AGU_5"],
+        "answerdoc1": "",
+        "answerdoc2": ""},
+        {"answerText": "No",
+        "answerTooltip": "",
+        "regulation": [""],
+        "answerdoc1": "",
+        "answerdoc2": ""}
+        ]
+      },
+      {
+        "key": "4",
+        "type": "radio",
+        "questionTextES": "¿ Es una empresa alimentaria y en su proceso productivo utiliza agua de consumo humano ?",
+        "questionTextCA": "",
+        "questionDoc1" : "",
+        "questionDoc2" : "",
+        "questionTooltipES": "es una empresa que se dedica a producir, procesar, envasar o distribuir alimentos para el consumo humano y usa agua potable en su proceso productivo.",
+        "questionTooltipCA": "",
+        "link": "https://...",
+        "answers":
+        [
+        {"answerText": "SI",
+        "answerTooltip": "",
+        "regulation": ["ACH_2","ACH_1"],
+        "image_1": "",
+        "image_2": ""},
+        {"answerText": "NO",
+        "answerTooltip": "",
+        "regulation": [""],
+        "image_1": "",
+        "image_2": ""}
+        ]
+      }
+    ]
+  },
+
+  {
+    "vectorId": "4",
+    "vectorName": "ATMÓSFERA",
+    "vectorGeneralRegulation":["ATM_47","ATM_5","ATM_9","ATM_12","ATM_50","ATM_52"],
+    "questions":
+      [
+        {
+          "key": "1",
+          "type": "radio",
+          "questionTextES": "¿Su actividad se encuentra sujeta al comercio de derechos de emisión?",
+          "questionTextCA": "",
+          "questionDoc1" : "PATM_1_ANEXO1.pdf",
+          "questionDoc2" : "",
+          "questionTooltipES": "Determinadas actividades industriales ya sea por la actividad o por la magnitud de la misma están obligadas a declarar de forma anual sus emisiones de efecto invernadero y participar en el mercado de comercio de emisiones de acuerdo al Protocolo de Kyoto ( mercado regulado). Los sistemas de comercio de emisiones son instrumentos de mercado establecidos con el objetivo de reducir las emisiones de gases de efecto invernadero (<acronym lang='es' title='Gases de Efecto Invernadero'>GEI</acronym>), en los que se define un límite superior (techo) de emisiones de <acronym lang='es' title='Gases de Efecto Invernadero'>GEI</acronym> que pueden ser emitidas por los participantes en el sistema.Busca en el siguiente recuadro si tu actividad está dentro del <a href='../../../assets_auto/answers_images/PATM_1_ANEXO1.pdf' target='_blank'>ANEXO I</a>",
+          "questionTooltipCA": "",
+          "link": "https://...",
+         "answers":
+          [
+          {"answerText": "Sí",
+          "answerTooltip": "",
+          "regulation": ["ATM_19","ATM_20","ATM_21","ATM_22","ATM_23","ATM_24","ATM_27"],
+          "answerImage_1": "",
+          "answerImage_2": ""},
+          {"answerText": "No",
+          "answerTooltip": "",
+          "regulation": [""],
+          "answerImage_1": "",
+          "answerImage_2": ""}
+          ]
+        },
+        {
+          "key": "2",
+          "type": "radio",
+          "questionTextES": "¿Realizan actividades en las que se manejen compuestos orgánicos volátiles (COVs)?",
+          "questionTextCA": "",
+          "questionDoc1" : "PATM_2_ANEXOII.pdf",
+          "questionDoc2" : "",
+          "questionTooltipES": "Los <acronym lang='es' title='Compuestos orgánicos volátiles'>COVs</acronym>, son  compuestos ligeros, con menos de 12 átomos de carbono, y grupos funcionales diversos. Hay más de un millar de compuestos que pueden considerarse COV, pero los más abundantes son: metano, etano, propano, n-butano, n-pentano, benceno, tolueno, xileno y etileno. Ejm solventes de pintura y de laca, repelentes de polillas, aromatizantes del aire, materiales empleados en maderas, sustancias en aerosol, disolventes de grasa, productos de uso automotor y disolventes para la industria de lavado en seco....  Si estas incluido dentro de alguna de estas actividades que aparecen en este listado y superas los umbrales de consumo del <a href='../../../assets_auto/answers_images/PATM_2_ANEXOII.pdf' target='_blank'>ANEXO II</a> responde que si a esta pregunta. Si no superas las cantidades reponde que no, porque no es de aplicación para tu industria.  <ol> <li><strong>Recubrimiento con adhesivos</strong> Toda actividad en la que se aplique a una superficie un adhesivo, con excepción del recubrimiento con adhesivos y el laminado junto con actividades de imprenta.</li><li><strong>Actividades de recubrimiento</strong> Toda actividad en la que se aplique una o varias veces una película continua de recubrimiento sobre: a) Vehículos, según se recoge a continuación: 1º. Coches nuevos, los definidos en el Real Decreto 2028/ 1986, de 6 de junio, sobre homologación de tipos de vehículos, remolques, semiremolques y sus partes o piezas, como vehículos de la categoría M1 y de la categoría N1, en la medida en que se recubran en la misma instalación que los vehículos M1. 2º. Cabinas de camiones, definidas como el habitáculo del conductor y todo el espacio integrado para el equipo técnico de los vehículos de categorías N2 y N3 en el Real Decreto 2028/ 1986. 3º. Furgonetas y camiones, definidos como vehículos de las categorías N1, N2 y N3, pero sin incluir las cabinas de camiones, en el Real Decreto 2028/ 1986. 4º. Autobuses, definidos como vehículos de las categorías M2 y M3 en el Real Decreto 2028/ 1986. 5º. Remolques, tal y como se finen en las categorías O1, O2, O3 y O4 del Real Decreto 2028/ 1986. b) Superficies metálicas y de plástico incluidas las superficies de aviones, barcos, trenes, etc. c) Superficies de madera. d) Superficies de tejidos, telas, película y papel. e) Cuero. No se incluyen los recubrimientos de sustratos con metales mediante técnicas de atomización química y electroforesis. Si la actividad de recubrimiento incluye una fase en que se imprime el mismo artículo, dicha fase de impresión se considera como parte de la actividad de recubrimiento. No obstante, no se incluyen las actividades de impresión que funcionen como actividades independientes, pero se podrán incluir en este Real Decreto siempre y cuando la actividad de impresión entre dentro de su ámbito.</li><li><strong>Recubrimiento de bobinas</strong> Toda actividad en la que se recubra con una película o un recubrimiento laminado, en un proceso continuo, acero, acero inoxidable, acero recubierto, aleaciones de cobre o tiras de aluminio en forma de bobina.</li><li><strong>Limpieza en seco</strong> Toda actividad industrial o comercial en el que se utilicen compuestos orgánicos volátiles en una instalación para eliminar la suciedad de las prendas de vestir, mobiliario y bienes de consumo similares, con excepción de la eliminación manual de manchas en la industria de tejidos y prendas de vestir.</li><li><strong>Fabricación de calzado</strong> Cualquier actividad de producción de calzado completo o de partes del mismo.</li><li><strong>Fabricación de recubrimiento, barnices, tintas y adhesivos</strong> La fabricación de los mencionados productos finales, y de sus productos intermedios cuando se haga en la misma instalación, mediante mezcla de pigmentos, resinas y materiales adhesivos con disolventes orgánicos u otros medios, con inclusión de actividades de dispersión y predispersión, ajustes de viscosidad y del tinte y operaciones de envasado del producto final en su recipiente.</li><li><strong>Fabricación de productos farmacéuticos</strong> Síntesis química, fermentación, extracción, formulación y terminación de productos farmacéuticos y sus productos intermedios cuando se lleven a cabo en el mismo sitio.</li><li><strong>Imprenta</strong> Actividad de reproducción de texto o imágenes en el que, mediante el uso de un portador de imagen, se transfiere tinta a cualquier tipo de superficie. Quedan incluidas las técnicas seleccionadas de barnizado, recubrimiento y laminación. Sin embargo, sólo están sujetos al presente Real Decreto los subprocesos siguientes: a) Flexografía: actividad de impresión que utiliza un portador de imagen de caucho o fotopolímeros elásticos en que las tintas de imprenta están por encima de las zonas de no impresión, utilizando tintas líquidas que se secan por evaporación. b) Offset de bobinas por secado al calor: actividad de impresión de bobinas que utilizan un portador de imagen donde las áreas de impresión y de no impresión están en el mismo plano, y entendiéndose por de bobinas que el material que se va a imprimir se introduce en la máquina a partir de un carrete y no de hojas separadas. El área de no impresión se trata para atraer agua y así rechazar la tinta. La zona de impresión se trata para recibir y transmitir la tinta a la superficie que se desea imprimir. La evaporación se realiza en un horno donde se utiliza aire caliente para calentar el material impreso. c) Laminación asociada a una actividad de impresión: la adhesión de dos o más materiales flexibles para producir laminados. d) Grabado de publicaciones: rotograbado utilizado para imprimir papel destinado a revistas, folletos, catálogos o productos similares, con tintas a base de tolueno. e) Rotograbado: actividad de impresión que utiliza un portador cilíndrico de imagen donde el área de impresión está por debajo del área de no impresión, utilizando tintas líquidas que se secan por evaporación. Los huecos se rellenan con tinta y el excedente se elimina del área de no impresión antes de que la superficie que se va a imprimir entre en contacto con el cilindro y levante la tinta de los huecos. f) Impresión serigráfica rotativa: actividad de impresión de bobinas donde la tinta se hace llegar a la superficie que se a va a imprimir pasándola a través de un portador de imagen poroso, donde el área de impresión está abierta, y el área de no impresión está cerrada, utilizando tintas líquidas que se secan sólo por evaporación. De bobinas significa que el material que se va a imprimir llega a la máquina a partir de un carrete y no de hojas separadas. g) Barnizado: actividad por el que se aplica a un material flexible un barniz o un recubrimiento adhesivo con el fin de sellar posteriormente el material del envase.</li><li><strong>Conversión de caucho natural o sintético</strong> Mezclado, triturado, homogeneización, calandrado, extrusión y vulcanizado de caucho sintético o natural y operaciones auxiliares para convertir el caucho sintético o natural en un producto terminado.</li><li><strong>Limpieza de superficies</strong> Toda actividad, salvo la limpieza en seco, con disolventes orgánicos para eliminar la suciedad de las superficies de materiales, con inclusión del desengrasado. Una actividad de limpieza que consista en más de una fase, antes o después de cualquier otra fase de tratamiento debe considerarse como una única actividad de limpieza de superficies. Esta actividad se refiere a la limpieza de la superficie del producto y no a la limpieza del equipo.</li><li><strong>Actividades de extracción de aceite vegetal y de refinado de grasa y aceite vegetal</strong> Toda actividad de extracción de aceite vegetal de semillas y otras materias vegetales, procesado de residuos secos para producir piensos animales, purificación de grasas y aceites vegetales obtenidos de semillas, materia vegetal o materia animal.</li><li><strong>Renovación del acabado de vehículos</strong> Toda actividad industrial o comercial de recubrimiento y actividades conexas de desengrasado mediante las que se efectúe: a) El recubrimiento de un vehículo de carretera según se define en el Real Decreto 2028/ 1986, o de una parte de aquél, realizados como parte de la reparación, conservación o decoración del vehículo fuera de las instalaciones de fabricación, o b) El recubrimiento original del vehículo de carretera, o de una parte de aquél, con materiales del tipo de renovación del acabado, cuando se realice fuera de la línea de fabricación original, o c) El recubrimiento de remolques (incluidos los semirremolques) (categoría O). Toda actividad industrial o comercial de recubrimiento y actividades conexas de desengrasado mediante las que se efectúe: a) El recubrimiento original del vehículo de carretera, o de una parte de aquél, con materiales del tipo de renovación del acabado, cuando se realice fuera de la línea de fabricación original, o c) El recubrimiento de remolques (incluidos los semirremolques) (categoría O).</li><li><strong>Recubrimiento de alambre en bobinas</strong> Todo recubrimiento de conductores metálicos utilizados para bobinar transformadores, motores, etc.</li><li><strong>Impregnación de fibras de madera</strong> Toda actividad que suponga impregnar la madera de conservantes.</li><li><strong>Laminación de madera y plástico</strong> Toda actividad de pegado de madera y plástico para producir laminados.</li> </ol>",
+          "questionTooltipCA": "",
+          "link": "https://...",
+          "answers":
+          [
+          {"answerText": "Sí",
+          "answerTooltip": "",
+          "regulation": ["ATM_32"],
+          "answerdoc1": "",
+          "answerdoc2": ""},
+          {"answerText": "No",
+          "answerTooltip": "",
+          "regulation": [""],
+          "answerdoc1": "",
+          "answerdoc2": ""}
+          ]
+        },
+        {
+          "key": "3",
+          "type": "radio",
+          "questionTextES": " Eres fabricante de pinturas, barnices y productos de renovación del acabado de vehículos que contienen COVs ( Compuestos Orgánicos volátiles)",
+          "questionTextCA": "",
+          "questionDoc1" : "",
+          "questionDoc2" : "",
+          "questionTooltipES": "",
+          "questionTooltipCA": "",
+          "link": "https://...",
+          "answers":
+          [
+          {"answerText": "Sí",
+          "answerTooltip": "",
+          "regulation": ["ATM_33"],
+          "image_1": "",
+          "image_2": ""},
+          {"answerText": "No",
+          "answerTooltip": "",
+          "regulation": [""],
+          "image_1": "",
+          "image_2": ""}
+          ]
+        },
+        {
+          "key": "4",
+          "type": "radio",
+          "questionTextES": "¿Realizan actividades catalogadas como potencialmente contaminadoras de la atmósfera (incluidas en el Catálogo APCAS)?",
+          "questionTextCA": "",
+          "questionDoc1" : "PATM_4_ANEXO",
+          "questionDoc2" : "",
+          "questionTooltipES": "Se consideran Actividades Potencialmente Contaminadoras de la Atmósfera (APCA en adelante), aquellas que por su propia naturaleza, ubicación o por los procesos tecnológicos utilizados constituyan una fuente de contaminación cuyas características pueden requerir que sean sometidas a un régimen de control y seguimiento más estricto, como por ejemplo: calderas del sector industrial de potencia térmica nominal igual o superior a 250 kWt,  consumo de disolvente superior a 5 t/año, etc..            Debes de revisar en el cuadro si tu actividad esta dentro de las definidas: <a href='../../../assets_auto/answers_images/PATM_4_ANEXO.pdf' target='_blank'>Ver cuadro</a>",
+          "questionTooltipCA": "",
+          "link": "https://...",
+          "answers":
+          [
+          {"answerText": "Sí",
+          "answerTooltip": "",
+          "regulation": ["ATM_1","ATM_11"],
+          "image_1": "",
+          "image_2": ""},
+          {"answerText": "No",
+          "answerTooltip": "",
+          "regulation": [""],
+          "image_1": "",
+          "image_2": ""}
+          ]
+        },
+        {
+          "key": "5",
+          "type": "radio",
+          "questionTextES": "Disponen de equipos o aparatos que contengan GASES FLUORADOS de EFECTO INVERNADERO Y/O AGOTAMIENTO DE LA CAPA OZONO?",
+          "questionTextCA": "",
+          "questionDoc1" : "",
+          "questionDoc2" : "",
+          "questionTooltipES": "Los gases fluorados de efecto invernadero (GFEI) son una familia de gases artificiales utilizados en diversas aplicaciones industriales, principalmente como sustitutos de las sustancias que agotan la capa de ozono (como R-22, R410-A,R134A, R143, R404, R407,HFC 227EA, etc) y  con un efecto de calentamiento de hasta 23.000 veces superior al del CO2. Estos gases se utilizan en diversos sectores y aplicaciones, por ejemplo, como refrigerantes en equipos de refrigeración, aire acondicionado y bombas de calor,agentes espumantes, etc.",
+          "questionTooltipCA": "",
+          "link": "https://...",
+          "answers":
+          [
+          {"answerText": "Sí",
+          "answerTooltip": "",
+          "regulation": ["ATM_18","ATM_39","ATM_40","ATM_42","ATM_44"],
+          "image_1": "",
+          "image_2": ""},
+          {"answerText": "No",
+          "answerTooltip": "",
+          "regulation": [""],
+          "image_1": "",
+          "image_2": ""}
+          ]
+        },
+        {
+          "key": "6",
+          "type": "radio",
+          "questionTextES": "La industria dispone de algún vehículo que gestione directamente por ejemplo: vehículos de transporte, vehículos comerciales, etc.",
+          "questionTextCA": "",
+          "questionDoc1" : "",
+          "questionDoc2" : "",
+          "questionTooltipES": "",
+          "questionTooltipCA": "",
+          "link": "https://...",
+          "answers":
+          [
+          {"answerText": "Sí",
+          "answerTooltip": "",
+          "regulation": ["ATM_48","ATM_49","SIND_1"],
+          "image_1": "",
+          "image_2": ""},
+          {"answerText": "No",
+          "answerTooltip": "",
+          "regulation": [""],
+          "image_1": "",
+          "image_2": ""}
+          ]
+        },
+        {
+          "key": "7",
+          "type": "radio",
+          "questionTextES": "La industria dispone de aparcamiento de más de 40 plazas",
+          "questionTextCA": "",
+          "questionDoc1" : "",
+          "questionDoc2" : "",
+          "questionTooltipES": "",
+          "questionTooltipCA": "",
+          "link": "https://...",
+          "answers":
+          [
+          {"answerText": "Sí",
+          "answerTooltip": "",
+          "regulation": ["ATM_51"],
+          "image_1": "",
+          "image_2": ""},
+          {"answerText": "No",
+          "answerTooltip": "",
+          "regulation": [""],
+          "image_1": "",
+          "image_2": ""}
+          ]
+        }
+      ]
+  },
+
+  {
+    "vectorId": "5",
+    "vectorName": "SUSTANCIAS Y PREPARADOS QUÍMICOS",
+    "vectorgeneralregulation":[""],
+    "questions":
+    [
+    {
+        "key": "1",
+        "type": "radio",
+        "questionTextES": "¿Se realizan actividades de expedición, carga, descarga y transporte de las mercancías peligrosas POR CARRETERA?",
+       "questionTextCA": "",
+       "questionDoc1" : "",
+        "questionDoc2" : "",
+        "questionTooltipES": "Este requisito aplica a todas aquellas EMPRESAS cuya actividad esté relacionada con el <strong>TRANSPORTE DE MERCANCÍAS PELIGROSAS POR CARRETERA</strong>, en su condición de:<ul><li><strong>EXPEDIDOR</strong> de las mercancías <strong></li><li>Transportista:</strong></li><li><strong>Cargador-descargador:</strong></li></ul> Una mercancia peligrosa es todo producto que lleve un pictograma de peligrosidad como gasoil, gasolina. <strong>Si</strong> aplica si se dispone de un tanque de combustible propio flota de vehículos, hay una carga y descarga por parte del personal propio para los camiones por ejemplo. <strong>No</strong> aplicaría si tengo un tanque de gasoil para caldera y sólo lo maneja el proveedor para la carga y descarga.",
+        "questionTooltipCA": "",
+        "link": "https://...",
+        "answers":
+        [
+        {"answerText": "Sí",
+        "answerTooltip": "",
+        "regulation": ["QMC_13","QMC_14","QMC_22"],
+        "answerImage_1": "",
+        "answerImage_2": ""},
+        {"answerText": "No",
+        "answerTooltip": "",
+        "regulation": [""],
+        "answerImage_1": "",
+        "answerImage_2": ""}
+        ]
+    },
+
+    {
+        "key": "2",
+        "type": "radio",
+        "questionTextES": "¿Se almacenan preparados peligrosos?",
+        "questionTextCA": "",
+        "questionDoc1" : "",
+        "questionDoc2" : "",
+        "questionTooltipES": "Este Reglamento será de aplicación a los preparados que contengan al menos una sustancia peligrosa. Se considerarán peligrosas las sustancias y los preparados siguientes: <ol><li><strong>Explosivos:</strong> las sustancias y preparados sólidos, líquidos, pastosos o gelatinosos que, incluso en ausencia del oxígeno del aire, pueden reaccionar de forma exotérmica con rápida formación de gases y que, en condiciones de ensayo determinadas, detonan, deflagran rápidamente o, bajo el efecto del calor, en caso de confinamiento parcial, explosionan.</li><li><strong>Comburentes:</strong> las sustancias y preparados que, en contacto con otras sustancias, en especial con sustancias inflamables, producen una reacción fuertemente exotérmica.</li><li><strong>Extremadamente inflamables:</strong> las sustancias y preparados líquidos que tengan un punto de inflamación extremadamente bajo y un punto de ebullición bajo, y las sustancias y preparados gaseosos que, a temperatura y presión ambientes, sean inflamables en contacto con el aire.</li><li><strong>Fácilmente inflamables:</strong> Las sustancias y preparados que pueden calentarse y finalmente inflamarse en contacto con el aire a temperatura ambiente sin aporte de energía, o Las sustancias y preparados sólidos que pueden inflamarse fácilmente tras un breve contacto con una fuente de inflamación y que siguen quemándose o consumiéndose una vez retirada dicha fuente, o Las sustancias y preparados en estado líquido cuyo punto de inflamación es muy bajo, o Las sustancias y preparados que, en contacto con agua o con aire húmedo, desprenden gases extremadamente inflamables en cantidades peligrosas.</li><li><strong>Inflamables:</strong> las sustancias y preparados líquidos cuyo punto de inflamación es bajo.</li><li><strong>Muy tóxicos:</strong> las sustancias y preparados que, por inhalación, ingestión o penetración cutánea en muy pequeña cantidad, pueden provocar la muerte o efectos agudos o crónicos para la salud.</li><li><strong>Tóxicos:</strong> las sustancias y preparados que, por inhalación, ingestión o penetración cutánea en pequeñas cantidades, provocan la muerte o efectos agudos o crónicos para la salud.</li><li><strong>Nocivos:</strong> las sustancias y preparados que, por inhalación, ingestión o penetración cutánea, pueden provocar la muerte o efectos agudos o crónicos para la salud.</li><li><strong>Corrosivos:</strong> las sustancias y preparados que, en contacto con tejidos vivos, pueden ejercer una acción destructiva de los mismos.</li><li><strong>Irritantes:</strong> las sustancias y preparados no corrosivos que, por contacto breve, prolongado o repetido con la piel o las mucosas, pueden provocar una reacción inflamatoria.</li><li><strong>Sensibilizantes:</strong> las sustancias y preparados que, por inhalación o penetración cutánea, pueden ocasionar una reacción de hipersensibilización, de forma que una exposición posterior a esa sustancia o preparado dé lugar a efectos nocivos característicos.</li><li><strong>Carcinogénicos:</strong> las sustancias y preparados que, por inhalación, ingestión o penetración cutánea, pueden producir cáncer o aumentar su frecuencia.</li><li><strong>Mutagénicos:</strong> las sustancias y preparados que, por inhalación, ingestión o penetración cutánea, pueden producir defectos genéticos hereditarios o aumentar su frecuencia.</li><li><strong>Tóxicos para la reproducción:</strong> las sustancias o preparados que, por inhalación, ingestión o penetración cutánea, pueden producir efectos nocivos no hereditarios en la descendencia, o aumentar la frecuencia de éstos, o afectar de forma negativa a la función o a la capacidad reproductora masculina o femenina.</li><li><strong>Peligrosos para el medio ambiente</strong>: las sustancias o preparados que, en caso de contacto con el medio ambiente, constituirían o podrían constituir un peligro inmediato o futuro para uno o más componentes del medio ambiente. No se considera peligroso</strong> Los medicamentos de uso humano o veterinario. Los productos cosméticos. Los productos alimenticios. Los alimentos para animales. Los preparados que contienen sustancias radiactivas. Los productos sanitarios que sean invasivos o se apliquen en contacto directo con el cuerpo humano, siempre que su legislación específica establezca para esas sustancias o preparados peligrosos, normas de clasificación y etiquetado que garanticen el mismo nivel de información y de protección que el presente reglamento.</li></ol>",
+        "questionTooltipCA": "",
+        "link": "https://...",
+        "answers":
+        [
+        {"answerText": "Sí",
+        "answerTooltip": "",
+        "regulation": ["QMC_5","QMC_12","QMC_16","QMC_18","QMC_19","QMC_21","QMC_25"],
+        "answerdoc1": "",
+        "answerdoc2": ""},
+        {"answerText": "No",
+        "answerTooltip": "",
+        "regulation": [""],
+        "answerdoc1": "",
+        "answerdoc2": ""}
+        ]
+    },
+
+    {
+        "key": "3",
+        "type": "radio",
+        "questionTextES": "Indique si disponen de instalaciones o lleva a cabo alguna actividad relacionada con explosivos, artículos pirotécnicos y/o cartuchería:",
+        "questionTextCA": "",
+        "questionDoc1" : "",
+        "questionDoc2" : "",
+        "questionTooltipES": "",
+        "questionTooltipCA": "",
+        "link": "https://...",
+        "answers":
+        [
+        {"answerText": "Sí",
+        "answerTooltip": "",
+        "regulation": ["QMC_1","QMC_9"],
+        "image_1": "",
+        "image_2": ""},
+        {"answerText": "No",
+        "answerTooltip": "",
+        "regulation": [""],
+        "image_1": "",
+        "image_2": ""}
+        ]
+    },
+
+    {
+        "key": "4",
+        "type": "radio",
+        "questionTextES": "¿Se fabrican, comercializan o utilizan o manejan biocidas?",
+        "questionTextCA": "",
+        "questionDoc1" : "",
+        "questionDoc2" : "",
+        "questionTooltipES": "Los productos biocidas son mezclas que contienen una o más sustancias activas que sirven para repeler, neutralizar o destruir organismos nocivos, como desinfectantes como lejía o hipoclorito sódico, conservantes, plaguicidas… Esta pregunta debe se repondida con un <strong>SI</strong> si fabricas, almacenas, comercializas o prestas servicios profesionales con BIOCIDAS",
+        "questionTooltipCA": "",
+        "link": "https://...",
+        "answers":
+        [
+        {"answerText": "Sí",
+        "answerTooltip": "",
+        "regulation": ["QMC_24","QMC_26","QMC_29","QMC_2"],
+        "image_1": "",
+        "image_2": ""},
+        {"answerText": "No",
+        "answerTooltip": "",
+        "regulation": [""],
+        "image_1": "",
+        "image_2": ""}
+        ]
+    },
+
+    {
+        "key": "5",
+        "type": "radio",
+        "questionTextES": "¿Se utilizan o manejan productos fitosanitarios? ",
+        "questionTextCA": "",
+        "questionDoc1" : "",
+        "questionDoc2" : "",
+        "questionTooltipES": "Los productos fitosanitarios son mezclas químicas que contienen una o varias sustancias activas y otros ingredientes, y cuyo objetivo es proteger los vegetales y sus productos de organismos nocivos. También se consideran productos fitosanitarios a las sustancias que destruyen las plantas, regulan o inhiben la germinación. Se repondera <strong>SI</strong>  a esta pregunta si  realizadas cualqier actividad fitosanitaria, agrícola o forestal o si se hace uso de fitosanitarios de manera no profesional",
+        "questionTooltipCA": "",
+        "link": "https://...",
+        "answers":
+        [
+        {"answerText": "Sí",
+        "answerTooltip": "",
+        "regulation": ["QMC_10", "QMC_28"],
+        "image_1": "",
+        "image_2": ""},
+        {"answerText": "No",
+        "answerTooltip": "",
+        "regulation": [""],
+        "image_1": "",
+        "image_2": ""}
+        ]
+    }
+    ]
+  },
+
+  {
+    "vectorId": "6",
+    "vectorName": "MEDIOAMBIENTE GENERAL",
+    "Vectorgeneralregulation":["MA_0","MA_10","MA_1","MA_9"],
+    "questions":
+    [
+      {
+        "key": "1",
+        "type": "radio",
+        "questionTextES": "¿Su actividad se engloba en alguna de las siguientes actividades contempladas en el 'ANEJO I' que encontrará en la ayuda?",
+        "questionTextCA": "",
+        "questionDoc1" : "PMA_1",
+        "questionDoc2" : "",
+        "questionTooltipES": "Si se incluye su actividad en alguna del siguiente listado que se adjunta,  por favor responda que <strong>SI</strong> a la pregunta, en caso contrario responda que <strong>NO</strong>.<br><br><a href='../../../assets_auto/answers_images/PMA_1.pdf' target='_blank'>ANEJO I</a>",
+        "questionTooltipCA": "",
+        "link": "https://...",
+        "answers":
+        [
+        {"answerText": "Sí",
+        "answerTooltip": "",
+        "regulation": ["MA_4","MA_5","MA_6","MA_11","MA_15"],
+        "answerImage_1": "",
+        "answerImage_2": ""},
+        {"answerText": "No",
+        "answerTooltip": "",
+        "regulation": ["MA_8"],
+        "answerImage_1": "",
+        "answerImage_2": ""}
+        ]
+      },
+      {
+        "key": "2",
+        "type": "radio",
+        "questionTextES": "¿Dispone de instalaciones con riesgo de proliferación y dispersión de LEGIONELLA?",
+        "questionTextCA": "",
+        "questionDoc1" : "",
+        "questionDoc2" : "",
+        "questionTooltipES": "La Legionella es una bacteria presente en todo el mundo, perteneciente a la familia Legionellaceae, que normalmente forma parte de la flora bacteriana de aguas superficiales, como lagos, ríos y estanques. Se trata de una bacteria muy resistente en su hábitat natural, capaz de sobrevivir en condiciones físico-químicas muy variadas. Aunque en su medio natural suele encontrarse en bajas concentraciones, a temperaturas de 20 a 45 grados se multiplica con rapidez -su temperatura óptima de crecimiento es de 35 a 37 grados. Ejemplos de instalaciones con riesgo de proliferacion de legionella:<ul><li>Sistemas de agua caliente sanitaria con acumulador y circuito de retorno</li><li>Sistemas de instalación interior de agua fría de consumo humano (tuberías, depósitos, aljibes), cisternas o depósitos móviles y agua caliente sanitaria sin circuito de retorno.</li><li>Sistemas de riego por aspersión en el medio urbano.</li><li>Sistemas de agua contra incendios</li><li>Fuentes ornamentales</li><li>Centrales humidificadoras industriales.</li><li>Equipos de enfriamiento evaporativo que pulvericen agua</li><li>Humectadores.</li><li>Torres de refrigeración</li><li>Condensadores evaporativos.</li><li>Elementos de refrigeración por aerosolización, al aire libre.</li><li>Otros aparatos que acumulen agua y puedan producir aerosoles</li></ul>",
+        "questionTooltipCA": "",
+        "link": "https://...",
+        "answers":
+        [
+        {"answerText": "Sí",
+        "answerTooltip": "",
+        "regulation": ["LEGIO_1","LEGIO_2"],
+        "answerdoc1": "",
+        "answerdoc2": ""},
+        {"answerText": "No",
+        "answerTooltip": "",
+        "regulation": [""],
+        "answerdoc1": "",
+        "answerdoc2": ""}
+        ]
+      },
+      {
+        "key": "3",
+        "type": "radio",
+        "questionTextES": "¿Realiza alguna de las siguientes actividades, las cuales son fuentes emisoras de ruido?",
+        "questionTextCA": "",
+        "questionDoc1" : "",
+        "questionDoc2" : "",
+        "questionTooltipES": "Por ejemplo , actividades de obras en vía pública, máquinas de uso al aire libre (como plataformas elevadoras, carretillas elevadoras, sierras, etc), grupos electrógenos, etc…",
+        "questionTooltipCA": "",
+        "link": "https://...",
+        "answers":
+        [
+        {"answerText": "Sí",
+        "answerTooltip": "",
+        "regulation": ["RUI_1"],
+        "image_1": "",
+        "image_2": ""},
+        {"answerText": "No",
+        "answerTooltip": "",
+        "regulation": [""],
+        "image_1": "",
+        "image_2": ""}
+        ]
+      },
+      {
+        "key": "4",
+        "type": "radio",
+        "questionTextES": "¿Dispone de alumbrado exterior, tales como: ornamental, vigilancia y seguridad nocturna, señales y anuncios luminosos, festivo y navideño, entre otros?",
+        "questionTextCA": "",
+        "questionDoc1" : "",
+        "questionDoc2" : "",
+        "questionTooltipES": "Ejemplos: <ul><li>Alumbrados Ornamentales: los que corresponden a la iluminación de fachadas de edificios.</li><li>Alumbrado de vigilancia y seguridad nocturna: para la iluminación de fachadas y áreas destinadas a actividades industriales, comerciales, de servicios, deportivas y recreativas, etc. con fines de vigilancia y seguridad durante la noche.</li><li>Alumbrado de Señales y Anuncios Luminosos: es el correspondiente a señales, carteles, anuncios luminosos, anuncios iluminados, alumbrado de escaparates,</li><br>Se excluyen de este tipo todas las señales y anuncios de tráfico.",
+        "questionTooltipCA": "",
+        "link": "https://...",
+        "answers":
+        [
+        {"answerText": "Sí",
+        "answerTooltip": "",
+        "regulation": ["RUI_5","ENER_2"],
+        "image_1": "",
+        "image_2": ""},
+        {"answerText": "No",
+        "answerTooltip": "",
+        "regulation": [""],
+        "image_1": "",
+        "image_2": ""}
+        ]
+      },
+      {
+        "key": "5",
+        "type": "radio",
+        "questionTextES": "¿Su industria está definida como gran empresa?",
+        "questionTextCA": "",
+        "questionDoc1" : "",
+        "questionDoc2" : "",
+        "questionTooltipES": "<p>Se entienden cómo gran empresas tanto las que ocupen al menos a 250 personas como las que, aun sin cumplir dicho requisito, tengan un volumen de negocio que exceda de 50 millones de euros y, a la par, un balance general que exceda de 43 millones de euros.</p><p>De igual modo, será también de aplicación a los grupos de sociedades, definidos según lo establecido en <strong>el artículo 42 del Código de Comercio</strong>, que, teniendo en cuenta las magnitudes agregadas de todas las sociedades que forman el grupo consolidado, cumplan los referidos requisitos de gran empresa 2.</p><p>Quedan excluidas del ámbito de aplicación, las microempresas, pequeñas y medianas empresas (<abbr title='pequeñas y medianas empresas'>PYMES</abbr>), de acuerdo con <strong>el título I del anexo de la Recomendación 2003/361/CE de la Comisión</strong>, de 6 de mayo de 2003, sobre la definición de microempresas, pequeñas y medianas empresas.</p>",
+        "questionTooltipCA": "",
+        "link": "https://...",
+        "answers":
+        [
+        {"answerText": "SI",
+        "answerTooltip": "",
+        "regulation": ["ENER_1"],
+        "image_1": "",
+        "image_2": ""},
+        {"answerText": "NO",
+        "answerTooltip": "",
+        "regulation": [""],
+        "image_1": "",
+        "image_2": ""}
+        ]
+      },
+      {
+      "key": "6",
+      "type": "radio",
+      "questionTextES": "Durante  dos ejercicios anteriores consecutivos su industria ¿ ha superado la media de 250 empleados y además se ha dado al menos una de las circunstancias indicadas en la ayuda?",
+      "questionTextCA": "",
+      "questionDoc1" : "",
+      "questionDoc2" : "",
+      "questionTooltipES": "<ul><li>1.º Que el total de las partidas del activo sea superior a 20.000.000 de euros. </li><li>2.º Que el importe neto de la cifra anual de negocios supere los 40.000.000 de euros.</li></ul>",
+      "questionTooltipCA": "",
+      "link": "https://...",
+      "answers":
+      [
+      {"answerText": "SI",
+      "answerTooltip": "",
+      "regulation": ["MA_12"],
+      "image_1": "",
+      "image_2": ""},
+      {"answerText": "NO",
+      "answerTooltip": "",
+      "regulation": [""],
+      "image_1": "",
+      "image_2": ""}
+      ]
+      },
+      {
+        "key": "7",
+        "type": "radio",
+        "questionTextES": "Su industria ¿ debe disponer de un plan de autoprotección ?",
+        "questionTextCA": "",
+        "questionDoc1" : "PMA_7",
+        "questionDoc2" : "PMA_7_1",
+        "questionTooltipES": "Para saber si es de aplicación en su industria debe revisar el <a href='../../../assets_auto/answers_images/PMA_7.pdf' target='_blank'>ANEXO I</a> o esto otro <a href='../../../assets_auto/answers_images/PMA_7_1.pdf' target='_blank'>DOCUMENTO</a>",
+        "questionTooltipCA": "",
+        "link": "https://...",
+        "answers":
+        [
+        {"answerText": "SI",
+        "answerTooltip": "",
+        "regulation": ["MA_13","MA_14"],
+        "image_1": "",
+        "image_2": ""},
+        {"answerText": "NO",
+        "answerTooltip": "",
+        "regulation": [""],
+        "image_1": "",
+        "image_2": ""}
+        ]
+    }
+    ]
+  }
+
+]

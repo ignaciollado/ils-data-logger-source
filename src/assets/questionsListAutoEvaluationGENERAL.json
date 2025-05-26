@@ -1,0 +1,474 @@
+[
+  {
+    "regulation": ["MA_1"],
+    "type": "Aclaración",
+    "questionTextES": "Ley 26/2007 de 23 de octubre, de Responsabilidad Medioambiental.<p><strong>  Art 5 (ley 11/2014) Obligación de los operadores de actividades incluidas en el anexo III de constituir una garantía financiera obligatoria (Modificación del art. 24 de la Ley 26/2007, de Responsabilidad Medioambiental). Los OPERADORES de las actividades incluidas en el anexo III, sin perjuicio de las exenciones previstas en el artículo 28, deberán disponer de una GARANTÍA FINANCIERA que les permita hacer frente a la responsabilidad medioambiental inherente a la actividad que pretendan desarrollar. Para el RESTO DE OPERADORES, la constitución de la garantía financiera tendrá carácter voluntario</strong></p>",
+    "questionTextCA": "",
+    "questionDoc1" : "",
+    "questionDoc2" : "",
+    "questionTooltipES": "",
+    "questionTooltipCA": "",
+    "link1": "",
+    "link2": "",
+    "requirements": 
+    [
+
+    ]
+  },
+  {
+    "regulation": ["MA_1"],
+    "type": "radio",
+    "questionTextES": "¿Estas obligado a disponer de una garantia financiera de reponsabilidad ambiental?",
+    "questionTextCA": "",
+    "questionDoc1" : "MA_15_ANEXO1",
+    "questionDoc2" : "",
+    "questionTooltipES": "Es de aplicación para <ul><li>Operadores sujetos al ámbito de aplicación del Texto refundido de la Ley de prevención y control integrados de la contaminación aprobado por el Real Decreto Legislativo 1/2016, de 16 de diciembre (IPPC).</li><li>Operadores sujetos al ámbito de aplicación del Real Decreto 840/2015, de 16 de julio, por el que se aprueban medidas de control de los riesgos inherentes a los accidentes graves en los que intervengan sustancias peligrosas (SEVESO).</li><li>Operadores dedicados a la gestión de residuos de las industrias extractivas, cuando se trate de instalaciones clasificadas como de categoría A, según lo dispuesto en el Real Decreto 975/2009, de 12 de junio.</li><li>El resto de operadores del anexo III, siempre y cuando no estén incluidos en el ámbito de aplicación de la normativa citada, no están obligados a la constitución de la garantía financiera por responsabilidad medioambiental, sin perjuicio de que el operador decida su constitución de manera voluntaria.</li><li>Se adjunta el anexo 1 del rden ARM/1783/2011, de 22 de junio, por la que se establece el orden de prioridad y el calendario para la aprobación de las órdenes ministeriales a partir de las cuales será exigible la constitución de la garantía financiera obligatoria, donde pueden verse que actividades están obligadas.</li><li>Importante resaltar con independencia de tener la obligación o no de constituir la garantía financiera, se recuerda que todos los operados de las actividades del anexo III de la Ley 26/2007, de 23 de octubre, están sujetos a un régimen de responsabilidad objetivo e ilimitado. De este modo, esos operadores, si son responsables de ocasionar una amenaza inminente de daño o daño medioambiental, deben adoptar las medidas necesarias de prevención, evitación y/o reparación que sean necesarias, con independencia del coste de las mismas.                                                                                                                                            La CANTIDAD que, como mínimo, deberá quedar garantizada y que no limitará en sentido alguno las responsabilidades establecidas en la ley, SERÁ DETERMINADA POR EL OPERADOR según la intensidad y extensión del daño que la actividad del operador pueda causar, de conformidad con los criterios que se establezcan reglamentariamente.</li></ul>Los operadores deberán COMUNICAR a la autoridad competente la constitución de la garantía financiera a la que vengan obligados de acuerdo con el apartado primero de este artículo. La fijación de la cuantía de esta garantía partirá del análisis de riesgos medioambientales de la actividad, o de las tablas de baremos, que se realizarán de acuerdo a la metodología que reglamentariamente se establezca por el Gobierno. La autoridad competente establecerá los correspondientes sistemas de control que le permitan comprobar el cumplimiento de estas obligaciones.",
+    "questionTooltipCA": "",
+    "link1": "",
+    "link2": "",
+    "requirements": 
+    [
+    {"answerText": "Cumple",
+     "answerTooltip": ""
+    },
+    {"answerText": "No cumple",
+     "answerTooltip": ""
+    },
+    {"answerText": "En proceso",
+     "answerTooltip": ""
+    }
+    ]
+  },
+  {
+    "regulation": ["MA_1"],
+    "type": "radio",
+    "questionTextES": "En caso de que te aplica la Responsabilidad Ambiental, ¿Has hecho la Evaluacion de Riesgos ambientales para determinar la cuantia de a garantia?",
+    "questionTextCA": "",
+    "questionDoc1" : "",
+    "questionDoc2" : "",
+    "questionTooltipES": "",
+    "questionTooltipCA": "",
+    "link1": "",
+    "link2": "",
+    "requirements": 
+    [
+    {"answerText": "Cumple",
+     "answerTooltip": ""
+    },
+    {"answerText": "No cumple",
+     "answerTooltip": ""
+    },
+    {"answerText": "En proceso",
+     "answerTooltip": ""
+    }
+    ]
+  },
+  {
+    "regulation": ["MA_1"],
+    "type": "radio",
+    "questionTextES": "¿Te encuentras exento de constituir Garantia financiera obligatoria? (por ej evaluación de riesgos entre 30.000 - 2.000.000 € con SGA acreditado y vigente)?",
+    "questionTextCA": "",
+    "questionDoc1" : "",
+    "questionDoc2" : "",
+    "questionTooltipES": "Quedan EXENTOS de constituir garantía financiera obligatoria: a) Los operadores de aquellas actividades susceptibles de ocasionar daños cuya reparación se evalúe por una cantidad inferior a 300.000 euros. b) Los operadores de actividades susceptibles de ocasionar daños cuya reparación se evalúe por una cantidad comprendida entre 300.000 y 2.000.000 de euros que acrediten mediante la presentación de certificados expedidos por organismos independientes, que están adheridos con carácter permanente y continuado, bien al sistema comunitario de gestión y auditoría medioambientales (EMAS), bien al sistema de gestión medioambiental UNE-EN ISO 14001 vigente. c) La utilización de los productos fitosanitarios y biocidas a los que se refiere el apartado 8.c) y d) del anexo III, con fines agropecuarios y forestales, quedando por tanto exentos de efectuar la comunicación prevista en el artículo 24.3. d) Los operadores de las actividades que se establezcan reglamentariamente atendiendo a su escaso potencial de generar daños medioambientales y bajo nivel de accidentalidad, quedando igualmente exentos de efectuar la comunicación prevista en el artículo 24.3 (art. 28).",
+    "questionTooltipCA": "",
+    "link1": "",
+    "link2": "",
+    "requirements": 
+    [
+    {"answerText": "Cumple",
+     "answerTooltip": ""
+    },
+    {"answerText": "No cumple",
+     "answerTooltip": ""
+    },
+    {"answerText": "En proceso",
+     "answerTooltip": ""
+    }
+    ]
+  },
+  {
+    "regulation": ["MA_4"],
+    "type": "Aclaración",
+    "questionTextES": "Real Decreto 508/2007 Por el que se regula el suministro de información sobre emisiones del Reglamento E-PRTR y de las autorizaciones ambientales integradas",
+    "questionTextCA": "",
+    "questionDoc1" : "",
+    "questionDoc2" : "",
+    "questionTooltipES": "Art 1. Este real decreto se aplica a la información procedente de las actividades industriales contenidas en el anexo I, y deberá ser suministrada a través de los medios y técnicas informáticas o telemáticas que al efecto determinen las Administraciones públicas competentes. Art 3.1 Deber del titular de actividades incluidas en el Anexo I que se realicen por encima de los umbrales de capacidad recogidos en el mismo, de comunicar anualmente las emisiones y transferencias. ANEXO I https://www.boe.es/buscar/act.php?id=BOE-A-2007-8351&p=20170831&tn=1#ci CAPITULO 2 https://www.boe.es/buscar/act.php?id=BOE-A-2007-8351&p=20170831&tn=1#cii Categorías de actividades industriales no incluidas en el anejo 1 de la Ley 16/2002, de 1 de julio Se describen en este capítulo las actividades industriales que no están incluidas en el anejo 1 de la Ley 16/2002, de 1 de julio, es decir, no están sujetas a autorización ambiental integrada, pero, no obstante, deben cumplir los requisitos de información de este real decreto. En este caso, para la identificación de las actividades industriales sólo debe tenerse en cuenta la codificación basada en el Reglamento E-PRTR.",
+    "questionTooltipCA": "",
+    "link1": "https://www.boe.es/buscar/act.php?id=BOE-A-2007-8351&p=20170831&tn=1#ci",
+    "link2": "https://www.boe.es/buscar/act.php?id=BOE-A-2007-8351&p=20170831&tn=1#cii",
+    "requirements": 
+    [
+    ]
+  },
+  {
+    "regulation": ["MA_4"],
+    "type": "radio",
+    "questionTextES": "En caso de aplicación, ¿Su actividad se encuentra registrada en el PRTR?",
+    "questionTextCA": "",
+    "questionDoc1" : "",
+    "questionDoc2" : "",
+    "questionTooltipES": "ANEXO 1. (acceso enlace arriba) CAPITULO 1 Categorías de actividades industriales incluidas en el anejo 1 de Ley 16/2002, de 1 de julio En este anexo se describen las instalaciones o complejos y actividades industriales que deben cumplir con los requerimientos de información ambiental establecidos en el presente real decreto. Las instalaciones o complejos se entenderán incluidas en el ámbito de este real decreto cuando realicen una o varias de las actividades incluidas en este anexo, sea o no ésta su actividad principal, y siempre que se superen los umbrales descritos en cada categoría de actividad. En todo caso, si un mismo titular realiza diversas actividades de la misma categoría en la misma instalación en el mismo lugar de emplazamiento, se sumarán las capacidades de dichas actividades. Asimismo, se indican tanto los códigos de las categorías de actividades industriales especificados en la Ley 16/2002, de 1 de julio, como la codificación basada en el Reglamento (CE) nº 166/2006, del Parlamento Europeo y del Consejo, de 18 de enero, relativo al establecimiento de un registro europeo de emisiones y transferencias de contaminantes y por el que se modifican las Directivas 91/689/CEE y 96/61/CE del Consejo. Estos códigos deben ser notificados como identificativos de la actividad industrial. En los casos en los que una misma actividad esté identificada por las dos codificaciones, ambas deberán ser notificadas. APLICA PARA CUALQUIERA DE LAS ACTIVIDADES QUE ESTÁN EN LOS DOS CAPÍTULOS A PARTIR DE LOS UMBRAOLES DE CAPACIDAD. En caso de aplicacion la solicitud de registro se hace a traves de: https://areaprivada.prtr-es.es/",
+    "questionTooltipCA": "",
+    "link1": "https://www.boe.es/buscar/act.php?id=BOE-A-2007-8351&p=20170831&tn=1#ci",
+    "link2": "https://www.boe.es/buscar/act.php?id=BOE-A-2007-8351&p=20170831&tn=1#cii",
+    "requirements": 
+    [
+     {"answerText": "Cumple",
+      "answerTooltip": ""
+     },
+     {"answerText": "No cumple",
+      "answerTooltip": ""
+     },
+     {"answerText": "En proceso",
+      "answerTooltip": ""
+     }
+    ]
+  },
+  {
+    "regulation": ["MA_5"],
+    "type": "radio",
+    "questionTextES": "¿Dispones de la Autorizacion ambiental Integrada y cumples con los limites/ condiciones establecidos en la misma?",
+    "questionTextCA": "",
+    "questionDoc1" : "",
+    "questionDoc2" : "",
+    "questionTooltipES": "Los titulares de las instalaciones en donde se desarrolle alguna de las actividades industriales incluidas en el ámbito de aplicación de esta ley deberán DISPONER de la AUTORIZACIÓN AMBIENTAL INTEGRADA y CUMPLIR las condiciones establecidas en la misma. (Art. 5.a)",
+    "questionTooltipCA": "",
+    "link1": "",
+    "link2": "",
+    "requirements": 
+    [
+     {"answerText": "Cumple",
+      "answerTooltip": ""
+     },
+     {"answerText": "No cumple",
+      "answerTooltip": ""
+     },
+     {"answerText": "En proceso",
+      "answerTooltip": ""
+     }
+    ]
+  },
+  {
+    "regulation": ["MA_6"],
+    "type": "Aclaración",
+    "questionTextES": "Real decreto 815/2013, de 18 de octubre, por el que se aprueba el Reglamento de emisiones industriales y de despliegue de la Ley 16/2002, de 1 de julio, de IPPC",
+    "questionTextCA": "",
+    "questionDoc1" : "",
+    "questionDoc2" : "",
+    "questionTooltipES": "Artículo 14.Criterios de modificación sustancial.una modificación sustancial en la instalación cuando, en condiciones normales de funcionamiento, se pretenda introducir un cambio no previsto en la autorización ambiental integrada originalmente otorgada, que afecte a las características, a los procesos productivos, al funcionamiento o a la extensión de la instalación, que represente una mayor incidencia sobre la seguridad, la salud de las personas y el medio ambiente y concurra cualquiera de los siguientes criterios: a) Cualquier ampliación o modificación que alcance, por sí sola, los umbrales de capacidad establecidos, cuando estos existan, en el anejo 1, o si ha de ser sometida al procedimiento de evaluación de impacto ambiental de acuerdo con la normativa sobre esta materia. b) Un incremento de más del 50 % de la capacidad de producción de la instalación en unidades de producto o servicio. c) Un incremento superior al 50 % de las cantidades autorizadas en el consumo de agua, materias primas o energía. d) Un incremento superior al 25 % de la emisión másica de cualquiera de los contaminantes atmosféricos que figuren en la autorización ambiental integrada o del total de las emisiones atmosféricas producidas en cada uno de los focos emisores. e) Un incremento de la emisión másica o de la concentración de vertidos de cualquiera de los contaminantes o del caudal de vertido que figure en la autorización ambiental integrada, así como la introducción de nuevos contaminantes en cantidades significativas. f) La incorporación al proceso de sustancias o preparados peligrosos no previstos en la autorización original, o el incremento de los mismos, siempre que, como consecuencia de ello, sea preciso elaborar o revisar el informe de seguridad o los planes de emergencia regulados en el Real Decreto 1254/1999, de 16 de julio, por el que se aprueban medidas de control de los riesgos inherentes a los accidentes graves en los que intervengan sustancias peligrosas. g) Un incremento en la generación de residuos peligrosos de más de 10 toneladas al año siempre que se produzca una modificación estructural del proceso y un incremento de más del 25 % del total de residuos peligrosos generados calculados sobre la cantidad máxima de producción de residuos peligrosos autorizada. h) Un incremento en la generación de residuos no peligrosos de más de 50 toneladas al año siempre que represente más del 50 % de residuos no peligrosos, incluidos los residuos inertes, calculados sobre la cantidad máxima de producción de residuos autorizada. i) El cambio en el funcionamiento de una instalación de incineración o coincineración de residuos dedicada únicamente al tratamiento de residuos no peligrosos, que la transforme en una instalación que conlleve la incineración o coincineración de residuos peligrosos y que esté incluida en el anejo 1, epígrafe 5.2. j) Una modificación en el punto de vertido que implique un cambio en la masa de agua superficial o subterránea a la que fue autorizado. 2. La enumeración de los criterios cuantitativos y cualitativos señalados en el apartado anterior tiene carácter no limitativo. En cualquier caso, el órgano competente para otorgar la autorización ambiental integrada podrá fijar criterios más restrictivos en determinados casos que se deriven de las circunstancias concretas de la modificación que se pretenda introducir.  3. Si en una instalación se llevan a cabo sucesivas modificaciones no sustanciales antes de la actualización de la autorización ambiental integrada o durante el período que media entre sus revisiones, se considerará como modificación sustancial la suma de dos o más no sustanciales que cumplan alguno de los criterios del apartado 1. 4. Si se solicita una modificación sustancial con posterioridad a otra u otras no sustanciales, antes de la actualización de la autorización ambiental integrada o durante el período que media entre sus revisiones, deberán examinarse conjuntamente todas las modificaciones no sustanciales previas junto con la sustancial que se pretenda. Una vez realizado dicho examen podrá procederse a la modificación de la autorización.", 
+    "link1": "",
+    "link2": "",
+    "requirements": 
+    [
+    ]
+  },
+  {
+    "regulation": ["MA_6"],
+    "type": "radio",
+    "questionTextES": "En caso de modificaciones sustanciales de la Autorizacion ambiental Integrada, ¿has hecho la solicitud de ese cambio SUSTANCIAL a la Consellería de Mediomabinete?",
+    "questionTextCA": "",
+    "questionDoc1" : "",
+    "questionDoc2" : "",
+    "questionTooltipES": "Los titulares de las instalaciones en donde se desarrolle alguna de las actividades industriales incluidas en el ámbito de aplicación de esta ley deberán DISPONER de la AUTORIZACIÓN AMBIENTAL INTEGRADA y CUMPLIR las condiciones establecidas en la misma. (Art. 5.a)",
+    "questionTooltipCA": "",
+    "link1": "",
+    "link2": "",
+    "requirements": 
+    [
+     {"answerText": "Cumple",
+      "answerTooltip": ""
+     },
+     {"answerText": "No cumple",
+      "answerTooltip": ""
+     },
+     {"answerText": "En proceso",
+      "answerTooltip": ""
+     }
+    ]
+  },
+  {
+    "regulation": ["MA_7"],
+    "type": "radio",
+    "questionTextES": "¿Dispone de licencia de actividad, o ha presentado la declaración responsable?",
+    "questionTextCA": "",
+    "questionDoc1" : "",
+    "questionDoc2" : "",
+    "questionTooltipES": "",
+    "questionTooltipCA": "",
+    "link1": "",
+    "link2": "",
+    "requirements": 
+    [
+     {"answerText": "Cumple",
+      "answerTooltip": ""
+     },
+     {"answerText": "No cumple",
+      "answerTooltip": ""
+     },
+     {"answerText": "En proceso",
+      "answerTooltip": ""
+     }
+    ]
+  },
+  {
+    "regulation": ["MA_7"],
+    "type": "radio",
+    "questionTextES": "¿Dispone de licencia de actividad, o ha presentado la declaración responsable?",
+    "questionTextCA": "",
+    "questionDoc1" : "",
+    "questionDoc2" : "",
+    "questionTooltipES": "",
+    "questionTooltipCA": "",
+    "link1": "",
+    "link2": "",
+    "requirements": 
+    [
+     {"answerText": "Cumple",
+      "answerTooltip": ""
+     },
+     {"answerText": "No cumple",
+      "answerTooltip": ""
+     },
+     {"answerText": "En proceso",
+      "answerTooltip": ""
+     }
+    ]
+  },
+  {
+    "regulation": ["MA_8"],
+    "type": "radio",
+    "questionTextES": "Si su actividad es previa  a Nov de 2013, ¿ha realizado la Revision técnica de la actividad? El plazo máximo para ello es 31/12 para actividades Mayores y 31/12/2026 para el resto de actividades",
+    "questionTextCA": "",
+    "questionDoc1" : "",
+    "questionDoc2" : "",
+    "questionTooltipES": "",
+    "questionTooltipCA": "",
+    "link1": "",
+    "link2": "",
+    "requirements": 
+    [
+     {"answerText": "Cumple",
+      "answerTooltip": ""
+     },
+     {"answerText": "No cumple",
+      "answerTooltip": ""
+     },
+     {"answerText": "En proceso",
+      "answerTooltip": ""
+     }
+    ]
+  },
+  {
+    "regulation": ["MA_8"],
+    "type": "radio",
+    "questionTextES": "Si su actividad es permanente, ¿ha realizado la revisión técnica complementaria a los 10 años desde el inicio de la actividad? ",
+    "questionTextCA": "",
+    "questionDoc1" : "",
+    "questionDoc2" : "",
+    "questionTooltipES": "Disp 3º 11 Obligación de realizar revisiones técnicas periódicas en actividades permanentes. (Se modifica el art. 49 de la Ley 7/2013). - Sin perjuicio de las inspecciones a las que sean sometidas las actividades en cualquier momento por parte de las administraciones competentes, los titulares de las actividades realizarán UNA REVISIÓN técnica periódica en el PLAZO de DIEZ AÑOS contados desde el inicio de la actividad y, sucesivamente, CADA DIEZ AÑOS contados desde la última revisión. (Art. 49.1)",
+    "questionTooltipCA": "",
+    "link1": "",
+    "link2": "",
+    "requirements": 
+    [
+     {"answerText": "Cumple",
+      "answerTooltip": ""
+     },
+     {"answerText": "No cumple",
+      "answerTooltip": ""
+     },
+     {"answerText": "En proceso",
+      "answerTooltip": ""
+     }
+    ]
+  },
+  {
+    "regulation": ["MA_8"],
+    "type": "radio",
+    "questionTextES": "¿Dispones de seguro de responsabilidad civil?",
+    "questionTextCA": "",
+    "questionDoc1" : "MA_8 Seguro RC",
+    "questionDoc2" : "",
+    "questionTooltipES": "Art 10 Disponer de un seguro de responsabilidad civil El titular debe contratar y mantener en vigor un seguro durante el ejercicio de la actividad en el establecimiento físico o en el lugar donde se desarrolle, que cubra la responsabilidad civil por daños corporales, materiales y las secuelas derivadas, ocasionados a terceras personas. Este seguro es obligatorio con carácter general para todas las actividades reguladas en esta ley, excepto para las permanentes inocuas, que es potestativo, sin perjuicio de que el seguro pueda venir exigido por la normativa específica de la actividad En caso de actividades no permanentes menores, el órgano competente, motivadamente, podrá eximir del seguro, sin perjuicio de la responsabilidad que se pueda derivar de ellas",
+    "questionTooltipCA": "",
+    "link1": "",
+    "link2": "",
+    "requirements": 
+    [
+     {"answerText": "Cumple",
+      "answerTooltip": ""
+     },
+     {"answerText": "No cumple",
+      "answerTooltip": ""
+     },
+     {"answerText": "En proceso",
+      "answerTooltip": ""
+     }
+    ]
+  },
+  {
+    "regulation": ["MA_11"],
+    "type": "radio",
+    "questionTextES": "Si su actividad es Industrial, ¿ha inscrito la misma en el registro Industrial?",
+    "questionTextCA": "",
+    "questionDoc1" : "",
+    "questionDoc2" : "",
+    "questionTooltipES": "",
+    "link1": "",
+    "link2": "",
+    "requirements": 
+    [
+     {"answerText": "Cumple",
+      "answerTooltip": ""
+     },
+     {"answerText": "No cumple",
+      "answerTooltip": ""
+     },
+     {"answerText": "En proceso",
+      "answerTooltip": ""
+     }
+    ]
+  },
+  {
+    "regulation": ["MA_9"],
+    "type": "radio",
+    "questionTextES": "Si vas a iniciar una nuevo proyecto  o modificación de la actividad que se englobe en las actividades que aparecen en los anexos I y II (mirar Link), ¿has tramitado la Evaluacion de Impacto?",
+    "questionTextCA": "",
+    "questionDoc1" : "",
+    "questionDoc2" : "",
+    "questionTooltipES": "",
+    "link1": "https://www.boe.es/buscar/act.php?id=BOE-A-2013-12913&p=20230614&tn=1#ani",
+    "link2": "",
+    "requirements": 
+    [
+     {"answerText": "Cumple",
+      "answerTooltip": ""
+     },
+     {"answerText": "No cumple",
+      "answerTooltip": ""
+     },
+     {"answerText": "En proceso",
+      "answerTooltip": ""
+     }
+    ]
+  },
+  {
+    "regulation": ["MA_10"],
+    "type": "radio",
+    "questionTextES": "Si su proyecto está incluido en alguno de los dos anexos anteriores, ¿ha presentado la evauacion de Impacto ordinaria (anexo I) o la Evaluacion de Impacto simplificada (anexo II)?",
+    "questionTextCA": "",
+    "questionDoc1" : "",
+    "questionDoc2" : "",
+    "questionTooltipES": "",
+    "link1": "https://www.boe.es/buscar/act.php?id=BOE-A-2020-11724&p=20221129&tn=1#a1-12",
+    "link2": "https://www.boe.es/buscar/act.php?id=BOE-A-2020-11724&p=20221129&tn=1#a2-12",
+    "requirements": 
+    [
+     {"answerText": "Cumple",
+      "answerTooltip": ""
+     },
+     {"answerText": "No cumple",
+      "answerTooltip": ""
+     },
+     {"answerText": "En proceso",
+      "answerTooltip": ""
+     }
+    ]
+  },
+  {
+    "regulation": ["MA_12"],
+    "type": "radio",
+    "questionTextES": "¿ Ha realizado un Informe del Estado de Información No Financiera (EINF)?",
+    "questionTextCA": "",
+    "questionDoc1" : "",
+    "questionDoc2" : "",
+    "questionTooltipES": "",
+    "link1": "",
+    "link2": "",
+    "requirements": 
+    [
+     {"answerText": "Cumple",
+      "answerTooltip": ""
+     },
+     {"answerText": "No cumple",
+      "answerTooltip": ""
+     },
+     {"answerText": "En proceso",
+      "answerTooltip": ""
+     }
+    ]
+  },
+  {
+    "regulation": ["MA_12"],
+    "type": "radio",
+    "questionTextES": "¿ Ha sido verificado su Informe del Estado de Información No Financiera (EINF) por presatdor independiente de Servicios de Verificación?",
+    "questionTextCA": "",
+    "questionDoc1" : "",
+    "questionDoc2" : "",
+    "questionTooltipES": "",
+    "link1": "",
+    "link2": "",
+    "requirements": 
+    [
+     {"answerText": "Cumple",
+      "answerTooltip": ""
+     },
+     {"answerText": "No cumple",
+      "answerTooltip": ""
+     },
+     {"answerText": "En proceso",
+      "answerTooltip": ""
+     }
+    ]
+  },
+  {
+    "regulation": ["MA_14"],
+    "type": "radio",
+    "questionTextES": "¿ Ha elaborado y registrado en su Comunidad Autónoma el plan de Autoprotección corresponediente a su actividad? ",
+    "questionTextCA": "",
+    "questionDoc1" : "",
+    "questionDoc2" : "",
+    "questionTooltipES": "El Plan de Autoprotección habrá de estar redactado y firmado por técnicocompetente capacitado para dictaminar sobre aquellos aspectos relacionados con la autoprotección frente a los riesgos a los que esté sujetala actividad, y suscrito igualmente por el titular de la actividad, si es una persona física, o por persona que le represente si es una persona jurídica",
+    "questionTooltipCA": "",
+    "link1": "",
+    "link2": "",
+    "requirements": 
+    [
+     {"answerText": "Cumple",
+      "answerTooltip": ""
+     },
+     {"answerText": "No cumple",
+      "answerTooltip": ""
+     },
+     {"answerText": "En proceso",
+      "answerTooltip": ""
+     }
+    ]
+  },
+  {
+    "regulation": ["MA_14"],
+    "type": "radio",
+    "questionTextES": "¿Ha actualizado el Plan de Autoproteccion con una periodicidad no superior a los 3 años? ¿ Ha presentado la actualización A LA Dirección General de Emergencias de la CAIB?",
+    "questionTextCA": "",
+    "questionDoc1" : "",
+    "questionDoc2" : "",
+    "questionTooltipES": "",
+    "questionTooltipCA": "",
+    "link1": "",
+    "link2": "",
+    "requirements": 
+    [
+     {"answerText": "Cumple",
+      "answerTooltip": ""
+     },
+     {"answerText": "No cumple",
+      "answerTooltip": ""
+     },
+     {"answerText": "En proceso",
+      "answerTooltip": ""
+     }
+    ]
+  }  
+]

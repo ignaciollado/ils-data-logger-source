@@ -45,7 +45,7 @@ export class MunicipalityRegulationNormativeTextsComponent {
   isElevated:boolean = true
   private isUpdateMode: boolean
   regulationsIDS: NormativeMunicipalityTextDTO[] = []
-  vectores: string[] = ['Agua','Ruido','Residuo','Residuos', 'Residu', 'Agua / ruido']
+  vectores: string[] = ['Agua','Atmósfera','Ruido','Residuo','Residuos', 'Residu', 'Agua / ruido']
   private userId: string | null
   normativeTexts: NormativeMunicipalityTextDTO[]
   municipalities: MunicipalityDto[] = []

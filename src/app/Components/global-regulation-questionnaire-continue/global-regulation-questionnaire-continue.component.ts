@@ -165,6 +165,8 @@ export class GlobalRegulationQuestionnaireContinueComponent {
   vector_6_Question5: NodeListOf<HTMLElement>
   vector_6_Question6: NodeListOf<HTMLElement>
   vector_6_Question7: NodeListOf<HTMLElement>
+  vector_6_Question8: NodeListOf<HTMLElement>
+
   vector_6_Question1_reg : string [] = []
   vector_6_Question2_reg : string [] = []
   vector_6_Question3_reg : string [] = []
@@ -172,6 +174,8 @@ export class GlobalRegulationQuestionnaireContinueComponent {
   vector_6_Question5_reg : string [] = []
   vector_6_Question6_reg : string [] = []
   vector_6_Question7_reg : string [] = []
+  vector_6_Question8_reg : string [] = []
+
   vector_6_Question1_answers: boolean [] = []
   vector_6_Question2_answers: boolean [] = []
   vector_6_Question3_answers: boolean [] = []
@@ -179,6 +183,7 @@ export class GlobalRegulationQuestionnaireContinueComponent {
   vector_6_Question5_answers: boolean [] = []
   vector_6_Question6_answers: boolean [] = []
   vector_6_Question7_answers: boolean [] = []
+  vector_6_Question8_answers: boolean [] = []
 
   constructor (
     private formBuilder: FormBuilder,
@@ -299,7 +304,7 @@ export class GlobalRegulationQuestionnaireContinueComponent {
     let vector3Progress1: number, vector3Progress2: number, vector3Progress3: number, vector3Progress4: number = 0
     let vector4Progress1: number, vector4Progress2: number, vector4Progress3: number, vector4Progress4: number, vector4Progress5: number, vector4Progress6: number, vector4Progress7: number = 0
     let vector5Progress1: number, vector5Progress2: number, vector5Progress3: number, vector5Progress4: number, vector5Progress5: number = 0
-    let vector6Progress1: number, vector6Progress2: number, vector6Progress3: number, vector6Progress4: number, vector6Progress5: number, vector6Progress6: number, vector6Progress7: number = 0
+    let vector6Progress1: number, vector6Progress2: number, vector6Progress3: number, vector6Progress4: number, vector6Progress5: number, vector6Progress6: number, vector6Progress7: number = 0, vector6Progress8: number = 0
 
     this.vector_1_Question1 = document.getElementsByName('vector_1_Question1')
     this.vector_1_Question2 = document.getElementsByName('vector_1_Question2')
@@ -345,6 +350,7 @@ export class GlobalRegulationQuestionnaireContinueComponent {
     this.vector_6_Question5 = document.getElementsByName('vector_6_Question5')
     this.vector_6_Question6 = document.getElementsByName('vector_6_Question6')
     this.vector_6_Question7 = document.getElementsByName('vector_6_Question7')
+    this.vector_6_Question8 = document.getElementsByName('vector_6_Question8')
 
     this.vector_1_Question1_answers = []
     this.vector_1_Question2_answers = []
@@ -390,6 +396,7 @@ export class GlobalRegulationQuestionnaireContinueComponent {
     this.vector_6_Question5_answers = []
     this.vector_6_Question6_answers = []
     this.vector_6_Question7_answers = []
+    this.vector_6_Question8_answers = []
 
   this.totalVectorAnswers = []
   /* VECTOR 1 */
@@ -601,6 +608,7 @@ export class GlobalRegulationQuestionnaireContinueComponent {
           item.totalAnswers = this.vectorProgress[2]
       }
     })
+
   /* VECTOR 4 */
     this.vector_4_Question1.forEach((node: HTMLInputElement, index) => {
       this.vector_4_Question1_answers.push(node.checked)
@@ -748,6 +756,9 @@ export class GlobalRegulationQuestionnaireContinueComponent {
   this.vector_6_Question7.forEach((node: HTMLInputElement, index) => {
     this.vector_6_Question7_answers.push(node.checked)
   })
+    this.vector_6_Question8.forEach((node: HTMLInputElement, index) => {
+    this.vector_6_Question8_answers.push(node.checked)
+  })
 
   if (this.vector_6_Question1_answers.some((someItem: boolean) => someItem === true) ) {
     vector6Progress1 = (100/this.totalVectorQuestions[5])
@@ -789,10 +800,16 @@ export class GlobalRegulationQuestionnaireContinueComponent {
     vector6Progress7 = (100/this.totalVectorQuestions[5])
   }
   if (this.vector_6_Question7_answers.every((everyItem: boolean) => everyItem === false) ) {
-    vector6Progress7 = 0
+    vector6Progress8 = 0
+  }
+  if (this.vector_6_Question8_answers.some((someItem: boolean) => someItem === true) ) {
+    vector6Progress8 = (100/this.totalVectorQuestions[5])
+  }
+  if (this.vector_6_Question8_answers.every((everyItem: boolean) => everyItem === false) ) {
+    vector6Progress8 = 0
   }
 
-  this.vectorProgress[5] = vector6Progress1 + vector6Progress2 + vector6Progress3 + vector6Progress4 + vector6Progress5 + vector6Progress6 + vector6Progress7
+  this.vectorProgress[5] = vector6Progress1 + vector6Progress2 + vector6Progress3 + vector6Progress4 + vector6Progress5 + vector6Progress6 + vector6Progress7 + vector6Progress8
   this.questionnaireVectorState.map(item=> {
     if(item.vectorId === 6) {
         item.totalAnswers = this.vectorProgress[5]
@@ -855,6 +872,7 @@ export class GlobalRegulationQuestionnaireContinueComponent {
     this.vector_6_Question5_reg = []
     this.vector_6_Question6_reg = []
     this.vector_6_Question7_reg = []
+    this.vector_6_Question8_reg = []
 
   // VECTOR 1
   if (this.vector_1_Question1) {
@@ -1215,14 +1233,22 @@ export class GlobalRegulationQuestionnaireContinueComponent {
     }
     })
   }
+  if (this.vector_6_Question8){
+    this.vector_6_Question8.forEach((node: HTMLInputElement, index) => {
+    if (node.value && node.checked) {
+      node.value = node.value.replaceAll(',','","')
+      node.value = '"'+node.value+'"'
+      this.vector_6_Question8_reg.push(node.value)
+    }
+    })
+  }  
 
   resultsVector1.innerHTML = '[{"vectorId":1,"regulations":[{"regulation":[{"q1":['+this.vector_1_Question1_reg+']},{"q2":['+this.vector_1_Question2_reg+']},{"q3":['+this.vector_1_Question3_reg+']},{"q4":['+this.vector_1_Question4_reg+']},{"q5":['+this.vector_1_Question5_reg+']}]}]},'
   resultsVector2.innerHTML = '{"vectorId":2,"regulations":[{"regulation":[{"q1":['+this.vector_2_Question1_reg+']},{"q2":['+this.vector_2_Question2_reg+']},{"q3":['+this.vector_2_Question3_reg+']},{"q4":['+this.vector_2_Question4_reg+']},{"q5":['+this.vector_2_Question5_reg+']},{"q6":['+this.vector_2_Question6_reg+']},{"q7":['+this.vector_2_Question7_reg+']},{"q8":['+this.vector_2_Question8_reg+']},{"q9":['+this.vector_2_Question9_reg+']},{"q10":['+this.vector_2_Question10_reg+']},{"q11":['+this.vector_2_Question11_reg+']}]}]},'
   resultsVector3.innerHTML = '{"vectorId":3,"regulations":[{"regulation":[{"q1":['+this.vector_3_Question1_reg+']},{"q2":['+this.vector_3_Question2_reg+']},{"q3":['+this.vector_3_Question3_reg+']},{"q4":['+this.vector_3_Question4_reg+']}]}]},'
   resultsVector4.innerHTML = '{"vectorId":4,"regulations":[{"regulation":[{"q1":['+this.vector_4_Question1_reg+']},{"q2":['+this.vector_4_Question2_reg+']},{"q3":['+this.vector_4_Question3_reg+']},{"q4":['+this.vector_4_Question4_reg+']},{"q5":['+this.vector_4_Question5_reg+']},{"q6":['+this.vector_4_Question6_reg+']},{"q7":['+this.vector_4_Question7_reg+']}]}]},'
   resultsVector5.innerHTML = '{"vectorId":5,"regulations":[{"regulation":[{"q1":['+this.vector_5_Question1_reg+']},{"q2":['+this.vector_5_Question2_reg+']},{"q3":['+this.vector_5_Question3_reg+']},{"q4":['+this.vector_5_Question4_reg+']},{"q5":['+this.vector_5_Question5_reg+']}]}]},'
-  resultsVector6.innerHTML = '{"vectorId":6,"regulations":[{"regulation":[{"q1":['+this.vector_6_Question1_reg+']},{"q2":['+this.vector_6_Question2_reg+']},{"q3":['+this.vector_6_Question3_reg+']},{"q4":['+this.vector_6_Question4_reg+']},{"q5":['+this.vector_6_Question5_reg+']},{"q6":['+this.vector_6_Question6_reg+']},{"q7":['+this.vector_6_Question7_reg+']}]}]}]'
-
+  resultsVector6.innerHTML = '{"vectorId":6,"regulations":[{"regulation":[{"q1":['+this.vector_6_Question1_reg+']},{"q2":['+this.vector_6_Question2_reg+']},{"q3":['+this.vector_6_Question3_reg+']},{"q4":['+this.vector_6_Question4_reg+']},{"q5":['+this.vector_6_Question5_reg+']},{"q6":['+this.vector_6_Question6_reg+']},{"q7":['+this.vector_6_Question7_reg+']},{"q8":['+this.vector_6_Question8_reg+']}]}]}]'
 
   resultsVector1.innerText = resultsVector1.innerText.replaceAll(",,",",")
   resultsVector1.innerText = resultsVector1.innerText.replaceAll(",]},","]},")
@@ -1447,7 +1473,11 @@ export class GlobalRegulationQuestionnaireContinueComponent {
       this.questionnaireSummary.push(node.id+"#"+node.checked)
   })
   }
-
+  if (this.vector_6_Question8) {
+    this.vector_6_Question8.forEach((node: HTMLInputElement) => {
+      this.questionnaireSummary.push(node.id+"#"+node.checked)
+  })
+  }
   resultsQuestionnaire.push (this.questionnaireSummary.toString())
 
   let responseOK: boolean = false

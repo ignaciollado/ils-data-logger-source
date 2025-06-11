@@ -145,7 +145,7 @@ export class LoginComponent implements OnInit {
                     /* if (this.jwtHelper.decodeToken().role === 'company') {
                       this.router.navigateByUrl('/global-questionnaire')
                     } else { */
-                      this.router.navigateByUrl('dashboard')
+                      this.router.navigateByUrl('global-questionnaire-list')
                     /* } */
                   }
                 } )

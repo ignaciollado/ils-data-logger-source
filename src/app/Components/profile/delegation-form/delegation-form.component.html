@@ -25,7 +25,7 @@
                 {{municipalities.name}}
               </mat-option>
             </mat-select>
-            <mat-error *ngIf="address.hasError('required')">{{'energyType' | translate}} <strong>{{'isRequired' | translate}}</strong></mat-error>
+            <mat-error *ngIf="address.hasError('required')">{{'municipio' | translate}} <strong>{{'isRequired' | translate}}</strong></mat-error>
           </mat-form-field>
         </section>
         <button mat-raised-button color="primary" type="submit" [disabled]="!delegationForm.valid">ADD</button>

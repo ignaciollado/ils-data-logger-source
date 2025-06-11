@@ -1,5 +1,5 @@
 
-<div class="container-form" [@fadeInOut] >  
+<section class="container-form" [@fadeInOut] >  
   <h1>{{ 'profile' | translate }}</h1>
   <form [formGroup]="profileForm" (ngSubmit)="updateUser()">
     <mat-card [class.mat-elevation-z8]="isElevated">
@@ -77,15 +77,15 @@
                   <small>{{activityIndicator['indicator']}}</small>
                 </mat-option>
               </mat-select>
-              <mat-error *ngIf="activityIndicator.hasError('required')">Activity indicator <strong>{{'isRequired' | translate}}</strong></mat-error>
+              <mat-error *ngIf="activityIndicator.hasError('required')">{{'activityIndicator' | translate}} <strong>{{'isRequired' | translate}}</strong></mat-error>
               <mat-hint>{{activityIndicator.value?.cnaeCode}}</mat-hint>
             </mat-form-field>
           </mat-card-content>
         </mat-card>
       </section>  
-     <button mat-raised-button color="primary" type="submit" [disabled]="!profileForm.valid">Update Company</button>
+     <button mat-raised-button color="primary" type="submit" [disabled]="!profileForm.valid">{{'Update' | translate}}</button>
     </mat-card>
   </form>
-  <div style="margin-left: auto; margin-right: auto"><span id="profileFeedback"></span></div>
+  <section style="margin-left: auto; margin-right: auto"><span id="profileFeedback"></span></section>
   <app-delegation></app-delegation>
-</div>
+</section>

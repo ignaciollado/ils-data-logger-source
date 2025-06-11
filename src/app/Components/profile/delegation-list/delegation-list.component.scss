@@ -1,6 +1,9 @@
 @use "../../../../styles/themes/ils-theme" as theme;
 
 table{
-  min-width: 530px;
+  width: 100%;
 }
 
+mat-icon:hover {
+  cursor: pointer;
+}

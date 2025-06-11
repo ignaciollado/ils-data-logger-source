@@ -11,7 +11,7 @@
   "name": "Name",
   "ubication": "Ubication",
   "city": "City",
-  "createAccount": "Company registration",
+  "createAccount": "Organization registration",
   "totalActivityReported": "Total activity reported",
   "sustainabilityIndicatorsCharts": "Indicators Charts",
   "createUser": "Create user",
@@ -20,9 +20,9 @@
   "waitingForData": "Waiting for data to come...",
   "filterByColumn": "Filter by columns",
 
-  "companyName": "Company name",
-  "companyAddress": "Company address",
-  "companyCNAE": "Company CNAE",
+  "companyName": "Organization name",
+  "companyAddress": "Organization address",
+  "companyCNAE": "Organization CNAE",
 
   "activityData": "Enviromental data",
   "productionData": "Production data",
@@ -43,11 +43,11 @@
 
   "companyActivityData": "Datos de actividad de mi empresa",
   "consumptionList": "Consumption List:",
-  "delegation": "Delegation",
+  "delegation": "Production center",
   "selectDelegation": "Select an office",
-  "delegationAdd": "Add delegation",
-  "delegationList": "Delegation list",
-  "noDelegation": "No delegation has yet been established.<br>It is necessary to create at least one delegation in order to add your activity data.<br>Sorry for the inconvenience.",
+  "delegationAdd": "Add a production center",
+  "delegationList": "Production center list",
+  "noDelegation": "No production center has yet been established.<br>It is necessary to create at least one production center in order to add your activity data.<br>Sorry for the inconvenience.",
 
   "aspect": "Aspect",
   "energy": "Energy",

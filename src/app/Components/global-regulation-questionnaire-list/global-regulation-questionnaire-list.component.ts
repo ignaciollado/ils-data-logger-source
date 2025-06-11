@@ -4,10 +4,7 @@ import { JwtHelperService } from '@auth0/angular-jwt'
 import { AnswerDTO } from 'src/app/Models/answer.dto'
 import { questionnaireFinalStateDTO } from 'src/app/Models/answeredQuestionnaire.dto'
 import { ConfirmDialogComponent } from 'src/app/confirm-dialog/confirm-dialog.component'
-import {
-  MatDialog,
-  MatDialogConfig
-} from '@angular/material/dialog';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { vectorStateDetail } from 'src/app/Models/question.dto'
 
 @Component({

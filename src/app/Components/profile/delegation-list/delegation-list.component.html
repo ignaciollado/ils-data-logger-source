@@ -16,7 +16,7 @@
               <mat-icon matTooltip="Add a production center for this organization" color="accent" (click)="createDelegation()">add_circle</mat-icon>
         <!-- </button> --></th>
       <td mat-cell *matCellDef="let delegation">
-        <button mat-icon-button color="warn" matTooltip="Permanently delete this production center"
+        <button mat-icon-button color="warn" matTooltip="Permanently delete this production center" disabled
         aria-label="Permanently deletes this production center" (click)="deleteDelegation(delegation.companyDelegationId)">
         <i class="fa-solid fa-trash fa-xs"></i>
         </button>

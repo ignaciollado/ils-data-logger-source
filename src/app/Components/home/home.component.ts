@@ -34,7 +34,10 @@ export class HomeComponent {
     this.userId = '0'
     this.showButtons = false
     this.access_token = sessionStorage.getItem("access_token")
-
+    localStorage.removeItem("preferredLang")
+    if(localStorage.getItem("preferredLang") == 'undefined' || localStorage.getItem("preferredLang") === null) {
+      localStorage.setItem("preferredLang", "cas")
+    }    
     if (this.access_token === null) {
       const headerInfo: HeaderMenus = { showAuthSection: false, showNoAuthSection: true, };
       this.headerMenusService.headerManagement.next(headerInfo)
@@ -56,11 +59,6 @@ export class HomeComponent {
   }
 
   ngOnInit(): void {
-    if(localStorage.getItem("preferredLang") == 'undefined') {
-      localStorage.setItem("preferredLang", "cat")
-      location.reload()
-    }
-
     this.headerMenusService.headerManagement.subscribe(
       (headerInfo: HeaderMenus) => {
         if (headerInfo) {

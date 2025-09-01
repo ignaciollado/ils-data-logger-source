@@ -18,8 +18,6 @@
         <mat-form-field [style.width.px]=450>
           <mat-label>{{'Email' | translate}}</mat-label>
           <input matInput type="email" [formControl]="email" required (blur)="validateTheEMail()" />
-<!--           <span matSuffix style="font-size: 1rem; color: green;"><i *ngIf="isValidMail" class="fa-solid fa-thumbs-up"></i></span>
-          <span matSuffix style="font-size: 1rem; color: red;"><i *ngIf="!isValidMail" class="fa-solid fa-thumbs-down"></i></span> -->
           <mat-error *ngIf="email.hasError('pattern')" >Email not a valid format</mat-error>
           <mat-error *ngIf="email.hasError('required')">Email <strong>is required</strong></mat-error>
         </mat-form-field>

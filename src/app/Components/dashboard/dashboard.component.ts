@@ -592,7 +592,7 @@ export class DashboardComponent implements OnInit {
         this.consumptions = consumptions
         this.consumptions.forEach((consumption: any) =>
         {
-          /*La ENERGÍA la convierto a kWh */
+          /* La ENERGÍA la convierto a kWh */
           this.energies.forEach((energy:EnergyDTO) => {
             if (energy.nameES == consumption.energyName) {
               equivEnkWh = energy.pci * energy.convLKg
@@ -1274,7 +1274,7 @@ export class DashboardComponent implements OnInit {
     this.loadgraphDataEnergy()
   }
 
-  chartmonthlyViewE(){
+  chartmonthlyViewE() {
     if (this.chart) {
       this.chart.destroy()
     }
@@ -1283,7 +1283,7 @@ export class DashboardComponent implements OnInit {
     this.loadgraphDataEnergy()
   }
 
-  chartkWViewE(){
+  chartkWViewE() {
     if (this.chart) {
       this.chart.destroy()
     }

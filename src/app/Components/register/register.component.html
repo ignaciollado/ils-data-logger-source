@@ -5,42 +5,39 @@
   <h1>{{'createAccount' | translate}}</h1>
   <form [formGroup]="registerForm" (ngSubmit)="register()">
     <mat-card [class.mat-elevation-z8]="isElevated">
-    <section>
-        <mat-form-field [style.width.px]=450>
+        <mat-form-field>
           <mat-label>{{'companyName' | translate}}</mat-label>
           <input matInput type="text" [formControl]="name" />
           <mat-error *ngIf="name.hasError('minlength')" >Name must be at least 5 characters long</mat-error>
           <mat-error *ngIf="name.hasError('maxlength')" >Name can be max 55 characters long</mat-error>
           <mat-error *ngIf="name.hasError('required')">name <strong>is required</strong></mat-error>
         </mat-form-field>
-    </section>
-    <section>
-        <mat-form-field [style.width.px]=450>
+
+        <mat-form-field>
           <mat-label>{{'Email' | translate}}</mat-label>
           <input matInput type="email" [formControl]="email" required (blur)="validateTheEMail()" />
           <mat-error *ngIf="email.hasError('pattern')" >Email not a valid format</mat-error>
           <mat-error *ngIf="email.hasError('required')">Email <strong>is required</strong></mat-error>
         </mat-form-field>
-    </section>
 
-    <section>
-      <mat-form-field [style.width.px]=450>
+
+
+      <mat-form-field>
         <mat-label>{{'password' | translate}} </mat-label>
         <input matInput type="text" [formControl]="password" (focus)="generatePassword()"/>
         <mat-error *ngIf="password.hasError('minlength')" >Password must be at least 8 characters long</mat-error>
         <mat-error *ngIf="password.hasError('maxlength')" >Password can be max 25 characters long</mat-error>
         <mat-error *ngIf="password.hasError('required')">Password <strong>is required</strong></mat-error>
       </mat-form-field>
-    </section>
-    <section>
-      <mat-form-field [style.width.px]=450>
+
+      <mat-form-field>
         <mat-label>{{'confirmPassword' | translate}}</mat-label>
         <input matInput type="text" [formControl]="confirmPassword" />
         <mat-error *ngIf="password.hasError('minlength')" >Password must be at least 8 characters long</mat-error>
         <mat-error *ngIf="password.hasError('maxlength')" >Password can be max 25 characters long</mat-error>
         <mat-error *ngIf="password.hasError('required')">Password <strong>is required</strong></mat-error>
       </mat-form-field>
-    </section>
+
     <button mat-raised-button color="primary" type="submit" [disabled]="!registerForm.valid">ADD</button>
   </mat-card>
   </form>

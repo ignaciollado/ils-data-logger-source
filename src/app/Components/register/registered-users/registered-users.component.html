@@ -1,7 +1,12 @@
 <h2>{{'listUsers' | translate}}</h2>
-<mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+<mat-form-field appearance="outline" style="width: 300px; margin-bottom: 16px;">
+  <mat-label>Filtrar usuarios</mat-label>
+  <input matInput (keyup)="applyFilter($event)" placeholder="Buscar...">
+</mat-form-field>
+<mat-paginator [pageSizeOptions]="[20, 40, 80]" showFirstLastButtons></mat-paginator>
+<mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
   <ng-container [matColumnDef]="col.key" *ngFor="let col of columnsSchema">
-          <mat-header-cell *matHeaderCellDef [ngSwitch]="col.key">
+          <mat-header-cell *matHeaderCellDef mat-sort-header [ngSwitch]="col.key">
               <span *ngSwitchDefault>{{ col.label }}</span>
           </mat-header-cell>
           <mat-cell *matCellDef="let element">
@@ -15,12 +20,9 @@
                     matTooltip="Delete" color="warn"><i class="fa-solid fa-trash fa-xs"></i>
                   </button>
                 </div>
-                <span *ngSwitchCase="'number'" ngClass="small-data">
-                  {{ element[col.key] | number: '1.3-3' }}
-                </span>
-                <span *ngSwitchDefault ngClass="small-data">
-                  {{ element[col.key] }}
-                </span>
+                <span *ngSwitchCase="'number'" ngClass="small-data">{{ element[col.key] | number: '1.3-3' }} </span>
+                <span *ngSwitchCase="'date'" ngClass="small-data">{{ element[col.key] }} </span>
+                <span *ngSwitchDefault ngClass="small-data">{{ element[col.key] }}</span>
               </div>
 
               <div [ngSwitch]="col.type" *ngIf="element.isEdit">
@@ -39,5 +41,5 @@
 </mat-table>
 
 <ng-template #noDataFoundYet>
-<span class="loader">No data found yet...</span>
+  <span class="loader">No data found yet...</span>
 </ng-template>

@@ -94,6 +94,31 @@ export class UserService {
     return this.http
       .delete<deleteResponse>(`${this.urlAPiMySql}userAppSostenibiityDelete.php?userId=${userId}`)
       .pipe(catchError(this.sharedService.handleError));
-    }
+  }
+
+  formatDate(fecha: string | Date): string {
+  // Convertir string a Date si es necesario
+  const dateObj = (typeof fecha === 'string') ? new Date(fecha) : fecha;
+
+  const pad = (n: number) => n < 10 ? '0' + n : n;
+
+  const dia = pad(dateObj.getDate());
+  const mes = pad(dateObj.getMonth() + 1);
+  const anio = dateObj.getFullYear();
+
+  const horas = pad(dateObj.getHours());
+  const minutos = pad(dateObj.getMinutes());
+
+  return `${dia}/${mes}/${anio} ${horas}:${minutos}`;
+  }
+
+  formatCurrency(importe: number | string): string {
+  return new Intl.NumberFormat('es-ES', {
+    style: 'currency',
+    currency: 'EUR',
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2
+  }).format(Number(importe));
+  }  
 }
 

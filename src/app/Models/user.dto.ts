@@ -48,28 +48,23 @@ export const userColumns = [
       type: "text",
       label: "Empresa"
     },
-    /* {
-      key: "nif",
-      type: "text",
-      label: "NIF"
-    },
-    {
-      key: "domicilio",
-      type: "text",
-      label: "Domicilio"
-    }, */
     {
       key: "email",
       type: "text",
       label: "User"
     },
     {
-      key: "password",
-      type: "text",
-      label: "Password"
+      key: "pwd_expires_at",
+      type: "date",
+      label: "Password expires"
     },
     {
-      key: "updated_at",
+      key: "last_login_at",
+      type: "date",
+      label: "Last login"
+    },
+    {
+      key: "created_at",
       type: "text",
       label: "Created"
     },

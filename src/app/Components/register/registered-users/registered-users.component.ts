@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
+import { ViewChild, AfterViewInit } from '@angular/core';
 import { UserDTO, userColumns } from 'src/app/Models/user.dto';
 import { UserService } from 'src/app/Services/user.service';import { MatDialog } from '@angular/material/dialog';
 import { HeaderMenus } from 'src/app/Models/header-menus.dto';
@@ -10,7 +10,8 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 import { Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
 import { finalize } from 'rxjs';
-
+import { MatTableDataSource  } from '@angular/material/table';
+import { MatPaginator  } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-registered-users',
@@ -27,7 +28,17 @@ export class RegisteredUsersComponent {
   showAuthSection: boolean;
   showNoAuthSection: boolean;
   dataSource = new MatTableDataSource<UserDTO>()
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+  @ViewChild(MatSort) sort!: MatSort;
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
+  }
 
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
   columnsDisplayed: string[] = userColumns.map((col) => col.key)
   columnsSchema: any = userColumns
 
@@ -53,7 +64,6 @@ constructor(
       const headerInfo: HeaderMenus = { showAuthSection: true, showNoAuthSection: false, }
       this.headerMenusService.headerManagement.next(headerInfo)
       this.userId = this.jwtHelper.decodeToken().id_ils
-      console.log("lanzo loadUsers", this.userId)
       this.loadUsers();
     } else {
       const headerInfo: HeaderMenus = { showAuthSection: false, showNoAuthSection: true, };
@@ -71,13 +81,18 @@ ngOnInit(): void {
 
 private loadUsers(): void {
   let errorResponse: any;
-  console.log("estoy en loadusers")
   if (this.userId) {
       this.userService.getAllRegisteredUsers().subscribe(
       (users: any) => {
         this.users = users
-        console.log("usuarios: ",this.users)
-        this.dataSource = new MatTableDataSource(this.users)
+        this.users.map((user:any) => {
+          user.last_login_at = this.userService.formatDate(user.last_login_at)
+          user.created_at = this.userService.formatDate(user.created_at)
+          user.pwd_expires_at = this.userService.formatDate(user.pwd_expires_at)
+        })
+        this.dataSource.data = this.users;
+        this.dataSource.paginator = this.paginator;
+        this.dataSource.sort = this.sort;
       },
       (error: HttpErrorResponse) => {
         errorResponse = error.error

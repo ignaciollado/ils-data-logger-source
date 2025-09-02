@@ -1,10 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, Inject, ViewChild, Input } from '@angular/core';
-import { UntypedFormBuilder,
-  UntypedFormControl,
-  UntypedFormGroup,
-  Validators,
-} from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators} from '@angular/forms';
 
 import {DateAdapter, MAT_DATE_LOCALE} from '@angular/material/core';
 
@@ -18,6 +14,7 @@ import { DelegationService } from 'src/app/Services/delegation.service';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
+import { MatPaginator  } from '@angular/material/paginator';
 
 import { MatDialog } from '@angular/material/dialog'
 import { ConfirmDialogComponent } from 'src/app/confirm-dialog/confirm-dialog.component'
@@ -83,6 +80,7 @@ export class WaterFormComponent {
   columnsDisplayed: string[] = waterColumns.map((col) => col.key);
   //dataSource: any = WATER_DATA
   dataSource = new MatTableDataSource<ConsumptionDTO>()
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
   columnsSchema: any = waterColumns;
   valid: any = {}
 /*   columnsDisplayed = ['delegation', 'year', 'water', 'enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'setiembre', 'octubre', 'noviembre', 'diciembre', 'ACTIONS'];
@@ -91,6 +89,7 @@ export class WaterFormComponent {
   @ViewChild('waterTbSort') waterTbSort = new MatSort();
 
   ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.waterTbSort;
   }
 

@@ -7,7 +7,8 @@
     "login": "Entrar",
     "logout": "Sortir",
     "signup": "Registrar-se com a empresa indústrial",
-
+    "forgotPassword": "Recuperar la contrasenya",
+    "sendRecoveryLink": "Enviar l'enllaç de recuperació",    
     "name": "Denominació",
     "ubication": "Ubicació",
     "city": "Localitat",

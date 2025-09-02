@@ -22,6 +22,8 @@ import { AutoevaluationQuestionnaireComponent } from './Components/autoevaluatio
 import { RegisteredUsersComponent } from './Components/register/registered-users/registered-users.component';
 import { GlobalRegulationNormativeTextsComponent } from './global-regulation-normative-texts/global-regulation-normative-texts.component';
 import { MunicipalityRegulationNormativeTextsComponent } from './municipality-regulation-normative-texts/municipality-regulation-normative-texts.component';
+import { PasswordRecoveryComponent } from './Components/password-recovery/password-recovery.component';
+import { PasswordResetComponent } from './Components/password-reset/password-reset.component';
 
 const routes: Routes = [
   {
@@ -36,6 +38,8 @@ const routes: Routes = [
     path: 'register',
     component: RegisterComponent,
   },
+    { path: 'recover-password', component: PasswordRecoveryComponent },
+  { path: 'reset-password', component: PasswordResetComponent},
   {
     path: 'listUsers',
     component: RegisteredUsersComponent,

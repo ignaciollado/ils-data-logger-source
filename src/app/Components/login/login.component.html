@@ -28,10 +28,10 @@
           <mat-error *ngIf="password.hasError('maxlength')">{{'Password' | translate}} {{'CharsMax' | translate}} 16 {{'Characters' | translate}}</mat-error>
         </mat-form-field>
       </section>
-
       <button mat-raised-button color="primary" type="submit" [disabled]="!loginForm.valid">{{'acceder' | translate}}</button>
     </mat-card>
   </form>
+  <div ngClass="recovery-link"> <a [routerLink]="['/recover-password']">{{ 'forgotPassword' | translate }}</a></div>
   <div style="margin-left: auto; margin-right: auto"><span id="loginFeedback"></span></div>
   <h4>{{'giveAccess' | translate}}</h4>
   <a [routerLink]="['/register']" routerLinkActive="active" ariaCurrentWhenActive="page">{{'signup' | translate}}</a>

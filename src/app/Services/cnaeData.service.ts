@@ -27,7 +27,7 @@ export interface deleteResponse {
   providedIn: 'root'
 })
 export class CnaeDataService {
-
+  private apiUrl = 'https://tramits.idi.es/public/index.php/api';
   private urlAPiMySql:  string;
 
   constructor(private http: HttpClient,
@@ -40,11 +40,11 @@ export class CnaeDataService {
     if (companyId) {
       console.log ("logged INNN", companyId)
       return this.http
-        .get<CnaeDataDTO[]>(`${URL_API}cnaesDataGetByCompanyId.php?companyId=${companyId}`) 
+        .get<CnaeDataDTO[]>(`${this.apiUrl}/ilscnaes/${companyId}`) 
     } else {
       console.log("NOTTT logged")
       return this.http
-        .get<CnaeDataDTO[]>(`${URL_API_SRV}/api/get-all-cnaesData`, httpOptions)
+        .get<CnaeDataDTO[]>(`${this.apiUrl}/get-all-cnaesData`, httpOptions)
     }
   }
 

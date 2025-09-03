@@ -42,14 +42,6 @@ export const MY_FORMATS = {
   },
 };
 
-const CNAES_DATA = [
-  {Id: 1, delegation: "Son Castelló", year: "2019", enviromentalDataName: "Fuel (kg)", "cnaeUnitSelected": "Billing", "jan": 15000000, "feb": 15000000, "mar": 15000000, "apr": 15000000, "may": 15000000
-  , "jun": 15000000, "jul": 15000000, "aug": 15000000, "sep": 15000000, "oct": 15000000, "nov": 15000000, "dec": 15000000},
-  {Id: 2, delegation: "Can Valero", year: "2020", enviromentalDataName: "Fuel (kg)", "cnaeUnitSelected": "Billing", "jan": .300},
-  {Id: 3, delegation: "Son Castelló", year: "2019", enviromentalDataName: "Gas butano (kg)", "cnaeUnitSelected": "Tonelada*", "jan": 500.57, "feb": 1.4579},
-  {Id: 4, delegation: "Son Castelló", year: "2020", enviromentalDataName: "Gas Natural (kWh)", "cnaeUnitSelected": "Tonelada*", "jan": 1.2550}
-];
-
 @Component({
   selector: 'app-persons',
   templateUrl: './cnaes.component.html',
@@ -90,10 +82,12 @@ export class CnaesComponent {
   currentActivityIndicator: string = "Not selected"
 
   delegations!: DelegationDTO[];
+  
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+  @ViewChild(MatSort) sort!: MatSort;
 
   isGridView: boolean = false
   columnsDisplayed: string[] = CnaeColumns.map((col) => col.key)
-  //dataSource: any = CNAES_DATA
   dataSource = new MatTableDataSource<CnaeDataDTO>()
   columnsSchema: any = CnaeColumns
 
@@ -139,6 +133,11 @@ export class CnaesComponent {
     this.loadCnaeData( this.userId )
     this.loadYears()
   }
+
+  ngAfterViewInit() {
+  this.dataSource.paginator = this.paginator;
+  this.dataSource.sort = this.sort;
+}
 
   private loadDelegations(): void {
     let errorResponse: any;

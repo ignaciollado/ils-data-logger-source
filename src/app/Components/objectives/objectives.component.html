@@ -29,8 +29,8 @@
         </section>
 
         <section>
-         <mat-form-field [style.width.px]='480'>
-              <mat-label>{{'energyType' | translate}}</mat-label>
+          <mat-form-field [style.width.px]='480'>
+            <mat-label>{{'energyType' | translate}}</mat-label>
               <mat-select [formControl]="environmentalData">
                 <mat-option>
                   <ngx-mat-select-search
@@ -41,13 +41,13 @@
                   [searching] = "isSearching"
                   >
                   <mat-icon ngxMatSelectSearchClear><i class="fa-solid fa-delete-left"></i></mat-icon>
-                </ngx-mat-select-search>
+                  </ngx-mat-select-search>
                 </mat-option>
                 <mat-option *ngFor="let environmentalData of environmentalDataList" [value]="environmentalData" class="small-data">
                   <strong>{{environmentalData.chapterItemName}}</strong>
                 </mat-option>
               </mat-select>
-            </mat-form-field>
+          </mat-form-field>
         </section>
 
         <section>

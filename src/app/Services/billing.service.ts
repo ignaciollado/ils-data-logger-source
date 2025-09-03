@@ -27,7 +27,7 @@ export interface deleteResponse {
   providedIn: 'root'
 })
 export class BillingService {
-
+  private apiUrl = 'https://tramits.idi.es/public/index.php/api';
   private urlAPiMySql:  string;
 
   constructor(private http: HttpClient,
@@ -40,11 +40,11 @@ export class BillingService {
     if (companyId) {
       console.log ("logged INNN", companyId)
       return this.http
-        .get<BillingDTO[]>(`${URL_API}billingGetByCompanyId.php?companyId=${companyId}`) 
+        .get<BillingDTO[]>(`${this.apiUrl}/ilsbilling/${companyId}`) 
     } else {
       console.log("NOTTT logged")
       return this.http
-        .get<BillingDTO[]>(`${URL_API_SRV}/api/get-all-billings`, httpOptions)
+        .get<BillingDTO[]>(`${this.apiUrl}/ilsbilling`, httpOptions)
     }
   }
 

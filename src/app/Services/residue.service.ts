@@ -29,6 +29,7 @@ export interface deleteResponse {
 })
 export class ResidueService {
   private urlApi: string
+  private apiUrl: string
   private urlAPiMySql:  string
   private urlAPiMock: string
 
@@ -37,6 +38,8 @@ export class ResidueService {
     this.urlAPiMySql = '../../assets/phpAPI/'
     /* this.urlAPiMock = '../../assets/mocks/' */
     this.urlAPiMock = '../../assets_auto/jsons/'
+    this.apiUrl = 'https://tramits.idi.es/public/index.php/api';
+
   }
 
   getAllResidues(): Observable<ResidueDTO[]> {
@@ -67,9 +70,20 @@ export class ResidueService {
       .pipe(catchError(this.sharedService.handleError));
   }
 
-  getResiduesLER(): Observable<ResidueLERDTO[]> {
+/*   getResiduesLER(): Observable<ResidueLERDTO[]> {
     return this.http
       .get<ResidueLERDTO[]>(`${this.urlAPiMock}residueList.json`)
+      .pipe(catchError(this.sharedService.handleError))
+  } */
+  getResiduesLER(): Observable<ResidueLERDTO[]> {
+    return this.http
+      .get<ResidueLERDTO[]>(`${this.apiUrl}/ilsresidueitems`)
+      .pipe(catchError(this.sharedService.handleError))
+  }
+  
+  getResiduesItemsLERById(itemId: string): Observable<ResidueLERDTO[]> {
+    return this.http
+      .get<ResidueLERDTO[]>(`${this.apiUrl}/ilsresidueitem/id/${itemId}`)
       .pipe(catchError(this.sharedService.handleError))
   }
 

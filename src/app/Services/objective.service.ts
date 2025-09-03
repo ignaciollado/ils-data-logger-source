@@ -25,14 +25,16 @@ export interface deleteResponse {
 
 export class ObjectiveService {
 
-private URL_API: string = '../../assets/phpAPI/'
-private URL_API_SRV: string = "https://jwt.idi.es/public/index.php"
-private URL_MOCKS: string = '../../assets/mocks/consumptions.json'
-
+  private URL_API: string = '../../assets/phpAPI/'
+  private URL_API_SRV: string = "https://jwt.idi.es/public/index.php"
+  private URL_MOCKS: string = '../../assets/mocks/consumptions.json'
   private urlAPiMySql:  string;
+  private apiUrl: string
 
   constructor(private http: HttpClient,
-    private sharedService: SharedService) { }
+    private sharedService: SharedService) { 
+          this.apiUrl = 'https://tramits.idi.es/public/index.php/api';
+    }
 
   getAllObjectives(): Observable<ObjectiveDTO[]> {
     return this.http
@@ -42,7 +44,7 @@ private URL_MOCKS: string = '../../assets/mocks/consumptions.json'
 
   getAllEnvironmentalData(): Observable<ObjectiveDTO[]> {
     return this.http
-      .get<ObjectiveDTO[]>(`${this.URL_API}environmentalDataGetAll.php`, httpOptions)
+      .get<ObjectiveDTO[]>(`${this.apiUrl}/ils_objective-enviromental-data`, httpOptions)
   }
 
   getAllObjectivesByCompanyAndAspect(companyId:any, aspectId?: number): Observable<ObjectiveDTO[]> {

@@ -1,5 +1,5 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, ViewChild } from '@angular/core';
 import { registerLocaleData } from '@angular/common';
 import localeEs from '@angular/common/locales/es';
 import {
@@ -19,23 +19,17 @@ import { DelegationService } from 'src/app/Services/delegation.service';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { MatTableDataSource } from '@angular/material/table';
-import { MatPaginator, MatPaginatorModule  } from '@angular/material/paginator';
 
-import { MatSort } from '@angular/material/sort';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmDialogComponent } from 'src/app/confirm-dialog/confirm-dialog.component';
 import { YearsDTO } from 'src/app/Models/years.dto';
 
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginator,  } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+
 registerLocaleData(localeEs, 'es')
 
-const BILLING_DATA = [
-  {Id: 1, delegation: "Son Castelló", year: "2019", "jan": 10000000, "feb": 10000000, "mar": 10000000, "apr": 10000000, "may": 10000000
-  , "jun": 10000000, "jul": 10000000, "aug": 10000000, "sep": 10000000, "oct": 10000000, "nov": 10000000, "dec": 10000000},
-  {Id: 2, delegation: "Can Valero", year: "2020", "jan": 1},
-  {Id: 3, delegation: "Son Castelló", year: "2019", "jan": 1, "feb": 1},
-  {Id: 4, delegation: "Son Castelló", year: "2020", "jan": 1},
-  {Id: 5, delegation: "Son Castelló", year: "2023", "jan": 1}
-];
 @Component({
   selector: 'app-billing',
   templateUrl: './billing.component.html',
@@ -75,9 +69,11 @@ export class BillingComponent {
   delegations!: DelegationDTO[];
   billings!: BillingDTO[];
 
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+  @ViewChild(MatSort) sort!: MatSort;
+
   isGridView: boolean = false
   columnsDisplayed: string[] = BillingColumns.map((col) => col.key);
-  //dataSource: any = BILLING_DATA
   dataSource = new MatTableDataSource<BillingDTO>()
   columnsSchema: any = BillingColumns;
 
@@ -116,10 +112,17 @@ export class BillingComponent {
     this.loadDelegations( this.userId );
   }
 
-  ngOnInit() {
-    this.loadBillings( this.userId )
-    this.loadYears()
-  }
+ngOnInit() {
+  this.loadBillings(this.userId);
+  this.loadYears();
+}
+
+ngAfterViewInit() {
+  this.dataSource.paginator = this.paginator;
+  this.dataSource.sort = this.sort;
+}
+
+  
 
   private loadDelegations(userId: string): void {
     let errorResponse: any;

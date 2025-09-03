@@ -27,6 +27,7 @@ interface deleteResponse {
 export class DelegationService {
   private urlAPiMySql:  string;
   private urlAPiMock: string
+  private apiUrl = 'https://tramits.idi.es/public/index.php/api';
 
     constructor(private http: HttpClient,
       private sharedService: SharedService) {
@@ -36,7 +37,7 @@ export class DelegationService {
 
   getAllDelegationsByCompanyIdFromMySQL (companyId: string): Observable<DelegationDTO[]> {
     return this.http
-      .get<DelegationDTO[]>(`${this.urlAPiMySql}delegationGetByCompany.php?companyId=${companyId}`)
+      .get<DelegationDTO[]>(`${this.apiUrl}/ilscompanydelegation/${companyId}`)
   }
 
   getTotalDelegationsByCompany (companyId: string): Observable<any> {

@@ -1,6 +1,7 @@
-import { Component, ViewChild, LOCALE_ID } from '@angular/core'
+import { Component, ViewChild } from '@angular/core'
 import { FormControl, UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms'
 
+import { IlsService } from 'src/app/Services/ils.service'
 import { DelegationService } from 'src/app/Services/delegation.service'
 import { DelegationDTO } from 'src/app/Models/delegation.dto'
 import { ObjectiveService } from 'src/app/Services/objective.service'
@@ -94,6 +95,7 @@ export class ObjectivesComponent {
     private jwtHelper: JwtHelperService,
     private sharedService: SharedService,
     private objectiveService: ObjectiveService,
+    private ilsService: IlsService,
     private energyService: EnergyService,
     private residueService: ResidueService,
     private formBuilder: UntypedFormBuilder,
@@ -146,39 +148,31 @@ export class ObjectivesComponent {
     }
   }
 
-  private loadObjectives( userId: string ): void {
-    this.objectiveService.getAllObjectivesByCompany(userId).subscribe((res: ObjectiveDTO[]) => {
-      this.dataSource.data = res;
-      this.dataSource.data. map ( (objective: ObjectiveDTO) => {
+  private loadObjectives ( userId: string ): void {
+    this.ilsService.getById('ils_objective', +userId)
+      .subscribe((res: ObjectiveDTO[]) => {
+        this.dataSource.data = res;
+        this.dataSource.data. map ( (objective: ObjectiveDTO) => {
 
-        if (objective.aspectId==1) { /* Energies */
-          this.energyService.getAllEnergies().subscribe((energies: EnergyDTO[]) => {
-            energies.map ( (itemEnergy: EnergyDTO) => {
+        if (objective.aspectId == 1) { // Energies
+          this.ilsService.getAll('ils_energy')
+            .subscribe((energies: EnergyDTO[]) => {
+              energies.map ( (itemEnergy: EnergyDTO) => {
               if (itemEnergy.energyId==objective.chapterItemId) {
                 objective.enviromentalDataName = itemEnergy.nameES
               }
             })
-          })
-        }
-
-        if (objective.aspectId==3) { /* Residues */
-        this.residueService.getResiduesLER().subscribe((residuesLER: ResidueLERDTO[]) => {
-          residuesLER.map( item => {
-            item.chapters.map( subItem=> {
-              subItem.chapterItems.map( (subSubItem: ChapterItem)=> {
-                if (subSubItem.chapterItemId == objective.chapterItemId) {
-                  objective.enviromentalDataName = subSubItem.chapterItemName
-                }
-
-              })
             })
-          this.environmentalDataList
-          })
-        })
         }
+
+        if (objective.aspectId == 3) { // Residues
+          this.residueService.getResiduesItemsLERById(objective.chapterItemId).subscribe((residueItem:any) => {
+            objective.enviromentalDataName = residueItem.chapterItemName
+          })
+        }
+
       })
-      /* this.dataSource.paginator = this.paginator; */
-    });
+      })
   }
 
   private loadEnvironmentalData(): void {
@@ -332,16 +326,20 @@ export class ObjectivesComponent {
     let errorResponse: any;
     this.residueService.getResiduesLER()
     .subscribe(
-      (residues: ResidueLERDTO[]) => {
+      (residues: any[]) => {
         this.residues = residues
-        this.residues.map( item => {
+        /*         this.residues.map( item => {
           item.chapters.map( subItem=> {
             subItem.chapterItems.map( (subSubItem: ChapterItem)=> {
               this.environmentalDataList = [...this.environmentalDataList, subSubItem]
             })
           })
         this.environmentalDataList
-        })
+        }) */
+
+         this.residues.map( item => { 
+          this.environmentalDataList = [...this.environmentalDataList, item]
+        }) 
 
       },
       (error: HttpErrorResponse) => {

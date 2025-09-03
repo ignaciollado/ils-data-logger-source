@@ -6,13 +6,6 @@ require_once 'conectar_a_bbdd_pindust.php';
 
 mysqli_query($conn, "SET NAMES 'utf8'");
 $companyId = $_GET['companyId'];
-/* $sql = "SELECT energyId as idEnv, nameES, nameCA, '1' as aspect FROM ils_energy
-UNION
-SELECT residueId as idEnv, nameES, nameCA, '3' as aspect FROM ils_residue
-UNION
-SELECT aspectId as idEnv, nameES, nameCA, '2' as aspect FROM ils_aspect WHERE aspectId = 2
-UNION
-SELECT aspectId as idEnv, nameES, nameCA, '5' as aspect FROM ils_aspect WHERE aspectId = 5"; */
 
 $sql = "SELECT energyId as chapterItemId, nameES as chapterItemName, nameCA, '1' as aspect FROM ils_energy
 UNION

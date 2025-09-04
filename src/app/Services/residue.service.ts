@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { SharedService } from './shared.service';
 import { catchError } from 'rxjs/operators';
 import { ResidueLERDTO } from '../Models/residueLER.dto';
+import { Chapter, Subchapter, Item } from '../Models/residuesRepository.dto'
 
 const URL_API = '../../assets/phpAPI/'
 const URL_API_SRV = "https://jwt.idi.es/public/index.php"
@@ -75,15 +76,15 @@ export class ResidueService {
       .get<ResidueLERDTO[]>(`${this.urlAPiMock}residueList.json`)
       .pipe(catchError(this.sharedService.handleError))
   } */
-  getResiduesLER(): Observable<ResidueLERDTO[]> {
+  getResiduesLER(): Observable<Item[]> {
     return this.http
-      .get<ResidueLERDTO[]>(`${this.apiUrl}/ilsresidueitems`)
+      .get<Item[]>(`${this.apiUrl}/ilsresidueitems`)
       .pipe(catchError(this.sharedService.handleError))
   }
   
   getResiduesItemsLERById(itemId: string): Observable<ResidueLERDTO[]> {
     return this.http
-      .get<ResidueLERDTO[]>(`${this.apiUrl}/ilsresidueitem/id/${itemId}`)
+      .get<ResidueLERDTO[]>(`${this.apiUrl}/ilsresidueitemdet/${itemId}`)
       .pipe(catchError(this.sharedService.handleError))
   }
 

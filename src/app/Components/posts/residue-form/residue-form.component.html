@@ -43,8 +43,8 @@
                 <mat-icon ngxMatSelectSearchClear><i class="fa-solid fa-delete-left"></i></mat-icon>
               </ngx-mat-select-search>
               </mat-option>
-                  <mat-option *ngFor="let items of residuesItem" [value]="items.chapterItemId" class="small-data">
-                    {{items.chapterItemId}} - <strong>{{items.chapterItemName}}</strong>
+                  <mat-option *ngFor="let item of residuesItem" [value]="item.itemId" class="small-data">
+                    {{item.itemId}} - <strong>{{item.itemName}}</strong>
                   </mat-option>
             </mat-select>
 

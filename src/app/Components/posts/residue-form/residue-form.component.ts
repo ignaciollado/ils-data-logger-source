@@ -28,7 +28,7 @@ import { MatPaginator  } from '@angular/material/paginator';
 
 import { MatDialog } from '@angular/material/dialog'
 import { ConfirmDialogComponent } from 'src/app/confirm-dialog/confirm-dialog.component'
-import { ChapterItem, ResidueLERDTO } from 'src/app/Models/residueLER.dto';
+import { Chapter, Subchapter, Item } from 'src/app/Models/residuesRepository.dto';
 import { MatSelect } from '@angular/material/select';
 import { BillingService } from 'src/app/Services/billing.service';
 import { CnaeDataService } from 'src/app/Services/cnaeData.service';
@@ -68,8 +68,9 @@ export class ResidueFormComponent {
   private userId: string | null;
 
   delegations!: DelegationDTO[]
-  residues!: ResidueLERDTO[]
-  residuesItem: ChapterItem[] = []
+  chapters!: Chapter[]
+  subchapters: Subchapter[]
+  residuesItem: Item[] = []
   consumptions!: ConsumptionDTO[]
   billings!: BillingDTO[]
   cnaesData!: CnaeDataDTO[]
@@ -89,7 +90,7 @@ export class ResidueFormComponent {
   }
 
     /** list of residues filtered by search keyword */
-    public filteredResidues: ReplaySubject<ChapterItem[]> = new ReplaySubject<ChapterItem[]>(1);
+    public filteredResidues: ReplaySubject<Item[]> = new ReplaySubject<Item[]>(1);
 
     @ViewChild('singleSelect', { static: true }) singleSelect: MatSelect;
 
@@ -202,17 +203,8 @@ export class ResidueFormComponent {
     let errorResponse: any;
     this.residueService.getResiduesLER()
     .subscribe(
-      (residues: ResidueLERDTO[]) => {
-        this.residues = residues;
-        this.residues.map( item => {
-          item.chapters.map( subItem=> {
-            subItem.chapterItems.map( (subSubItem: ChapterItem)=> {
-              this.residuesItem = [...this.residuesItem, subSubItem]
-            })
-          })
-          this.residuesItem
-        })
-
+      (residues: Item[]) => {
+        this.residuesItem = residues
       },
       (error: HttpErrorResponse) => {
         errorResponse = error.error;
@@ -227,20 +219,15 @@ export class ResidueFormComponent {
         this.consumptionService.getAllConsumptionsByCompanyAndAspect(userId, 3).subscribe(
         (consumptions: ConsumptionDTO[]) => {
           this.consumptions = consumptions
-          console.log ("this.consumptions", this.consumptions)
           this.consumptions.map( (consumption:ConsumptionDTO) => {
            this.residueService.getResiduesLER()
             .subscribe(
-              (residues: ResidueLERDTO[]) => {
-                this.residues = residues;
-                this.residues.map( item => {
-                   item.chapters.map( subItem=> {
-                   subItem.chapterItems.map( (subSubItem: ChapterItem)=> {
-                     if (subSubItem.chapterItemId === consumption.residueId) {
-                      consumption.residueES = subSubItem.chapterItemName
-                     }
-                    })
-                  })
+              (residues: Item[]) => {
+                this.residuesItem = residues;
+                this.residuesItem.map( item => {
+                      if (item.itemId === consumption.residueId) {
+                        consumption.residueES = item.itemName
+                      }
                   this.residuesItem
                 })
               })
@@ -273,7 +260,7 @@ export class ResidueFormComponent {
     }
     let search = this.residueFilter.value;
     if (search !== "") {
-      this.residuesItem = this.residuesItem.filter((item:ChapterItem)=> item.chapterItemName.toLowerCase().includes(search.toLowerCase()))
+      this.residuesItem = this.residuesItem.filter((item:Item)=> item.itemName.toLowerCase().includes(search.toLowerCase()))
       return;
     } else {
       this.loadResidues()
@@ -281,7 +268,7 @@ export class ResidueFormComponent {
     this.isSearching = false
     // filter the banks
     this.filteredResidues.next(
-      this.residuesItem.filter(bank => bank.chapterItemName.toLowerCase().includes(search))
+      this.residuesItem.filter(bank => bank.itemName.toLowerCase().includes(search))
     );
 
   }
@@ -365,8 +352,6 @@ export class ResidueFormComponent {
   public ratioTypeSelected(ratioType: any) {
     console.log(ratioType)
     this.theRatioTypeSelected = !this.theRatioTypeSelected
-    /* this.objective.enable()
-    this.objective.addValidators(Validators.required) */
   }
 
   public addRow() {
@@ -449,19 +434,6 @@ export class ResidueFormComponent {
           });
         }
       });
-
-     /* this.dialog
-      .open(ConfirmDialogComponent)
-      .afterClosed()
-      .subscribe((confirm) => {
-        if (confirm) {
-           this.objectiveService.deleteObjective(id).subscribe(() => {
-            this.dataSource.data = this.dataSource.data.filter(
-              (u: ObjectiveDTO) => !u.isSelected,
-            )
-          })
-        }
-      }) */
   }
 
   disableSubmit(id: number) {

@@ -116,8 +116,8 @@
 
           <mat-header-row *matHeaderRowDef="columnsDisplayed; sticky: true"></mat-header-row>
           <mat-row *matRowDef="let row; columns: columnsDisplayed;"></mat-row>
-      </table>
-      <mat-paginator [pageSizeOptions]='[10, 15, 20, 50]' showFirstLastButtons></mat-paginator>
+    </table>
+    <mat-paginator [pageSizeOptions]='[10, 15, 20, 50]' showFirstLastButtons></mat-paginator>
 
     <!-- <app-file-upload></app-file-upload> -->
     <span *ngIf="!dataSource" class="loader">No data found yet...</span>

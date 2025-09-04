@@ -249,7 +249,7 @@ export class DashboardComponent implements OnInit {
     let errorResponse: any;
     this.residueService.getResiduesLER()
     .subscribe(
-      (residues: ResidueLERDTO[]) => {
+      (residues: any[]) => {
         this.residues = residues;
         this.residues.map(item => {
           item.chapters.map(subItem=> {

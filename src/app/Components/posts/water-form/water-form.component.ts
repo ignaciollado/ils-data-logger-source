@@ -24,14 +24,6 @@ import { BillingDTO } from 'src/app/Models/billing.dto';
 import { CnaeDataDTO } from 'src/app/Models/cnaeData.dto';
 import { YearsDTO } from 'src/app/Models/years.dto';
 
-const WATER_DATA = [
-  {Id: 1, delegation: "Mock Data", year: "2019", "jan": 10000000, "feb": 20000000, "mar": 15000000, "apr": 15000000, "may": 15000000
-  , "jun": 15000000, "jul": 15000000, "aug": 15000000, "sep": 15000000, "oct": 15000000, "nov": 15000000, "dec": 15000000},
-  {Id: 2, delegation: "Can Valero", year: "2020", "jan": .300},
-  {Id: 3, delegation: "Mock Data", year: "2019", "jan": 500.57, "feb": 1.4579},
-  {Id: 4, delegation: "Mock Data", year: "2020", "jan": 1.2550}
-];
-
 @Component({
   selector: 'app-water-form',
   templateUrl: './water-form.component.html',
@@ -78,18 +70,15 @@ export class WaterFormComponent {
 
   isGridView: boolean = false
   columnsDisplayed: string[] = waterColumns.map((col) => col.key);
-  //dataSource: any = WATER_DATA
   dataSource = new MatTableDataSource<ConsumptionDTO>()
-  @ViewChild(MatPaginator) paginator!: MatPaginator;
   columnsSchema: any = waterColumns;
+
   valid: any = {}
-/*   columnsDisplayed = ['delegation', 'year', 'water', 'enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'setiembre', 'octubre', 'noviembre', 'diciembre', 'ACTIONS'];
-  dataSource = new MatTableDataSource(this.consumptions); */
 
   @ViewChild('waterTbSort') waterTbSort = new MatSort();
+  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
 
   ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.waterTbSort;
   }
 
@@ -139,7 +128,6 @@ export class WaterFormComponent {
       this.billingService.getBillingsByCompany(userId).subscribe(
         (billings: BillingDTO[]) => {
           this.billings = billings;
-          console.log("billings: ", this.billings)
         },
         (error: HttpErrorResponse) => {
           errorResponse = error.error;
@@ -154,7 +142,6 @@ export class WaterFormComponent {
     if (this.userId) {
         this.cnaesDataService.getCnaesDataByCompany(userId).subscribe((item: CnaeDataDTO[]) => {
           this.cnaesData = item
-          console.log("cnaesData: ", this.cnaesData)
         },
         (error: HttpErrorResponse) => {
           errorResponse = error.error;
@@ -181,12 +168,13 @@ export class WaterFormComponent {
 
   private loadConsumption(userId: string): void {
     let errorResponse: any;
-    if (this.userId) {
-        this.consumptionService.getAllConsumptionsByCompanyAndAspect(this.userId, 2).subscribe(
+    if (userId) {
+        this.consumptionService.getAllConsumptionsByCompanyAndAspect(userId, 2).subscribe(
         (consumptions: ConsumptionDTO[]) => {
           this.consumptions = consumptions
           this.dataSource = new MatTableDataSource(this.consumptions)
-          this.dataSource.sort = this.waterTbSort
+          this.dataSource.sort = this.waterTbSort;
+          this.dataSource.paginator = this.paginator;
         },
         (error: HttpErrorResponse) => {
           errorResponse = error.error;

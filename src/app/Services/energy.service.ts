@@ -29,17 +29,20 @@ export interface deleteResponse {
 export class EnergyService {
   private urlApi: string;
   private urlAPiMySql:  string;
+  private apiUrl = 'https://tramits.idi.es/public/index.php/api';
 
   constructor(private http: HttpClient,
     private sharedService: SharedService) {
     this.urlApi = '../../assets/mocks/fuels.json';
     this.urlAPiMySql = '../../assets/phpAPI/'}
 
+/*   getAllEnergies(): Observable<EnergyDTO[]> {
+    return this.http.get<EnergyDTO[]>(`${URL_API}energyGetAll.php`) 
+  } */
+
   getAllEnergies(): Observable<EnergyDTO[]> {
-    return this.http
-       .get<EnergyDTO[]>(`${URL_API}energyGetAll.php`) 
-     /*  .get<EnergyDTO[]>(`${URL_API_SRV}/api/get-all-energies`, httpsOptions) */
-  }
+    return this.http.get<EnergyDTO[]>(`${this.apiUrl}/ils_energy`) 
+  }     
 
   getEnergyById(energyId: number): Observable<EnergyDTO> {
     return this.http

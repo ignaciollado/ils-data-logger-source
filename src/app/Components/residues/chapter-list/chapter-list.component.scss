@@ -1,0 +1,76 @@
+/* Contenedor principal del listado */
+section.mat-elevation-z8 {
+  padding: 16px;
+  background-color: #f5f5f5;
+
+  button {
+    margin-bottom: 16px;
+  }
+
+  /* Estilo de los capítulos */
+  mat-expansion-panel {
+    margin-bottom: 12px;
+    border-left: 4px solid #3f51b5;
+    background-color: #e8eaf6;
+
+    mat-expansion-panel-header {
+      font-weight: 600;
+      color: #1a237e;
+    }
+
+    .subchapter-list {
+      padding: 12px 16px;
+      background-color: #f1f1f1;
+      border-left: 4px solid #009688;
+      margin-top: 8px;
+
+      button {
+        margin-bottom: 8px;
+      }
+
+      /* Estilo de subcapítulos */
+      mat-expansion-panel {
+        margin-bottom: 8px;
+        border-left: 4px solid #00796b;
+        background-color: #e0f2f1;
+
+        mat-expansion-panel-header {
+          font-weight: 500;
+          color: #004d40;
+        }
+
+        .item-list {
+          padding: 8px 12px;
+          background-color: #ffffff;
+          border-left: 4px solid #ff9800;
+          margin-top: 4px;
+
+          table {
+            width: 100%;
+            margin-top: 8px;
+            border: 1px solid #ddd;
+
+            th.mat-header-cell {
+              background-color: #ffe0b2;
+              font-weight: 600;
+            }
+
+            td.mat-cell {
+              background-color: #fff3e0;
+            }
+          }
+
+          button {
+            margin-bottom: 8px;
+          }
+        }
+      }
+    }
+  }
+}
+
+/* Ajuste para que las tablas tengan scroll horizontal si son muy anchas */
+table.full-width {
+  display: block;
+  overflow-x: auto;
+}

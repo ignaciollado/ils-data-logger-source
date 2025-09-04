@@ -1,0 +1,65 @@
+<section class="mat-elevation-z8">
+  <button mat-raised-button color="primary" (click)="addChapter()">Añadir Capítulo</button>
+
+  <mat-accordion *ngIf="chapters?.length">
+    <mat-expansion-panel *ngFor="let chapter of chapters" (opened)="getSubchapters(chapter.chapterKey)">
+      <mat-expansion-panel-header >
+        <mat-panel-title>
+          {{ chapter.chapterTitle }}
+        </mat-panel-title>
+        <mat-panel-description>
+          Clave de capítulo: {{ chapter.chapterKey }}
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+
+      <div class="subchapter-list">
+        <button mat-raised-button color="primary" (click)="addSubchapter(chapter)">Añadir Subcapítulo</button>
+        <mat-accordion>
+          <mat-expansion-panel *ngFor="let subchapter of subchapters" (opened)="getItems(subchapter.subchapterId)">
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                {{ subchapter.subchapterName }}
+              </mat-panel-title>
+              <mat-panel-description>
+                Clave subcapítulo: {{ subchapter.subchapterId }}
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+
+            <div class="item-list">
+              <button mat-raised-button color="primary" (click)="addItem(subchapter)">Añadir Item</button>
+
+              <table mat-table [dataSource]="items" class="full-width">
+                <ng-container matColumnDef="itemId">
+                  <th mat-header-cell *matHeaderCellDef>ID</th>
+                  <td mat-cell *matCellDef="let item">{{ item.itemId }}</td>
+                </ng-container>
+
+                <ng-container matColumnDef="itemName">
+                  <th mat-header-cell *matHeaderCellDef>Nombre</th>
+                  <td mat-cell *matCellDef="let item">{{ item.itemName }}</td>
+                </ng-container>
+
+                <ng-container matColumnDef="actions">
+                  <th mat-header-cell *matHeaderCellDef>Acciones</th>
+                  <td mat-cell *matCellDef="let item">
+                    <button mat-icon-button color="primary" (click)="editItem(item)">
+                      <mat-icon>edit</mat-icon>
+                    </button>
+                    <button mat-icon-button color="warn" (click)="deleteItem(item.itemId)">
+                      <mat-icon>delete</mat-icon>
+                    </button>
+                  </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="itemColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: itemColumns;"></tr>
+              </table>
+            </div>
+
+          </mat-expansion-panel>
+        </mat-accordion>
+
+      </div>
+    </mat-expansion-panel>
+  </mat-accordion>
+</section>

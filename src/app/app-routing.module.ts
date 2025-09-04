@@ -24,6 +24,9 @@ import { GlobalRegulationNormativeTextsComponent } from './global-regulation-nor
 import { MunicipalityRegulationNormativeTextsComponent } from './municipality-regulation-normative-texts/municipality-regulation-normative-texts.component';
 import { PasswordRecoveryComponent } from './Components/password-recovery/password-recovery.component';
 import { PasswordResetComponent } from './Components/password-reset/password-reset.component';
+import { ChapterListComponent } from './Components/residues/chapter-list/chapter-list.component';
+import { SubchapterListComponent } from './Components/residues/subchapter-list/subchapter-list.component';
+import { ItemListComponent } from './Components/residues/item-list/item-list.component';
 
 const routes: Routes = [
   {
@@ -137,6 +140,11 @@ const routes: Routes = [
     component: GlobalRegulationQuestionnaireAnswerComponent,
     canActivate: [AuthGuard],
   },
+
+  { path: 'chapters', component: ChapterListComponent },
+  { path: 'subchapters', component: SubchapterListComponent },
+  { path: 'items', component: ItemListComponent },
+
   { path: '404', component: NotFoundComponent},
   { path: '**', redirectTo: '/404', pathMatch: 'full'}
 ];

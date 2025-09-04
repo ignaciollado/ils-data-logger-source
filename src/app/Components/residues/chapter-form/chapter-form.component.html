@@ -1,0 +1,18 @@
+<h1 mat-dialog-title>{{data ? 'Editar' : 'Añadir'}} Capítulo</h1>
+<form mat-dialog-content [formGroup]="form">
+  <mat-form-field appearance="fill" class="full-width">
+    <mat-label>Clave</mat-label>
+    <input matInput formControlName="chapterKey">
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" class="full-width">
+    <mat-label>Título</mat-label>
+    <input matInput formControlName="chapterTitle">
+  </mat-form-field>
+</form>
+
+<div mat-dialog-actions>
+  <button mat-button (click)="close()">Cancelar</button>
+  <button mat-button color="primary" (click)="save()" [disabled]="form.invalid">Guardar</button>
+</div>
+

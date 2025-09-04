@@ -30,6 +30,7 @@ export interface deleteResponse {
 export class ConsumptionService {
 
   private urlAPiMySql:  string;
+  private apiUrl = 'https://tramits.idi.es/public/index.php/api';
 
   constructor(private http: HttpClient,
     private sharedService: SharedService) {
@@ -44,8 +45,7 @@ export class ConsumptionService {
 
   getAllConsumptionsByCompanyAndAspect(companyId:any, aspectId?: number): Observable<ConsumptionDTO[]> {
     return this.http
-     /* .get<ConsumptionDTO[]>(`${URL_API_SRV}/api/get-all-company-aspect-consumptions/${companyId}/${aspectId}`, httpOptions) */
-     .get<ConsumptionDTO[]>(`${URL_API}consumptionGetByCompanyId.php?companyId=${companyId}&aspectId=${aspectId}`, httpOptions)
+     .get<ConsumptionDTO[]>(`${this.apiUrl}/ilsconsumption/${companyId}/${aspectId}`, httpOptions)
   }
 
   getAllConsumptionsByCompany(companyId:string): Observable<ConsumptionDTO[]> {
@@ -82,7 +82,6 @@ export class ConsumptionService {
 
   getAllResiduesByCompany(companyId:any, aspectId?: number): Observable<ConsumptionDTO[]> {
     return this.http
-     /* .get<ConsumptionDTO[]>(`${URL_API_SRV}/api/get-all-company-aspect-consumptions/${companyId}/${aspectId}`, httpOptions) */
      .get<ConsumptionDTO[]>(`${URL_API}residueConsumptionGetByCompanyId.php?companyId=${companyId}&aspectId=${aspectId}`, httpOptions)
   }
 

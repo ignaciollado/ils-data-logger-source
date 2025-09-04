@@ -24,6 +24,7 @@ import { ResidueService } from 'src/app/Services/residue.service';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
+import { MatPaginator  } from '@angular/material/paginator';
 
 import { MatDialog } from '@angular/material/dialog'
 import { ConfirmDialogComponent } from 'src/app/confirm-dialog/confirm-dialog.component'
@@ -35,13 +36,6 @@ import { BillingDTO } from 'src/app/Models/billing.dto';
 import { CnaeDataDTO } from 'src/app/Models/cnaeData.dto';
 import { YearsDTO } from 'src/app/Models/years.dto';
 
-const RESIDUES_DATA = [
-  {Id: 1, delegation: "Son Castelló", year: "2019", residueES: "Combustión no peligrosos (kg)", "jan": 15000000, "feb": 15000000, "mar": 15000000, "apr": 15000000, "may": 15000000
-  , "jun": 15000000, "jul": 15000000, "aug": 15000000, "sep": 15000000, "oct": 15000000, "nov": 15000000, "dec": 15000000},
-  {Id: 2, delegation: "Can Valero", year: "2020", residueES: "Construcción y demolición (obra) (kg)", "jan": .300},
-  {Id: 3, delegation: "Son Castelló", year: "2019", residueES: "Productos alimentarios (kg)", "jan": 500.57, "feb": 1.4579},
-  {Id: 4, delegation: "Son Castelló", year: "2020", residueES: "Urbano Mezclado (kg)", "jan": 1.2550}
-];
 
 @Component({
   selector: 'app-residue-form',
@@ -83,12 +77,12 @@ export class ResidueFormComponent {
 
   isGridView: boolean = false
   columnsDisplayed: string[] = residueColumns.map((col) => col.key);
-  //dataSource: any = RESIDUES_DATA
   dataSource = new MatTableDataSource<ConsumptionDTO>();
   columnsSchema: any = residueColumns;
   valid: any = {}
 
   @ViewChild('residueTbSort') residueTbSort = new MatSort();
+  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
 
   ngAfterViewInit() {
     this.dataSource.sort = this.residueTbSort;
@@ -230,10 +224,10 @@ export class ResidueFormComponent {
   private loadConsumption(userId: string): void {
     let errorResponse: any;
     if (this.userId) {
-
-        this.consumptionService.getAllResiduesByCompany(userId, 3).subscribe(
+        this.consumptionService.getAllConsumptionsByCompanyAndAspect(userId, 3).subscribe(
         (consumptions: ConsumptionDTO[]) => {
           this.consumptions = consumptions
+          console.log ("this.consumptions", this.consumptions)
           this.consumptions.map( (consumption:ConsumptionDTO) => {
            this.residueService.getResiduesLER()
             .subscribe(
@@ -254,6 +248,8 @@ export class ResidueFormComponent {
           })
           this.dataSource = new MatTableDataSource(this.consumptions)
           this.dataSource.sort = this.residueTbSort
+          this.dataSource.paginator = this.paginator;
+
         },
         (error: HttpErrorResponse) => {
           errorResponse = error.error;

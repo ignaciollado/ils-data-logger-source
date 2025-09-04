@@ -25,23 +25,16 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 import { HeaderMenusService } from 'src/app/Services/header-menus.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
+import { MatPaginator } from '@angular/material/paginator';
 
 import { MatDialog } from '@angular/material/dialog'
 import { ConfirmDialogComponent } from 'src/app/confirm-dialog/confirm-dialog.component'
-import { MatPaginator } from '@angular/material/paginator';
+
 import { BillingDTO } from 'src/app/Models/billing.dto';
 import { BillingService } from 'src/app/Services/billing.service';
 import { CnaeDataService } from 'src/app/Services/cnaeData.service';
 import { CnaeDataDTO } from 'src/app/Models/cnaeData.dto';
 import { YearsDTO } from 'src/app/Models/years.dto';
-
-const ENERGIES_DATA = [
-  {Id: 1, delegation: "Mock data", year: "2019", energyES: "Fuel (kg)", "jan": 15000000, "feb": 15000000, "mar": 15000000, "apr": 15000000, "may": 15000000
-  , "jun": 15000000, "jul": 15000000, "aug": 15000000, "sep": 15000000, "oct": 15000000, "nov": 15000000, "dec": 15000000},
-  {Id: 2, delegation: "Mock data", year: "2020", energyES: "Fuel (kg)", "jan": .300},
-  {Id: 3, delegation: "Mock data", year: "2019", energyES: "Gas butano (kg)", "jan": 500.57, "feb": 1.4579},
-  {Id: 4, delegation: "Mock data", year: "2020", energyES: "Gas Natural (kWh)", "jan": 1.2550}
-];
 
 @Component({
   selector: 'app-post-form',
@@ -92,7 +85,6 @@ export class PostFormComponent implements OnInit {
 
   isGridView: boolean = false
   columnsDisplayed: string[] = energyColumns.map((col) => col.key);
-  //dataSource: any = ENERGIES_DATA
   dataSource = new MatTableDataSource<ConsumptionDTO>()
   columnsSchema: any = energyColumns;
 
@@ -169,7 +161,6 @@ export class PostFormComponent implements OnInit {
     this.loadEnergies();
     this.loadDelegations(this.userId);
     this.loadConsumption(this.userId);
-    this.dataSource.paginator = this.paginator
   }
 
   ngOnInit(): void {
@@ -178,9 +169,8 @@ export class PostFormComponent implements OnInit {
     if (this.consumptionId) {
       this.isUpdateMode = true;
 
-      this.consumptionService.getConsumptionsById(this.consumptionId).subscribe(
+      this.consumptionService.getConsumptionsById(this.consumptionId).subscribe (
         (consumption: ConsumptionDTO) => {
-
           this.consumption = consumption;
           this.consumptionFields = Object.entries(consumption).map( item => item[1])
 
@@ -239,7 +229,7 @@ export class PostFormComponent implements OnInit {
     if (this.userId) {
       this.energyService.getAllEnergies().subscribe(
         (energies: EnergyDTO[]) => {
-          this.energies = energies;
+          this.energies = energies
         },
         (error: HttpErrorResponse) => {
           errorResponse = error.error;
@@ -266,7 +256,6 @@ export class PostFormComponent implements OnInit {
 
   private loadConsumption(userId: string): void {
     let errorResponse: any;
-
     if (this.userId) {
         this.consumptionService.getAllConsumptionsByCompanyAndAspect(userId, 1).subscribe(
         (consumptions: ConsumptionDTO[]) => {
@@ -287,8 +276,6 @@ export class PostFormComponent implements OnInit {
                   consumptionItem.oct = (consumptionItem.oct/billingItem.oct)
                   consumptionItem.nov = (consumptionItem.nov/billingItem.nov)
                   consumptionItem.dec = (consumptionItem.dec/billingItem.dec)
-                 /* billingProduction = [billingItem.jan, billingItem.feb, billingItem.mar, billingItem.apr, billingItem.may, billingItem.jun, billingItem.jul, billingItem.aug, billingItem.sep, billingItem.oct, billingItem.nov, billingItem.dec] */
-                 /* console.log("billingProduction: ", billingItem.year, billingItem.delegation, billingProduction, consumptionItem) */
                 }
               })
             }
@@ -307,8 +294,6 @@ export class PostFormComponent implements OnInit {
                   consumptionItem.oct = (consumptionItem.oct/cnaeItem.oct)
                   consumptionItem.nov = (consumptionItem.nov/cnaeItem.nov)
                   consumptionItem.dec = (consumptionItem.dec/cnaeItem.dec)
-                  /* cnaeProduction = [cnaeItem.jan, cnaeItem.feb, cnaeItem.mar, cnaeItem.apr, cnaeItem.may, cnaeItem.jun, cnaeItem.jul, cnaeItem.aug, cnaeItem.sep, cnaeItem.oct, cnaeItem.nov, cnaeItem.dec]
-                  console.log("cnaeProduction: ", cnaeItem.year, cnaeItem.delegation, cnaeProduction) */
                 }
               })
             }

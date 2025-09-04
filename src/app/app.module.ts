@@ -86,6 +86,12 @@ import { RegisteredUsersComponent } from './Components/register/registered-users
 import { GlobalRegulationNormativeTextsComponent } from './global-regulation-normative-texts/global-regulation-normative-texts.component';
 import { MunicipalityRegulationNormativeTextsComponent } from "./municipality-regulation-normative-texts/municipality-regulation-normative-texts.component";
 
+import { ChapterListComponent } from "./Components/residues/chapter-list/chapter-list.component";
+import { SubchapterListComponent } from "./Components/residues/subchapter-list/subchapter-list.component";
+import { ItemListComponent } from "./Components/residues/item-list/item-list.component";
+import { ChapterFormComponent } from "./Components/residues/chapter-form/chapter-form.component";
+import { SubchapterFormComponent } from "./Components/residues/subchapter-form/subchapter-form.component";
+import { ItemFormComponent } from "./Components/residues/item-form/item-form.component";
 
 export function tokenGetter() {
   return sessionStorage.getItem("access_token");
@@ -129,7 +135,13 @@ export function tokenGetter() {
     AutoevaluationQuestionnaireComponent,
     RegisteredUsersComponent,
     GlobalRegulationNormativeTextsComponent,
-    MunicipalityRegulationNormativeTextsComponent
+    MunicipalityRegulationNormativeTextsComponent,
+    ChapterListComponent,
+    SubchapterListComponent,
+    ItemListComponent,
+    ChapterFormComponent,
+    SubchapterFormComponent,
+    ItemFormComponent
   ],
   imports: [
     BrowserModule,

@@ -19,6 +19,7 @@ import { DelegationService } from 'src/app/Services/delegation.service';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
+import { MatPaginator } from '@angular/material/paginator';
 
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog'
 import { ConfirmDialogComponent } from 'src/app/confirm-dialog/confirm-dialog.component'
@@ -27,18 +28,6 @@ import { CnaeDataService } from 'src/app/Services/cnaeData.service';
 import { CnaeDataDTO } from 'src/app/Models/cnaeData.dto';
 import { BillingDTO } from 'src/app/Models/billing.dto';
 import { YearsDTO } from 'src/app/Models/years.dto';
-
-const EMISSION_DATA = [
-   {Id: 1, delegation: "Mock data 1", year: "2019", quantity: '100.25', scopeOne: '99.25', scopeTwo: '10.75'},
-   {Id: 2, delegation: "Mock data 1", year: "2020", quantity: '100.25', scopeOne: '99.25', scopeTwo: '10.75'},
-   {Id: 3, delegation: "Mock data 2", year: "2020", quantity: '100.25', scopeOne: '99.25', scopeTwo: '10.75'},
-   {Id: 4, delegation: "Mock data 2", year: "2021", quantity: '100.25', scopeOne: '99.25', scopeTwo: '10.75'},
-   {Id: 6, delegation: "Mock data 3", year: "2020", quantity: '100.25', scopeOne: '99.25', scopeTwo: '10.75'},
-   {Id: 7, delegation: "Mock data 3", year: "2021", quantity: '100.25', scopeOne: '99.25', scopeTwo: '10.75'},
-   {Id: 8, delegation: "Mock data 4", year: "2019", quantity: '100.25', scopeOne: '99.25', scopeTwo: '10.75'},
-   {Id: 9, delegation: "Mock data 4", year: "2020", quantity: '100.25', scopeOne: '99.25', scopeTwo: '10.75'},
-];
-
 
 @Component({
   selector: 'app-emission-form',
@@ -78,12 +67,12 @@ export class EmissionFormComponent {
 
   isGridView: boolean = false
   columnsDisplayed: string[] = emissionColumns.map((col) => col.key);
-  //dataSource: any = EMISSION_DATA
   dataSource = new MatTableDataSource<ConsumptionDTO>();
   columnsSchema: any = emissionColumns;
   valid: any = {}
 
   @ViewChild('emissionTbSort') emissionTbSort = new MatSort();
+  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
 
   ngAfterViewInit() {
     this.dataSource.sort = this.emissionTbSort;
@@ -171,7 +160,6 @@ export class EmissionFormComponent {
     this.sharedService.getAllYears()
       .subscribe((years:YearsDTO[])=>{
         this.years = years
-        console.log ("años: ", this.years)
       })
   }
 
@@ -193,12 +181,12 @@ export class EmissionFormComponent {
   private loadConsumption(userId:string): void {
     let errorResponse: any;
     if (userId) {
-
         this.consumptionService.getAllConsumptionsByCompanyAndAspect(userId, 5).subscribe(
         (consumptions: ConsumptionDTO[]) => {
           this.consumptions = consumptions
           this.dataSource = new MatTableDataSource(this.consumptions)
           this.dataSource.sort = this.emissionTbSort
+          this.dataSource.paginator = this.paginator
         },
         (error: HttpErrorResponse) => {
           errorResponse = error.error;

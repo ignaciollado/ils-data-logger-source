@@ -1,5 +1,9 @@
 @use "../../../styles/themes/ils-theme" as theme;
 
+mat-chip-option {
+  margin-bottom: .5rem;
+}
+
 .filtro-graficas {
   clear: both;
   padding-top: 0;

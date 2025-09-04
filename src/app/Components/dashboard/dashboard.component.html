@@ -50,9 +50,11 @@
     </form>
   </div>
   <canvas id="energyGraph" aria-label= "Energy graph" role="chart"
-    (Click)="onChartClick($event)">{{ chart }}</canvas>
-    <span *ngIf="!consumptions" class="loader">{{'waitingForData' | translate}}
-      <mat-progress-bar mode="indeterminate" color="primary" *ngIf="!consumptions"></mat-progress-bar></span>
+    (Click)="onChartClick($event)">{{ chart }}
+  </canvas>
+  <span *ngIf="!consumptions" class="loader">{{'waitingForData' | translate}}
+      <mat-progress-bar mode="indeterminate" color="primary" *ngIf="!consumptions"></mat-progress-bar>
+  </span>
 </div>
 
 <!--   <div class='filtro-graficas'>

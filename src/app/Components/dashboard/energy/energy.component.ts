@@ -1360,6 +1360,7 @@ export class EnergyGraphComponent implements OnInit {
   onChartHover = ($event: any) => {
     window.console.log('onChartHover', $event);
   };
+  
   onChartClick = ($event: any) => {
     window.console.log('onChartClick', $event);
   };

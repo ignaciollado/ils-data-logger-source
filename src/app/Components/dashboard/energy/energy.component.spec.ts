@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DashboardComponent } from './energy.component';
+import { EnergyGraphComponent } from './energy.component';
 
-describe('DashboardComponent', () => {
-  let component: DashboardComponent;
-  let fixture: ComponentFixture<DashboardComponent>;
+describe('EnergyGraphComponent', () => {
+  let component: EnergyGraphComponent;
+  let fixture: ComponentFixture<EnergyGraphComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DashboardComponent ]
+      declarations: [ EnergyGraphComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(DashboardComponent);
+    fixture = TestBed.createComponent(EnergyGraphComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -35,6 +35,7 @@ import { YearsDTO } from 'src/app/Models/years.dto';
   styleUrls: ['./emission-form.component.scss'],
 })
 export class EmissionFormComponent {
+    isLoading:boolean = true;
   consumption: ConsumptionDTO
   delegation: UntypedFormControl
   quantityEmission: UntypedFormControl
@@ -184,7 +185,7 @@ export class EmissionFormComponent {
         this.consumptionService.getAllConsumptionsByCompanyAndAspect(userId, 5).subscribe(
         (consumptions: ConsumptionDTO[]) => {
           this.consumptions = consumptions
-          this.dataSource = new MatTableDataSource(this.consumptions)
+          this.dataSource.data = this.consumptions
           this.dataSource.sort = this.emissionTbSort
           this.dataSource.paginator = this.paginator
         },

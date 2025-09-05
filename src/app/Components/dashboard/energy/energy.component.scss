@@ -10,12 +10,62 @@ mat-chip-option {
   margin-bottom: 0;
 }
 
-form {
-  background-color: #ECECEC;
-  overflow: hidden;
-  padding: 1rem;
-  margin-bottom: 0;
+.energy-form {
+  margin: 2rem auto;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  background-color: #f9fdf7; // verde muy suave de fondo
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+
+  .fields-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1rem;
+    align-items: center;
+  }
+
+  .form-field {
+    width: 100%;
+  }
+
+  .toggle-group {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    align-items: center;
+
+    mat-slide-toggle {
+      color: #2e7d32; // verde sostenible
+      font-weight: 500;
+    }
+  }
+
+  .button-group {
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    margin-top: 1rem;
+
+    button {
+      font-weight: 600;
+      min-width: 100px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+      &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+      }
+    }
+  }
+
+.small-data {
+  font-size: .6rem;
 }
+}
+
 
  canvas {
   width: auto;
@@ -32,9 +82,7 @@ form {
     "k k i j j";
 }
 
-.small-data {
-  font-size: .6rem;
-}
+
 .item0 {
   grid-area: a;
   align-self: center;

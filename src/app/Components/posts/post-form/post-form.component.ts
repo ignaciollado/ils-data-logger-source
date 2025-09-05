@@ -43,7 +43,7 @@ import { YearsDTO } from 'src/app/Models/years.dto';
 })
 
 export class PostFormComponent implements OnInit {
-
+  isLoading:boolean = true
   consumption: ConsumptionDTO
   delegation: UntypedFormControl
   yearEnergy: UntypedFormControl
@@ -301,9 +301,10 @@ export class PostFormComponent implements OnInit {
           this.consumptions.map((item:any) => {
             item.energyES = item.energyES+" ["+item.unit+"]"
           })
-          this.dataSource = new MatTableDataSource(this.consumptions);
-          this.dataSource.sort = this.energyTbSort;
-          this.dataSource.paginator = this.paginator;
+          this.dataSource.data = this.consumptions
+          this.isLoading = false
+          this.dataSource.sort = this.energyTbSort
+          this.dataSource.paginator = this.paginator
         },
         (error: HttpErrorResponse) => {
           errorResponse = error.error;

@@ -18,14 +18,13 @@ import { SharedService } from 'src/app/Services/shared.service';
 import { DelegationService } from 'src/app/Services/delegation.service';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { JwtHelperService } from '@auth0/angular-jwt';
-import { MatTableDataSource } from '@angular/material/table';
 
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmDialogComponent } from 'src/app/confirm-dialog/confirm-dialog.component';
 import { YearsDTO } from 'src/app/Models/years.dto';
 
-import { MatTableModule } from '@angular/material/table';
-import { MatPaginator,  } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 
 registerLocaleData(localeEs, 'es')
@@ -48,7 +47,7 @@ registerLocaleData(localeEs, 'es')
 })
 
 export class BillingComponent {
-
+  isLoading: boolean = true
   billing: BillingDTO
   years: YearsDTO[]
   delegation: UntypedFormControl
@@ -145,10 +144,11 @@ ngAfterViewInit() {
       this.billingService.getBillingsByCompany(userId).subscribe(
         (billings: BillingDTO[]) => {
           this.dataSource.data = billings;
+          this.isLoading = false
         },
         (error: HttpErrorResponse) => {
           errorResponse = error.error;
-          this.sharedService.errorLog(errorResponse)
+          this.sharedService.showSnackBar(errorResponse)
         }
       );
     }

@@ -2,7 +2,8 @@ import { Component } from '@angular/core';
 import { MatSort } from '@angular/material/sort';
 import { ViewChild, AfterViewInit } from '@angular/core';
 import { UserDTO, userColumns } from 'src/app/Models/user.dto';
-import { UserService } from 'src/app/Services/user.service';import { MatDialog } from '@angular/material/dialog';
+import { UserService } from 'src/app/Services/user.service';
+import { MatDialog } from '@angular/material/dialog';
 import { HeaderMenus } from 'src/app/Models/header-menus.dto';
 import { SharedService } from 'src/app/Services/shared.service';
 import { HeaderMenusService } from 'src/app/Services/header-menus.service';
@@ -19,8 +20,8 @@ import { MatPaginator  } from '@angular/material/paginator';
   styleUrls: ['./registered-users.component.scss']
 })
 export class RegisteredUsersComponent {
+  isLoading:boolean = true;
   user: UserDTO
-  private isUpdateMode: boolean
   users!: UserDTO[]
   private userId: string | null
   isGridView: boolean = false
@@ -30,6 +31,7 @@ export class RegisteredUsersComponent {
   dataSource = new MatTableDataSource<UserDTO>()
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
+
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
@@ -64,7 +66,7 @@ constructor(
       const headerInfo: HeaderMenus = { showAuthSection: true, showNoAuthSection: false, }
       this.headerMenusService.headerManagement.next(headerInfo)
       this.userId = this.jwtHelper.decodeToken().id_ils
-      this.loadUsers();
+      this.loadUsers(this.userId);
     } else {
       const headerInfo: HeaderMenus = { showAuthSection: false, showNoAuthSection: true, };
       sessionStorage.removeItem('user_id')
@@ -79,18 +81,15 @@ ngOnInit(): void {
 
 }
 
-private loadUsers(): void {
+private loadUsers(userId: string): void {
   let errorResponse: any;
-  if (this.userId) {
+  if (userId) {
       this.userService.getAllRegisteredUsers().subscribe(
-      (users: any) => {
+      (users: any[]) => {
         this.users = users
-        this.users.map((user:any) => {
-          user.last_login_at = this.userService.formatDate(user.last_login_at)
-          user.created_at = this.userService.formatDate(user.created_at)
-          user.pwd_expires_at = this.userService.formatDate(user.pwd_expires_at)
-        })
+        this.sharedService.showSnackBar("retrieved")
         this.dataSource.data = this.users;
+        this.isLoading = false;
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
       },
@@ -129,12 +128,12 @@ public editRow(row: UserDTO) {
     .subscribe((newUser: UserDTO) => {
       row.id = newUser.id
       row.isEdit = false
-      this.loadUsers()
+      this.loadUsers(this.userId)
     });
   } else {
     this.userService.updateUserPindustExpedientes(row.id, row).subscribe(() => {
       row.isEdit = false
-      this.loadUsers()
+      this.loadUsers(this.userId)
     })
   }
   row.isEdit = false

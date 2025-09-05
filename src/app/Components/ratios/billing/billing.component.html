@@ -39,6 +39,9 @@
           <mat-label>{{'filterByColumn' | translate}}</mat-label>
           <input matInput (keyup)="applyFilter($event)" placeholder="Search columns" #input>
         </mat-form-field>
+        <div *ngIf="isLoading" class="spinner-container">
+          <mat-progress-spinner mode="indeterminate" color="primary"></mat-progress-spinner>
+        </div>
         <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
           <ng-container [matColumnDef]="col.key" *ngFor="let col of columnsSchema">
             <mat-header-cell *matHeaderCellDef [ngSwitch]="col.key">

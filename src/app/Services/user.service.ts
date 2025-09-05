@@ -37,8 +37,8 @@ export interface deleteResponse {
 export class UserService {
   private urlBlogUocApi: string;
   private controller: string;
-  private urlAPiMySql:  string;
-  private urlAPiMock:  string;
+  private urlAPiMySql: string;
+  private urlAPiMock: string;
 
 
   constructor(private http: HttpClient, private sharedService: SharedService) {
@@ -66,9 +66,15 @@ export class UserService {
       .pipe(catchError(this.sharedService.handleError))
   }
 
-  getAllRegisteredUsers(): Observable<UserDTO> {
+/*   getAllRegisteredUsers(): Observable<UserDTO> {
     return this.http
       .get<UserDTO>(`${URL_API}getAllRegisteredUsers.php`, requestOptions)
+      .pipe(catchError(this.sharedService.handleError));
+  } */
+
+  getAllRegisteredUsers(): Observable<any[]> {
+    return this.http
+      .post<any[]>(`${URL_API_SRV}/api/get-all-users`, requestOptions)
       .pipe(catchError(this.sharedService.handleError));
   }
 

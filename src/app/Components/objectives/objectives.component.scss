@@ -1,102 +1,82 @@
-.error {
-  color: red;
+.table-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 1rem auto;
+  width: 95%;
+
+  table.mat-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin-bottom: 1rem; // espacio entre tabla y paginador
+    overflow-x: auto;
+  }
+
+  mat-paginator {
+    margin-top: 0.5rem; // separación extra
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
 }
 
-#postFeedback {
-  visibility: hidden;
-  min-width: 250px;
-  color: #fff;
-  text-align: center;
-  border-radius: 10px;
-  padding: 16px;
-  z-index: 1;
-  font-size: 14px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-#postFeedback.requestOk {
-  background-color: green;
-}
-
-#postFeedback.requestKo {
-  background-color: red;
-}
-
-#postFeedback.show {
-  visibility: visible;
-  -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
-  animation: fadein 0.5s, fadeout 0.5s 2.5s;
-}
-
-.btn-edit{
+.btn-edit {
   display: grid;
   grid-template-columns: 50% 50%;
+  gap: 0.2rem;
 }
 
-/* Chrome, Safari, Edge, Opera */
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-
-input[type=number] {
-  appearance: textfield;
-  border: none transparent;
-  outline: none;
-}
-
-.jan-checkbox{
+.jan-checkbox {
   display: grid;
   grid-template-columns: 50% 1%;
 }
 
 .small-data {
-  font-size: .5rem;
+  font-size: 0.5rem;
 }
 
 .small-data-input {
-  font-size: .5em;
+  font-size: 0.5rem;
   background-color: #fff;
-  border: 2px solid #365446!important;
-  border-radius: .2rem;
+  border: 2px solid #365446 !important;
+  border-radius: 0.2rem;
 }
 
-mat-header-row{
+mat-header-row {
   background-color: #424242;
 }
 
 mat-header-cell {
   color: white;
-  font-size: .6rem;
+  font-size: 0.6rem;
 }
 
-mat-cell{
+mat-cell {
   background-color: #919191;
 }
 
-.mat-column-delegation{
-  max-width:5rem;
-  word-wrap:break-word;
+.mat-column-delegation {
+  max-width: 5rem;
+  word-wrap: break-word;
 }
 
-.mat-column-year{
-  max-width:3rem;
+.mat-column-year {
+  max-width: 3rem;
 }
 
-.mat-column-enviromentalDataName{
-  min-width:4rem;
-  word-wrap:break-word;
+.mat-column-enviromentalDataName {
+  min-width: 4rem;
+  word-wrap: break-word;
   white-space: break-spaces;
   padding-left: 0;
 }
 
-.mat-column-theRatioType{
-  word-wrap:break-word;
+.mat-column-theRatioType {
+  word-wrap: break-word;
   padding-left: 0;
 }
 
-.mat-column-isEdit{
+.mat-column-isEdit {
   padding-right: 3rem;
 }

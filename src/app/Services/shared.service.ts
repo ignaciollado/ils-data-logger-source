@@ -1,8 +1,8 @@
-import { HttpErrorResponse,HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpErrorResponse,HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { YearsDTO } from '../Models/years.dto';
-import { catchError } from 'rxjs/operators';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 export interface ResponseError {
   statusCode: number;
@@ -19,7 +19,8 @@ export interface ResponseError {
 })
 export class SharedService {
   private urlAPiMock: string
-  constructor(private http: HttpClient,) {
+  
+  constructor(private http: HttpClient, private snackBar: MatSnackBar) {
     this.urlAPiMock = '../../assets/mocks/'
   }
 
@@ -70,6 +71,15 @@ export class SharedService {
   async wait(ms: number) {
     return new Promise((resolve) => {
       setTimeout(resolve, ms);
+    });
+  }
+
+    showSnackBar(error: string): void {
+    this.snackBar.open(error, 'Close', {
+      duration: 5000,
+      verticalPosition: 'bottom',
+      horizontalPosition: 'center',
+      panelClass: ['custom-snackbar'],
     });
   }
 

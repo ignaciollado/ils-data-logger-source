@@ -14,8 +14,10 @@ import { SharedService } from 'src/app/Services/shared.service'
 
 import { UserService } from 'src/app/Services/user.service'
 import { UserDTO } from 'src/app/Models/user.dto'
+
 import { MatTableDataSource } from '@angular/material/table'
 import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
 
 import { MatDialog } from '@angular/material/dialog'
 import { ConfirmDialogComponent } from 'src/app/confirm-dialog/confirm-dialog.component'
@@ -29,15 +31,6 @@ import { ResidueService } from 'src/app/Services/residue.service'
 import { EnergyService } from 'src/app/Services/energy.service'
 import { YearsDTO } from 'src/app/Models/years.dto'
 
- const OBJECTIVES_DATA = [
-  {Id: 1, delegation: "Mock Data", year: "2019", enviromentalDataName: "Fuel (kg)", "theRatioType": "Billing", "jan": 15000000, "feb": 15000000, "mar": 15000000, "apr": 15000000, "may": 15000000
-  , "jun": 15000000, "jul": 15000000, "aug": 15000000, "sep": 15000000, "oct": 15000000, "nov": 15000000, "dec": 15000000},
-  {Id: 2, delegation: "Mock Data", year: "2020", enviromentalDataName: "Fuel (kg)", "theRatioType": "Billing", "jan": .300},
-  {Id: 3, delegation: "Mock Data", year: "2019", enviromentalDataName: "Gas butano (kg)", "theRatioType": "Tonelada*", "jan": 500.57, "feb": 1.4579},
-  {Id: 4, delegation: "Mock Data", year: "2020", enviromentalDataName: "Gas Natural (kWh)", "theRatioType": "Tonelada*", "jan": 1.2550},
-  {Id: 5, delegation: "Mock Data", year: "2019", enviromentalDataName: "Gas butano (kg)", "theRatioType": "Tonelada*", "jan": 500.57, "feb": 1.4579},
-  {Id: 6, delegation: "Mock Data", year: "2020", enviromentalDataName: "Gas Natural (kWh)", "theRatioType": "Tonelada*", "jan": 1.2550}
-];
 @Component({
   selector: 'app-objectives',
   templateUrl: './objectives.component.html',
@@ -45,7 +38,7 @@ import { YearsDTO } from 'src/app/Models/years.dto'
 })
 
 export class ObjectivesComponent {
-
+  isLoading: boolean = true
   delegation: UntypedFormControl
   environmentalData: UntypedFormControl
   companyId: UntypedFormControl
@@ -68,10 +61,11 @@ export class ObjectivesComponent {
   public isSearching: boolean = false
   currentActivityIndicator: string = "Not selected"
 
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+  @ViewChild(MatSort) sort!: MatSort;
+
   isGridView: boolean = false
   columnsDisplayed : string[] = ObjectiveColumns.map((col) => col.key)
-  //columnsDisplayed: string[] = ['isSelected', 'delegation', 'year', 'enviromentalDataName', 'theRatioType', 'jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec', 'isEdit'];
-  //dataSource: any = OBJECTIVES_DATA
   dataSource = new MatTableDataSource<ObjectiveDTO>()
   columnsSchema: any = ObjectiveColumns
   valid: any = {}
@@ -79,8 +73,6 @@ export class ObjectivesComponent {
   checked = false;
   disabled = false;
   isChecked = false;
-
-  @ViewChild('paginator') paginator: MatPaginator;
 
    /** list of residues filtered by search keyword */
    public filteredResidues: ReplaySubject<ChapterItem[]> = new ReplaySubject<ChapterItem[]>(1);
@@ -133,6 +125,11 @@ export class ObjectivesComponent {
     this.loadYears()
   }
 
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
+  }
+
   private loadDelegations(): void {
     let errorResponse: any;
     if (this.userId) {
@@ -151,7 +148,8 @@ export class ObjectivesComponent {
   private loadObjectives ( userId: string ): void {
     this.ilsService.getById('ils_objective', +userId)
       .subscribe((res: ObjectiveDTO[]) => {
-        this.dataSource.data = res;
+        this.dataSource.data = res
+        this.isLoading = false
         this.dataSource.data. map ( (objective: ObjectiveDTO) => {
 
         if (objective.aspectId == 1) { // Energies
@@ -328,15 +326,6 @@ export class ObjectivesComponent {
     .subscribe(
       (residues: any[]) => {
         this.residues = residues
-        /*         this.residues.map( item => {
-          item.chapters.map( subItem=> {
-            subItem.chapterItems.map( (subSubItem: ChapterItem)=> {
-              this.environmentalDataList = [...this.environmentalDataList, subSubItem]
-            })
-          })
-        this.environmentalDataList
-        }) */
-
          this.residues.map( item => { 
           this.environmentalDataList = [...this.environmentalDataList, item]
         }) 

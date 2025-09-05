@@ -233,7 +233,7 @@ export class ResidueFormComponent {
               })
 
           })
-          this.dataSource = new MatTableDataSource(this.consumptions)
+          this.dataSource.data = this.consumptions
           this.dataSource.sort = this.residueTbSort
           this.dataSource.paginator = this.paginator;
 

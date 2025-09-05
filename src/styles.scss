@@ -115,6 +115,13 @@ mat-cell{
   background-color: ils-theme.$primary-color;
 }
 
+.spinner-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px; // espacio vertical mientras carga
+}
+
 .mat-mdc-row .mat-mdc-cell {
     border-bottom: 1px solid transparent;
     border-top: 1px solid transparent;

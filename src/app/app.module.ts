@@ -22,7 +22,7 @@ import { AuthInterceptorService } from './Services/auth-interceptor.service';
 import { FormatDatePipe } from './Pipes/format-date.pipe';
 import { FormatQuantityPipe } from "./Pipes/format-quantity.pipe";
 
-import { DashboardComponent } from './Components/dashboard/energy/energy.component';
+import { EnergyGraphComponent } from './Components/dashboard/energy/energy.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MatCheckboxModule} from '@angular/material/checkbox';
@@ -55,7 +55,7 @@ import { MatProgressBarModule} from '@angular/material/progress-bar';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
-
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 import {DialogModule} from '@angular/cdk/dialog';
 
@@ -115,7 +115,7 @@ export function tokenGetter() {
     ProfileComponent,
     PostsListComponent,
     PostFormComponent,
-    DashboardComponent,
+    EnergyGraphComponent,
     DelegationListComponent,
     DelegationFormComponent,
     WaterFormComponent,
@@ -194,6 +194,7 @@ export function tokenGetter() {
     MatDividerModule,
     MatSidenavModule,
     MatListModule,
+    MatSnackBarModule,
     NgxMatSelectSearchModule,
   ],
   providers: [

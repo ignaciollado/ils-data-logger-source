@@ -66,7 +66,11 @@
       <mat-label>{{'filterByColumn' | translate}}</mat-label>
       <input matInput (keyup)="applyFilter($event)" placeholder="Search columns" #input>
     </mat-form-field>
-    <table mat-table [dataSource]="dataSource" class="table-container mat-elevation-z8" tabindex="0">
+    <div *ngIf="isLoading" class="spinner-container">
+      <mat-progress-spinner mode="indeterminate" color="primary"></mat-progress-spinner>
+    </div>
+    <div ngClass="table-wrapper">
+      <table mat-table [dataSource]="dataSource" class="table-container mat-elevation-z8" tabindex="0">
           <ng-container [matColumnDef]="col.key" *ngFor="let col of columnsSchema">
             <mat-header-cell *matHeaderCellDef [ngSwitch]="col.key">
                 <span *ngSwitchDefault>{{ col.label }}</span>
@@ -116,11 +120,8 @@
 
           <mat-header-row *matHeaderRowDef="columnsDisplayed; sticky: true"></mat-header-row>
           <mat-row *matRowDef="let row; columns: columnsDisplayed;"></mat-row>
-    </table>
-    <mat-paginator [pageSizeOptions]='[10, 15, 20, 50]' showFirstLastButtons></mat-paginator>
-
+      </table>
+      <mat-paginator [pageSizeOptions]='[10, 15, 20, 50]' showFirstLastButtons></mat-paginator>
+    </div>
     <!-- <app-file-upload></app-file-upload> -->
-    <span *ngIf="!dataSource" class="loader">No data found yet...</span>
-
-
 </div>

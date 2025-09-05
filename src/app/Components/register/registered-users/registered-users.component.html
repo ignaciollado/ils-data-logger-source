@@ -1,45 +1,55 @@
 <h2>{{'listUsers' | translate}}</h2>
-<mat-form-field appearance="outline" style="width: 300px; margin-bottom: 16px;">
+
+<mat-form-field appearance="outline" style="width: 300px; margin-bottom: 16px; display: block; margin-left: auto; margin-right: auto;">
   <mat-label>Filtrar usuarios</mat-label>
   <input matInput (keyup)="applyFilter($event)" placeholder="Buscar...">
 </mat-form-field>
-<mat-paginator [pageSizeOptions]="[20, 40, 80]" showFirstLastButtons></mat-paginator>
-<mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
-  <ng-container [matColumnDef]="col.key" *ngFor="let col of columnsSchema">
-          <mat-header-cell *matHeaderCellDef mat-sort-header [ngSwitch]="col.key">
-              <span *ngSwitchDefault>{{ col.label }}</span>
-          </mat-header-cell>
-          <mat-cell *matCellDef="let element">
-              <div [ngSwitch]="col.type" *ngIf="!element.isEdit">
-                 <div class="btn-edit" *ngSwitchCase="'isEdit'">
-                  <button mat-icon-button (click)="element.isEdit = !element.isEdit"
+
+<div class="table-wrapper">
+    <!-- Spinner mientras se cargan los datos -->
+  <div *ngIf="isLoading" class="spinner-container">
+    <mat-progress-spinner mode="indeterminate" color="primary"></mat-progress-spinner>
+  </div>
+  <mat-paginator [pageSizeOptions]="[20, 40, 80]" showFirstLastButtons></mat-paginator>
+
+  <mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8" *ngIf="dataSource">
+    <ng-container [matColumnDef]="col.key" *ngFor="let col of columnsSchema">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>{{ col.label }}</th>
+      <td mat-cell *matCellDef="let element">
+        <div [ngSwitch]="col.type" *ngIf="!element.isEdit">
+          <div class="btn-edit" *ngSwitchCase="'isEdit'">
+            <button mat-icon-button (click)="element.isEdit = !element.isEdit" disabled
                     class="material-icons app-toolbar-menu save-button"
-                    matTooltip="Edit" color="accent"><i class="fa-solid fa-pencil fa-xs"></i>
-                  </button>
-                  <button mat-icon-button class="material-icons app-toolbar-menu delete-button" (click)="removeRow(element.consumptionId)"
-                    matTooltip="Delete" color="warn"><i class="fa-solid fa-trash fa-xs"></i>
-                  </button>
-                </div>
-                <span *ngSwitchCase="'number'" ngClass="small-data">{{ element[col.key] | number: '1.3-3' }} </span>
-                <span *ngSwitchCase="'date'" ngClass="small-data">{{ element[col.key] }} </span>
-                <span *ngSwitchDefault ngClass="small-data">{{ element[col.key] }}</span>
-              </div>
+                    matTooltip="Edit" color="accent">
+              <i class="fa-solid fa-pencil fa-xs"></i>
+            </button>
+            <button mat-icon-button class="material-icons app-toolbar-menu delete-button" disabled
+                    (click)="removeRow(element.consumptionId)"
+                    matTooltip="Delete" color="warn">
+              <i class="fa-solid fa-trash fa-xs"></i>
+            </button>
+          </div>
+          <span *ngSwitchCase="'number'" class="small-data">{{ element[col.key] | number: '1.3-3' }}</span>
+          <span *ngSwitchCase="'date'" class="small-data">{{ element[col.key] }}</span>
+          <span *ngSwitchDefault class="small-data">{{ element[col.key] }}</span>
+        </div>
 
-              <div [ngSwitch]="col.type" *ngIf="element.isEdit">
-                <div class="btn-edit" *ngSwitchCase="'isEdit'">
-                  <button mat-button (click)="editRow(element)" [disabled]="valid[element.Id] === false">Done</button>
-                </div>
-                <span *ngSwitchCase="'isSelected'" ngClass="small-data">{{element[col.key]}}</span>
-                <span *ngSwitchCase="'text'" ngClass="small-data">{{element[col.key]}}</span>
+        <div [ngSwitch]="col.type" *ngIf="element.isEdit">
+          <div class="btn-edit" *ngSwitchCase="'isEdit'">
+            <button mat-button (click)="editRow(element)" [disabled]="valid[element.Id] === false">Done</button>
+          </div>
+          <span *ngSwitchCase="'isSelected'" class="small-data">{{element[col.key]}}</span>
+          <span *ngSwitchCase="'text'" class="small-data">{{element[col.key]}}</span>
+          <input *ngSwitchCase="'number'" [type]="col.type"
+                 [(ngModel)]="element[col.key]"
+                 class="small-data-input" [style.width.px]='50'/>
+        </div>
+      </td>
+    </ng-container>
 
-                <input *ngSwitchCase="'number'" [type]="col.type" [(ngModel)]="element[col.key]" ngClass="small-data-input" [style.width.px]='50'/>
-              </div>
-          </mat-cell>
-  </ng-container>
-  <mat-header-row *matHeaderRowDef="columnsDisplayed"></mat-header-row>
-  <mat-row *matRowDef="let row; columns: columnsDisplayed;"></mat-row>
-</mat-table>
+    <tr mat-header-row *matHeaderRowDef="columnsDisplayed"></tr>
+    <tr mat-row *matRowDef="let row; columns: columnsDisplayed;"></tr>
+  </mat-table>
 
-<ng-template #noDataFoundYet>
-  <span class="loader">No data found yet...</span>
-</ng-template>
+  <span *ngIf="!dataSource">No data found ...</span>
+</div>

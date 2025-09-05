@@ -66,19 +66,27 @@ export class ConsumptionService {
   } */
 
   getYearlyEnergyByCompanyId(companyId:string): Observable<ConsumptionDTO[]> {
-    return this.http
-      .get<ConsumptionDTO[]>(`${this.apiUrl}/ilsconsumption/company/${companyId}`)
+    return this.http.get<ConsumptionDTO[]>(`${this.apiUrl}/ilsconsumption/company/${companyId}`)
   }
 
-  getQuarterlyEnergyByCompanyId(companyId:string): Observable<ConsumptionDTO[]> {
+  /*   getQuarterlyEnergyByCompanyId(companyId:string): Observable<ConsumptionDTO[]> {
     return this.http
       .get<ConsumptionDTO[]>(`${URL_API}graphEnergyQuarterlyGetByCompanyId.php?companyId=${companyId}`)
+  } */
+
+  getQuarterlyEnergyByCompanyId(companyId:string): Observable<ConsumptionDTO[]> {
+    return this.http.get<ConsumptionDTO[]>(`${this.apiUrl}/ilsconsumption/company/quarterly/${companyId}`)
   }
+
+  /*   getMonthlyEnergyByCompanyId(companyId:string): Observable<ConsumptionDTO[]> {
+    return this.http
+      .get<ConsumptionDTO[]>(`${URL_API}graphEnergyMonthlyGetByCompanyId.php?companyId=${companyId}`)
+  } */
 
   getMonthlyEnergyByCompanyId(companyId:string): Observable<ConsumptionDTO[]> {
     return this.http
-      .get<ConsumptionDTO[]>(`${URL_API}graphEnergyMonthlyGetByCompanyId.php?companyId=${companyId}`)
-  }
+      .get<ConsumptionDTO[]>(`${this.apiUrl}/ilsconsumption/company/monthly/${companyId}`)
+  }      
 
   getConsumptionsById(consumptionId: string): Observable<ConsumptionDTO> {
     return this.http

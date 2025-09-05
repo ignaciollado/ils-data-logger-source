@@ -172,7 +172,7 @@ export class WaterFormComponent {
         this.consumptionService.getAllConsumptionsByCompanyAndAspect(userId, 2).subscribe(
         (consumptions: ConsumptionDTO[]) => {
           this.consumptions = consumptions
-          this.dataSource = new MatTableDataSource(this.consumptions)
+          this.dataSource.data = this.consumptions
           this.dataSource.sort = this.waterTbSort;
           this.dataSource.paginator = this.paginator;
         },
@@ -181,7 +181,6 @@ export class WaterFormComponent {
           this.sharedService.errorLog(errorResponse)
         }
       );
-
     }
   }
 

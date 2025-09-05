@@ -145,3 +145,113 @@ mat-cell{
 .card:hover {
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
   }
+
+// Variables de colores temáticos
+$color-energy: #2e7d32;
+$color-water: #1565c0;
+$color-residue: #6d4c41;
+$color-emissions: #424242;
+
+$color-card-bg: #f9f9f9;
+$color-alt-row: #f1f1f1;
+
+// Mixin para aplicar un tema
+@mixin themed-form($primary-color) {
+  h1 {
+    color: $primary-color;
+  }
+
+  mat-card {
+    background-color: lighten($primary-color, 45%);
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    padding: 1.5rem;
+  }
+
+  mat-form-field {
+    mat-label {
+      color: $primary-color;
+      font-weight: 500;
+    }
+
+    mat-error {
+      color: #d32f2f;
+    }
+  }
+
+/* Envoltorio opcional si quieres centrar la tabla */
+.table-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+/* Tabla (funciona con <mat-table> y con <table mat-table>) */
+mat-table,
+table[mat-table] {
+  width: 100%;
+  max-width: 1100px;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,.06);
+}
+
+/* Cabecera */
+mat-table .mat-header-row,
+table[mat-table] tr.mat-header-row,
+mat-table mat-header-row.mat-header-row {
+  background: #365446;
+}
+
+mat-table .mat-header-cell,
+table[mat-table] .mat-header-cell {
+  color: #fff;
+  font-weight: 600;
+}
+
+/* Celdas */
+mat-table .mat-cell,
+table[mat-table] .mat-cell {
+  font-size: 0.9rem;
+  color: #424242;
+  padding: 0.75rem;
+}
+
+/* Hover */
+mat-table mat-row.mat-row:hover,
+table[mat-table] tr.mat-row:hover {
+  background-color: #eaf4ee;
+  transition: background-color .25s ease;
+}
+
+
+  mat-paginator {
+    margin: 1rem auto;
+    display: flex;
+    justify-content: center;
+  }
+
+  .loader {
+    text-align: center;
+    font-style: italic;
+    color: #757575;
+    margin-top: 1.5rem;
+  }
+}
+
+// Aplicación de temas a cada módulo
+.energy-theme {
+  @include themed-form($color-energy);
+}
+
+.water-theme {
+  @include themed-form($color-water);
+}
+
+.residue-theme {
+  @include themed-form($color-residue);
+}
+
+.emissions-theme {
+  @include themed-form($color-emissions);
+}

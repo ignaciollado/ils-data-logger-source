@@ -1,62 +1,139 @@
-.btn-edit{
-  display: grid;
-  grid-template-columns: 50% 50%;
+.container-form {
+  max-width: 100%;
+  margin: 2rem auto;
+  padding: 1.5rem;
+  background: #fafafa;
+  border-radius: 0.75rem;
+
+  h1 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #365446;
+    margin-bottom: 1.5rem;
+    text-align: center;
+
+    mat-chip {
+      margin-left: 1rem;
+      background-color: #eaf4ee;
+      color: #365446;
+      font-weight: 500;
+    }
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+
+    mat-card {
+      padding: 1.5rem;
+      border-radius: 0.75rem;
+      background: #ffffff;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+
+      section {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+      }
+
+      button[type='submit'] {
+        margin-top: 1rem;
+        align-self: flex-start;
+      }
+    }
+  }
+
+  mat-form-field {
+    flex: 1;
+    min-width: 300px;
+  }
+
+  // === Tabla CNAE ===
+  mat-table {
+    width: 100%;
+    margin-top: 2rem;
+    border-radius: 0.75rem;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+
+    mat-header-row {
+      background-color: #365446;
+    }
+
+    mat-header-cell {
+      color: #ffffff;
+      font-weight: 400;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      padding: 0.75rem;
+    }
+
+    mat-row {
+      transition: background-color 0.2s ease;
+    }
+
+    // Filas alternadas
+    ::ng-deep .mat-row:nth-of-type(odd) {
+      background-color: #f9f9f9;
+    }
+
+    ::ng-deep .mat-row:nth-of-type(even) {
+      background-color: #ffffff;
+    }
+
+    // Hover fila
+    ::ng-deep .mat-row:hover {
+      background-color: #eaf4ee;
+    }
+
+    mat-cell {
+      padding: 0.5rem;
+      font-size: 0.70rem;
+      color: #333;
+    }
+  }
+
+  // === Botones editar/borrar ===
+  .btn-edit {
+    display: flex;
+    gap: 0.5rem;
+
+    button {
+      transition: transform 0.2s ease;
+      &:hover {
+        transform: scale(1.15);
+      }
+    }
+
+    .save-button {
+      color: #3f51b5;
+    }
+
+    .delete-button {
+      color: #d32f2f;
+    }
+  }
+
+  // Inputs compactos
+  .small-data-input {
+    font-size: 0.7rem;
+    padding: 0.25rem;
+    border: 1px solid #ccc;
+    border-radius: 0.25rem;
+    width: 60px;
+  }
+
+  // Texto compacto en celdas
+  .small-data {
+    font-size: 0.7rem;
+    color: #444;
+  }
 }
 
-/* Chrome, Safari, Edge, Opera */
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
+mat-paginator {
+  margin-top: 1rem;
+  border-radius: 0.5rem;
+  background: #ffffff;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.05);
 }
-
-input[type=number] {
-  appearance: textfield;
-  border: none transparent;
-outline: none;
-}
-
-.small-data {
-  font-size: .6rem;
-}
-
-.small-data-input {
-  font-size: .6rem;
-  background-color: #fff;
-  border: 2px solid #365446!important;
-  border-radius: .2rem;
-}
-
-mat-header-row{
-  background-color: #424242;
-}
-
-mat-header-cell {
-  color: white;
-  font-size: .6rem;
-}
-
-mat-cell{
-  background-color: #919191;
-}
-
-.mat-column-isSelected{
-  word-wrap:break-word;
-  max-width:3.5rem;
-}
-
-.mat-column-delegation{
-  word-wrap:break-word;
-}
-
-.mat-column-year{
-  max-width:3rem;
-}
-
-.mat-column-isEdit{
-  padding-right: 3rem;
-}
-
-
-
-

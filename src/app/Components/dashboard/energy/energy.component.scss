@@ -22,7 +22,7 @@ mat-chip-option {
   .fields-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 1rem;
+    gap: .5rem;
     align-items: center;
   }
 

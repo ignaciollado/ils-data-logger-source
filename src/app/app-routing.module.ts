@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { DashboardComponent } from './Components/dashboard/dashboard.component';
 import { HomeComponent } from './Components/home/home.component';
 import { LoginComponent } from './Components/login/login.component';
 import { PostFormComponent } from './Components/posts/post-form/post-form.component';
@@ -27,54 +26,21 @@ import { PasswordResetComponent } from './Components/password-reset/password-res
 import { ChapterListComponent } from './Components/residues/chapter-list/chapter-list.component';
 import { SubchapterListComponent } from './Components/residues/subchapter-list/subchapter-list.component';
 import { ItemListComponent } from './Components/residues/item-list/item-list.component';
+import { GraphContainerComponent } from './Components/dashboard/graph-container/graph-container.component';
 
 const routes: Routes = [
-  {
-    path: '',
-    component: HomeComponent,
-  },
-  {
-    path: 'login',
-    component: LoginComponent,
-  },
-  {
-    path: 'register',
-    component: RegisterComponent,
-  },
-    { path: 'recover-password', component: PasswordRecoveryComponent },
-  { path: 'reset-password', component: PasswordResetComponent},
-  {
-    path: 'listUsers',
-    component: RegisteredUsersComponent,
-  },
-  {
-    path: 'home',
-    component: HomeComponent,
-  },
-  {
-    path: 'dashboard',
-    component: DashboardComponent,
-  },
-  {
-    path: 'consumptions',
-    component: ConsumptionContainerComponent,
-    canActivate: [AuthGuard],
-  },
-  {
-    path: 'user/consumption/:id',
-    component: PostFormComponent,
-    canActivate: [AuthGuard],
-  },
-  {
-    path: 'user/consumption',
-    component: PostFormComponent,
-    canActivate: [AuthGuard],
-  },
-  {
-    path: 'adminRatios',
-    component: RatiosContainerComponent,
-    canActivate: [AuthGuard],
-  },
+  { path: '', component: HomeComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
+  { path: 'recover-password', component: PasswordRecoveryComponent },
+  { path: 'reset-password', component: PasswordResetComponent },
+  { path: 'listUsers', component: RegisteredUsersComponent },
+  { path: 'home', component: HomeComponent },
+  { path: 'dashboard', component: GraphContainerComponent },
+  { path: 'consumptions', component: ConsumptionContainerComponent, canActivate: [AuthGuard] },
+  { path: 'user/consumption/:id', component: PostFormComponent, canActivate: [AuthGuard] },
+  { path: 'user/consumption', component: PostFormComponent, canActivate: [AuthGuard] },
+  { path: 'adminRatios', component: RatiosContainerComponent, canActivate: [AuthGuard] },
   {
     path: 'myObjectives',
     component: ObjectivesComponent,

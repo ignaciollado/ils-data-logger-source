@@ -30,9 +30,9 @@ import { CnaeDataService } from 'src/app/Services/cnaeData.service'
 import { ResidueDTO } from 'src/app/Models/residue.dto'
 
 @Component({
-  selector: 'app-dashboard',
-  templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.scss'],
+  selector: 'app-energy',
+  templateUrl: './energy.component.html',
+  styleUrls: ['./energy.component.scss'],
 })
 export class DashboardComponent implements OnInit {
   private companyId: string | null
@@ -70,7 +70,7 @@ export class DashboardComponent implements OnInit {
 
   graphDataTemp: graphData[] = []
   graphData: graphData[] = []
-  myDatasets: any[] = []
+  endergyDataSet: any[] = []
 
   graphObjectiveTemp: ObjectiveDTO[]
   graphObjective: any[] = []
@@ -83,20 +83,9 @@ export class DashboardComponent implements OnInit {
   quantityMaterials: number = 0
 
   chart: any = new Chart("graph", {type: 'bar',
-  data: {
-     datasets: this.myDatasets
-  }, 
-  options: {
-    responsive: true,
-    scales: {
-      x: {
-        ticks: {
-          color: '#365446',
-        }
-      }
-    }
-  },
-})
+    data: { datasets: this.endergyDataSet }, 
+    options: { responsive: true, scales: { x: { ticks: { color: '#365446' } } } },
+  })
 
   primaryColors!: string[]
   alternateColors!: string[]
@@ -174,9 +163,23 @@ export class DashboardComponent implements OnInit {
       '#365446',
       ]
     this.companyId = this.jwtHelper.decodeToken().id_ils;
-    this.graphMonths = ['2019-01', '2019-02', '2019-03', '2019-04', '2019-05', '2019-06', '2019-07', '2019-08', '2019-09', '2019-10', '2019-11', '2019-12','2020-01', '2020-02', '2020-03', '2020-04', '2020-05', '2020-06', '2020-07', '2020-08', '2020-09', '2020-10', '2020-11', '2020-12','2021-01', '2021-02', '2021-03', '2021-04', '2021-05', '2021-06', '2021-07', '2021-08', '2021-09', '2021-10', '2021-11', '2021-12','2022-01', '2022-02', '2022-03', '2022-04', '2022-05', '2022-06', '2022-07', '2022-08', '2022-09', '2022-10', '2022-11', '2022-12','2023-01', '2023-02', '2023-03', '2023-04', '2023-05', '2023-06', '2023-07', '2023-08', '2023-09', '2023-10', '2023-11', '2023-12','2024-01', '2024-02', '2024-03', '2024-04', '2024-05', '2024-06', '2024-07', '2024-08', '2024-09', '2024-10', '2024-11', '2024-12']
-    this.graphQuarters = ['2019-T1','2019-T2','2019-T3','2019-T4','2020-T1','2020-T2','2020-T3','2020-T4','2021-T1','2021-T2','2021-T3','2021-T4','2022-T1','2022-T2','2022-T3','2022-T4','2023-T1','2023-T2','2023-T3','2023-T4','2024-T1','2024-T2','2024-T3','2024-T4']
-    this.graphYears = ['2019', '2020', '2021', '2022', '2023', '2024']
+    this.graphMonths = [
+      '2019-01', '2019-02', '2019-03', '2019-04', '2019-05', '2019-06', '2019-07', '2019-08', '2019-09', '2019-10', '2019-11', '2019-12',
+      '2020-01', '2020-02', '2020-03', '2020-04', '2020-05', '2020-06', '2020-07', '2020-08', '2020-09', '2020-10', '2020-11', '2020-12',
+      '2021-01', '2021-02', '2021-03', '2021-04', '2021-05', '2021-06', '2021-07', '2021-08', '2021-09', '2021-10', '2021-11', '2021-12',
+      '2022-01', '2022-02', '2022-03', '2022-04', '2022-05', '2022-06', '2022-07', '2022-08', '2022-09', '2022-10', '2022-11', '2022-12',
+      '2023-01', '2023-02', '2023-03', '2023-04', '2023-05', '2023-06', '2023-07', '2023-08', '2023-09', '2023-10', '2023-11', '2023-12',
+      '2024-01', '2024-02', '2024-03', '2024-04', '2024-05', '2024-06', '2024-07', '2024-08', '2024-09', '2024-10', '2024-11', '2024-12',
+      '2025-01', '2025-02', '2025-03', '2025-04', '2025-05', '2025-06', '2025-07', '2025-08', '2025-09', '2025-10', '2025-11', '2025-12']
+    this.graphQuarters = [
+      '2019-T1','2019-T2','2019-T3','2019-T4',
+      '2020-T1','2020-T2','2020-T3','2020-T4',
+      '2021-T1','2021-T2','2021-T3','2021-T4',
+      '2022-T1','2022-T2','2022-T3','2022-T4',
+      '2023-T1','2023-T2','2023-T3','2023-T4',
+      '2024-T1','2024-T2','2024-T3','2024-T4',
+      '2025-T1','2025-T2','2025-T3','2025-T4']
+    this.graphYears = ['2019', '2020', '2021', '2022', '2023', '2024', '2025']
 
     if (localStorage.getItem('preferredLang') === 'cat') {
       this.aspectEnergy = "Energia (kWh)"
@@ -292,15 +295,15 @@ export class DashboardComponent implements OnInit {
     let currentDelegation: string
     let currentEnergy: string
     let currentYear: string
-    let dataToMonthlyView: number[] = [] /* los meses de seis años */
-    let dataToQuarterView: number[] = [] /* los trimestres de seis años */
-    let dataToYearView: number[] = [] /* seis años del 2019 al 2024 */
-    for (var _i = 0; _i < 72; _i++) {
+    let dataToMonthlyView: number[] = [] /* los meses de siete años */
+    let dataToQuarterView: number[] = [] /* los trimestres de siete años */
+    let dataToYearView: number[] = [] /* siete años del 2019 al 2024 */
+    for (var _i = 0; _i < 84; _i++) {
       if (_i<6) {dataToYearView.push(0)}
       if (_i<24) {dataToQuarterView.push(0)}
       dataToMonthlyView.push(0)
     }
-    this.myDatasets = []
+    this.endergyDataSet = []
     this.chart.destroy()
     this.startPrimaryColor = 19
 
@@ -338,7 +341,7 @@ export class DashboardComponent implements OnInit {
               this.delegation.enable()
               this.energy.enable()
             }
-            this.myDatasets.push (
+            this.endergyDataSet.push (
             {
             label: prevDelegation+" "+prevEnergy,
             data: dataToYearView,
@@ -364,7 +367,7 @@ export class DashboardComponent implements OnInit {
         this.delegation.enable()
         this.energy.enable()
         }
-        this.myDatasets.push (
+        this.endergyDataSet.push (
         {
         label: prevDelegation+" "+prevEnergy,
         data: dataToYearView,
@@ -374,17 +377,18 @@ export class DashboardComponent implements OnInit {
         )
 
         if(this.delegation.value) {
-          this.myDatasets = this.myDatasets.filter((item:any)=>item.stack == this.delegation.value)
+          this.endergyDataSet = this.endergyDataSet.filter((item:any)=>item.stack == this.delegation.value)
         }
         if(this.energy.value) {
-          this.myDatasets = this.myDatasets.filter((item:any)=>item.label.slice(-this.energy.value.length) == this.energy.value)
+          this.endergyDataSet = this.endergyDataSet.filter((item:any)=>item.label.slice(-this.energy.value.length) == this.energy.value)
         }
+
         this.chart = new Chart("energyGraph", {
           type: 'bar',
           data: 
           {
           labels: this.graphYears,
-          datasets: this.myDatasets
+          datasets: this.endergyDataSet
           },
           options:
           {
@@ -393,9 +397,7 @@ export class DashboardComponent implements OnInit {
               title: { display: true, text: this.aspectEnergy},
             },
             responsive: true,
-            interaction: {
-              intersect: true,
-            },
+            interaction: { intersect: true },
           }
         })
 
@@ -476,7 +478,7 @@ export class DashboardComponent implements OnInit {
               this.delegation.enable()
               this.energy.enable()
             }
-            this.myDatasets.push (
+            this.endergyDataSet.push (
               {
               label: prevDelegation+" "+prevEnergy,
               data: dataToQuarterView,
@@ -541,7 +543,7 @@ export class DashboardComponent implements OnInit {
           this.delegation.enable()
           this.energy.enable()
         }
-        this.myDatasets.push (
+        this.endergyDataSet.push (
           {
           label: prevDelegation+" "+prevEnergy,
           data: dataToQuarterView,
@@ -550,19 +552,19 @@ export class DashboardComponent implements OnInit {
           },
         )
         if(this.yearEnergy.value) {
-          this.myDatasets = this.myDatasets.filter((item:any)=>item.stack == this.yearEnergy.value)
+          this.endergyDataSet = this.endergyDataSet.filter((item:any)=>item.stack == this.yearEnergy.value)
         }
         if(this.delegation.value) {
-          this.myDatasets = this.myDatasets.filter((item:any)=>item.stack == this.delegation.value)
+          this.endergyDataSet = this.endergyDataSet.filter((item:any)=>item.stack == this.delegation.value)
         }
         if(this.energy.value) {
-          this.myDatasets = this.myDatasets.filter((item:any)=>item.label.slice(-this.energy.value.length) == this.energy.value)
+          this.endergyDataSet = this.endergyDataSet.filter((item:any)=>item.label.slice(-this.energy.value.length) == this.energy.value)
         }
         this.chart = new Chart("energyGraph", {
           type: 'bar',
           data: {
           labels: this.graphQuarters,
-          datasets: this.myDatasets},
+          datasets: this.endergyDataSet},
           options:
           {
             events: ['click'],
@@ -688,7 +690,7 @@ export class DashboardComponent implements OnInit {
               }
           }
           else {
-            this.myDatasets.push (
+            this.endergyDataSet.push (
               {
               label: prevDelegation+" "+prevEnergy,
               data: dataToMonthlyView,
@@ -789,7 +791,7 @@ export class DashboardComponent implements OnInit {
           currentEnergy = consumption.energyName
           prevYear = consumption.year
         })
-        this.myDatasets.push (
+        this.endergyDataSet.push (
           {
           label: prevDelegation+" "+prevEnergy,
           data: dataToMonthlyView,
@@ -798,16 +800,16 @@ export class DashboardComponent implements OnInit {
           },
         )
         if(this.delegation.value) {
-          this.myDatasets = this.myDatasets.filter((item:any)=>item.stack == this.delegation.value)
+          this.endergyDataSet = this.endergyDataSet.filter((item:any)=>item.stack == this.delegation.value)
         }
         if(this.energy.value) {
-          this.myDatasets = this.myDatasets.filter((item:any)=>item.label.slice(-this.energy.value.length) == this.energy.value)
+          this.endergyDataSet = this.endergyDataSet.filter((item:any)=>item.label.slice(-this.energy.value.length) == this.energy.value)
         }
         this.chart = new Chart("energyGraph", {
           type: 'bar',
           data: {
           labels: this.graphMonths,
-          datasets: this.myDatasets},
+          datasets: this.endergyDataSet},
           options:
           {
             events: ['click'],
@@ -896,7 +898,7 @@ export class DashboardComponent implements OnInit {
     })
 
     this.graphData.map(item=> {
-      this.myDatasets.push(
+      this.endergyDataSet.push(
           {
            label: item.year+" "+item.dataType,
            data: item.monthlyData,
@@ -913,7 +915,7 @@ export class DashboardComponent implements OnInit {
       type: 'bar',
       data: {
          labels: this.graphMonths,
-         datasets: this.myDatasets
+         datasets: this.endergyDataSet
       },
       options: {
         responsive: true,
@@ -991,7 +993,7 @@ export class DashboardComponent implements OnInit {
           +dataToYearView[4]/+billingProductionYearly[4],
           +dataToYearView[5]/+billingProductionYearly[5]
         ]
-        this.myDatasets.push (
+        this.endergyDataSet.push (
         {
         type: 'line',
         label: "Ratio "+prevDelegation,
@@ -1003,10 +1005,10 @@ export class DashboardComponent implements OnInit {
         },
         )
         if(this.delegation.value) {
-          this.myDatasets = this.myDatasets.filter((item:any)=>item.stack == this.delegation.value)
+          this.endergyDataSet = this.endergyDataSet.filter((item:any)=>item.stack == this.delegation.value)
         }
         if(this.energy.value) {
-          this.myDatasets = this.myDatasets.filter((item:any)=>item.label.slice(-this.energy.value.length) == this.energy.value)
+          this.endergyDataSet = this.endergyDataSet.filter((item:any)=>item.label.slice(-this.energy.value.length) == this.energy.value)
         }
         this.chart.update();
       }
@@ -1151,7 +1153,7 @@ export class DashboardComponent implements OnInit {
 
         ]
         console.log("ratiobillingProductionQuarterly", ratiobillingProductionQuarterly, "dataToQuarterView", dataToQuarterView, "billingProductionQuarterly", billingProductionQuarterly)
-        this.myDatasets.push (
+        this.endergyDataSet.push (
         {
         type: 'line',
         label: "Ratio "+prevDelegation,
@@ -1163,10 +1165,10 @@ export class DashboardComponent implements OnInit {
         },
         )
         if(this.delegation.value) {
-          this.myDatasets = this.myDatasets.filter((item:any)=>item.stack == this.delegation.value)
+          this.endergyDataSet = this.endergyDataSet.filter((item:any)=>item.stack == this.delegation.value)
         }
         if(this.energy.value) {
-          this.myDatasets = this.myDatasets.filter((item:any)=>item.label.slice(-this.energy.value.length) == this.energy.value)
+          this.endergyDataSet = this.endergyDataSet.filter((item:any)=>item.label.slice(-this.energy.value.length) == this.energy.value)
         }
         this.chart.update();
       }
@@ -1216,7 +1218,7 @@ export class DashboardComponent implements OnInit {
       })
 
       this.graphData.map(item=> {
-        this.myDatasets.push(
+        this.endergyDataSet.push(
             {
             label: item.year+" "+item.dataType,
             data: item.monthlyData,
@@ -1227,7 +1229,7 @@ export class DashboardComponent implements OnInit {
         )
       })
 
-    this.myDatasets.push(
+    this.endergyDataSet.push(
       {
         type: 'line',
         label: 'Ratios',
@@ -1246,7 +1248,7 @@ export class DashboardComponent implements OnInit {
       type: 'bar',
       data: {
          labels: this.graphMonths,
-         datasets: this.myDatasets
+         datasets: this.endergyDataSet
       },
       options: {
         responsive: true,
@@ -1335,7 +1337,7 @@ export class DashboardComponent implements OnInit {
       })
     })
     this.graphObjective.map(item=> {
-      this.myDatasets.push(
+      this.endergyDataSet.push(
         {
           type: 'line',
           label: "Objective: "+item.year+" "+item.delegation+" "+item.dataType,
@@ -1354,7 +1356,7 @@ export class DashboardComponent implements OnInit {
   graphFormReset(){
     this.delegation.reset()
     this.energy.reset()
-    this.myDatasets = []
+    this.endergyDataSet = []
     this.chart.destroy()
   }
 

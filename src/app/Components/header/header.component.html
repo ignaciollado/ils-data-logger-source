@@ -18,7 +18,7 @@
 <div *ngIf="showAuthSection">
   <mat-menu #menu="matMenu">
     <div>
-      <button *ngIf="!isCompany" mat-menu-item (click)="dashboard()"><mat-icon style="color: lightgreen;">dashboard_customize</mat-icon> {{'sustainabilityIndicatorsCharts' | translate}}</button>
+      <button *ngIf="!isCompany" mat-menu-item (click)="dashboard()"><mat-icon style="color: lightgreen;">dashboard_customize</mat-icon> {{'controlPanel' | translate}}</button>
       <button *ngIf="!isCompany" mat-menu-item (click)="adminConsumptions()"><mat-icon style="color: lightgreen;">bar_chart_4_bars</mat-icon> {{'activityData' | translate}}</button>
       <button *ngIf="!isCompany" mat-menu-item (click)="adminRatios()"><mat-icon style="color: lightgreen;">factory</mat-icon> {{'productionData' | translate}}</button>
       <button *ngIf="!isCompany" mat-menu-item (click)="myObjectives()"><mat-icon style="color: lightgreen;">flag_check</mat-icon> {{'myObjectives' | translate}}</button>

@@ -22,7 +22,7 @@ import { AuthInterceptorService } from './Services/auth-interceptor.service';
 import { FormatDatePipe } from './Pipes/format-date.pipe';
 import { FormatQuantityPipe } from "./Pipes/format-quantity.pipe";
 
-import { DashboardComponent } from './Components/dashboard/dashboard.component';
+import { DashboardComponent } from './Components/dashboard/energy/energy.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MatCheckboxModule} from '@angular/material/checkbox';
@@ -92,6 +92,7 @@ import { ItemListComponent } from "./Components/residues/item-list/item-list.com
 import { ChapterFormComponent } from "./Components/residues/chapter-form/chapter-form.component";
 import { SubchapterFormComponent } from "./Components/residues/subchapter-form/subchapter-form.component";
 import { ItemFormComponent } from "./Components/residues/item-form/item-form.component";
+import { GraphContainerComponent } from './Components/dashboard/graph-container/graph-container.component';
 
 export function tokenGetter() {
   return sessionStorage.getItem("access_token");
@@ -141,7 +142,8 @@ export function tokenGetter() {
     ItemListComponent,
     ChapterFormComponent,
     SubchapterFormComponent,
-    ItemFormComponent
+    ItemFormComponent,
+    GraphContainerComponent
   ],
   imports: [
     BrowserModule,

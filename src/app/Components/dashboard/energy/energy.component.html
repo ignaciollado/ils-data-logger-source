@@ -1,7 +1,7 @@
-<div class="container-form">
+<section class="container-form">
   <h2>{{ 'sustainabilityIndicatorsCharts' | translate }}: {{ 'energies' | translate }}</h2>
   <mat-chip-option color="warn" selected><strong>Nota:</strong> Versión actualmente en desarrollo. No válida para producción</mat-chip-option>
-  <div class='filtro-graficas'>
+  <section class='filtro-graficas'>
     <form
       *ngIf="energyGraphForm"
       [formGroup]="energyGraphForm"
@@ -48,14 +48,16 @@
         </mat-button-toggle-group>
       </div>
     </form>
-  </div>
-  <canvas id="energyGraph" aria-label= "Energy graph" role="chart"
-    (Click)="onChartClick($event)">{{ chart }}
-  </canvas>
+  </section>
   <span *ngIf="!consumptions" class="loader">{{'waitingForData' | translate}}
-      <mat-progress-bar mode="indeterminate" color="primary" *ngIf="!consumptions"></mat-progress-bar>
+    <mat-progress-bar mode="indeterminate" color="primary" *ngIf="!consumptions"></mat-progress-bar>
   </span>
-</div>
+
+      <canvas id="energyGraph" aria-label= "Energy graph" role="chart"
+        (Click)="onChartClick($event)">{{ chart }}
+      </canvas>
+
+</section>
 
 <!--   <div class='filtro-graficas'>
     <form

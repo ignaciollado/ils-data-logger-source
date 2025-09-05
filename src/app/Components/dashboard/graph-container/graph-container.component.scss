@@ -1,0 +1,10 @@
+.graph-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin: 1rem;
+}
+
+.energy {
+  grid-area: "energy";
+  border: 1px solid green;
+}

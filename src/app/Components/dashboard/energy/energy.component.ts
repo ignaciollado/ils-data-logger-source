@@ -6,12 +6,7 @@ import { JwtHelperService } from '@auth0/angular-jwt'
 import { HeaderMenusService } from 'src/app/Services/header-menus.service'
 import { HeaderMenus } from 'src/app/Models/header-menus.dto'
 
-import {
-  FormControl,
-  UntypedFormBuilder,
-  UntypedFormControl,
-  UntypedFormGroup,
-} from '@angular/forms';
+import { FormControl, UntypedFormBuilder, UntypedFormControl, UntypedFormGroup } from '@angular/forms';
 
 import { EnergyService } from 'src/app/Services/energy.service'
 import { DelegationService } from 'src/app/Services/delegation.service'
@@ -81,6 +76,9 @@ export class EnergyGraphComponent implements OnInit {
   theDataType: string = ''
   theRatios: number[] = []
   graphConsumption: graphData[] = []
+  startYear: number = 2019;
+  currentYear: number = new Date().getFullYear();
+  numberOfYears: number = this.currentYear - this.startYear + 1; // +1 para incluir el año inicial
 
   quantityMaterials: number = 0
 
@@ -104,16 +102,9 @@ export class EnergyGraphComponent implements OnInit {
   BORDER:boolean = true
   CHART_AREA:boolean = true
   TICKS:boolean = true
-  isRatioBillingE: boolean = false
-  isRatioCNAEE: boolean = false
   isSearching: boolean = false
   isEnergy: boolean = false
   isResidue: boolean = false
-  isYearViewE : boolean = true
-  isQuarterViewE : boolean = false
-  isMonthViewE : boolean = false
-  iskWViewE : boolean = true
-  isMWViewE : boolean = false
 
   @Input() searching = false;
 
@@ -199,13 +190,13 @@ export class EnergyGraphComponent implements OnInit {
 
     this.delegation = new UntypedFormControl('')
     this.yearEnergy = new UntypedFormControl('')
-    this.ratioBillingGraphE = new UntypedFormControl()
-    this.ratioCNAEgGraphE = new UntypedFormControl()
-    this.quarterlyViewGraphE = new UntypedFormControl()
-    this.yearWiewGraphE = new UntypedFormControl()
-    this.monthlyViewGraphE = new UntypedFormControl()
-    this.kWView = new UntypedFormControl()
-    this.MWView = new UntypedFormControl()
+    this.ratioBillingGraphE = new UntypedFormControl(false)
+    this.ratioCNAEgGraphE = new UntypedFormControl(false)
+    this.yearWiewGraphE = new UntypedFormControl(true)
+    this.quarterlyViewGraphE = new UntypedFormControl(false)
+    this.monthlyViewGraphE = new UntypedFormControl(false)
+    this.kWView = new UntypedFormControl(true)
+    this.MWView = new UntypedFormControl(false)
     this.energy = new UntypedFormControl('')
     this.residue = new UntypedFormControl('')
 
@@ -297,23 +288,26 @@ export class EnergyGraphComponent implements OnInit {
     let currentYear: string
     let dataToMonthlyView: number[] = [] /* los meses de siete años */
     let dataToQuarterView: number[] = [] /* los trimestres de siete años */
-    let dataToYearView: number[] = [] /* siete años del 2019 al 2024 */
+    let dataToYearView: number[] = [] /* siete años del 2019 al 2025 */
+
     for (var _i = 0; _i < 84; _i++) {
       if (_i<6) {dataToYearView.push(0)}
       if (_i<24) {dataToQuarterView.push(0)}
       dataToMonthlyView.push(0)
     }
+
     this.endergyDataSet = []
     this.chart.destroy()
     this.startPrimaryColor = 19
 
-    if (this.isMWViewE) {
+    /*  if (this.isMWViewE) { */
+    if (this.energyGraphForm.get('MWView').value) {
       convertkWhToMWh = 1000
     } else {
       convertkWhToMWh = 1
     }
 
-    if (this.isYearViewE) {
+    if (this.energyGraphForm.get('yearWiewGraphE').value) {
       this.consumptionService.getYearlyEnergyByCompanyId(this.companyId)
       .subscribe(
       (consumptions: ConsumptionDTO[]) => {
@@ -333,7 +327,8 @@ export class EnergyGraphComponent implements OnInit {
             dataToYearView[(consumption.year-2019)] = consumption.totalYear * (equivEnkWh/convertkWhToMWh)
           }
           else {
-            if (this.isRatioBillingE) {
+            /* if (this.isRatioBillingE) { */
+            if (this.energyGraphForm.get('ratioBillingGraphE').value) {
               this.billingYearProduction(dataToYearView, prevDelegation)
               this.delegation.disable()
               this.energy.disable()
@@ -349,7 +344,9 @@ export class EnergyGraphComponent implements OnInit {
             stack: prevDelegation,
             },
             )
-            dataToYearView = [0,0,0,0,0,0]
+            // dataToYearView = [0,0,0,0,0,0,0] //para 2019-2025
+            dataToYearView = Array(this.numberOfYears).fill(0);
+
             dataToYearView[(consumption.year-2019)] = consumption.totalYear * (equivEnkWh/convertkWhToMWh)
           }
           prevDelegation = currentDelegation
@@ -359,13 +356,14 @@ export class EnergyGraphComponent implements OnInit {
           currentEnergy = consumption.energyName
           currentYear = consumption.year
         })
-        if (this.isRatioBillingE) {
-        this.billingYearProduction(dataToYearView, prevDelegation)
-        this.delegation.disable()
-        this.energy.disable()
+        /* if (this.isRatioBillingE) { */
+        if (this.energyGraphForm.get('ratioBillingGraphE').value) {
+          this.billingYearProduction(dataToYearView, prevDelegation)
+          this.delegation.disable()
+          this.energy.disable()
         } else {
-        this.delegation.enable()
-        this.energy.enable()
+          this.delegation.enable()
+          this.energy.enable()
         }
         this.endergyDataSet.push (
         {
@@ -408,7 +406,7 @@ export class EnergyGraphComponent implements OnInit {
       )
     }
 
-    if (this.isQuarterViewE) {
+    if (this.energyGraphForm.get('quarterlyViewGraphE').value) {
       this.consumptionService.getQuarterlyEnergyByCompanyId(this.companyId)
       .subscribe(
       (consumptions: ConsumptionDTO[]) => {
@@ -469,7 +467,8 @@ export class EnergyGraphComponent implements OnInit {
               }
           }
           else {
-            if (this.isRatioBillingE) {
+            /* if (this.isRatioBillingE) { */
+            if (this.energyGraphForm.get('ratioBillingGraphE').value) {
               this.billingQuarterProduction(dataToQuarterView, prevDelegation)
               this.delegation.disable()
               this.energy.disable()
@@ -485,7 +484,9 @@ export class EnergyGraphComponent implements OnInit {
               stack: prevDelegation,
               },
             )
-            dataToQuarterView = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+            //dataToQuarterView = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+              this.numberOfYears = this.numberOfYears * 4 // trimestres
+              dataToQuarterView = Array(this.numberOfYears).fill(0);
               if(consumption.year == "2019"){
                 dataToQuarterView[0] = consumption.Q1 * equivEnkWh/convertkWhToMWh
                 dataToQuarterView[1] = consumption.Q2 * equivEnkWh/convertkWhToMWh
@@ -534,7 +535,8 @@ export class EnergyGraphComponent implements OnInit {
           currentDelegation = consumption.delegation
           currentEnergy = consumption.energyName
         })
-        if (this.isRatioBillingE) {
+        /* if (this.isRatioBillingE) { */
+        if (this.energyGraphForm.get('ratioBillingGraphE').value) {
           this.billingQuarterProduction(dataToQuarterView, prevDelegation)
           this.delegation.disable()
           this.energy.disable()
@@ -585,7 +587,7 @@ export class EnergyGraphComponent implements OnInit {
       )
     }
 
-    if (this.isMonthViewE) {
+    if (this.energyGraphForm.get('monthlyViewGraphE').value) {
       this.consumptionService.getMonthlyEnergyByCompanyId(this.companyId)
       .subscribe(
       (consumptions: ConsumptionDTO[]) => {
@@ -602,7 +604,7 @@ export class EnergyGraphComponent implements OnInit {
           currentEnergy = consumption.energyName
           prevYear = consumption.year
           if ((prevDelegation == "" || prevDelegation == currentDelegation) && (prevEnergy == "" || prevEnergy == currentEnergy) && (prevYear == "" || prevYear == currentYear)) {
-              if(consumption.year == "2019"){
+              /* if(consumption.year == "2019"){
                 dataToMonthlyView[0] = consumption.jan * equivEnkWh/convertkWhToMWh
                 dataToMonthlyView[1] = consumption.feb * equivEnkWh/convertkWhToMWh
                 dataToMonthlyView[2] = consumption.mar * equivEnkWh/convertkWhToMWh
@@ -685,7 +687,23 @@ export class EnergyGraphComponent implements OnInit {
                 dataToMonthlyView[69] = consumption.oct * equivEnkWh/convertkWhToMWh
                 dataToMonthlyView[70] = consumption.nov * equivEnkWh/convertkWhToMWh
                 dataToMonthlyView[71] = consumption.dec * equivEnkWh/convertkWhToMWh
-              }
+              } */
+              const  yearIndex = Number(consumption.year) - this.startYear;
+              if (yearIndex >= 0 && yearIndex < this.numberOfYears) {
+                const baseIndex = yearIndex * 12;
+                dataToMonthlyView[baseIndex]     = consumption.jan * equivEnkWh / convertkWhToMWh;
+                dataToMonthlyView[baseIndex + 1] = consumption.feb * equivEnkWh / convertkWhToMWh;
+                dataToMonthlyView[baseIndex + 2] = consumption.mar * equivEnkWh / convertkWhToMWh;
+                dataToMonthlyView[baseIndex + 3] = consumption.apr * equivEnkWh / convertkWhToMWh;
+                dataToMonthlyView[baseIndex + 4] = consumption.may * equivEnkWh / convertkWhToMWh;
+                dataToMonthlyView[baseIndex + 5] = consumption.jun * equivEnkWh / convertkWhToMWh;
+                dataToMonthlyView[baseIndex + 6] = consumption.jul * equivEnkWh / convertkWhToMWh;
+                dataToMonthlyView[baseIndex + 7] = consumption.aug * equivEnkWh / convertkWhToMWh;
+                dataToMonthlyView[baseIndex + 8] = consumption.sep * equivEnkWh / convertkWhToMWh;
+                dataToMonthlyView[baseIndex + 9] = consumption.oct * equivEnkWh / convertkWhToMWh;
+                dataToMonthlyView[baseIndex + 10] = consumption.nov * equivEnkWh / convertkWhToMWh;
+                dataToMonthlyView[baseIndex + 11] = consumption.dec * equivEnkWh / convertkWhToMWh;
+              }             
           }
           else {
             this.endergyDataSet.push (
@@ -696,8 +714,10 @@ export class EnergyGraphComponent implements OnInit {
               stack: prevDelegation,
               },
             )
-            dataToMonthlyView = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
-              if(consumption.year == "2019"){
+            this.numberOfYears = this.numberOfYears * 12 // meses
+            //dataToMonthlyView = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+            dataToMonthlyView = Array(this.numberOfYears).fill(0);
+           /*  if(consumption.year == "2019"){
                 dataToMonthlyView[0] = consumption.jan * equivEnkWh/convertkWhToMWh
                 dataToMonthlyView[1] = consumption.feb * equivEnkWh/convertkWhToMWh
                 dataToMonthlyView[2] = consumption.mar * equivEnkWh/convertkWhToMWh
@@ -781,6 +801,34 @@ export class EnergyGraphComponent implements OnInit {
                 dataToMonthlyView[70] = consumption.nov * equivEnkWh/convertkWhToMWh
                 dataToMonthlyView[71] = consumption.dec * equivEnkWh/convertkWhToMWh
               }
+              if(consumption.year == "2025"){
+                dataToMonthlyView[72] = consumption.jan * equivEnkWh/convertkWhToMWh
+                dataToMonthlyView[73] = consumption.feb * equivEnkWh/convertkWhToMWh
+                dataToMonthlyView[74] = consumption.mar * equivEnkWh/convertkWhToMWh
+                dataToMonthlyView[75] = consumption.apr * equivEnkWh/convertkWhToMWh
+                dataToMonthlyView[76] = consumption.may * equivEnkWh/convertkWhToMWh
+                dataToMonthlyView[77] = consumption.jun * equivEnkWh/convertkWhToMWh
+                dataToMonthlyView[78] = consumption.jul * equivEnkWh/convertkWhToMWh
+                dataToMonthlyView[79] = consumption.aug * equivEnkWh/convertkWhToMWh
+                dataToMonthlyView[80] = consumption.sep * equivEnkWh/convertkWhToMWh
+                dataToMonthlyView[81] = consumption.oct * equivEnkWh/convertkWhToMWh
+                dataToMonthlyView[82] = consumption.nov * equivEnkWh/convertkWhToMWh
+                dataToMonthlyView[83] = consumption.dec * equivEnkWh/convertkWhToMWh
+              }               */
+              const yearIndex = Number(consumption.year) - this.startYear;
+
+              if (yearIndex >= 0 && yearIndex < this.numberOfYears) {
+                const baseIndex = yearIndex * 12;
+                // Array con los nombres de los meses
+                const months: (keyof typeof consumption)[] = [
+                  "jan", "feb", "mar", "apr", "may", "jun",
+                  "jul", "aug", "sep", "oct", "nov", "dec"
+                ];
+                // Llenamos dinámicamente los 12 meses
+                for (let i = 0; i < 12; i++) {
+                  dataToMonthlyView[baseIndex + i] = consumption[months[i]] * equivEnkWh / convertkWhToMWh;
+                }
+              }             
           }
           prevDelegation = currentDelegation
           prevEnergy = currentEnergy
@@ -960,12 +1008,15 @@ export class EnergyGraphComponent implements OnInit {
     let currentYear: string
     let prevDelegation: string = ""
     let prevYear: string = ""
-    let billingProductionYearly: number[] = [0,0,0,0,0,0] /* seis años del 2019 al 2024 */
-    let ratiobillingProductionYearly: number[] = [0,0,0,0,0,0]
+    //let billingProductionYearly: number[] = [0,0,0,0,0,0,0] /* seis años del 2019 al 2025 */
+    let billingProductionYearly: number[] = Array(this.numberOfYears).fill(0);
+    //let ratiobillingProductionYearly: number[] = [0,0,0,0,0,0,0]
+    let ratiobillingProductionYearly: number[] = Array(this.numberOfYears).fill(0);
 
     this.billingService.getYearBillingByCompanyId(this.companyId, delegationProduction)
       .subscribe((yearBillingProduction: BillingDTO[]) => {
         this.billingProductions = yearBillingProduction
+
         this.billingProductions.forEach((billingProduction: any) =>
         {
           currentDelegation = billingProduction.delegation
@@ -974,7 +1025,8 @@ export class EnergyGraphComponent implements OnInit {
             billingProductionYearly[(billingProduction.year-2019)] = billingProduction.totalYear
           }
           else {
-            billingProductionYearly = [0,0,0,0,0,0]
+            //billingProductionYearly = [0,0,0,0,0,0]
+            billingProductionYearly = Array(this.numberOfYears).fill(0);
             billingProductionYearly[(billingProduction.year-2019)] = billingProduction.totalYear
           }
           prevDelegation = currentDelegation
@@ -983,12 +1035,14 @@ export class EnergyGraphComponent implements OnInit {
           currentYear = billingProduction.year
         })
         ratiobillingProductionYearly = [
-          +dataToYearView[0]/+billingProductionYearly[0],
-          +dataToYearView[1]/+billingProductionYearly[1],
-          +dataToYearView[2]/+billingProductionYearly[2],
-          +dataToYearView[3]/+billingProductionYearly[3],
-          +dataToYearView[4]/+billingProductionYearly[4],
-          +dataToYearView[5]/+billingProductionYearly[5]
+          +dataToYearView[0]/+billingProductionYearly[0], //2019
+          +dataToYearView[1]/+billingProductionYearly[1], //2020
+          +dataToYearView[2]/+billingProductionYearly[2], //2021
+          +dataToYearView[3]/+billingProductionYearly[3], //2022
+          +dataToYearView[4]/+billingProductionYearly[4], //2023
+          +dataToYearView[5]/+billingProductionYearly[5], //2024
+          +dataToYearView[6]/+billingProductionYearly[6], //2025
+
         ]
         this.endergyDataSet.push (
         {
@@ -1017,9 +1071,12 @@ export class EnergyGraphComponent implements OnInit {
     let currentYear: string
     let prevDelegation: string = ""
     let prevYear: string = ""
-    let billingProductionQuarterly: number[] = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0] /* los trimestres de seis años */
-    let ratiobillingProductionQuarterly: number[] = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0] /* los trimestres de seis años */
-
+    //let billingProductionQuarterly: number[] = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0] /* los trimestres de seis años */
+    this.numberOfYears = this.numberOfYears * 4 // trimestres
+    let billingProductionQuarterly: number[] = Array(this.numberOfYears).fill(0);
+    //let ratiobillingProductionQuarterly: number[] = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0] /* los trimestres de seis años */
+    this.numberOfYears = this.numberOfYears * 4 // trimestres
+    let ratiobillingProductionQuarterly: number[] = Array(this.numberOfYears).fill(0);
     this.billingService.getQuarterBillingByCompanyId(this.companyId, delegationProduction)
       .subscribe((quearterBillingProduction: BillingDTO[]) => {
         this.billingProductions = quearterBillingProduction
@@ -1029,7 +1086,7 @@ export class EnergyGraphComponent implements OnInit {
           currentDelegation = billingProduction.delegation
           currentYear = billingProduction.year
           if ((prevDelegation == "" || prevDelegation == currentDelegation)) {
-            if(billingProduction.year == "2019"){
+/*             if(billingProduction.year == "2019"){
               dataToQuarterView[0] = billingProduction.Q1
               dataToQuarterView[1] = billingProduction.Q2
               dataToQuarterView[2] = billingProduction.Q3
@@ -1070,11 +1127,24 @@ export class EnergyGraphComponent implements OnInit {
               dataToQuarterView[25] = billingProduction.Q2
               dataToQuarterView[26] = billingProduction.Q3
               dataToQuarterView[27] = billingProduction.Q4
+            } */
+      
+            const yearIndex = Number(billingProduction.year) - this.startYear; // índice relativo al startYear
+            if (yearIndex >= 0 && yearIndex < this.numberOfYears) {
+              const baseIndex = yearIndex * 4; // posición inicial para el año en el array
+              dataToQuarterView[baseIndex]     = billingProduction.Q1;
+              dataToQuarterView[baseIndex + 1] = billingProduction.Q2;
+              dataToQuarterView[baseIndex + 2] = billingProduction.Q3;
+              dataToQuarterView[baseIndex + 3] = billingProduction.Q4;
             }
+
           }
           else {
-            dataToQuarterView = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
-            if(billingProduction.year == "2019"){
+            //dataToQuarterView = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+            this.numberOfYears = this.numberOfYears * 4 // trimestres
+            dataToQuarterView = Array(this.numberOfYears).fill(0);
+
+           /*  if(billingProduction.year == "2019"){
               dataToQuarterView[0] = billingProduction.Q1
               dataToQuarterView[1] = billingProduction.Q2
               dataToQuarterView[2] = billingProduction.Q3
@@ -1115,6 +1185,14 @@ export class EnergyGraphComponent implements OnInit {
               dataToQuarterView[25] = billingProduction.Q2
               dataToQuarterView[26] = billingProduction.Q3
               dataToQuarterView[27] = billingProduction.Q4
+            } */
+            const yearIndex = Number(billingProduction.year) - this.startYear;
+            if (yearIndex >= 0 && yearIndex < this.numberOfYears) {
+              const baseIndex = yearIndex * 4;
+              dataToQuarterView[baseIndex]     = billingProduction.Q1;
+              dataToQuarterView[baseIndex + 1] = billingProduction.Q2;
+              dataToQuarterView[baseIndex + 2] = billingProduction.Q3;
+              dataToQuarterView[baseIndex + 3] = billingProduction.Q4;
             }
           }
           prevDelegation = currentDelegation
@@ -1123,31 +1201,34 @@ export class EnergyGraphComponent implements OnInit {
           currentYear = billingProduction.year
         })
         ratiobillingProductionQuarterly = [
-          +dataToQuarterView[0]/+billingProductionQuarterly[0],
-          +dataToQuarterView[1]/+billingProductionQuarterly[1],
-          +dataToQuarterView[2]/+billingProductionQuarterly[2],
-          +dataToQuarterView[3]/+billingProductionQuarterly[3],
-          +dataToQuarterView[4]/+billingProductionQuarterly[4],
-          +dataToQuarterView[5]/+billingProductionQuarterly[5],
-          +dataToQuarterView[6]/+billingProductionQuarterly[6],
-          +dataToQuarterView[7]/+billingProductionQuarterly[7],
-          +dataToQuarterView[8]/+billingProductionQuarterly[8],
-          +dataToQuarterView[9]/+billingProductionQuarterly[9],
-          +dataToQuarterView[10]/+billingProductionQuarterly[10],
-          +dataToQuarterView[11]/+billingProductionQuarterly[11],
-          +dataToQuarterView[12]/+billingProductionQuarterly[12],
-          +dataToQuarterView[13]/+billingProductionQuarterly[13],
-          +dataToQuarterView[14]/+billingProductionQuarterly[14],
-          +dataToQuarterView[15]/+billingProductionQuarterly[15],
-          +dataToQuarterView[16]/+billingProductionQuarterly[16],
-          +dataToQuarterView[17]/+billingProductionQuarterly[17],
-          +dataToQuarterView[18]/+billingProductionQuarterly[18],
-          +dataToQuarterView[19]/+billingProductionQuarterly[19],
-          +dataToQuarterView[20]/+billingProductionQuarterly[20],
-          +dataToQuarterView[21]/+billingProductionQuarterly[21],
-          +dataToQuarterView[22]/+billingProductionQuarterly[22],
-          +dataToQuarterView[23]/+billingProductionQuarterly[23]
-
+          +dataToQuarterView[0]/+billingProductionQuarterly[0], //2019
+          +dataToQuarterView[1]/+billingProductionQuarterly[1], //2019
+          +dataToQuarterView[2]/+billingProductionQuarterly[2], //2019
+          +dataToQuarterView[3]/+billingProductionQuarterly[3], //2019
+          +dataToQuarterView[4]/+billingProductionQuarterly[4], //2020
+          +dataToQuarterView[5]/+billingProductionQuarterly[5], //2020
+          +dataToQuarterView[6]/+billingProductionQuarterly[6], //2020
+          +dataToQuarterView[7]/+billingProductionQuarterly[7], //2020
+          +dataToQuarterView[8]/+billingProductionQuarterly[8], //2021
+          +dataToQuarterView[9]/+billingProductionQuarterly[9], //2021
+          +dataToQuarterView[10]/+billingProductionQuarterly[10], //2021
+          +dataToQuarterView[11]/+billingProductionQuarterly[11], //2021
+          +dataToQuarterView[12]/+billingProductionQuarterly[12], //2022
+          +dataToQuarterView[13]/+billingProductionQuarterly[13], //2022
+          +dataToQuarterView[14]/+billingProductionQuarterly[14], //2022
+          +dataToQuarterView[15]/+billingProductionQuarterly[15], //2022
+          +dataToQuarterView[16]/+billingProductionQuarterly[16], //2023
+          +dataToQuarterView[17]/+billingProductionQuarterly[17], //2023
+          +dataToQuarterView[18]/+billingProductionQuarterly[18], //2023
+          +dataToQuarterView[19]/+billingProductionQuarterly[19], //2023
+          +dataToQuarterView[20]/+billingProductionQuarterly[20], //2024
+          +dataToQuarterView[21]/+billingProductionQuarterly[21], //2024
+          +dataToQuarterView[22]/+billingProductionQuarterly[22], //2024
+          +dataToQuarterView[23]/+billingProductionQuarterly[23], //2024
+          +dataToQuarterView[24]/+billingProductionQuarterly[24], //2025
+          +dataToQuarterView[25]/+billingProductionQuarterly[25], //2025
+          +dataToQuarterView[26]/+billingProductionQuarterly[26], //2025
+          +dataToQuarterView[27]/+billingProductionQuarterly[27], //2025
         ]
         console.log("ratiobillingProductionQuarterly", ratiobillingProductionQuarterly, "dataToQuarterView", dataToQuarterView, "billingProductionQuarterly", billingProductionQuarterly)
         this.endergyDataSet.push (
@@ -1259,8 +1340,10 @@ export class EnergyGraphComponent implements OnInit {
     if (this.chart) {
       this.chart.destroy()
     }
-    this.isQuarterViewE = !this.isYearViewE
-    this.isMonthViewE = false
+    /*     this.isQuarterViewE = !this.isYearViewE
+    this.isMonthViewE = false */
+    this.energyGraphForm.get('quarterlyViewGraphE').setValue(!this.energyGraphForm.get('yearWiewGraphE').value)
+    this.energyGraphForm.get('monthlyViewGraphE').setValue(false)
     this.loadgraphDataEnergy()
   }
 
@@ -1268,8 +1351,10 @@ export class EnergyGraphComponent implements OnInit {
     if (this.chart) {
       this.chart.destroy()
     }
-    this.isMonthViewE = !this.isQuarterViewE
-    this.isYearViewE = false
+    /*     this.isMonthViewE = !this.isQuarterViewE
+    this.isYearViewE = false */
+    this.energyGraphForm.get('monthlyViewGraphE').setValue(!this.energyGraphForm.get('quarterlyViewGraphE').value)
+    this.energyGraphForm.get('yearWiewGraphE').setValue(false)
     this.loadgraphDataEnergy()
   }
 
@@ -1277,16 +1362,19 @@ export class EnergyGraphComponent implements OnInit {
     if (this.chart) {
       this.chart.destroy()
     }
-    this.isYearViewE = !this.isMonthViewE
-    this.isQuarterViewE = false
+    /* this.isYearViewE = !this.isMonthViewE
+    this.isQuarterViewE = false */
+    this.energyGraphForm.get('yearWiewGraphE').setValue(!this.energyGraphForm.get('monthlyViewGraphE').value)
+    this.energyGraphForm.get('quarterlyViewGraphE').setValue(false)
     this.loadgraphDataEnergy()
   }
 
-  chartkWViewE() { /* visualizar en kWh */
+  chartkWViewE() { //visualizar en kWh
     if (this.chart) {
       this.chart.destroy()
     }
-    this.isMWViewE = !this.iskWViewE
+   /*  this.isMWViewE = !this.iskWViewE */
+    this.energyGraphForm.get('MWView').setValue(!this.energyGraphForm.get('kWView').value)
     if (localStorage.getItem('preferredLang') === 'cat') {
       this.aspectEnergy = "Energia (kWh)"
     }
@@ -1300,7 +1388,8 @@ export class EnergyGraphComponent implements OnInit {
     if (this.chart) {
       this.chart.destroy()
     }
-    this.iskWViewE = !this.isMWViewE
+    /* this.iskWViewE = !this.isMWViewE */
+    this.energyGraphForm.get('kWView').setValue(!this.energyGraphForm.get('MWView').value)
     if (localStorage.getItem('preferredLang') === 'cat') {
       this.aspectEnergy = "Energia (MWh)"
     }

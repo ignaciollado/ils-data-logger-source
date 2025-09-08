@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { HeaderMenus } from 'src/app/Models/header-menus.dto';
 import { HeaderMenusService } from 'src/app/Services/header-menus.service';
+import { ChangeDetectorRef } from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -17,7 +18,37 @@ export class HeaderComponent implements OnInit {
   userId: string = ""
   access_token: string | null
 
-  constructor(
+constructor(
+  private router: Router,
+  private headerMenusService: HeaderMenusService,
+  private jwtHelper: JwtHelperService,
+  private cdr: ChangeDetectorRef
+) {
+  this.access_token = sessionStorage.getItem("access_token");
+  this.showAuthSection = false;
+  this.showNoAuthSection = true;
+
+  if (this.access_token === null || this.jwtHelper.isTokenExpired(this.access_token)) {
+    const headerInfo: HeaderMenus = {
+      showAuthSection: false,
+      showNoAuthSection: true,
+      showAdminSection: false,
+    };
+    sessionStorage.removeItem('user_id');
+    sessionStorage.removeItem('access_token');
+    this.headerMenusService.headerManagement.next(headerInfo);
+    this.router.navigateByUrl('login');
+  } else {
+    const headerInfo: HeaderMenus = {
+      showAuthSection: true,
+      showNoAuthSection: false,
+      showAdminSection: false,
+    };
+    this.headerMenusService.headerManagement.next(headerInfo);
+  }
+}
+
+/*   constructor(
     private router: Router,
     private headerMenusService: HeaderMenusService,
     private jwtHelper: JwtHelperService
@@ -34,7 +65,7 @@ export class HeaderComponent implements OnInit {
         const headerInfo: HeaderMenus = {  showAuthSection: true, showNoAuthSection: false, showAdminSection: false,}
         this.headerMenusService.headerManagement.next(headerInfo)
         this.userId = this.jwtHelper.decodeToken().name
-      } else { /* logout */
+      } else { // logout
         const headerInfo: HeaderMenus = { showAuthSection: false, showNoAuthSection: true, showAdminSection: false, }
         sessionStorage.removeItem('user_id')
         sessionStorage.removeItem('access_token')
@@ -43,9 +74,9 @@ export class HeaderComponent implements OnInit {
         this.router.navigateByUrl('login')
       }
     }
-  }
+  } */
 
-  ngOnInit(): void {
+/*   ngOnInit(): void {
     this.headerMenusService.headerManagement.subscribe (
       (headerInfo: HeaderMenus) => {
         if (this.jwtHelper.decodeToken()) {
@@ -62,7 +93,27 @@ export class HeaderComponent implements OnInit {
         }
       }
     )
+  } */
+  
+    ngOnInit(): void {
+    if (this.access_token && !this.jwtHelper.isTokenExpired(this.access_token)) {
+      const decodedToken = this.jwtHelper.decodeToken(this.access_token);
+      this.userId = decodedToken.name;
+      this.isCompany = decodedToken.role === 'company';
+      this.cdr.detectChanges(); // 👈 fuerza la actualización del template
+    }
+
+    this.headerMenusService.headerManagement.subscribe(
+      (headerInfo: HeaderMenus) => {
+        if (headerInfo) {
+          this.showAuthSection = headerInfo.showAuthSection;
+          this.showNoAuthSection = headerInfo.showNoAuthSection;
+          this.cdr.detectChanges(); // 👈 por si cambia algo más
+        }
+      }
+    );
   }
+
 
   dashboard(): void {
     this.router.navigateByUrl('dashboard');
@@ -148,7 +199,6 @@ export class HeaderComponent implements OnInit {
   }
 
   logout(): void {
-    this.router.navigateByUrl('home')
     sessionStorage.removeItem('user_id')
     sessionStorage.removeItem('access_token')
     this.userId = ""
@@ -156,5 +206,6 @@ export class HeaderComponent implements OnInit {
     /* location.reload() */
     const headerInfo: HeaderMenus = { showAuthSection: false, showNoAuthSection: true, }
     this.headerMenusService.headerManagement.next(headerInfo)
+    this.router.navigateByUrl('home')
   }
 }

@@ -79,10 +79,15 @@ export class BillingService {
     );
   }
 
-  getYearBillingByCompanyId(companyId:string, delegation:string): Observable<BillingDTO[]> {
+  /*   getYearBillingByCompanyId(companyId:string, delegation:string): Observable<BillingDTO[]> {
     return this.http
       .get<BillingDTO[]>(`${URL_API}graphProductionBillingYearlyGetByCompanyId.php?companyId=${companyId}&delegation=${delegation}`)
+  } */
+  getYearBillingByCompanyId(companyId:string, delegation:string): Observable<BillingDTO[]> {
+    return this.http
+      .get<BillingDTO[]>(`${this.apiUrl}/ilsbillingyearly/${companyId}/${delegation}`)
   }
+
   getQuarterBillingByCompanyId(companyId:string, delegation:string): Observable<BillingDTO[]> {
     return this.http
       .get<BillingDTO[]>(`${URL_API}graphProductionBillingYearlyGetByCompanyId.php?companyId=${companyId}&delegation=${delegation}`)

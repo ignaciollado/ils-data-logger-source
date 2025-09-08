@@ -2,17 +2,12 @@
   <h2>{{ 'sustainabilityIndicatorsCharts' | translate }}: {{ 'energies' | translate }}</h2>
   <mat-chip-option color="warn" selected><strong>Nota:</strong> Versión actualmente en desarrollo. No válida para producción</mat-chip-option>
   <section ngClass='filtro-graficas'>
-<form
-  [formGroup]="energyGraphForm"
-  (ngSubmit)="loadgraphDataEnergy()"
-  class="energy-form">
-
+  <form [formGroup]="energyGraphForm" (ngSubmit)="loadgraphDataEnergy()" class="energy-form"> 
   <div class="fields-container">
-
     <!-- Delegation -->
     <mat-form-field class="form-field">
       <mat-label>{{'delegation' | translate}}</mat-label>
-      <mat-select formControlName="delegation" (selectionChange)="loadgraphDataEnergy()">
+      <mat-select formControlName = "delegation" (selectionChange)="loadgraphDataEnergy()">
         <mat-option *ngFor="let delegation of delegations" [value]="delegation.name">
           {{delegation.name}}
         </mat-option>
@@ -25,7 +20,7 @@
     <!-- Energy -->
     <mat-form-field class="form-field">
       <mat-label>{{'energies' | translate}}</mat-label>
-      <mat-select formControlName="energy" (selectionChange)="loadgraphDataEnergy()">
+      <mat-select formControlName = "energy" (selectionChange)="loadgraphDataEnergy()">
         <mat-option *ngFor="let energy of energies" [value]="energy.nameES" class="small-data">
           {{energy.nameES}}
         </mat-option>
@@ -37,25 +32,25 @@
 
     <!-- Ratio Toggles -->
     <div class="toggle-group">
-      <mat-slide-toggle formControlName="ratioBillingGraphE" (change)="loadgraphDataEnergy()">
+      <mat-slide-toggle formControlName = "ratioBillingGraphE" (change)="loadgraphDataEnergy()">
         {{'ratioBillingMode' | translate}}
       </mat-slide-toggle>
-      <mat-slide-toggle formControlName="ratioCNAEgGraphE" (change)="chartRatioCNAE()">
+      <mat-slide-toggle formControlName = "ratioCNAEgGraphE" (change)="chartRatioCNAE()">
         {{'ratioCNAEMode' | translate}}
       </mat-slide-toggle>
     </div>
 
     <!-- Time View Toggles -->
     <div class="toggle-group">
-      <mat-slide-toggle [(ngModel)]="isYearViewE" [formControl]="yearWiewGraphE" (change)="chartYearlyViewE()">{{'year' | translate}}</mat-slide-toggle>
-      <mat-slide-toggle [(ngModel)]="isQuarterViewE" [formControl]="quarterlyViewGraphE" (change)="chartQuarterlyViewE()">{{'quarter' | translate}}</mat-slide-toggle>
-      <mat-slide-toggle [(ngModel)]="isMonthViewE" [formControl]="monthlyViewGraphE" (change)="chartmonthlyViewE()">{{'month' | translate}}</mat-slide-toggle>
+      <mat-slide-toggle formControlName = "yearWiewGraphE" (change)="chartYearlyViewE()">{{'year' | translate}}</mat-slide-toggle>
+      <mat-slide-toggle formControlName = "quarterlyViewGraphE" (change)="chartQuarterlyViewE()">{{'quarter' | translate}}</mat-slide-toggle>
+      <mat-slide-toggle formControlName = "monthlyViewGraphE" (change)="chartmonthlyViewE()">{{'month' | translate}}</mat-slide-toggle>
     </div>
 
     <!-- Energy Unit Toggles -->
     <div class="toggle-group">
-      <mat-slide-toggle [(ngModel)]="iskWViewE" [formControl]="kWView" (change)="chartkWViewE()">kWh</mat-slide-toggle>
-      <mat-slide-toggle [(ngModel)]="isMWViewE" [formControl]="MWView" (change)="chartMWViewE()">MWh</mat-slide-toggle>
+      <mat-slide-toggle formControlName = "kWView" (change)="chartkWViewE()">kWh</mat-slide-toggle>
+      <mat-slide-toggle formControlName = "MWView" (change)="chartMWViewE()">MWh</mat-slide-toggle>
     </div>
 
     <!-- Buttons -->
@@ -65,17 +60,12 @@
     </div>
 
   </div>
-</form>
-
+    </form>
   </section>
   <span *ngIf="!consumptions" ngClass="loader">{{'waitingForData' | translate}}
     <mat-progress-bar mode="indeterminate" color="primary" *ngIf="!consumptions"></mat-progress-bar>
   </span>
-
-      <canvas id="energyGraph" aria-label= "Energy graph" role="chart"
-        (Click)="onChartClick($event)">{{ chart }}
-      </canvas>
-
+  <canvas id="energyGraph" aria-label= "Energy graph" role="chart" (Click)="onChartClick($event)">{{ chart }}</canvas>
 </section>
 
 <!--   <div ngClass='filtro-graficas'>

@@ -158,23 +158,25 @@ export class EnergyGraphComponent implements OnInit {
 
     this.companyId = this.jwtHelper.decodeToken().id_ils;
 
-    this.graphMonths = ['2019-01', '2019-02', '2019-03', '2019-04', '2019-05', '2019-06', '2019-07', '2019-08', '2019-09', '2019-10', '2019-11', '2019-12',
-      '2020-01', '2020-02', '2020-03', '2020-04', '2020-05', '2020-06', '2020-07', '2020-08', '2020-09', '2020-10', '2020-11', '2020-12',
-      '2021-01', '2021-02', '2021-03', '2021-04', '2021-05', '2021-06', '2021-07', '2021-08', '2021-09', '2021-10', '2021-11', '2021-12',
-      '2022-01', '2022-02', '2022-03', '2022-04', '2022-05', '2022-06', '2022-07', '2022-08', '2022-09', '2022-10', '2022-11', '2022-12',
-      '2023-01', '2023-02', '2023-03', '2023-04', '2023-05', '2023-06', '2023-07', '2023-08', '2023-09', '2023-10', '2023-11', '2023-12',
-      '2024-01', '2024-02', '2024-03', '2024-04', '2024-05', '2024-06', '2024-07', '2024-08', '2024-09', '2024-10', '2024-11', '2024-12',
-      '2025-01', '2025-02', '2025-03', '2025-04', '2025-05', '2025-06', '2025-07', '2025-08', '2025-09', '2025-10', '2025-11', '2025-12']
+    // Generar meses en formato 'YYYY-MM'
+    this.graphMonths = [];
+    for (let year = this.startYear; year <= this.currentYear; year++) {
+      for (let month = 1; month <= 12; month++) {
+          const monthStr = month.toString().padStart(2, '0');
+          this.graphMonths.push(`${year}-${monthStr}`);
+      }
+    }
 
-    this.graphQuarters = ['2019-T1','2019-T2','2019-T3','2019-T4',
-      '2020-T1','2020-T2','2020-T3','2020-T4',
-      '2021-T1','2021-T2','2021-T3','2021-T4',
-      '2022-T1','2022-T2','2022-T3','2022-T4',
-      '2023-T1','2023-T2','2023-T3','2023-T4',
-      '2024-T1','2024-T2','2024-T3','2024-T4',
-      '2025-T1','2025-T2','2025-T3','2025-T4']
+    // Generar trimestres en formato 'YYYY-Tn'
+    this.graphQuarters = [];
+    for (let year = this.startYear; year <= this.currentYear; year++) {
+      for (let q = 1; q <= 4; q++) {
+          this.graphQuarters.push(`${year}-T${q}`);
+      }
+    }
 
-    this.graphYears = ['2019', '2020', '2021', '2022', '2023', '2024', '2025']
+    // Generar años
+    this.graphYears = Array.from({ length: this.numberOfYears }, (_, i) => (this.startYear + i).toString());
 
     if (localStorage.getItem('preferredLang') === 'cat') {
       this.aspectEnergy = "Energia (kWh)"
@@ -300,14 +302,13 @@ export class EnergyGraphComponent implements OnInit {
     this.chart.destroy()
     this.startPrimaryColor = 19
 
-    /*  if (this.isMWViewE) { */
     if (this.energyGraphForm.get('MWView').value) {
       convertkWhToMWh = 1000
     } else {
       convertkWhToMWh = 1
     }
 
-    if (this.energyGraphForm.get('yearWiewGraphE').value) {
+    if (this.energyGraphForm.get('yearWiewGraphE').value) {  //visualización por años
       this.consumptionService.getYearlyEnergyByCompanyId(this.companyId)
       .subscribe(
       (consumptions: ConsumptionDTO[]) => {
@@ -327,7 +328,6 @@ export class EnergyGraphComponent implements OnInit {
             dataToYearView[(consumption.year-2019)] = consumption.totalYear * (equivEnkWh/convertkWhToMWh)
           }
           else {
-            /* if (this.isRatioBillingE) { */
             if (this.energyGraphForm.get('ratioBillingGraphE').value) {
               this.billingYearProduction(dataToYearView, prevDelegation)
               this.delegation.disable()
@@ -344,7 +344,6 @@ export class EnergyGraphComponent implements OnInit {
             stack: prevDelegation,
             },
             )
-            // dataToYearView = [0,0,0,0,0,0,0] //para 2019-2025
             dataToYearView = Array(this.numberOfYears).fill(0);
 
             dataToYearView[(consumption.year-2019)] = consumption.totalYear * (equivEnkWh/convertkWhToMWh)
@@ -356,7 +355,6 @@ export class EnergyGraphComponent implements OnInit {
           currentEnergy = consumption.energyName
           currentYear = consumption.year
         })
-        /* if (this.isRatioBillingE) { */
         if (this.energyGraphForm.get('ratioBillingGraphE').value) {
           this.billingYearProduction(dataToYearView, prevDelegation)
           this.delegation.disable()
@@ -406,7 +404,7 @@ export class EnergyGraphComponent implements OnInit {
       )
     }
 
-    if (this.energyGraphForm.get('quarterlyViewGraphE').value) {
+    if (this.energyGraphForm.get('quarterlyViewGraphE').value) { //visualización por trimestres
       this.consumptionService.getQuarterlyEnergyByCompanyId(this.companyId)
       .subscribe(
       (consumptions: ConsumptionDTO[]) => {
@@ -422,52 +420,22 @@ export class EnergyGraphComponent implements OnInit {
           })
           currentDelegation = consumption.delegation
           currentEnergy = consumption.energyName
+          // Inicializamos el array de trimestres si no lo está
+          if (!dataToQuarterView || dataToQuarterView.length !== this.numberOfYears * 4) {
+            dataToQuarterView = Array(this.numberOfYears * 4).fill(0);
+          }
           if ((prevDelegation == "" || prevDelegation == currentDelegation) && (prevEnergy == "" || prevEnergy == currentEnergy)) {
-              if(consumption.year == "2019"){
-                dataToQuarterView[0] = consumption.Q1 * equivEnkWh/convertkWhToMWh
-                dataToQuarterView[1] = consumption.Q2 * equivEnkWh/convertkWhToMWh
-                dataToQuarterView[2] = consumption.Q3 * equivEnkWh/convertkWhToMWh
-                dataToQuarterView[3] = consumption.Q4 * equivEnkWh/convertkWhToMWh
-              }
-              if(consumption.year == "2020"){
-                dataToQuarterView[4] = consumption.Q1 * equivEnkWh/convertkWhToMWh
-                dataToQuarterView[5] = consumption.Q2 * equivEnkWh/convertkWhToMWh
-                dataToQuarterView[6] = consumption.Q3 * equivEnkWh/convertkWhToMWh
-                dataToQuarterView[7] = consumption.Q4 * equivEnkWh/convertkWhToMWh
-              }
-              if(consumption.year == "2021"){
-                dataToQuarterView[8] = consumption.Q1 * equivEnkWh/convertkWhToMWh
-                dataToQuarterView[9] = consumption.Q2 * equivEnkWh/convertkWhToMWh
-                dataToQuarterView[10] = consumption.Q3 * equivEnkWh/convertkWhToMWh
-                dataToQuarterView[11] = consumption.Q4 * equivEnkWh/convertkWhToMWh
-              }
-              if(consumption.year == "2022"){
-                dataToQuarterView[12] = consumption.Q1 * equivEnkWh/convertkWhToMWh
-                dataToQuarterView[13] = consumption.Q2 * equivEnkWh/convertkWhToMWh
-                dataToQuarterView[14] = consumption.Q3 * equivEnkWh/convertkWhToMWh
-                dataToQuarterView[15] = consumption.Q4 * equivEnkWh/convertkWhToMWh
-              }
-              if(consumption.year == "2023"){
-                dataToQuarterView[16] = consumption.Q1 * equivEnkWh/convertkWhToMWh
-                dataToQuarterView[17] = consumption.Q2 * equivEnkWh/convertkWhToMWh
-                dataToQuarterView[18] = consumption.Q3 * equivEnkWh/convertkWhToMWh
-                dataToQuarterView[19] = consumption.Q4 * equivEnkWh/convertkWhToMWh
-              }
-              if(consumption.year == "2024"){
-                dataToQuarterView[20] = consumption.Q1 * equivEnkWh/convertkWhToMWh
-                dataToQuarterView[21] = consumption.Q2 * equivEnkWh/convertkWhToMWh
-                dataToQuarterView[22] = consumption.Q3 * equivEnkWh/convertkWhToMWh
-                dataToQuarterView[23] = consumption.Q4 * equivEnkWh/convertkWhToMWh
-              }
-              if(consumption.year == "2025"){
-                dataToQuarterView[24] = consumption.Q1 * equivEnkWh/convertkWhToMWh
-                dataToQuarterView[25] = consumption.Q2 * equivEnkWh/convertkWhToMWh
-                dataToQuarterView[26] = consumption.Q3 * equivEnkWh/convertkWhToMWh
-                dataToQuarterView[27] = consumption.Q4 * equivEnkWh/convertkWhToMWh
-              }
+              const yearIndex = Number(consumption.year) - this.startYear;
+              if (yearIndex >= 0 && yearIndex < this.numberOfYears) {
+                const baseIndex = yearIndex * 4;
+                // Array de trimestres
+                const quarters: (keyof typeof consumption)[] = ["Q1", "Q2", "Q3", "Q4"];
+                for (let i = 0; i < 4; i++) {
+                  dataToQuarterView[baseIndex + i] = consumption[quarters[i]] * equivEnkWh / convertkWhToMWh;
+                }
+              }             
           }
           else {
-            /* if (this.isRatioBillingE) { */
             if (this.energyGraphForm.get('ratioBillingGraphE').value) {
               this.billingQuarterProduction(dataToQuarterView, prevDelegation)
               this.delegation.disable()
@@ -484,50 +452,17 @@ export class EnergyGraphComponent implements OnInit {
               stack: prevDelegation,
               },
             )
-            //dataToQuarterView = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
               this.numberOfYears = this.numberOfYears * 4 // trimestres
               dataToQuarterView = Array(this.numberOfYears).fill(0);
-              if(consumption.year == "2019"){
-                dataToQuarterView[0] = consumption.Q1 * equivEnkWh/convertkWhToMWh
-                dataToQuarterView[1] = consumption.Q2 * equivEnkWh/convertkWhToMWh
-                dataToQuarterView[2] = consumption.Q3 * equivEnkWh/convertkWhToMWh
-                dataToQuarterView[3] = consumption.Q4 * equivEnkWh/convertkWhToMWh
-              }
-              if(consumption.year == "2020"){
-                dataToQuarterView[4] = consumption.Q1 * equivEnkWh/convertkWhToMWh
-                dataToQuarterView[5] = consumption.Q2 * equivEnkWh/convertkWhToMWh
-                dataToQuarterView[6] = consumption.Q3 * equivEnkWh/convertkWhToMWh
-                dataToQuarterView[7] = consumption.Q4 * equivEnkWh/convertkWhToMWh
-              }
-              if(consumption.year == "2021"){
-                dataToQuarterView[8] = consumption.Q1 * equivEnkWh/convertkWhToMWh
-                dataToQuarterView[9] = consumption.Q2 * equivEnkWh/convertkWhToMWh
-                dataToQuarterView[10] = consumption.Q3 * equivEnkWh/convertkWhToMWh
-                dataToQuarterView[11] = consumption.Q4 * equivEnkWh/convertkWhToMWh
-              }
-              if(consumption.year == "2022"){
-                dataToQuarterView[12] = consumption.Q1 * equivEnkWh/convertkWhToMWh
-                dataToQuarterView[13] = consumption.Q2 * equivEnkWh/convertkWhToMWh
-                dataToQuarterView[14] = consumption.Q3 * equivEnkWh/convertkWhToMWh
-                dataToQuarterView[15] = consumption.Q4 * equivEnkWh/convertkWhToMWh
-              }
-              if(consumption.year == "2023"){
-                dataToQuarterView[16] = consumption.Q1 * equivEnkWh/convertkWhToMWh
-                dataToQuarterView[17] = consumption.Q2 * equivEnkWh/convertkWhToMWh
-                dataToQuarterView[18] = consumption.Q3 * equivEnkWh/convertkWhToMWh
-                dataToQuarterView[19] = consumption.Q4 * equivEnkWh/convertkWhToMWh
-              }
-              if(consumption.year == "2024"){
-                dataToQuarterView[20] = consumption.Q1 * equivEnkWh/convertkWhToMWh
-                dataToQuarterView[21] = consumption.Q2 * equivEnkWh/convertkWhToMWh
-                dataToQuarterView[22] = consumption.Q3 * equivEnkWh/convertkWhToMWh
-                dataToQuarterView[23] = consumption.Q4 * equivEnkWh/convertkWhToMWh
-              }
-              if(consumption.year == "2025"){
-                dataToQuarterView[24] = consumption.Q1 * equivEnkWh/convertkWhToMWh
-                dataToQuarterView[25] = consumption.Q2 * equivEnkWh/convertkWhToMWh
-                dataToQuarterView[26] = consumption.Q3 * equivEnkWh/convertkWhToMWh
-                dataToQuarterView[27] = consumption.Q4 * equivEnkWh/convertkWhToMWh
+             // Calculamos el índice base para el año actual
+              const yearIndex = Number(consumption.year) - this.startYear;
+              if (yearIndex >= 0 && yearIndex < this.numberOfYears) {
+                const baseIndex = yearIndex * 4;
+                // Array de los 4 trimestres
+                const quarters: (keyof typeof consumption)[] = ["Q1", "Q2", "Q3", "Q4"];
+                for (let i = 0; i < 4; i++) {
+                  dataToQuarterView[baseIndex + i] = consumption[quarters[i]] * equivEnkWh / convertkWhToMWh;
+                }
               }
           }
           prevDelegation = currentDelegation
@@ -587,7 +522,7 @@ export class EnergyGraphComponent implements OnInit {
       )
     }
 
-    if (this.energyGraphForm.get('monthlyViewGraphE').value) {
+    if (this.energyGraphForm.get('monthlyViewGraphE').value) { //visualización por meses
       this.consumptionService.getMonthlyEnergyByCompanyId(this.companyId)
       .subscribe(
       (consumptions: ConsumptionDTO[]) => {
@@ -604,90 +539,6 @@ export class EnergyGraphComponent implements OnInit {
           currentEnergy = consumption.energyName
           prevYear = consumption.year
           if ((prevDelegation == "" || prevDelegation == currentDelegation) && (prevEnergy == "" || prevEnergy == currentEnergy) && (prevYear == "" || prevYear == currentYear)) {
-              /* if(consumption.year == "2019"){
-                dataToMonthlyView[0] = consumption.jan * equivEnkWh/convertkWhToMWh
-                dataToMonthlyView[1] = consumption.feb * equivEnkWh/convertkWhToMWh
-                dataToMonthlyView[2] = consumption.mar * equivEnkWh/convertkWhToMWh
-                dataToMonthlyView[3] = consumption.apr * equivEnkWh/convertkWhToMWh
-                dataToMonthlyView[4] = consumption.may * equivEnkWh/convertkWhToMWh
-                dataToMonthlyView[5] = consumption.jun * equivEnkWh/convertkWhToMWh
-                dataToMonthlyView[6] = consumption.jul * equivEnkWh/convertkWhToMWh
-                dataToMonthlyView[7] = consumption.aug * equivEnkWh/convertkWhToMWh
-                dataToMonthlyView[8] = consumption.sep * equivEnkWh/convertkWhToMWh
-                dataToMonthlyView[9] = consumption.oct * equivEnkWh/convertkWhToMWh
-                dataToMonthlyView[10] = consumption.nov * equivEnkWh/convertkWhToMWh
-                dataToMonthlyView[11] = consumption.dec * equivEnkWh/convertkWhToMWh
-              }
-              if(consumption.year == "2020"){
-                dataToMonthlyView[12] = consumption.jan * equivEnkWh/convertkWhToMWh
-                dataToMonthlyView[13] = consumption.feb * equivEnkWh/convertkWhToMWh
-                dataToMonthlyView[14] = consumption.mar * equivEnkWh/convertkWhToMWh
-                dataToMonthlyView[15] = consumption.apr * equivEnkWh/convertkWhToMWh
-                dataToMonthlyView[16] = consumption.may * equivEnkWh/convertkWhToMWh
-                dataToMonthlyView[17] = consumption.jun * equivEnkWh/convertkWhToMWh
-                dataToMonthlyView[18] = consumption.jul * equivEnkWh/convertkWhToMWh
-                dataToMonthlyView[19] = consumption.aug * equivEnkWh/convertkWhToMWh
-                dataToMonthlyView[20] = consumption.sep * equivEnkWh/convertkWhToMWh
-                dataToMonthlyView[21] = consumption.oct * equivEnkWh/convertkWhToMWh
-                dataToMonthlyView[22] = consumption.nov * equivEnkWh/convertkWhToMWh
-                dataToMonthlyView[23] = consumption.dec * equivEnkWh/convertkWhToMWh
-              }
-              if(consumption.year == "2021"){
-                dataToMonthlyView[24] = consumption.jan * equivEnkWh/convertkWhToMWh
-                dataToMonthlyView[25] = consumption.feb * equivEnkWh/convertkWhToMWh
-                dataToMonthlyView[26] = consumption.mar * equivEnkWh/convertkWhToMWh
-                dataToMonthlyView[27] = consumption.apr * equivEnkWh/convertkWhToMWh
-                dataToMonthlyView[28] = consumption.may * equivEnkWh/convertkWhToMWh
-                dataToMonthlyView[29] = consumption.jun * equivEnkWh/convertkWhToMWh
-                dataToMonthlyView[30] = consumption.jul * equivEnkWh/convertkWhToMWh
-                dataToMonthlyView[31] = consumption.aug * equivEnkWh/convertkWhToMWh
-                dataToMonthlyView[32] = consumption.sep * equivEnkWh/convertkWhToMWh
-                dataToMonthlyView[33] = consumption.oct * equivEnkWh/convertkWhToMWh
-                dataToMonthlyView[34] = consumption.nov * equivEnkWh/convertkWhToMWh
-                dataToMonthlyView[35] = consumption.dec * equivEnkWh/convertkWhToMWh
-              }
-              if(consumption.year == "2022"){
-                dataToMonthlyView[36] = consumption.jan * equivEnkWh/convertkWhToMWh
-                dataToMonthlyView[37] = consumption.feb * equivEnkWh/convertkWhToMWh
-                dataToMonthlyView[38] = consumption.mar * equivEnkWh/convertkWhToMWh
-                dataToMonthlyView[39] = consumption.apr * equivEnkWh/convertkWhToMWh
-                dataToMonthlyView[40] = consumption.may * equivEnkWh/convertkWhToMWh
-                dataToMonthlyView[41] = consumption.jun * equivEnkWh/convertkWhToMWh
-                dataToMonthlyView[42] = consumption.jul * equivEnkWh/convertkWhToMWh
-                dataToMonthlyView[43] = consumption.aug * equivEnkWh/convertkWhToMWh
-                dataToMonthlyView[44] = consumption.sep * equivEnkWh/convertkWhToMWh
-                dataToMonthlyView[45] = consumption.oct * equivEnkWh/convertkWhToMWh
-                dataToMonthlyView[46] = consumption.nov * equivEnkWh/convertkWhToMWh
-                dataToMonthlyView[47] = consumption.dec * equivEnkWh/convertkWhToMWh
-              }
-              if(consumption.year == "2023"){
-                dataToMonthlyView[48] = consumption.jan * equivEnkWh/convertkWhToMWh
-                dataToMonthlyView[49] = consumption.feb * equivEnkWh/convertkWhToMWh
-                dataToMonthlyView[50] = consumption.mar * equivEnkWh/convertkWhToMWh
-                dataToMonthlyView[51] = consumption.apr * equivEnkWh/convertkWhToMWh
-                dataToMonthlyView[52] = consumption.may * equivEnkWh/convertkWhToMWh
-                dataToMonthlyView[53] = consumption.jun * equivEnkWh/convertkWhToMWh
-                dataToMonthlyView[54] = consumption.jul * equivEnkWh/convertkWhToMWh
-                dataToMonthlyView[55] = consumption.aug * equivEnkWh/convertkWhToMWh
-                dataToMonthlyView[56] = consumption.sep * equivEnkWh/convertkWhToMWh
-                dataToMonthlyView[57] = consumption.oct * equivEnkWh/convertkWhToMWh
-                dataToMonthlyView[58] = consumption.nov * equivEnkWh/convertkWhToMWh
-                dataToMonthlyView[59] = consumption.dec * equivEnkWh/convertkWhToMWh
-              }
-              if(consumption.year == "2024"){
-                dataToMonthlyView[60] = consumption.jan * equivEnkWh/convertkWhToMWh
-                dataToMonthlyView[61] = consumption.feb * equivEnkWh/convertkWhToMWh
-                dataToMonthlyView[62] = consumption.mar * equivEnkWh/convertkWhToMWh
-                dataToMonthlyView[63] = consumption.apr * equivEnkWh/convertkWhToMWh
-                dataToMonthlyView[64] = consumption.may * equivEnkWh/convertkWhToMWh
-                dataToMonthlyView[65] = consumption.jun * equivEnkWh/convertkWhToMWh
-                dataToMonthlyView[66] = consumption.jul * equivEnkWh/convertkWhToMWh
-                dataToMonthlyView[67] = consumption.aug * equivEnkWh/convertkWhToMWh
-                dataToMonthlyView[68] = consumption.sep * equivEnkWh/convertkWhToMWh
-                dataToMonthlyView[69] = consumption.oct * equivEnkWh/convertkWhToMWh
-                dataToMonthlyView[70] = consumption.nov * equivEnkWh/convertkWhToMWh
-                dataToMonthlyView[71] = consumption.dec * equivEnkWh/convertkWhToMWh
-              } */
               const  yearIndex = Number(consumption.year) - this.startYear;
               if (yearIndex >= 0 && yearIndex < this.numberOfYears) {
                 const baseIndex = yearIndex * 12;
@@ -715,109 +566,9 @@ export class EnergyGraphComponent implements OnInit {
               },
             )
             this.numberOfYears = this.numberOfYears * 12 // meses
-            //dataToMonthlyView = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
             dataToMonthlyView = Array(this.numberOfYears).fill(0);
-           /*  if(consumption.year == "2019"){
-                dataToMonthlyView[0] = consumption.jan * equivEnkWh/convertkWhToMWh
-                dataToMonthlyView[1] = consumption.feb * equivEnkWh/convertkWhToMWh
-                dataToMonthlyView[2] = consumption.mar * equivEnkWh/convertkWhToMWh
-                dataToMonthlyView[3] = consumption.apr * equivEnkWh/convertkWhToMWh
-                dataToMonthlyView[4] = consumption.may * equivEnkWh/convertkWhToMWh
-                dataToMonthlyView[5] = consumption.jun * equivEnkWh/convertkWhToMWh
-                dataToMonthlyView[6] = consumption.jul * equivEnkWh/convertkWhToMWh
-                dataToMonthlyView[7] = consumption.aug * equivEnkWh/convertkWhToMWh
-                dataToMonthlyView[8] = consumption.sep * equivEnkWh/convertkWhToMWh
-                dataToMonthlyView[9] = consumption.oct * equivEnkWh/convertkWhToMWh
-                dataToMonthlyView[10] = consumption.nov * equivEnkWh/convertkWhToMWh
-                dataToMonthlyView[11] = consumption.dec * equivEnkWh/convertkWhToMWh
-              }
-              if(consumption.year == "2020"){
-                dataToMonthlyView[12] = consumption.jan * equivEnkWh/convertkWhToMWh
-                dataToMonthlyView[13] = consumption.feb * equivEnkWh/convertkWhToMWh
-                dataToMonthlyView[14] = consumption.mar * equivEnkWh/convertkWhToMWh
-                dataToMonthlyView[15] = consumption.apr * equivEnkWh/convertkWhToMWh
-                dataToMonthlyView[16] = consumption.may * equivEnkWh/convertkWhToMWh
-                dataToMonthlyView[17] = consumption.jun * equivEnkWh/convertkWhToMWh
-                dataToMonthlyView[18] = consumption.jul * equivEnkWh/convertkWhToMWh
-                dataToMonthlyView[19] = consumption.aug * equivEnkWh/convertkWhToMWh
-                dataToMonthlyView[20] = consumption.sep * equivEnkWh/convertkWhToMWh
-                dataToMonthlyView[21] = consumption.oct * equivEnkWh/convertkWhToMWh
-                dataToMonthlyView[22] = consumption.nov * equivEnkWh/convertkWhToMWh
-                dataToMonthlyView[23] = consumption.dec * equivEnkWh/convertkWhToMWh
-              }
-              if(consumption.year == "2021"){
-                dataToMonthlyView[24] = consumption.jan * equivEnkWh/convertkWhToMWh
-                dataToMonthlyView[25] = consumption.feb * equivEnkWh/convertkWhToMWh
-                dataToMonthlyView[26] = consumption.mar * equivEnkWh/convertkWhToMWh
-                dataToMonthlyView[27] = consumption.apr * equivEnkWh/convertkWhToMWh
-                dataToMonthlyView[28] = consumption.may * equivEnkWh/convertkWhToMWh
-                dataToMonthlyView[29] = consumption.jun * equivEnkWh/convertkWhToMWh
-                dataToMonthlyView[30] = consumption.jul * equivEnkWh/convertkWhToMWh
-                dataToMonthlyView[31] = consumption.aug * equivEnkWh/convertkWhToMWh
-                dataToMonthlyView[32] = consumption.sep * equivEnkWh/convertkWhToMWh
-                dataToMonthlyView[33] = consumption.oct * equivEnkWh/convertkWhToMWh
-                dataToMonthlyView[34] = consumption.nov * equivEnkWh/convertkWhToMWh
-                dataToMonthlyView[35] = consumption.dec * equivEnkWh/convertkWhToMWh
-              }
-              if(consumption.year == "2022"){
-                dataToMonthlyView[36] = consumption.jan * equivEnkWh/convertkWhToMWh
-                dataToMonthlyView[37] = consumption.feb * equivEnkWh/convertkWhToMWh
-                dataToMonthlyView[38] = consumption.mar * equivEnkWh/convertkWhToMWh
-                dataToMonthlyView[39] = consumption.apr * equivEnkWh/convertkWhToMWh
-                dataToMonthlyView[40] = consumption.may * equivEnkWh/convertkWhToMWh
-                dataToMonthlyView[41] = consumption.jun * equivEnkWh/convertkWhToMWh
-                dataToMonthlyView[42] = consumption.jul * equivEnkWh/convertkWhToMWh
-                dataToMonthlyView[43] = consumption.aug * equivEnkWh/convertkWhToMWh
-                dataToMonthlyView[44] = consumption.sep * equivEnkWh/convertkWhToMWh
-                dataToMonthlyView[45] = consumption.oct * equivEnkWh/convertkWhToMWh
-                dataToMonthlyView[46] = consumption.nov * equivEnkWh/convertkWhToMWh
-                dataToMonthlyView[47] = consumption.dec * equivEnkWh/convertkWhToMWh
-              }
-              if(consumption.year == "2023"){
-                dataToMonthlyView[48] = consumption.jan * equivEnkWh/convertkWhToMWh
-                dataToMonthlyView[49] = consumption.feb * equivEnkWh/convertkWhToMWh
-                dataToMonthlyView[50] = consumption.mar * equivEnkWh/convertkWhToMWh
-                dataToMonthlyView[51] = consumption.apr * equivEnkWh/convertkWhToMWh
-                dataToMonthlyView[52] = consumption.may * equivEnkWh/convertkWhToMWh
-                dataToMonthlyView[53] = consumption.jun * equivEnkWh/convertkWhToMWh
-                dataToMonthlyView[54] = consumption.jul * equivEnkWh/convertkWhToMWh
-                dataToMonthlyView[55] = consumption.aug * equivEnkWh/convertkWhToMWh
-                dataToMonthlyView[56] = consumption.sep * equivEnkWh/convertkWhToMWh
-                dataToMonthlyView[57] = consumption.oct * equivEnkWh/convertkWhToMWh
-                dataToMonthlyView[58] = consumption.nov * equivEnkWh/convertkWhToMWh
-                dataToMonthlyView[59] = consumption.dec * equivEnkWh/convertkWhToMWh
-              }
-              if(consumption.year == "2024"){
-                dataToMonthlyView[60] = consumption.jan * equivEnkWh/convertkWhToMWh
-                dataToMonthlyView[61] = consumption.feb * equivEnkWh/convertkWhToMWh
-                dataToMonthlyView[62] = consumption.mar * equivEnkWh/convertkWhToMWh
-                dataToMonthlyView[63] = consumption.apr * equivEnkWh/convertkWhToMWh
-                dataToMonthlyView[64] = consumption.may * equivEnkWh/convertkWhToMWh
-                dataToMonthlyView[65] = consumption.jun * equivEnkWh/convertkWhToMWh
-                dataToMonthlyView[66] = consumption.jul * equivEnkWh/convertkWhToMWh
-                dataToMonthlyView[67] = consumption.aug * equivEnkWh/convertkWhToMWh
-                dataToMonthlyView[68] = consumption.sep * equivEnkWh/convertkWhToMWh
-                dataToMonthlyView[69] = consumption.oct * equivEnkWh/convertkWhToMWh
-                dataToMonthlyView[70] = consumption.nov * equivEnkWh/convertkWhToMWh
-                dataToMonthlyView[71] = consumption.dec * equivEnkWh/convertkWhToMWh
-              }
-              if(consumption.year == "2025"){
-                dataToMonthlyView[72] = consumption.jan * equivEnkWh/convertkWhToMWh
-                dataToMonthlyView[73] = consumption.feb * equivEnkWh/convertkWhToMWh
-                dataToMonthlyView[74] = consumption.mar * equivEnkWh/convertkWhToMWh
-                dataToMonthlyView[75] = consumption.apr * equivEnkWh/convertkWhToMWh
-                dataToMonthlyView[76] = consumption.may * equivEnkWh/convertkWhToMWh
-                dataToMonthlyView[77] = consumption.jun * equivEnkWh/convertkWhToMWh
-                dataToMonthlyView[78] = consumption.jul * equivEnkWh/convertkWhToMWh
-                dataToMonthlyView[79] = consumption.aug * equivEnkWh/convertkWhToMWh
-                dataToMonthlyView[80] = consumption.sep * equivEnkWh/convertkWhToMWh
-                dataToMonthlyView[81] = consumption.oct * equivEnkWh/convertkWhToMWh
-                dataToMonthlyView[82] = consumption.nov * equivEnkWh/convertkWhToMWh
-                dataToMonthlyView[83] = consumption.dec * equivEnkWh/convertkWhToMWh
-              }               */
-              const yearIndex = Number(consumption.year) - this.startYear;
-
-              if (yearIndex >= 0 && yearIndex < this.numberOfYears) {
+            const yearIndex = Number(consumption.year) - this.startYear;
+            if (yearIndex >= 0 && yearIndex < this.numberOfYears) {
                 const baseIndex = yearIndex * 12;
                 // Array con los nombres de los meses
                 const months: (keyof typeof consumption)[] = [
@@ -828,7 +579,7 @@ export class EnergyGraphComponent implements OnInit {
                 for (let i = 0; i < 12; i++) {
                   dataToMonthlyView[baseIndex + i] = consumption[months[i]] * equivEnkWh / convertkWhToMWh;
                 }
-              }             
+            }             
           }
           prevDelegation = currentDelegation
           prevEnergy = currentEnergy
@@ -1008,9 +759,7 @@ export class EnergyGraphComponent implements OnInit {
     let currentYear: string
     let prevDelegation: string = ""
     let prevYear: string = ""
-    //let billingProductionYearly: number[] = [0,0,0,0,0,0,0] /* seis años del 2019 al 2025 */
     let billingProductionYearly: number[] = Array(this.numberOfYears).fill(0);
-    //let ratiobillingProductionYearly: number[] = [0,0,0,0,0,0,0]
     let ratiobillingProductionYearly: number[] = Array(this.numberOfYears).fill(0);
 
     this.billingService.getYearBillingByCompanyId(this.companyId, delegationProduction)
@@ -1025,7 +774,6 @@ export class EnergyGraphComponent implements OnInit {
             billingProductionYearly[(billingProduction.year-2019)] = billingProduction.totalYear
           }
           else {
-            //billingProductionYearly = [0,0,0,0,0,0]
             billingProductionYearly = Array(this.numberOfYears).fill(0);
             billingProductionYearly[(billingProduction.year-2019)] = billingProduction.totalYear
           }
@@ -1034,16 +782,10 @@ export class EnergyGraphComponent implements OnInit {
           currentDelegation = billingProduction.delegation
           currentYear = billingProduction.year
         })
-        ratiobillingProductionYearly = [
-          +dataToYearView[0]/+billingProductionYearly[0], //2019
-          +dataToYearView[1]/+billingProductionYearly[1], //2020
-          +dataToYearView[2]/+billingProductionYearly[2], //2021
-          +dataToYearView[3]/+billingProductionYearly[3], //2022
-          +dataToYearView[4]/+billingProductionYearly[4], //2023
-          +dataToYearView[5]/+billingProductionYearly[5], //2024
-          +dataToYearView[6]/+billingProductionYearly[6], //2025
-
-        ]
+        ratiobillingProductionYearly = Array(this.numberOfYears).fill(0).map((_, i) => {
+          // Evitamos divisiones por cero
+          return billingProductionYearly[i] ? dataToYearView[i] / billingProductionYearly[i] : 0;
+        });
         this.endergyDataSet.push (
         {
         type: 'line',
@@ -1071,10 +813,8 @@ export class EnergyGraphComponent implements OnInit {
     let currentYear: string
     let prevDelegation: string = ""
     let prevYear: string = ""
-    //let billingProductionQuarterly: number[] = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0] /* los trimestres de seis años */
     this.numberOfYears = this.numberOfYears * 4 // trimestres
     let billingProductionQuarterly: number[] = Array(this.numberOfYears).fill(0);
-    //let ratiobillingProductionQuarterly: number[] = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0] /* los trimestres de seis años */
     this.numberOfYears = this.numberOfYears * 4 // trimestres
     let ratiobillingProductionQuarterly: number[] = Array(this.numberOfYears).fill(0);
     this.billingService.getQuarterBillingByCompanyId(this.companyId, delegationProduction)
@@ -1086,49 +826,6 @@ export class EnergyGraphComponent implements OnInit {
           currentDelegation = billingProduction.delegation
           currentYear = billingProduction.year
           if ((prevDelegation == "" || prevDelegation == currentDelegation)) {
-/*             if(billingProduction.year == "2019"){
-              dataToQuarterView[0] = billingProduction.Q1
-              dataToQuarterView[1] = billingProduction.Q2
-              dataToQuarterView[2] = billingProduction.Q3
-              dataToQuarterView[3] = billingProduction.Q4
-            }
-            if(billingProduction.year == "2020"){
-              dataToQuarterView[4] = billingProduction.Q1
-              dataToQuarterView[5] = billingProduction.Q2
-              dataToQuarterView[6] = billingProduction.Q3
-              dataToQuarterView[7] = billingProduction.Q4
-            }
-            if(billingProduction.year == "2021"){
-              dataToQuarterView[8] = billingProduction.Q1
-              dataToQuarterView[9] = billingProduction.Q2
-              dataToQuarterView[10] = billingProduction.Q3
-              dataToQuarterView[11] = billingProduction.Q4
-            }
-            if(billingProduction.year == "2022"){
-              dataToQuarterView[12] = billingProduction.Q1
-              dataToQuarterView[13] = billingProduction.Q2
-              dataToQuarterView[14] = billingProduction.Q3
-              dataToQuarterView[15] = billingProduction.Q4
-            }
-            if(billingProduction.year == "2023"){
-              dataToQuarterView[16] = billingProduction.Q1
-              dataToQuarterView[17] = billingProduction.Q2
-              dataToQuarterView[18] = billingProduction.Q3
-              dataToQuarterView[19] = billingProduction.Q4
-            }
-            if(billingProduction.year == "2024"){
-              dataToQuarterView[20] = billingProduction.Q1
-              dataToQuarterView[21] = billingProduction.Q2
-              dataToQuarterView[22] = billingProduction.Q3
-              dataToQuarterView[23] = billingProduction.Q4
-            }
-            if(billingProduction.year == "2025"){
-              dataToQuarterView[24] = billingProduction.Q1
-              dataToQuarterView[25] = billingProduction.Q2
-              dataToQuarterView[26] = billingProduction.Q3
-              dataToQuarterView[27] = billingProduction.Q4
-            } */
-      
             const yearIndex = Number(billingProduction.year) - this.startYear; // índice relativo al startYear
             if (yearIndex >= 0 && yearIndex < this.numberOfYears) {
               const baseIndex = yearIndex * 4; // posición inicial para el año en el array
@@ -1140,52 +837,8 @@ export class EnergyGraphComponent implements OnInit {
 
           }
           else {
-            //dataToQuarterView = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
             this.numberOfYears = this.numberOfYears * 4 // trimestres
             dataToQuarterView = Array(this.numberOfYears).fill(0);
-
-           /*  if(billingProduction.year == "2019"){
-              dataToQuarterView[0] = billingProduction.Q1
-              dataToQuarterView[1] = billingProduction.Q2
-              dataToQuarterView[2] = billingProduction.Q3
-              dataToQuarterView[3] = billingProduction.Q4
-            }
-            if(billingProduction.year == "2020"){
-              dataToQuarterView[4] = billingProduction.Q1
-              dataToQuarterView[5] = billingProduction.Q2
-              dataToQuarterView[6] = billingProduction.Q3
-              dataToQuarterView[7] = billingProduction.Q4
-            }
-            if(billingProduction.year == "2021"){
-              dataToQuarterView[8] = billingProduction.Q1
-              dataToQuarterView[9] = billingProduction.Q2
-              dataToQuarterView[10] = billingProduction.Q3
-              dataToQuarterView[11] = billingProduction.Q4
-            }
-            if(billingProduction.year == "2022"){
-              dataToQuarterView[12] = billingProduction.Q1
-              dataToQuarterView[13] = billingProduction.Q2
-              dataToQuarterView[14] = billingProduction.Q3
-              dataToQuarterView[15] = billingProduction.Q4
-            }
-            if(billingProduction.year == "2023"){
-              dataToQuarterView[16] = billingProduction.Q1
-              dataToQuarterView[17] = billingProduction.Q2
-              dataToQuarterView[18] = billingProduction.Q3
-              dataToQuarterView[19] = billingProduction.Q4
-            }
-            if(billingProduction.year == "2024"){
-              dataToQuarterView[20] = billingProduction.Q1
-              dataToQuarterView[21] = billingProduction.Q2
-              dataToQuarterView[22] = billingProduction.Q3
-              dataToQuarterView[23] = billingProduction.Q4
-            }
-            if(billingProduction.year == "2025"){
-              dataToQuarterView[24] = billingProduction.Q1
-              dataToQuarterView[25] = billingProduction.Q2
-              dataToQuarterView[26] = billingProduction.Q3
-              dataToQuarterView[27] = billingProduction.Q4
-            } */
             const yearIndex = Number(billingProduction.year) - this.startYear;
             if (yearIndex >= 0 && yearIndex < this.numberOfYears) {
               const baseIndex = yearIndex * 4;

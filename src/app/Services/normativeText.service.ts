@@ -28,7 +28,7 @@ export interface deleteResponse {
 })
 
 export class NormativeTextService {
-
+  private apiUrl: string = 'https://tramits.idi.es/public/index.php/api';
   private urlAPiMySql:  string;
 
   constructor(private http: HttpClient,
@@ -37,10 +37,16 @@ export class NormativeTextService {
     this.urlAPiMySql = '../../assets/phpAPI/'
   }
 
-  getAllNormativeText(): Observable<NormativeTextDTO[]> {
+/*   getAllNormativeText(): Observable<NormativeTextDTO[]> {
     return this.http
       .get<NormativeTextDTO[]>(`${URL_API}getAllNormativeText.php`, httpOptions)
+  } */
+
+    getAllNormativeText(): Observable<NormativeTextDTO[]> {
+    return this.http
+      .get<NormativeTextDTO[]>(`${this.apiUrl}/textos-normativos`, httpOptions)
   }
+
 
   getAllRegulationIDs(): Observable<NormativeTextDTO[]> {
     return this.http

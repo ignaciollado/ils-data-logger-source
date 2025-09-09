@@ -43,14 +43,12 @@ export class GlobalRegulationNormativeTextsComponent {
   isElevated:boolean = true
   private isUpdateMode: boolean
   regulationsIDS: NormativeTextDTO[] = []
-  //scopes: string[] = ['AUTONÓMICO','BALEAR','ESTATAL','UNIÓN EUROPEA']
   scopes: NormativeTextDTO[] = []
   private userId: string | null
   normativeTexts!: NormativeTextDTO[]
   isValidForm: boolean | null
 
   columnsDisplayed: string[] = normativeColumns.map((col) => col.key);
-  //dataSource: any = NORMATIVETEXT_DATA
   dataSource = new MatTableDataSource<NormativeTextDTO>()
   columnsSchema: any = normativeColumns;
   valid: any = {}

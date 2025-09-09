@@ -1,131 +1,167 @@
-.error {
-  color: red;
+// 🌿 Variables para consistencia y fácil mantenimiento
+$primary-color: #1976d2;
+$accent-color: #ff4081;
+$warn-color: #f44336;
+$background-color: #f9f9f9;
+$card-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+$border-radius: 8px;
+$font-family: 'Roboto', sans-serif;
+
+// 🌟 Mixins reutilizables
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
+@mixin form-field-width($width) {
+  width: $width;
+  max-width: 100%;
+}
+
+// 📦 Contenedor principal
+.container-form {
+  padding: 2rem;
+  background-color: $background-color;
+  font-family: $font-family;
+
+  h1 {
+    text-align: center;
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    color: $primary-color;
+  }
+}
+
+// 🧾 Formulario
+form {
+  mat-card {
+    padding: 2rem;
+    border-radius: $border-radius;
+    box-shadow: $card-shadow;
+    background-color: #fff;
+
+    section {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    mat-form-field {
+      @include form-field-width(325px);
+
+      &.full-width {
+        @include form-field-width(650px);
+      }
+
+      mat-label {
+        font-weight: 500;
+      }
+
+      input, textarea {
+        font-size: 0.95rem;
+      }
+
+      mat-error {
+        font-size: 0.8rem;
+        color: $warn-color;
+      }
+    }
+
+    button[type='submit'] {
+      margin-top: 1rem;
+      font-weight: bold;
+    }
+  }
+}
+
+// 🔍 Filtro
+.form-filter {
+  margin: 2rem auto;
+  max-width: 400px;
+
+  .item1 {
+    width: 100%;
+  }
+}
+
+// 📊 Tabla
+table, mat-table {
+  width: 100%;
+  margin-top: 2rem;
+  border-radius: $border-radius;
+  overflow: hidden;
+
+  mat-header-cell, mat-cell {
+    padding: 1rem;
+    font-size: 0.9rem;
+    word-break: break-word;
+  }
+
+  mat-header-cell {
+    background-color: $primary-color;
+    color: white;
+    font-weight: bold;
+  }
+
+  mat-row:nth-child(even) {
+    background-color: #f0f4f8;
+  }
+
+  .btn-edit {
+    display: flex;
+    gap: 0.5rem;
+
+    button {
+      transition: background-color 0.3s ease;
+    }
+
+    .save-button {
+      color: $accent-color;
+    }
+
+    .delete-button {
+      color: $warn-color;
+    }
+  }
+
+  .small-data {
+    font-size: 0.85rem;
+    color: #333;
+  }
+
+  .small-data-input {
+    font-size: 0.85rem;
+    padding: 0.25rem;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+  }
+
+  .select-scope {
+    min-width: 150px;
+  }
+
+  .textarea-edition-format {
+    min-height: 60px;
+    resize: vertical;
+  }
+
+  .url-edition-format {
+    color: $primary-color;
+    text-decoration: underline;
+  }
+
+  .text-edition-format {
+    width: 100%;
+  }
+}
+
+// 📍 Feedback
 #postFeedback {
-  visibility: hidden;
-  min-width: 250px;
-  color: #fff;
+  display: block;
   text-align: center;
-  border-radius: 10px;
-  padding: 16px;
-  z-index: 1;
-  font-size: 14px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-#postFeedback.requestOk {
-  background-color: green;
-}
-
-#postFeedback.requestKo {
-  background-color: red;
-}
-
-#postFeedback.show {
-  visibility: visible;
-  -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
-  animation: fadein 0.5s, fadeout 0.5s 2.5s;
-}
-
-.btn-edit{
-  display: grid;
-  grid-template-columns: 50% 50%;
-}
-
-.form-filter{
-  display: grid;
-  grid-template-areas: "a a" "b c";
-  min-width: 425px;
-}
-
-.item1{
-  grid-area: a;
-}
-.item2{
-  grid-area: b;
-}
-.item3{
-  grid-area: c;
-}
-
-input[type=number] {
-  appearance: textfield;
-  border: none transparent;
-  outline: none;
-}
-
-.select-scope {
-  min-width: 10rem;
-  border: 1px solid white;
-}
-
-.small-data {
-  font-size: .6rem;
-}
-
-.small-data-input {
-  font-size: .7rem;
-  background-color: #fff;
-  border: 2px solid #365446!important;
-  border-radius: .2rem;
-}
-
-mat-header-row{
-  background-color: #424242;
-}
-
-mat-header-cell {
-  color: white;
-  font-size: .8rem;
-}
-
-mat-cell{
-  background-color: #919191;
-}
-
-.textarea-edition-format {
-  height: 10rem;
-  width: 15rem;
-  resize: horizontal;
-}
-
-.textarea-edition-format:focus {
-  background-color: rgba(54, 84, 70, .1);
-}
-
-.text-edition-format {
-  width: 15rem;
-}
-
-.url-edition-format {
-  width: 15rem;
-}
-
-.mat-column-regId{
-  word-wrap:break-word;
-  min-width: 10rem;
-  padding-left: 4rem;
-}
-
-.mat-column-Ambito{
-  max-width: 17rem;
-}
-
-.mat-column-Titulo{
-  word-wrap:break-word;
-  min-width: 40rem;
-}
-
-.mat-column-link {
-  min-width: 15rem;
-}
-
-.mat-column-isEdit{
-  padding-right: 0;
-}
-
-.mat-mdc-row:hover {
-  background-color: aquamarine;
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  color: $accent-color;
 }

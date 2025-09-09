@@ -54,8 +54,8 @@
       <input matInput (keyup)="applyFilter($event)" placeholder="Search columns" #input>
     </mat-form-field>
   </div>
-
-    <mat-table *ngIf="dataSource" [dataSource]="dataSource" class="mat-elevation-z8">
+    <mat-paginator [pageSizeOptions]='[100, 150, 200, 250]' showFirstLastButtons></mat-paginator>
+    <table mat-table *ngIf="dataSource" [dataSource]="dataSource" class="mat-elevation-z8">
       <ng-container [matColumnDef]="col.key" *ngFor="let col of columnsSchema">
         <mat-header-cell *matHeaderCellDef [ngSwitch]="col.key">
           <span *ngSwitchDefault>{{ col.label }}</span>
@@ -63,8 +63,8 @@
           <mat-cell *matCellDef="let element">
             <div [ngSwitch]="col.type" *ngIf="!element.isEdit">
               <div class="btn-edit" *ngSwitchCase="'isEdit'">
-                <button mat-icon-button (click)="element.isEdit = !element.isEdit" class="material-icons app-toolbar-menu save-button" matTooltip="Edit" color="accent"><i class="fa-solid fa-pencil fa-xs"></i></button>
-                <button mat-icon-button class="material-icons app-toolbar-menu delete-button" (click)="removeRow(element.idNormativa)" matTooltip="Delete" color="warn"><i class="fa-solid fa-trash fa-xs"></i></button>
+                <button mat-icon-button (click)="element.isEdit = !element.isEdit" class="material-icons app-toolbar-menu save-button" matTooltip="Edit" color="accent"><mat-icon>edit</mat-icon></button>
+                <button mat-icon-button class="material-icons app-toolbar-menu delete-button" (click)="removeRow(element.idNormativa)" matTooltip="Delete" color="warn"><mat-icon>delete</mat-icon></button>
               </div>
               <span *ngSwitchCase="'scope'" ngClass="small-data" [innerHTML]="element[col.key]"></span>
               <a *ngSwitchCase="'url'" ngClass="small-data" href='{{ element[col.key] }}' target="_blank" title="Click to view regulation text detail">{{ element[col.key] }}</a>
@@ -92,8 +92,7 @@
       </ng-container>
       <mat-header-row *matHeaderRowDef="columnsDisplayed"></mat-header-row>
       <mat-row *matRowDef="let row; columns: columnsDisplayed;"></mat-row>
-    </mat-table>
-    <mat-paginator [pageSizeOptions]='[100, 150, 200, 250]' showFirstLastButtons></mat-paginator>
+    </table>
     <span *ngIf="!dataSource">No data found</span>
 
 

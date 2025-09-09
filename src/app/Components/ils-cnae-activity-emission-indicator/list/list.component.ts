@@ -5,7 +5,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 
 import { MatDialog } from '@angular/material/dialog';
-import { EditComponent } from '../edit/edit.component';
+import { EditIlsCnaeActivityEmissionInidicatorComponent } from '../edit/edit.component';
 import { Router } from '@angular/router';
 
 export interface ActivityEmission {
@@ -59,7 +59,7 @@ export class IlsCnaeActivityEmissionInidicatorComponent implements OnInit, After
   }
 
   editRecord(id: number): void {
-    this.router.navigate(['/edit', id]);
+    this.router.navigate(['edit-activity-emissions-cnae', id]);
   }
 
   deleteRecord(id: number): void {
@@ -69,7 +69,7 @@ export class IlsCnaeActivityEmissionInidicatorComponent implements OnInit, After
   }
 
   openDialog(): void {
-    const dialogRef = this.dialog.open(EditComponent, {
+    const dialogRef = this.dialog.open(EditIlsCnaeActivityEmissionInidicatorComponent, {
       width: '400px',
     });
 

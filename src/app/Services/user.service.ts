@@ -100,7 +100,7 @@ export class UserService {
 
   getUserCnae(): Observable<CnaeDTO[]> {
     return this.http
-      .get<CnaeDTO[]>(`${apiURL}/pindustactividades`)
+      .get<CnaeDTO[]>(`${apiURL}/api/ils-cnae-activity-emission-indicator`)
       .pipe(catchError(this.sharedService.handleError))
   }
 

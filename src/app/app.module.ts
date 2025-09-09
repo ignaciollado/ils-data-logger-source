@@ -95,7 +95,7 @@ import { ItemFormComponent } from "./Components/residues/item-form/item-form.com
 import { GraphContainerComponent } from './Components/dashboard/graph-container/graph-container.component';
 import { IlsCnaeActivityEmissionInidicatorComponent } from './Components/ils-cnae-activity-emission-indicator/list/list.component';
 import { CreateComponent } from './Components/ils-cnae-activity-emission-indicator/create/create.component';
-import { EditComponent } from './Components/ils-cnae-activity-emission-indicator/edit/edit.component';
+import { EditIlsCnaeActivityEmissionInidicatorComponent } from './Components/ils-cnae-activity-emission-indicator/edit/edit.component';
 import { DetailComponent } from './Components/ils-cnae-activity-emission-indicator/detail/detail.component';
 
 export function tokenGetter() {
@@ -150,7 +150,7 @@ export function tokenGetter() {
     GraphContainerComponent,
     IlsCnaeActivityEmissionInidicatorComponent,
     CreateComponent,
-    EditComponent,
+    EditIlsCnaeActivityEmissionInidicatorComponent,
     DetailComponent
   ],
   imports: [

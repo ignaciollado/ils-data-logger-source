@@ -32,7 +32,7 @@ export class ProfileComponent implements OnInit {
   profileUser: UserDTO;
   cnae: CnaeDTO
   cnaeList: CnaeDTO[]
-  name: UntypedFormControl
+  empresa: UntypedFormControl
   email: UntypedFormControl
   nif: UntypedFormControl
   domicilio: UntypedFormControl
@@ -64,7 +64,7 @@ export class ProfileComponent implements OnInit {
 
     this.userId = this.jwtHelper.decodeToken().id_ils
 
-    this.name = new UntypedFormControl(this.profileUser.name, [
+    this.empresa = new UntypedFormControl(this.profileUser.empresa, [
       Validators.required,
       Validators.minLength(5),
       Validators.maxLength(100),
@@ -96,7 +96,7 @@ export class ProfileComponent implements OnInit {
     this.activityIndicator = new UntypedFormControl({value: this.profileUser.activityIndicator, disabled: true}, [ Validators.required ]);
 
     this.profileForm = this.formBuilder.group({
-      name: this.name,
+      empresa: this.empresa,
       nif: this.nif,
       domicilio: this.domicilio,
       email: this.email,
@@ -132,8 +132,7 @@ export class ProfileComponent implements OnInit {
       // la lista de usuarios de esta app está en jwt.idi.es tabla 'users'
       this.userService.getUSerByIdMySQL(this.userId).subscribe( 
         (userData: UserDTO) => {
-          console.log (userData)
-          this.name.setValue(userData.empresa)
+          this.empresa.setValue(userData.empresa)
           this.nif.setValue(userData.nif)
           this.domicilio.setValue(userData.domicilio)
           this.cnaeSelect.setValue(userData.cnae)
@@ -201,14 +200,18 @@ export class ProfileComponent implements OnInit {
   }
 
   public cnaeSelected(cnaeItem: any) {
-    if (cnaeItem.value) {
-      this.enterpriseActivityIndicatorsTemp = this.cnaeList.filter( item => item.cnaeCode === cnaeItem.value )
-      this.enterpriseActivityIndicators = this.enterpriseActivityIndicatorsTemp[0].activityIndicator
+    console.log ("cnaeItem", cnaeItem)
+    if (cnaeItem) {
+      this.enterpriseActivityIndicatorsTemp = this.cnaeList.filter( item => item.cnaeCode === cnaeItem )
+      this.enterpriseActivityIndicatorsTemp.map((item:any) => {   
+        this.enterpriseActivityIndicators = JSON.parse(item.activityIndicator)
+        console.log("enterpriseActivityIndicators", item.activityIndicator, this.enterpriseActivityIndicators)
+      })
       this.activityIndicator.enable()
     }
   }
 
   public activityIndicatorSelected( activityInd: any ) {
-    console.log("activityInd.value", activityInd.value)
+    console.log("activityInd.value", activityInd)
   }
 }

@@ -8,7 +8,7 @@ import { IlsCnaeActivityEmissionIndicatorService } from 'src/app/Services/ils-cn
   templateUrl: './edit.component.html',
   styleUrls: ['./edit.component.scss']
 })
-export class EditComponent implements OnInit {
+export class EditIlsCnaeActivityEmissionInidicatorComponent implements OnInit {
   editForm: FormGroup;
   id: number;
 
@@ -19,8 +19,11 @@ export class EditComponent implements OnInit {
     private router: Router
   ) {
     this.editForm = this.fb.group({
-      name: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(100)]],
-      address: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(100)]],
+      sector: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(100)]],
+      subsector: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(100)]],
+      cnaeCode: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(4)]],
+      activityIndicator: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(100)]],
+      emissionIndicator: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(100)]],
     });
   }
 
@@ -33,9 +36,8 @@ export class EditComponent implements OnInit {
 
   onSubmit(): void {
     if (this.editForm.invalid) return;
-
     this.ilsCnaeService.update(this.id, this.editForm.value).subscribe(() => {
-      this.router.navigate(['/']);
+      this.router.navigate(['/activity-emissions-cnae']);
     });
   }
 }

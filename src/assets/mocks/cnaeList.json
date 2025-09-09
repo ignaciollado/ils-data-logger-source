@@ -2351,12 +2351,5 @@
 		"cnaeCode": "2391",
 		"activityIndicator": [{"indicator":"Tonelada*", "selected":true}],
 		"emissionIndicator": ["kg CO2 eq/tn"]
-		},
-		{
-		"sector": "INDUSTRIA MANUFACTURERA-FABRICACIÓN DE OTROS PRODUCTOS MINERALES NO METÁLICOS",
-		"subsector": "Fabricación de otros productos minerales no metálicos n.c.o.p.",
-		"cnaeCode": "2399",
-		"activityIndicator": [{"indicator":"Tonelada*", "selected":true}],
-		"emissionIndicator": ["kg CO2 eq/tn"]
-		}	
+		}
 ]

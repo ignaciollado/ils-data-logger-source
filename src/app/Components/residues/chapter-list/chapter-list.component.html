@@ -1,6 +1,8 @@
 <section class="mat-elevation-z8">
   <button mat-raised-button color="primary" (click)="addChapter()">Añadir Capítulo</button>
-
+    <div *ngIf="!chapters?.length" class="spinner-container">
+      <mat-progress-spinner mode="indeterminate" color="primary"></mat-progress-spinner>
+    </div>
   <mat-accordion *ngIf="chapters?.length">
     <mat-expansion-panel *ngFor="let chapter of chapters" (opened)="getSubchapters(chapter.chapterKey)">
       <mat-expansion-panel-header >

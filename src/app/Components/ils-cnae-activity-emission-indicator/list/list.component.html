@@ -8,6 +8,9 @@
 </mat-form-field>
 
 <mat-paginator [pageSizeOptions]="[40, 80, 100]" showFirstLastButtons></mat-paginator>
+<div *ngIf="isLoading" class="spinner-container">
+      <mat-progress-spinner mode="indeterminate" color="primary"></mat-progress-spinner>
+    </div>
 <mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8" *ngIf="dataSource">
   <!-- ID -->
   <ng-container matColumnDef="id">

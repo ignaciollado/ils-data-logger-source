@@ -22,7 +22,9 @@ export interface ActivityEmission {
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.scss']
 })
+
 export class IlsCnaeActivityEmissionInidicatorComponent implements OnInit, AfterViewInit {
+  isLoading: boolean = true
   displayedColumns: string[] = ['id', 'sector', 'subsector', 'cnaeCode', 'activityIndicator', 'emissionIndicator', 'actions'];
   dataSource = new MatTableDataSource<any>()
 
@@ -54,7 +56,7 @@ export class IlsCnaeActivityEmissionInidicatorComponent implements OnInit, After
   getAllData(): void {
     this.ilsCnaeService.getAll().subscribe((data) => {
       this.dataSource.data = data;
-      console.log (this.dataSource.data)
+      this.isLoading = false
     });
   }
 

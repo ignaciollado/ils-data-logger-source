@@ -4,8 +4,7 @@ import { Chapter, Subchapter, Item  } from '../../../Models/residuesRepository.d
 import { ResiduesRepositoryService } from '../../../Services/residues-repository.service';
 import { ChapterFormComponent } from '../chapter-form/chapter-form.component';
 import { MatTableDataSource } from '@angular/material/table';
-import { FormBuilder, FormGroup } from '@angular/forms';
-import { map, Observable } from 'rxjs';
+import { FormBuilder } from '@angular/forms';
 
 
 @Component({

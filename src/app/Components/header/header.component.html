@@ -34,6 +34,8 @@
       <button *ngIf="!isCompany" mat-menu-item (click)="createUser()"><mat-icon style="color: burlywood;">person_add</mat-icon> {{'createAccount' | translate}}</button>
       <button *ngIf="!isCompany" mat-menu-item (click)="listUsers()"><mat-icon style="color: burlywood;">supervisor_account</mat-icon> {{'listUsers' | translate}}</button>
       <button *ngIf="!isCompany" mat-menu-item (click)="listResidueChapters()"><mat-icon style="color: burlywood;">dataset</mat-icon> {{'residueChaptersRepository' | translate}}</button>
+      <button *ngIf="!isCompany" mat-menu-item (click)="listActivityEmissionsCnae()"><mat-icon style="color: burlywood;">dataset</mat-icon> {{'activityEmissionsCnaeRepository' | translate}}</button>
+
       <mat-divider></mat-divider>
       <button mat-menu-item (click)="logout()"><mat-icon style="color: orange;">logout</mat-icon> {{'logout' | translate}}</button>
     </section>

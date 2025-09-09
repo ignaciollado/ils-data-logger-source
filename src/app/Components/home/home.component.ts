@@ -35,7 +35,7 @@ export class HomeComponent {
     this.showButtons = false
     this.access_token = sessionStorage.getItem("access_token")
     localStorage.removeItem("preferredLang")
-    if(localStorage.getItem("preferredLang") == 'undefined' || localStorage.getItem("preferredLang") === null) {
+    if(localStorage.getItem("preferredLang") === 'undefined' || localStorage.getItem("preferredLang") === null) {
       localStorage.setItem("preferredLang", "cas")
     }    
     if (this.access_token === null) {

@@ -95,7 +95,7 @@ constructor(
     )
   } */
   
-    ngOnInit(): void {
+  ngOnInit(): void {
     if (this.access_token && !this.jwtHelper.isTokenExpired(this.access_token)) {
       const decodedToken = this.jwtHelper.decodeToken(this.access_token);
       this.userId = decodedToken.name;
@@ -113,7 +113,6 @@ constructor(
       }
     );
   }
-
 
   dashboard(): void {
     this.router.navigateByUrl('dashboard');
@@ -139,6 +138,10 @@ constructor(
 
   listResidueChapters(): void {
     this.router.navigateByUrl('chapters')
+  }
+
+  listActivityEmissionsCnae(): void {
+    this.router.navigateByUrl('activity-emissions-cnae')
   }
 
   adminPosts(): void {
@@ -193,7 +196,6 @@ constructor(
     this.router.navigateByUrl('myObjectives')
   }
 
-
   profile(): void {
     this.router.navigateByUrl('profile')
   }
@@ -203,7 +205,6 @@ constructor(
     sessionStorage.removeItem('access_token')
     this.userId = ""
     this.isCompany = false
-    /* location.reload() */
     const headerInfo: HeaderMenus = { showAuthSection: false, showNoAuthSection: true, }
     this.headerMenusService.headerManagement.next(headerInfo)
     this.router.navigateByUrl('home')

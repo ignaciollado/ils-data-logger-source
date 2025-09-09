@@ -4,6 +4,7 @@ export class UserDTO {
   name: string
   nif: string
   email: string
+  email_rep: string
   password: string
   domicilio: string
   empresa?: string

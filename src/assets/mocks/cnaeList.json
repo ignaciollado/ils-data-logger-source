@@ -1,5 +1,5 @@
 [
-	{
+		{
 		"sector": "INDUSTRIA EXTRACTIVA",
 		"subsector": "Extración de piedra ornamental y para la construcción, piedra caliza, yeso, creta y pizarra",
 		"cnaeCode": "0811",
@@ -19,7 +19,7 @@
 		"cnaeCode": "0891",
 		"activityIndicator": [{"indicator":"Tonelada*", "selected":true}],
 		"emissionIndicator": ["kg CO2 eq/tn"]
-			},
+		},
 		{
 		"sector": "INDUSTRIA EXTRACTIVA",
 		"subsector": "Extración de turba",
@@ -1518,6 +1518,7 @@
 		"activityIndicator": [{"indicator":"Proyecto*", "selected":true},{"indicator":"€facturado", "selected":false}, {"indicator":"Obra", "selected":false}],
 		"emissionIndicator": ["kg CO2 eq/proy ", "kg CO2 eq/€facturado", "kg CO2 eq/obra"]
 		},
+
 		{
 		"sector": "INDUSTRIA EXTRACTIVA",
 		"subsector": "Extración de piedra ornamental y para la construcción, piedra caliza, yeso, creta y pizarra",
@@ -2357,6 +2358,5 @@
 		"cnaeCode": "2399",
 		"activityIndicator": [{"indicator":"Tonelada*", "selected":true}],
 		"emissionIndicator": ["kg CO2 eq/tn"]
-		}
-	
+		}	
 ]

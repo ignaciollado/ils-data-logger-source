@@ -60,8 +60,11 @@ export class LoginComponent implements OnInit {
     private router: Router,
     private jwtHelper: JwtHelperService
   ) {
+    localStorage.removeItem("preferredLang")
+    if(localStorage.getItem("preferredLang") === 'undefined' || localStorage.getItem("preferredLang") === null) {
+      localStorage.setItem("preferredLang", "cas")
+    } 
     this.loginUser = new AuthDTO('', '', '', '');
-
     this.email = new UntypedFormControl('', [
       Validators.required,
       Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,4}$'),

@@ -33,12 +33,8 @@ mat-paginator {
   max-width: 1390px; // ancho máximo de la tabla
 }
 
-:root {
-    --mat-table-background-color: red;
-}
-
 mat-table {
- /*  width: 100%; */
+  width: 100%;
   border-radius: 12px;
   overflow: hidden;
   background-color: #ffffff;
@@ -102,6 +98,17 @@ mat-table {
   &:focus {
     border-color: #43a047;
     box-shadow: 0 0 4px rgba(67, 160, 71, 0.5);
+  }
+}
+
+.actions-cell {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  button:first-child {
+    color: #388e3c;
+  }
+  button:nth-child(2) {
+    color: #d32f2f;
   }
 }
 

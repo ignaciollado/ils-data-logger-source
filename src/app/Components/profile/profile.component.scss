@@ -1,90 +1,81 @@
 @use "../../../styles/themes/ils-theme" as theme;
-form{
-  width: 70%;
-}
-.mat-mdc-form-field {
-  min-width: 100%;
-}
-.error {
-  color: red;
-}
+.container-form {
+  max-width: 580px;
+  margin: 4rem auto;
+  padding: 1rem;
 
-#profileFeedback {
-  visibility: hidden;
-  min-width: 250px;
-  color: #fff;
-  text-align: center;
-  border-radius: 10px;
-  padding: 16px;
-  z-index: 1;
-  font-size: 14px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-#profileFeedback.requestOk {
-  background-color: green;
-}
-
-#profileFeedback.requestKo {
-  background-color: red;
-}
-
-#profileFeedback.show {
-  visibility: visible;
-  -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
-  animation: fadein 0.5s, fadeout 0.5s 2.5s;
-}
-
-@-webkit-keyframes fadein {
-  from {
-    bottom: 0;
-    opacity: 0;
+  h1 {
+    text-align: center;
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 2rem;
+    color: #2e7d32; // verde sostenible 🌱
   }
-  to {
-    bottom: 30px;
-    opacity: 1;
-  }
-}
 
-@keyframes fadein {
-  from {
-    bottom: 0;
-    opacity: 0;
-  }
-  to {
-    bottom: 30px;
-    opacity: 1;
-  }
-}
+  mat-card {
+    width: 580px;
+    padding: 2rem;
+    border-radius: 12px;
+    background: #ffffff;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    transition: box-shadow 0.3s ease;
 
-@-webkit-keyframes fadeout {
-  from {
-    bottom: 30px;
-    opacity: 1;
+    &:hover {
+      box-shadow: 0 6px 24px rgba(0, 0, 0, 0.12);
+    }
   }
-  to {
-    bottom: 0;
-    opacity: 0;
-  }
-}
 
-@keyframes fadeout {
-  from {
-    bottom: 30px;
-    opacity: 1;
-  }
-  to {
-    bottom: 0;
-    opacity: 0;
-  }
-}
-
-mat-option {
-  font-size: .7rem;
-}
-@media only screen and (max-width: theme.$app-break-point) {
-  form  {
+  mat-form-field {
     width: 100%;
+    margin-bottom: 0;
+
+    mat-label {
+      color: #388e3c;
+      font-weight: 500;
+    }
+
+    input {
+      font-size: 1rem;
+    }
+
+    mat-error {
+      font-size: 0.8rem;
+      color: #d32f2f; // rojo accesible
+    }
   }
+
+  button {
+    width: 100%;
+    padding: 0.8rem;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 8px;
+    background-color: #43a047; // verde principal
+    color: #fff;
+
+    &:disabled {
+      background-color: #c8e6c9;
+      color: #666;
+    }
+
+    &:hover:not(:disabled) {
+      background-color: #2e7d32;
+    }
+  }
+}
+
+// Animación de entrada elegante
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+mat-card {
+  animation: fadeInUp 0.4s ease-out;
 }

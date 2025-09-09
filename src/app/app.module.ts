@@ -93,6 +93,10 @@ import { ChapterFormComponent } from "./Components/residues/chapter-form/chapter
 import { SubchapterFormComponent } from "./Components/residues/subchapter-form/subchapter-form.component";
 import { ItemFormComponent } from "./Components/residues/item-form/item-form.component";
 import { GraphContainerComponent } from './Components/dashboard/graph-container/graph-container.component';
+import { IlsCnaeActivityEmissionInidicatorComponent } from './Components/ils-cnae-activity-emission-indicator/list/list.component';
+import { CreateComponent } from './Components/ils-cnae-activity-emission-indicator/create/create.component';
+import { EditComponent } from './Components/ils-cnae-activity-emission-indicator/edit/edit.component';
+import { DetailComponent } from './Components/ils-cnae-activity-emission-indicator/detail/detail.component';
 
 export function tokenGetter() {
   return sessionStorage.getItem("access_token");
@@ -143,7 +147,11 @@ export function tokenGetter() {
     ChapterFormComponent,
     SubchapterFormComponent,
     ItemFormComponent,
-    GraphContainerComponent
+    GraphContainerComponent,
+    IlsCnaeActivityEmissionInidicatorComponent,
+    CreateComponent,
+    EditComponent,
+    DetailComponent
   ],
   imports: [
     BrowserModule,

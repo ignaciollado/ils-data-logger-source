@@ -8,6 +8,8 @@ import { SharedService } from './shared.service';
 
 const URL_API = '../../assets/phpAPI/'
 const URL_API_SRV = "https://jwt.idi.es/public/index.php"
+const apiURL = "https://tramits.idi.es/public/index.php"
+
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -66,12 +68,6 @@ export class UserService {
       .pipe(catchError(this.sharedService.handleError))
   }
 
-/*   getAllRegisteredUsers(): Observable<UserDTO> {
-    return this.http
-      .get<UserDTO>(`${URL_API}getAllRegisteredUsers.php`, requestOptions)
-      .pipe(catchError(this.sharedService.handleError));
-  } */
-
   getAllRegisteredUsers(): Observable<any[]> {
     return this.http
       .post<any[]>(`${URL_API_SRV}/api/get-all-users`, requestOptions)
@@ -84,15 +80,27 @@ export class UserService {
       .pipe(catchError(this.sharedService.handleError));
   }
 
-  getUSerByIdMySQL(userId: string): Observable<UserDTO> {
+/*   getUSerByIdMySQL(userId: string): Observable<UserDTO> {
     return this.http
       .get<UserDTO>(`${this.urlAPiMySql}userGet.php?userId=${userId}`)
       .pipe(catchError(this.sharedService.handleError));
+  } */
+
+  getUSerByIdMySQL(userId: string): Observable<UserDTO> {
+    return this.http
+      .get<UserDTO>(`${apiURL}/pindustexpediente/${userId}`)
+      .pipe(catchError(this.sharedService.handleError));
   }
+
+/*   getUserCnae(): Observable<CnaeDTO[]> {
+    return this.http
+      .get<CnaeDTO[]>(`${this.urlAPiMock}cnaeList.json`)
+      .pipe(catchError(this.sharedService.handleError))
+  } */
 
   getUserCnae(): Observable<CnaeDTO[]> {
     return this.http
-      .get<CnaeDTO[]>(`${this.urlAPiMock}cnaeList.json`)
+      .get<CnaeDTO[]>(`${apiURL}/pindustactividades`)
       .pipe(catchError(this.sharedService.handleError))
   }
 

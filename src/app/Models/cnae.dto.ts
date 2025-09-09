@@ -4,13 +4,18 @@ export class CnaeDTO {
     cnaeCode: string
     activityIndicator: string[]
     emissionIndicator: string[]
+    id: number
+    cnae: string
+    label: string
+    label_cas: string
 
   constructor(
     sector: string,
     subsector: string,
     cnaeCode: string,
     activityIndicator: string[],
-    emissionIndicator: string[]
+    emissionIndicator: string[],
+    
   ) {
     this.sector = sector
     this.subsector = subsector

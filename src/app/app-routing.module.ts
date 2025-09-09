@@ -27,6 +27,7 @@ import { ChapterListComponent } from './Components/residues/chapter-list/chapter
 import { SubchapterListComponent } from './Components/residues/subchapter-list/subchapter-list.component';
 import { ItemListComponent } from './Components/residues/item-list/item-list.component';
 import { GraphContainerComponent } from './Components/dashboard/graph-container/graph-container.component';
+import { IlsCnaeActivityEmissionInidicatorComponent } from './Components/ils-cnae-activity-emission-indicator/list/list.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -41,21 +42,9 @@ const routes: Routes = [
   { path: 'user/consumption/:id', component: PostFormComponent, canActivate: [AuthGuard] },
   { path: 'user/consumption', component: PostFormComponent, canActivate: [AuthGuard] },
   { path: 'adminRatios', component: RatiosContainerComponent, canActivate: [AuthGuard] },
-  {
-    path: 'myObjectives',
-    component: ObjectivesComponent,
-    canActivate: [AuthGuard],
-  },
-  {
-    path: 'user/delegation',
-    component: DelegationFormComponent,
-    canActivate: [AuthGuard],
-  },
-  {
-    path: 'residues',
-    component: ResidueListComponent,
-    canActivate: [AuthGuard],
-  },
+  { path: 'myObjectives', component: ObjectivesComponent, canActivate: [AuthGuard] },
+  { path: 'user/delegation', component: DelegationFormComponent, canActivate: [AuthGuard] },
+  { path: 'residues', component: ResidueListComponent, canActivate: [AuthGuard], },
   {
     path: 'createResidue',
     component: ResidueAdminFormComponent,
@@ -107,9 +96,11 @@ const routes: Routes = [
     canActivate: [AuthGuard],
   },
 
-  { path: 'chapters', component: ChapterListComponent },
-  { path: 'subchapters', component: SubchapterListComponent },
-  { path: 'items', component: ItemListComponent },
+  { path: 'chapters', component: ChapterListComponent, canActivate: [AuthGuard], },
+  { path: 'subchapters', component: SubchapterListComponent, canActivate: [AuthGuard], },
+  { path: 'items', component: ItemListComponent, canActivate: [AuthGuard], },
+
+  { path: 'activity-emissions-cnae', component: IlsCnaeActivityEmissionInidicatorComponent, canActivate: [AuthGuard],},
 
   { path: '404', component: NotFoundComponent},
   { path: '**', redirectTo: '/404', pathMatch: 'full'}

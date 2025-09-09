@@ -1,11 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import {
-  UntypedFormBuilder,
-  UntypedFormControl,
-  UntypedFormGroup,
-  Validators,
-} from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { HeaderMenus } from 'src/app/Models/header-menus.dto';
 import { HeaderMenusService } from 'src/app/Services/header-menus.service';
@@ -133,29 +128,19 @@ export class ProfileComponent implements OnInit {
   ngOnInit(): void {
     let errorResponse: any
     if (this.userId) {
-      this.userService.getUSerByIdMySQL(this.userId).subscribe(
+      // obtengo los datos del usuario donde: $userId conincide con id de pindust_expediente ()
+      // la lista de usuarios de esta app está en jwt.idi.es tabla 'users'
+      this.userService.getUSerByIdMySQL(this.userId).subscribe( 
         (userData: UserDTO) => {
-          this.userFields = Object.entries(userData).map( item => item[1])
-          this.name.setValue(this.userFields[1])
-          this.nif.setValue(this.userFields[2])
-          this.domicilio.setValue(this.userFields[3])
-          this.cnaeSelect.setValue(this.userFields[6])
-          this.activityIndicator.setValue(this.userFields[7])
-          this.currentActivityIndicator.setValue(JSON.parse(JSON.stringify(this.userFields[7])))
-
-          this.email.setValue(this.userFields[10])
-
-          this.profileForm = this.formBuilder.group({
-            name: this.name,
-            nif: this.nif,
-            domicilio: this.domicilio,
-            email: this.email,
-            cnaeSelect: this.cnaeSelect,
-            activityIndicator: this.activityIndicator,
-            currentActivityIndicator: this.currentActivityIndicator
-          });
-          this.cnaeSelected(this.userFields[6])
-          this.activityIndicatorSelected(JSON.parse(JSON.stringify(this.userFields[7])))
+          console.log (userData)
+          this.name.setValue(userData.empresa)
+          this.nif.setValue(userData.nif)
+          this.domicilio.setValue(userData.domicilio)
+          this.cnaeSelect.setValue(userData.cnae)
+          this.email.setValue(userData.email_rep)
+          this.currentActivityIndicator.setValue(userData.activityIndicator)
+          this.cnaeSelected(userData.cnae)
+          this.activityIndicatorSelected(userData.cnae)
         },
         (error: HttpErrorResponse) => {
           errorResponse = error.error;

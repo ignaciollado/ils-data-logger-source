@@ -1,39 +1,20 @@
-.error {
-  color: red;
-}
+    .btn-edit {
+      display: flex;
+      gap: 0.5rem;
 
-#postFeedback {
-  visibility: hidden;
-  min-width: 250px;
-  color: #fff;
-  text-align: center;
-  border-radius: 10px;
-  padding: 16px;
-  z-index: 1;
-  font-size: 14px;
-  margin-left: auto;
-  margin-right: auto;
-}
+      .save-button {
+        color: #388e3c;
+      }
 
-#postFeedback.requestOk {
-  background-color: green;
-}
+      .delete-button {
+        color: #d32f2f;
+      }
 
-#postFeedback.requestKo {
-  background-color: red;
-}
-
-#postFeedback.show {
-  visibility: visible;
-  -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
-  animation: fadein 0.5s, fadeout 0.5s 2.5s;
-}
-
-
-.btn-edit{
-  display: grid;
-  grid-template-columns: 50% 50%;
-}
+      button:hover {
+        transform: scale(1.1);
+        transition: transform 0.2s ease;
+      }
+    }
 
 .form-filter{
   display: grid;

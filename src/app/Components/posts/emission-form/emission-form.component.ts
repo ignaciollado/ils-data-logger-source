@@ -200,37 +200,31 @@ export class EmissionFormComponent {
 
   private createEmissionConsumption(): void {
     let errorResponse: any;
-    let responseOK: boolean = false;
 
     if (this.userId) {
       this.consumption.companyId = this.userId;
       this.consumption.aspectId = 5; /* Emission aspect id : 5 */
+      this.consumption.companyDelegationId = this.emissionForm.get("delegation").value
+      this.consumption.scopeOne = this.emissionForm.get("scopeone").value
+      this.consumption.scopeTwo = this.emissionForm.get("scopetwo").value
+      this.consumption.quantity = this.emissionForm.get("scopeone").value + this.emissionForm.get("scopetwo").value
+
+      this.consumption.year = this.emissionForm.get("yearEmission").value
       this.consumptionService.createEmissionConsumption(this.consumption)
         .pipe(
           finalize(async () => {
-            await this.sharedService.managementToast(
-              'postFeedback',
-              responseOK,
-              errorResponse
-            );
-
-            /* if (responseOK) {
-              this.router.navigateByUrl('posts');
-            } */
+            this.sharedService.showSnackBar( 'Registro de Emisiones creado crrectamente' );
           })
         )
         .subscribe(
           () => {
-            responseOK = true;
-            this.quantityEmission.reset()
-            this.yearEmission.reset()
-            this.scopeone.reset()
-            this.scopetwo.reset()
+            this.emissionForm.reset()
+            this.sharedService.showSnackBar( 'Registro de Emisiones creado crrectamente' );
             this.loadConsumption(this.userId);
           },
           (error: HttpErrorResponse) => {
             errorResponse = error.error;
-            this.sharedService.errorLog(errorResponse);
+            this.sharedService.showSnackBar(errorResponse);
           }
         );
     }
@@ -308,7 +302,7 @@ export class EmissionFormComponent {
       },
       (error: HttpErrorResponse) => {
         errorResponse = error.error;
-        this.sharedService.errorLog(errorResponse);
+        this.sharedService.showSnackBar(errorResponse);
       }
     )
     this.loadConsumption(this.userId)
@@ -364,6 +358,7 @@ export class EmissionFormComponent {
     } else {
       this.consumptionService.updateEmissionConsumption(row.consumptionId, row).subscribe(() => {
         row.isEdit = false
+        this.sharedService.showSnackBar( 'Generación de emisiones modificado correctamente' );
         this.loadConsumption( this.userId )
       })
     }

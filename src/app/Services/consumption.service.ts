@@ -122,28 +122,50 @@ export class ConsumptionService {
       .pipe(catchError(this.sharedService.handleError));
   }      
 
+/*   createResidueConsumption(residueConsumption: ConsumptionDTO): Observable<ConsumptionDTO> {
+    console.log (residueConsumption)
+    return this.http
+     .post<ConsumptionDTO>(`${URL_API}residueConsumptionCreate.php`, residueConsumption)
+      .pipe(catchError(this.sharedService.handleError));
+  } */
+
   createResidueConsumption(residueConsumption: ConsumptionDTO): Observable<ConsumptionDTO> {
     console.log (residueConsumption)
     return this.http
-     /*  .post<ConsumptionDTO>(`${URL_API}waterConsumptionCreate.php`, residueConsumption) */
-     .post<ConsumptionDTO>(`${URL_API}residueConsumptionCreate.php`, residueConsumption)
+     .post<ConsumptionDTO>(`${this.apiUrl}/ilsconsumption`, residueConsumption)
       .pipe(catchError(this.sharedService.handleError));
-  }
+  }      
 
-  createEmissionConsumption(emissionConsumption: ConsumptionDTO): Observable<ConsumptionDTO> {
+/*   createEmissionConsumption(emissionConsumption: ConsumptionDTO): Observable<ConsumptionDTO> {
     return this.http
       .post<ConsumptionDTO>(`${URL_API}emissionConsumptionCreate.php`, emissionConsumption)
       .pipe(catchError(this.sharedService.handleError));
+  } */
+
+  createEmissionConsumption(emissionConsumption: ConsumptionDTO): Observable<ConsumptionDTO> {
+    return this.http
+      .post<ConsumptionDTO>(`${this.apiUrl}/ilsconsumption`, emissionConsumption)
+      .pipe(catchError(this.sharedService.handleError));
   }
 
-  updateConsumptions(consumptionId: string, consumption: ConsumptionDTO): Observable<ConsumptionDTO> {
+/*   updateEnvironmentalConsumptions(consumptionId: string, consumption: ConsumptionDTO): Observable<ConsumptionDTO> {
     return this.http
       .put<ConsumptionDTO>(`${URL_API}energyConsumptionUpdate.php?consumptionId=${consumptionId}`, consumption)
+  } */
+
+  updateEnvironmentalConsumptions(consumptionId: string, consumption: ConsumptionDTO): Observable<ConsumptionDTO> {
+    return this.http
+      .put<ConsumptionDTO>(`${this.apiUrl}/ilsenvironmentalconsumption/${consumptionId}`, consumption)
   }
+
+/*   updateEmissionConsumption(consumptionId: string, consumption: ConsumptionDTO): Observable<ConsumptionDTO> {
+    return this.http
+      .put<ConsumptionDTO>(`${URL_API}emissionConsumptionUpdate.php?consumptionId=${consumptionId}`, consumption)
+  } */
 
   updateEmissionConsumption(consumptionId: string, consumption: ConsumptionDTO): Observable<ConsumptionDTO> {
     return this.http
-      .put<ConsumptionDTO>(`${URL_API}emissionConsumptionUpdate.php?consumptionId=${consumptionId}`, consumption)
+      .put<ConsumptionDTO>(`${this.apiUrl}/ilsemissionconsumption/${consumptionId}`, consumption)
   }
 
   deleteConsumption(consumptionId: number): Observable<deleteResponse> {

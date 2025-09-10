@@ -279,37 +279,32 @@ export class ResidueFormComponent {
     if (this.userId) {
       this.consumption.companyId = this.userId
       this.consumption.aspectId = 3; /* Residues aspect id : 3 */
+      this.consumption.companyDelegationId = this.residueForm.get("delegation").value
+      this.consumption.residueId = this.residueForm.get("residue").value
+      this.consumption.year = this.residueForm.get("yearResidue").value
       this.consumptionService.createResidueConsumption(this.consumption)
         .pipe(
           finalize(async () => {
-            await this.sharedService.managementToast(
-              'postFeedback',
-              responseOK,
-              errorResponse
-            );
-
-            /* if (responseOK) {
-              this.router.navigateByUrl('posts');
-            } */
+            this.sharedService.showSnackBar( 'Generación de residuo registrado correctamente' );
           })
         )
         .subscribe(
           () => {
-            responseOK = true;
+
             /* this.yearResidue.reset() */
-           /*  this.quantityResidue.reset() */
+            /* this.quantityResidue.reset() */
             /* this.residue.reset() */
-           /*  this.reuse.reset()
+            /* this.reuse.reset()
             this.recycling.reset()
             this.incineration.reset()
             this.dump.reset()
             this.compost.reset() */
-
+            this.sharedService.showSnackBar( 'Generación de residuo registrado correctamente' );
             this.loadConsumption(this.userId);
           },
           (error: HttpErrorResponse) => {
             errorResponse = error.error;
-            this.sharedService.errorLog(errorResponse);
+            this.sharedService.showSnackBar(errorResponse);
           }
         );
     }
@@ -400,7 +395,7 @@ export class ResidueFormComponent {
         this.loadConsumption( this.userId )
       });
     } else {
-      this.consumptionService.updateConsumptions(row.consumptionId, row).subscribe(() => {
+      this.consumptionService.updateEnvironmentalConsumptions(row.consumptionId, row).subscribe(() => {
         row.isEdit = false
         this.loadConsumption( this.userId )
       })

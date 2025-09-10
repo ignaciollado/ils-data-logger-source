@@ -10,12 +10,7 @@ $postedData = file_get_contents("php://input");
 $request = json_decode($postedData, TRUE);
 
 $sql = "UPDATE `ils_consumption` SET
-quantity=".$request['quantity'].",
-scopeOne=".$request['scopeOne'].",
-scopeTwo=".$request['scopeTwo']."
-WHERE consumptionId = " .$consumptionId;
-
-/* `01`='".$request['jan']."',
+`01`='".$request['jan']."',
 `02`='".$request['feb']."',
 `03`='".$request['mar']."',
 `04`='".$request['apr']."',
@@ -26,7 +21,8 @@ WHERE consumptionId = " .$consumptionId;
 `09`='".$request['sep']."',
 `10`='".$request['oct']."',
 `11`='".$request['nov']."',
-`12`='".$request['dec']."' */
+`12`='".$request['dec']."'
+WHERE consumptionId = " .$consumptionId;
 
 $result = mysqli_query($conn, $sql);
 mysqli_close($conn);

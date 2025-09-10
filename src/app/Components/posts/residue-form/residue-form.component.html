@@ -47,10 +47,10 @@
                     {{item.itemId}} - <strong>{{item.itemName}}</strong>
                   </mat-option>
             </mat-select>
-
             <mat-error *ngIf="residue.hasError('required')">{{'residueType' | translate}} <strong>{{'isRequired' | translate}}</strong></mat-error>
           </mat-form-field>
           </section>
+          
           <button mat-raised-button color="primary" type="submit" [disabled]="!residueForm.valid">ADD</button>
         </mat-card>
       </form>

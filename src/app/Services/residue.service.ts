@@ -78,7 +78,7 @@ export class ResidueService {
   } */
   getResiduesLER(): Observable<Item[]> {
     return this.http
-      .get<Item[]>(`${this.apiUrl}/ilsresidueitems`)
+      .get<Item[]>(`${this.apiUrl}/ilsresidueitem`)
       .pipe(catchError(this.sharedService.handleError))
   }
   

@@ -327,7 +327,7 @@ export class PostFormComponent implements OnInit {
     if (this.consumptionId) {
       if (this.userId) {
         this.consumption.companyId = this.userId;
-        this.consumptionService.updateConsumptions(this.consumptionId, this.consumption)
+        this.consumptionService.updateEnvironmentalConsumptions(this.consumptionId, this.consumption)
           .pipe(
             finalize(async () => {
               await this.sharedService.managementToast(
@@ -483,7 +483,7 @@ export class PostFormComponent implements OnInit {
         this.loadConsumption( this.userId )
       });
     } else {
-      this.consumptionService.updateConsumptions(row.consumptionId, row).subscribe(() => {
+      this.consumptionService.updateEnvironmentalConsumptions(row.consumptionId, row).subscribe(() => {
         row.isEdit = false
         this.loadConsumption( this.userId )
       })

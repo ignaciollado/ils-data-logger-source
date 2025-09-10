@@ -302,7 +302,7 @@ export class WaterFormComponent {
         this.loadConsumption( this.userId )
       });
     } else {
-      this.consumptionService.updateConsumptions(row.consumptionId, row).subscribe(() => {
+      this.consumptionService.updateEnvironmentalConsumptions(row.consumptionId, row).subscribe(() => {
         row.isEdit = false
         this.loadConsumption( this.userId )
       })

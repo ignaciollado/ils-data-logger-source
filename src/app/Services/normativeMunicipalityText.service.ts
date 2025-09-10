@@ -31,6 +31,7 @@ export interface deleteResponse {
 export class NormativeMunicipalityTextService {
 
   private urlAPiMySql:  string;
+  private apiUrl: string = 'https://tramits.idi.es/public/index.php/api';
 
   constructor(private http: HttpClient,
     private sharedService: SharedService) {
@@ -38,9 +39,14 @@ export class NormativeMunicipalityTextService {
     this.urlAPiMySql = '../../assets/phpAPI/'
   }
 
-  getAllMunicipalityNormativeText(): Observable<NormativeMunicipalityTextDTO[]> {
+/*   getAllMunicipalityNormativeText(): Observable<NormativeMunicipalityTextDTO[]> {
     return this.http
       .get<NormativeMunicipalityTextDTO[]>(`${URL_API}getAllMunicipalityNormativeText.php`, httpOptions)
+  } */
+
+  getAllMunicipalityNormativeText(): Observable<NormativeMunicipalityTextDTO[]> {
+    return this.http
+      .get<NormativeMunicipalityTextDTO[]>(`${this.apiUrl}/listado-ordenanzas`, httpOptions)
   }
 
   getAllRegulationIDs(): Observable<NormativeMunicipalityTextDTO[]> {
@@ -48,10 +54,18 @@ export class NormativeMunicipalityTextService {
       .get<NormativeMunicipalityTextDTO[]>(`${URL_API}getAllMunicipalityRegulationIDs.php`, httpOptions)
   }
 
-  createNormativeText(normativeText: NormativeMunicipalityTextDTO): Observable<NormativeMunicipalityTextDTO> {
+/*   createNormativeText(normativeText: NormativeMunicipalityTextDTO): Observable<NormativeMunicipalityTextDTO> {
     console.log(normativeText)
     return this.http
       .post<NormativeMunicipalityTextDTO>(`${URL_API}normativeMunicipalityTextCreate.php`, normativeText)
+      .pipe(catchError(this.sharedService.handleError));
+  }
+ */
+
+  createNormativeText(normativeText: NormativeMunicipalityTextDTO): Observable<NormativeMunicipalityTextDTO> {
+    console.log(normativeText)
+    return this.http
+      .post<NormativeMunicipalityTextDTO>(`${this.apiUrl}/listado-ordenanzas`, normativeText)
       .pipe(catchError(this.sharedService.handleError));
   }
 

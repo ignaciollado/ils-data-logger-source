@@ -53,21 +53,39 @@ export class NormativeTextService {
       .get<NormativeTextDTO[]>(`${URL_API}getAllRegulationIDs.php`, httpOptions)
   }
 
-  getAllRegulationScopes(): Observable<NormativeTextDTO[]> {
+/*   getAllRegulationScopes(): Observable<NormativeTextDTO[]> {
     return this.http
       .get<NormativeTextDTO[]>(`${URL_API}getAllNormativeTextScopes.php`, httpOptions)
+  } */
+
+  getAllRegulationScopes(): Observable<NormativeTextDTO[]> {
+    return this.http
+      .get<NormativeTextDTO[]>(`${this.apiUrl}/textos-normativos-scope`, httpOptions)
   }
 
-  createNormativeText(normativeText: NormativeTextDTO): Observable<NormativeTextDTO> {
+/*   createNormativeText(normativeText: NormativeTextDTO): Observable<NormativeTextDTO> {
     return this.http
       .post<NormativeTextDTO>(`${URL_API}normativeTextCreate.php`, normativeText)
       .pipe(catchError(this.sharedService.handleError));
-  }
+  } */
 
-  updateNormativeText(normativeTextID: number, normativeText: NormativeTextDTO): Observable<NormativeTextDTO> {
+  createNormativeText(normativeText: NormativeTextDTO): Observable<NormativeTextDTO> {
+    return this.http
+      .post<NormativeTextDTO>(`${this.apiUrl}/textos-normativos`, normativeText)
+      .pipe(catchError(this.sharedService.handleError));
+  }      
+
+  /*   updateNormativeText(normativeTextID: string, normativeText: NormativeTextDTO): Observable<NormativeTextDTO> {
     console.log ("nueva normativa ", normativeText )
     return this.http
       .put<NormativeTextDTO>(`${URL_API}normativeTextUpdate.php?normativeTextID=${normativeTextID}`, normativeText)
+  }
+ */
+
+  updateNormativeText(idNormativa: number, normativeText: NormativeTextDTO): Observable<NormativeTextDTO> {
+    console.log ("nueva normativa backend ", normativeText )
+    return this.http
+      .put<NormativeTextDTO>(`${this.apiUrl}/textos-normativos/${idNormativa}`, normativeText)
   }
 
   deleteNormativeText(normativeTextID: number): Observable<deleteResponse> {

@@ -198,25 +198,24 @@ export class WaterFormComponent {
     if (this.userId) {
       this.consumption.companyId = this.userId;
       this.consumption.aspectId = 2; /* Water aspect id : 2 */
+      this.consumption.companyDelegationId = this.waterForm.get("delegation").value
+      this.consumption.year = this.waterForm.get("yearWater").value
       this.consumptionService.createWaterConsumption(this.consumption)
       .pipe(
         finalize(async () => {
-          await this.sharedService.managementToast(
-            'postFeedback',
-            responseOK,
-            errorResponse
-          );
+          this.sharedService.showSnackBar( 'Consumo de agua creado correctamente' );
         })
       )
       .subscribe(
         () => {
           responseOK = true;
           this.yearWater.reset()
+          this.sharedService.showSnackBar( 'Consumo de agua creado correctamente' );
           this.loadConsumption(this.userId);
         },
         (error: HttpErrorResponse) => {
           errorResponse = error.error;
-          this.sharedService.errorLog(errorResponse);
+          this.sharedService.showSnackBar(errorResponse);
         }
       );
     }
@@ -264,11 +263,11 @@ export class WaterFormComponent {
     const newRow: ConsumptionDTO = {
       consumptionId: '0',
       companyId: this.userId,
-      delegation: this.delegation.value,
+      companyDelegationId: this.delegation.value,
       aspectId: 2,
       year: this.yearWater.value,
       quantity: 0,
-      energy: 0,
+      energyId: 0,
       residueId: '',
       scopeOne: 0,
       scopeTwo: 0,

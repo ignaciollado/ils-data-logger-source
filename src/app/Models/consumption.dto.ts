@@ -4,7 +4,7 @@ import { ChapterItem } from "./residueLER.dto";
 export class ConsumptionDTO {
   consumptionId?: string
   companyId: string
-  delegation: number
+  companyDelegationId: number
   quantity?: number
   units?: string
   fromDate?: Date
@@ -28,7 +28,7 @@ export class ConsumptionDTO {
   nov?: number
   dec?: number
 
-  energy?: number
+  energyId?: number
   residueId?: string
   scopeOne?: number
   scopeTwo?: number
@@ -49,7 +49,7 @@ export class ConsumptionDTO {
 constructor(
   aspectId: number,
   residueId: string, /* el código LER del residue es una cadena */
-  delegation: number,
+  companyDelegationId: number,
   isEdit: boolean,
   isSelected: boolean,
   year: string,
@@ -76,7 +76,7 @@ constructor(
 
 ) {
   this.companyId = companyId,
-  this.delegation = delegation,
+  this.companyDelegationId = companyDelegationId,
   this.aspectId = aspectId,
   this.residueId = residueId,
   this.year = year,

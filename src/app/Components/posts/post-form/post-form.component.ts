@@ -358,30 +358,29 @@ export class PostFormComponent implements OnInit {
   private createEnergyConsumption(): void {
     let errorResponse: any;
     let responseOK: boolean = false;
+    console.log ("this.consumption", this.consumption)
 
     if (this.userId) {
       this.consumption.companyId = this.userId;
       this.consumption.aspectId = 1; /* Energy aspect id : 1 */
+      this.consumption.companyDelegationId = this.energyForm.get("delegation").value
+      this.consumption.energyId = this.energyForm.get("energy").value
+      this.consumption.year = this.energyForm.get("yearEnergy").value
       this.consumptionService.createEnergyConsumption(this.consumption)
         .pipe(
           finalize(async () => {
-            await this.sharedService.managementToast(
-              'postFeedback',
-              responseOK,
-              errorResponse
-            );
+            this.sharedService.showSnackBar( 'Consumo de energía añadido correctamente' );
           })
         )
         .subscribe(
           () => {
             responseOK = true;
-            /* this.energy.reset() */
             this.yearEnergy.reset() 
             this.loadConsumption(this.userId);
           },
           (error: HttpErrorResponse) => {
             errorResponse = error.error;
-            this.sharedService.errorLog(errorResponse);
+            this.sharedService.showSnackBar(errorResponse);
           }
         );
     }
@@ -432,11 +431,11 @@ export class PostFormComponent implements OnInit {
     const newRow: ConsumptionDTO = {
       consumptionId: '0',
       companyId: this.userId,
-      delegation: this.delegation.value,
+      companyDelegationId: this.delegation.value,
       aspectId: 1,
       year: this.yearEnergy.value,
       quantity: 0,
-      energy: this.energy.value,
+      energyId: this.energy.value,
       residueId: '',
       scopeOne: 0,
       scopeTwo: 0,

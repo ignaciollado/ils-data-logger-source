@@ -69,8 +69,9 @@
         </div>
       </div>
  
-      <mat-label><strong>Nota:</strong> a final de año se tendrá que totalizar el residuo<br> e indicar el destino de este: reuse, recycling, <br>incineration, dump y compost</mat-label>
-    <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <mat-label><strong>Nota:</strong> a final de año se tendrá que totalizar el residuo<br> e indicar el destino de este: reuse, recycling, <br>incineration, dump y compost</mat-label>
+    <mat-paginator [pageSizeOptions]='[10, 15, 20, 50]' showFirstLastButtons></mat-paginator>    
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
       <ng-container [matColumnDef]="col.key" *ngFor="let col of columnsSchema">
         <mat-header-cell *matHeaderCellDef [ngSwitch]="col.key">
             <span *ngSwitchDefault>{{ col.label }}</span>
@@ -111,8 +112,7 @@
 
       <mat-header-row *matHeaderRowDef="columnsDisplayed"></mat-header-row>
       <mat-row *matRowDef="let row; columns: columnsDisplayed;"></mat-row>
-    </mat-table>
-    <mat-paginator [pageSizeOptions]='[10, 15, 20, 50]' showFirstLastButtons></mat-paginator>
+    </table>
     <!-- <app-file-upload></app-file-upload> -->
     <div class="loader" *ngIf="!dataSource">No data found yet...</div>
 

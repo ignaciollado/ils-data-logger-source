@@ -98,17 +98,29 @@ export class ConsumptionService {
      .get<ConsumptionDTO[]>(`${URL_API}residueConsumptionGetByCompanyId.php?companyId=${companyId}&aspectId=${aspectId}`, httpOptions)
   }
 
-  createEnergyConsumption(energyConsumption: ConsumptionDTO): Observable<ConsumptionDTO> {
+/*   createEnergyConsumption(energyConsumption: ConsumptionDTO): Observable<ConsumptionDTO> {
     return this.http
       .post<ConsumptionDTO>(`${URL_API}energyConsumptionCreate.php`, energyConsumption)
       .pipe(catchError(this.sharedService.handleError));
+  } */
+
+  createEnergyConsumption(energyConsumption: ConsumptionDTO): Observable<ConsumptionDTO> {
+    return this.http
+      .post<ConsumptionDTO>(`${this.apiUrl}/ilsconsumption`, energyConsumption)
+      .pipe(catchError(this.sharedService.handleError));
   }
 
-  createWaterConsumption(waterConsumption: ConsumptionDTO): Observable<ConsumptionDTO> {
+/*   createWaterConsumption(waterConsumption: ConsumptionDTO): Observable<ConsumptionDTO> {
     return this.http
       .post<ConsumptionDTO>(`${URL_API}waterConsumptionCreate.php`, waterConsumption)
       .pipe(catchError(this.sharedService.handleError));
-  }
+  } */
+
+  createWaterConsumption(waterConsumption: ConsumptionDTO): Observable<ConsumptionDTO> {
+    return this.http
+      .post<ConsumptionDTO>(`${this.apiUrl}/ilsconsumption`, waterConsumption)
+      .pipe(catchError(this.sharedService.handleError));
+  }      
 
   createResidueConsumption(residueConsumption: ConsumptionDTO): Observable<ConsumptionDTO> {
     console.log (residueConsumption)

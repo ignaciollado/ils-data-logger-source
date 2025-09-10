@@ -70,7 +70,7 @@
     <p>From date: {{ consumption.fromDate| formatDate: 3 }}</p>
     <p>To date: {{ consumption.toDate| formatDate: 3 }}</p>
     <div *ngIf="showButtons">
-      <p>Delegation: {{ consumption.delegation }}</p>
+      <p>Delegation: {{ consumption.companyDelegationId }}</p>
     </div>
 
     <p>Added when: {{ consumption.created_at }}</p>

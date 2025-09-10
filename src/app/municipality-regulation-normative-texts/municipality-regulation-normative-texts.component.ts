@@ -1,12 +1,7 @@
 
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, ViewChild } from '@angular/core';
-import {
-  UntypedFormBuilder,
-  UntypedFormControl,
-  UntypedFormGroup,
-  Validators,
-} from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { NormativeMunicipalityTextDTO, normativeColumns } from '../Models/normativeMunicipalityText.dto';
 import { MatTableDataSource } from '@angular/material/table';
 import { NormativeMunicipalityTextService } from '../Services/normativeMunicipalityText.service';
@@ -20,13 +15,6 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 import { MatSort } from '@angular/material/sort';
 import { MunicipalityDto } from '../Models/delegation.dto';
 
-const NORMATIVETEXT_DATA = [
-  {regId: "SIND_1", Municipio: "EivissaSantaEulariadesRiu", Titulo: "Real Decreto 227/2006, de 24/02/2006, Se complementa el régimen jurídico sobre la limitación de las emisiones de Compuestos Orgánicos Volátiles (COV), en determinadas Pinturas y Barnices y en Productos de Renovación del Acabado de Vehículos. (BOE nº 48, de 25/02/2006)", Vector: "Residuos"},
-  {regId: "SIND_3_BT_consolidado", Municipio: "EivissaSantaEulariadesRiu", Titulo: "Real Decreto 842/2002,BT - Se aprueba el Reglamento Electrotécnico para BAJA TENSIÓN IT.bt 52", Vector: "Ruido"},
-  {regId: "SAN_5", Municipio: "EivissaSantaEulariadesRiu", Titulo: "Real Decreto 3/2023, de 10/01/2023, por el que se establecen los criterios técnico-sanitarios de la calidad del agua de consumo, su control y suministro.", Vector: "Agua"},
-  {regId: "RES_6", Municipio: "EivissaSantAntonidePortmany", Titulo: "Orden /1986, de 17/03/1986, Se dictan normas para la homologación de ENVASES y EMBALAJES destinados al Transporte de MERCANCÍAS PELIGROSAS. (BOE nº 77, de 31/03/1986)", Vector: "Agua / ruido"}
-];
-
 @Component({
   selector: 'app-municipality-regulation-normative-texts',
   templateUrl: './municipality-regulation-normative-texts.component.html',
@@ -38,50 +26,50 @@ export class MunicipalityRegulationNormativeTextsComponent {
   normativeForm: UntypedFormGroup
   normativeText: NormativeMunicipalityTextDTO
   regId: UntypedFormControl
-  municipio: UntypedFormControl
-  titulo: UntypedFormControl
-  vector: UntypedFormControl
+  Municipio: UntypedFormControl
+  Titulo: UntypedFormControl
+  Vector: UntypedFormControl
 
   isElevated:boolean = true
   private isUpdateMode: boolean
   regulationsIDS: NormativeMunicipalityTextDTO[] = []
-  vectores: string[] = ['Agua','Atmósfera','Ruido','Residuo','Residuos', 'Residu', 'Agua / ruido']
+  vectores: string[] = ['Agua','Atmósfera', 'Agua / ruido', 'Ruido', 'Residuos']
   private userId: string | null
   normativeTexts: NormativeMunicipalityTextDTO[]
   municipalities: MunicipalityDto[] = []
   isValidForm: boolean | null
 
   columnsDisplayed: string[] = normativeColumns.map((col) => col.key);
-  //dataSource: any = NORMATIVETEXT_DATA
   dataSource = new MatTableDataSource<NormativeMunicipalityTextDTO>()
   columnsSchema: any = normativeColumns;
   valid: any = {}
 
   @ViewChild('normativeTextTbSort') normativeTextTbSort = new MatSort();
-  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
-
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+  @ViewChild(MatSort) sort!: MatSort;
+  
   ngAfterViewInit() {
     this.dataSource.sort = this.normativeTextTbSort;
   }
 
-  constructor(private formBuilder: UntypedFormBuilder, private normativeService: NormativeMunicipalityTextService, 
+  constructor(private formBuilder: UntypedFormBuilder, private ordenanzaService: NormativeMunicipalityTextService, 
     private sharedService: SharedService, public dialog: MatDialog,
     private jwtHelper: JwtHelperService, private delegationService: DelegationService
     ) {
       
     this.isValidForm = null;
     this.regId = new UntypedFormControl('', [ Validators.required, Validators.minLength(4), Validators.maxLength(35) ]);
-    this.municipio = new UntypedFormControl('', [ Validators.required ]);
-    this.titulo = new UntypedFormControl('', [ Validators.required , Validators.minLength(4), Validators.maxLength(1024)])
-    this.vector = new UntypedFormControl('', [ Validators.required ])
+    this.Municipio = new UntypedFormControl('', [ Validators.required ]);
+    this.Titulo = new UntypedFormControl('', [ Validators.required , Validators.minLength(4), Validators.maxLength(1024)])
+    this.Vector = new UntypedFormControl('', [ Validators.required ])
  
     this.userId = this.jwtHelper.decodeToken().id_ils
 
     this.normativeForm = this.formBuilder.group({
       regId: this.regId,
-      municipio: this.municipio,
-      titulo: this.titulo,
-      vector: this.vector,
+      Municipio: this.Municipio,
+      Titulo: this.Titulo,
+      Vector: this.Vector,
     });
     this.loadNormativeText()
     this.loadMunicipalities()
@@ -90,7 +78,7 @@ export class MunicipalityRegulationNormativeTextsComponent {
   private loadNormativeText(): void {
     let errorResponse: any
     if (this.userId) {
-      this.normativeService.getAllMunicipalityNormativeText().subscribe(
+      this.ordenanzaService.getAllMunicipalityNormativeText().subscribe(
         (normatives: NormativeMunicipalityTextDTO[]) => {
           this.normativeTexts = normatives;
           this.dataSource = new MatTableDataSource(this.normativeTexts);
@@ -110,6 +98,7 @@ export class MunicipalityRegulationNormativeTextsComponent {
     this.delegationService.getMunicipalities().subscribe (
       (municipalities: MunicipalityDto[]) => {
         this.municipalities = municipalities
+        console.log ("this.municipalities", this.municipalities)
        
       }
     )
@@ -142,14 +131,10 @@ export class MunicipalityRegulationNormativeTextsComponent {
     let responseOK: boolean = false
     if (this.regId) {
       if (this.userId) {
-        this.normativeService.updateNormativeText(this.normativeText.id, this.normativeText)
+        this.ordenanzaService.updateNormativeText(this.normativeText.id, this.normativeText)
           .pipe(
             finalize(async () => {
-              await this.sharedService.managementToast(
-                'postFeedback',
-                responseOK,
-                errorResponse
-              );
+              this.sharedService.showSnackBar( 'Ordenanza actualizada correctamente' );
             })
           )
           .subscribe(
@@ -158,7 +143,7 @@ export class MunicipalityRegulationNormativeTextsComponent {
             },
             (error: HttpErrorResponse) => {
               errorResponse = error.error;
-              this.sharedService.errorLog(errorResponse);
+              this.sharedService.showSnackBar(errorResponse);
             }
           )
       }
@@ -170,15 +155,10 @@ export class MunicipalityRegulationNormativeTextsComponent {
     let responseOK: boolean = false;
 
     if (this.userId) {
-
-      this.normativeService.createNormativeText(this.normativeText)
+      this.ordenanzaService.createNormativeText(this.normativeText)
         .pipe(
           finalize(async () => {
-            await this.sharedService.managementToast(
-              'postFeedback',
-              responseOK,
-              errorResponse
-            );
+            this.sharedService.showSnackBar( 'Ordenanza creada correctamente' );
           })
         )
         .subscribe(
@@ -186,12 +166,11 @@ export class MunicipalityRegulationNormativeTextsComponent {
             responseOK = true;
             this.normativeForm.reset()
             this.loadNormativeText()
-            window.location.reload()
+            /* window.location.reload() */
           },
           (error: HttpErrorResponse) => {
             errorResponse = error.error;
-            console.log ("el error de ordenanza insert: ", error)
-            this.sharedService.errorLog(errorResponse);
+            this.sharedService.showSnackBar ("el error de ordenanza insert: "+ error)
           }
         );
     }
@@ -213,18 +192,12 @@ export class MunicipalityRegulationNormativeTextsComponent {
   }
 
   public editRow(row: NormativeMunicipalityTextDTO) {
-    let responseOK: boolean = false;
-    let errorResponse: any;
     console.log ("the row ", row)
     if (row.id === 0) {
-      this.normativeService.createNormativeText(row)
+      this.ordenanzaService.createNormativeText(row)
       .pipe(
         finalize(async () => {
-          await this.sharedService.managementToast(
-            'postFeedback',
-            responseOK,
-            errorResponse
-          );
+          this.sharedService.showSnackBar( 'Actualizada correctamente' );
         })
       )
       .subscribe((newNormativeText: NormativeMunicipalityTextDTO) => {
@@ -233,7 +206,7 @@ export class MunicipalityRegulationNormativeTextsComponent {
         this.loadNormativeText()
       });
     } else {
-      this.normativeService.updateNormativeText(row.id, row).subscribe(() => {
+      this.ordenanzaService.updateNormativeText(row.id, row).subscribe(() => {
         row.isEdit = false
         this.loadNormativeText()
       })
@@ -244,14 +217,10 @@ export class MunicipalityRegulationNormativeTextsComponent {
   public removeRow(id: any) {
     let errorResponse: any;
     let responseOK: boolean = false;
-   this.normativeService.deleteNormativeText(id)
+   this.ordenanzaService.deleteNormativeText(id)
    .pipe(
     finalize(async () => {
-      await this.sharedService.managementToast(
-        'postFeedback',
-        responseOK,
-        errorResponse
-      );
+      this.sharedService.showSnackBar( 'Eliminada correctamente' );
     })
   )
    .subscribe(() => {
@@ -271,7 +240,7 @@ export class MunicipalityRegulationNormativeTextsComponent {
       .afterClosed()
       .subscribe((confirm) => {
         if (confirm) {
-/*           this.normativeService.deleteNormativeText(normativeTextData).subscribe(() => {
+/*           this.ordenanzaService.deleteNormativeText(normativeTextData).subscribe(() => {
             this.dataSource.data = this.dataSource.data.filter(
               (u: NormativeTextDTO) => !u.isSelected
             );

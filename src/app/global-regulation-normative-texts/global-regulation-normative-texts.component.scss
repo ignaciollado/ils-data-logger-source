@@ -44,7 +44,6 @@ form {
     section {
       display: flex;
       flex-wrap: wrap;
-      gap: 1.5rem;
       margin-bottom: 1.5rem;
     }
 
@@ -86,7 +85,6 @@ form {
   }
 }
 
-// 📊 Tabla
 table, mat-table {
   width: 100%;
   margin-top: 2rem;
@@ -110,8 +108,8 @@ table, mat-table {
   }
 
   .btn-edit {
-    display: flex;
-    gap: 0.5rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
 
     button {
       transition: background-color 0.3s ease;
@@ -155,13 +153,25 @@ table, mat-table {
   .text-edition-format {
     width: 100%;
   }
-}
 
-// 📍 Feedback
-#postFeedback {
-  display: block;
-  text-align: center;
-  margin-top: 1rem;
-  font-size: 0.9rem;
-  color: $accent-color;
+.text-edition-format,
+.url-edition-format,
+.textarea-edition-format,
+.select-scope {
+  width: 100%;               // Ocupa todo el espacio de la celda
+  padding: 6px 10px;         // Espaciado interno
+  font-size: 0.95rem;        // Tamaño de fuente legible
+  border-radius: 6px;        // Bordes suaves
+  border: 1px solid #c5c5c5; // Color de borde neutro
+  background-color: #f9f9f9; // Fondo ligero
+  transition: all 0.3s ease; // Animación suave
+  box-sizing: border-box;
+
+  &:focus {
+    outline: none;
+    border-color: #3f51b5;   // Color de enfoque (material primary)
+    box-shadow: 0 0 5px rgba(63, 81, 181, 0.3);
+    background-color: #ffffff;
+  }
+}
 }

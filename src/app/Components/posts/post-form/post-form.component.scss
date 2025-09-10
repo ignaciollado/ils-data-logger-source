@@ -1,4 +1,12 @@
 @use "../../../../styles/typography/config" as config;
+
+$primary-color: #1976d2;
+$accent-color: #ff4081;
+$warn-color: #f44336;
+$background-color: #f9f9f9;
+$card-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+$border-radius: 8px;
+
 /* Contenedor principal */
 .container-form {
   max-width: 100%;
@@ -87,15 +95,12 @@
   }
 
   /* Tabla */
-mat-table,
-table[mat-table] {
-    width: 100%;
-    border-radius: 12px;
-    overflow: hidden;
-    background-color: #ffffff;
-    margin-bottom: 1rem;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-    animation: fadeIn 0.5s ease-out;
+mat-table, table {
+  width: 100%;
+  margin-top: 2rem;
+  border-radius: $border-radius;
+  overflow: hidden;
+
 
     .mat-header-row {
       background-color: #2e7d32;
@@ -107,10 +112,14 @@ table[mat-table] {
       font-size: 0.65rem;
     }
 
-    .mat-cell {
+/*     .mat-cell {
       font-size: 0.65rem;
       color: #110c0c;
       padding: 0.75rem;
+    } */
+
+    mat-row:nth-child(even) {
+      background-color: #f0f4f8;
     }
 
     .btn-edit {

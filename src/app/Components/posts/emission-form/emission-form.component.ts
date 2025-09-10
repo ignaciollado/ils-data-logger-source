@@ -321,13 +321,13 @@ export class EmissionFormComponent {
     const newRow: ConsumptionDTO = {
       consumptionId: '0',
       companyId: this.userId,
-      delegation: this.delegation.value,
+      companyDelegationId: this.delegation.value,
       aspectId: 5,
       residueId: '',
       year: this.yearEmission.value,
 
       quantity: this.quantityEmission.value,
-      energy: 0,
+      energyId: 0,
       scopeOne: this.scopeone.value,
       scopeTwo: this.scopetwo.value,
       reuse: 0,

@@ -1,131 +1,176 @@
-.error {
-  color: red;
+// 🌿 Variables para consistencia y fácil mantenimiento
+$primary-color: #1976d2;
+$accent-color: #ff4081;
+$warn-color: #f44336;
+$background-color: #f9f9f9;
+$card-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+$border-radius: 8px;
+
+// 🌟 Mixins reutilizables
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-#postFeedback {
-  visibility: hidden;
-  min-width: 250px;
-  color: #fff;
-  text-align: center;
-  border-radius: 10px;
-  padding: 16px;
-  z-index: 1;
-  font-size: 14px;
-  margin-left: auto;
-  margin-right: auto;
+@mixin form-field-width($width) {
+  width: $width;
+  max-width: 100%;
 }
 
-#postFeedback.requestOk {
-  background-color: green;
+// 📦 Contenedor principal
+.container-form {
+  padding: 2rem;
+  background-color: $background-color;
+
+  h1 {
+    text-align: center;
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    color: $primary-color;
+  }
 }
 
-#postFeedback.requestKo {
-  background-color: red;
+// 🧾 Formulario
+form {
+  mat-card {
+    padding: 2rem;
+    border-radius: $border-radius;
+    box-shadow: $card-shadow;
+    background-color: #fff;
+
+    section {
+      display: flex;
+      flex-wrap: wrap;
+      margin-bottom: 1.5rem;
+    }
+
+    mat-form-field {
+      @include form-field-width(325px);
+
+      &.full-width {
+        @include form-field-width(650px);
+      }
+
+      mat-label {
+        font-weight: 500;
+      }
+
+      input, textarea {
+        font-size: 0.95rem;
+      }
+
+      mat-error {
+        font-size: 0.8rem;
+        color: $warn-color;
+      }
+    }
+
+    button[type='submit'] {
+      margin-top: 1rem;
+      font-weight: bold;
+    }
+  }
 }
 
-#postFeedback.show {
-  visibility: visible;
-  -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
-  animation: fadein 0.5s, fadeout 0.5s 2.5s;
+// 🔍 Filtro
+.form-filter {
+  margin: 2rem auto;
+  max-width: 400px;
+
+  .item1 {
+    width: 100%;
+  }
 }
 
-.btn-edit{
-  display: grid;
-  grid-template-columns: 50% 50%;
-}
+// 📊 Tabla
+table, mat-table {
+  width: 100%;
+  margin-top: 2rem;
+  border-radius: $border-radius;
+  overflow: hidden;
 
-.form-filter{
-  display: grid;
-  grid-template-areas: "a a" "b c";
-  min-width: 425px;
-}
+  mat-header-cell, mat-cell {
+    padding: 1rem;
+    font-size: 0.9rem;
+    word-break: break-word;
+  }
 
-.item1{
-  grid-area: a;
-}
-.item2{
-  grid-area: b;
-}
-.item3{
-  grid-area: c;
-}
+  mat-header-cell {
+    background-color: $primary-color;
+    color: white;
+    font-weight: bold;
+  }
 
-input[type=number] {
-  appearance: textfield;
-  border: none transparent;
-  outline: none;
-}
+  mat-row:nth-child(even) {
+    background-color: #f0f4f8;
+  }
 
-.select-scope {
-  min-width: 10rem;
-  border: 1px solid white;
-}
+.btn-edit {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
 
-.small-data {
-  font-size: .6rem;
-}
+    button {
+      transition: background-color 0.3s ease;
+    }
 
-.small-data-input {
-  font-size: .7rem;
-  background-color: #fff;
-  border: 2px solid #365446!important;
-  border-radius: .2rem;
-}
+    .save-button {
+      color: $accent-color;
+    }
 
-mat-header-row{
-  background-color: #424242;
-}
+    .delete-button {
+      color: $warn-color;
+    }
+  }
 
-mat-header-cell {
-  color: white;
-  font-size: .8rem;
-}
+  .small-data {
+    font-size: 0.85rem;
+    color: #333;
+  }
 
-mat-cell{
-  background-color: #919191;
-}
+  .small-data-input {
+    font-size: 0.85rem;
+    padding: 0.25rem;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+  }
 
-.textarea-edition-format {
-  height: 10rem;
-  width: 15rem;
-  resize: horizontal;
-}
+  .select-scope {
+    min-width: 150px;
+  }
 
-.textarea-edition-format:focus {
-  background-color: rgba(54, 84, 70, .1);
-}
+  .textarea-edition-format {
+    min-height: 60px;
+    resize: vertical;
+  }
 
-.text-edition-format {
-  width: 15rem;
-}
+  .url-edition-format {
+    color: $primary-color;
+    text-decoration: underline;
+  }
 
-.url-edition-format {
-  width: 15rem;
-}
+  .text-edition-format {
+    width: 100%;
+  }
 
-.mat-column-regId{
-  word-wrap:break-word;
-  min-width: 10rem;
-  padding-left: 4rem;
-}
+.text-edition-format,
+.url-edition-format,
+.textarea-edition-format, .select-scope,
+.select-municipio {
+  width: 100%;               // Ocupa todo el espacio de la celda
+  padding: 6px 10px;         // Espaciado interno
+  font-size: 0.95rem;        // Tamaño de fuente legible
+  border-radius: 6px;        // Bordes suaves
+  border: 1px solid #c5c5c5; // Color de borde neutro
+  background-color: #f9f9f9; // Fondo ligero
+  transition: all 0.3s ease; // Animación suave
+  box-sizing: border-box;
 
-.mat-column-Ambito{
-  max-width: 17rem;
+  &:focus {
+    outline: none;
+    border-color: #3f51b5;   // Color de enfoque (material primary)
+    box-shadow: 0 0 5px rgba(63, 81, 181, 0.3);
+    background-color: #ffffff;
+  }
 }
-
-.mat-column-Titulo{
-  word-wrap:break-word;
-  min-width: 40rem;
-}
-
-.mat-column-link {
-  min-width: 15rem;
-}
-
-.mat-column-isEdit{
-  padding-right: 0;
-}
-
-.mat-mdc-row:hover {
-  background-color: aquamarine;
 }

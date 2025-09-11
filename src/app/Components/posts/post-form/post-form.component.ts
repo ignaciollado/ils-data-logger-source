@@ -387,7 +387,6 @@ export class PostFormComponent implements OnInit {
   }
 
   public saveForm(): void {
-
     this.isValidForm = false;
     if (this.energyForm.invalid) {
       return;
@@ -401,7 +400,6 @@ export class PostFormComponent implements OnInit {
     } else {
       this.createEnergyConsumption();
     }
-
   }
 
   public ratioBilling(): void {

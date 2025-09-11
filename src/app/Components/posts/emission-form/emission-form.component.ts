@@ -218,7 +218,10 @@ export class EmissionFormComponent {
         )
         .subscribe(
           () => {
-            this.emissionForm.reset()
+            this.yearEmission.reset()
+            this.scopeone.reset()
+            this.scopetwo.reset()
+            this.quantityEmission.reset()
             this.sharedService.showSnackBar( 'Registro de Emisiones creado crrectamente' );
             this.loadConsumption(this.userId);
           },
@@ -240,6 +243,7 @@ export class EmissionFormComponent {
     tempCO2[0] = e.explicitOriginalTarget.value
     co2[colKey] = tempCO2[0]+"#"+tempCO2[1]+"#"+tempCO2[2]
   }
+
   public getScopeOne(colKey:any, scopeOne:any, e: any): void {
     let tempScopeOne: string[] = []
     tempScopeOne = scopeOne[colKey].split("#")
@@ -247,6 +251,7 @@ export class EmissionFormComponent {
     scopeOne[colKey] = tempScopeOne[0]+"#"+tempScopeOne[1]+"#"+tempScopeOne[2]
 
   }
+
   public getScopeTwo(colKey:any, scopeTwo:any, e: any): void {
     let tempScopeTwo: string[] = []
     tempScopeTwo = scopeTwo[colKey].split("#")
@@ -376,7 +381,6 @@ export class EmissionFormComponent {
   }
 
   public removeSelectedRows() {
-
     /* this.dataSource = this.dataSource.filter((u: any) => !u.isSelected); */
     const residues = this.dataSource.data.filter((u: ConsumptionDTO) => {
       console.log (u)

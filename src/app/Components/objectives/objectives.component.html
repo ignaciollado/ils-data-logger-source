@@ -70,6 +70,7 @@
       <mat-progress-spinner mode="indeterminate" color="primary"></mat-progress-spinner>
     </div>
     <div ngClass="table-wrapper">
+      <mat-paginator [pageSizeOptions]='[10, 15, 20, 50]' showFirstLastButtons></mat-paginator>
       <table mat-table [dataSource]="dataSource" class="table-container mat-elevation-z8" tabindex="0">
           <ng-container [matColumnDef]="col.key" *ngFor="let col of columnsSchema">
             <mat-header-cell *matHeaderCellDef [ngSwitch]="col.key">
@@ -121,7 +122,6 @@
           <mat-header-row *matHeaderRowDef="columnsDisplayed; sticky: true"></mat-header-row>
           <mat-row *matRowDef="let row; columns: columnsDisplayed;"></mat-row>
       </table>
-      <mat-paginator [pageSizeOptions]='[10, 15, 20, 50]' showFirstLastButtons></mat-paginator>
     </div>
     <!-- <app-file-upload></app-file-upload> -->
 </div>

@@ -64,7 +64,7 @@
       <mat-slide-toggle [(ngModel)]="isRatioCNAE" class="item7" (change)="ratioCNAE()">{{'ratioCNAEMode' | translate}}</mat-slide-toggle>
     </div>
   </div>
-
+    <mat-paginator [pageSizeOptions]='[10, 15, 20, 50]' showFirstLastButtons></mat-paginator>
     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
       <ng-container [matColumnDef]="col.key" *ngFor="let col of columnsSchema">
         <mat-header-cell *matHeaderCellDef [ngSwitch]="col.key">
@@ -104,7 +104,7 @@
       <mat-header-row *matHeaderRowDef="columnsDisplayed"></mat-header-row>
       <mat-row *matRowDef="let row; columns: columnsDisplayed;"></mat-row>
     </table>
-    <mat-paginator [pageSizeOptions]='[10, 15, 20, 50]' showFirstLastButtons></mat-paginator>
+    
     <!-- <app-file-upload></app-file-upload> -->
 <ng-template #noDataFoundYet>
   <span class="loader">No data found yet...</span>

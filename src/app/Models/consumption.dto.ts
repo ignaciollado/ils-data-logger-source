@@ -5,6 +5,7 @@ export class ConsumptionDTO {
   consumptionId?: string
   companyId: string
   companyDelegationId: number
+  delegation?: string
   quantity?: number
   units?: string
   fromDate?: Date
@@ -39,12 +40,14 @@ export class ConsumptionDTO {
   compost?: number
   energyES?: string
   energyCA?: string
+  energyName?: string
   residueES?: string
   residueCA?: string
   aspectES?: string
   aspectCA?: string
   pci?: number /* eliminar cuando se hayan modificado las gráficas */
   unit?: string /* eliminar cuando se hayan modificado las gráficas */
+  totalYear?: number
 
 constructor(
   aspectId: number,

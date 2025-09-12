@@ -94,19 +94,15 @@ export class MunicipalityRegulationNormativeTextsComponent {
   }
 
   private loadMunicipalities(): void {
-    let errorResponse: any
     this.delegationService.getMunicipalities().subscribe (
       (municipalities: MunicipalityDto[]) => {
         this.municipalities = municipalities
-        console.log ("this.municipalities", this.municipalities)
-       
       }
     )
   }
 
   regIdToUpper(regId:string) {
     let newstr: string = regId.toUpperCase();
-    console.log (newstr)
     this.regId.setValue (newstr)
   }
 
@@ -192,7 +188,6 @@ export class MunicipalityRegulationNormativeTextsComponent {
   }
 
   public editRow(row: NormativeMunicipalityTextDTO) {
-    console.log ("the row ", row)
     if (row.id === 0) {
       this.ordenanzaService.createNormativeText(row)
       .pipe(
@@ -234,7 +229,6 @@ export class MunicipalityRegulationNormativeTextsComponent {
   public removeSelectedRows() {
     /* this.dataSource = this.dataSource.filter((u: any) => !u.isSelected); */
     const normativeTextData = this.dataSource.data.filter((u: NormativeMunicipalityTextDTO) => u.isSelected)
-    console.log ("removeSelected ", normativeTextData)
     this.dialog
       .open(ConfirmDialogComponent)
       .afterClosed()

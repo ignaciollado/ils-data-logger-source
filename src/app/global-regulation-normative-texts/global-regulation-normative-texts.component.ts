@@ -81,7 +81,6 @@ export class GlobalRegulationNormativeTextsComponent {
       this.normativeService.getAllNormativeText().subscribe(
         (normatives: NormativeTextDTO[]) => {
           this.normativeTexts = normatives;
-          console.log ("this.normativeTexts", this.normativeTexts)
           this.dataSource = new MatTableDataSource(this.normativeTexts);
           this.dataSource.sort = this.normativeTextTbSort;
           this.dataSource.paginator = this.paginator;
@@ -190,9 +189,6 @@ export class GlobalRegulationNormativeTextsComponent {
   }
 
   public editRow(row: NormativeTextDTO) {
-    let responseOK: boolean = false;
-    let errorResponse: any;
-    console.log ("the row ", row)
     if (row.regId === "0") {
       this.normativeService.createNormativeText(row)
       .pipe(
@@ -238,7 +234,6 @@ export class GlobalRegulationNormativeTextsComponent {
   public removeSelectedRows() {
     /* this.dataSource = this.dataSource.filter((u: any) => !u.isSelected); */
     const normativeTextData = this.dataSource.data.filter((u: NormativeTextDTO) => u.isSelected)
-    console.log ("removeSelected ", normativeTextData)
     this.dialog
       .open(ConfirmDialogComponent)
       .afterClosed()

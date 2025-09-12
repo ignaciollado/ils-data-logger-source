@@ -103,7 +103,7 @@
                   <span *ngSwitchCase="'text'" ngClass="small-data">{{element[col.key]}}</span>
 
                   <div class="jan-checkbox">
-                    <input *ngSwitchCase="'number'" [type]="col.type" [(ngModel)]="element[col.key]" ngClass="small-data-input"/>
+                    <input *ngSwitchCase="'number'" [type]="col.type" [(ngModel)]="element[col.key]" ngClass="small-data-input">
                     <container_element [ngSwitch]="col.key">
                     <input *ngSwitchCase="'jan'"
                     type = "checkbox"

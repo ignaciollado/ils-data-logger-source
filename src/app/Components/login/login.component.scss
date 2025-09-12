@@ -1,76 +1,146 @@
 @use "../../../styles/themes/ils-theme" as ils-theme;
+// Variables para mantener consistencia
+$primary-color: #365446;
+$accent-color: #4caf50;
+$error-color: #e53935;
+$bg-color: #f5f7fa;
+$card-bg: #ffffff;
+$text-color: #333;
+$font-family: 'Roboto', 'Segoe UI', sans-serif;
 
-a {
-  color: ils-theme.$primary-color;
-} 
+:host {
+  display: grid;
+  justify-content: center;   // centro horizontal
+  align-items: center;       // centro vertical
+  min-height: 72.5vh;         // ocupa toda la pantalla
+  width: 100%;
+  margin: auto;
+  padding: 0;
+  background: linear-gradient(135deg, lighten($primary-color, 20%), $bg-color);
+}
 
-#loginFeedback {
-  visibility: hidden;
-  min-width: 250px;
-  color: #fff;
+.container-form {
+  width: 100%;
+  max-width: 420px;
+  padding: 2rem;
+  border-radius: 1rem;
+  background-color: #fff;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
   text-align: center;
-  border-radius: 10px;
-  padding: 16px;
-  z-index: 1;
-  font-size: 14px;
-  margin-left: auto;
-  margin-right: auto;
+  animation: fadeIn 0.6s ease;
+
+  h1 {
+    font-size: 1.6rem;
+    margin-bottom: 1.5rem;
+    color: $primary-color;
+    font-weight: 600;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+  }
+
+  mat-card {
+    background-color: transparent;
+    box-shadow: none !important;
+  }
+
+  mat-form-field {
+    width: 100% !important;
+
+    mat-label {
+      color: $primary-color;
+      font-weight: 500;
+    }
+
+    input {
+      color: $text-color;
+    }
+
+    mat-error {
+      font-size: 0.85rem;
+      color: $error-color;
+    }
+  }
+
+  button[type="submit"] {
+    margin-top: 1rem;
+    padding: 0.8rem;
+    font-weight: 600;
+    border-radius: 0.5rem;
+    background-color: $primary-color !important;
+    color: white;
+    transition: background 0.3s ease;
+
+    &:hover:not(:disabled) {
+      background-color: darken($primary-color, 10%) !important;
+    }
+
+    &:disabled {
+      background-color: lighten($primary-color, 30%) !important;
+      cursor: not-allowed;
+    }
+  }
+
+  .recovery-link {
+    margin: 1rem 0;
+    a {
+      font-size: 0.9rem;
+      color: $accent-color;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  h4 {
+    margin-top: 2rem;
+    font-size: 1rem;
+    font-weight: 500;
+    color: $text-color;
+  }
+
+  a[routerLink="/register"] {
+    display: inline-block;
+    margin-top: 0.5rem;
+    font-weight: 600;
+    color: $primary-color;
+    text-decoration: none;
+
+    &:hover {
+      color: darken($primary-color, 10%);
+      text-decoration: underline;
+    }
+  }
+
+  app-select-language {
+    margin-top: 2rem;
+    display: block;
+  }
 }
 
-#loginFeedback.requestOk {
-  background-color: green;
-}
-
-#loginFeedback.requestKo {
-  background-color: red;
-}
-
-#loginFeedback.show {
-  visibility: visible;
-  -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
-  animation: fadein 0.5s, fadeout 0.5s 2.5s;
-}
-
-@-webkit-keyframes fadein {
+// Animación fadeIn
+@keyframes fadeIn {
   from {
-    bottom: 0;
     opacity: 0;
+    transform: translateY(15px);
   }
   to {
-    bottom: 30px;
     opacity: 1;
+    transform: translateY(0);
   }
 }
 
-@keyframes fadein {
-  from {
-    bottom: 0;
-    opacity: 0;
-  }
-  to {
-    bottom: 30px;
-    opacity: 1;
-  }
-}
-
-@-webkit-keyframes fadeout {
-  from {
-    bottom: 30px;
-    opacity: 1;
-  }
-  to {
-    bottom: 0;
-    opacity: 0;
-  }
-}
-
-@keyframes fadeout {
-  from {
-    bottom: 30px;
-    opacity: 1;
-  }
-  to {
-    bottom: 0;
-    opacity: 0;
+// Responsivo
+@media (max-width: 480px) {
+  .container-form {
+    padding: 1.5rem;
+    h1 {
+      font-size: 1.3rem;
+    }
   }
 }

@@ -22,14 +22,12 @@ import { MatSort } from '@angular/material/sort';
 import { MatDialog } from '@angular/material/dialog'
 import { ConfirmDialogComponent } from 'src/app/confirm-dialog/confirm-dialog.component'
 
-import { DateAdapter } from '@angular/material/core'
-
 import { ChapterItem, ResidueLERDTO } from 'src/app/Models/residueLER.dto'
 import { ReplaySubject, Subject, takeUntil } from 'rxjs'
 import { MatSelect } from '@angular/material/select'
 import { ResidueService } from 'src/app/Services/residue.service'
-import { EnergyService } from 'src/app/Services/energy.service'
 import { YearsDTO } from 'src/app/Models/years.dto'
+import { IlsCnaeActivityEmissionIndicatorService } from 'src/app/Services/ils-cnae-activity-emission-inidicator.service'
 
 @Component({
   selector: 'app-objectives',
@@ -88,12 +86,12 @@ export class ObjectivesComponent {
     private sharedService: SharedService,
     private objectiveService: ObjectiveService,
     private ilsService: IlsService,
-    private energyService: EnergyService,
+    private ilsCnaeService: IlsCnaeActivityEmissionIndicatorService,
     private residueService: ResidueService,
     private formBuilder: UntypedFormBuilder,
     private userService: UserService,
     public dialog: MatDialog,
-    private _adapter: DateAdapter<any>,
+
   ) {
     this.userId = this.jwtHelper.decodeToken().id_ils;
     this.environmentalData = new UntypedFormControl('', [ Validators.required ])
@@ -156,7 +154,7 @@ export class ObjectivesComponent {
           this.ilsService.getAll('ils_energy')
             .subscribe((energies: EnergyDTO[]) => {
               energies.map ( (itemEnergy: EnergyDTO) => {
-              if (itemEnergy.energyId==objective.chapterItemId) {
+              if (itemEnergy.energyId === objective.chapterItemId) {
                 objective.enviromentalDataName = itemEnergy.nameES
               }
             })
@@ -187,13 +185,19 @@ export class ObjectivesComponent {
       })
   }
 
-  private getCurrentIndicator( companyId: string ){
+  private getCurrentIndicator( userId: string ) {
     let errorResponse: any;
     if (this.userId) {
-      this.userService.getUSerByIdMySQL(this.userId).subscribe(
+      this.userService.getUSerByIdMySQL(userId).subscribe(
         (userData: UserDTO) => {
-          this.userFields = Object.entries(userData).map( item => item[1])
-          this.currentActivityIndicator =  JSON.parse(JSON.stringify(this.userFields[7]));
+          this.ilsCnaeService.getAll()
+            .subscribe((cnaeItems:any) => {
+              cnaeItems.filter((cnae:any) => {
+                if (cnae.cnaeCode === userData.cnae) {
+                  this.currentActivityIndicator = JSON.parse(cnae.activityIndicator)[0]['indicator']
+                }
+              })
+          })
         },
         (error: HttpErrorResponse) => {
           errorResponse = error.error;
@@ -201,11 +205,6 @@ export class ObjectivesComponent {
         }
       );
     }
-  }
-
-  public saveObjectiveForm( ) {
-   /*  const newRow = {"delegation": this.delegation.value, "year": this.yearObjective.value, "energyES": this.energy.value, "objectiveType": this.objectiveType.value, isEdit: true} */
-  /*   this.dataSource = [...this.dataSource, newRow];  */
   }
 
   public copyCnaeMonthValue( resource: ObjectiveDTO ) {
@@ -223,49 +222,45 @@ export class ObjectivesComponent {
 
   public addRow() {
     let environmentalDataEnergy: string = '0'
-    /* let environmentalDataResidue: number = 0 */
-    /*  const newRow = {"delegation": this.delegation.value, "year": this.yearObjective.value, "energyES": this.energy.value, "objectiveType": this.objectiveType.value, isEdit: true} */
-    /*  this.dataSource = [...this.dataSource, newRow];  */
-
     if (this.environmentalData.value.aspect == 1) {
       environmentalDataEnergy = this.environmentalData.value.chapterItemId
-      /* environmentalDataResidue = 0 */
     }
     if (this.environmentalData.value.aspect == 2) {
       environmentalDataEnergy = '999999'
-      /* environmentalDataResidue = 0 */
     }
     if (this.environmentalData.value.aspect == 3) {
       environmentalDataEnergy = this.environmentalData.value.chapterItemId
-      /* environmentalDataResidue = 0 */
     }
     if (this.environmentalData.value.aspect == 5) {
       environmentalDataEnergy = '888888'
-      /* environmentalDataResidue = 0 */
     }
     const newRow: ObjectiveDTO = {
-      Id: 0,
+      id: 0,
       companyId: this.userId,
       companyDelegationId: this.delegation.value,
       aspectId: this.environmentalData.value.aspect,
       theRatioType: this.objectiveType.value,
-      chapterItemId: environmentalDataEnergy,
+      chapterItemId: this.environmentalData.value.chapterItemId,
       year: this.yearObjective.value,
       isEdit: true,
       isSelected: false,
     };
-    this.dataSource.data = [newRow, ...this.dataSource.data]
+    this.objectiveService.createObjective(newRow).subscribe((newObjective: ObjectiveDTO) => {
+        newRow.id = newObjective.id
+        newRow.isEdit = false
+        this.loadObjectives( this.userId )
+      });
   }
 
   editRow(row: ObjectiveDTO) {
-    if (row.Id == 0) {
+    if (row.id == 0) {
       this.objectiveService.createObjective(row).subscribe((newObjective: ObjectiveDTO) => {
-        row.Id = newObjective.Id
+        row.id = newObjective.id
         row.isEdit = false
         this.loadObjectives( this.userId )
       });
     } else {
-      this.objectiveService.updateObjective(row.Id, row).subscribe(() => {
+      this.objectiveService.updateObjective(row.id, row).subscribe(() => {
         row.isEdit = false
         this.loadObjectives( this.userId )
       })
@@ -274,17 +269,14 @@ export class ObjectivesComponent {
   }
 
   public removeRow(id: any) {
-   /*  this.dataSource = this.dataSource.filter((u:any) => u.id !== id); */
    this.objectiveService.deleteObjective(id).subscribe(() => {
     this.dataSource.data = this.dataSource.data.filter(
-      (u: ObjectiveDTO) => u.Id !== id
+      (u: ObjectiveDTO) => u.id !== id
     );
   });
   }
 
   public removeSelectedRows() {
-    /* this.dataSource = this.dataSource.filter((u: any) => !u.isSelected); */
-
     const users = this.dataSource.data.filter((u: ObjectiveDTO) => u.isSelected);
     this.dialog
       .open(ConfirmDialogComponent)
@@ -326,7 +318,7 @@ export class ObjectivesComponent {
     .subscribe(
       (residues: any[]) => {
         this.residues = residues
-         this.residues.map( item => { 
+        this.residues.map( item => { 
           this.environmentalDataList = [...this.environmentalDataList, item]
         }) 
 
@@ -365,6 +357,4 @@ export class ObjectivesComponent {
       this.dataSource.paginator.firstPage();
     }
   }
-
-
 }

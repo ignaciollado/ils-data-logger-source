@@ -97,6 +97,8 @@ import { IlsCnaeActivityEmissionInidicatorComponent } from './Components/ils-cna
 import { CreateComponent } from './Components/ils-cnae-activity-emission-indicator/create/create.component';
 import { EditIlsCnaeActivityEmissionInidicatorComponent } from './Components/ils-cnae-activity-emission-indicator/edit/edit.component';
 import { DetailComponent } from './Components/ils-cnae-activity-emission-indicator/detail/detail.component';
+import { EnergyListComponent } from './Components/energy-management/energy-list/energy-list.component';
+import { EnergyFormComponent } from './Components/energy-management/energy-form/energy-form.component';
 
 export function tokenGetter() {
   return sessionStorage.getItem("access_token");
@@ -151,7 +153,9 @@ export function tokenGetter() {
     IlsCnaeActivityEmissionInidicatorComponent,
     CreateComponent,
     EditIlsCnaeActivityEmissionInidicatorComponent,
-    DetailComponent
+    DetailComponent,
+    EnergyListComponent,
+    EnergyFormComponent
   ],
   imports: [
     BrowserModule,

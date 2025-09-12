@@ -140,6 +140,10 @@ constructor(
     this.router.navigateByUrl('chapters')
   }
 
+  energyMaintenance(): void {
+    this.router.navigateByUrl('energy')
+  }
+
   listActivityEmissionsCnae(): void {
     this.router.navigateByUrl('activity-emissions-cnae')
   }

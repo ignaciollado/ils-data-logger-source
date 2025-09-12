@@ -29,6 +29,8 @@ import { ItemListComponent } from './Components/residues/item-list/item-list.com
 import { GraphContainerComponent } from './Components/dashboard/graph-container/graph-container.component';
 import { IlsCnaeActivityEmissionInidicatorComponent } from './Components/ils-cnae-activity-emission-indicator/list/list.component';
 import { EditIlsCnaeActivityEmissionInidicatorComponent } from './Components/ils-cnae-activity-emission-indicator/edit/edit.component';
+import { EnergyListComponent } from './Components/energy-management/energy-list/energy-list.component';
+import { EnergyFormComponent } from './Components/energy-management/energy-form/energy-form.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -101,8 +103,12 @@ const routes: Routes = [
   { path: 'subchapters', component: SubchapterListComponent, canActivate: [AuthGuard], },
   { path: 'items', component: ItemListComponent, canActivate: [AuthGuard], },
 
-  { path: 'activity-emissions-cnae', component: IlsCnaeActivityEmissionInidicatorComponent, canActivate: [AuthGuard],},
-  { path: 'edit-activity-emissions-cnae/:id', component: EditIlsCnaeActivityEmissionInidicatorComponent, canActivate: [AuthGuard],},
+  { path: 'activity-emissions-cnae', component: IlsCnaeActivityEmissionInidicatorComponent, canActivate: [AuthGuard], },
+  { path: 'edit-activity-emissions-cnae/:id', component: EditIlsCnaeActivityEmissionInidicatorComponent, canActivate: [AuthGuard], },
+
+  { path: 'energy', component: EnergyListComponent, canActivate: [AuthGuard] },
+  { path: 'energy/new', component: EnergyFormComponent, canActivate: [AuthGuard] },
+  { path: 'energy/:id', component: EnergyFormComponent, canActivate: [AuthGuard] },
 
   { path: '404', component: NotFoundComponent},
   { path: '**', redirectTo: '/404', pathMatch: 'full'}

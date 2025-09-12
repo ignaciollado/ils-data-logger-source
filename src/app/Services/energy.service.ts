@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpParams, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { EnergyDTO } from '../Models/energy.dto';
 import { Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';

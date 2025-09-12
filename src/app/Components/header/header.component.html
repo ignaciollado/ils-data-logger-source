@@ -36,6 +36,7 @@
       <button *ngIf="!isCompany" mat-menu-item (click)="listUsers()"><mat-icon style="color: burlywood;">supervisor_account</mat-icon> {{'listUsers' | translate}}</button>
       <button *ngIf="!isCompany" mat-menu-item (click)="listResidueChapters()"><mat-icon style="color: burlywood;">dataset</mat-icon> {{'residueChaptersRepository' | translate}}</button>
       <button *ngIf="!isCompany" mat-menu-item (click)="listActivityEmissionsCnae()"><mat-icon style="color: burlywood;">dataset</mat-icon> {{'activityEmissionsCnaeRepository' | translate}}</button>
+      <button *ngIf="!isCompany" mat-menu-item (click)="energyMaintenance()"><mat-icon style="color: burlywood;">offline_bolt</mat-icon> {{'energyMaintenance' | translate}}</button>
 
       <mat-divider></mat-divider>
       <button mat-menu-item (click)="logout()"><mat-icon style="color: orange;">logout</mat-icon> {{'logout' | translate}}</button>

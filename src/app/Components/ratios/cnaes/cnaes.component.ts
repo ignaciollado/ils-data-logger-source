@@ -22,13 +22,13 @@ import { MatSort } from '@angular/material/sort';
 import { MatDialog } from '@angular/material/dialog'
 import { ConfirmDialogComponent } from 'src/app/confirm-dialog/confirm-dialog.component'
 
-
 import { CnaeColumns, CnaeDataDTO } from 'src/app/Models/cnaeData.dto';
 import { CnaeDataService } from 'src/app/Services/cnaeData.service';
 import { UserService } from 'src/app/Services/user.service';
 import { UserDTO } from 'src/app/Models/user.dto';
 import { YearsDTO } from 'src/app/Models/years.dto';
-
+import { finalize } from 'rxjs';
+import { IlsCnaeActivityEmissionIndicatorService } from 'src/app/Services/ils-cnae-activity-emission-inidicator.service';
 
 export const MY_FORMATS = {
   parse: {
@@ -102,6 +102,7 @@ export class CnaesComponent {
     private sharedService: SharedService,
     private jwtHelper: JwtHelperService,
     public dialog: MatDialog,
+    private ilsCnaeService: IlsCnaeActivityEmissionIndicatorService,
     private _adapter: DateAdapter<any>,
 
     @Inject(MAT_DATE_LOCALE) private _locale: string,
@@ -175,13 +176,21 @@ export class CnaesComponent {
       })
   }
 
-  private getCurrentIndicator( companyId: string ){
+  private getCurrentIndicator( userId: string ) {
     let errorResponse: any;
     if (this.userId) {
-      this.userService.getUSerByIdMySQL(this.userId).subscribe(
+      this.userService.getUSerByIdMySQL(userId).subscribe(
         (userData: UserDTO) => {
-          this.userFields = Object.entries(userData).map( item => item[1])
-          this.currentActivityIndicator =  JSON.parse(JSON.stringify(this.userFields[7]));
+          console.log ("userData", userData.cnae)
+          this.ilsCnaeService.getAll()
+            .subscribe((cnaeItems:any) => {
+              cnaeItems.filter((cnae:any) => {
+                if (cnae.cnaeCode === userData.cnae) {
+                  console.log (JSON.parse(cnae.activityIndicator)[0]['indicator'])
+                  this.currentActivityIndicator = JSON.parse(cnae.activityIndicator)[0]['indicator']
+                }
+              })
+          })
         },
         (error: HttpErrorResponse) => {
           errorResponse = error.error;
@@ -192,20 +201,34 @@ export class CnaesComponent {
   }
 
   public addRow() {
-
-    /*  const newRow = {"delegation": this.delegation.value, "year": this.yearObjective.value, "energyES": this.energy.value, "objectiveType": this.objectiveType.value, isEdit: true} */
-    /*  this.dataSource = [...this.dataSource, newRow];  */
-
     const newRow: CnaeDataDTO = {
-      Id: 0,
       companyId: +this.userId,
       companyDelegationId: this.delegation.value,
       cnaeUnitSelected: this.currentActivityIndicator,
       year: this.yearCnae.value,
-      isEdit: true,
-      isSelected: false,
     };
-    this.dataSource.data = [newRow, ...this.dataSource.data]
+   this.cnaesDataService.createCnaeData(newRow)
+    .pipe(
+         finalize(() => {
+           // Opcional: puede mostrar algo siempre que finalice
+           this.sharedService.showSnackBar('Petición completada');
+         })
+      )
+    .subscribe({
+      next: (createdCnae: CnaeDataDTO) => {
+        // Éxito
+        newRow.Id = createdCnae.Id;
+        newRow.isEdit = false;
+        this.loadCnaeData(this.userId);
+        this.sharedService.showSnackBar('Dato de facturación añadido correctamente');
+        this.yearCnae.reset()
+      },
+      error: (err) => {
+        // Manejo de error
+        console.error('Error al añadir el dato de facturación:', err);
+        this.sharedService.showSnackBar('Error al añadir el dato de facturación');
+      }
+      });
   }
 
   public editRow(row: CnaeDataDTO) {
@@ -213,6 +236,7 @@ export class CnaesComponent {
       this.cnaesDataService.createCnaeData(row).subscribe((newObjective: CnaeDataDTO) => {
         row.Id = newObjective.Id
         row.isEdit = false
+        row.cnaeUnitSelected = this.currentActivityIndicator,
         this.loadCnaeData( this.userId )
       });
     } else {

@@ -97,7 +97,7 @@
 
           <div [ngSwitch]="col.type" *ngIf="element.isEdit">
             <div class="btn-edit" *ngSwitchCase="'isEdit'">
-              <button mat-button (click)="editRow(element)" [disabled]="valid[element.Id] === false">Done</button>
+              <button mat-button mat-raised-button color="accent" (click)="editRow(element)" [disabled]="valid[element.Id] === false"><mat-icon>done_all</mat-icon></button>
             </div>
             <span *ngSwitchCase="'isSelected'" ngClass="small-data">
               {{element[col.key]}}
@@ -105,7 +105,7 @@
             <span *ngSwitchCase="'text'" ngClass="small-data">
               {{element[col.key]}}
             </span>
-            <input *ngSwitchCase="'number'" [type]="col.type" [(ngModel)]="element[col.key]" ngClass="small-data-input" [style.width.px]='50'/>
+            <input *ngSwitchCase="'number'" [type]="col.type" [(ngModel)]="element[col.key]" ngClass="small-data-input">
           </div>
         </mat-cell>
       </ng-container>

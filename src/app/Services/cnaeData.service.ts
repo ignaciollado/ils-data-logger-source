@@ -53,17 +53,27 @@ export class CnaeDataService {
     .get<CnaeDataDTO>(`${URL_API}billingGetById.php?billingId=${billingId}`)
   }
 
-  createCnaeData(cnaeData: CnaeDataDTO): Observable<CnaeDataDTO> {
+  /*   createCnaeData(cnaeData: CnaeDataDTO): Observable<CnaeDataDTO> {
     return this.http
       .post<CnaeDataDTO>(`${URL_API}cnaeDataCreate.php`, cnaeData)
       .pipe(catchError(this.sharedService.handleError));
+  } */
+
+  createCnaeData(cnaeData: CnaeDataDTO): Observable<CnaeDataDTO> {
+    return this.http
+      .post<CnaeDataDTO>(`${this.apiUrl}/ilscnaes`, cnaeData)
+      .pipe(catchError(this.sharedService.handleError));
   }
+
+  /*   updateCnaeData(cnaeDataId: number, cnaeData: CnaeDataDTO): Observable<CnaeDataDTO> {
+    return this.http
+      .patch<CnaeDataDTO>(`${URL_API}cnaeDataUpdate.php?cnaeDataId=${cnaeDataId}`, cnaeData)
+  } */
 
   updateCnaeData(cnaeDataId: number, cnaeData: CnaeDataDTO): Observable<CnaeDataDTO> {
     return this.http
-      /* .put<CnaeDataDTO>(`${this.URL_API}energyConsumptionUpdate.php?consumptionId=${consumptionId}`, consumption) */
-      .patch<CnaeDataDTO>(`${URL_API}cnaeDataUpdate.php?cnaeDataId=${cnaeDataId}`, cnaeData)
-  }
+      .put<CnaeDataDTO>(`${this.apiUrl}/ilscnaes/${cnaeDataId}`, cnaeData)
+  }      
 
   deleteCnaeData(Id: number): Observable<deleteResponse> {
     return this.http

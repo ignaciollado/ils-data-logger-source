@@ -69,7 +69,7 @@
     <div *ngIf="isLoading" class="spinner-container">
       <mat-progress-spinner mode="indeterminate" color="primary"></mat-progress-spinner>
     </div>
-    <div ngClass="table-wrapper">
+
       <mat-paginator [pageSizeOptions]='[10, 15, 20, 50]' showFirstLastButtons></mat-paginator>
       <table mat-table [dataSource]="dataSource" class="table-container mat-elevation-z8" tabindex="0">
           <ng-container [matColumnDef]="col.key" *ngFor="let col of columnsSchema">
@@ -97,13 +97,13 @@
 
                 <div [ngSwitch]="col.type" *ngIf="element.isEdit">
                   <div class="btn-edit" *ngSwitchCase="'isEdit'">
-                    <button mat-button (click)="editRow(element)" [disabled]="valid[element.Id] === false">Done</button>
+                    <button mat-button mat-raised-button color="accent" (click)="editRow(element)" [disabled]="valid[element.Id] === false"><mat-icon>done_all</mat-icon></button>
                   </div>
                   <span *ngSwitchCase="'isSelected'" ngClass="small-data">{{element[col.key]}}</span>
                   <span *ngSwitchCase="'text'" ngClass="small-data">{{element[col.key]}}</span>
 
                   <div class="jan-checkbox">
-                    <input *ngSwitchCase="'number'" [type]="col.type" [(ngModel)]="element[col.key]" ngClass="small-data-input" [style.width.px]='50'/>
+                    <input *ngSwitchCase="'number'" [type]="col.type" [(ngModel)]="element[col.key]" ngClass="small-data-input"/>
                     <container_element [ngSwitch]="col.key">
                     <input *ngSwitchCase="'jan'"
                     type = "checkbox"
@@ -122,6 +122,6 @@
           <mat-header-row *matHeaderRowDef="columnsDisplayed; sticky: true"></mat-header-row>
           <mat-row *matRowDef="let row; columns: columnsDisplayed;"></mat-row>
       </table>
-    </div>
+
     <!-- <app-file-upload></app-file-upload> -->
 </div>

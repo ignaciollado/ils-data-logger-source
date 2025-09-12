@@ -1,12 +1,7 @@
   <section class="container-form">
       <h1>{{'billing' | translate}}</h1>
-      <form
-        *ngIf="billingForm"
-        [formGroup]="billingForm"
-        (ngSubmit)="addRow()">
-
+      <form *ngIf="billingForm"  [formGroup]="billingForm" (ngSubmit)="addRow()">
         <mat-card [class.mat-elevation-z8]="">
-
           <section>
             <mat-form-field [style.width.px]=327>
               <mat-label>{{'delegation' | translate}}</mat-label>
@@ -30,7 +25,6 @@
           </section>
 
           <button mat-raised-button color="primary" type="submit" [disabled]="!billingForm.valid">ADD</button>
-
         </mat-card>
       </form>
       <div style="margin-left: auto; margin-right: auto"><span id="postFeedback"></span></div>
@@ -68,18 +62,16 @@
                 </div>
 
                 <div [ngSwitch]="col.type" *ngIf="element.isEdit">
-                  <div class="btn-edit" *ngSwitchCase="'isEdit'">
-                    <button mat-button (click)="editRow(element)" [disabled]="valid[element.Id] === false">Done</button>
+                  <div ngClass="btn-edit" *ngSwitchCase="'isEdit'">
+                    <button mat-button mat-raised-button color="accent" (click)="editRow(element)" [disabled]="valid[element.Id] === false"><mat-icon>done_all</mat-icon></button>
                   </div>
                   <span *ngSwitchCase="'isSelected'" ngClass="small-data">
                     {{element[col.key]}}
                   </span>
-
                   <span *ngSwitchCase="'text'" ngClass="small-data">
                     {{element[col.key]}}
                   </span>
-
-                  <input *ngSwitchCase="'number'" [type]="col.type" [(ngModel)]="element[col.key]" ngClass="small-data-input" [style.width.px]='50'/>
+                  <input *ngSwitchCase="'number'" [type]="col.type" [(ngModel)]="element[col.key]" ngClass="small-data-input" />
                 </div>
             </mat-cell>
           </ng-container>

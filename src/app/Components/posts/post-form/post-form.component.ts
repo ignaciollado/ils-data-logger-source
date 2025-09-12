@@ -356,10 +356,7 @@ export class PostFormComponent implements OnInit {
 
   /* ASPECT ENERGY ID:1*/
   private createEnergyConsumption(): void {
-    let errorResponse: any;
-    let responseOK: boolean = false;
-    console.log ("this.consumption", this.consumption)
-
+    let errorResponse: any
     if (this.userId) {
       this.consumption.companyId = this.userId;
       this.consumption.aspectId = 1; /* Energy aspect id : 1 */
@@ -374,7 +371,6 @@ export class PostFormComponent implements OnInit {
         )
         .subscribe(
           () => {
-            responseOK = true;
             this.yearEnergy.reset() 
             this.loadConsumption(this.userId);
           },

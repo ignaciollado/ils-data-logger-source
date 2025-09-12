@@ -1,11 +1,11 @@
 export class CnaeDataDTO {
-    Id: number
+    Id?: number
     companyId: number
     companyDelegationId: number
-    cnaeUnitSelected: string
+    cnaeUnitSelected?: string
 
-    isEdit: boolean
-    isSelected: boolean
+    isEdit?: boolean
+    isSelected?: boolean
     year: string
     jan?: number
     feb?: number

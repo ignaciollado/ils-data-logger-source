@@ -53,16 +53,26 @@ export class BillingService {
     .get<BillingDTO>(`${URL_API}billingGetById.php?billingId=${billingId}`)
   }
 
-  createBilling(billingObj: BillingDTO): Observable<BillingDTO> {
+  /*   createBilling(billingObj: BillingDTO): Observable<BillingDTO> {
     return this.http
       .post<BillingDTO>(`${URL_API}billingCreate.php`, billingObj)
       .pipe(catchError(this.sharedService.handleError));
+  } */
+
+  createBilling(billingObj: BillingDTO): Observable<BillingDTO> {
+    return this.http
+      .post<BillingDTO>(`${this.apiUrl}/ilsbilling`, billingObj)
+      .pipe(catchError(this.sharedService.handleError));
   }
+
+  /*   updateBilling(billingId: number, billing: BillingDTO): Observable<BillingDTO> {
+    return this.http
+      .patch<BillingDTO>(`${URL_API}billingUpdate.php?billingId=${billingId}`, billing)
+  } */
 
   updateBilling(billingId: number, billing: BillingDTO): Observable<BillingDTO> {
     return this.http
-      /* .put<BillingDTO>(`${this.URL_API}energyConsumptionUpdate.php?consumptionId=${consumptionId}`, consumption) */
-      .patch<BillingDTO>(`${URL_API}billingUpdate.php?billingId=${billingId}`, billing)
+      .put<BillingDTO>(`${this.apiUrl}/ilsbilling/${billingId}`, billing)
   }
 
   deleteBilling(Id: number): Observable<deleteResponse> {

@@ -1,11 +1,11 @@
 import { UntypedFormBuilder } from "@angular/forms";
 
 export class BillingDTO {
-  Id: number
+  Id?: number
   companyId: number
   companyDelegationId: number
-  isEdit: boolean
-  isSelected: boolean
+  isEdit?: boolean
+  isSelected?: boolean
   year:string
   jan?: string
   feb?: string
@@ -40,32 +40,26 @@ constructor (
   nov: string,
   dec: string,
 ) {
-  this.companyId = companyId,
-  this.companyDelegationId = companyDelegationId,
+  this.companyId = companyId
+  this.companyDelegationId = companyDelegationId
   this.isEdit = isEdit
   this.isSelected = isSelected
-  this.year = year,
-  this.jan = jan,
-  this.feb = feb,
-  this.mar = mar,
-  this.apr = apr,
-  this.may = may,
-  this.jun = jun,
-  this.jul = jul,
-  this.aug = aug,
-  this.sep = sep,
-  this.oct = oct,
-  this.nov = nov,
+  this.year = year
+  this.jan = jan
+  this.feb = feb
+  this.mar = mar
+  this.apr = apr
+  this.may = may
+  this.jun = jun
+  this.jul = jul
+  this.aug = aug
+  this.sep = sep
+  this.oct = oct
+  this.nov = nov
   this.dec = dec
 }
 }
 export const BillingColumns = [
-/*   {
-    key: 'isSelected',
-    type: 'isSelected',
-    label: '',
-  }, */
-
   {
       key: "delegation",
       type: "text",

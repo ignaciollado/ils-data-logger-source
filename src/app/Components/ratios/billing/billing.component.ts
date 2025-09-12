@@ -2,12 +2,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, Inject, ViewChild } from '@angular/core';
 import { registerLocaleData } from '@angular/common';
 import localeEs from '@angular/common/locales/es';
-import {
-  UntypedFormBuilder,
-  UntypedFormControl,
-  UntypedFormGroup,
-  Validators,
-} from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormControl, UntypedFormGroup,  Validators } from '@angular/forms';
 import {DateAdapter, MAT_DATE_LOCALE} from '@angular/material/core';
 
 import { ActivatedRoute } from '@angular/router';
@@ -26,6 +21,7 @@ import { YearsDTO } from 'src/app/Models/years.dto';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
+import { finalize } from 'rxjs';
 
 registerLocaleData(localeEs, 'es')
 
@@ -111,24 +107,22 @@ export class BillingComponent {
     this.loadDelegations( this.userId );
   }
 
-ngOnInit() {
-  this.loadBillings(this.userId);
-  this.loadYears();
-}
+  ngOnInit() {
+    this.loadBillings(this.userId);
+    this.loadYears(); 
+  } 
 
-ngAfterViewInit() {
-  this.dataSource.paginator = this.paginator;
-  this.dataSource.sort = this.sort;
-}
-
-  
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
+  }
 
   private loadDelegations(userId: string): void {
     let errorResponse: any;
     if (this.userId) {
       this.delegationService.getAllDelegationsByCompanyIdFromMySQL(userId).subscribe(
         (delegations: DelegationDTO[]) => {
-          this.delegations = delegations;
+          this.delegations = delegations
         },
         (error: HttpErrorResponse) => {
           errorResponse = error.error;
@@ -143,7 +137,7 @@ ngAfterViewInit() {
     if (this.userId) {
       this.billingService.getBillingsByCompany(userId).subscribe(
         (billings: BillingDTO[]) => {
-          this.dataSource.data = billings;
+          this.dataSource.data = billings
           this.isLoading = false
         },
         (error: HttpErrorResponse) => {
@@ -162,27 +156,57 @@ ngAfterViewInit() {
   }
 
   public addRow() {
+  const newRow: BillingDTO = {
+    companyId: +this.userId,
+    companyDelegationId: this.delegation.value,
+    year: this.yearBilling.value,
+  };
 
-    /*  const newRow = {"delegation": this.delegation.value, "year": this.yearObjective.value, "energyES": this.energy.value, "objectiveType": this.objectiveType.value, isEdit: true} */
-    /*  this.dataSource = [...this.dataSource, newRow];  */
-
-    const newRow: BillingDTO = {
-      Id: 0,
-      companyId: +this.userId,
-      companyDelegationId: this.delegation.value,
-      year: this.yearBilling.value,
-      isEdit: true,
-      isSelected: false,
-    };
-    this.dataSource.data = [newRow, ...this.dataSource.data]
+  this.billingService.createBilling(newRow)
+   . pipe(
+      finalize(() => {
+        // Opcional: puede mostrar algo siempre que finalice
+        this.sharedService.showSnackBar('Petición completada');
+      })
+    )
+    .subscribe({
+      next: (createdBilling: BillingDTO) => {
+        // Éxito
+        newRow.Id = createdBilling.Id;
+        newRow.isEdit = false;
+        this.loadBillings(this.userId);
+        this.sharedService.showSnackBar('Dato de facturación añadido correctamente');
+        this.yearBilling.reset()
+      },
+      error: (err) => {
+        // Manejo de error
+        this.sharedService.showSnackBar('Error al añadir el dato de facturación '+err);
+      }
+    });
   }
 
   public editRow(row: BillingDTO) {
     if (row.Id == 0) {
-      this.billingService.createBilling(row).subscribe((newObjective: BillingDTO) => {
-        row.Id = newObjective.Id
-        row.isEdit = false
-        this.loadBillings( this.userId )
+      this.billingService.createBilling(row)
+     . pipe(
+      finalize(() => {
+        // Opcional: puede mostrar algo siempre que finalice
+        this.sharedService.showSnackBar('Petición completada');
+      })
+      )    
+      .subscribe({
+      next: (createdBilling: BillingDTO) => {
+        // Éxito
+        row.Id = createdBilling.Id;
+        row.isEdit = false;
+        this.loadBillings(this.userId);
+        this.sharedService.showSnackBar('Dato de facturación actualizado correctamente');
+        this.yearBilling.reset()
+      },
+      error: (err) => {
+        // Manejo de error
+        this.sharedService.showSnackBar('Error al añadir el dato de facturación '+err);
+      }
       });
     } else {
       this.billingService.updateBilling(row.Id, row).subscribe(() => {

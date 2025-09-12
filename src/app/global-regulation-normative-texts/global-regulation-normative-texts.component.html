@@ -74,7 +74,7 @@
 
             <div [ngSwitch]="col.type" *ngIf="element.isEdit">
               <div class="btn-edit" *ngSwitchCase="'isEdit'">
-                <button mat-button (click)="editRow(element)" [disabled]="valid[element.idNormativa] === false">Done</button>
+                <button  mat-button mat-raised-button color="accent" (click)="editRow(element)" [disabled]="valid[element.idNormativa] === false"><mat-icon>done_all</mat-icon></button>
               </div>
               <span *ngSwitchCase="'isSelected'" ngClass="small-data">{{element[col.key]}}</span>
               <span *ngSwitchCase="'readOnly'" [(ngModel)]="element[col.key]" ngClass="small-data">{{element[col.key]}}</span>

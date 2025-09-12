@@ -156,6 +156,19 @@ $color-emissions: #424242;
 $color-card-bg: #f9f9f9;
 $color-alt-row: #f1f1f1;
 
+.cdk-overlay-pane {
+ /*  position: absolute;
+  pointer-events: auto;
+  box-sizing: border-box;
+  z-index: 1000;
+  display: flex;
+  max-width: 100%;
+  max-height: 100%; */
+/*   width: 400px!important;
+  border-radius: 5px;
+  border: 1px solid $color-energy; */
+}
+
 // Mixin para aplicar un tema
 @mixin themed-form($primary-color) {
   h1 {

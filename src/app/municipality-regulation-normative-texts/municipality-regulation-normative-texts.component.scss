@@ -149,19 +149,15 @@ table, mat-table {
     text-decoration: underline;
   }
 
-  .text-edition-format {
-    width: 100%;
-  }
-
-.text-edition-format,
-.url-edition-format,
+.url-edition-format,.text-edition-format,
 .textarea-edition-format, .select-scope,
 .select-municipio {
-  width: 100%;               // Ocupa todo el espacio de la celda
+  width: 200px!important;
+  border-radius: 5px;
+  border: 1px solid greenyellow;
   padding: 6px 10px;         // Espaciado interno
   font-size: 0.95rem;        // Tamaño de fuente legible
   border-radius: 6px;        // Bordes suaves
-  border: 1px solid #c5c5c5; // Color de borde neutro
   background-color: #f9f9f9; // Fondo ligero
   transition: all 0.3s ease; // Animación suave
   box-sizing: border-box;
@@ -172,5 +168,8 @@ table, mat-table {
     box-shadow: 0 0 5px rgba(63, 81, 181, 0.3);
     background-color: #ffffff;
   }
+}
+.text-edition-format {
+  width: 350px!important;
 }
 }

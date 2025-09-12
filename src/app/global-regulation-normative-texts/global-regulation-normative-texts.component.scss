@@ -162,7 +162,7 @@ table, mat-table {
   padding: 6px 10px;         // Espaciado interno
   font-size: 0.95rem;        // Tamaño de fuente legible
   border-radius: 6px;        // Bordes suaves
-  border: 1px solid #c5c5c5; // Color de borde neutro
+  border: 1px solid greenyellow;
   background-color: #f9f9f9; // Fondo ligero
   transition: all 0.3s ease; // Animación suave
   box-sizing: border-box;
@@ -173,5 +173,8 @@ table, mat-table {
     box-shadow: 0 0 5px rgba(63, 81, 181, 0.3);
     background-color: #ffffff;
   }
+}
+.url-edition-format {
+  width: 350px;
 }
 }

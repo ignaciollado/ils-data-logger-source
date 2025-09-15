@@ -5,7 +5,7 @@
   <form [formGroup]="energyGraphForm" (ngSubmit)="loadgraphDataEnergy()" class="energy-form"> 
   <div class="fields-container">
     <!-- Delegation -->
-    <mat-form-field class="form-field">
+    <!-- <mat-form-field class="form-field">
       <mat-label>{{'delegation' | translate}}</mat-label>
       <mat-select formControlName = "delegation" (selectionChange)="loadgraphDataEnergy()">
         <mat-option *ngFor="let delegation of delegations" [value]="delegation.name">
@@ -15,10 +15,10 @@
       <mat-error *ngIf="energyGraphForm.get('delegation').hasError('required')">
         {{'delegation' | translate}} <strong>{{'isRequired' | translate}}</strong>
       </mat-error>
-    </mat-form-field>
+    </mat-form-field> -->
 
     <!-- Energy -->
-    <mat-form-field class="form-field">
+    <!-- <mat-form-field class="form-field">
       <mat-label>{{'energies' | translate}}</mat-label>
       <mat-select formControlName = "energy" (selectionChange)="loadgraphDataEnergy()">
         <mat-option *ngFor="let energy of energies" [value]="energy.nameES" class="small-data">
@@ -28,7 +28,7 @@
       <mat-error *ngIf="energyGraphForm.get('energy').hasError('required')">
         {{'energyType' | translate}} <strong>{{'isRequired' | translate}}</strong>
       </mat-error>
-    </mat-form-field>
+    </mat-form-field> -->
 
     <!-- Ratio Toggles -->
     <div class="toggle-group">
@@ -42,29 +42,27 @@
 
     <!-- Time View Toggles -->
     <div class="toggle-group">
-      <mat-slide-toggle formControlName = "yearWiewGraphE" (change)="chartYearlyViewE()">{{'year' | translate}}</mat-slide-toggle>
-      <mat-slide-toggle formControlName = "quarterlyViewGraphE" (change)="chartQuarterlyViewE()">{{'quarter' | translate}}</mat-slide-toggle>
-      <mat-slide-toggle formControlName = "monthlyViewGraphE" (change)="chartmonthlyViewE()">{{'month' | translate}}</mat-slide-toggle>
+      <mat-slide-toggle formControlName = "yearWiewGraphE" (change)="yearlyGraphView()">{{'year' | translate}}</mat-slide-toggle>
+      <mat-slide-toggle formControlName = "quarterlyViewGraphE" (change)="quarterlyGraphView()">{{'quarter' | translate}}</mat-slide-toggle>
+      <mat-slide-toggle formControlName = "monthlyViewGraphE" (change)="monthlyGraphView()">{{'month' | translate}}</mat-slide-toggle>
     </div>
 
     <!-- Energy Unit Toggles -->
-    <div class="toggle-group">
+<!--     <div class="toggle-group">
       <mat-slide-toggle formControlName = "kWView" (change)="chartkWViewE()">kWh</mat-slide-toggle>
       <mat-slide-toggle formControlName = "MWView" (change)="chartMWViewE()">MWh</mat-slide-toggle>
-    </div>
+    </div> -->
 
     <!-- Buttons -->
-    <div class="button-group">
+   <!--  <div class="button-group">
       <button mat-raised-button color="primary" type="button" (click)="graphFormReset()">Reset</button>
       <button mat-raised-button color="accent" type="submit" [disabled]="!energyGraphForm.valid">Graph</button>
-    </div>
+    </div> -->
 
   </div>
     </form>
   </section>
-  <span *ngIf="!consumptions" ngClass="loader">{{'waitingForData' | translate}}
-    <mat-progress-bar mode="indeterminate" color="primary" *ngIf="!consumptions"></mat-progress-bar>
-  </span>
+  <mat-progress-bar mode="indeterminate" color="primary" *ngIf="!consumptions"></mat-progress-bar>
   <canvas id="energyGraph" aria-label= "Energy graph" role="chart" (Click)="onChartClick($event)">{{ chart }}</canvas>
   
 </section>

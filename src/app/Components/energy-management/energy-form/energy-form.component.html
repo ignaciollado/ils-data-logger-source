@@ -19,9 +19,17 @@
       </mat-error>
     </mat-form-field>
 
+    <!-- AspectId como select -->
     <mat-form-field appearance="outline">
-      <mat-label>Aspecto ID</mat-label>
-      <input matInput type="number" formControlName="aspectId" />
+      <mat-label>Aspecto</mat-label>
+      <mat-select formControlName="aspectId" required>
+        <mat-option *ngFor="let aspect of aspects" [value]="aspect.aspectId">
+          {{ aspect.nameES }}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="form.controls['aspectId'].hasError('required')">
+        Seleccionar un aspecto es obligatorio
+      </mat-error>
     </mat-form-field>
 
     <mat-form-field appearance="outline">
@@ -35,7 +43,7 @@
     </mat-form-field>
 
     <mat-form-field appearance="outline">
-      <mat-label>convLKg</mat-label>
+      <mat-label>conversión L -> Kg</mat-label>
       <input matInput type="number" formControlName="convLKg" />
     </mat-form-field>
 

@@ -1,4 +1,4 @@
-.energy-list, .energy-form {
+.energy-list {
   max-width: 900px;
   margin: 2rem auto;
   padding: 2rem;
@@ -17,14 +17,74 @@
     text-align: right;
   }
 
-  table {
+  /* Tabla */
+  table, mat-table {
     width: 100%;
-  }
+    border-radius: 12px;
+    overflow: hidden;
+    background-color: #ffffff;
+    margin-bottom: 1rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    animation: fadeIn 0.5s ease-out;
+    mat-header-row {
+      background-color: #365446;
+    }
 
-  .form-actions {
-    margin-top: 2rem;
-    display: flex;
-    justify-content: flex-end;
-    gap: 1rem;
+    mat-header-cell {
+      color: #ffffff;
+      font-weight: 600;
+      font-size: .6rem;
+    }
+
+    mat-cell {
+      font-size: .6rem;
+      color: #424242;
+      padding: 0.75rem;
+    }
+
+    mat-row:nth-child(even) {
+      background-color: #e3f2fd; // alterna azul suave
+    }
+
+    mat-row:hover {
+      background-color: #bbdefb; // azul hover
+      transition: background-color 0.3s ease;
+    }
+
+    .btn-edit {
+      display: grid;
+      grid-template-columns: 50% 50%;
+
+      .save-button {
+        color: #1976d2;
+      }
+
+      .delete-button {
+        color: #d32f2f;
+      }
+
+      button:hover {
+        transform: scale(1.2);
+        transition: transform 0.2s ease;
+      }
+    }
+
+    .small-data {
+      font-size: 0.7rem;
+      color: #000;
+    }
+
+  .small-data-input {
+    font-size: 0.7rem;
+    padding: 0.25rem;
+    border: 1px solid #365446;
+    border-radius: 0.25rem;
+    width: 90%;
+
+    &:focus {
+        border-color: #42a5f5;
+        box-shadow: 0 0 4px rgba(66, 165, 245, 0.5);
+      }
+    }
   }
 }

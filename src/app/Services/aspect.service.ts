@@ -29,14 +29,19 @@ export interface deleteResponse {
 })
 
 export class AspectService {
-
+  private apiUrl = 'https://tramits.idi.es/public/index.php/api';
   constructor(private http: HttpClient,
     private sharedService: SharedService) {}
 
-  getAllAspects(): Observable<AspectDTO[]> {
+/*   getAllAspects(): Observable<AspectDTO[]> {
     return this.http
       .get<AspectDTO[]>(`${URL_API}aspectGetAll.php`)
-  }
+  } */
+
+  getAllAspects(): Observable<AspectDTO[]> {
+    return this.http
+      .get<AspectDTO[]>(`${this.apiUrl}/ils_aspect`)
+  }      
 
   getAspectById(aspectId: string): Observable<AspectDTO> {
     return this.http

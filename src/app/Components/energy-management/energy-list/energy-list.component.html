@@ -1,4 +1,4 @@
-<div class="energy-list mat-elevation-z4">
+<section class="energy-list mat-elevation-z4">
   <h2>Gestión de Energías</h2>
 
   <div class="actions">
@@ -6,8 +6,9 @@
       ➕ Nueva Energía
     </button>
   </div>
-
-  <table mat-table [dataSource]="energies" class="mat-elevation-z2 full-width-table">
+  <mat-progress-bar mode="indeterminate" color="primary" *ngIf="isLoading"></mat-progress-bar>
+  <mat-paginator [pageSize]="15" [pageSizeOptions]="[5, 15, 30]" showFirstLastButtons> </mat-paginator>
+  <table mat-table [dataSource]="dataSource" matSort>
 
     <!-- Nombre ES -->
     <ng-container matColumnDef="nameES">
@@ -55,4 +56,4 @@
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
-</div>
+</section>

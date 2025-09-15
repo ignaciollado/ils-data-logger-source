@@ -36,7 +36,7 @@ export class EnergyService {
     this.urlApi = '../../assets/mocks/fuels.json';
     this.urlAPiMySql = '../../assets/phpAPI/'}
 
-/*   getAllEnergies(): Observable<EnergyDTO[]> {
+  /*   getAllEnergies(): Observable<EnergyDTO[]> {
     return this.http.get<EnergyDTO[]>(`${URL_API}energyGetAll.php`) 
   } */
 
@@ -44,9 +44,14 @@ export class EnergyService {
     return this.http.get<EnergyDTO[]>(`${this.apiUrl}/ils_energy`) 
   }     
 
-  getEnergyById(energyId: number): Observable<EnergyDTO> {
+  /*   getEnergyById(energyId: number): Observable<EnergyDTO> {
     return this.http
       .get<EnergyDTO>(`${URL_API}energyGetById.php?energyId=${energyId}`)
+  } */
+
+  getEnergyById(energyId: number): Observable<EnergyDTO> {
+    return this.http
+      .get<EnergyDTO>(`${this.apiUrl}/ils_energy/${energyId}`)
   }
 
   createEnergy(energy: EnergyDTO): Observable<EnergyDTO> {

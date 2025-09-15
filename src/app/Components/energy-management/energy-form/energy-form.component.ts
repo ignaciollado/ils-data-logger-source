@@ -3,6 +3,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { EnergyService } from 'src/app/Services/energy.service';
 import { EnergyDTO } from 'src/app/Models/energy.dto';
+import { AspectService } from 'src/app/Services/aspect.service';
+import { AspectDTO } from 'src/app/Models/aspect.dto';
 
 @Component({
   selector: 'app-energy-form',
@@ -12,12 +14,14 @@ import { EnergyDTO } from 'src/app/Models/energy.dto';
 export class EnergyFormComponent implements OnInit {
   form!: FormGroup;
   energyId?: string;
+  aspects: AspectDTO[] = []
 
   constructor(
     private fb: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
-    private energyService: EnergyService
+    private energyService: EnergyService,
+    private aspectService: AspectService
   ) {}
 
   ngOnInit(): void {
@@ -31,6 +35,8 @@ export class EnergyFormComponent implements OnInit {
       pci: [0, Validators.required],
       convLKg: [0],
     });
+
+    this.loadAspects()
 
     if (this.energyId) {
       this.energyService.getEnergyById(+this.energyId).subscribe(energy => {
@@ -51,6 +57,13 @@ export class EnergyFormComponent implements OnInit {
         this.router.navigate(['/energy']);
       });
     }
+  }
+
+  loadAspects() {
+    this.aspectService.getAllAspects()
+      .subscribe((aspects:AspectDTO[]) => {
+        this.aspects = aspects
+      })
   }
 
   public goToEnergyList(): void {

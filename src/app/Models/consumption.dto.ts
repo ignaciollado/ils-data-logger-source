@@ -3,19 +3,21 @@ import { ChapterItem } from "./residueLER.dto";
 
 export class ConsumptionDTO {
   consumptionId?: string
-  companyId: string
-  companyDelegationId: number
+  companyId?: string
+  companyDelegationId?: number
   delegation?: string
   quantity?: number
   units?: string
   fromDate?: Date
   toDate?: Date
   created_at?: Date
-  objective: string
-  aspectId: number
-  year:string
-  isEdit: boolean
-  isSelected: boolean
+  objective?: string
+  aspectId?: number
+  year?: string
+  quarter?: string // Added to support quarterly data
+  month?: string
+  isEdit?: boolean
+  isSelected?: boolean
   jan?: number
   feb?: number
   mar?: number

@@ -53,9 +53,7 @@
     <mat-slide-toggle [(ngModel)]="isRatioCNAE" class="item7" (change)="ratioCNAE()">{{'ratioCNAEMode' | translate}}</mat-slide-toggle>
   </div>
   </div>
-  <div *ngIf="isLoading" class="spinner-container">
-    <mat-progress-spinner mode="indeterminate" color="primary"></mat-progress-spinner>
-  </div>
+  <mat-progress-bar mode="indeterminate" color="primary" *ngIf="isLoading"></mat-progress-bar>
   <mat-paginator [pageSizeOptions]='[10, 15, 20, 50]' showFirstLastButtons></mat-paginator>
   <table mat-table *ngIf="dataSource" [dataSource]="dataSource" class="mat-elevation-z8" matSort>
       <ng-container [matColumnDef]="col.key" *ngFor="let col of columnsSchema">

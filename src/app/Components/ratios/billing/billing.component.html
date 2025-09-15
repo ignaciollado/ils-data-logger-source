@@ -33,9 +33,7 @@
           <mat-label>{{'filterByColumn' | translate}}</mat-label>
           <input matInput (keyup)="applyFilter($event)" placeholder="Search columns" #input>
         </mat-form-field>
-        <div *ngIf="isLoading" class="spinner-container">
-          <mat-progress-spinner mode="indeterminate" color="primary"></mat-progress-spinner>
-        </div>
+        <mat-progress-bar mode="indeterminate" color="primary" *ngIf="isLoading"></mat-progress-bar>
         <mat-paginator [pageSizeOptions]='[10, 15, 20, 50]' showFirstLastButtons></mat-paginator>
         <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
           <ng-container [matColumnDef]="col.key" *ngFor="let col of columnsSchema">

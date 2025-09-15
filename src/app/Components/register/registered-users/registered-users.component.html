@@ -6,10 +6,7 @@
 </mat-form-field>
 
 <div class="table-wrapper">
-    <!-- Spinner mientras se cargan los datos -->
-  <div *ngIf="isLoading" class="spinner-container">
-    <mat-progress-spinner mode="indeterminate" color="primary"></mat-progress-spinner>
-  </div>
+  <mat-progress-bar mode="indeterminate" color="primary" *ngIf="isLoading"></mat-progress-bar>
   <mat-paginator [pageSizeOptions]="[20, 40, 80]" showFirstLastButtons></mat-paginator>
 
   <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8" *ngIf="dataSource">

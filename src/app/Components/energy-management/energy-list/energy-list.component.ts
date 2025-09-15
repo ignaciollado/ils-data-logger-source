@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { EnergyService } from 'src/app/Services/energy.service';
 import { EnergyDTO } from 'src/app/Models/energy.dto';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatPaginator } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-energy-list',
@@ -8,8 +10,11 @@ import { EnergyDTO } from 'src/app/Models/energy.dto';
   styleUrls: ['./energy-list.component.scss']
 })
 export class EnergyListComponent implements OnInit {
+  isLoading: boolean = true
   energies: EnergyDTO[] = [];
-displayedColumns: string[] = ['nameES', 'nameCA', 'unit', 'pci', 'convLKg', 'actions'];
+  displayedColumns: string[] = ['nameES', 'nameCA', 'unit', 'pci', 'convLKg', 'actions'];
+  dataSource = new MatTableDataSource<EnergyDTO>();
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   constructor(private energyService: EnergyService) {}
 
@@ -19,7 +24,11 @@ displayedColumns: string[] = ['nameES', 'nameCA', 'unit', 'pci', 'convLKg', 'act
 
   loadEnergies(): void {
     this.energyService.getAllEnergies().subscribe({
-      next: (data) => this.energies = data,
+      next: (data) =>{ 
+        this.dataSource.data = data
+        this.isLoading = false
+        this.dataSource.paginator = this.paginator
+      },
       error: (err) => console.error('Error cargando energías:', err)
     });
   }

@@ -109,17 +109,17 @@ export class LoginComponent implements OnInit {
 
     if ( this.loginUser ) {
         this.authService.login( this.loginUser )
-         .pipe( 
+          /* .pipe( 
           catchError(this.sharedService.handleError), 
            finalize(async () => {
             responseOK = false
-            errorResponse = "login fail"
-            this.sharedService.managementToast( 'loginFeedback', responseOK, errorResponse )
+            errorResponse = "Login successfully!!!"
+            this.sharedService.showSnackBar( errorResponse )
             if (responseOK) {
               this.router.navigateByUrl('posts');
             }
           })
-            ) 
+            )  */
         .subscribe(
           (item:AuthToken ) => {
             console.log ("Welcome to the ILS datalogger.industrialocalsostenible.com created by IDI!!")
@@ -129,14 +129,13 @@ export class LoginComponent implements OnInit {
             this.loginUser.access_token = item.access_token
             sessionStorage.setItem('user_id', this.loginUser.user_id)
             sessionStorage.setItem('access_token', this.loginUser.access_token)
-            this.sharedService.managementToast( 'loginFeedback', responseOK, errorResponse )
+            this.sharedService.showSnackBar( 'Login successfully!' )
 
             if (this.jwtHelper.decodeToken().role === 'admin') {
               this.isCompany = false
             }
 
             if (responseOK) {
-
               const headerInfo: HeaderMenus = { showAuthSection: true, showNoAuthSection: false, };
               this.headerMenusService.headerManagement.next(headerInfo);
               this.router.navigateByUrl('profile');
@@ -145,11 +144,7 @@ export class LoginComponent implements OnInit {
                   if (item.totalDelegations == 0) {
                     this.router.navigateByUrl('profile')
                   } else {
-                    /* if (this.jwtHelper.decodeToken().role === 'company') {
-                      this.router.navigateByUrl('/global-questionnaire')
-                    } else { */
-                      this.router.navigateByUrl('global-questionnaire-list')
-                    /* } */
+                    this.router.navigateByUrl('global-questionnaire-list')
                   }
                 } )
 
@@ -160,7 +155,7 @@ export class LoginComponent implements OnInit {
                   errorResponse = error.status;
                   const headerInfo: HeaderMenus = { showAuthSection: false, showNoAuthSection: true, };
                   this.headerMenusService.headerManagement.next(headerInfo);
-                  this.sharedService.errorLog(error.error);
+                  this.sharedService.showSnackBar(error.error.messages.error);
                 },
                   () => console.log("Login complete.")
         )

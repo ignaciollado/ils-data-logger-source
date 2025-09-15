@@ -40,12 +40,17 @@ export class DelegationService {
       .get<DelegationDTO[]>(`${this.apiUrl}/ilscompanydelegation/${companyId}`)
   }
 
-  getTotalDelegationsByCompany (companyId: string): Observable<any> {
+  /*   getTotalDelegationsByCompany (companyId: string): Observable<any> {
     return this.http
       .get<any>(`${this.urlAPiMySql}delegationCountByCompany.php?companyId=${companyId}`)
-  }
+  } */
 
-/*   getMunicipalities(): Observable<MunicipalityDto[]> {
+  getTotalDelegationsByCompany (companyId: string): Observable<any> {
+    return this.http
+      .get<any>(`${this.apiUrl}/ilscompanydelegationcount/${companyId}`)
+  }     
+
+  /*   getMunicipalities(): Observable<MunicipalityDto[]> {
     return this.http
       .get<MunicipalityDto[]>(`${this.urlAPiMock}municipios.json`)
       .pipe(catchError(this.sharedService.handleError))

@@ -1,3 +1,9 @@
+@use 'src/styles.scss' as *;
+
+section {
+  @include themed-app-page;
+}
+
 .container-form {
   max-width: 580px;
   margin: 4rem auto;

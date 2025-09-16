@@ -3,7 +3,7 @@
   <mat-chip-option color="warn" selected><strong>Nota:</strong> Versión actualmente en desarrollo. No válida para producción</mat-chip-option>
   <section ngClass='filtro-graficas'>
   <form [formGroup]="energyGraphForm" (ngSubmit)="loadgraphDataEnergy()" class="energy-form"> 
-  <div class="fields-container">
+  <div ngClass="fields-container">
     <!-- Delegation -->
     <!-- <mat-form-field class="form-field">
       <mat-label>{{'delegation' | translate}}</mat-label>
@@ -30,21 +30,22 @@
       </mat-error>
     </mat-form-field> -->
 
+        <!-- Time View Toggles -->
+    <div ngClass="toggle-group">
+      <mat-slide-toggle formControlName = "yearWiewGraphE" (change)="yearlyGraphView()">{{'year' | translate}}</mat-slide-toggle>
+      <mat-slide-toggle formControlName = "quarterlyViewGraphE" (change)="quarterlyGraphView()">{{'quarter' | translate}}</mat-slide-toggle>
+      <mat-slide-toggle formControlName = "monthlyViewGraphE" (change)="monthlyGraphView()">{{'month' | translate}}</mat-slide-toggle>
+    </div>
+    
+    
     <!-- Ratio Toggles -->
-    <div class="toggle-group">
+    <div ngClass="toggle-group">
       <mat-slide-toggle formControlName = "ratioBillingGraphE" (change)="loadgraphDataEnergy()">
         {{'ratioBillingMode' | translate}}
       </mat-slide-toggle>
       <mat-slide-toggle formControlName = "ratioCNAEgGraphE" (change)="chartRatioCNAE()">
         {{'ratioCNAEMode' | translate}}
       </mat-slide-toggle>
-    </div>
-
-    <!-- Time View Toggles -->
-    <div class="toggle-group">
-      <mat-slide-toggle formControlName = "yearWiewGraphE" (change)="yearlyGraphView()">{{'year' | translate}}</mat-slide-toggle>
-      <mat-slide-toggle formControlName = "quarterlyViewGraphE" (change)="quarterlyGraphView()">{{'quarter' | translate}}</mat-slide-toggle>
-      <mat-slide-toggle formControlName = "monthlyViewGraphE" (change)="monthlyGraphView()">{{'month' | translate}}</mat-slide-toggle>
     </div>
 
     <!-- Energy Unit Toggles -->

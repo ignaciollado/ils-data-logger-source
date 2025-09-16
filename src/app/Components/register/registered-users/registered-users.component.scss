@@ -1,3 +1,10 @@
+@use 'src/styles.scss' as *;
+
+section {
+  @include themed-app-page;
+  padding: 1.5rem;
+}
+
 h2 {
   font-size: 1.6rem;
   font-weight: 600;
@@ -23,107 +30,4 @@ mat-form-field {
 mat-paginator {
   margin: 1rem 0;
   border-top: 1px solid #e0e0e0;
-}
-
-.table-wrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: center; // centra horizontalmente
-  margin: 2rem auto;
-  max-width: 1390px; // ancho máximo de la tabla
-}
-
-:root {
-    --mat-table-background-color: red;
-}
-
-mat-table {
- /*  width: 100%; */
-  border-radius: 12px;
-  overflow: hidden;
-  background-color: #ffffff;
-  margin: 2rem auto;
-
-  .mat-header-cell {
-    font-weight: 600;
-    font-size: 0.95rem;
-    color: #2e7d32;
-    background: #f1f8e9; // verde muy suave
-  }
-
-  .mat-cell {
-    font-size: 0.9rem;
-    padding: 0.75rem;
-    color: #424242;
-  }
-
-  .mat-row:nth-child(even) {
-    background-color: #fafafa;
-  }
-
-  .mat-row:hover {
-    background-color: #e8f5e9; // highlight verde claro
-    transition: background-color 0.3s ease;
-  }
-}
-
-// Botones de acción
-.btn-edit {
-  display: flex;
-  gap: 0.5rem;
-
-  .save-button {
-    color: #388e3c;
-  }
-
-  .delete-button {
-    color: #d32f2f;
-  }
-
-  button:hover {
-    transform: scale(1.1);
-    transition: transform 0.2s ease;
-  }
-}
-
-// Datos pequeños
-.small-data {
-  font-size: 0.85rem;
-  color: #555;
-}
-
-.small-data-input {
-  font-size: 0.85rem;
-  padding: 0.2rem 0.4rem;
-  border: 1px solid #c8e6c9;
-  border-radius: 6px;
-  outline: none;
-
-  &:focus {
-    border-color: #43a047;
-    box-shadow: 0 0 4px rgba(67, 160, 71, 0.5);
-  }
-}
-
-span[ng-reflect-ng-if="!dataSource"] {
-  display: block;
-  text-align: center;
-  color: #757575;
-  margin-top: 1rem;
-  font-style: italic;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-mat-table {
-  animation: fadeIn 0.5s ease-out;
 }

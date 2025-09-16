@@ -122,14 +122,14 @@ mat-chip-option {
   max-height: 70%;
 }
 
-.fields-container{
+.fields-container {
   display: grid;
-  grid-template-columns: repeat(5, auto);
-  grid-template-areas:
+  grid-template-columns: repeat(2, auto);
+/*   grid-template-areas:
     "a c d e e"
     "a c f g h"
     "a c i j j"
-    "k k i j j";
+    "k k i j j"; */
 }
 
 

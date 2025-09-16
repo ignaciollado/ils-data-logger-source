@@ -1,4 +1,9 @@
 @use "../../../../styles/typography/config" as config;
+@use 'src/styles.scss' as *;
+
+section {
+  @include themed-app-page;
+}
 
 $primary-color: #1976d2;
 $accent-color: #ff4081;
@@ -12,29 +17,21 @@ $border-radius: 8px;
   max-width: 100%;
   margin: 0 auto;
   padding: 1.5rem;
-  font-family: 'Roboto', sans-serif;
 
   h1 {
     text-align: center;
     font-size: 1.8rem;
     font-weight: 600;
-    color: #2e7d32; // verde sostenible
+    color: #2e7d32;
     margin-bottom: 1.5rem;
   }
 
   mat-card {
     padding: 1.5rem;
     border-radius: 12px;
-    background-color: #f9fbe7; // verde muy suave
+    background-color: #f9fbe7;
     box-shadow: 0 4px 12px rgba(0,0,0,0.05);
     margin-bottom: 1.5rem;
-
-    section {
-      display: flex;
-      gap: 1.5rem;
-      flex-wrap: wrap;
-      margin-bottom: 1rem;
-    }
 
     mat-form-field {
       flex: 1;
@@ -85,97 +82,6 @@ $border-radius: 8px;
         color: #43a047;
       }
     }
-  }
-
-  /* Spinner */
-  .spinner-container {
-    display: flex;
-    justify-content: center;
-    margin: 2rem 0;
-  }
-
-  /* Tabla */
-  table, mat-table {
-    width: 100%;
-    border-radius: 12px;
-    overflow: hidden;
-    background-color: #ffffff;
-    margin-bottom: 1rem;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-    animation: fadeIn 0.5s ease-out;
-
-    mat-header-row {
-      background-color: #365446;
-    }
-
-    mat-header-cell {
-      color: #ffffff;
-      font-weight: 600;
-      font-size: .6rem;
-    }
-
-    mat-cell {
-      font-size: .6rem;
-      color: #424242;
-      padding: 0.75rem;
-    }
-
-    mat-row:nth-child(even) {
-      background-color: #e3f2fd; // alterna azul suave
-    }
-
-    mat-row:hover {
-      background-color: #bbdefb; // azul hover
-      transition: background-color 0.3s ease;
-    }
-
-    .btn-edit {
-      display: grid;
-      grid-template-columns: 50% 50%;
-
-      .save-button {
-        color: #1976d2;
-      }
-
-      .delete-button {
-        color: #d32f2f;
-      }
-
-      button:hover {
-        transform: scale(1.2);
-        transition: transform 0.2s ease;
-      }
-    }
-
-    .small-data {
-      font-size: 0.7rem;
-      color: #000;
-    }
-
-  .small-data-input {
-    font-size: 0.7rem;
-    padding: 0.25rem;
-    border: 1px solid #365446;
-    border-radius: 0.25rem;
-    width: 90%;
-
-    &:focus {
-        border-color: #42a5f5;
-        box-shadow: 0 0 4px rgba(66, 165, 245, 0.5);
-      }
-    }
-  }
-}
-
-/* Animación de fade-in para la tabla */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
   }
 }
 

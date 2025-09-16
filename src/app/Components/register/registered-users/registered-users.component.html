@@ -1,18 +1,20 @@
-<h2>{{'listUsers' | translate}}</h2>
+<section ngClass="container-form" >
+<h1>{{'listUsers' | translate}}</h1>
 
 <mat-form-field appearance="outline" style="width: 300px; margin-bottom: 16px; display: block; margin-left: auto; margin-right: auto;">
   <mat-label>Filtrar usuarios</mat-label>
   <input matInput (keyup)="applyFilter($event)" placeholder="Buscar...">
 </mat-form-field>
 
-<div class="table-wrapper">
   <mat-progress-bar mode="indeterminate" color="primary" *ngIf="isLoading"></mat-progress-bar>
   <mat-paginator [pageSizeOptions]="[20, 40, 80]" showFirstLastButtons></mat-paginator>
 
-  <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8" *ngIf="dataSource">
+  <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
     <ng-container [matColumnDef]="col.key" *ngFor="let col of columnsSchema">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>{{ col.label }}</th>
-      <td mat-cell *matCellDef="let element">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>
+        <span>{{ col.label }}</span>
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element">
         <div [ngSwitch]="col.type" *ngIf="!element.isEdit">
           <div class="btn-edit" *ngSwitchCase="'isEdit'">
             <button mat-icon-button (click)="element.isEdit = !element.isEdit" disabled
@@ -37,16 +39,11 @@
           </div>
           <span *ngSwitchCase="'isSelected'" class="small-data">{{element[col.key]}}</span>
           <span *ngSwitchCase="'text'" class="small-data">{{element[col.key]}}</span>
-          <input *ngSwitchCase="'number'" [type]="col.type"
-                 [(ngModel)]="element[col.key]"
-                 class="small-data-input" [style.width.px]='50'/>
+          <input *ngSwitchCase="'number'" [type]="col.type" [(ngModel)]="element[col.key]" class="small-data-input" [style.width.px]='50'/>
         </div>
-      </td>
+      </mat-cell>
     </ng-container>
-
-    <tr mat-header-row *matHeaderRowDef="columnsDisplayed"></tr>
-    <tr mat-row *matRowDef="let row; columns: columnsDisplayed;"></tr>
+    <mat-header-row *matHeaderRowDef="columnsDisplayed"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: columnsDisplayed;"></mat-row>
   </table>
-
-  <span *ngIf="!dataSource">No data found ...</span>
-</div>
+</section>

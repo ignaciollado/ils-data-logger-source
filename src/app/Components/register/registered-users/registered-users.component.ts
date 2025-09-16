@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { MatSort } from '@angular/material/sort';
-import { ViewChild, AfterViewInit } from '@angular/core';
+import { ViewChild } from '@angular/core';
 import { UserDTO, userColumns } from 'src/app/Models/user.dto';
 import { UserService } from 'src/app/Services/user.service';
 import { MatDialog } from '@angular/material/dialog';
@@ -20,7 +20,7 @@ import { MatPaginator  } from '@angular/material/paginator';
   styleUrls: ['./registered-users.component.scss']
 })
 export class RegisteredUsersComponent {
-  isLoading:boolean = true;
+  isLoading: boolean = true;
   user: UserDTO
   users!: UserDTO[]
   private userId: string | null

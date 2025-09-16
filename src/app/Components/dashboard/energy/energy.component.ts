@@ -71,7 +71,7 @@ export class EnergyGraphComponent implements OnInit {
   graphObjectiveTemp: ObjectiveDTO[]
   graphObjective: any[] = []
   objectiveDataSets: any[] = []
-  startPrimaryColor: number
+  startPrimaryColor: number = 3
   theDataType: string = ''
   theRatios: number[] = []
   graphConsumption: graphData[] = []
@@ -123,63 +123,43 @@ export class EnergyGraphComponent implements OnInit {
     private formBuilder: UntypedFormBuilder,
     private jwtHelper: JwtHelperService
   ) {
-    this.alternateColors = [
-      '#E8EAF6',
-      '#C5CAE9',
-      '#9FA8DA',
-      '#7986CB',
-      '#5C6BC0',
-      '#3F51B5',
-      '#3949AB',
-      '#303F9F',
-      '#283593',
-      '#1A237E',
-      ]
-    this.primaryColors = [
-      '#E8EAF6',
-      '#F1F8E9',
-      '#C5CAE9',
-      '#DCEDC8',
-      '#ff0000',
-      '#636363',
-      '#0000ff',
-      '#644536',
-      '#0BA9B7',
-      '#FEEA00',
-      '#d90429',
-      '#ff006e',
-      '#e6b609',
-      '#00ff00',
-      '#eae2b7',
-      '#fcbf49',
-      '#F18F01',
-      '#d62828',
-      '#1A237E',
-      '#365446',
-      ]
+  this.alternateColors = [
+  '#E8EAF6',
+  '#C5CAE9',
+  '#9FA8DA',
+  '#7986CB',
+  '#5C6BC0',
+  '#3F51B5',
+  '#3949AB',
+  '#303F9F',
+  '#283593',
+  '#1A237E',
+  ]
+  this.primaryColors = [
+  '#4CAF50', // verde vivo
+  '#FF9800', // naranja cálido
+  '#2196F3', // azul brillante
+  '#F06292', // rosa vivo
+  '#9C27B0', // violeta intenso
+  '#FFC107', // amarillo brillante
+  '#009688', // verde azulado
+  '#FF5722', // naranja profundo
+  '#3F51B5', // azul oscuro
+  '#E91E63', // rosa intenso
+  '#8BC34A', // verde claro
+  '#FFEB3B', // amarillo suave
+  '#00BCD4', // cian vivo
+  '#673AB7', // violeta elegante
+  '#795548', // marrón terroso
+  '#607D8B', // gris azulado
+  '#CDDC39', // lima brillante
+  '#FF7043', // coral cálido
+  '#03A9F4', // azul celeste
+  '#F44336'  // rojo vivo
+];
 
     this.companyId = this.jwtHelper.decodeToken().id_ils;
 
-    // Generar meses en formato 'YYYY-MM'
-/*     this.graphMonths = [];
-    for (let year = this.startYear; year <= this.currentYear; year++) {
-      for (let month = 1; month <= 12; month++) {
-          const monthStr = month.toString().padStart(2, '0');
-          this.graphMonths.push(`${year}-${monthStr}`);
-      }
-    } */
-
-    // Generar trimestres en formato 'YYYY-Tn'
-/*     this.graphQuarters = [];
-    for (let year = this.startYear; year <= this.currentYear; year++) {
-      for (let q = 1; q <= 4; q++) {
-          this.graphQuarters.push(`${year}-T${q}`);
-      }
-    } */
-
-    // Generar años
-/*     this.graphYears = Array.from({ length: this.numberOfYears }, (_, i) => (this.startYear + i).toString());
- */
     if (localStorage.getItem('preferredLang') === 'cat') {
       this.aspectEnergy = "Energia (kWh)"
       this.aspectWater = "Aigua (L)"
@@ -196,9 +176,9 @@ export class EnergyGraphComponent implements OnInit {
     this.yearEnergy = new UntypedFormControl('')
     this.ratioBillingGraphE = new UntypedFormControl(false)
     this.ratioCNAEgGraphE = new UntypedFormControl(false)
-    this.yearWiewGraphE = new UntypedFormControl(true)
+    this.yearWiewGraphE = new UntypedFormControl(false)
     this.quarterlyViewGraphE = new UntypedFormControl(false)
-    this.monthlyViewGraphE = new UntypedFormControl(false)
+    this.monthlyViewGraphE = new UntypedFormControl(true)
     this.kWView = new UntypedFormControl(true)
     this.MWView = new UntypedFormControl(false)
     this.energy = new UntypedFormControl('')
@@ -265,7 +245,8 @@ export class EnergyGraphComponent implements OnInit {
   }
 
   loadgraphDataEnergy(): void {
-    this.yearlyGraphView() //por defecto, muestro el gráfico agrupado por años
+    // Paso : cargar objetivos
+    this.loadObjectives(this.companyId);
   }
 
   private loadObjectives(companyId: string): void {
@@ -274,7 +255,7 @@ export class EnergyGraphComponent implements OnInit {
     .subscribe(
       (objectives: ObjectiveDTO[]) => {
         this.objectives = objectives
-        console.log ("objectives: ", this.objectives)
+        this.monthlyGraphView()
       },
       (error: HttpErrorResponse) => {
         errorResponse = error.error;
@@ -689,9 +670,7 @@ export class EnergyGraphComponent implements OnInit {
           });
         });
 
-        // Paso 2: cargar objetivos
-        this.loadObjectives(this.companyId);
-
+ 
         // Determinar la clave de agrupación
         let groupKey: string;
         groupKey = "year"
@@ -864,117 +843,122 @@ export class EnergyGraphComponent implements OnInit {
     );
   }
 
-  monthlyGraphView(selectedYear?: string) {
+monthlyGraphView(selectedYear?: string) {
   this.energyGraphForm.get('yearWiewGraphE').setValue(false);
   this.energyGraphForm.get('quarterlyViewGraphE').setValue(false);
 
   this.consumptionService.getMonthlyEnergyByCompanyId(this.companyId)
-    .subscribe(
-      (rawConsumptions: ConsumptionDTO[]) => {
-        const monthKeys = ['jan','feb','mar','apr','may','jun','jul','aug','sep','oct','nov','dec'];
+    .subscribe((rawConsumptions: ConsumptionDTO[]) => {
+      const monthKeys = ['jan','feb','mar','apr','may','jun','jul','aug','sep','oct','nov','dec'];
 
-        // Transformar los datos para tener una fila por mes y año
-        this.consumptions = [];
-        rawConsumptions.forEach(item => {
-          // Filtrar por año si se proporciona
-          if (!selectedYear || item.year === selectedYear) {
-            this.energies.forEach((energy: EnergyDTO) => {
-              if (energy.nameES === item.energyName) {
-                monthKeys.forEach(month => {
-                  this.consumptions.push({
-                    delegation: item.delegation,
-                    energyName: item.energyName,
-                    year: item.year,
-                    month,
-                    totalYear: (+item[month] || 0) * energy.pci * energy.convLKg
-                  });
+      // Transformar los datos para tener una fila por mes y año
+      this.consumptions = [];
+      rawConsumptions.forEach(item => {
+        if (!selectedYear || item.year === selectedYear) {
+          this.energies.forEach((energy: EnergyDTO) => {
+            if (energy.nameES === item.energyName) {
+              monthKeys.forEach(month => {
+                this.consumptions.push({
+                  delegation: item.delegation,
+                  energyName: item.energyName,
+                  year: item.year,
+                  month,
+                  totalYear: (+item[month] || 0) * energy.pci * energy.convLKg
                 });
-              }
-            });
-          }
-        });
-
-        // Labels para eje X (meses)
-        this.labels = monthKeys.map(m => m.toUpperCase());
-
-        // Delegaciones, energías y años únicos
-        const delegations = Array.from(new Set(this.consumptions.map(c => c.delegation)));
-        const energyNames = Array.from(new Set(this.consumptions.map(c => c.energyName)));
-        const years = Array.from(new Set(this.consumptions.map(c => c.year)));
-
-        // Preparar datasets de consumo por año
-        this.endergyDataSet = [];
-        years.forEach(year => {
-          delegations.forEach((delegation, dIndex) => {
-            energyNames.forEach((energy, eIndex) => {
-              const data = monthKeys.map(month => {
-                return this.consumptions
-                  .filter(c => c.year === year && c.month === month && c.delegation === delegation && c.energyName === energy)
-                  .reduce((sum, c) => sum + +c.totalYear, 0);
               });
-
-              this.endergyDataSet.push({
-                label: `${delegation} - ${energy} (${year})`,
-                data,
-                backgroundColor: this.primaryColors[(dIndex + eIndex) % this.primaryColors.length],
-                stack: `${delegation}-${year}`
-              });
-            });
-          });
-        });
-
-        // Agregar datasets de objetivos por año
-        if (this.objectives && this.objectives.length > 0) {
-          years.forEach(year => {
-            delegations.forEach(delegation => {
-              const objectiveData = monthKeys.map(month => {
-                const obj = this.objectives.find(o => o.delegation === delegation && o.year === year);
-                return obj ? +obj[month] || 0 : 0;
-              });
-
-              this.endergyDataSet.push({
-                label: `Objetivo - ${delegation} (${year})`,
-                data: objectiveData,
-                type: 'line',
-                borderColor: '#ff5722',
-                borderWidth: 1,
-                fill: false,
-                pointRadius: 3,
-                pointBackgroundColor: '#0E5F0EFF',
-                yAxisID: 'y'
-              });
-            });
+            }
           });
         }
+      });
 
-        // Destruir gráfico previo si existe
-        if (this.chart) this.chart.destroy();
+      // Labels para eje X (meses)
+      this.labels = monthKeys.map(m => m.toUpperCase());
 
-        // Crear gráfico apilado
-        this.chart = new Chart('energyGraph', {
-          type: 'bar',
-          data: {
-            labels: this.labels,
-            datasets: this.endergyDataSet
-          },
-          options: {
-            responsive: true,
-            plugins: {
-              legend: { display: true, position: 'right', labels: { color: '#365446', boxWidth: 20, padding: 8 }, maxHeight: 300},
-              title: { display: true, text: `Consumo energético ${selectedYear || 'Todos los años'}` }
-            },
-            interaction: { intersect: true },
-            scales: {
-              x: { stacked: true, title: { display: true, text: 'Mes' } },
-              y: { stacked: true, beginAtZero: true, title: { display: true, text: 'kWh' } }
-            }
-          }
+      // Delegaciones, energías y años únicos
+      const delegations = Array.from(new Set(this.consumptions.map(c => c.delegation)));
+      const energyNames = Array.from(new Set(this.consumptions.map(c => c.energyName)));
+      const years = Array.from(new Set(this.consumptions.map(c => c.year)));
+
+      // Mapear un color por año
+      const yearColors = years.reduce((acc, year, index) => {
+        acc[year] = this.primaryColors[index % this.primaryColors.length];
+        return acc;
+      }, {} as {[key: string]: string});
+
+      // Preparar datasets de consumo por año
+      this.endergyDataSet = [];
+      years.forEach(year => {
+        delegations.forEach(delegation => {
+          energyNames.forEach(energy => {
+            const data = monthKeys.map(month => {
+              return this.consumptions
+                .filter(c => c.year === year && c.month === month && c.delegation === delegation && c.energyName === energy)
+                .reduce((sum, c) => sum + +c.totalYear, 0);
+            });
+
+            this.endergyDataSet.push({
+              label: `${delegation} - ${energy} (${year})`,
+              data,
+              backgroundColor: yearColors[year],
+              stack: `${delegation}-${year}`
+            });
+          });
         });
+      });
 
-      },
-      (error: HttpErrorResponse) => {
-        this.sharedService.showSnackBar(error.error);
+      // Agregar datasets de objetivos por año
+      if (this.objectives && this.objectives.length > 0) {
+        years.forEach(year => {
+          delegations.forEach(delegation => {
+            const objectiveData = monthKeys.map(month => {
+              const obj = this.objectives.find(o => o.delegation === delegation && o.year === year);
+              return obj ? +obj[month] || 0 : 0;
+            });
+
+            this.endergyDataSet.push({
+              label: `Objetivo - ${delegation} (${year})`,
+              data: objectiveData,
+              type: 'line',
+              borderColor: '#ff5722',
+              borderWidth: 1,
+              fill: false,
+              pointRadius: 3,
+              pointBackgroundColor: '#0E5F0EFF',
+              yAxisID: 'y'
+            });
+          });
+        });
       }
-    );
-  }
+
+      // Destruir gráfico previo si existe
+      if (this.chart) this.chart.destroy();
+
+      // Crear gráfico apilado
+      this.chart = new Chart('energyGraph', {
+        type: 'bar',
+        data: {
+          labels: this.labels,
+          datasets: this.endergyDataSet
+        },
+        options: {
+          responsive: true,
+          plugins: {
+            legend: { display: true, position: 'right', labels: { color: '#365446', boxWidth: 20, padding: 8 }, maxHeight: 300 },
+            title: { display: true, text: `Consumo energético ${selectedYear || 'Todos los años'}` }
+          },
+          interaction: { intersect: true },
+          scales: {
+            x: { stacked: true, title: { display: true, text: 'Mes' } },
+            y: { stacked: true, beginAtZero: true, title: { display: true, text: 'kWh' } }
+          }
+        }
+      });
+
+    },
+    (error: HttpErrorResponse) => {
+      this.sharedService.showSnackBar(error.error);
+    }
+  );
+}
+
 }

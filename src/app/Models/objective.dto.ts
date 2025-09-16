@@ -2,6 +2,7 @@ export class ObjectiveDTO {
   id?: number
   companyId: string
   companyDelegationId: number
+  delegation?: string
   aspectId?: number
   chapterItemId?: string
   enviromentalDataName?: string

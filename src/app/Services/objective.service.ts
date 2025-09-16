@@ -53,7 +53,7 @@ export class ObjectiveService {
      .get<ObjectiveDTO[]>(`${this.URL_API}objectiveGetByCompanyId.php?companyId=${companyId}&aspectId=${aspectId}`, httpOptions)
   }
 
-  getAllObjectivesByCompany(companyId:string): Observable<ObjectiveDTO[]> {
+/*   getAllObjectivesByCompany(companyId:string): Observable<ObjectiveDTO[]> {
     if (companyId) {
       console.log ("logged in")
       return this.http
@@ -62,6 +62,18 @@ export class ObjectiveService {
       console.log("NOT logged")
       return this.http
         .get<ObjectiveDTO[]>(`${this.URL_API_SRV}/api/get-all-Objectives`, httpOptions)
+    }
+  } */
+
+  getAllObjectivesByCompany(companyId:string): Observable<ObjectiveDTO[]> {
+    if (companyId) {
+      console.log ("logged in")
+      return this.http
+        .get<ObjectiveDTO[]>(`${this.apiUrl}/ils_objective/${companyId}`)
+    } else {
+      console.log("NOT logged")
+      return this.http
+        .get<ObjectiveDTO[]>(`${this.apiUrl}ils_objective`, httpOptions)
     }
   }
 

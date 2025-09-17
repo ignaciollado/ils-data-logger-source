@@ -80,7 +80,7 @@ export class GlobalRegulationQuestionnaireAnswerComponent {
     }
   }
 
-  loadQuestionnaireResult( questionnaireID: number ){
+  loadQuestionnaireResult( questionnaireID: number ) {
         this.enviromentalAuditService.getQuestionnaireByID( questionnaireID )
           .subscribe( (questionnaires: AnswerDTO[]) =>{
             this.userQuestionnaires = questionnaires

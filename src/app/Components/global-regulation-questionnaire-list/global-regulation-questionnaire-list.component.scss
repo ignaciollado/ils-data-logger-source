@@ -8,8 +8,21 @@
 }
 
 .button-row {
-  display: grid;
-  grid-template-columns: auto auto auto auto;
+  display: flex;
+  align-items: center; // alinea verticalmente los botones
+  gap: 8px; // separación uniforme entre botones
+
+  .action-icon {
+    font-size: 24px; // tamaño consistente para todos los mat-icons
+    vertical-align: middle; // asegura alineación vertical dentro del botón
+    line-height: 24px;
+  }
+
+  a {
+    display: flex;
+    align-items: center; // alinea el icono dentro del enlace
+    justify-content: center;
+  }
 }
 
 a {

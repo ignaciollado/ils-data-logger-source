@@ -13,8 +13,9 @@ import { ChangeDetectorRef } from '@angular/core';
 export class HeaderComponent implements OnInit {
   showAuthSection: boolean
   showNoAuthSection: boolean
+  showAdminSection: boolean
   isCompany: boolean
-  
+  role: string = ""
   userId: string = ""
   access_token: string | null
 
@@ -25,92 +26,61 @@ constructor(
   private cdr: ChangeDetectorRef
 ) {
   this.access_token = sessionStorage.getItem("access_token");
-  this.showAuthSection = false;
-  this.showNoAuthSection = true;
+  this.showAuthSection = false
+  this.showNoAuthSection = true
+  this.showAdminSection = false
 
   if (this.access_token === null || this.jwtHelper.isTokenExpired(this.access_token)) {
-    const headerInfo: HeaderMenus = {
-      showAuthSection: false,
-      showNoAuthSection: true,
-      showAdminSection: false,
-    };
-    sessionStorage.removeItem('user_id');
-    sessionStorage.removeItem('access_token');
-    this.headerMenusService.headerManagement.next(headerInfo);
-    this.router.navigateByUrl('login');
-  } else {
     const headerInfo: HeaderMenus = {
       showAuthSection: true,
       showNoAuthSection: false,
       showAdminSection: false,
     };
     this.headerMenusService.headerManagement.next(headerInfo);
+      sessionStorage.removeItem('user_id');
+      sessionStorage.removeItem('access_token');
+      this.headerMenusService.headerManagement.next(headerInfo);
+      this.router.navigateByUrl('login');
+  } else {
+    const decodedToken = this.jwtHelper.decodeToken(this.access_token)
+    this.role = decodedToken.role
+    console.log (this.role)
+    const headerInfo: HeaderMenus = {
+      showAuthSection: true,
+      showNoAuthSection: false,
+      showAdminSection: true,
+    };
+    this.headerMenusService.headerManagement.next(headerInfo);
   }
 }
 
-/*   constructor(
-    private router: Router,
-    private headerMenusService: HeaderMenusService,
-    private jwtHelper: JwtHelperService
-  ) {
-    this.access_token = sessionStorage.getItem("access_token")
-    this.showAuthSection = false;
-    this.showNoAuthSection = true;
-
-    if (this.access_token === null) {
-      const headerInfo: HeaderMenus = { showAuthSection: false, showNoAuthSection: true, showAdminSection: false, };
-      this.headerMenusService.headerManagement.next(headerInfo)
-    } else {
-      if (!this.jwtHelper.isTokenExpired (this.access_token)) {
-        const headerInfo: HeaderMenus = {  showAuthSection: true, showNoAuthSection: false, showAdminSection: false,}
-        this.headerMenusService.headerManagement.next(headerInfo)
-        this.userId = this.jwtHelper.decodeToken().name
-      } else { // logout
-        const headerInfo: HeaderMenus = { showAuthSection: false, showNoAuthSection: true, showAdminSection: false, }
-        sessionStorage.removeItem('user_id')
-        sessionStorage.removeItem('access_token')
-        this.headerMenusService.headerManagement.next(headerInfo)
-        this.userId = ""
-        this.router.navigateByUrl('login')
-      }
-    }
-  } */
-
-/*   ngOnInit(): void {
-    this.headerMenusService.headerManagement.subscribe (
-      (headerInfo: HeaderMenus) => {
-        if (this.jwtHelper.decodeToken()) {
-          if (this.jwtHelper.decodeToken().role == 'company') {
-           this.isCompany = true
-          } else {
-            this.isCompany = false
-          }
-        }
-
-        if (headerInfo) {
-          this.showAuthSection = headerInfo.showAuthSection
-          this.showNoAuthSection = headerInfo.showNoAuthSection
-        }
-      }
-    )
-  } */
-  
   ngOnInit(): void {
+      const token = sessionStorage.getItem('access_token');
+       if (token && !this.jwtHelper.isTokenExpired(token)) {
+        const decoded = this.jwtHelper.decodeToken(token);
+        this.role = sessionStorage.getItem('role'); // 👈 aquí se asigna el rol
+        console.log ("rrrrrr", this.role)
+      }
     if (this.access_token && !this.jwtHelper.isTokenExpired(this.access_token)) {
-      const decodedToken = this.jwtHelper.decodeToken(this.access_token);
-      this.userId = decodedToken.name;
-      this.isCompany = decodedToken.role === 'company';
+    const decodedToken = this.jwtHelper.decodeToken(this.access_token)
+    this.role =  sessionStorage.getItem('role')
+    console.log ("role", this.role)
+      this.userId = decodedToken.name
+      this.role =  sessionStorage.getItem('role')
+      this.isCompany = decodedToken.role === 'company'
       this.cdr.detectChanges(); // 👈 fuerza la actualización del template
     }
 
     this.headerMenusService.headerManagement.subscribe(
-      (headerInfo: HeaderMenus) => {
-        if (headerInfo) {
-          this.showAuthSection = headerInfo.showAuthSection;
-          this.showNoAuthSection = headerInfo.showNoAuthSection;
-          this.cdr.detectChanges(); // 👈 por si cambia algo más
-        }
-      }
+    (headerInfo: HeaderMenus) => {
+      if (headerInfo) {
+        this.showAuthSection = headerInfo.showAuthSection;
+        this.showNoAuthSection = headerInfo.showNoAuthSection;
+        this.showAdminSection = 
+        this.isCompany = headerInfo.isCompany ?? true; // 👈 usa el valor recibido
+        this.cdr.detectChanges();
+    }
+  }
     );
   }
 

@@ -16,26 +16,26 @@
 <section *ngIf="showAuthSection">
   <mat-menu #menu="matMenu">
     <section>
-      <button *ngIf="!isCompany" mat-menu-item (click)="dashboard()"><mat-icon style="color: lightgreen;">dashboard_customize</mat-icon>{{'controlPanel' | translate}}</button>
-      <button *ngIf="!isCompany" mat-menu-item (click)="adminConsumptions()"><mat-icon style="color: lightgreen;">bar_chart_4_bars</mat-icon> {{'activityData' | translate}}</button>
-      <button *ngIf="!isCompany" mat-menu-item (click)="adminRatios()"><mat-icon style="color: lightgreen;">factory</mat-icon> {{'productionData' | translate}}</button>
-      <button *ngIf="!isCompany" mat-menu-item (click)="myObjectives()"><mat-icon style="color: lightgreen;">flag_check</mat-icon> {{'myObjectives' | translate}}</button>
-      <mat-divider *ngIf="!isCompany"></mat-divider>
+      <button *ngIf="role === 'admin'" mat-menu-item (click)="dashboard()"><mat-icon style="color: lightgreen;">dashboard_customize</mat-icon>{{'controlPanel' | translate}}</button>
+      <button *ngIf="role === 'admin'" mat-menu-item (click)="adminConsumptions()"><mat-icon style="color: lightgreen;">bar_chart_4_bars</mat-icon> {{'activityData' | translate}}</button>
+      <button *ngIf="role === 'admin'" mat-menu-item (click)="adminRatios()"><mat-icon style="color: lightgreen;">factory</mat-icon> {{'productionData' | translate}}</button>
+      <button *ngIf="role === 'admin'" mat-menu-item (click)="myObjectives()"><mat-icon style="color: lightgreen;">flag_check</mat-icon> {{'myObjectives' | translate}}</button>
+      <mat-divider *ngIf="role === 'admin'"></mat-divider>
       <mat-divider></mat-divider>
 
-      <button *ngIf="!isCompany" mat-menu-item (click)="globalQuestionnaireNormative()"><mat-icon style="color: orangered;">balance</mat-icon> {{'globalQuestionnaireNormativeTexts' | translate}}</button>
-      <button *ngIf="!isCompany" mat-menu-item (click)="municipalityQuestionnaireNormative()"><mat-icon style="color: orangered;">balance</mat-icon> {{'municipalityQuestionnaireNormativeTexts' | translate}}</button>
+      <button *ngIf="role === 'admin'" mat-menu-item (click)="globalQuestionnaireNormative()"><mat-icon style="color: orangered;">balance</mat-icon> {{'globalQuestionnaireNormativeTexts' | translate}}</button>
+      <button *ngIf="role === 'admin'" mat-menu-item (click)="municipalityQuestionnaireNormative()"><mat-icon style="color: orangered;">balance</mat-icon> {{'municipalityQuestionnaireNormativeTexts' | translate}}</button>
       <button mat-menu-item (click)="globalQuestionnaire()"><mat-icon style="color: orangered;">list</mat-icon> {{'globalQuestionnaire' | translate}}</button>
       <button mat-menu-item (click)="globalQuestionnaireList()"><mat-icon style="color: orangered;"> list_alt</mat-icon> {{'answeredQuestionnairesList' | translate}}</button>
       <mat-divider></mat-divider>
 
       <button mat-menu-item (click)="profile()"><mat-icon style="color: blue;">account_circle</mat-icon> {{'profile' | translate}}</button>
       <mat-divider></mat-divider>
-      <button *ngIf="!isCompany" mat-menu-item (click)="createUser()"><mat-icon style="color: burlywood;">person_add</mat-icon> {{'createAccount' | translate}}</button>
-      <button *ngIf="!isCompany" mat-menu-item (click)="listUsers()"><mat-icon style="color: burlywood;">supervisor_account</mat-icon> {{'listUsers' | translate}}</button>
-      <button *ngIf="!isCompany" mat-menu-item (click)="listResidueChapters()"><mat-icon style="color: burlywood;">dataset</mat-icon> {{'residueChaptersRepository' | translate}}</button>
-      <button *ngIf="!isCompany" mat-menu-item (click)="listActivityEmissionsCnae()"><mat-icon style="color: burlywood;">dataset</mat-icon> {{'activityEmissionsCnaeRepository' | translate}}</button>
-      <button *ngIf="!isCompany" mat-menu-item (click)="energyMaintenance()"><mat-icon style="color: burlywood;">offline_bolt</mat-icon> {{'energyMaintenance' | translate}}</button>
+      <button *ngIf="role === 'admin'" mat-menu-item (click)="createUser()"><mat-icon style="color: burlywood;">person_add</mat-icon> {{'createAccount' | translate}}</button>
+      <button *ngIf="role === 'admin'" mat-menu-item (click)="listUsers()"><mat-icon style="color: burlywood;">supervisor_account</mat-icon> {{'listUsers' | translate}}</button>
+      <button *ngIf="role === 'admin'" mat-menu-item (click)="listResidueChapters()"><mat-icon style="color: burlywood;">dataset</mat-icon> {{'residueChaptersRepository' | translate}}</button>
+      <button *ngIf="role === 'admin'" mat-menu-item (click)="listActivityEmissionsCnae()"><mat-icon style="color: burlywood;">dataset</mat-icon> {{'activityEmissionsCnaeRepository' | translate}}</button>
+      <button *ngIf="role === 'admin'" mat-menu-item (click)="energyMaintenance()"><mat-icon style="color: burlywood;">offline_bolt</mat-icon> {{'energyMaintenance' | translate}}</button>
 
       <mat-divider></mat-divider>
       <button mat-menu-item (click)="logout()"><mat-icon style="color: orange;">logout</mat-icon> {{'logout' | translate}}</button>

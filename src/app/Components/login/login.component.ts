@@ -110,20 +110,17 @@ export class LoginComponent implements OnInit {
         this.authService.login( this.loginUser )
         .subscribe(
           (item:AuthToken ) => {
+            this.router.navigateByUrl('home').then(() => { // recargo la página para que se actualice el menú (según el rol del usuario). Es la única forma que me funciona
+                window.location.reload();
+            });
             console.log ("Welcome to the ILS datalogger.industrialocalsostenible.com created by IDI!!")
             responseOK = true;
-            errorResponse = "login correct"
             this.loginUser.user_id = item.user_id
             this.loginUser.access_token = item.access_token
             sessionStorage.setItem('user_id', this.loginUser.user_id)
             sessionStorage.setItem('access_token', this.loginUser.access_token)
             sessionStorage.setItem('role', this.jwtHelper.decodeToken().role);
-            this.sharedService.showSnackBar( 'Login successfully!' )
-            if (this.jwtHelper.decodeToken().role === 'admin') {
-              this.isCompany = false
-            } else   {
-              this.isCompany = true
-            }
+            this.sharedService.showSnackBar( 'Successfully logged in!' )
             if (responseOK) {
               const headerInfo: HeaderMenus = { showAuthSection: true, showNoAuthSection: false, };
               this.headerMenusService.headerManagement.next(headerInfo);

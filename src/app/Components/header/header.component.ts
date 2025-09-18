@@ -44,7 +44,6 @@ constructor(
   } else {
     const decodedToken = this.jwtHelper.decodeToken(this.access_token)
     this.role = decodedToken.role
-    console.log (this.role)
     const headerInfo: HeaderMenus = {
       showAuthSection: true,
       showNoAuthSection: false,
@@ -59,12 +58,10 @@ constructor(
        if (token && !this.jwtHelper.isTokenExpired(token)) {
         const decoded = this.jwtHelper.decodeToken(token);
         this.role = sessionStorage.getItem('role'); // 👈 aquí se asigna el rol
-        console.log ("rrrrrr", this.role)
       }
     if (this.access_token && !this.jwtHelper.isTokenExpired(this.access_token)) {
-    const decodedToken = this.jwtHelper.decodeToken(this.access_token)
-    this.role =  sessionStorage.getItem('role')
-    console.log ("role", this.role)
+      const decodedToken = this.jwtHelper.decodeToken(this.access_token)
+      this.role =  sessionStorage.getItem('role')
       this.userId = decodedToken.name
       this.role =  sessionStorage.getItem('role')
       this.isCompany = decodedToken.role === 'company'

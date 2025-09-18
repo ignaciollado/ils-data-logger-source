@@ -110,9 +110,6 @@ export class LoginComponent implements OnInit {
         this.authService.login( this.loginUser )
         .subscribe(
           (item:AuthToken ) => {
-            this.router.navigateByUrl('home').then(() => { // recargo la página para que se actualice el menú (según el rol del usuario). Es la única forma que me funciona
-                window.location.reload();
-            });
             console.log ("Welcome to the ILS datalogger.industrialocalsostenible.com created by IDI!!")
             responseOK = true;
             this.loginUser.user_id = item.user_id
@@ -124,16 +121,19 @@ export class LoginComponent implements OnInit {
             if (responseOK) {
               const headerInfo: HeaderMenus = { showAuthSection: true, showNoAuthSection: false, };
               this.headerMenusService.headerManagement.next(headerInfo);
-              this.router.navigateByUrl('profile');
+              this.router.navigateByUrl('profile')
               this.delegationService.getTotalDelegationsByCompany(this.jwtHelper.decodeToken().id_ils)
                 .subscribe( item => {
                   if (item.totalDelegations === 0) {
-                    this.router.navigateByUrl('profile')
+                    this.router.navigateByUrl('profile').then(() => {
+                      window.location.reload()
+                    })
                   } else {
-                    this.router.navigateByUrl('global-questionnaire-list')
+                    this.router.navigateByUrl('global-questionnaire-list').then(() => {
+                      window.location.reload()
+                    })
                   }
-                } )
-
+                })
             }
                 },
                 (error: any) => {

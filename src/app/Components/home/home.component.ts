@@ -34,9 +34,9 @@ export class HomeComponent {
     this.userId = '0'
     this.showButtons = false
     this.access_token = sessionStorage.getItem("access_token")
-    localStorage.removeItem("preferredLang")
-    if(localStorage.getItem("preferredLang") === 'undefined' || localStorage.getItem("preferredLang") === null) {
-      localStorage.setItem("preferredLang", "cas")
+    sessionStorage.removeItem("preferredLang")
+    if(sessionStorage.getItem("preferredLang") === 'undefined' || sessionStorage.getItem("preferredLang") === null) {
+      sessionStorage.setItem("preferredLang", "cat")
     }    
     if (this.access_token === null) {
       const headerInfo: HeaderMenus = { showAuthSection: false, showNoAuthSection: true, };

@@ -4,8 +4,8 @@
     <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="menu ils data logger" [ngClass]="'not-has-to-be-shown'">
       <span [ngClass]="'not-has-to-be-shown material-symbols-outlined'"><mat-icon >apps</mat-icon></span></button>
     <mat-menu #menu="matMenu">
-       <button mat-menu-item (click)="home()"><i class="fa-solid fa-house"></i> {{'home' | translate}}</button>
-       <button mat-menu-item (click)="login()"><i class="fa-solid fa-right-to-bracket"></i> {{'login' | translate}}</button>
+       <button mat-menu-item (click)="home()"><mat-icon>home</mat-icon> {{'home' | translate}}</button>
+       <button mat-menu-item (click)="login()"><mat-icon>login</mat-icon> {{'login' | translate}}</button>
     </mat-menu>
     <span class="app-state">{{userId}} </span>
     <img src="../../../assets/images/logo_ils.svg" title="Industria Local Sostenible" alt="Industria Local Sostenible" ngClass="logo">

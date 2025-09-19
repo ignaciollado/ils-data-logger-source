@@ -15,17 +15,17 @@ export class ModalComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if (localStorage.getItem("preferredLang")!= 'cas' && localStorage.getItem("preferredLang")!= 'cat') {
+    if (sessionStorage.getItem("preferredLang")!= 'cas' && sessionStorage.getItem("preferredLang")!= 'cat') {
       this.displayLanguageSelect = true
     } else {
       this.displayLanguageSelect = false
     }
-    console.log (this.displayLanguageSelect, localStorage.getItem("preferredLang"))
+    console.log (this.displayLanguageSelect, sessionStorage.getItem("preferredLang"))
   }
 
   switchLanguage( lang:string ) {
     this.translate.use(lang)
-    localStorage.setItem('preferredLang', lang)
+    sessionStorage.setItem('preferredLang', lang)
     this.displayLanguageSelect = false
     location.reload()
   }

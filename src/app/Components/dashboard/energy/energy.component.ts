@@ -160,12 +160,12 @@ export class EnergyGraphComponent implements OnInit {
 
     this.companyId = this.jwtHelper.decodeToken().id_ils;
 
-    if (localStorage.getItem('preferredLang') === 'cat') {
+    if (sessionStorage.getItem('preferredLang') === 'cat') {
       this.aspectEnergy = "Energia (kWh)"
       this.aspectWater = "Aigua (L)"
       this.aspectResidue = "Residu (kg)"
       this.aspectEmissions = "Emissions (CO2e en T)"
-    } else if (localStorage.getItem('preferredLang') === 'cas') {
+    } else if (sessionStorage.getItem('preferredLang') === 'cas') {
       this.aspectEnergy = "Energía (kWh)"
       this.aspectWater = "Agua (L)"
       this.aspectResidue = "Residuo (kg)"
@@ -614,7 +614,7 @@ export class EnergyGraphComponent implements OnInit {
       this.chart.destroy()
     }
     this.energyGraphForm.get('MWView').setValue(!this.energyGraphForm.get('kWView').value)
-    if (localStorage.getItem('preferredLang') === 'cat') {
+    if (sessionStorage.getItem('preferredLang') === 'cat') {
       this.aspectEnergy = "Energia (kWh)"
     }
     else {
@@ -628,7 +628,7 @@ export class EnergyGraphComponent implements OnInit {
       this.chart.destroy()
     }
     this.energyGraphForm.get('kWView').setValue(!this.energyGraphForm.get('MWView').value)
-    if (localStorage.getItem('preferredLang') === 'cat') {
+    if (sessionStorage.getItem('preferredLang') === 'cat') {
       this.aspectEnergy = "Energia (MWh)"
     }
     else {

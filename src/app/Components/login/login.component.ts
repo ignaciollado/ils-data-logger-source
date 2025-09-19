@@ -59,9 +59,9 @@ export class LoginComponent implements OnInit {
     private router: Router,
     private jwtHelper: JwtHelperService
   ) {
-    localStorage.removeItem("preferredLang")
-    if(localStorage.getItem("preferredLang") === 'undefined' || localStorage.getItem("preferredLang") === null) {
-      localStorage.setItem("preferredLang", "cas")
+    sessionStorage.removeItem("preferredLang")
+    if(sessionStorage.getItem("preferredLang") === 'undefined' || sessionStorage.getItem("preferredLang") === null) {
+      sessionStorage.setItem("preferredLang", "cat")
     } 
     this.loginUser = new AuthDTO('', '', '', '');
     this.email = new UntypedFormControl('', [

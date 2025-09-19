@@ -38,11 +38,14 @@ export class DelegationListComponent {
         /* this.delegationService.getAllDelegationsByCompanyIdFromMySQL(this.userId).subscribe( */
         this.delegationService.getTotalDelegationsByCompany(this.userId)
         .subscribe((delegations: any) => {
-          
           if (delegations.delegationsCount === 0) {
             this.hayDelegaciones = false
           } else {
             this.hayDelegaciones = true
+            this.delegationService.getAllDelegationsByCompanyIdFromMySQL(this.userId)
+            .subscribe((delegations:DelegationDTO[]) => {
+              this.delegations = delegations
+            })
           }
         },
         (error: HttpErrorResponse) => {

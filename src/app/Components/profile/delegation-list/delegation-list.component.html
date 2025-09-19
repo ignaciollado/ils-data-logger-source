@@ -1,6 +1,6 @@
 <section ngClass="container-form">
 <h3>{{ 'delegationList' | translate }}:</h3>
-  <table mat-table *ngIf="!isGridView" [dataSource]="delegations" class="mat-elevation-z8">
+  <table mat-table [dataSource]="delegations" class="mat-elevation-z8">
     <ng-container matColumnDef="name">
         <mat-header-cell *matHeaderCellDef>{{'name' | translate}}</mat-header-cell>
         <mat-cell *matCellDef="let delegation">{{delegation.name}}</mat-cell>

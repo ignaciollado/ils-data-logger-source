@@ -6,7 +6,7 @@
  <div class="questions-container">
   <form *ngIf="questionList" [formGroup]="questionListForm"
   (ngSubmit)="saveQuestionForm()">
-
+<span>Si todavía no lo ha hecho: es necesario completar los datos de <a routerLink="/profile">Mi empresa</a>, así como definir la ubicación del Centro/s de producción</span>
                 <section>
                   <mat-form-field [style.width.px]=425>
                     <mat-label>{{'selectDelegation' | translate}}</mat-label>

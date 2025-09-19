@@ -66,6 +66,10 @@
     "noDelegation1": "És necessari crear almenys un centre de producció per a poder afegir les dades de la seva activitat.",
     "noDelegation2": "Disculpi les molèsties.",
 
+    "noQuestionnaires": "Encara no té cap Qüestionari requisits legals emplenat.",
+    "questionnairesLink": "Si prem aquí podrà començar a treballar amb ells.",
+
+
     "aspect": "Aspecte",
     "energy": "Energia",
     "water": "Aigua",
@@ -125,7 +129,7 @@
     "vector": "Vector",
 
     "requisitosLegales": "Identificació de requisits legals",
-    "globalQuestionnaire": "Qüestionari preliminar",
+    "globalQuestionnaire": "Qüestionari requisits legals",
     "globalQuestionnaireList": "Veure qüestionaris",
     "answeredQuestionnairesList": "Qüestionaris realitzats",
     "loadingQuestionnaire": "Un moment, carregant el qüestionari...",

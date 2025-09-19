@@ -66,6 +66,9 @@
     "noDelegation1": "Es necesario crear al menos un centro de producción para poder añadir los datos de su actividad.",
     "noDelegation2": "Disculpe las molestias.",
 
+    "noQuestionnaires": "Todavía no tiene ningún Cuestionario Requisitos legales rellenado.",
+    "questionnairesLink": "Si pulsa aquí podrá empezar a trabajar con ellos.",
+
     "aspect": "Aspecto",
     "energy": "Energía",
     "water": "Agua",
@@ -124,7 +127,7 @@
     "vector": "Vector",
 
     "requisitosLegales": "Identificación de requisitos legales",
-    "globalQuestionnaire": "Cuestionario preliminar",
+    "globalQuestionnaire": "Cuestionario Requisitos legales",
     "globalQuestionnaireList": "Ver cuestionarios",
     "answeredQuestionnairesList": "Cuestionarios realizados",
     "loadingQuestionnaire": "Un momento, estoy cargando el cuestionario...",

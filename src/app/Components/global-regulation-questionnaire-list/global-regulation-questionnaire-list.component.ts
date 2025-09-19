@@ -6,6 +6,7 @@ import { questionnaireFinalStateDTO } from 'src/app/Models/answeredQuestionnaire
 import { ConfirmDialogComponent } from 'src/app/confirm-dialog/confirm-dialog.component'
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { vectorStateDetail } from 'src/app/Models/question.dto'
+import { Router } from '@angular/router'
 
 @Component({
   selector: 'app-global-regulation-questionnaire-list',
@@ -22,7 +23,7 @@ export class GlobalRegulationQuestionnaireListComponent {
 
   constructor (
     private enviromentalAuditService: EnvironmentalAuditsService,
-    private jwtHelper: JwtHelperService,
+    private jwtHelper: JwtHelperService, private router: Router,
     public dialog: MatDialog,
   ) {
     this.userId = this.jwtHelper.decodeToken().id_ils;
@@ -36,6 +37,10 @@ export class GlobalRegulationQuestionnaireListComponent {
     this.enviromentalAuditService.getGlobalAnswersByCompany( userId )
       .subscribe( (questionaires: AnswerDTO[]) => {
         this.userQuestionnaires = questionaires
+       /*  console.log("total: ", this.userQuestionnaires)
+        if (this.userQuestionnaires === null) {
+           this.router.navigateByUrl('profile')
+        } */
         this.userQuestionnaires.map(( questionnaire:any ) => {
           questionnaire.completed = JSON.parse(questionnaire.completed)
           let isCompleted: boolean = true

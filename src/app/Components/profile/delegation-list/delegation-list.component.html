@@ -24,10 +24,9 @@
     </ng-container>
       <mat-header-row *matHeaderRowDef="columnsDisplayed"></mat-header-row>
       <mat-row *matRowDef="let row; columns: columnsDisplayed;"></mat-row>
-
   </table>
 
-  <section class="warn" *ngIf="!delegations">
+  <section class="warn" *ngIf="!hayDelegaciones">
     <article>{{"noDelegation" | translate}}</article>
     <article>{{"noDelegation1" | translate}}</article>
     <article>{{"noDelegation2" | translate}}</article>

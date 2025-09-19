@@ -35,6 +35,6 @@
   </mat-card>
 </section>
 
-<span *ngIf="!userQuestionnaires" class="loader">{{'searchingQuestionnairies' | translate}}
-<mat-progress-bar mode="indeterminate" color="primary" *ngIf="!userQuestionnaires"></mat-progress-bar></span>
+<span *ngIf="!userQuestionnaires" class="loader">
+{{"noQuestionnaires" | translate}}<br><a routerLink="/global-questionnaire">{{"questionnairesLink" | translate}}</a></span>
 </div>

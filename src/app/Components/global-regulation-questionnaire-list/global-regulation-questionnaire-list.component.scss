@@ -52,9 +52,63 @@ a:hover {
   border-radius: .2rem;
 }
 
+// Paleta sostenible 🌱
+$primary-color: #2e7d32; // verde principal
+$secondary-color: #81c784; // verde claro
+$text-color: #333;
+$bg-color: #f9fdf9; // fondo claro verdoso
+$link-color: #2e7d32;
+$link-hover: darken($link-color, 10%);
+
+// Loader styles
+.loader {
+  display: block;
+  margin: 40px auto;
+  padding: 20px;
+  max-width: 600px;
+  text-align: center;
+  background: $bg-color;
+  border: 1px solid lighten($primary-color, 40%);
+  border-radius: 12px;
+  font-family: 'Roboto', 'Segoe UI', sans-serif;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: $text-color;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+
+  // Animación de entrada suave
+  animation: fadeIn 0.8s ease;
+
+  a {
+    display: inline-block;
+    margin-top: 10px;
+    color: $link-color;
+    font-weight: 500;
+    text-decoration: none;
+    border-bottom: 2px solid transparent;
+    transition: all 0.3s ease;
+
+    &:hover {
+      color: $link-hover;
+      border-bottom: 2px solid $link-hover;
+    }
+  }
+}
+
+// Animación de opacidad
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 @media (max-width: theme.$app-break-point) {
   .card-container{
-
     grid-template-columns: 100%;
     gap: 1rem;
   }

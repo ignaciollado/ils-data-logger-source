@@ -100,9 +100,9 @@ export class ProfileComponent implements OnInit {
       nif: this.nif,
       domicilio: this.domicilio,
       email: this.email,
-      cnaeSelect: this.cnaeSelect,
+     /*  cnaeSelect: this.cnaeSelect,
       currentActivityIndicator: this.currentActivityIndicator,
-      activityIndicator: this.activityIndicator
+      activityIndicator: this.activityIndicator */
     });
 
     this.access_token = sessionStorage.getItem("access_token")

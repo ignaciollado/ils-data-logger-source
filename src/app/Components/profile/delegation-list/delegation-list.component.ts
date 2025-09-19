@@ -14,7 +14,7 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 })
 export class DelegationListComponent {
   delegations!: DelegationDTO[];
-
+  hayDelegaciones: boolean = false
   isGridView: boolean = false
   columnsDisplayed = ['name', 'address', 'ACTIONS'];
   result: boolean = false
@@ -35,9 +35,15 @@ export class DelegationListComponent {
 
     if (this.userId) {
 
-        this.delegationService.getAllDelegationsByCompanyIdFromMySQL(this.userId).subscribe(
-        (delegations: DelegationDTO[]) => {
-          this.delegations = delegations
+        /* this.delegationService.getAllDelegationsByCompanyIdFromMySQL(this.userId).subscribe( */
+        this.delegationService.getTotalDelegationsByCompany(this.userId)
+        .subscribe((delegations: any) => {
+          
+          if (delegations.delegationsCount === 0) {
+            this.hayDelegaciones = false
+          } else {
+            this.hayDelegaciones = true
+          }
         },
         (error: HttpErrorResponse) => {
           errorResponse = error.error;

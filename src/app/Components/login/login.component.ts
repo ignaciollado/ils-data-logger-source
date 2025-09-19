@@ -124,7 +124,7 @@ export class LoginComponent implements OnInit {
               this.router.navigateByUrl('profile')
               this.delegationService.getTotalDelegationsByCompany(this.jwtHelper.decodeToken().id_ils)
                 .subscribe( item => {
-                  if (item.totalDelegations === 0) {
+                  if (item.delegationsCount === 0) {
                     this.router.navigateByUrl('profile').then(() => {
                       window.location.reload()
                     })

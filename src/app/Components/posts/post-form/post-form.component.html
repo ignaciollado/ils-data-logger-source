@@ -58,7 +58,7 @@
   <table mat-table *ngIf="dataSource" [dataSource]="dataSource" class="mat-elevation-z8" matSort>
       <ng-container [matColumnDef]="col.key" *ngFor="let col of columnsSchema">
               <mat-header-cell *matHeaderCellDef [ngSwitch]="col.key">
-                  <span *ngSwitchDefault>{{ col.label }}</span>
+                <span *ngSwitchDefault>{{ col.label }}</span>
               </mat-header-cell>
               <mat-cell *matCellDef="let element">
                   <div [ngSwitch]="col.type" *ngIf="!element.isEdit">

@@ -29,7 +29,7 @@
       <button mat-menu-item (click)="globalQuestionnaireList()"><mat-icon style="color: orangered;"> list_alt</mat-icon> {{'answeredQuestionnairesList' | translate}}</button>
       <mat-divider></mat-divider>
 
-      <button mat-menu-item (click)="profile()"><mat-icon style="color: blue;">account_circle</mat-icon> {{'profile' | translate}}</button>
+      <button mat-menu-item (click)="profile()"><mat-icon style="color: blue;">domain</mat-icon> {{'profile' | translate}}</button>
       <mat-divider></mat-divider>
       <button *ngIf="role === 'admin'" mat-menu-item (click)="createUser()"><mat-icon style="color: burlywood;">person_add</mat-icon> {{'createAccount' | translate}}</button>
       <button *ngIf="role === 'admin'" mat-menu-item (click)="listUsers()"><mat-icon style="color: burlywood;">supervisor_account</mat-icon> {{'listUsers' | translate}}</button>

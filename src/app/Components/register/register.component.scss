@@ -1,11 +1,25 @@
 @use 'src/styles.scss' as *;
 @use "../../../styles/themes/ils-theme" as theme;
+// Variables para mantener consistencia
+$primary-color: #365446;
+$accent-color: #4caf50;
+$error-color: #e53935;
+$bg-color: #f5f7fa;
+$card-bg: #ffffff;
+$text-color: #333;
+$font-family: 'Roboto', 'Segoe UI', sans-serif;
 
 section {
-  @include themed-app-page;
+  min-height: 72vh;
+  background: linear-gradient(135deg, lighten($primary-color, 20%), $bg-color);
+
+  // 👇 Centrado con Flexbox
+  display: flex;
+  justify-content: center; // centra horizontalmente
+  align-items: center;     // centra verticalmente
 }
 
-.container-form {
+/* .container-form {
   max-width: 100%;
   margin: 1rem auto;
   padding: 1rem;
@@ -16,28 +30,45 @@ section {
     font-weight: 600;
     margin-bottom: 2rem;
     color: #2e7d32; // verde sostenible 🌱
+  } */
+
+mat-card {
+  max-width: 420px;
+  width: 100%;
+  margin: auto;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+
+  h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-weight: 600;
+    color: $text-color;
   }
 
-  mat-card {
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .full-width {
     width: 100%;
-    padding: 2rem;
-    /* border-radius: 12px; */
-    /* background: #ffffff; */
-    /* box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-    transition: box-shadow 0.3s ease; */
-
-    &:hover {
-      box-shadow: 0 6px 24px rgba(0, 0, 0, 0.12);
-    }
   }
 
-  mat-form-field {
+  button {
+    width: 100%;
+    font-weight: bold;
+  }
+mat-form-field {
     width: 100%;
     margin-bottom: 1.5rem;
     font-size: .8rem;
     mat-label {
       color: #388e3c;
       font-weight: 500;
+      font-size: .8rem;
     }
 
     input {
@@ -50,7 +81,12 @@ section {
     }
   }
 
-  button {
+}
+
+
+  
+
+/*   button {
     width: 100%;
     padding: 0.8rem;
     font-size: 1rem;
@@ -67,8 +103,8 @@ section {
     &:hover:not(:disabled) {
       background-color: #2e7d32;
     }
-  }
-}
+  } */
+/* } */
 
 // Animación de entrada elegante
 @keyframes fadeInUp {
@@ -82,9 +118,9 @@ section {
   }
 }
 
-mat-card {
+/* mat-card {
   animation: fadeInUp 0.4s ease-out;
-}
+} */
 
 @media screen and (max-width: 662px) {
     .container-form {

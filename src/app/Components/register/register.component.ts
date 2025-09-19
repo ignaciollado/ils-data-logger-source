@@ -108,20 +108,14 @@ export class RegisterComponent implements OnInit {
       .register(this.registerUser)
       .pipe(
         finalize(async () => {
-          this.sharedService.showSnackBar('registerFeedback'+errorResponse)
-/*           await this.sharedService.managementToast(
-            'registerFeedback',
-            responseOK,
-            errorResponse
-          ); */
-
+          this.registerForm.disable()
+          this.sharedService.showSnackBar('User created successfully!!!')
           if (responseOK) {
             this.emailManagementService.sendCustomerEmail(this.registerForm)
             .subscribe((sendMailResult:any) => {
-              /* console.log("sendMailResult: ", sendMailResult) */
               this.sharedService.showSnackBar(sendMailResult)
             })
-            this.router.navigateByUrl('/login')
+            //this.router.navigateByUrl('/login')
           }
         })
       )
@@ -132,14 +126,11 @@ export class RegisterComponent implements OnInit {
         (error: HttpErrorResponse) => {
           responseOK = false;
           errorResponse = error.error;
-
           const headerInfo: HeaderMenus = {
             showAuthSection: false,
             showNoAuthSection: true,
           };
-
           this.headerMenusService.headerManagement.next(headerInfo)
-          /* this.sharedService.errorLog(errorResponse); */
           this.sharedService.showSnackBar(errorResponse)
         }
       );

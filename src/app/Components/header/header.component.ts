@@ -40,7 +40,7 @@ constructor(
       sessionStorage.removeItem('user_id');
       sessionStorage.removeItem('access_token');
       this.headerMenusService.headerManagement.next(headerInfo);
-      this.router.navigateByUrl('login');
+      //this.router.navigateByUrl('login');
   } else {
     const decodedToken = this.jwtHelper.decodeToken(this.access_token)
     this.role = decodedToken.role

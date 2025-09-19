@@ -1,12 +1,13 @@
 @use 'src/styles.scss' as *;
+@use "../../../styles/themes/ils-theme" as theme;
 
 section {
   @include themed-app-page;
 }
 
 .container-form {
-  max-width: 580px;
-  margin: 4rem auto;
+  max-width: 100%;
+  margin: 1rem auto;
   padding: 1rem;
 
   h1 {
@@ -18,12 +19,12 @@ section {
   }
 
   mat-card {
-    width: 580px;
+    width: 100%;
     padding: 2rem;
-    border-radius: 12px;
-    background: #ffffff;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-    transition: box-shadow 0.3s ease;
+    /* border-radius: 12px; */
+    /* background: #ffffff; */
+    /* box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    transition: box-shadow 0.3s ease; */
 
     &:hover {
       box-shadow: 0 6px 24px rgba(0, 0, 0, 0.12);
@@ -33,7 +34,7 @@ section {
   mat-form-field {
     width: 100%;
     margin-bottom: 1.5rem;
-
+    font-size: .8rem;
     mat-label {
       color: #388e3c;
       font-weight: 500;
@@ -84,3 +85,12 @@ section {
 mat-card {
   animation: fadeInUp 0.4s ease-out;
 }
+
+@media screen and (max-width: 662px) {
+    .container-form {
+      display:grid;
+      grid-template-columns: 1fr;
+      width: 95%;
+      margin: 0;
+    }
+  }

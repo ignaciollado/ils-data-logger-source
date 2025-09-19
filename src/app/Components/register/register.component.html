@@ -33,7 +33,8 @@
         <mat-error *ngIf="password.hasError('required')">Password <strong>is required</strong></mat-error>
       </mat-form-field>
 
-    <button mat-raised-button color="primary" type="submit" [disabled]="!registerForm.valid">ADD</button>
+    <button mat-raised-button color="primary" type="submit" [disabled]="!registerForm.valid">Register</button>
   </mat-card>
   </form>
+  <a routerLink="/login">Login</a>
 </section>

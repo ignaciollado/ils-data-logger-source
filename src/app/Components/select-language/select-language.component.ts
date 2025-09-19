@@ -29,7 +29,6 @@ export class SelectLanguageComponent implements OnInit {
     console.log ("lang: ", lang)
     this.translate.use(lang)
     sessionStorage.setItem('preferredLang', lang)
-    location.reload()
   }
 
 }

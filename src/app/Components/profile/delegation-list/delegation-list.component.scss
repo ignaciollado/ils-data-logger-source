@@ -23,7 +23,10 @@ $hover-background: #f4f4f4;
     background-color: $hover-background;
   }
 }
-
+section {
+  width: 100%;
+  @include themed-app-page;
+}
 // Global Styles
 /* body {
   font-family: $font-family;

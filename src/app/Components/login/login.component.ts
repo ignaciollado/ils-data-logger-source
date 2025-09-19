@@ -59,10 +59,10 @@ export class LoginComponent implements OnInit {
     private router: Router,
     private jwtHelper: JwtHelperService
   ) {
-    sessionStorage.removeItem("preferredLang")
+   /*  sessionStorage.removeItem("preferredLang")
     if(sessionStorage.getItem("preferredLang") === 'undefined' || sessionStorage.getItem("preferredLang") === null) {
       sessionStorage.setItem("preferredLang", "cat")
-    } 
+    }  */
     this.loginUser = new AuthDTO('', '', '', '');
     this.email = new UntypedFormControl('', [
       Validators.required,
@@ -126,11 +126,11 @@ export class LoginComponent implements OnInit {
                 .subscribe( item => {
                   if (item.delegationsCount === 0) {
                     this.router.navigateByUrl('profile').then(() => {
-                      window.location.reload()
+                      //window.location.reload()
                     })
                   } else {
                     this.router.navigateByUrl('global-questionnaire-list').then(() => {
-                      window.location.reload()
+                      //window.location.reload()
                     })
                   }
                 })

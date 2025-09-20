@@ -4,8 +4,10 @@
   display: grid;
   grid-template-rows: auto auto auto auto auto auto;
   margin: auto;
+  padding-top: 10rem;
   padding-left: 30%;
   padding-right: 30%;
+  max-width: 440px;
 }
 h1{
   font-weight: bolder;

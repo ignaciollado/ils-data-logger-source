@@ -29,3 +29,10 @@ mat-progress-bar{
    padding-bottom: 1rem;
    width: 30%;
  }
+@media screen and (max-width: 992px) {
+  .container-form{
+    margin-top: 0;
+    margin-left: 0;
+    margin-right: 0;
+  }
+}

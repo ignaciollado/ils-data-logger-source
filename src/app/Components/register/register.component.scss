@@ -10,7 +10,7 @@ $text-color: #333;
 $font-family: 'Roboto', 'Segoe UI', sans-serif;
 
 section {
-  min-height: 72vh;
+  min-height: 81vh;
   background: linear-gradient(135deg, lighten($primary-color, 20%), $bg-color);
 
   // 👇 Centrado con Flexbox

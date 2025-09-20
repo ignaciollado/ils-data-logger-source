@@ -12,7 +12,7 @@ $font-family: 'Roboto', 'Segoe UI', sans-serif;
   display: grid;
   justify-content: center;   // centro horizontal
   align-items: center;       // centro vertical
-  min-height: 72.5vh;         // ocupa toda la pantalla
+  min-height: 81vh;         // ocupa toda la pantalla
   width: 100%;
   margin: auto;
   padding: 0;
@@ -20,7 +20,7 @@ $font-family: 'Roboto', 'Segoe UI', sans-serif;
 }
 
 .container-form {
-  max-width: 420px;
+  max-width: 440px;
   padding: 2rem;
   border-radius: 1rem;
   background-color: #fff;

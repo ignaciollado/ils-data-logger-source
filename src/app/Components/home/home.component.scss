@@ -4,13 +4,13 @@
   display: grid;
   grid-template-rows: auto auto auto auto auto auto;
   margin: auto;
-  padding-top: 10rem;
+  padding-top: 6rem;
   padding-left: 30%;
   padding-right: 30%;
   max-width: 440px;
 }
-h1{
-  font-weight: bolder;
+h1, .wp-block-heading {
+  font-weight: bolder!important;
   color: ils-theme.$primary-color;
 }
 span,a, app-select-language {

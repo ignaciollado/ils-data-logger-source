@@ -1,23 +1,32 @@
-import { Component } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 import { Router } from '@angular/router';
 import { HeaderMenus } from 'src/app/Models/header-menus.dto';
 import { HeaderMenusService } from 'src/app/Services/header-menus.service';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { WPpageService } from 'src/app/Services/wp-page.service';
+import { WpPage } from 'src/app/Models/wp-page-data.dto';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class HomeComponent {
-
+  lang: string = 'cat'; // valor por defecto
   showButtons: boolean;
   access_token: string | null;
   userId: string | null;
+  introTitle: string
+  introText: string
+  publishedIntro: boolean
+  idIntroText: string = '1129'
 
   constructor(
-    private router: Router,
-    private headerMenusService: HeaderMenusService,
+    private router: Router, private wpPageService: WPpageService,
+    private headerMenusService: HeaderMenusService, private route: ActivatedRoute, private translate: TranslateService,
     private jwtHelper: JwtHelperService
   ) {
     this.showButtons = false
@@ -42,6 +51,21 @@ export class HomeComponent {
   }
 
   ngOnInit(): void {
+     this.route.queryParams.subscribe(params => {
+      const langParam = params['lang'];
+      if(langParam) {
+        this.lang = langParam;
+        this.translate.use(this.lang);
+        if (this.lang === 'cas') {
+          this.idIntroText = '1127'
+          this.getHomeIntroText(this.idIntroText)
+        } else {
+          this.idIntroText = '1129'
+          this.getHomeIntroText(this.idIntroText)
+        }
+      }
+    });
+
     this.headerMenusService.headerManagement.subscribe(
       (headerInfo: HeaderMenus) => {
         if (headerInfo) {
@@ -51,7 +75,11 @@ export class HomeComponent {
     );
   }
 
-  goToDetail(id:number) {
-    alert (id)
+  getHomeIntroText(id:string) {
+    this.wpPageService.get(id)
+      .subscribe((introPage: WpPage) => {
+        this.publishedIntro = introPage.status === 'publish';
+        this.introText = introPage.content.rendered
+      })
   }
 }

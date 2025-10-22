@@ -25,10 +25,18 @@ export class SelectLanguageComponent implements OnInit {
     
   }
 
-  switchLanguage( lang:string ) {
-    console.log ("lang: ", lang)
-    this.translate.use(lang)
-    sessionStorage.setItem('preferredLang', lang)
-  }
+switchLanguage(lang: string) {
+  console.log("lang: ", lang);
+  this.translate.use(lang);
+  sessionStorage.setItem('preferredLang', lang);
+
+  // Navegar a la misma ruta pero con query param `lang`
+  this.router.navigate([], {
+    relativeTo: this.activatedRoute,
+    queryParams: { lang: lang },
+    queryParamsHandling: 'merge', // conserva otros query params
+  });
+}
+
 
 }

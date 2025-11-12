@@ -83,6 +83,15 @@ export class SharedService {
     });
   }
 
+    showSnackBarLongTime(error: string): void {
+    this.snackBar.open(error, 'Close', {
+      duration: 25000,
+      verticalPosition: 'bottom',
+      horizontalPosition: 'center',
+      panelClass: ['custom-snackbar'],
+    });
+  }
+
   handleError(error: HttpErrorResponse) {
     return throwError(error);
   }

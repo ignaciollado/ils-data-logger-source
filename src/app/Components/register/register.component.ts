@@ -93,47 +93,74 @@ export class RegisterComponent implements OnInit {
   ngOnInit(): void {}
 
   register(): void {
-    let responseOK: boolean = false;
-    this.isValidForm = false;
-    let errorResponse: any;
+  this.isValidForm = false;
 
-    if (this.registerForm.invalid) {
-      return;
-    }
+  if (this.registerForm.invalid) {
+    return;
+  }
 
-    this.isValidForm = true;
-    this.registerUser = this.registerForm.value;
+  this.isValidForm = true;
+  const registerUser = this.registerForm.value;
 
-    this.userService
-      .register(this.registerUser)
-      .pipe(
-        finalize(async () => {
-          this.registerForm.disable()
-          this.sharedService.showSnackBar('User created successfully!!!')
-          if (responseOK) {
-            this.emailManagementService.sendCustomerEmail(this.registerForm)
-            .subscribe((sendMailResult:any) => {
-              this.sharedService.showSnackBar(sendMailResult)
-            })
-            //this.router.navigateByUrl('/login')
+  this.userService
+    .register(registerUser)
+    .subscribe(
+      (resp: any) => {
+        console.log('✅ Registro exitoso:', resp);
+
+        // Mostrar mensaje de registro exitoso
+        this.sharedService.showSnackBar('User created successfully!!!');
+
+        // Desactivar formulario
+        this.registerForm.disable();
+
+        // Enviar correo de confirmación
+        this.emailManagementService.sendCustomerEmail(this.registerForm).subscribe({
+          next: (sendMailResult: any) => {
+            // Si por algún motivo entra aquí, mostramos el resultado
+            this.sharedService.showSnackBarLongTime(sendMailResult);
+          },
+          error: (mailError: any) => {
+            console.log('📧 Respuesta del envío de correo:', mailError);
+
+            // 🔹 Considerar enviado correctamente si status === 200
+            if (mailError.status === 200 && mailError.error?.text) {
+              this.sharedService.showSnackBarLongTime(mailError.error.text);
+            } else {
+              console.error('❌ Error enviando correo:', mailError);
+              this.sharedService.showSnackBar('Error al enviar el correo electrónico.');
+            }
           }
-        })
-      )
-      .subscribe(
-        () => {
-          responseOK = true;
-        },
-        (error: HttpErrorResponse) => {
-          responseOK = false;
-          errorResponse = error.error;
-          const headerInfo: HeaderMenus = {
-            showAuthSection: false,
-            showNoAuthSection: true,
-          };
-          this.headerMenusService.headerManagement.next(headerInfo)
-          this.sharedService.showSnackBar(errorResponse)
+        });
+
+        // this.router.navigateByUrl('/login');
+      },
+      (error: HttpErrorResponse) => {
+        console.error('❌ Error en registro:', error);
+        const errorResponse = error.error;
+
+        // Caso específico: Email ya existe
+        if (error.status === 409 && error.error?.messages?.error) {
+          const errorMsg = error.error.messages.error;
+          this.sharedService.showSnackBar(errorMsg);
+
+          // No desactivar el formulario, limpiar email y password
+          this.registerForm.get('email')?.reset();
+          this.registerForm.get('password')?.reset();
+        } else if (typeof errorResponse === 'string') {
+          this.sharedService.showSnackBar(errorResponse);
+        } else {
+          this.sharedService.showSnackBar('An unexpected error occurred.');
         }
-      );
+
+        // Actualizar cabecera
+        const headerInfo: HeaderMenus = {
+          showAuthSection: false,
+          showNoAuthSection: true,
+        };
+        this.headerMenusService.headerManagement.next(headerInfo);
+      }
+    );
   }
 
   public generatePassword() {

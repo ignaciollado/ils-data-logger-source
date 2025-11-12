@@ -3,7 +3,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 const URL_API = 'https://emailvalidation.abstractapi.com/v1/?api_key=0b27a379af684fa9bd8c0a672c535d3d'
-const URL_API_SEND = 'https://tramits.idi.es/public/assets/utils/enviaCorreoElectronicoANGULAR.php'
+const URL_API_SEND = 'https://tramits.idi.es/public/assets/utils/enviaCorreoElectronicoAltaAutoFormularioILS.php'
 export interface updateResponse {
   affected: number;
 }

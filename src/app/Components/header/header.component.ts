@@ -180,4 +180,8 @@ constructor(
     this.headerMenusService.headerManagement.next(headerInfo)
     this.router.navigateByUrl('home')
   }
+
+  vectorsManagement(): void {
+    this.router.navigateByUrl('questionnaire/vectors')
+  }
 }

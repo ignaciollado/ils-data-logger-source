@@ -23,6 +23,7 @@
       <mat-divider *ngIf="role === 'admin'"></mat-divider>
       <mat-divider></mat-divider>
 
+      <button *ngIf="role === 'admin'" mat-menu-item (click)="vectorsManagement()"><mat-icon style="color: orangered;">balance</mat-icon> Vectores</button>
       <button *ngIf="role === 'admin'" mat-menu-item (click)="globalQuestionnaireNormative()"><mat-icon style="color: orangered;">balance</mat-icon> {{'globalQuestionnaireNormativeTexts' | translate}}</button>
       <button *ngIf="role === 'admin'" mat-menu-item (click)="municipalityQuestionnaireNormative()"><mat-icon style="color: orangered;">balance</mat-icon> {{'municipalityQuestionnaireNormativeTexts' | translate}}</button>
       <button mat-menu-item (click)="globalQuestionnaire()"><mat-icon style="color: orangered;">list</mat-icon> {{'globalQuestionnaire' | translate}}</button>

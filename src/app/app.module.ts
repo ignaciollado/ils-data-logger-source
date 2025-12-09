@@ -100,6 +100,11 @@ import { DetailComponent } from './Components/ils-cnae-activity-emission-indicat
 import { EnergyListComponent } from './Components/energy-management/energy-list/energy-list.component';
 import { EnergyFormComponent } from './Components/energy-management/energy-form/energy-form.component';
 
+import { AnswersComponent } from "./Components/questionnaire-management/answers/answers.component";
+import { QuestionsComponent } from "./Components/questionnaire-management/questions/questions.component";
+import { VectorsComponent } from "./Components/questionnaire-management/vectors/vectors.component";
+
+
 export function tokenGetter() {
   return sessionStorage.getItem("access_token");
 }
@@ -155,7 +160,10 @@ export function tokenGetter() {
     EditIlsCnaeActivityEmissionInidicatorComponent,
     DetailComponent,
     EnergyListComponent,
-    EnergyFormComponent
+    EnergyFormComponent,
+    VectorsComponent,
+    QuestionsComponent,
+    AnswersComponent
   ],
   imports: [
     BrowserModule,

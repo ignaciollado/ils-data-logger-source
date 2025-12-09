@@ -1,0 +1,15 @@
+<p>test-end-points-backend works!</p>
+<div>
+  <h2>Vectors</h2>
+  <pre>{{ vectors | json }}</pre>
+
+  <h2>Questions</h2>
+  <pre>{{ questions | json }}</pre>
+
+  <h2>Answers</h2>
+  <pre>{{ answers | json }}</pre>
+
+  <div *ngIf="errorMessage">
+    <p style="color:red">Error: {{ errorMessage }}</p>
+  </div>
+</div>

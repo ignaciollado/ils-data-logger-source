@@ -31,10 +31,12 @@ import { IlsCnaeActivityEmissionInidicatorComponent } from './Components/ils-cna
 import { EditIlsCnaeActivityEmissionInidicatorComponent } from './Components/ils-cnae-activity-emission-indicator/edit/edit.component';
 import { EnergyListComponent } from './Components/energy-management/energy-list/energy-list.component';
 import { EnergyFormComponent } from './Components/energy-management/energy-form/energy-form.component';
+import { TestEndPointsBackendComponent } from './management/test-end-points-backend/test-end-points-backend.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'login', component: LoginComponent },
+  { path: 'test-end-point', component: TestEndPointsBackendComponent},
   { path: 'register', component: RegisterComponent },
   { path: 'recover-password', component: PasswordRecoveryComponent },
   { path: 'reset-password', component: PasswordResetComponent },

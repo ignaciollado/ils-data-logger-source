@@ -1,49 +1,39 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { SharedService } from './shared.service';
-import { catchError, Observable } from 'rxjs';
-import { VectorDTO } from '../Models/vector.dto';
-import { deleteResponse } from './energy.service';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class VectorsService {
-  private urlApi: string;
+  private apiUrl: string = 'https://tramits.idi.es/public/index.php/api/vectors';
 
-  constructor(private http: HttpClient, private sharedService: SharedService) {
-    this.urlApi = 'https://tramits.idi.es/public/index.php'
-  }
+  constructor(private http: HttpClient) {}
 
   /* CRUD */
 
   // GET ALL
-  getAllVectors(): Observable<VectorDTO[]> {
-    return this.http.get<VectorDTO[]>(`${this.urlApi}/api/vectors`)
-      .pipe(catchError(this.sharedService.handleError));
+  getAll(): Observable<any> {
+    return this.http.get(this.apiUrl);
   }
 
   // GET BY ID
-  getOneVector(id: number): Observable<VectorDTO> {
-    return this.http.get<VectorDTO>(`${this.urlApi}/api/vectors/${id}`)
-      .pipe(catchError(this.sharedService.handleError));
+  getById(id: number): Observable<any> {
+    return this.http.get(`${this.apiUrl}/${id}`);
   }
 
   // CREATE
-  createVector(vector: VectorDTO): Observable<VectorDTO> {
-    return this.http.post<VectorDTO>(`${this.urlApi}/api/vectors`, vector)
-      .pipe(catchError(this.sharedService.handleError))
+  create(data: any): Observable<any> {
+    return this.http.post(this.apiUrl, data);
   }
 
   // UPDATE
-  updateVector(id: number, vector: VectorDTO): Observable<VectorDTO> {
-    return this.http.put<VectorDTO>(`${this.urlApi}/api/vectors/${id}`, vector)
-      .pipe(catchError(this.sharedService.handleError));
+  update(id: number, data: any): Observable<any> {
+    return this.http.put(`${this.apiUrl}/${id}`, data);
   }
 
   // DELETE
-  deleteVector(id: number): Observable<void> {
-    return this.http.delete<void>(`${this.urlApi}/api/vectors/${id}`)
-      .pipe(catchError(this.sharedService.handleError));
+  delete(id: number): Observable<any> {
+    return this.http.delete(`${this.apiUrl}/${id}`);
   }
 }

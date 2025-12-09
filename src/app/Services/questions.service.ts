@@ -9,47 +9,46 @@ import { QuestionDTO } from '../Models/new-question.dto';
 })
 export class QuestionsService {
 
-  private urlApi: string;
+  private urlApi: string = 'https://tramits.idi.es/public/index.php/api/questions';
 
   constructor(private http: HttpClient, private sharedService: SharedService) {
-    this.urlApi = "https://tramits.idi.es/public/index.php"
   }
 
   /* CRUD */
 
   // GET ALL
   getAllQuestions(): Observable<QuestionDTO[]> {
-    return this.http.get<QuestionDTO[]>(`${this.urlApi}/api/questions`)
+    return this.http.get<QuestionDTO[]>(`${this.urlApi}`)
       .pipe(catchError(this.sharedService.handleError));
   }
 
   // GET BY ID
   getOneQuestion(id: number): Observable<QuestionDTO> {
-    return this.http.get<QuestionDTO>(`${this.urlApi}/api/questions/${id}`)
+    return this.http.get<QuestionDTO>(`${this.urlApi}/${id}`)
       .pipe(catchError(this.sharedService.handleError));
   }
 
   // CREATE
   createQuestion(question: QuestionDTO): Observable<QuestionDTO> {
-    return this.http.post<QuestionDTO>(`${this.urlApi}/api/questions`, question)
+    return this.http.post<QuestionDTO>(`${this.urlApi}`, question)
       .pipe(catchError(this.sharedService.handleError));
   }
 
   // UPDATE
   updateQuestion(id: number, question: QuestionDTO): Observable<QuestionDTO> {
-    return this.http.put<QuestionDTO>(`${this.urlApi}/api/questions/${id}`, question)
+    return this.http.put<QuestionDTO>(`${this.urlApi}/${id}`, question)
       .pipe(catchError(this.sharedService.handleError))
   }
 
   // DELETE
   deleteQuestion(id: number): Observable<void> {
-    return this.http.delete<void>(`${this.urlApi}/api/questions/${id}`)
+    return this.http.delete<void>(`${this.urlApi}/${id}`)
       .pipe(catchError(this.sharedService.handleError))
   }
 
   // GET BY VECTOR (No endpoint)
   getAllQuestionsByVector(vector_id: number): Observable<QuestionDTO[]> {
-    return this.http.get<QuestionDTO[]>(`${this.urlApi}/api/questions`)
+    return this.http.get<QuestionDTO[]>(`${this.urlApi}`)
       .pipe(
         map((questions: QuestionDTO[]) => questions.filter(q => q.vector_id === vector_id)),
         catchError(this.sharedService.handleError)

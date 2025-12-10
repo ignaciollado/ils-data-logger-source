@@ -20,7 +20,7 @@ export class VectorsComponent {
 
   isElevated: boolean = true;
   normativeTexts!: NormativeTextDTO[];
-  
+
   columnsDisplayed: string[] = vectorColumns.map((col) => col.key);
   dataSource = new MatTableDataSource<VectorDTO>();
   columnsSchema: any = vectorColumns;
@@ -37,7 +37,7 @@ export class VectorsComponent {
     this.vectorForm = this.formBuilder.group({
       name_es: new FormControl('', [Validators.required]),
       name_ca: new FormControl('', [Validators.required]),
-      general_regulations: new FormControl([], [])
+      general_regulations: new FormControl("", [])
     })
   }
 
@@ -52,12 +52,15 @@ export class VectorsComponent {
 
   private loadVectors(): void {
     this.vectorService.getAll().subscribe({
-      next: (vectors: VectorDTO[]) => {
+      next: (vectors: any[]) => {
         this.vectors = vectors.map(vector => {
           if (vector.general_regulations != "") {
-            vector.general_regulations = JSON.parse(vector.general_regulations);
+            try {
+              vector.general_regulations = JSON.parse(vector.general_regulations);
+            } catch {
+              vector.general_regulations = [vector.general_regulations];
+            }
           }
-
           return vector;
         })
         this.dataSource = new MatTableDataSource(this.vectors);
@@ -83,13 +86,75 @@ export class VectorsComponent {
 
   }
 
-  saveForm(): void {
-    // ToDo
-    console.log(this.vectorForm.value)
+  // Crear nuevo vector con formulario
+  createVector(): void {
+    const vector = this.vectorForm.value;
+
+    const payload = {
+      ...vector,
+      general_regulations: vector.general_regulations?.length
+        ? JSON.stringify(vector.general_regulations) : "" // Está dando bastantes problemas. He decidido enviarlo como JSON
+    }
+
+    this.vectorService.create(payload).subscribe({
+      next: () => {
+        this.dataSource.data = [...this.dataSource.data, payload]
+        this.sharedService.showSnackBar('Se ha creado el nuevo vector correctamente')
+
+        // Reseteo el formulario para poder crear otro sin recargar la página
+        this.vectorForm.reset();
+
+        // Evito que aparezcan errores al reiniciar el formulario
+        this.vectorForm.markAsPristine();
+        this.vectorForm.markAsUntouched();
+
+      },
+      error: (error: any) => {
+        this.sharedService.showSnackBar(`Ha ocurrido un error creando el vector: ${error.error}`)
+      }
+    })
+  }
+
+  // Actualización vector dentro de tabla
+  updateVector(vector: any): void {
+    if (vector.id !== 0) {
+      
+      const payload = {
+        ...vector,
+        general_regulations: vector.general_regulations?.length
+          ? JSON.stringify(vector.general_regulations) : "" // Está dando bastantes problemas. He decidido enviarlo como JSON
+      }
+
+      this.vectorService.update(vector.id, payload).subscribe({
+        next: () => {
+          vector.isEdit = !vector.isEdit;
+          this.sharedService.showSnackBar(`Vector ${vector.name_es} actualizado correctamente`)
+        },
+        error: (error: any) => {
+          this.sharedService.showSnackBar(`Error intentando actualizar vector ${vector.name_es}: ${error.error}`)
+        }
+      })
+    }
   }
 
   removeRow(id: any) {
-    console.log(id)
+    if (id) {
+      const confirmed = window.confirm(`¿Seguro que quieres borrar el vector?`);
+      if (!confirmed) {
+        return;
+      }
+      this.vectorService.delete(id).subscribe({
+        next: () => {
+          this.sharedService.showSnackBar(`Se ha borrado el vector con la id ${id} correctamente`);
+
+          // Actualizo la tabla para que no muestre el borrado
+          this.dataSource.data = this.dataSource.data.filter(v => v.id !== id);
+        },
+        error: (error: any) => {
+          this.sharedService.showSnackBar(`Ha ocurrido un error intentando borrar el vector con la id ${id}: ${error.error}`)
+        }
+      })
+    }
   }
 
   applyFilter(event: Event) {

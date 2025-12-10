@@ -1,6 +1,6 @@
 <div class="container-form">
     <h1>Vectores</h1>
-    <form *ngIf="vectorForm" [formGroup]="vectorForm" (ngSubmit)="saveForm()">
+    <form *ngIf="vectorForm" [formGroup]="vectorForm" (ngSubmit)="createVector()">
         <mat-card [class.mat-elevation-z8]="isElevated">
             <section>
                 <mat-form-field [style.width.px]=305 style="margin-right: 20px;">
@@ -55,14 +55,13 @@
 
                 <!-- Editando elemento-->
                 <div [ngSwitch]="col.type" *ngIf="element.isEdit">
-                    <input *ngSwitchCase="'url'" type="text" [(ngModel)]="element[col.key]" ngClass="url-edition-format small-data-input"/>
+                    <input *ngSwitchCase="'url'" type="text" [(ngModel)]="element[col.key]" ngClass="url-edition-format small-data-input" required/>
                     <mat-select *ngSwitchCase="'select'" [(ngModel)]="element[col.key]" ngClass="select-scope" multiple>
                         <mat-option *ngFor="let normative of normativeTexts" [value]="normative.regId">{{normative.regId}}</mat-option>
                     </mat-select>
-                    <input *ngSwitchDefault [(ngModel)]="element[col.key]" ngClass="text-edition-format small-data-input" />
+                    <input *ngSwitchDefault [(ngModel)]="element[col.key]" ngClass="text-edition-format small-data-input" required/>
                     <div class="btn-edit" *ngSwitchCase="'isEdit'">
-                        <!-- <button  mat-button mat-raised-button color="accent" (click)="editRow(element)" [disabled]="valid[element.idNormativa] === false"><mat-icon>done_all</mat-icon></button> -->
-                         <button mat-button mat-raised-button color="accent"><mat-icon>done_all</mat-icon></button>
+                        <button mat-button mat-raised-button color="accent" (click)="updateVector(element)"><mat-icon>done_all</mat-icon></button>
                     </div>
                 </div>
             </mat-cell>

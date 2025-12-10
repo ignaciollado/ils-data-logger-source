@@ -193,5 +193,11 @@
     "sep": "Setembre",
     "oct": "Octubre",
     "nov": "Novembre",
-    "dec": "Decembre"
+    "dec": "Decembre",
+
+    "questionnaireMaintenance": "Gestió de qüestionari",
+
+    "name_es": "Nom castellà",
+    "name_ca": "Nom català",
+    "general_regulations": "Normativa per defecte"
   }

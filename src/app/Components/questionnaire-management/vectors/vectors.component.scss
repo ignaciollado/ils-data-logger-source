@@ -1,0 +1,73 @@
+$primary-color: #1976d2;
+$accent-color: #ff4081;
+$warn-color: #f44336;
+$background-color: #f9f9f9;
+$card-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+$border-radius: 8px;
+$font-family: "Roboto", sans-serif;
+
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin form-field-width($width) {
+  width: $width;
+  max-width: 100%;
+}
+
+.container-form {
+  padding: 2rem;
+  background-color: $background-color;
+  font-family: $font-family;
+
+  h1 {
+    text-align: center;
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    color: $primary-color;
+  }
+}
+
+form {
+  mat-card {
+    padding: 2rem;
+    border-radius: $border-radius;
+    box-shadow: $card-shadow;
+    background-color: #fff;
+
+    section {
+      display: flex;
+      flex-wrap: wrap;
+      margin-bottom: 1.5rem;
+    }
+
+    mat-form-field {
+      @include form-field-width(325px);
+
+      &.full-width {
+        @include form-field-width(650px);
+      }
+
+      mat-label {
+        font-weight: 500;
+      }
+
+      input,
+      textarea {
+        font-size: 0.95rem;
+      }
+
+      mat-error {
+        font-size: 0.8rem;
+        color: $warn-color;
+      }
+    }
+
+    button[type="submit"] {
+      margin-top: 1rem;
+      font-weight: bold;
+    }
+  }
+}

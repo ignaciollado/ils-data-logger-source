@@ -181,7 +181,15 @@ constructor(
     this.router.navigateByUrl('home')
   }
 
-  vectorsManagement(): void {
-    this.router.navigateByUrl('questionnaire/vectors')
+  viewVectors(): void {
+    this.router.navigateByUrl('vectors')
+  }
+
+  viewQuestions(): void {
+
+  }
+
+  viewAnswers(): void {
+
   }
 }

@@ -17,32 +17,32 @@ export class QuestionsService {
   /* CRUD */
 
   // GET ALL
-  getAllQuestions(): Observable<QuestionDTO[]> {
-    return this.http.get<QuestionDTO[]>(`${this.urlApi}`)
+  getAllQuestions(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.urlApi}`)
       .pipe(catchError(this.sharedService.handleError));
   }
 
   // GET BY ID
-  getOneQuestion(id: number): Observable<QuestionDTO> {
-    return this.http.get<QuestionDTO>(`${this.urlApi}/${id}`)
+  getOneQuestion(id: number): Observable<any> {
+    return this.http.get<any>(`${this.urlApi}/${id}`)
       .pipe(catchError(this.sharedService.handleError));
   }
 
   // CREATE
-  createQuestion(question: QuestionDTO): Observable<QuestionDTO> {
-    return this.http.post<QuestionDTO>(`${this.urlApi}`, question)
+  createQuestion(question: QuestionDTO): Observable<any> {
+    return this.http.post<any>(`${this.urlApi}`, question)
       .pipe(catchError(this.sharedService.handleError));
   }
 
   // UPDATE
-  updateQuestion(id: number, question: QuestionDTO): Observable<QuestionDTO> {
-    return this.http.put<QuestionDTO>(`${this.urlApi}/${id}`, question)
+  updateQuestion(id: number, question: QuestionDTO): Observable<any> {
+    return this.http.put<any>(`${this.urlApi}/${id}`, question)
       .pipe(catchError(this.sharedService.handleError))
   }
 
   // DELETE
-  deleteQuestion(id: number): Observable<void> {
-    return this.http.delete<void>(`${this.urlApi}/${id}`)
+  deleteQuestion(id: number): Observable<any> {
+    return this.http.delete<any>(`${this.urlApi}/${id}`)
       .pipe(catchError(this.sharedService.handleError))
   }
 

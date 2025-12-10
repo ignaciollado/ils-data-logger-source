@@ -32,11 +32,12 @@ import { EditIlsCnaeActivityEmissionInidicatorComponent } from './Components/ils
 import { EnergyListComponent } from './Components/energy-management/energy-list/energy-list.component';
 import { EnergyFormComponent } from './Components/energy-management/energy-form/energy-form.component';
 import { TestEndPointsBackendComponent } from './management/test-end-points-backend/test-end-points-backend.component';
+import { VectorsComponent } from './Components/questionnaire-management/vectors/vectors.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'test-end-point', component: TestEndPointsBackendComponent},
+  { path: 'test-end-point', component: TestEndPointsBackendComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'recover-password', component: PasswordRecoveryComponent },
   { path: 'reset-password', component: PasswordResetComponent },
@@ -83,7 +84,7 @@ const routes: Routes = [
     canActivate: [AuthGuard],
   },
   {
-    path:'autoevaluation-questionnaire/:id',
+    path: 'autoevaluation-questionnaire/:id',
     title: 'ILS-Formulario de autoevaluación',
     component: AutoevaluationQuestionnaireComponent,
     canActivate: [AuthGuard]
@@ -112,13 +113,15 @@ const routes: Routes = [
   { path: 'energy/new', component: EnergyFormComponent, canActivate: [AuthGuard] },
   { path: 'energy/:id', component: EnergyFormComponent, canActivate: [AuthGuard] },
 
+  { path: 'vectors', component: VectorsComponent, canActivate: [AuthGuard] },
+
   { path: '*', component: HomeComponent },
-  { path: '404', component: NotFoundComponent},
-  { path: '**', redirectTo: '/404', pathMatch: 'full'}
+  { path: '404', component: NotFoundComponent },
+  { path: '**', redirectTo: '/404', pathMatch: 'full' }
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

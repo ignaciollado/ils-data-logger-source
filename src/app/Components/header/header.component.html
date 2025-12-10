@@ -27,6 +27,7 @@
       <button *ngIf="role === 'admin'" mat-menu-item (click)="municipalityQuestionnaireNormative()"><mat-icon style="color: orangered;">balance</mat-icon> {{'municipalityQuestionnaireNormativeTexts' | translate}}</button>
       <button mat-menu-item (click)="globalQuestionnaire()"><mat-icon style="color: orangered;">list</mat-icon> {{'globalQuestionnaire' | translate}}</button>
       <button mat-menu-item (click)="globalQuestionnaireList()"><mat-icon style="color: orangered;"> list_alt</mat-icon> {{'answeredQuestionnairesList' | translate}}</button>
+      <button *ngIf="role === 'admin'" mat-menu-item [matMenuTriggerFor]="questionnaire"><mat-icon style="color: orangered;">note_add</mat-icon> {{'questionnaireMaintenance' | translate}}</button>
       <mat-divider></mat-divider>
 
       <button mat-menu-item (click)="profile()"><mat-icon style="color: blue;">domain</mat-icon> {{'profile' | translate}}</button>
@@ -36,13 +37,13 @@
       <button *ngIf="role === 'admin'" mat-menu-item (click)="listResidueChapters()"><mat-icon style="color: burlywood;">dataset</mat-icon> {{'residueChaptersRepository' | translate}}</button>
       <button *ngIf="role === 'admin'" mat-menu-item (click)="listActivityEmissionsCnae()"><mat-icon style="color: burlywood;">dataset</mat-icon> {{'activityEmissionsCnaeRepository' | translate}}</button>
       <button *ngIf="role === 'admin'" mat-menu-item (click)="energyMaintenance()"><mat-icon style="color: burlywood;">offline_bolt</mat-icon> {{'energyMaintenance' | translate}}</button>
-      <button *ngIf="role === 'admin'" mat-menu-item [matMenuTriggerFor]="questionnaire"><mat-icon style="color: burlywood;">note_add</mat-icon> {{'questionnaireMaintenance' | translate}}</button>
 
       <mat-divider></mat-divider>
       <button mat-menu-item (click)="logout()"><mat-icon style="color: orange;">logout</mat-icon> {{'logout' | translate}}</button>
     </section>
   </mat-menu>
 
+  <!-- Submenú gestión cuestionario-->
   <mat-menu #questionnaire="matMenu">
     <button *ngIf="role === 'admin'" mat-menu-item (click)="viewVectors()">Vectores</button>
     <button *ngIf="role === 'admin'" mat-menu-item (click)="viewQuestions()">Preguntas</button>

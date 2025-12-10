@@ -16,19 +16,19 @@ export class VectorDTO {
 export const vectorColumns = [
     {
         key: 'name_es',
-        type: '',
+        type: 'url',
         label: 'Nombre castellano',
         label_cat: 'Nom castellà'
     },
     {
         key: 'name_ca',
-        type: '',
+        type: 'scope',
         label: 'Nombre catalán',
         label_cat: 'Nom català'
     },
     {
         key: 'general_regulations',
-        type: '',
+        type: 'select',
         label: 'Normativa por defecto',
         label_cat: 'Normativa per defecte'
     },

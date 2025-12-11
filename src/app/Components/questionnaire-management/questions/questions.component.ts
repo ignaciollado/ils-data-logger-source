@@ -57,19 +57,15 @@ export class QuestionsComponent {
     })
   }
 
-
-  // Parámetro opcional
-  // ngOnInit() {
-  //   this.route.queryParams.subscribe(params => {
-  //     this.vectorId = params['vectorId'];
-  //     console.log(this.vectorId);
-  //   })
-  // }
-
   ngOnInit(): void {
     this.route.queryParams.subscribe(params => {
       this.vectorId = params['vectorId']
     })
+
+    if (this.vectorId) {
+      this.questionForm.get('vector_id').setValue(this.vectorId);
+      this.questionForm.get('vector_id').disable({ emitEvent: false });
+    }
     this.loadVectors();
   }
 
@@ -95,13 +91,13 @@ export class QuestionsComponent {
 
   private transformQuestionInfo(questions: any[]): void {
     this.questions = questions;
-    
+
     const transformedQuestions = questions.map(question => {
       return {
         ...question,
         vector_name: this.vectors.find(v => v.id == question.vector_id)?.name_es,
         radio_type: question.type === "radio" ? "Sí o no" : "Múltiple",
-      }   
+      }
     })
 
     this.dataSource = new MatTableDataSource(transformedQuestions);
@@ -113,6 +109,10 @@ export class QuestionsComponent {
     this.vectorService.getAll().subscribe({
       next: (vectors: VectorDTO[]) => {
         this.vectors = vectors;
+
+        if (this.vectorId) {
+          this.vectorName = this.vectors.find(v => v.id === this.vectorId).name_es;
+        }
         this.loadQuestions();
       },
       error: (error: any) => {
@@ -132,16 +132,25 @@ export class QuestionsComponent {
 
   // Crear nueva pregunta con formulario
   createQuestion(): void {
-    const newQuestion = this.questionForm.value;
+    const newQuestion = this.questionForm.getRawValue();
 
     this.questionService.createQuestion(newQuestion).subscribe({
       next: () => {
         this.sharedService.showSnackBar('Se ha creado la nueva pregunta correctamente');
-        // Reseteo el formulario para poder crear otra pregunta. Además, evito que aparezcan los errores al reiniciarlo
-        this.questionForm.reset();
 
-        this.questionForm.markAsPristine();
-        this.questionForm.markAsUntouched();
+        // Reseteo de esta forma para que no se "borre" el vector_id
+        this.questionForm.reset({
+          vector_id: this.vectorId ?? '',
+          type: '',
+          question_text_es: '',
+          question_text_ca: '',
+          tooltip_text_es: '',
+          tooltip_text_ca: '',
+          link: '',
+          doc_1: '',
+          doc_2: ''
+        });
+
 
         this.questions = [...this.questions, newQuestion];
 

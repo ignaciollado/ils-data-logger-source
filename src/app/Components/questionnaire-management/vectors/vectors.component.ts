@@ -103,11 +103,6 @@ export class VectorsComponent {
 
         // Reseteo el formulario para poder crear otro sin recargar la página
         this.vectorForm.reset();
-
-        // Evito que aparezcan errores al reiniciar el formulario
-        this.vectorForm.markAsPristine();
-        this.vectorForm.markAsUntouched();
-
       },
       error: (error: any) => {
         this.sharedService.showSnackBar(`Ha ocurrido un error creando el vector: ${error.error}`)
@@ -118,7 +113,7 @@ export class VectorsComponent {
   // Actualización vector dentro de tabla
   updateVector(vector: any): void {
     if (vector.id !== 0) {
-      
+
       const payload = {
         ...vector,
         general_regulations: vector.general_regulations?.length

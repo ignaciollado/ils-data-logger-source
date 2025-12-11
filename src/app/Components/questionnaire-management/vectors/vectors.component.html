@@ -45,7 +45,7 @@
                 <!-- Tabla por defecto -->
                 <div [ngSwitch]="col.type" *ngIf="!element.isEdit">
                     <span *ngSwitchCase="'scope'" ngClass="small-data">{{element[col.key]}}</span>
-                    <a *ngSwitchCase="'url'" ngClass="small-data" href="" title="">{{element[col.key]}}</a>
+                    <a *ngSwitchCase="'url'" ngClass="small-data" [routerLink]="['/questions']" [queryParams]="{vectorId: element['id']}" title="{{'title_questions_link' | translate}}">{{element[col.key]}}</a>
                     <span *ngSwitchDefault ngClass="small-data">{{ element[col.key] }}</span>
                     <div class="btn-edit" *ngSwitchCase="'isEdit'">
                         <button mat-icon-button (click)="element.isEdit = !element.isEdit" class="material-icons app-toolbar-menu save-button" matTooltip="Edit" color="accent"><mat-icon>edit</mat-icon></button>

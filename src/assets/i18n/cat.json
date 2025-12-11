@@ -200,6 +200,7 @@
     "name_es": "Nom castellà",
     "name_ca": "Nom català",
     "general_regulations": "Normativa per defecte",
+    "title_questions_link": "Fes clic per a veure les preguntes vinculades al vector",
 
     "question_text_es": "Pregunta en castellà",
     "question_text_ca": "Pregunta en català",
@@ -211,5 +212,6 @@
     "doc_1": "Document 1",
     "doc_2": "Document 2",
     "tooltip_text_es_placeholder": "Text d'ajuda en castellà per a aclarir possibles dubtes",
-    "tooltip_text_ca_placeholder": "Text d'ajuda en català per a aclarir possibles dubtes"
+    "tooltip_text_ca_placeholder": "Text d'ajuda en català per a aclarir possibles dubtes",
+    "title_answers_link": "Fes clic per a veure les respostes vinculades a la pregunta"
   }

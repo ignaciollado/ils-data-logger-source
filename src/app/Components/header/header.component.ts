@@ -190,6 +190,6 @@ export class HeaderComponent implements OnInit {
   }
 
   viewAnswers(): void {
-
+    this.router.navigate(['answers'])
   }
 }

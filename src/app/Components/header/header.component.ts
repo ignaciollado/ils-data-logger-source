@@ -19,65 +19,65 @@ export class HeaderComponent implements OnInit {
   userId: string = ""
   access_token: string | null
 
-constructor(
-  private router: Router,
-  private headerMenusService: HeaderMenusService,
-  private jwtHelper: JwtHelperService,
-  private cdr: ChangeDetectorRef
-) {
-  this.access_token = sessionStorage.getItem("access_token");
-  this.showAuthSection = false
-  this.showNoAuthSection = true
-  this.showAdminSection = false
+  constructor(
+    private router: Router,
+    private headerMenusService: HeaderMenusService,
+    private jwtHelper: JwtHelperService,
+    private cdr: ChangeDetectorRef
+  ) {
+    this.access_token = sessionStorage.getItem("access_token");
+    this.showAuthSection = false
+    this.showNoAuthSection = true
+    this.showAdminSection = false
 
-  if (this.access_token === null || this.jwtHelper.isTokenExpired(this.access_token)) {
-    const headerInfo: HeaderMenus = {
-      showAuthSection: true,
-      showNoAuthSection: false,
-      showAdminSection: false,
-    };
-    this.headerMenusService.headerManagement.next(headerInfo);
+    if (this.access_token === null || this.jwtHelper.isTokenExpired(this.access_token)) {
+      const headerInfo: HeaderMenus = {
+        showAuthSection: true,
+        showNoAuthSection: false,
+        showAdminSection: false,
+      };
+      this.headerMenusService.headerManagement.next(headerInfo);
       sessionStorage.removeItem('user_id');
       sessionStorage.removeItem('access_token');
       this.headerMenusService.headerManagement.next(headerInfo);
       //this.router.navigateByUrl('login');
-  } else {
-    const decodedToken = this.jwtHelper.decodeToken(this.access_token)
-    this.role = decodedToken.role
-    const headerInfo: HeaderMenus = {
-      showAuthSection: true,
-      showNoAuthSection: false,
-      showAdminSection: true,
-    };
-    this.headerMenusService.headerManagement.next(headerInfo);
+    } else {
+      const decodedToken = this.jwtHelper.decodeToken(this.access_token)
+      this.role = decodedToken.role
+      const headerInfo: HeaderMenus = {
+        showAuthSection: true,
+        showNoAuthSection: false,
+        showAdminSection: true,
+      };
+      this.headerMenusService.headerManagement.next(headerInfo);
+    }
   }
-}
 
   ngOnInit(): void {
-      const token = sessionStorage.getItem('access_token');
-       if (token && !this.jwtHelper.isTokenExpired(token)) {
-        const decoded = this.jwtHelper.decodeToken(token);
-        this.role = sessionStorage.getItem('role'); // 👈 aquí se asigna el rol
-      }
+    const token = sessionStorage.getItem('access_token');
+    if (token && !this.jwtHelper.isTokenExpired(token)) {
+      const decoded = this.jwtHelper.decodeToken(token);
+      this.role = sessionStorage.getItem('role'); // 👈 aquí se asigna el rol
+    }
     if (this.access_token && !this.jwtHelper.isTokenExpired(this.access_token)) {
       const decodedToken = this.jwtHelper.decodeToken(this.access_token)
-      this.role =  sessionStorage.getItem('role')
+      this.role = sessionStorage.getItem('role')
       this.userId = decodedToken.name
-      this.role =  sessionStorage.getItem('role')
+      this.role = sessionStorage.getItem('role')
       this.isCompany = decodedToken.role === 'company'
       this.cdr.detectChanges(); // 👈 fuerza la actualización del template
     }
 
     this.headerMenusService.headerManagement.subscribe(
-    (headerInfo: HeaderMenus) => {
-      if (headerInfo) {
-        this.showAuthSection = headerInfo.showAuthSection;
-        this.showNoAuthSection = headerInfo.showNoAuthSection;
-        this.showAdminSection = 
-        this.isCompany = headerInfo.isCompany ?? true; // 👈 usa el valor recibido
-        this.cdr.detectChanges();
-    }
-  }
+      (headerInfo: HeaderMenus) => {
+        if (headerInfo) {
+          this.showAuthSection = headerInfo.showAuthSection;
+          this.showNoAuthSection = headerInfo.showNoAuthSection;
+          this.showAdminSection =
+            this.isCompany = headerInfo.isCompany ?? true; // 👈 usa el valor recibido
+          this.cdr.detectChanges();
+        }
+      }
     );
   }
 
@@ -90,7 +90,7 @@ constructor(
   }
 
   login(): void {
-    const headerInfo: HeaderMenus = { showAuthSection: false, showNoAuthSection: true, showAdminSection: false};
+    const headerInfo: HeaderMenus = { showAuthSection: false, showNoAuthSection: true, showAdminSection: false };
     this.headerMenusService.headerManagement.next(headerInfo);
     this.router.navigateByUrl('login')
   }
@@ -186,7 +186,7 @@ constructor(
   }
 
   viewQuestions(): void {
-
+    this.router.navigate(['questions'])
   }
 
   viewAnswers(): void {

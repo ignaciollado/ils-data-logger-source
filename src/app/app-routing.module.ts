@@ -33,6 +33,7 @@ import { EnergyListComponent } from './Components/energy-management/energy-list/
 import { EnergyFormComponent } from './Components/energy-management/energy-form/energy-form.component';
 import { TestEndPointsBackendComponent } from './management/test-end-points-backend/test-end-points-backend.component';
 import { VectorsComponent } from './Components/questionnaire-management/vectors/vectors.component';
+import { QuestionsComponent } from './Components/questionnaire-management/questions/questions.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -114,6 +115,7 @@ const routes: Routes = [
   { path: 'energy/:id', component: EnergyFormComponent, canActivate: [AuthGuard] },
 
   { path: 'vectors', component: VectorsComponent, canActivate: [AuthGuard] },
+  { path: 'questions', component: QuestionsComponent, canActivate: [AuthGuard] },
 
   { path: '*', component: HomeComponent },
   { path: '404', component: NotFoundComponent },

@@ -1,1 +1,121 @@
-<p>questions works!</p>
+<div class="container-form">
+    <h1 *ngIf="!vectorId">Preguntas</h1>
+    <h1 *ngIf="vectorId">Preguntas del vector {{vectorName}}</h1>
+    <form *ngIf="questionForm" [formGroup]="questionForm" (ngSubmit)="createQuestion()">
+        <mat-card [class.mat-elevation-z8]="isElevated">
+            <section>
+                <mat-form-field [style.width.px]=305 style="margin-right: 20px;">
+                    <mat-label>{{'vector_id' | translate}}</mat-label>
+                    <mat-select formControlName="vector_id">
+                        <mat-option *ngFor="let vector of vectors" [value]="vector.id">{{vector.name_es}}</mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="questionForm.get('vector_id').hasError('required')">{{'vector_id' | translate}} <strong>{{'isRequired' | translate}}</strong></mat-error>
+                </mat-form-field>
+                <section style="display: grid; margin-left: 20px;" [style.width.px]=305>
+                    <mat-label>{{'type' | translate}}*</mat-label>
+                    <mat-radio-group formControlName="type">
+                        <mat-radio-button value="radio">Si o no</mat-radio-button>
+                        <mat-radio-button value="checkbox">Multiple</mat-radio-button>
+                    </mat-radio-group>
+                </section>
+            </section>
+            <section>
+                <mat-form-field [style.width.px]=305 style="margin-right: 20px;">
+                    <mat-label>{{'question_text_es' | translate}}</mat-label>
+                    <input matInput type="text" formControlName="question_text_es"/>
+                    <mat-error *ngIf="questionForm.get('question_text_es').hasError('required')">{{'question_text_es' | translate}} <strong>{{'isRequired' | translate}}</strong></mat-error>
+                </mat-form-field>
+                <mat-form-field [style.width.px]=305 style="margin-left: 20px;">
+                    <mat-label>{{'question_text_ca' | translate}}</mat-label>
+                    <input matInput type="text" formControlName="question_text_ca"/>
+                    <mat-error *ngIf="questionForm.get('question_text_ca').hasError('required')">{{'question_text_ca' | translate}} <strong>{{'isRequired' | translate}}</strong></mat-error>
+                </mat-form-field>
+            </section>
+            <section>
+                <mat-form-field [style.width.px]=650>
+                    <mat-label>{{'tooltip_text_es' | translate}}</mat-label>
+                    <textarea formControlName="tooltip_text_es" matInput placeholder="{{'tooltip_text_es_placeholder' | translate}}"></textarea>
+                    <mat-error *ngIf="questionForm.get('tooltip_text_es').hasError('required')">{{'tooltip_text_es' | translate}} <strong>{{'isRequired' | translate}}</strong></mat-error>
+                </mat-form-field>
+            </section>
+            <section>
+                <mat-form-field [style.width.px]=650>
+                    <mat-label>{{'tooltip_text_ca' | translate}}</mat-label>
+                    <textarea formControlName="tooltip_text_ca" matInput placeholder="{{'tooltip_text_es_placeholder' | translate}}"></textarea>
+                    <mat-error *ngIf="questionForm.get('tooltip_text_ca').hasError('required')">{{'tooltip_text_ca' | translate}} <strong>{{'isRequired' | translate}}</strong></mat-error>
+                </mat-form-field>
+            </section>
+            <section>
+                <mat-form-field [style.width.px]=650>
+                    <mat-label>{{'link' | translate}}</mat-label>
+                    <input matInput formControlName="link" type="url">
+                </mat-form-field>
+            </section>
+            <section>
+                <mat-form-field [style.width.px]=305 style="margin-right: 20px;">
+                    <mat-label>{{'doc_1' | translate}}</mat-label>
+                    <input matInput type="text" formControlName="doc_1">
+                </mat-form-field>
+                <mat-form-field [style.width.px]=305 style="margin-left: 20px;">
+                    <mat-label>{{'doc_2' | translate}}</mat-label>
+                    <input matInput type="text" formControlName="doc_2">
+                </mat-form-field>
+            </section>
+            <button mat-raised-button color="primary" type="submit" [disabled]="!questionForm.valid">ADD</button>
+        </mat-card>
+    </form>
+    <div></div>
+    <div class="form-filter">
+        <mat-form-field class="item1">
+            <mat-label>{{'filterByColumn' | translate}}</mat-label>
+            <input matInput (keyup)="applyFilter($event)" placeholder="Search columns" #input>
+        </mat-form-field>
+    </div>
+
+    <mat-paginator [pageSizeOptions]="[25, 50, 100, 200]" showFirstLastButtons></mat-paginator>
+    <table mat-table *ngIf="dataSource" [dataSource]="dataSource" class="mat-elevation-z8" matSort>
+        <ng-container [matColumnDef]="col.key" *ngFor="let col of columnsSchema">
+            <mat-header-cell *matHeaderCellDef [ngSwitch]="col.key">
+                <span *ngSwitchCase="'isEdit'"></span>
+                <span *ngSwitchDefault>{{col.key | translate}}</span>
+            </mat-header-cell>
+            <mat-cell *matCellDef="let element">
+                <!-- Tabla por defecto -->
+                 <div [ngSwitch]="col.type" *ngIf="!element.isEdit">
+                    <a *ngSwitchCase="'url'" ngClass="small-data" href="" title="">{{element[col.key]}}</a>
+                    <span *ngSwitchCase="'text-area'" ngClass="small-data">{{element[col.key]}}</span>
+                    <span *ngSwitchCase="'select'" ngClass="small-data">{{element['vector_name']}}</span>
+                    <span *ngSwitchCase="'radio'" ngClass="small-data">{{element['radio_type']}}</span>
+                    <span *ngSwitchDefault ngClass="small-data">{{ element[col.key] }}</span>
+                    <div class="btn-edit" *ngSwitchCase="'isEdit'">
+                        <button mat-icon-button (click)="element.isEdit = !element.isEdit" class="material-icons app-toolbar-menu save-button" matTooltip="Edit" color="accent"><mat-icon>edit</mat-icon></button>
+                        <button mat-icon-button class="material-icons app-toolbar-menu delete-button" (click)="removeRow(element.id)" matTooltip="Delete" color="warn"><mat-icon>delete</mat-icon></button>
+                    </div>
+                 </div>
+
+                 <!-- Editando elemento -->
+                <div [ngSwitch]="col.type" *ngIf="element.isEdit">
+                    <input *ngSwitchCase="'url'" type="text" [(ngModel)]="element[col.key]" ngClass="url-edition-format small-data-input" required />
+                    <input *ngSwitchCase="'scope'" type="text" [(ngModel)]="element[col.key]" ngClass="text-edition-format small-data-input" required/>
+                    <mat-radio-group *ngSwitchCase="'radio'" [(ngModel)]="element[col.key]" ngClass="small-data-input" required>
+                        <mat-radio-button value="radio">Sí o no</mat-radio-button>
+                        <mat-radio-button value="checkbox">Múltiple</mat-radio-button>
+                    </mat-radio-group>
+                    <mat-select *ngSwitchCase="'select'" [(ngModel)]="element[col.key]" ngClass="select-scope">
+                        <mat-option *ngFor="let vector of vectors" [value]="vector.id">{{vector.name_es}}</mat-option>
+                    </mat-select>
+                    <textarea *ngSwitchCase="'text-area'" [(ngModel)]="element[col.key]" ngClass="textarea-edition-format small-data-input" required></textarea>
+                    <input *ngSwitchDefault type="text" [(ngModel)]="element[col.key]" ngClass="text-edition-format small-data-input" />
+
+
+                    <div class="btn-edit" *ngSwitchCase="'isEdit'">
+                        <button mat-button mat-raised-button color="accent" (click)="updateQuestion(element)"><mat-icon>done_all</mat-icon></button>
+                    </div>
+                </div>
+                
+            </mat-cell>
+        </ng-container>
+        <mat-header-row *matHeaderRowDef="columnsDisplayed"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: columnsDisplayed"></mat-row>
+    </table>
+</div>

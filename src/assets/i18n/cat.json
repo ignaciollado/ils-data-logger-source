@@ -199,5 +199,17 @@
 
     "name_es": "Nom castellà",
     "name_ca": "Nom català",
-    "general_regulations": "Normativa per defecte"
+    "general_regulations": "Normativa per defecte",
+
+    "question_text_es": "Pregunta en castellà",
+    "question_text_ca": "Pregunta en català",
+    "type": "Tipus de resposta",
+    "vector_id": "Vector vinculat",
+    "tooltip_text_es": "Informació d'ajuda en castellà",
+    "tooltip_text_ca": "Informació d'ajuda en català",
+    "link": "Enllaç",
+    "doc_1": "Document 1",
+    "doc_2": "Document 2",
+    "tooltip_text_es_placeholder": "Text d'ajuda en castellà per a aclarir possibles dubtes",
+    "tooltip_text_ca_placeholder": "Text d'ajuda en català per a aclarir possibles dubtes"
   }

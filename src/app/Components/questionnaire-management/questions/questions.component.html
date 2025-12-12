@@ -82,7 +82,7 @@
             <mat-cell *matCellDef="let element">
                 <!-- Tabla por defecto -->
                  <div [ngSwitch]="col.type" *ngIf="!element.isEdit">
-                    <a *ngSwitchCase="'url'" ngClass="small-data" href="" title="{{'title_answers_link' | translate}}">{{element[col.key]}}</a>
+                    <a *ngSwitchCase="'url'" ngClass="small-data" [routerLink]="['/answers']" [queryParams]="{questionId: element['id']}" title="{{'title_answers_link' | translate}}">{{element[col.key]}}</a>
                     <span *ngSwitchCase="'text-area'" ngClass="small-data">{{element[col.key]}}</span>
                     <span *ngSwitchCase="'select'" ngClass="small-data">{{element['vector_name']}}</span>
                     <span *ngSwitchCase="'radio'" ngClass="small-data">{{element['radio_type']}}</span>

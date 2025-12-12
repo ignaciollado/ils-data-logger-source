@@ -199,7 +199,7 @@ export class QuestionsComponent {
           this.transformQuestionInfo(this.questions);
         },
         error: (error: any) => {
-          this.sharedService.showSnackBar(`Ha ocurrido un error intentando borrar la pregunta con el ${id}: ${error.error}`)
+          this.sharedService.showSnackBar(`Ha ocurrido un error intentando borrar la pregunta con el id ${id}: ${error.error}`)
         }
       })
     }

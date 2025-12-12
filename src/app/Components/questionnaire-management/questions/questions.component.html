@@ -1,6 +1,6 @@
 <div class="container-form">
-    <h1 *ngIf="!vectorId">Preguntas</h1>
-    <h1 *ngIf="vectorId">Preguntas del vector {{vectorName}}</h1>
+    <h1 *ngIf="!vectorId">{{'questions' | translate}}</h1>
+    <h1 *ngIf="vectorId">{{'questions' | translate}} del vector {{vectorName}}</h1>
     <form *ngIf="questionForm" [formGroup]="questionForm" (ngSubmit)="createQuestion()">
         <mat-card [class.mat-elevation-z8]="isElevated">
             <section>
@@ -20,12 +20,14 @@
                 </section>
             </section>
             <section>
-                <mat-form-field [style.width.px]=305 style="margin-right: 20px;">
+                <mat-form-field [style.width.px]=650>
                     <mat-label>{{'question_text_es' | translate}}</mat-label>
                     <input matInput type="text" formControlName="question_text_es"/>
                     <mat-error *ngIf="questionForm.get('question_text_es').hasError('required')">{{'question_text_es' | translate}} <strong>{{'isRequired' | translate}}</strong></mat-error>
                 </mat-form-field>
-                <mat-form-field [style.width.px]=305 style="margin-left: 20px;">
+            </section>
+            <section>
+                <mat-form-field [style.width.px]=650>
                     <mat-label>{{'question_text_ca' | translate}}</mat-label>
                     <input matInput type="text" formControlName="question_text_ca"/>
                     <mat-error *ngIf="questionForm.get('question_text_ca').hasError('required')">{{'question_text_ca' | translate}} <strong>{{'isRequired' | translate}}</strong></mat-error>

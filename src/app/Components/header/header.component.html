@@ -45,9 +45,9 @@
 
   <!-- Submenú gestión cuestionario-->
   <mat-menu #questionnaire="matMenu">
-    <button *ngIf="role === 'admin'" mat-menu-item (click)="viewVectors()">Vectores</button>
-    <button *ngIf="role === 'admin'" mat-menu-item (click)="viewQuestions()">Preguntas</button>
-    <button *ngIf="role === 'admin'" mat-menu-item (click)="viewAnswers()">Respuestas</button>
+    <button *ngIf="role === 'admin'" mat-menu-item (click)="viewVectors()">{{'vectors' | translate}}</button>
+    <button *ngIf="role === 'admin'" mat-menu-item (click)="viewQuestions()">{{'questions' | translate}}</button>
+    <button *ngIf="role === 'admin'" mat-menu-item (click)="viewAnswers()">{{'answers' | translate}}</button>
   </mat-menu>
 
   <mat-toolbar color="primary">

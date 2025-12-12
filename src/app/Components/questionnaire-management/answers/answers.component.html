@@ -1,1 +1,119 @@
-<p>answers works!</p>
+<div class="container-form">
+    <h1 *ngIf="!questionId">{{'answers' | translate}}</h1>
+    <h1 *ngIf="questionId">{{'answers' | translate}} de la pregunta "{{questionText}}"</h1>
+    <form *ngIf="answerForm" [formGroup]="answerForm" (ngSubmit)="createAnswer()">
+        <mat-card [class.mat-elevation-z8]="isElevated">
+            <section>
+                <mat-form-field [style.width.px]=650>
+                    <mat-label>{{'question_id' | translate}}</mat-label>
+                    <mat-select formControlName="question_id">
+                        <mat-optgroup *ngFor="let group of groupedQuestions" [label]="group.vectorName" style="font-weight: bolder;">
+                            <mat-option *ngFor="let question of group.questions" [value]="question.id">{{question.question_text_es}}</mat-option>
+                        </mat-optgroup>
+                    </mat-select>
+                    <mat-hint *ngIf="answerForm.get('question_id').value">{{'expectedAnswerType' | translate}}: {{questionType === 'radio' ? 'Sí o no' : 'Múltiple'}}</mat-hint>
+                </mat-form-field>
+            </section>
+            <section>
+                <mat-form-field [style.width.px]=650>
+                    <mat-label>{{'text_es' | translate}}</mat-label>
+                    <input matInput type="text" formControlName="text_es" />
+                    <mat-error *ngIf="answerForm.get('text_es').hasError('required')">{{'text_es' | translate}} <strong>{{'isRequired' | translate}}</strong></mat-error>
+                </mat-form-field>
+            </section>
+            <section>
+                <mat-form-field [style.width.px]=650>
+                    <mat-label>{{'text_ca' | translate}}</mat-label>
+                    <input matInput type="text" formControlName="text_ca" />
+                    <mat-error *ngIf="answerForm.get('text_ca').hasError('required')">{{'text_ca' | translate}} <strong>{{'isRequired' | translate}}</strong></mat-error>
+                </mat-form-field>
+            </section>
+            
+            <section>
+                <mat-form-field [style.width.px]=650>
+                    <mat-label>{{'tooltip_text_es' | translate}}</mat-label>
+                    <textarea formControlName="tooltip_text_es" matInput placeholder="{{'tooltip_text_es_placeholder' | translate}}"></textarea>
+                    <mat-error *ngIf="answerForm.get('tooltip_text_es').hasError('required')">{{'tooltip_text_es' | translate}} <strong>{{'isRequired' | translate}}</strong></mat-error>
+                </mat-form-field>
+            </section>
+            <section>
+                <mat-form-field [style.width.px]=650>
+                    <mat-label>{{'tooltip_text_ca' | translate}}</mat-label>
+                    <textarea formControlName="tooltip_text_ca" matInput placeholder="{{'tooltip_text_ca_placeholder' | translate}}"></textarea>
+                    <mat-error *ngIf="answerForm.get('tooltip_text_ca').hasError('required')">{{'tooltip_text_ca' | translate}} <strong>{{'isRequired' | translate}}</strong></mat-error>
+                </mat-form-field>
+            </section>
+            <section>
+                <mat-form-field [style.width.px]=305 style="margin-right: 20px;">
+                    <mat-label>{{'image_1' | translate}}</mat-label>
+                    <input matInput type="text" formControlName="image_1">
+                </mat-form-field>
+                <mat-form-field [style.width.px]=305 style="margin-left: 20px;">
+                    <mat-label>{{'image_2' | translate}}</mat-label>
+                    <input matInput type="text" formControlName="image_2">
+                </mat-form-field>
+            </section>
+            <section>
+                <mat-form-field [style.width.px]=650>
+                    <mat-label>{{'regulations' | translate}}</mat-label>
+                    <mat-select formControlName="regulations" multiple>
+                        <mat-option *ngFor="let normative of normativeTexts" [value]="normative.idNormativa">{{normative.regId}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </section>
+            <button mat-raised-button color="primary" type="submit" [disabled]="!answerForm.valid">ADD</button>
+        </mat-card>
+    </form>
+    <div></div>
+    <div class="form-filter">
+        <mat-form-field class="item1">
+            <mat-label>{{'filterByColumn' | translate}}</mat-label>
+            <input matInput (keyup)="applyFilter($event)" placeholder="Search columns" #input>
+        </mat-form-field>
+    </div>
+
+    <mat-paginator [pageSizeOptions]="[100, 200, 300, 400]" showFirstLastButtons></mat-paginator>
+    <table mat-table *ngIf="dataSource" [dataSource]="dataSource" class="mat-elevation-z8" matSort>
+        <ng-container [matColumnDef]="col.key" *ngFor="let col of columnsSchema">
+            <mat-header-cell *matHeaderCellDef [ngSwitch]="col.key">
+                <span *ngSwitchCase="'isEdit'"></span>
+                <span *ngSwitchDefault>{{col.key | translate}}</span>
+            </mat-header-cell>
+            <mat-cell *matCellDef="let element">
+                <!-- Tabla por defecto -->
+                <div [ngSwitch]="col.type" *ngIf="!element.isEdit">
+                    <span *ngSwitchCase="'select'" ngClass="small-data">{{element['question_text']}}</span>
+                    <span *ngSwitchCase="'select-multiple'" ngClass="small-data">{{element['regulations_text']}}</span>
+                    <span *ngSwitchDefault ngClass="small-data">{{element[col.key]}}</span>
+
+                    <div class="btn-edit" *ngSwitchCase="'isEdit'">
+                        <button mat-icon-button (click)="element.isEdit = !element.isEdit" class="material-icons app-toolbar-menu save-button" matTooltip="Edit" color="accent"><mat-icon>edit</mat-icon></button>
+                        <button mat-icon-button class="material-icons app-toolbar-menu delete-button" (click)="removeRow(element.id)" matTooltip="Delete" color="warn"><mat-icon>delete</mat-icon></button>
+                    </div>
+                </div>
+
+                <!-- Editar elemento -->
+                <div [ngSwitch]="col.type" *ngIf="element.isEdit">
+                    <mat-select *ngSwitchCase="'select'" [(ngModel)]="element[col.key]" ngClass="select-scope" [disabled]="questionId ? true : false">
+                        <mat-optgroup *ngFor="let group of groupedQuestions" [label]="group.vectorName" style="font-weight: bolder;">
+                            <mat-option *ngFor="let question of group.questions" [value]="question.id">{{question.question_text_es}}</mat-option>
+                        </mat-optgroup>
+                    </mat-select>
+                    <mat-select *ngSwitchCase="'select-multiple'" [(ngModel)]="element[col.key]" ngClass="select-scope" multiple>
+                        <mat-option *ngFor="let normative of normativeTexts" [value]="normative.idNormativa">{{normative.regId}}</mat-option>
+                    </mat-select>
+                    <textarea *ngSwitchCase="'text-area'" [(ngModel)]="element[col.key]" ngClass="textarea-edition-format small-data-input">a</textarea>
+                    <input *ngSwitchDefault type="text" [(ngModel)]="element[col.key]" ngClass="text-edition-format small-data-input" />
+
+                <div class="btn-edit" *ngSwitchCase="'isEdit'">
+                    <button mat-button mat-raised-button color="accent" (click)="updateAnswer(element)"><mat-icon>done_all</mat-icon></button>
+                </div>
+            </div>
+
+            </mat-cell>
+
+        </ng-container>
+        <mat-header-row *matHeaderRowDef="columnsDisplayed"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: columnsDisplayed"></mat-row>
+    </table>
+</div>

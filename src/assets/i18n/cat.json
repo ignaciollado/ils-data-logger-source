@@ -196,6 +196,9 @@
     "dec": "Decembre",
 
     "questionnaireMaintenance": "Gestió de qüestionari (pre)",
+    "vectors": "Vectors",
+    "questions": "Preguntes",
+    "answers": "Respostes",
 
     "name_es": "Nom castellà",
     "name_ca": "Nom català",
@@ -213,5 +216,14 @@
     "doc_2": "Document 2",
     "tooltip_text_es_placeholder": "Text d'ajuda en castellà per a aclarir possibles dubtes",
     "tooltip_text_ca_placeholder": "Text d'ajuda en català per a aclarir possibles dubtes",
-    "title_answers_link": "Fes clic per a veure les respostes vinculades a la pregunta"
+    "title_answers_link": "Fes clic per a veure les respostes vinculades a la pregunta",
+
+    "question_id": "Pregunta vinculada",
+    "text_es": "Resposta en castellà",
+    "text_ca": "Resposta en català",
+    "image_1": "Imatge 1",
+    "image_2": "Imatge 2",
+    "regulations": "Normatives",
+
+    "expectedAnswerType": "Tipus de resposta esperada"
   }

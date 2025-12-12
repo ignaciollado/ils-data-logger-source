@@ -194,6 +194,9 @@
     "dec": "Diciembre",
 
     "questionnaireMaintenance": "Gestión de cuestionario (pre)",
+    "vectors": "Vectores",
+    "questions": "Preguntas",
+    "answers": "Respuestas",
     
     "name_es": "Nombre castellano",
     "name_ca": "Nombre catalán",
@@ -211,5 +214,14 @@
     "doc_2": "Documento 2",
     "tooltip_text_es_placeholder": "Texto de ayuda en castellano para aclarar posibles dudas",
     "tooltip_text_ca_placeholder": "Texto de ayuda en catalán para aclarar posibles dudas",
-    "title_answers_link": "Haz click para ver las respuestas vinculadas a la pregunta"
+    "title_answers_link": "Haz click para ver las respuestas vinculadas a la pregunta",
+
+    "question_id": "Pregunta vinculada",
+    "text_es": "Respuesta en catellano",
+    "text_ca": "Respuesta en catalán",
+    "image_1": "Imagen 1",
+    "image_2": "Imagen 2",
+    "regulations": "Normativas",
+
+    "expectedAnswerType": "Tipo de respuesta esperada"
   }

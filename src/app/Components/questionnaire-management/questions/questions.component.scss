@@ -1,73 +1,81 @@
-$primary-color: #1976d2;
-$accent-color: #ff4081;
-$warn-color: #f44336;
-$background-color: #f9f9f9;
-$card-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-$border-radius: 8px;
-$font-family: "Roboto", sans-serif;
+@use "src/styles/themes/_ils-theme.scss" as theme;
+@use "@angular/material" as mat;
 
-@mixin flex-center {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-@mixin form-field-width($width) {
-  width: $width;
-  max-width: 100%;
-}
+// Declaro variables para los contrastes. Así no "ensucio" las reglas de estilos
+$primary-contrast-map: map-get(theme.$ils-primary-map, contrast);
+$accent-contrast-map: map-get(theme.$ils-accent-map, contrast);
+$warn-contrast-map: map-get(theme.$ils-warn-map, contrast);
 
 .container-form {
   padding: 2rem;
-  background-color: $background-color;
-  font-family: $font-family;
+  background-color: theme.$alternate-color;
+  font-family: "Roboto", sans-serif;
+  margin: 0 auto;
 
   h1 {
     text-align: center;
     font-size: 1.8rem;
+    font-weight: 600;
+    color: theme.$primary-color;
     margin-bottom: 1.5rem;
-    color: $primary-color;
   }
 }
 
 form {
   mat-card {
     padding: 2rem;
-    border-radius: $border-radius;
-    box-shadow: $card-shadow;
-    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    background-color: map-get(theme.$ils-primary-map, 50);
 
     section {
       display: flex;
       flex-wrap: wrap;
       margin-bottom: 1.5rem;
+
+      &.radio {
+        display: grid;
+      }
+
+      &.left {
+        margin-right: 20px;
+      }
+
+      &.right {
+        margin-left: 20px;
+      }
     }
 
     mat-form-field {
-      @include form-field-width(325px);
+      max-width: 100%;
+      width: 305px;
 
       &.full-width {
-        @include form-field-width(650px);
+        width: 650px;
       }
 
-      mat-label {
-        font-weight: 500;
+      &.left {
+        margin-right: 20px;
+      }
+
+      &.right {
+        margin-left: 20px;
       }
 
       input,
       textarea {
         font-size: 0.95rem;
       }
-
-      mat-error {
-        font-size: 0.8rem;
-        color: $warn-color;
-      }
     }
 
     button[type="submit"] {
       margin-top: 1rem;
       font-weight: bold;
+
+      &:enabled {
+        background-color: map-get(theme.$ils-primary-map, 900);
+        color: map-get($primary-contrast-map, 50);
+      }
     }
   }
 }
@@ -85,7 +93,7 @@ table,
 mat-table {
   width: 100%;
   margin-top: 2rem;
-  border-radius: $border-radius;
+  border-radius: 8px;
   overflow: hidden;
 
   mat-header-cell,
@@ -96,13 +104,13 @@ mat-table {
   }
 
   mat-header-cell {
-    background-color: $primary-color;
-    color: white;
+    background-color: map-get(theme.$ils-primary-map, 900);
+    color: map-get($primary-contrast-map, 50);
     font-weight: bold;
   }
 
   mat-row:nth-child(even) {
-    background-color: #f0f4f8;
+    background: map-get(theme.$ils-primary-map, 50);
   }
 
   .btn-edit {
@@ -114,11 +122,11 @@ mat-table {
     }
 
     .save-button {
-      color: $accent-color;
+      color: map-get(theme.$ils-accent-map, 500);
     }
 
     .delete-button {
-      color: $warn-color;
+      color: map-get(theme.$ils-warn-map, 900);
     }
   }
 
@@ -143,13 +151,13 @@ mat-table {
     resize: vertical;
   }
 
-  .url-edition-format {
-    color: $primary-color;
-    text-decoration: underline;
-  }
-
   .text-edition-format {
     width: 100%;
+  }
+
+  .radio-edition-format {
+    width: 100%;
+    font-size: 0.95rem;
   }
 
   .text-edition-format,
@@ -160,19 +168,17 @@ mat-table {
     padding: 6px 10px; // Espaciado interno
     font-size: 0.95rem; // Tamaño de fuente legible
     border-radius: 6px; // Bordes suaves
-    border: 1px solid greenyellow;
+    border: 1px solid map-get($primary-contrast-map, 200);
     background-color: #f9f9f9; // Fondo ligero
     transition: all 0.3s ease; // Animación suave
     box-sizing: border-box;
 
     &:focus {
       outline: none;
-      border-color: #3f51b5; // Color de enfoque (material primary)
+      border-color: map-get($primary-contrast-map, 300);
       box-shadow: 0 0 5px rgba(63, 81, 181, 0.3);
-      background-color: #ffffff;
+      background-color: theme.$alternate-color;
     }
   }
-  .url-edition-format {
-    width: 350px;
-  }
+
 }

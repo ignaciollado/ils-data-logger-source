@@ -4,7 +4,7 @@
     <form *ngIf="answerForm" [formGroup]="answerForm" (ngSubmit)="createAnswer()">
         <mat-card [class.mat-elevation-z8]="isElevated">
             <section>
-                <mat-form-field [style.width.px]=650>
+                <mat-form-field ngClass="full-width">
                     <mat-label>{{'question_id' | translate}}</mat-label>
                     <mat-select formControlName="question_id">
                         <mat-optgroup *ngFor="let group of groupedQuestions" [label]="group.vectorName" style="font-weight: bolder;">
@@ -15,14 +15,14 @@
                 </mat-form-field>
             </section>
             <section>
-                <mat-form-field [style.width.px]=650>
+                <mat-form-field ngClass="full-width">
                     <mat-label>{{'text_es' | translate}}</mat-label>
                     <input matInput type="text" formControlName="text_es" />
                     <mat-error *ngIf="answerForm.get('text_es').hasError('required')">{{'text_es' | translate}} <strong>{{'isRequired' | translate}}</strong></mat-error>
                 </mat-form-field>
             </section>
             <section>
-                <mat-form-field [style.width.px]=650>
+                <mat-form-field ngClass="full-width">
                     <mat-label>{{'text_ca' | translate}}</mat-label>
                     <input matInput type="text" formControlName="text_ca" />
                     <mat-error *ngIf="answerForm.get('text_ca').hasError('required')">{{'text_ca' | translate}} <strong>{{'isRequired' | translate}}</strong></mat-error>
@@ -30,31 +30,31 @@
             </section>
             
             <section>
-                <mat-form-field [style.width.px]=650>
+                <mat-form-field ngClass="full-width">
                     <mat-label>{{'tooltip_text_es' | translate}}</mat-label>
                     <textarea formControlName="tooltip_text_es" matInput placeholder="{{'tooltip_text_es_placeholder' | translate}}"></textarea>
                     <mat-error *ngIf="answerForm.get('tooltip_text_es').hasError('required')">{{'tooltip_text_es' | translate}} <strong>{{'isRequired' | translate}}</strong></mat-error>
                 </mat-form-field>
             </section>
             <section>
-                <mat-form-field [style.width.px]=650>
+                <mat-form-field ngClass="full-width">
                     <mat-label>{{'tooltip_text_ca' | translate}}</mat-label>
                     <textarea formControlName="tooltip_text_ca" matInput placeholder="{{'tooltip_text_ca_placeholder' | translate}}"></textarea>
                     <mat-error *ngIf="answerForm.get('tooltip_text_ca').hasError('required')">{{'tooltip_text_ca' | translate}} <strong>{{'isRequired' | translate}}</strong></mat-error>
                 </mat-form-field>
             </section>
             <section>
-                <mat-form-field [style.width.px]=305 style="margin-right: 20px;">
+                <mat-form-field ngClass="left">
                     <mat-label>{{'image_1' | translate}}</mat-label>
                     <input matInput type="text" formControlName="image_1">
                 </mat-form-field>
-                <mat-form-field [style.width.px]=305 style="margin-left: 20px;">
+                <mat-form-field ngClass="right">
                     <mat-label>{{'image_2' | translate}}</mat-label>
                     <input matInput type="text" formControlName="image_2">
                 </mat-form-field>
             </section>
             <section>
-                <mat-form-field [style.width.px]=650>
+                <mat-form-field ngClass="full-width">
                     <mat-label>{{'regulations' | translate}}</mat-label>
                     <mat-select formControlName="regulations" multiple>
                         <mat-option *ngFor="let normative of normativeTexts" [value]="normative.idNormativa">{{normative.regId}}</mat-option>
@@ -102,7 +102,8 @@
                     <mat-select *ngSwitchCase="'select-multiple'" [(ngModel)]="element[col.key]" ngClass="select-scope" multiple>
                         <mat-option *ngFor="let normative of normativeTexts" [value]="normative.idNormativa">{{normative.regId}}</mat-option>
                     </mat-select>
-                    <textarea *ngSwitchCase="'text-area'" [(ngModel)]="element[col.key]" ngClass="textarea-edition-format small-data-input">a</textarea>
+                    <textarea *ngSwitchCase="'text-area'" [(ngModel)]="element[col.key]" ngClass="textarea-edition-format small-data-input" required rows="20"></textarea>
+                    <input *ngSwitchCase="'text-required'" type="text" [(ngModel)]="element[col.key]" ngClass="text-edition-format small-data-input" required />
                     <input *ngSwitchDefault type="text" [(ngModel)]="element[col.key]" ngClass="text-edition-format small-data-input" />
 
                 <div class="btn-edit" *ngSwitchCase="'isEdit'">

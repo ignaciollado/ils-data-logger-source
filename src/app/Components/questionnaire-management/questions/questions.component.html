@@ -4,14 +4,14 @@
     <form *ngIf="questionForm" [formGroup]="questionForm" (ngSubmit)="createQuestion()">
         <mat-card [class.mat-elevation-z8]="isElevated">
             <section>
-                <mat-form-field [style.width.px]=305 style="margin-right: 20px;">
+                <mat-form-field ngClass="left">
                     <mat-label>{{'vector_id' | translate}}</mat-label>
                     <mat-select formControlName="vector_id">
                         <mat-option *ngFor="let vector of vectors" [value]="vector.id">{{vector.name_es}}</mat-option>
                     </mat-select>
                     <mat-error *ngIf="questionForm.get('vector_id').hasError('required')">{{'vector_id' | translate}} <strong>{{'isRequired' | translate}}</strong></mat-error>
                 </mat-form-field>
-                <section style="display: grid; margin-left: 20px;" [style.width.px]=305>
+                <section ngClass="right radio">
                     <mat-label>{{'type' | translate}}*</mat-label>
                     <mat-radio-group formControlName="type">
                         <mat-radio-button value="radio">Si o no</mat-radio-button>
@@ -20,45 +20,45 @@
                 </section>
             </section>
             <section>
-                <mat-form-field [style.width.px]=650>
+                <mat-form-field ngClass="full-width">
                     <mat-label>{{'question_text_es' | translate}}</mat-label>
-                    <input matInput type="text" formControlName="question_text_es"/>
+                    <textarea formControlName="question_text_es" matInput placeholder="{{'question_text_es' | translate}}"></textarea>
                     <mat-error *ngIf="questionForm.get('question_text_es').hasError('required')">{{'question_text_es' | translate}} <strong>{{'isRequired' | translate}}</strong></mat-error>
                 </mat-form-field>
             </section>
             <section>
-                <mat-form-field [style.width.px]=650>
+                <mat-form-field ngClass="full-width">
                     <mat-label>{{'question_text_ca' | translate}}</mat-label>
-                    <input matInput type="text" formControlName="question_text_ca"/>
+                    <textarea formControlName="question_text_ca" matInput placeholder="{{'question_text_ca' | translate}}"></textarea>
                     <mat-error *ngIf="questionForm.get('question_text_ca').hasError('required')">{{'question_text_ca' | translate}} <strong>{{'isRequired' | translate}}</strong></mat-error>
                 </mat-form-field>
             </section>
             <section>
-                <mat-form-field [style.width.px]=650>
+                <mat-form-field ngClass="full-width">
                     <mat-label>{{'tooltip_text_es' | translate}}</mat-label>
                     <textarea formControlName="tooltip_text_es" matInput placeholder="{{'tooltip_text_es_placeholder' | translate}}"></textarea>
                     <mat-error *ngIf="questionForm.get('tooltip_text_es').hasError('required')">{{'tooltip_text_es' | translate}} <strong>{{'isRequired' | translate}}</strong></mat-error>
                 </mat-form-field>
             </section>
             <section>
-                <mat-form-field [style.width.px]=650>
+                <mat-form-field ngClass="full-width">
                     <mat-label>{{'tooltip_text_ca' | translate}}</mat-label>
                     <textarea formControlName="tooltip_text_ca" matInput placeholder="{{'tooltip_text_ca_placeholder' | translate}}"></textarea>
                     <mat-error *ngIf="questionForm.get('tooltip_text_ca').hasError('required')">{{'tooltip_text_ca' | translate}} <strong>{{'isRequired' | translate}}</strong></mat-error>
                 </mat-form-field>
             </section>
             <section>
-                <mat-form-field [style.width.px]=650>
+                <mat-form-field ngClass="full-width">
                     <mat-label>{{'link' | translate}}</mat-label>
                     <input matInput formControlName="link" type="url">
                 </mat-form-field>
             </section>
             <section>
-                <mat-form-field [style.width.px]=305 style="margin-right: 20px;">
+                <mat-form-field ngClass="left">
                     <mat-label>{{'doc_1' | translate}}</mat-label>
                     <input matInput type="text" formControlName="doc_1">
                 </mat-form-field>
-                <mat-form-field [style.width.px]=305 style="margin-left: 20px;">
+                <mat-form-field ngClass="right">
                     <mat-label>{{'doc_2' | translate}}</mat-label>
                     <input matInput type="text" formControlName="doc_2">
                 </mat-form-field>
@@ -97,16 +97,16 @@
 
                  <!-- Editando elemento -->
                 <div [ngSwitch]="col.type" *ngIf="element.isEdit">
-                    <input *ngSwitchCase="'url'" type="text" [(ngModel)]="element[col.key]" ngClass="url-edition-format small-data-input" required />
-                    <input *ngSwitchCase="'scope'" type="text" [(ngModel)]="element[col.key]" ngClass="text-edition-format small-data-input" required/>
-                    <mat-radio-group *ngSwitchCase="'radio'" [(ngModel)]="element[col.key]" ngClass="small-data-input" required>
+                    <textarea *ngSwitchCase="'url'" [(ngModel)]="element[col.key]" ngClass="textarea-edition-format small-data-input" required rows="20"></textarea>
+                    <textarea *ngSwitchCase="'scope'" [(ngModel)]="element[col.key]" ngClass="textarea-edition-format small-data-input" required rows="20"></textarea>
+                    <mat-radio-group *ngSwitchCase="'radio'" [(ngModel)]="element[col.key]" ngClass="radio-edition-format small-data-input" required>
                         <mat-radio-button value="radio">Sí o no</mat-radio-button>
                         <mat-radio-button value="checkbox">Múltiple</mat-radio-button>
                     </mat-radio-group>
                     <mat-select *ngSwitchCase="'select'" [(ngModel)]="element[col.key]" ngClass="select-scope" [disabled]="vectorId ? true : false">
                         <mat-option *ngFor="let vector of vectors" [value]="vector.id">{{vector.name_es}}</mat-option>
                     </mat-select>
-                    <textarea *ngSwitchCase="'text-area'" [(ngModel)]="element[col.key]" ngClass="textarea-edition-format small-data-input" required></textarea>
+                    <textarea *ngSwitchCase="'text-area'" [(ngModel)]="element[col.key]" ngClass="textarea-edition-format small-data-input" required rows="20"></textarea>
                     <input *ngSwitchDefault type="text" [(ngModel)]="element[col.key]" ngClass="text-edition-format small-data-input" />
 
 

@@ -118,7 +118,6 @@ export class AnswersComponent {
   private transformAnswerInfo(answers: any[]): void {
     this.answers = answers;
     const transformedAnswers = answers.map(answer => {
-      console.log(answer.regulations)
 
       const regulationsIds = typeof answer.regulations === 'string'
       ? answer.regulations.split(',').filter(Boolean)
@@ -131,8 +130,8 @@ export class AnswersComponent {
       return {
         ...answer,
         regulations: regulationsIds,
-        question_text: this.questions.find(q => q.id === answer.question_id).question_text_es,
-        regulations_text: this.normativeTexts.filter(n => answer.regulations.includes(n.idNormativa)).map(n => n.regId)
+        question_text: this.questions.find(q => q.id === answer.question_id)?.question_text_es,
+        regulations_text: this.normativeTexts.filter(n => answer.regulations.includes(n.idNormativa))?.map(n => n.regId)
       }
     })
 

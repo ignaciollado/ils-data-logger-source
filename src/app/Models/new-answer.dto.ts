@@ -35,13 +35,13 @@ export class AnswerDTO {
 export const answersColumns = [
     {
         key: "text_es",
-        type: "scope",
+        type: "text-required",
         label: "Respuesta en castellano",
         label_ca: "Resposta en castellà"
     },
     {
         key: "text_ca",
-        type: "scope",
+        type: "text-required",
         label: "Respuesta en catalán",
         label_ca: "Resposta en català"
     },

@@ -3,19 +3,19 @@
     <form *ngIf="vectorForm" [formGroup]="vectorForm" (ngSubmit)="createVector()">
         <mat-card [class.mat-elevation-z8]="isElevated">
             <section>
-                <mat-form-field [style.width.px]=305 style="margin-right: 20px;">
+                <mat-form-field ngClass="left">
                     <mat-label>{{'name_es' | translate}}</mat-label>
                     <input matInput type="text" formControlName="name_es"/>
                     <mat-error *ngIf="vectorForm.get('name_es').hasError('required')">{{'name_es' | translate}} <strong>{{'isRequired' | translate}}</strong></mat-error>
                 </mat-form-field>
-                <mat-form-field [style.width.px]=305 style="margin-left: 20px;">
+                <mat-form-field ngClass="right">
                     <mat-label>{{'name_ca' | translate}}</mat-label>
                     <input matInput type="text" formControlName="name_ca"/>
                     <mat-error *ngIf="vectorForm.get('name_ca').hasError('required')">{{'name_ca' | translate}} <strong>{{'isRequired' | translate}}</strong></mat-error>
                 </mat-form-field>
             </section>
             <section>
-                <mat-form-field [style.width.px]=650>
+                <mat-form-field ngClass="full-width">
                     <mat-label>{{'general_regulations' | translate}}</mat-label>
                     <mat-select formControlName="general_regulations" multiple>
                         <mat-option *ngFor="let normative of normativeTexts" [value]="normative.regId">{{normative.regId}}</mat-option>

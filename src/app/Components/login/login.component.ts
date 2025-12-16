@@ -142,6 +142,7 @@ export class LoginComponent implements OnInit {
                   const headerInfo: HeaderMenus = { showAuthSection: false, showNoAuthSection: true, };
                   this.headerMenusService.headerManagement.next(headerInfo);
                   this.sharedService.showSnackBar(error.error.messages.error);
+                  this.loginForm.reset()
                 },
                   () => console.log("Login complete.")
         )
